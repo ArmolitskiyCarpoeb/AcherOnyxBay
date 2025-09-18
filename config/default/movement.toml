@@ -8,9 +8,9 @@
 ## To speed things up make the number negative, to slow things down, make the number positive.
 
 ## These modify the run/walk speed of all mobs before the mob-specific modifiers are applied. Higher values result into lower move speed.
-run_speed = 3
+run_speed = 2.5
 
-walk_speed = 7
+walk_speed = 4.1
 
 ## The variables below affect the movement of specific mob types.
 human_delay = 0

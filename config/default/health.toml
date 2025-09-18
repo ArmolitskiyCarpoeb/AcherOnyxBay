@@ -24,4 +24,4 @@ organ_regeneration_multiplier = 0.25
 organ_damage_spillover_multiplier = 0.5
 
 ## Determines whether digestion is fully simulated. Allows things like non-edible items swallowing and meaningful autopsy, but might hurt some people's feelings.
-simulate_digestion = false
+simulate_digestion = true

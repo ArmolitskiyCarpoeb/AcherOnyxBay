@@ -2,7 +2,7 @@
 ## Default view size, in tiles. Should always be square and preferably equal to world's view.
 default_view = "15x15"
 ## Widescreen view size, in tiles.
-default_view_wide = "19x15"
+default_view_wide = "15x15"
 
 ## Preset name from file 'event_presets.toml', leave empty to not use a preset.
 events_preset = "default"
@@ -17,7 +17,7 @@ auto_map_switching = false
 auto_map_vote = false
 
 ## Set to true to give assistants maint access.
-assistant_maint = false
+assistant_maint = true
 
 ## Set to true to make rounds which end instantly (Rev, Wizard, Malf) to continue until the shuttle is called or the station is nuked.
 ## Malf and Rev will let the shuttle be called when the antags/protags are dead.
@@ -36,7 +36,7 @@ jobs_have_minimal_access = true
 use_whitelist = false
 
 ## Set to true to restrict non-admins from using humanoid alien races.
-use_ingame_alien_whitelist = false
+use_ingame_alien_whitelist = true
 
 ## Uncomment to use the alien whitelist system with SQL instead. (requires the above uncommented aswell)
 ## currently commented in code / wouldn't work
@@ -92,7 +92,7 @@ disable_looc_at_roundstart = false
 ## Set to true to use recursive explosions, keep it hashed to use circle explosions.
 ## Recursive explosions react to walls, airlocks and blast doors, making them look a lot cooler than the boring old circular explosions.
 ## They require more CPU and are (as of january 2013) experimental.
-use_recursive_explosions = false
+use_recursive_explosions = true
 
 ## Enable asteroid tunnel/cave generation. Will behave strangely if turned off with a map that expects it on.
 generate_asteroid = true

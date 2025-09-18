@@ -1,4 +1,4 @@
 [whitelist]
 enable = false
 ckeys = []
-enable_alien_whitelist = false
+enable_alien_whitelist = true

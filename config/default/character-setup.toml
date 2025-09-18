@@ -1,18 +1,18 @@
 [character-setup]
 ## Sets the number of available character slots
-character_slots = 10
+character_slots = 5
 
 ## Sets the number of loadout slots per character
-loadout_slots = 3
+loadout_slots = 0
 
 ## How many loadout points are available. Use 0 to disable loadout, and any negative number to indicate infinite points.
-max_loadout_points = 10
+max_loadout_points = 0
 
 ## How many extra pints patrons get.
-extra_loadout_points = 10
+extra_loadout_points = 0
 
 ## Uncomment to prevent character spawn without surname.
-humans_need_surnames = false
+humans_need_surnames = true
 
 ## Uncomment to allow metadata like OOC notes for players.
-allow_metadata = false
+allow_metadata = true
