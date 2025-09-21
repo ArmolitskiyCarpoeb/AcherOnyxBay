@@ -180,7 +180,7 @@
 #define ARMOR_BLOCK_CHANCE_MULT 1.0
 
 // Multiplier for projectiles' damage dealt to internal organs
-#define PROJECTILE_INTERNAL_DAMAGE_MULT 1.0
+#define PROJECTILE_INTERNAL_DAMAGE_MULT 2.0
 
 // Projectiles' chance to embed/sever an artery, 25 seems to be fair but one might tweak it if needed
 #define PROJECTILE_EMBED_CHANCE 25

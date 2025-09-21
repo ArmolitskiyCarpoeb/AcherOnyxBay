@@ -9,6 +9,8 @@
 	var/damage_threshold_value
 	var/healed_threshold = 1
 
+	relative_size = 90
+
 /obj/item/organ/internal/cerebrum/brain/New(newLoc, mob/living/carbon/holder)
 	. = ..()
 

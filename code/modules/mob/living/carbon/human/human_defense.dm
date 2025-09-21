@@ -50,7 +50,7 @@ meteor_act
 	// Internal damage
 	// Some day we should make internals deal with blunt and sharp damage differently, but for now it's like this, if 'blocked' is non-zero, then the projectile's already lost its SHARP/EDGE flags and thus we cut the damage accordingly
 	if(length(organ.internal_organs))
-		var/internal_damage_prob = 70 * blocked_mult(blocked) // 70% for a naked dude/armor fail, 35% if one armor layer's succeeded, etc.
+		var/internal_damage_prob = 100 * blocked_mult(blocked) // 99% for a naked dude/armor fail, 35% if one armor layer's succeeded, etc.
 
 		// If our bodypart is a pile of shredded meat then it doesn't protect organs well
 		if(organ.damage > organ.max_damage)
@@ -59,13 +59,13 @@ meteor_act
 		if(prob(internal_damage_prob))
 			var/penetrating_damage = P.damage * P.penetration_modifier * PROJECTILE_INTERNAL_DAMAGE_MULT * blocked_mult(blocked)
 			if(organ.encased && !(organ.status & ORGAN_BROKEN))
-				penetrating_damage *= 0.75 // Ribs and skulls somewhat protect
+				penetrating_damage *= 0.9 // Ribs and skulls somewhat protect
 
 			var/list/victims = list()
 			var/list/possible_victims = shuffle(organ.internal_organs.Copy())
 
 			for(var/obj/item/organ/internal/I in possible_victims)
-				if(I.damage < I.max_damage && (prob((sqrt(I.relative_size) * 10) * (1 / max(1, victims.len)))))
+				if(I.damage < I.max_damage && (prob((I.relative_size) * (1 / max(1, victims.len)))))
 					victims += I
 
 			if(length(victims))
