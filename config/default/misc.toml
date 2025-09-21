@@ -45,7 +45,7 @@ load_jobs_from_txt = false
 allow_ai = false
 
 ## Set to true to allow aliens to random spawn.
-aliens_allowed = false
+aliens_allowed = true
 
 ## Set to true to allow alien xenomorph queens to lay eggs.
 alien_eggs_allowed = true

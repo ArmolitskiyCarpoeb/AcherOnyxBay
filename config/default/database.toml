@@ -9,14 +9,14 @@ port = 3306
 # Database the population, death, karma, etc. tables may be found in
 database = "tgstation"
 # Username/Login used to access the database
-login = "mylogin"
+login = "armo"
 # Password used to access the database
-password = "mypassword"
+password = "123123"
 
 # The following information is for feedback tracking via the blackbox server
 feedback_database = "feedback"
-feedback_login = "root"
-feedback_password = "pass"
+feedback_login = "armo"
+feedback_password = "123123"
 
 # Track population and death statistics
 # Comment this out to disable

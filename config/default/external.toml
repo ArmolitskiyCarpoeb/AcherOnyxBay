@@ -1,6 +1,6 @@
 [external]
 ## SQL storage switching.
-# sql_enabled = true
+sql_enabled = true
 
 ## Password used for authorizing ircbot and other external tools.
 # comms_password = "pass"
