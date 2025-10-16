@@ -92,6 +92,7 @@
 #define SFX_FEMALE_LAUGH            "female_laugh"
 #define SFX_FEMALE_YAWN             "female_yawn"
 #define SFX_FEMALE_SIGH             "female_sigh"
+#define SFX_FEMALE_JUMP				"female_jump"
 
 // MALE EMOTES
 #define SFX_MALE_INTERNAL_BREATH    "male_internal_breath"
@@ -106,6 +107,7 @@
 #define SFX_MALE_LAUGH              "male_laugh"
 #define SFX_MALE_YAWN               "male_yawn"
 #define SFX_MALE_SIGH               "male_sigh"
+#define SFX_MALE_JUMP               "male_jump"
 
 // AMBIENT
 #define SFX_AMBIENT_POWERED_GLOBAL      "ambient_powered_global"

@@ -383,6 +383,12 @@
 				var/mob/living/carbon/human/H = usr
 				H.blockswitch()
 
+		if("jump")
+			if(ishuman(usr))
+				var/mob/living/carbon/human/H = usr
+				H.toggle_jump(HUMAN_POWER_JUMP)
+
+
 		if("module")
 			if(isrobot(usr))
 				var/mob/living/silicon/robot/R = usr

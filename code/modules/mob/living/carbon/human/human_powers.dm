@@ -2,20 +2,23 @@
 // species.dm's inherent_verbs ~ Z
 
 /mob/living/carbon/human/proc/use_human_ability(atom/A)
-	if(!isliving(A))
+	if (!isliving(A) && active_ability != HUMAN_POWER_JUMP)
 		return FALSE
-	switch(active_ability)
-		if(HUMAN_POWER_NONE)
+
+	switch (active_ability)
+		if (HUMAN_POWER_NONE)
 			return FALSE
-		if(HUMAN_POWER_SPIT)
+		if (HUMAN_POWER_SPIT)
 			var/mob/living/M = A
 			process_spit(M)
-		if(HUMAN_POWER_LEAP)
+		if (HUMAN_POWER_LEAP)
 			var/mob/living/M = A
 			process_leap(M)
-		if(HUMAN_POWER_TACKLE)
+		if (HUMAN_POWER_TACKLE)
 			var/mob/living/M = A
 			process_tackle(M)
+		if (HUMAN_POWER_JUMP)
+			process_jump(A)
 	return TRUE
 
 /mob/living/carbon/human/MiddleClickOn(atom/A)

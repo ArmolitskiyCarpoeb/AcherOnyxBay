@@ -337,25 +337,6 @@
 	set category = "Emotes"
 	emote("roll", intentional = TRUE)
 
-
-/datum/emote/jump
-	key = "jump"
-
-	message_1p = "You jump."
-	message_3p = "jumps!"
-
-	message_type = VISIBLE_MESSAGE
-
-	state_checks = EMOTE_CHECK_CONSCIOUS
-
-	statpanel_proc = /mob/proc/jump_emote
-
-/mob/proc/jump_emote()
-	set name = "Jump"
-	set category = "Emotes"
-	emote("jump", intentional = TRUE)
-
-
 /datum/emote/bow
 	key = "bow"
 
