@@ -8,6 +8,7 @@
 /* Setup new backpacks here */
 /decl/backpack_outfit/nothing
 	name = "Nothing"
+	is_default = TRUE
 
 /decl/backpack_outfit/nothing/spawn_backpack(location, metadata, desired_type)
 	return
@@ -15,11 +16,12 @@
 /decl/backpack_outfit/backpack
 	name = "Backpack"
 	path = /obj/item/storage/backpack
-	is_default = TRUE
+	is_default = FALSE
 
 /decl/backpack_outfit/satchel
 	name = "Satchel"
 	path = /obj/item/storage/backpack/satchel
+	is_default = FALSE
 
 /decl/backpack_outfit/satchel/New()
 	..()
@@ -33,6 +35,7 @@
 	name = "Pocketbook"
 	path = /obj/item/storage/backpack/satchel/pocketbook
 	flags = BACKPACK_HAS_TYPE_SELECTION
+
 
 /* Code */
 /decl/backpack_outfit

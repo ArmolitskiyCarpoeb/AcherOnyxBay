@@ -500,6 +500,20 @@ var/global/datum/controller/occupations/job_master
 
 		to_chat(H, "<B>You are [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>")
 
+		to_chat(H, "<b>Очередная смена на этой проклятой шахте.</b>")
+
+		if(rank == "Cardinal")
+			to_chat(H, "<b>У тебя имеется возможность диктовать свои законы, если они не противоречат Церкви и Корпорации. Ты можешь разрешить всем владеть оружием или запретить свободу слова.</b>")
+
+		if(rank == "Station Engineer")
+			to_chat(H, "<b>Реактор работает на уране, поэтому почаще его требуй с ассистентов.</b>")
+
+		if(rank == "Medical Doctor")
+			to_chat(H, "<b>Прежде чем требовать с ассистентов оплаты своих услуг, посоветуйся с кардианлом.</b>")
+
+		if(rank == "Assistant")
+			to_chat(H, "<b>Ты - работник самого низкого класса. Тебя легко заменить и тебе никто ничем не обязан.</b>")
+
 		if(job.supervisors)
 			to_chat(H, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
 
@@ -510,7 +524,7 @@ var/global/datum/controller/occupations/job_master
 			H.mind.store_memory("Your trading license is a forgery. Trading on [station_name()] is illegal.")
 
 		if(job.req_admin_notify)
-			to_chat(H, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
+			to_chat(H, "<b>You are very important. Don't forget it.</b>")
 
 		// EMAIL GENERATION
 		var/domain = "freemail.nt"

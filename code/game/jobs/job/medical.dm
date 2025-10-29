@@ -28,14 +28,20 @@
 	department = "Medical"
 	department_flag = MED
 
-	minimal_player_age = 7
-	total_positions = 5
-	spawn_positions = 3
+	loadout_allowed = TRUE
+
+	minimal_player_age = 0
+	total_positions = 3
+	spawn_positions = 1
 	supervisors = "the chief medical officer"
-	selection_color = "#013d3b"
-	economic_modifier = 7
-	access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_chemistry)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery)
+	selection_color = "#13817e"
+	economic_modifier = 9
+	access = list(access_medical, access_medical_equip, access_morgue, access_heads,
+			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
+			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_maint_tunnels, access_external_airlocks)
+	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_heads,
+			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
+			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_maint_tunnels, access_external_airlocks)
 	alt_titles = list(
 		"Surgeon" = /decl/hierarchy/outfit/job/medical/doctor/surgeon,
 		"Emergency Physician" = /decl/hierarchy/outfit/job/medical/doctor/emergency_physician,

@@ -29,7 +29,7 @@ enter_allowed = true
 ## Set to false if you wish to use the setup where jobs have more access.
 ## This is intended for servers with low populations - where there are not enough players to fill all roles, so players need to do more than just one job.
 ## Also for servers where they don't want people to hide in their own departments.
-jobs_have_minimal_access = true
+jobs_have_minimal_access = false
 
 ## Set to jobban everyone who's key is not listed in data/whitelist.txt from Captain, HoS, HoP, CE, RD, CMO, Warden, Security, Detective, and AI positions.
 ## Set to true to jobban, leave commented out to allow these positions for everyone (but see GUEST_JOBBAN above and regular jobbans)

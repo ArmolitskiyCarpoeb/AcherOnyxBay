@@ -1114,6 +1114,13 @@
 	if(lying)
 		pregen += base_pregen * 0.5
 
+	if(m_intent == M_RUN && src.moving)
+		pose -= 15
+
+	if(poise <=10)
+		to_chat(src, SPAN_WARNING("You are exhausted!"))
+		set_m_intent(M_WALK)
+
 	poise = between(0, poise + pregen, poise_pool)
 
 	poise_icon?.icon_state = "[round((poise/poise_pool) * 50)]"

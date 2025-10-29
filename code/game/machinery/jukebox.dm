@@ -253,7 +253,7 @@
 	if(!spamcheck && prob(RICKROLL_PROBABILITY))
 		lock_rickroll()
 	// Jukeboxes cheat massively and actually don't share id. This is only done because it's music rather than ambient noise.
-	sound_token = GLOB.sound_player.PlayLoopingSound(src, sound_id, current_track.GetTrack(), volume = volume, range = 7, falloff = 3, prefer_mute = TRUE, preference = /datum/client_preference/play_jukeboxes, streaming = TRUE, is_spatial = FALSE)
+	sound_token = GLOB.sound_player.PlayLoopingSound(src, sound_id, current_track.GetTrack(), volume = volume, range = 12, falloff = 4, prefer_mute = TRUE, preference = /datum/client_preference/play_jukeboxes, streaming = TRUE, is_spatial = FALSE)
 
 	playing = 1
 	update_use_power(POWER_USE_ACTIVE)

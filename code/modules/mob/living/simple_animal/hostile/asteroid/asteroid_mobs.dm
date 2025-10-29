@@ -1,6 +1,7 @@
 /mob/living/simple_animal/hostile/asteroid
 	vision_range = 2
-	min_gas = list()
+	min_gas = null
+	max_gas = null
 	unsuitable_atoms_damage = 15
 	faction = "mining"
 	environment_smash = 2
@@ -42,4 +43,3 @@
 			visible_message("<span class='notice'>The [T.name] [src.throw_message] [src.name]!</span>")
 			return
 	..()
-

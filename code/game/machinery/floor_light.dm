@@ -39,7 +39,7 @@
 	/// Damage icon key between `1` and `8`, `0` means no damage icon is chosen.
 	var/damagekey = 0
 	/// Object's light and panel color.
-	var/colour = "#ffffff"
+	var/colour = COLOR_BLUE_LIGHT
 
 	/// Associative list of name -> image, where name contaied in `FLOORLIGHT_SETTINGS`.
 	var/static/list/settings

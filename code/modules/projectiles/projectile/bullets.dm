@@ -130,20 +130,20 @@
 /* short-casing projectiles, like the kind used in pistols or SMGs */
 
 /obj/item/projectile/bullet/pistol
-	damage = 27.5 //9mm, .38, etc
-	poisedamage = 5.0
+	damage = 30 //9mm, .38, etc
+	poisedamage = 8.0
 
 /obj/item/projectile/bullet/pistol/medium
-	damage = 30 //.45
-	poisedamage = 7.5
+	damage = 34 //.45
+	poisedamage = 9.5
 
 /obj/item/projectile/bullet/pistol/medium/smg
-	damage = 32.5 //10mm
-	poisedamage = 6.0
+	damage = 36 //10mm
+	poisedamage = 10.0
 
 /obj/item/projectile/bullet/pistol/medium/revolver
 	fire_sound = 'sound/effects/weapons/gun/fire_revolver44.ogg'
-	damage = 37.5 //.44 magnum or something
+	damage = 40 //.44 magnum or something
 	armor_penetration = 20
 	poisedamage = 12.5
 
@@ -169,7 +169,7 @@
 	name = "rubber bullet"
 	check_armour = "melee"
 	damage = 5
-	agony = 30
+	agony = 35
 	embed = 0
 	sharp = 0
 	penetration_modifier = 0.2
@@ -179,7 +179,7 @@
 	name = "rubber bullet"
 	check_armour = "melee"
 	damage = 5
-	agony = 35
+	agony = 40
 	embed = 0
 	sharp = 0
 	fire_sound = 'sound/effects/weapons/gun/fire_revolver44.ogg'
@@ -218,7 +218,7 @@
 
 /obj/item/projectile/bullet/shotgun
 	name = "slug"
-	damage = 60
+	damage = 65
 	armor_penetration = 30
 	poisedamage = 20.0
 
@@ -229,25 +229,25 @@
 	agony = 60
 	embed = 0
 	sharp = 0
-	penetration_modifier = 0.2
+	penetration_modifier = 0.3
 	can_ricochet = FALSE // Too soft
-	poisedamage = 20.0
+	poisedamage = 25.0
 
 //Should do about 80 damage at 1 tile distance (adjacent), and 50 damage at 3 tiles distance.
 //Overall less damage than slugs in exchange for more damage at very close range and more embedding
 /obj/item/projectile/bullet/pellet/shotgun
 	name = "shrapnel"
-	damage = 20
-	pellets = 6
+	damage = 27
+	pellets = 8
 	range_step = 1
 	spread_step = 10
-	penetration_modifier = 1.2 // A bit more internal damage since we don't have armor penetration anyway
-	poisedamage = 12.5
+	penetration_modifier = 1.8 // A bit more internal damage since we don't have armor penetration anyway
+	poisedamage = 20.0
 
 /obj/item/projectile/bullet/pellet/scattershot // Used by *heavy* shotguns, i.e. LBX AC 10 "Scattershot"
 	name = "shrapnel"
-	damage = 35
-	armor_penetration = 30
+	damage = 37
+	armor_penetration = 35
 	pellets = 5
 	range_step = 2
 	spread_step = 15
@@ -275,7 +275,7 @@
 /* "Rifle" rounds */
 
 /obj/item/projectile/bullet/rifle
-	armor_penetration = 40
+	armor_penetration = 42
 	penetrating = 1
 	poisedamage = 7.0
 
@@ -283,8 +283,8 @@
 	damage = 27.5
 
 /obj/item/projectile/bullet/rifle/a762
-	damage = 35
-	armor_penetration = 50
+	damage = 37
+	armor_penetration = 52
 
 /obj/item/projectile/bullet/rifle/a792
 	damage = 50

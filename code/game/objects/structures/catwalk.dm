@@ -22,13 +22,17 @@
 	return ..()
 
 /obj/structure/catwalk/proc/redraw_nearby_catwalks()
+	return
+/*
 	for(var/direction in GLOB.alldirs)
 		var/obj/structure/catwalk/L = locate() in get_step(src, direction)
 		if(L)
 			L.update_icon() //so siding get updated properly
-
+*/
 
 /obj/structure/catwalk/on_update_icon()
+	return
+/*
 	var/connectdir = 0
 	for(var/direction in GLOB.cardinal)
 		if(locate(/obj/structure/catwalk, get_step(src, direction)))
@@ -45,7 +49,7 @@
 		i += 1
 
 	icon_state = "catwalk[connectdir]-[diagonalconnect]"
-
+*/
 
 /obj/structure/catwalk/ex_act(severity)
 	switch(severity)
@@ -80,3 +84,12 @@
 	if(passed_mode == RCD_DECONSTRUCT)
 		qdel_self()
 		return TRUE
+
+/obj/structure/catwalk/catwalk_new
+	name = "catwalk"
+	desc = "Cats really don't like these things."
+	icon = 'icons/obj/catwalks.dmi'
+	icon_state = "catwalk_new"
+	density = 0
+	anchored = 1.0
+	layer = CATWALK_LAYER

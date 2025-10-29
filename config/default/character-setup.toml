@@ -3,13 +3,13 @@
 character_slots = 5
 
 ## Sets the number of loadout slots per character
-loadout_slots = 0
+loadout_slots = 1
 
 ## How many loadout points are available. Use 0 to disable loadout, and any negative number to indicate infinite points.
-max_loadout_points = 0
+max_loadout_points = 3
 
 ## How many extra pints patrons get.
-extra_loadout_points = 0
+extra_loadout_points = 11
 
 ## Uncomment to prevent character spawn without surname.
 humans_need_surnames = true

@@ -77,29 +77,46 @@
 	icon = 'icons/turf/flooring/circuit.dmi'
 	icon_state = "rcircuit"
 	initial_flooring = /decl/flooring/reinforced/circuit/red
+	light_inner_range = 1
 	light_outer_range = 2
-	light_max_bright = 3
+	light_max_bright = 1
 	light_color = COLOR_RED
+
+/turf/simulated/floor/grid/Initialize(mapload, ...)
+	set_light(0.75, 1, 3, 2, light_color)
+	return TRUE
 
 /turf/simulated/floor/grid/bluegrid
 	name = "mainframe floor"
 	icon = 'icons/turf/flooring/circuit.dmi'
 	icon_state = "bcircuit"
 	initial_flooring = /decl/flooring/reinforced/circuit
+	light_inner_range = 1
 	light_outer_range = 2
-	light_max_bright = 3
+	light_max_bright = 1
 	light_color = COLOR_BLUE
 
 /turf/simulated/floor/grid/bluegrid/airless
 	initial_gas = null
+
+/turf/simulated/floor/grid/purplegrid
+	name = "mainframe floor"
+	icon = 'icons/turf/flooring/circuit.dmi'
+	icon_state = "pcircuit"
+	initial_flooring = /decl/flooring/reinforced/circuit/purple
+	light_inner_range = 1
+	light_outer_range = 2
+	light_max_bright = 1
+	light_color = COLOR_PURPLE
 
 /turf/simulated/floor/grid/greengrid
 	name = "mainframe floor"
 	icon = 'icons/turf/flooring/circuit.dmi'
 	icon_state = "gcircuit"
 	initial_flooring = /decl/flooring/reinforced/circuit/green
+	light_inner_range = 1
 	light_outer_range = 2
-	light_max_bright = 3
+	light_max_bright = 1
 	light_color = COLOR_GREEN
 
 /turf/simulated/floor/grid/greengrid/airless

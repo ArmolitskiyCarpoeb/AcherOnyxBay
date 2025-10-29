@@ -29,14 +29,22 @@
 	department = "Engineering"
 	department_flag = ENG
 
-	total_positions = 8
-	spawn_positions = 7
+	loadout_allowed = TRUE
+
+	total_positions = 3
+	spawn_positions = 1
 	supervisors = "the chief engineer"
-	selection_color = "#5b4d20"
-	economic_modifier = 5
-	minimal_player_age = 7
-	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics, access_emergency_storage)
-	minimal_access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics, access_emergency_storage)
+	selection_color = "#8f741b"
+	economic_modifier = 7
+	minimal_player_age = 0
+	access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
+			            access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
+			            access_heads, access_construction, access_sec_doors,
+			            access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)
+	minimal_access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
+			            access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
+			            access_heads, access_construction, access_sec_doors,
+			            access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)
 	alt_titles = list("Maintenance Technician", "Engine Technician", "Electrician", "Atmospheric Technician" = /decl/hierarchy/outfit/job/engineering/atmos)
 	outfit_type = /decl/hierarchy/outfit/job/engineering/engineer
 	hud_icon = "hudengineer"

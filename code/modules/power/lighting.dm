@@ -744,12 +744,12 @@
 	b_max_bright = 1.0
 	b_outer_range = 7
 	b_curve = 3.5
-	b_color = "#fffee0"
+	b_color = "#dfda9d"
 	lighting_modes = list(
 		LIGHTMODE_EMERGENCY  = list(l_max_bright = 0.7,  l_inner_range = 1, l_outer_range = 5, l_falloff_curve = 3.5, l_color = "#da0205"),
-		LIGHTMODE_EVACUATION = list(l_max_bright = 1.0, l_inner_range = 1, l_outer_range = 7, l_falloff_curve = 3.5, l_color = "#bf0000"),
+		LIGHTMODE_EVACUATION = list(l_max_bright = 1.0, l_inner_range = 1, l_outer_range = 7, l_falloff_curve = 3.5, l_color = "#bf6600"),
 		LIGHTMODE_ALARM      = list(l_max_bright = 1.0, l_inner_range = 1, l_outer_range = 7, l_falloff_curve = 3.5, l_color = "#ff3333"),
-		LIGHTMODE_RADSTORM   = list(l_max_bright = 0.85, l_inner_range = 1, l_outer_range = 7, l_falloff_curve = 3.5, l_color = "#8A9929")
+		LIGHTMODE_RADSTORM   = list(l_max_bright = 0.85, l_inner_range = 1, l_outer_range = 7, l_falloff_curve = 3.5, l_color = "#5b9929")
 		)
 
 	random_tone = TRUE
@@ -795,16 +795,16 @@
 	broken_chance = 5
 	matter = list(MATERIAL_GLASS = 100)
 
-	b_max_bright = 0.85
-	b_inner_range = 0.6
-	b_outer_range = 4
+	b_max_bright = 0.9
+	b_inner_range = 0.9
+	b_outer_range = 5
 	b_curve = 4.5
-	b_color = "#a0a080"
+	b_color = "#be9c5d"
 	lighting_modes = list(
-		LIGHTMODE_EMERGENCY  = list(l_max_bright = 0.7, l_inner_range = 0.5,  l_outer_range = 3, l_falloff_curve = 4.5, l_color = "#da0205"),
-		LIGHTMODE_EVACUATION = list(l_max_bright = 0.85, l_inner_range = 0.6, l_outer_range = 4, l_falloff_curve = 4.5, l_color = "#bf0000"),
-		LIGHTMODE_ALARM      = list(l_max_bright = 0.85, l_inner_range = 0.6, l_outer_range = 4, l_falloff_curve = 4.5, l_color = "#ff3333"),
-		LIGHTMODE_RADSTORM   = list(l_max_bright = 0.7, l_inner_range = 0.5,  l_outer_range = 4, l_falloff_curve = 4.5, l_color = "#8A9929")
+		LIGHTMODE_EMERGENCY  = list(l_max_bright = 0.8, l_inner_range = 0.5,  l_outer_range = 4, l_falloff_curve = 4.5, l_color = "#da0205"),
+		LIGHTMODE_EVACUATION = list(l_max_bright = 0.85, l_inner_range = 0.6, l_outer_range = 5, l_falloff_curve = 4.5, l_color = "#bf6600"),
+		LIGHTMODE_ALARM      = list(l_max_bright = 0.85, l_inner_range = 0.6, l_outer_range = 5, l_falloff_curve = 4.5, l_color = "#ff3333"),
+		LIGHTMODE_RADSTORM   = list(l_max_bright = 0.8, l_inner_range = 0.5,  l_outer_range = 5, l_falloff_curve = 4.5, l_color = "#5b9929")
 		)
 	random_tone = TRUE
 	sound_on = SFX_LIGHT_BULB_ON
@@ -871,8 +871,8 @@
 
 /obj/item/light/Initialize()
 	. = ..()
-	if(random_tone)
-		b_color = pick(random_tone_options)
+//	if(random_tone)
+//		b_color = pick(random_tone_options)
 	update_icon()
 
 /obj/item/light/Destroy()

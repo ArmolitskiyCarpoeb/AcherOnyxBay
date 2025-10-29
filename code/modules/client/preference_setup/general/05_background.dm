@@ -6,9 +6,9 @@
 	var/memory = ""
 
 	//Some faction information.
-	var/home_system = "Unset"           //System of birth.
-	var/background = "Nanotrasen"          //General associated faction.
-	var/religion = "None"               //Religious association.
+	var/home_system = "Artemis"           //System of birth.
+	var/background = "Mons-Laden Corporation"          //General associated faction.
+	var/religion = "Novotheism"               //Religious association.
 
 	var/bank_security = BANK_SECURITY_MODERATE // bank account security level
 	var/bank_pin = 0 // bank account PIN, 0 gives a random PIN
@@ -45,11 +45,11 @@
 
 /datum/category_item/player_setup_item/general/background/sanitize_character()
 	if(!pref.home_system)
-		pref.home_system = "Unset"
+		pref.home_system = "Artemis"
 	if(!pref.background)
-		pref.background = "Nanotrasen"
+		pref.background = "The Church"
 	if(!pref.religion)
-		pref.religion =    "None"
+		pref.religion =    "Novotheism"
 
 	pref.bank_security = sanitize_integer(pref.bank_security, BANK_SECURITY_MINIMUM, BANK_SECURITY_MAXIMUM, initial(pref.bank_security))
 	pref.bank_pin = sanitize_integer(pref.bank_pin, 1111, 9999, initial(pref.bank_pin))
@@ -89,38 +89,38 @@
 			return TOPIC_REFRESH
 
 	else if(href_list["home_system"])
-		var/choice = input(user, "Please choose a home system.", CHARACTER_PREFERENCE_INPUT_TITLE, pref.home_system) as null|anything in GLOB.using_map.home_system_choices + list("Unset","Other")
+		var/choice = input(user, "Please choose a home system.", CHARACTER_PREFERENCE_INPUT_TITLE, pref.home_system) as null|anything in GLOB.using_map.home_system_choices //+ list("Unset","Other")
 		if(!choice || !CanUseTopic(user))
 			return TOPIC_NOACTION
-		if(choice == "Other")
-			var/raw_choice = sanitize(input(user, "Please enter a home system.", CHARACTER_PREFERENCE_INPUT_TITLE)  as text|null, MAX_NAME_LEN)
-			if(raw_choice && CanUseTopic(user))
-				pref.home_system = raw_choice
+//		if(choice == "Other")
+	//		var/raw_choice = sanitize(input(user, "Please enter a home system.", CHARACTER_PREFERENCE_INPUT_TITLE)  as text|null, MAX_NAME_LEN)
+//			if(raw_choice && CanUseTopic(user))
+//				pref.home_system = raw_choice
 		else
 			pref.home_system = choice
 		return TOPIC_REFRESH
 
 
 	else if(href_list["background"])
-		var/choice = input(user, "Please choose a background to work for.", CHARACTER_PREFERENCE_INPUT_TITLE, pref.background) as null|anything in GLOB.using_map.background_choices + list("Unset","Other")
+		var/choice = input(user, "Please choose a background to work for.", CHARACTER_PREFERENCE_INPUT_TITLE, pref.background) as null|anything in GLOB.using_map.background_choices //+ list("Unset","Other")
 		if(!choice || !CanUseTopic(user))
 			return TOPIC_NOACTION
-		if(choice == "Other")
-			var/raw_choice = sanitize(input(user, "Please enter a background.", CHARACTER_PREFERENCE_INPUT_TITLE)  as text|null, MAX_NAME_LEN)
-			if(raw_choice && CanUseTopic(user))
-				pref.background = raw_choice
+//		if(choice == "Other")
+//			var/raw_choice = sanitize(input(user, "Please enter a background.", CHARACTER_PREFERENCE_INPUT_TITLE)  as text|null, MAX_NAME_LEN)
+//			if(raw_choice && CanUseTopic(user))
+//				pref.background = raw_choice
 		else
 			pref.background = choice
 		return TOPIC_REFRESH
 
 	else if(href_list["religion"])
-		var/choice = input(user, "Please choose a religion.", CHARACTER_PREFERENCE_INPUT_TITLE, pref.religion) as null|anything in GLOB.using_map.religion_choices + list("None","Other")
+		var/choice = input(user, "Please choose a religion.", CHARACTER_PREFERENCE_INPUT_TITLE, pref.religion) as null|anything in GLOB.using_map.religion_choices //+ list("None","Other")
 		if(!choice || !CanUseTopic(user))
 			return TOPIC_NOACTION
-		if(choice == "Other")
-			var/raw_choice = sanitize(input(user, "Please enter a religon.", CHARACTER_PREFERENCE_INPUT_TITLE)  as text|null, MAX_NAME_LEN)
-			if(raw_choice)
-				pref.religion = sanitize(raw_choice)
+//		if(choice == "Other")
+//			var/raw_choice = sanitize(input(user, "Please enter a religon.", CHARACTER_PREFERENCE_INPUT_TITLE)  as text|null, MAX_NAME_LEN)
+//			if(raw_choice)
+//				pref.religion = sanitize(raw_choice)
 		else
 			pref.religion = choice
 		return TOPIC_REFRESH

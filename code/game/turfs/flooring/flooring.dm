@@ -291,6 +291,9 @@ var/list/flooring_types
 /decl/flooring/reinforced/circuit/green
 	icon_base = "gcircuit"
 
+/decl/flooring/reinforced/circuit/purple
+	icon_base = "pcircuit"
+
 /decl/flooring/reinforced/circuit/red
 	icon_base = "rcircuit"
 	flags = TURF_ACID_IMMUNE

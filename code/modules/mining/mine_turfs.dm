@@ -713,7 +713,7 @@ var/list/mining_floors = list()
 // Contains extra CO2 for better breathing.
 /turf/simulated/floor/asteroid/air/prison
 	initial_gas = list("oxygen" = 1.05 * MOLES_O2STANDARD, "nitrogen" = 1.05 * MOLES_N2STANDARD, "carbon_dioxide" = MOLES_CELLSTANDARD * 0.1)
-	temperature = 30 CELSIUS
+	temperature = -15 CELSIUS
 
 /turf/simulated/floor/asteroid/swamp_dirt
 	name = "sand"

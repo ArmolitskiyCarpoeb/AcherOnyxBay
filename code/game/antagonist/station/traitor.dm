@@ -64,7 +64,7 @@ GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
 				protect_objective.find_target()
 				traitor.objectives += protect_objective
 
-		if(prob(10))
+		if(prob(15))
 			var/datum/objective/block/block_objective = new
 			block_objective.owner = traitor
 			traitor.objectives += block_objective
@@ -78,7 +78,7 @@ GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
 		contract_objective.owner = traitor
 		traitor.objectives += contract_objective
 
-		if(prob(1))
+		if(prob(5))
 			var/datum/objective/hijack/hijack_objective = new
 			hijack_objective.owner = traitor
 			traitor.objectives += hijack_objective

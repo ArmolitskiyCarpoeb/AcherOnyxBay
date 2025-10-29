@@ -58,7 +58,7 @@
 	. += "<a href='?src=\ref[src];random_name=1'>Randomize Name</A><br>"
 	. += "<a href='?src=\ref[src];always_random_name=1'>Always Random Name: [pref.be_random_name ? "Yes" : "No"]</a>"
 	. += "<br>"
-	. += "<b>Gender:</b> <a href='?src=\ref[src];gender=1'><b>[gender2text(pref.gender)]</b></a><br>"
+	. += "<b>Sex:</b> <a href='?src=\ref[src];gender=1'><b>[gender2text(pref.gender)]</b></a><br>"
 	. += "<b>Body Build:</b> <a href='?src=\ref[src];body_build=1'><b>[pref.body]</b></a><br>"
 	. += "<b>Age:</b> <a href='?src=\ref[src];age=1'>[pref.age]</a><br>"
 	. += "<b>Spawn Point</b>: <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
@@ -88,7 +88,7 @@
 		return TOPIC_REFRESH
 
 	else if(href_list["gender"])
-		var/new_gender = input(user, "Choose your character's gender:", CHARACTER_PREFERENCE_INPUT_TITLE, pref.gender) as null|anything in S.genders
+		var/new_gender = input(user, "Choose your character's sex:", CHARACTER_PREFERENCE_INPUT_TITLE, pref.gender) as null|anything in S.genders
 		S = all_species[pref.species]
 		if(new_gender && CanUseTopic(user) && (new_gender in S.genders))
 			pref.gender = new_gender
@@ -119,11 +119,11 @@
 		if(!choice || !spawntypes()[choice] || !CanUseTopic(user))	return TOPIC_NOACTION
 		pref.spawnpoint = choice
 		return TOPIC_REFRESH
-
+/*
 	else if(href_list["metadata"])
 		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , pref.metadata) as message|null)
 		if(new_metadata && CanUseTopic(user))
 			pref.metadata = new_metadata
 			return TOPIC_REFRESH
-
+*/
 	return ..()

@@ -40,7 +40,6 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	if(!admin_datums)
 		error("The database query in load_admins() resulted in no admins being added to the list.")
 		log_misc("The database query in load_admins() resulted in no admins being added to the list.")
-		return
 
 	//Clear profile access
 	for(var/A in world.GetConfig("admin"))
