@@ -27,6 +27,8 @@
 			user.remove_nutrition(3.5)
 			user.remove_hydration(10.0)
 			to_chat(user, "<span class='warning'>You [pick(hit_message)] \the [src].</span>")
+			user.adjustStrength(0.05)
+			user.damage_poise(5)
 
 /obj/structure/fitness/weightlifter
 	name = "weightlifting machine"
@@ -62,7 +64,7 @@
 		user.set_dir(SOUTH)
 
 		var/usetime = 20 + (weight * 10)
-		if((MUTATION_HULK in user.mutations) || (MUTATION_STRONG in user.mutations))
+		if((MUTATION_HULK in user.mutations) || (MUTATION_STRONG in user.mutations) || (user.stats[STAT_ST] >= 17))
 			flick("[icon_state]_[weight]s", src)
 			usetime = 14
 		else
@@ -72,10 +74,13 @@
 			playsound(src.loc, 'sound/effects/weightdrop.ogg', 25, 1)
 			user.remove_nutrition(weight * 5.0)
 			user.remove_hydration(7.5 * weight)
-			if((MUTATION_HULK in user.mutations) || (MUTATION_STRONG in user.mutations))
+			user.damage_poise(10)
+			if((MUTATION_HULK in user.mutations) || (MUTATION_STRONG in user.mutations) || (user.stats[STAT_ST] >= 17))
 				to_chat(user, SPAN("notice", "You shred the weights without barely noticing it."))
+				user.adjustStrength(0.05)
 			else
 				to_chat(user, SPAN("notice", "You lift the weights [qualifiers[weight]]."))
+				user.adjustStrength(0.1 * weight)
 			being_used = 0
 		else
 			to_chat(user, "<span class='notice'>Against your previous judgement, perhaps working out is not for you.</span>")

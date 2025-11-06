@@ -1102,6 +1102,7 @@
 		poise = poise_pool
 		poise_icon?.icon_state = "[round((poise/poise_pool) * 50)]"
 		return
+
 	var/base_pregen = poise_pool * 0.1
 	var/pregen = base_pregen
 
@@ -1114,12 +1115,22 @@
 	if(lying)
 		pregen += base_pregen * 0.5
 
-	if(m_intent == M_RUN && src.moving)
-		pose -= 15
+//..	var/turf/initial_turf = src.loc
 
-	if(poise <=10)
+/*	if(m_intent == M_RUN)
+		if(!. || initial_turf == loc)
+			return
+		if(poise)
+			pregen -= base_pregen * 0.5
+*/
+	if(poise <= 7)
 		to_chat(src, SPAN_WARNING("You are exhausted!"))
+		Stun(0.5)
 		set_m_intent(M_WALK)
+
+	if(poise <= 2)
+		to_chat(src, SPAN_WARNING("You are VERY exhausted!"))
+		Weaken(1)
 
 	poise = between(0, poise + pregen, poise_pool)
 

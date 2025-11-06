@@ -20,6 +20,11 @@
 
 	ideal_character_age = 42 // Old geezer captains ftw
 	outfit_type = /decl/hierarchy/outfit/job/captain
+
+/datum/job/captain/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		H.newgeneratestats(10,20,5,15,5,15,10,20)
 /*
 /datum/job/captain/equip(mob/living/carbon/human/H)
 	. = ..()

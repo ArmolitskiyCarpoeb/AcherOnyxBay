@@ -289,6 +289,21 @@
 			if(MUTATION_STRONG in H.mutations)
 				real_damage *= 2
 				attack_damage *= 2
+			if(H.stats[STAT_ST] >= 18)
+				real_damage *= 2
+				attack_damage *= 2
+			if(H.stats[STAT_ST] >= 15)
+				real_damage *= 1.5
+				attack_damage *= 1.5
+			if(H.stats[STAT_ST] <= 8)
+				real_damage *= 0.8
+				attack_damage *= 0.8
+			if(H.stats[STAT_ST] <= 5)
+				real_damage *= 0.5
+				attack_damage *= 0.5
+			if(H.stats[STAT_ST] <= 2)
+				real_damage *= 0.2
+				attack_damage *= 0.2
 			real_damage = max(1, real_damage)
 
 			var/armour = run_armor_check(hit_zone, "melee")

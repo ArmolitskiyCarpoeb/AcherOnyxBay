@@ -75,6 +75,15 @@
 	else
 		drop_active_hand(force = TRUE)
 
+/client/verb/toggle_m_intent()
+	set name = "toggle_m_intent"
+	set hidden = 1
+	switch(usr.m_intent)
+		if(M_RUN)
+			usr.set_m_intent(M_WALK)
+		if(M_WALK)
+			usr.set_m_intent(M_RUN)
+
 //This gets called when you press the delete button.
 /client/verb/delete_key_pressed()
 	set hidden = 1

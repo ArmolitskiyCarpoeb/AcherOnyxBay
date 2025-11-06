@@ -22,6 +22,18 @@ obj/item/organ/external/take_general_damage(amount, silent = FALSE)
 	var/laser = (damage_flags & DAM_LASER)
 	var/blunt = brute && !sharp && !edge
 
+	if(owner.stats[STAT_HT] == 20)
+		brute *= 0.5
+
+	if(owner.stats[STAT_HT] >= 15)
+		brute *= 0.8
+
+	if(owner.stats[STAT_HT] <= 5)
+		brute *= 1.2
+
+	if(owner.stats[STAT_HT] == 1)
+		brute *= 1.5
+
 	if(used_weapon)
 		add_autopsy_data("[used_weapon]", brute + burn)
 

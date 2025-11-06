@@ -33,7 +33,7 @@
 
 	total_positions = 3
 	spawn_positions = 1
-	supervisors = "the chief engineer"
+	supervisors = "the cardinal and the corporation"
 	selection_color = "#8f741b"
 	economic_modifier = 7
 	minimal_player_age = 0
@@ -48,6 +48,11 @@
 	alt_titles = list("Maintenance Technician", "Engine Technician", "Electrician", "Atmospheric Technician" = /decl/hierarchy/outfit/job/engineering/atmos)
 	outfit_type = /decl/hierarchy/outfit/job/engineering/engineer
 	hud_icon = "hudengineer"
+
+/datum/job/engineer/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		H.newgeneratestats(5,15,5,15,10,18,5,15)
 
 /datum/job/atmos
 	title = "Atmospheric Technician"

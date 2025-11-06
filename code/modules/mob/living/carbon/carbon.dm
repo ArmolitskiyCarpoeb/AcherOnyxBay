@@ -1,3 +1,5 @@
+#define RUN_DAMAGE_POISE 1
+
 /mob/living/carbon/New()
 	//setup reagent holders
 	if(!bloodstr)
@@ -70,6 +72,19 @@
 	// Moving around increases germ_level faster
 	if(germ_level < GERM_LEVEL_MOVE_CAP && prob(8))
 		germ_level++
+
+/mob/living/carbon/human/Move(newloc, direct)
+	var/turf/initial_turf = src.loc
+	. = ..()
+
+	if(!. || initial_turf == loc)
+		return
+
+	if(poise)
+		if(m_intent == M_RUN && src.poise >= 5)
+			damage_poise(RUN_DAMAGE_POISE)
+		else
+			src.m_intent = M_WALK
 
 /mob/living/carbon/relaymove(mob/living/user, direction)
 	if((user in src.stomach_contents) && istype(user))

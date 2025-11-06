@@ -119,6 +119,11 @@
 		stat("Poise:", "[round(100/poise_pool*poise)]%")
 		stat("Special Ability:", "[active_ability]")
 
+		stat("Strength", "[stats[STAT_ST]]")
+		stat("Dexterity", "[stats[STAT_DX]]")
+		stat("Intellect", "[stats[STAT_IQ]]")
+		stat("Health", "[stats[STAT_HT]]")
+
 		if(evacuation_controller)
 			var/eta_status = evacuation_controller.get_status_panel_eta()
 			if(eta_status)

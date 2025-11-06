@@ -197,6 +197,14 @@ var/list/mining_floors = list()
 
 		if(!istype(P, /obj/item/pickaxe/drill))
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+			if(user.stats[STAT_ST] <= 5)
+				user.setClickCooldown(18)
+			if(user.stats[STAT_ST] <= 8)
+				user.setClickCooldown(12)
+			if(user.stats[STAT_ST] >= 14)
+				user.setClickCooldown(4)
+			if(user.stats[STAT_ST] >= 18)
+				user.setClickCooldown(1)
 		else
 			var/obj/item/pickaxe/drill/D = P
 			if(last_act + D.digspeed > world.time) //Prevents message spam

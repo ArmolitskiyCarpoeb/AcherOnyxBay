@@ -33,7 +33,7 @@
 	minimal_player_age = 0
 	total_positions = 3
 	spawn_positions = 1
-	supervisors = "the chief medical officer"
+	supervisors = "the cardinal and the corporation"
 	selection_color = "#13817e"
 	economic_modifier = 9
 	access = list(access_medical, access_medical_equip, access_morgue, access_heads,
@@ -48,6 +48,11 @@
 		"Nurse" = /decl/hierarchy/outfit/job/medical/doctor/nurse,
 		)
 	outfit_type = /decl/hierarchy/outfit/job/medical/doctor
+
+/datum/job/doctor/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		H.newgeneratestats(5,15,5,15,11,20,5,15)
 
 /datum/job/virologist
 	title = "Virologist"

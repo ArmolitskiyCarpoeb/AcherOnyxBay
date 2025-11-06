@@ -407,7 +407,7 @@ meteor_act
 
 	poise_damage = round(((2.5 + I.mod_weight*3 + I.mod_reach) / 1.5) + ((2.5 + I.mod_weight*3 + I.mod_reach) / 1.5 * ((100-blocked)/100)), 0.1)
 	if(headcheck(hit_zone))
-		poise_damage *= 1.15
+		poise_damage *= 1.2
 	damage_poise(poise_damage)
 	//visible_message("Debug \[HIT\]: [src] lost [poise_damage] poise ([src.poise]/[src.poise_pool])") // Debug Message
 
@@ -417,6 +417,17 @@ meteor_act
 
 	if(MUTATION_STRONG in user.mutations)
 		effective_force *= 2
+
+	if(user.stats[STAT_ST] >= 18)
+		effective_force *= 2
+	if(user.stats[STAT_ST] >= 15)
+		effective_force *= 1.5
+	if(user.stats[STAT_ST] <= 8)
+		effective_force *= 0.8
+	if(user.stats[STAT_ST] <= 5)
+		effective_force *= 0.5
+	if(user.stats[STAT_ST] <= 2)
+		effective_force *= 0.2
 
 	if(lying)
 		effective_force *= 1.5 // Well it's easier to beat a lying dude to death right?

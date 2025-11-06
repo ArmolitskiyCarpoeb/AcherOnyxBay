@@ -15,6 +15,11 @@
 	can_be_hired = FALSE
 
 	loadout_allowed = TRUE
+
+/datum/job/assistant/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		H.newgeneratestats(5,15,5,15,5,15,5,15)
 /*
 /datum/job/assistant/get_access()
 	if(config.game.assistant_maint)
