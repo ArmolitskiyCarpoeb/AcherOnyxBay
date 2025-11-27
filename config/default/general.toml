@@ -16,7 +16,7 @@ server_name = "Ахерон"
 server_suffix = true
 
 ## Set a different port to use.
-server_port = 13555
+server_port = 13337
 
 ## set a hosted by name for unix platforms.
 hosted_by = "Armolitskiy"

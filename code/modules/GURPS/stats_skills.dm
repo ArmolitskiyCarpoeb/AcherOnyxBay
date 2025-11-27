@@ -109,6 +109,8 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 
 //Stats helpers.
 /mob/proc/add_stats(var/stre, var/dexe, var/inti, var/cons)//To make adding stats quicker.
+	if(stat >= 20)
+		return FALSE
 	if(stre)
 		stats[STAT_ST] = stre
 	if(dexe)

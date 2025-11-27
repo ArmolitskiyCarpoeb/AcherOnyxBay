@@ -24,7 +24,12 @@
 /datum/job/captain/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(10,20,5,15,5,15,10,20)
+		H.newgeneratestats(12,20,5,15,5,15,12,20)
+		var/obj/machinery/nuclearbomb/nuke = locate(/obj/machinery/nuclearbomb/station) in world
+		if(nuke)
+			H.mind.store_memory("<B>ПРИ ЗАХВАТЕ ЕРЕТИКАМИ, ПРЕДАТЕЛЯМИ КОРПОРАЦИИ И ВРАГАМИ НАРОДА, ШАХТЁРСКИЙ АВАНПОСТ ФОРТУНА ПОДЛЕЖИТ УНИЧТОЖЕНИЮ</B>")
+			H.mind.store_memory("[nuke.r_code]")
+			H.mind.store_memory("")
 /*
 /datum/job/captain/equip(mob/living/carbon/human/H)
 	. = ..()

@@ -1,15 +1,15 @@
 /obj/item/material/sword
 	name = "claymore"
-	desc = "What are you standing around staring at this for? Get to killing!"
+	desc = "Этим вершат правосудие, смерть неверным!"
 	icon_state = "claymore"
 	item_state = "claymore"
 	slot_flags = SLOT_BELT
 	w_class = ITEM_SIZE_HUGE
 	mod_weight = 1.75
-	mod_reach = 1.65
-	mod_handy = 1.25
+	mod_reach = 1.8
+	mod_handy = 1.5
 	armor_penetration = 50
-	force_const = 12
+	force_const = 25
 	thrown_force_const = 5
 	force_divisor = 0.4 // 24 when wielded with hardnes 60 (steel)
 	thrown_force_divisor = 0.3 // 6 when thrown with weight 20 (steel)

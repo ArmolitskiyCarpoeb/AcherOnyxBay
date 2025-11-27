@@ -126,8 +126,8 @@
 		return TOPIC_REFRESH
 
 	else if(href_list["bank_security"])
-		var/list/sec_levels = list("Minimum", "Moderate", "Maximum")
-		var/choice = input(user, "Choose your bank account's security level:", CHARACTER_PREFERENCE_INPUT_TITLE, "Moderate") as null|anything in sec_levels
+		var/list/sec_levels = list("Minimum")//, "Moderate", "Maximum")
+		var/choice = input(user, "Choose your bank account's security level:", CHARACTER_PREFERENCE_INPUT_TITLE, "Minimum") as null|anything in sec_levels
 		if(!choice || !CanUseTopic(user))
 			return TOPIC_NOACTION
 		switch(choice)
@@ -138,7 +138,7 @@
 			if("Maximum")
 				pref.bank_security = BANK_SECURITY_MAXIMUM
 		return TOPIC_REFRESH
-
+/*
 	else if(href_list["bank_pin"])
 		var/choice = input(user, "Set your bank account's PIN (1111-9999):\nSet to 1 to use a random PIN for each round.\nSet to 2 to generate a random PIN.", CHARACTER_PREFERENCE_INPUT_TITLE, pref.bank_pin) as num|null
 		if(!choice || !CanUseTopic(user))
@@ -151,7 +151,7 @@
 			if(2)
 				pref.bank_pin = rand(1111, 9999)
 		return TOPIC_REFRESH
-
+*/
 	else if(href_list["set_medical_records"])
 		var/new_medical = sanitize(input(user,"Enter medical information here.","Character Preference", html_decode(pref.med_record)) as message|null, MAX_PAPER_MESSAGE_LEN, extra = 0)
 		if(!isnull(new_medical) && !jobban_isbanned(user, "Records") && CanUseTopic(user))

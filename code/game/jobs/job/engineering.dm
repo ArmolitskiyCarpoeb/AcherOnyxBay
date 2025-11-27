@@ -31,7 +31,7 @@
 
 	loadout_allowed = TRUE
 
-	total_positions = 3
+	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the cardinal and the corporation"
 	selection_color = "#8f741b"

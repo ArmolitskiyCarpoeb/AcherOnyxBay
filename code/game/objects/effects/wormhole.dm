@@ -17,3 +17,10 @@ GLOBAL_LIST_EMPTY(all_wormholes)
 
 /obj/effect/portal/wormhole/setup_portal()
 	return
+
+/obj/effect/portal/wormhole2
+
+/obj/effect/portal/wormhole2/Initialize()
+	. = ..()
+	GLOB.all_wormholes += src
+	QDEL_IN(src, rand(3 SECONDS, 12 SECONDS))

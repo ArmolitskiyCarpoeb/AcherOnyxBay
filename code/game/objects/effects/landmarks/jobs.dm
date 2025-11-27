@@ -221,6 +221,10 @@
 	GLOB.xenospawn_areas += loc.loc
 	return ..()
 
+/obj/effect/landmark/start/antags/monster/Initialize()
+	GLOB.monster_areas += loc.loc
+	return ..()
+
 /obj/effect/landmark/start/antags/borer
 	name = "Borer"
 	icon_state = "landmark_borer"

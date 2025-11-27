@@ -185,10 +185,31 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/clothing/shoes/syndigaloshes,
 		/obj/item/clothing/under/tactical,
 		/obj/item/beartrap,
-		/obj/item/material/butterfly/switchblade
+		/obj/item/material/butterfly/switchblade,
+		/obj/item/gun/projectile/pirate,
+		/obj/item/material/hatchet/tacknife,
+		/obj/item/soap/syndie,
+		/obj/item/clothing/suit/armor/vest,
+		/obj/item/storage/pill_bottle/bicaridine,
+		/obj/item/storage/pill_bottle/tramadol,
+		/obj/item/reagent_containers/hypospray/autoinjector/combatpain
 	)
 
 	rare_loot = list(
+		/obj/item/gun/projectile/revolver,
+		/obj/item/gun/projectile/shotgun/doublebarrel/sawn,
+		/obj/item/gun/energy/laser/pistol,
+		/obj/item/card/emag,
+		/obj/item/storage/box/syndie_kit/adrenalin,
+		/obj/item/storage/box/syndie_kit/imp_freedom,
+		/obj/item/device/hudmatrix/thermal/syndie,
+		/obj/item/cell/infinite,
+		/obj/item/pickaxe/sledgehammer,
+		/obj/item/grenade/frag,
+		/obj/item/clothing/glasses/tacgoggles,
+		/obj/item/pickaxe/diamond,
+		/obj/item/stack/telecrystal,
+		/obj/item/material/sword
 	)
 
 // Contains mostly useless garbage.
@@ -258,7 +279,13 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/reagent_containers/syringe/steroid/packaged,
 		/obj/item/storage/pill_bottle/zoom,
 		/obj/item/storage/pill_bottle/happy,
-		/obj/item/storage/pill_bottle/tramadol
+		/obj/item/storage/pill_bottle/tramadol,
+		/obj/item/reagent_containers/hypospray/autoinjector/bicaridine,
+		/obj/item/material/twohanded/baseballbat/metal,
+		/obj/item/clothing/gloves/stun,
+		/obj/item/melee/baton/cattleprod,
+		/obj/item/gun/energy/taser,
+		/obj/item/gun/launcher/syringe
 	)
 
 // Contains loads of different types of boxes, which may have items inside!

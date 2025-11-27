@@ -24,7 +24,7 @@ GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
 	if(href_list["spawn_uplink"])
 		spawn_uplink(locate(href_list["spawn_uplink"]))
 		return 1
-
+/*
 /datum/antagonist/traitor/get_special_objective_text(datum/mind/player)
 	var/detected = FALSE
 	for(var/datum/objective/objective in player.objectives)
@@ -46,7 +46,7 @@ GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
 		return "<br>The traitor has completed a single contract: [contracts_text]."
 	else
 		return "<br>The traitor has completed <b>[contracts_num] contracts: [contracts_text]."
-
+*/
 /datum/antagonist/traitor/create_objectives(datum/mind/traitor)
 	if(!..())
 		return
@@ -73,10 +73,10 @@ GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
 			survive_objective.owner = traitor
 			traitor.objectives += survive_objective
 
-	else
+	/*else
 		var/datum/objective/contracts/contract_objective = new
 		contract_objective.owner = traitor
-		traitor.objectives += contract_objective
+		traitor.objectives += contract_objective */
 
 		if(prob(5))
 			var/datum/objective/hijack/hijack_objective = new

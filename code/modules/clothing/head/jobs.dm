@@ -233,7 +233,7 @@
 	desc = "The hat of the Head of Security, reinforced with a plasteel plate. For showing the officers who's in charge."
 	icon_state = "hoscap"
 	body_parts_covered = HEAD
-	armor = list(melee = 90, bullet = 130, laser = 120, energy = 35, bomb = 55, bio = 20)
+	armor = list(melee = 5, bullet = 5, laser = 5, energy = 5, bomb = 5, bio = 5)
 	siemens_coefficient = 0.6
 	coverage = 1.0 // Magic of coolness
 

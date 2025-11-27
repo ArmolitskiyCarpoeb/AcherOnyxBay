@@ -75,14 +75,19 @@
 	department_flag = SUP
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the cardinal"
 	selection_color = "#515151"
 	economic_modifier = 5
-	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
-	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
+	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant)
+	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant)
 	minimal_player_age = 7
 	ideal_character_age = 40
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
+
+/datum/job/qm/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		H.newgeneratestats(5,15,5,15,5,15,5,15)
 
 /datum/job/cargo_tech
 	title = "Cargo Technician"

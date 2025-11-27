@@ -21,12 +21,12 @@
 
 /datum/contract_fixer/proc/roundstart()
 	if(enable_roundstart_proc)
-		create_random_contract(min(6 + round(SSticker.minds.len / 5), 12))
+		//create_random_contract(min(6 + round(SSticker.minds.len / 5), 12))
 		set_next_think(world.time + time_to_next_contract)
 
 /datum/contract_fixer/think()
-	if(!contract_list_closed())
-		create_random_contract(1)
+	//if(!contract_list_closed())
+		//create_random_contract(1)
 	set_next_think(world.time + time_to_next_contract)
 
 /datum/contract_fixer/proc/contract_list_closed()

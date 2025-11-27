@@ -21,4 +21,6 @@ GLOBAL_LIST_EMPTY(tdomeadmin)
 
 GLOBAL_LIST_EMPTY(xenospawn_areas) // List of areas eligible for the xenomorph event start
 
+GLOBAL_LIST_EMPTY(monster_areas) // List of areas eligible for the xenomorph event start
+
 GLOBAL_LIST_EMPTY(awaydestinations) // Away missions. A list of landmarks that the warpgate can take you to.

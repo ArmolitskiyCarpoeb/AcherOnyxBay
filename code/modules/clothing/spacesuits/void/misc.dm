@@ -142,7 +142,7 @@
 	desc = "A bulky helmet with some heavy armor plating."
 	icon_state = "hardsuit_knight_helm"
 	item_state = "hardsuit_knight_helm"
-	armor = list(melee = 70, bullet = 35, laser = 35, energy = 25, bomb = 55, bio = 100)
+	armor = list(melee = 25, bullet = 110, laser = 25, energy = 45, bomb = 45, bio = 100)
 	siemens_coefficient = 0.7
 	light_overlay = "helmet_light_dual"
 
@@ -151,7 +151,7 @@
 	desc = "A bulky set of space-proof armor, that looks kinda ancient. 'Lancelot X-40' is written on the front plate."
 	icon_state = "hardsuit_knight"
 	item_state = "hardsuit_knight"
-	armor = list(melee = 70, bullet = 35, laser = 35, energy = 25, bomb = 55, bio = 100)
+	armor = list(melee = 35, bullet = 120, laser = 25, energy = 45, bomb = 45, bio = 100)
 	allowed = list(/obj/item/gun,/obj/item/device/flashlight,/obj/item/tank,/obj/item/device/suit_cooling_unit,/obj/item/melee/baton)
 	siemens_coefficient = 0.7
 
@@ -214,10 +214,10 @@
 
 /obj/item/clothing/head/helmet/space/void/templar
 	name = "templar helmet"
-	desc = "An atmos resistant helmet for space and planet exploration."
+	desc = "Heavy voidsuit helmet."
 	icon_state = "templar"
 	item_state = "templar"
-	armor = list(melee = 40, bullet = 5, laser = 15,energy = 5, bomb = 5, bio = 100)
+	armor = list(melee = 25, bullet = 110, laser = 25, energy = 45, bomb = 45, bio = 100)
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 	light_overlay = "helmet_light_dual"
 

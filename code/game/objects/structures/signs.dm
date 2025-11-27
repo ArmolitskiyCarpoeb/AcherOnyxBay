@@ -547,6 +547,11 @@
 	icon_state = "flag_syndie"
 	desc = "Who's that Syndie Kate, again?"
 
+/obj/structure/sign/flag/church
+	name = "\improper Church flag"
+	icon_state = "flag_church"
+	desc = "Целуй флаг, целуй давай!"
+
 /obj/structure/sign/flag/byonder
 	name = "\improper Developer flag"
 	icon_state = "flag_byonder"

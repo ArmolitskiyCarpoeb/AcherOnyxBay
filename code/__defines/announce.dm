@@ -14,6 +14,11 @@ GLOBAL_VAR_CONST(PREF_ANNOUNCER_TGSTATION, "\[Cargo\] /TG/station (Legacy)")
 	var/announcement_type = "Announcement"
 	var/sound = null
 
+/datum/announce/heretic_monsters
+	text = "На %STATION_NAME% был обнаружен повышенный уровень пространственно-временной деформации! Замечены агрессивные формы жизни!"
+	title = "ТРЕВОГА!"
+	sender	= " OS Outland"
+
 /datum/announce/ion_storm
 	text = "It has come to our attention that the %STATION_NAME% passed through an ion storm. Please monitor all electronic equipment for malfunctions."
 	title = "Anomaly Alert"

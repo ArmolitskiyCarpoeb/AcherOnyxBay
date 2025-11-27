@@ -76,7 +76,7 @@
 	icon_state = "hos"
 	item_state = "hos"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor = list(melee = 70, bullet = 110, laser = 100, energy = 35, bomb = 55, bio = 20)
+	armor = list(melee = 70, bullet = 90, laser = 100, energy = 35, bomb = 55, bio = 20)
 	flags_inv = HIDEJUMPSUIT
 	siemens_coefficient = 0.6
 
