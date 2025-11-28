@@ -46,7 +46,7 @@ GLOBAL_LIST_EMPTY(dept_data)
 			bot = department["names"]
 
 	var/list/isactive = list()
-	
+
 	// sort mobs
 	for(var/datum/computer_file/crew_record/CR in GLOB.all_crew_records)
 		var/name = CR.get_name()
@@ -113,7 +113,7 @@ GLOBAL_LIST_EMPTY(dept_data)
 			for(var/priority = JOB_PRIORITY_HIGH to JOB_PRIORITY_LOW)
 				if(player_prefs.IsJobPriority(job, priority))
 					if(!command_positions_with_candidates[command_position])
-						command_positions_with_candidates[command_position] = list(
+						command_positions_with_candidates[command_position] = alist(
 							JOB_PRIORITY_HIGH = list(),
 							JOB_PRIORITY_MIDDLE = list(),
 							JOB_PRIORITY_LOW = list()
@@ -133,11 +133,11 @@ GLOBAL_LIST_EMPTY(dept_data)
 				var/ckey = candidates[priority][candidate]
 				if(!command_positions_by_ckey[ckey])
 					command_positions_by_ckey[ckey] = list(
-						"positions" = list(
+						"positions" = alist(
 							JOB_PRIORITY_HIGH = list(),
 							JOB_PRIORITY_MIDDLE = list(),
 							JOB_PRIORITY_LOW = list()
-							), 
+							),
 						"player_name" = "[candidate]"
 						)
 				command_positions_by_ckey[ckey]["positions"][priority] += command_position
@@ -177,7 +177,7 @@ GLOBAL_LIST_EMPTY(dept_data)
 				player_prefs.job_medium,
 				player_prefs.job_low
 				)
-				
+
 		//inserting non-head positions in GLOB.dept_data
 		for(var/list/J in preferenced_jobs)
 			var/list/jobs = J - GLOB.command_positions
@@ -185,7 +185,7 @@ GLOBAL_LIST_EMPTY(dept_data)
 				continue
 
 			var/job = pick(jobs)
-			
+
 			if(job in list("AI", "Cyborg"))
 				silicon = TRUE
 
