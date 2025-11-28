@@ -515,7 +515,7 @@
 "RS" = (/obj/structure/cable/green{icon_state = "4-8"; d2 = 8; d1 = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{icon_state = "intact-supply"; dir = 4},/obj/machinery/light/small,/turf/simulated/floor/plating,/area/maintenance/medbay)
 "Sd" = (/obj/structure/catwalk/catwalk_new,/turf/simulated/floor/plating,/area/maintenance/engineering)
 "Sj" = (/turf/unsimulated/mineral,/area/polarplanet/mine/unexplored)
-"Sq" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/tiled/dark/usedup,/area/quartermaster/storage)
+"Sq" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atm{pixel_y = 28},/turf/simulated/floor/tiled/dark/usedup,/area/quartermaster/storage)
 "Sw" = (/obj/item/device/flashlight/lamp/brown,/obj/structure/table/woodentable,/turf/simulated/floor/tiled/brown,/area/maintenance/ghetto_toilet)
 "Sx" = (/obj/machinery/door/firedoor,/obj/structure/cable/green{icon_state = "4-8"; d2 = 8; d1 = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{icon_state = "intact-supply"; dir = 4},/obj/machinery/door/airlock/maintenance{name = "Medical - Maintenance Access"; req_access = list(5)},/turf/simulated/floor/plating,/area/maintenance/medbay)
 "SF" = (/obj/effect/landmark/corpse/miner,/turf/simulated/floor/misc/cult,/area/polarplanet/mine/unexplored)
