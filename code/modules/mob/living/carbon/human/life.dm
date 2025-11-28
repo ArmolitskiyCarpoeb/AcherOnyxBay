@@ -1098,6 +1098,12 @@
 // Stance is being used in the Onyx fighting system. I wanted to call it stamina, but screw it.
 /mob/living/carbon/human/proc/handle_poise()
 	poise_pool = body_build.poise_pool
+
+	var/ht = src.stats[STAT_HT]
+	var/normalized_ht = 1 - (clamp(ht, 1, 20) - 1) / 19
+
+	poise_pool *= lerp(1.5, 0.5, normalized_ht)
+	/*
 	if(stats[STAT_HT] >= 18)
 		poise_pool += 10
 	if(stats[STAT_HT] >= 15)
@@ -1106,6 +1112,7 @@
 		poise_pool -= 10
 	if(stats[STAT_HT] <= 5)
 		poise_pool -= 15
+	*/
 	if(poise >= poise_pool)
 		poise = poise_pool
 		poise_icon?.icon_state = "[round((poise/poise_pool) * 50)]"

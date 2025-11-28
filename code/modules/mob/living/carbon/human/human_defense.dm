@@ -418,6 +418,11 @@ meteor_act
 	if(MUTATION_STRONG in user.mutations)
 		effective_force *= 2
 
+	var/st = user.stats[STAT_ST]
+	var/normalized_st = 1 - (clamp(st, 1, 20) - 1) / 19
+
+	effective_force *= lerp(1.5, 0.5, normalized_st)
+/*
 	if(user.stats[STAT_ST] >= 18)
 		effective_force *= 2
 	if(user.stats[STAT_ST] >= 15)
@@ -428,7 +433,7 @@ meteor_act
 		effective_force *= 0.5
 	if(user.stats[STAT_ST] <= 2)
 		effective_force *= 0.2
-
+*/
 	if(lying)
 		effective_force *= 1.5 // Well it's easier to beat a lying dude to death right?
 
