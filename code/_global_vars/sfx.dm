@@ -1866,4 +1866,12 @@ GLOBAL_LIST_INIT(sfx_list, list(
 	SFX_MALE_JUMP = list(
 		'sound/effects/emotes/m_jump.ogg'
 	),
+	SFX_TRASH = list(
+		'sound/effects/rummage1.ogg',
+		'sound/effects/rummage2.ogg',
+		'sound/effects/rummage3.ogg',
+		'sound/effects/rummage4.ogg',
+		'sound/effects/rummage5.ogg',
+		'sound/effects/rummage6.ogg'
+	),
 ))

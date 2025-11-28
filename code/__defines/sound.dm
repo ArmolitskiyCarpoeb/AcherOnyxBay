@@ -390,4 +390,6 @@
 #define SFX_MINESWEEPER_START       "minesweeper_start"
 #define SFX_MINESWEEPER_WIN         "minesweeper_win"
 
+#define SFX_TRASH               "trash"
+
 #define GET_SFX(name) pick(GLOB.sfx_list[name])

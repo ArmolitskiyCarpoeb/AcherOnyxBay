@@ -50,6 +50,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 			return
 
 		L.visible_message("[user] searches through \the [src].","<span class='notice'>You search through \the [src].</span>")
+		playsound(src.loc, SFX_TRASH, rand(35, 95), 1)
 
 		//Do the searching
 		busy = TRUE

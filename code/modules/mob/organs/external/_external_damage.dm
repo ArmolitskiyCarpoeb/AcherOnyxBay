@@ -58,9 +58,10 @@ obj/item/organ/external/take_general_damage(amount, silent = FALSE)
 	if(owner && loc == owner)
 		owner.updatehealth() //droplimb will call updatehealth() again if it does end up being called
 		if(!is_stump() && (limb_flags & ORGAN_FLAG_CAN_AMPUTATE) && config.health.limbs_can_break)
-			if((brute_dam + burn_dam + brute + burn + spillover) >= (max_damage * config.health.organ_health_multiplier))
+			var/stats = owner.stats
+			if((brute_dam + burn_dam + brute + burn + spillover) >= (max_damage * config.health.organ_health_multiplier * (stats[STAT_HT] / 10)))
 				var/force_droplimb = 0
-				if((brute_dam + burn_dam + brute + burn + spillover) >= (max_damage * config.health.organ_health_multiplier * 4))
+				if((brute_dam + burn_dam + brute + burn + spillover) >= (max_damage * config.health.organ_health_multiplier * 4 * (stats[STAT_HT] / 10)))
 					force_droplimb = 1
 				//organs can come off in three cases
 				//1. If the damage source is edge_eligible and the brute damage dealt exceeds the edge threshold, then the organ is cut off.

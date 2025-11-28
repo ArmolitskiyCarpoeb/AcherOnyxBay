@@ -1098,6 +1098,14 @@
 // Stance is being used in the Onyx fighting system. I wanted to call it stamina, but screw it.
 /mob/living/carbon/human/proc/handle_poise()
 	poise_pool = body_build.poise_pool
+	if(stats[STAT_HT] >= 18)
+		poise_pool += 10
+	if(stats[STAT_HT] >= 15)
+		poise_pool += 15
+	if(stats[STAT_HT] <= 9)
+		poise_pool -= 10
+	if(stats[STAT_HT] <= 5)
+		poise_pool -= 15
 	if(poise >= poise_pool)
 		poise = poise_pool
 		poise_icon?.icon_state = "[round((poise/poise_pool) * 50)]"
@@ -1127,10 +1135,18 @@
 		to_chat(src, SPAN_WARNING("You are exhausted!"))
 		Stun(0.5)
 		set_m_intent(M_WALK)
+		if(src.gender == MALE)
+			playsound(src.loc, SFX_MALE_HEAVY_BREATH, rand(33, 44), 1)
+		if(src.gender == FEMALE)
+			playsound(src.loc, SFX_FEMALE_HEAVY_BREATH, rand(33, 44), 1)
 
 	if(poise <= 2)
 		to_chat(src, SPAN_WARNING("You are VERY exhausted!"))
 		Weaken(1)
+		if(src.gender == MALE)
+			playsound(src.loc, SFX_MALE_HEAVY_BREATH, rand(44, 66), 1)
+		if(src.gender == FEMALE)
+			playsound(src.loc, SFX_FEMALE_HEAVY_BREATH, rand(44, 66), 1)
 
 	poise = between(0, poise + pregen, poise_pool)
 

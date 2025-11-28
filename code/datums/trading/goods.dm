@@ -184,7 +184,7 @@
 								/obj/item/clothing/gloves/rig 							= TRADER_BLACKLIST_ALL,
 								/obj/item/clothing/gloves/chameleon 					= TRADER_BLACKLIST,
 								/obj/item/clothing/head 								= TRADER_SUBTYPES_ONLY,
-								/obj/item/clothing/head/HoS/dermal 						= TRADER_BLACKLIST,
+								// /obj/item/clothing/head/HoS/dermal 						= TRADER_BLACKLIST,
 								/obj/item/clothing/head/beret/deathsquad 				= TRADER_BLACKLIST,
 								/obj/item/clothing/head/bio_hood 						= TRADER_BLACKLIST_ALL,
 								/obj/item/clothing/head/bomb_hood 						= TRADER_BLACKLIST_ALL,
@@ -214,7 +214,7 @@
 
 /datum/trader/ship/clothingshop/accessories
 	possible_origins = list("Liquid Accessories", "Golden Paradise", "Mr Joe's shop", "Holy Trinity of Akta")
-	possible_trading_items = list(/obj/item/clothing/accessory 							= TRADER_SUBTYPES_ONLY,
+	possible_trading_items = list(// /obj/item/clothing/accessory 							= TRADER_SUBTYPES_ONLY,
 								/obj/item/clothing/accessory/badge 						= TRADER_BLACKLIST_ALL,
 								/obj/item/clothing/accessory/holster 					= TRADER_BLACKLIST_ALL,
 								/obj/item/clothing/accessory/medal 						= TRADER_BLACKLIST_ALL,
@@ -304,7 +304,7 @@ Sells devices, odds and ends, and medical stuff
 	..()
 	speech[TRADER_HAIL_START + "silicon"] = "Ah! Hello, robot. We only sell things that, ah.... people can hold in their hands, unfortunately. You are still allowed to buy, though!"
 
-
+/*
 /datum/trader/ship/robots
 	name = "Robot Seller"
 	name_language = TRADER_DEFAULT_NAME
@@ -355,7 +355,7 @@ Sells devices, odds and ends, and medical stuff
 	..()
 	speech[TRADER_HAIL_START + "silicon"] = "Welcome to ORIGIN! Let- oh, you're a synth! Well, your money is good anyway. Welcome, welcome!"
 
-
+*/
 
 ///datum/trader/xeno_shop            This trader was merged with pet_shop
 //	name = "Xenolife Collector"

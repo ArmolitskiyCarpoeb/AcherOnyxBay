@@ -342,6 +342,15 @@
 
 	msg += applying_pressure
 
+	if(src.stats[STAT_ST] > user.stats[STAT_ST])
+		msg += SPAN("danger", "<B>[T.He] looks stronger than you.</B>\n")
+
+	if(src.stats[STAT_ST] == user.stats[STAT_ST])
+		msg += "<B>[T.He] looks not stronger, but not weaker than you.</B>\n"
+
+	if(src.stats[STAT_ST] < user.stats[STAT_ST])
+		msg += SPAN("info", "<B>[T.He] looks weaker than you.</B>\n")
+
 	if (pose)
 		if( findtext(pose,".",length(pose)) == 0 && findtext(pose,"!",length(pose)) == 0 && findtext(pose,"?",length(pose)) == 0 )
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.

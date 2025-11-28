@@ -70,7 +70,7 @@
 
 	possible_wanted_items  = list(/obj/item/ore 						= TRADER_ALL)
 	possible_trading_items = list(/obj/machinery/power/supermatter 		= TRADER_ALL,
-								/obj/item/aiModule 						= TRADER_SUBTYPES_ONLY,
+								// /obj/item/aiModule 						= TRADER_SUBTYPES_ONLY,
 								/obj/item/stock_parts 					= TRADER_SUBTYPES_ONLY,
 								/obj/item/stock_parts/subspace 			= TRADER_BLACKLIST)
 
@@ -90,7 +90,7 @@
 		TRADER_INSULT_GOOD        = "Blub do not understand. Blub thought we were briends.",
 		TRADER_INSULT_BAD         = "Blub feels bad now.",
 	)
-
+/*
 //probably could stick soem Howl references in here but like, eh. Haven't seen it in years.
 /datum/trader/ship/unique/wizard
 	name = "Sorcerer"
@@ -147,3 +147,4 @@
 /datum/trader/ship/unique/wizard/New()
 	..()
 	speech[TRADER_HAIL_START + SPECIES_GOLEM] = "Interesting... how incredibly interesting... come! Let us do business!"
+*/

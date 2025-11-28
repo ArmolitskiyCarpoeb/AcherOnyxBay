@@ -1112,7 +1112,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/mend_fracture(use_damage_check = FALSE)
 	if(BP_IS_ROBOTIC(src))
 		return FALSE // ORGAN_BROKEN doesn't have the same meaning for robot limbs
-	if(use_damage_check && (brute_dam > min_broken_damage * config.health.organ_health_multiplier))
+	var/stats = owner.stats
+	if(use_damage_check && (brute_dam > min_broken_damage * config.health.organ_health_multiplier * (stats[STAT_HT] / 10)))
 		return FALSE // will just immediately fracture again
 
 	status &= ~ORGAN_BROKEN
