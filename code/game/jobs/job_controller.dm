@@ -498,7 +498,8 @@ var/global/datum/controller/occupations/job_master
 				W.buckled_mob = H
 				W.add_fingerprint(H)
 
-		to_chat(H, "<B>Вот те на, ты [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>")
+		//to_chat(H, "<B>Вот те на, ты [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>")
+		to_chat(H, "<B>Вот те на, ты [alt_title ? alt_title : rank].</B>")
 
 		to_chat(H, "<b>Очередная смена на этой проклятой шахте.</b>")
 
