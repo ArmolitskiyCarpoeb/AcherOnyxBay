@@ -46,7 +46,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
 	if(!istype(target_client))
 		return
 
-	to_chat(target_client, using_art.get_desc())
+	//to_chat(target_client, using_art.get_desc())
 	target_client.screen += src
 
 /// This exists solely to create a neat animation when a client leaves lobby and enters the game.

@@ -7,7 +7,7 @@
 
 	//Some faction information.
 	var/home_system = "Artemis"           //System of birth.
-	var/background = "Mons-Laden Corporation"          //General associated faction.
+	var/background = "The Great Novotheist Church"          //General associated faction.
 	var/religion = "Novotheism"               //Religious association.
 
 	var/bank_security = BANK_SECURITY_MODERATE // bank account security level
@@ -59,8 +59,18 @@
 	. += "<b>Background Information</b><br>"
 	. += "[GLOB.using_map.company_name] Relation: <a href='?src=\ref[src];nt_relation=1'>[pref.nanotrasen_relation]</a><br/>"
 	. += "Home System: <a href='?src=\ref[src];home_system=1'>[pref.home_system]</a><br/>"
+	if(pref.home_system == "Artemis")
+		. += "Артемида - холодная планета, на которой проживает 87% человечества.<br>"
+	if(pref.home_system == "Acheron")
+		. += "Мёртвая планета Ахерон, под которой мы сейчас находимся. Стала таковой из-за Корпоративной Войны 59-69 годов. Ранее её называли Эдем из-за благоприятного климата.<br>"
 	. += "Background: <a href='?src=\ref[src];background=1'>[pref.background]</a><br/>"
+	if(pref.background == "The Great Novotheist Church")
+		. += "Великая Новотеистическая Церковь - религиозная мегакорпорация, имеющая огромное влияние на все экономические и политические процессы.<br>"
+	if(pref.background == "Mons-Laden Corporation")
+		. += "Корпорация, которая первая вернула производство на мёртвую планету. Ей принадлежит эта шахта и многие сотрудники.<br>"
 	. += "Religion: <a href='?src=\ref[src];religion=1'>[pref.religion]</a><br/>"
+	if(pref.religion == "Novotheism")
+		. += "Основная религия всего человечества. Именно благодаря ей мы ещё живы.<br>"
 
 	. += "<br/><b>Bank Account</b>:<br/>"
 	. += "Security Level: <a href='?src=\ref[src];bank_security=1'>[pref.bank_security ? pref.bank_security == 2 ? "Maximum" : "Moderate" : "Minimum" ]</a><br>"

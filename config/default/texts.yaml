@@ -1,10 +1,8 @@
 texts:
   motd: |
-    <h1>Welcome to Space Station 13!</h1>
-
-    -<i>This server is running <a href="http://baystation12.net/">Baystation 12's</a> modification of the <a href="http://ss13.eu/">/tg/station13</a> SS13 code.</i>
-    <br><br>
-    <strong>Bugtracker:</strong> <a href="http://baystation12.net/forums/threads/issue-tracker-report-template.110/">for posting of bugs and issues.</a>
+    <h1>Добро пожаловать на супер крутую локалку!</h1>
+    <p><b>ЭТО СЕРВЕР РОЛЕВОЙ</b></p>
+    <p><b>ВЕДИ СЕБЯ АДЕКВАТНО И НЕ ПОЛУЧИШЬ ПО РОЖЕ!!!</b><br></p>
   heads: |
     <html>
       <head>
@@ -37,10 +35,9 @@ texts:
       <body>
         <center>
           <h1>Добро пожаловать на КРИВОЕ ТВОРЧЕСТВО!</h1>
-          <p>Перед игрой забудьте ознакомиться:<br></p>
-          <p><a href="https://wiki.ss13.ru/index.php?title=Onyx_Rules" target="_blank">НЕ ЧИТАТЬ, НЕИНТЕРЕСНО!</a><br>
-          <a href="https://wiki.ss13.ru/index.php?title=Chaotic_Onyx_Backstory" target="_blank">ГАВНО</a><br>
-          Также на <a href="https://wiki.ss13.ru/index.php?title=Main_Page" target="_blank">чужой вики</a> есть много других статей, которые могут быть бесполезными
+          <p>ЭТО СЕРВЕР РОЛЕВОЙ<br></p>
+          <p>ВЕДИ СЕБЯ АДЕКВАТНО И НЕ ПОЛУЧИШЬ ПО РОЖЕ<br></p>
+          Также на <a href="https://wiki.ss13.ru/index.php?title=Main_Page" target="_blank">чужой вики</a> есть много статей, которые могут быть бесполезными
           </p>
         </center>
       </body>

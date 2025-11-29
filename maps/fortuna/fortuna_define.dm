@@ -28,10 +28,10 @@
 	station_name  = "MS Fortuna"
 	station_short = "Fortuna"
 	dock_name     = "Space Docks"
-	boss_name     = "The Great Novotheist Church"
-	boss_short    = "The Church"
-	company_name  = "Mons-Laden Corporation"
-	company_short = "MLC"
+	boss_name     = "Mons-Laden Corporation"
+	boss_short    = "MLC"
+	company_name  = "The Great Novotheist Church"
+	company_short = "The Church"
 	system_name   = "Zeta-8"
 
 	base_floor_type = /turf/simulated/floor/asteroid/air
@@ -67,7 +67,7 @@
 	)
 
 	background_choices = list(
-		"The Church",
+		"The Great Novotheist Church",
 		"Mons-Laden Corporation"
 		)
 

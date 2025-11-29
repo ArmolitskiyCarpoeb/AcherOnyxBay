@@ -79,6 +79,6 @@ SUBSYSTEM_DEF(lobby)
 	current_lobby_art = art_to_use
 	lobby_screen.apply_art(art_to_use)
 
-	var/art_description = current_lobby_art.get_desc()
-	for(var/mob/new_player/player in GLOB.player_list)
-		to_chat(player, art_description)
+	//var/art_description = current_lobby_art.get_desc()
+	//for(var/mob/new_player/player in GLOB.player_list)
+	//	to_chat(player, art_description)
