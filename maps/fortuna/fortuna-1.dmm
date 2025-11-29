@@ -612,7 +612,7 @@
 "ZJ" = (/obj/structure/cable/green{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/simulated/floor/plating,/area/maintenance/medbay)
 "ZK" = (/obj/structure/catwalk/catwalk_new,/obj/random/drinkbottle,/obj/random/closet,/obj/random/closet/maint/closet,/turf/simulated/floor/plating,/area/maintenance/ghetto_dorm)
 "ZL" = (/obj/machinery/alarm{pixel_y = 24},/obj/structure/cable/green{icon_state = "2-8"; d2 = 8; d1 = 2},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 10},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/turf/simulated/floor/plating,/area/maintenance/ghetto_dorm)
-"ZN" = (/obj/structure/table/rack{dir = 8},/obj/effect/floor_decal/industrial/hatch/yellow,/obj/item/reagent_containers/spray/cleaner,/obj/item/mop,/obj/item/reagent_containers/vessel/bucket,/turf/simulated/floor/tiled/dark/usedup,/area/quartermaster/storage)
+"ZN" = (/obj/structure/table/rack{dir = 8},/obj/effect/floor_decal/industrial/hatch/yellow,/obj/item/reagent_containers/spray/cleaner,/obj/item/mop,/obj/item/reagent_containers/vessel/bucket,/obj/item/storage/bag/trash,/turf/simulated/floor/tiled/dark/usedup,/area/quartermaster/storage)
 "ZP" = (/obj/structure/toilet,/turf/simulated/floor/tiled/freezer,/area/medical/medbay3/underground)
 "ZU" = (/obj/structure/cable/green{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/simulated/floor/plating,/area/maintenance/medbay)
 "ZX" = (/turf/simulated/wall,/area/quartermaster/breakroom)
