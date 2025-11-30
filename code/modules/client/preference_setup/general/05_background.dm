@@ -10,7 +10,7 @@
 	var/background = "The Great Novotheist Church"          //General associated faction.
 	var/religion = "Novotheism"               //Religious association.
 
-	var/bank_security = BANK_SECURITY_MODERATE // bank account security level
+	var/bank_security = BANK_SECURITY_MINIMUM // bank account security level
 	var/bank_pin = 0 // bank account PIN, 0 gives a random PIN
 
 /datum/category_item/player_setup_item/general/background
@@ -47,7 +47,7 @@
 	if(!pref.home_system)
 		pref.home_system = "Artemis"
 	if(!pref.background)
-		pref.background = "The Church"
+		pref.background = "The Great Novotheist Church"
 	if(!pref.religion)
 		pref.religion =    "Novotheism"
 
@@ -58,9 +58,9 @@
 /datum/category_item/player_setup_item/general/background/content(mob/user)
 	. += "<b>Background Information</b><br>"
 	. += "[GLOB.using_map.company_name] Relation: <a href='?src=\ref[src];nt_relation=1'>[pref.nanotrasen_relation]</a><br/>"
-	. += "Home System: <a href='?src=\ref[src];home_system=1'>[pref.home_system]</a><br/>"
+	. += "Planet of birth: <a href='?src=\ref[src];home_system=1'>[pref.home_system]</a><br/>"
 	if(pref.home_system == "Artemis")
-		. += "Артемида - холодная планета, на которой проживает 87% человечества.<br>"
+		. += "Артемида - вторая планета в нашей системе Зета-8, на которой проживает 85% человечества.<br>"
 	if(pref.home_system == "Acheron")
 		. += "Мёртвая планета Ахерон, под которой мы сейчас находимся. Стала таковой из-за Корпоративной Войны 59-69 годов. Ранее её называли Эдем из-за благоприятного климата.<br>"
 	. += "Background: <a href='?src=\ref[src];background=1'>[pref.background]</a><br/>"

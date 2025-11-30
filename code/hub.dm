@@ -4,7 +4,7 @@
  */
 #define HUB_ENABLED 1
 	hub = "Exadv1.spacestation13"
-	name = "\[SS13\] - Ахерон - Возбуждённые шахтёры"
+	name = "\[RU]\ - Underground mining staion - No furry and no erp"
 #ifdef HUB_ENABLED
 	hub_password = "kMZy3U5jJHSiBQjr"
 #else

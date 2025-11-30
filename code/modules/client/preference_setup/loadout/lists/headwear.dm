@@ -9,7 +9,7 @@
 /datum/gear/head/bandana/New()
 	..()
 	gear_tweaks += new /datum/gear_tweak/path/specified_types_list(typesof(/obj/item/clothing/mask/bandana) + typesof(/obj/item/clothing/head/bandana))
-
+/*
 /datum/gear/head/hardhat
 	display_name = "hardhat selection"
 	path = /obj/item/clothing/head/hardhat
@@ -24,3 +24,4 @@
 	hardhats["red hardhat"] = /obj/item/clothing/head/hardhat/red
 	hardhats["yellow hardhat"] = /obj/item/clothing/head/hardhat
 	gear_tweaks += new /datum/gear_tweak/path(hardhats)
+*/

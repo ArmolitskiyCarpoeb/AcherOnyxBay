@@ -53,7 +53,7 @@
 		death_message = "[mobname] has died in [location]![additional_info]"
 	set_next_think(0)
 
-	for(var/channel in list("Security", "Medical", "Command"))
+	for(var/channel in list("Security", "Medical", "Command", "Common"))
 		GLOB.global_headset.autosay(death_message, ("[mobname]'s Death Alarm"), channel)
 
 /obj/item/implant/death_alarm/emp_act(severity)			//for some reason alarms stop going off in case they are emp'd, even without this
