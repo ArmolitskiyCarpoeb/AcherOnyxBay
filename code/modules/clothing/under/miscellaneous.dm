@@ -17,11 +17,14 @@
 	item_state = "gorka"
 	armor = list(melee = 15, bullet = 10, laser = 0, energy = 0, bomb = 0, bio = 0)
 
-/obj/item/clothing/under/gorka/mob_can_equip(mob/user)
-	.=..()
-	if(user.gender == FEMALE)
-		to_chat(user, "<span class='warning'> You aren't sure you'll fit in this men's cloth..</span>")
-		return 0
+/obj/item/clothing/under/gorka/badgorka
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0)
+
+// /obj/item/clothing/under/gorka/mob_can_equip(mob/user)
+// 	.=..()
+// 	if(user.gender == FEMALE)
+// 		to_chat(user, "<span class='warning'> You aren't sure you'll fit in this men's cloth..</span>")
+// 		return 0
 
 /obj/item/clothing/under/rank/rosa
 	name = "rosa dress"
