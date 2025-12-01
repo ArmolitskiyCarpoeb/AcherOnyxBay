@@ -1,3 +1,6 @@
+#define MARGIN_MAX 150
+#define MARGIN_MIN 100
+
 /datum/trader
 	var/name = "unsuspicious trader"                            //The name of the trader in question
 	var/origin = "some place"                                   //The place that they are trading from
@@ -131,7 +134,7 @@
 	if(!trading_items[trading_items[trading_num]])
 		var/type = trading_items[trading_num]
 		var/value = get_value(type)
-		value = round(rand(80,100)/100 * value) //For some reason rand doesn't like decimals.
+		value = round(rand(MARGIN_MIN,MARGIN_MAX)/100 * value) //For some reason rand doesn't like decimals.
 		trading_items[type] = margin*value
 	return trading_items[trading_items[trading_num]]
 
@@ -287,3 +290,6 @@
 
 /datum/trader/proc/bribe_to_stay_longer(amt)
 	return make_response(TRADER_BRIBE_FAILURE, "How about no?", 0, FALSE)
+
+#undef MARGIN_MAX
+#undef MARGIN_MIN

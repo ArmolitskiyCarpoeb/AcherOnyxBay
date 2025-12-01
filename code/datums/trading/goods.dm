@@ -1,3 +1,41 @@
+/datum/trader/ship/MonsLeibenCargo
+	name = "Joe Hard"
+	origin = "Mons-Laden delivery service"
+
+	typical_duration = 240
+
+	possible_wanted_items = list(
+							/obj/item/reagent_containers/food/human 							= TRADER_SUBTYPES_ONLY,
+							/obj/item/reagent_containers/food/meat/human 						= TRADER_THIS_TYPE,
+							/mob/living/carbon/human 											= TRADER_ALL,
+							/obj/item/ore 														= TRADER_ALL
+							)
+
+	possible_trading_items = list(/obj/item/gun/projectile/automatic/as75 						= TRADER_THIS_TYPE,
+							/obj/item/pizzabox													= TRADER_SUBTYPES_ONLY
+	)
+
+	blacklisted_trade_items = null
+
+	speech = list(
+		TRADER_HAIL_GENERIC       = "Слушаю. Давай только быстрее. У меня ещё тоннель 7-G проветривать, смена через два часа.",
+		TRADER_HAIL_DENY          = "Отстань, у меня обед! Вернее, ужин... Завтрак? В пещерах тяжело определить время.",
+
+		TRADER_TRADE_COMPLETE     = "Дело сделано. Хочешь что-то ещё или я могу допить своё пиво?",
+		TRADER_NO_MONEY           = "Нет денег - нет доставки.",
+		TRADER_NOT_ENOUGH         = "Что поделать, иди достань бабки и приходи обратно!",
+		TRADER_FOUND_UNWANTED     = "Эту дребедень можешь себе оставить.",
+		TRADER_HOW_MUCH           = "Это стоит всего VALUE кредита. Считай быстрее, у сканера штрихкодов батарея садится, а до зарядной станции ещё три километра по тоннелям.",
+		TRADER_WHAT_WANT          = "Что-то настоящее. Фрукт. Мясо. Алкоголь, который не пахнет антисептиком. Слышал, на верхних уровнях такое ещё есть. А ещё руда, как мог забыть про неё.",
+
+		TRADER_COMPLEMENT_FAILURE = "Оставь свои комплименты для того кого они волнуют.",
+		TRADER_COMPLEMENT_SUCCESS = "Спасибо. Редко тут услышишь что-то человеческое. Если не считать бормотание из вентиляции.",
+		TRADER_INSULT_GOOD        = "Да, я знаю. Я – винтик в системе. Но без нас, винтиков, вся эта подземная махина остановится.",
+		TRADER_INSULT_BAD         = "Слышь, придурок, хочешь чтобы твой заказ *случайно* упал в вентиляцию шахты?",
+	)
+
+	mob_transfer_message = "<span class='danger'>You are transported to ORIGIN, and with a sickening thud, you fall unconscious, never to wake again.</span>"
+
 /datum/trader/ship/toyshop
 	name = "Toy Shop Employee"
 	name_language = TRADER_DEFAULT_NAME

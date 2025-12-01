@@ -11,6 +11,7 @@ SUBSYSTEM_DEF(trade)
 	. = ..()
 	for(var/i in 1 to rand(1,3))
 		generate_trader(1)
+	traders += new /datum/trader/ship/MonsLeibenCargo
 
 /datum/controller/subsystem/trade/fire(resumed = FALSE)
 	if (!resumed)
@@ -38,7 +39,7 @@ SUBSYSTEM_DEF(trade)
 		possible += subtypesof(/datum/trader) - typesof(/datum/trader/ship)
 	else
 		if(prob(5))
-			possible += subtypesof(/datum/trader/ship/unique)
+			possible += /datum/trader/ship/MonsLeibenCargo
 		else
 			possible += subtypesof(/datum/trader/ship) - typesof(/datum/trader/ship/unique)
 
