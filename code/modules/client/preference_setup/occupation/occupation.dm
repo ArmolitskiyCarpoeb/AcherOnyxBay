@@ -12,6 +12,10 @@
 /datum/category_item/player_setup_item/occupation
 	name = "Occupation"
 	sort_order = 1
+	var/job_desc = "Press \[?\] button near job name to show description.<br><br><br><br><br><br>"			//text containing job description
+	var/desc_set = FALSE
+	var/job_icon_dir = SOUTH
+	var/job_info_selected_rank
 
 /datum/category_item/player_setup_item/occupation/load_character(datum/pref_record_reader/R)
 	pref.alternate_option  = R.read("alternate_option")
@@ -64,7 +68,10 @@
 
 	var/datum/species/S = preference_species()
 
+	if (!desc_set)
+		create_job_description(user)
 	. = list()
+	. += "[job_desc]"
 	. += "<tt><center>"
 	. += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br>"
 	. += "<br>"
@@ -81,7 +88,6 @@
 		return
 
 	for(var/datum/job/job in job_master.occupations)
-
 		index += 1
 		if((index >= limit) || (job.title in splitJobs))
 			if((index < limit) && (lastJob != null))
@@ -95,6 +101,7 @@
 		. += "<tr bgcolor='[job.selection_color]'><td width='60%' align='right'>"
 		var/rank = job.title
 		lastJob = job
+		. += "<a href='?src=\ref[src];job_info=[rank]'>\[?\]</a>"
 		if(job.total_positions == 0 && job.spawn_positions == 0)
 			. += "<del>[rank]</del></td><td><b> \[UNAVAILABLE]</b></td></tr>"
 			continue
@@ -200,7 +207,14 @@
 				return (pref.equip_preview_mob ? TOPIC_REFRESH_UPDATE_PREVIEW : TOPIC_REFRESH)
 
 	else if(href_list["switch_job"])
-		if(SwitchJobPriority(user, href_list["switch_job"])) return (pref.equip_preview_mob ? TOPIC_REFRESH_UPDATE_PREVIEW : TOPIC_REFRESH)
+		if(SwitchJobPriority(user, href_list["switch_job"]))
+			create_job_description(user)
+			return (pref.equip_preview_mob ? TOPIC_REFRESH_UPDATE_PREVIEW : TOPIC_REFRESH)
+
+	else if(href_list["job_info"])
+		job_info_selected_rank = href_list["job_info"]
+		create_job_description(user)
+		return TOPIC_REFRESH
 
 	return ..()
 
@@ -307,3 +321,62 @@
 
 /datum/preferences/proc/GetPlayerAltTitle(datum/job/job)
 	return (job.title in player_alt_titles) ? player_alt_titles[job.title] : job.title
+
+/datum/category_item/player_setup_item/occupation/proc/create_job_description(var/mob/user)
+	var/datum/job/job
+	//Which job will we show info for?
+
+	//First of all, we check if the user has opted to query any specific job by clicking the ? button
+	if(job_info_selected_rank)
+		job = job_master.GetJob(job_info_selected_rank)
+	else if(job.title == "Workman")
+		job = job_master.GetJob("Workman")
+	else
+		//If not, then we'll attempt to get the job they have set as high priority, if any
+		job = job_master.GetJob(pref.job_high)
+
+	if (!job)
+		return
+
+	desc_set = TRUE
+
+	job_desc = "<div class = 'roleDescription' style = 'height:200px; width: 100%;'>"
+
+	job_desc += "<table style='float:left;  table-layout: fixed;' cellpadding='0' cellspacing='0'>"
+
+	//At the top of the table, there's a coloured stripe
+	job_desc += "<tr><td colspan='2'><p style='margin-top: 0px;margin-bottom: 0px; width: 100%; background-color: [job.selection_color];'><br></td></tr>"
+
+	//Actual body of description starts here.
+	//Width 100% needed otherwise a huge gap is left between this and the previous cell
+	job_desc += "<td style = 'width: 100%;'>"
+
+	//Capped at 240px height. I couldn't figure out how to set this height on the table row or cell.
+	//It only works when set directly on this div
+	job_desc += "<div style = 'overflow: auto;height: 240x;'>"
+
+	//Header job title
+	job_desc += "<h1 style='text-align: center; padding-top: 5px;padding-bottom: 0px;'>[job.title]</h1>"
+	job_desc += "<hr>"
+
+	//Here we have a right-floating textbox that shows user's stats
+	job_desc +="<div style='border: 1px solid grey; float: right; margin-right: 20px; padding: 8px; line-height: 180%;'> <h1 style='padding: 0px;'>DESCRIPTION:</h1>"
+
+	if(job.alt_titles)
+		job_desc += "<i><b>Alternative titles:</b> [english_list(job.alt_titles)].</i>"
+	job_desc += "<br>"
+	job_desc += "You answer to <b>[job.supervisors]</b> normally."
+	job_desc += "<br>"
+	job_desc += "The Ideal character age for this role is <b>[job.ideal_character_age] years</b>."
+	job_desc += "<br>"
+
+	//if(config.wikiurl)
+	//	job_desc += "<a href='?src=\ref[src];job_info_selected_rank_wiki=[job_info_selected_rank]'>Open wiki page in browser</a>"
+	var/description = job.get_description_blurb()
+	/*if(job.required_education)
+	description = "[description ? "[description]\n\n" : ""]"*/
+
+	if(description)
+		job_desc += description
+	job_desc += "</div>"
+	job_desc += "</td></tr></table></div>"

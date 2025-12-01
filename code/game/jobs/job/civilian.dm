@@ -56,27 +56,29 @@
 			H.flavor_texts[thing] = null
 
 /datum/job/hydro
-	title = "Gardener"
+	title = "Hydroponist"
+	description = "Занимайся выращиванием всякого! Да, это вся твоя работа. Но никто не мешает тебе приготовить народу покушать, от чего все будут очень рады."
 	department = "Service"
 	department_flag = SRV
-	total_positions = 2
+	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
-	selection_color = "#515151"
-	access = list(access_hydroponics, access_bar, access_kitchen)
-	minimal_access = list(access_hydroponics)
+	supervisors = "the cardinal"
+	selection_color = "#116927"
+	access = list(access_maint_tunnels, access_hydroponics, access_bar, access_kitchen)
+	minimal_access = list(access_maint_tunnels, access_hydroponics)
 	alt_titles = list("Hydroponicist")
 	outfit_type = /decl/hierarchy/outfit/job/service/gardener
 
 //Cargo
 /datum/job/qm
 	title = "Quartermaster"
+	description = "Как завхоз ты отвечаешь за склад, занимаешься торговлей и заказываешь товары с орбитальной станции. Также никто не запрещает тебе указывать рабочим на их работу."
 	department = "Supply"
 	department_flag = SUP
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the cardinal"
-	selection_color = "#515151"
+	selection_color = "#857d17"
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant)
 	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant)

@@ -2,13 +2,9 @@
 	sort_category = "Hats"
 	slot = slot_head
 
-/datum/gear/head/bandana
-	display_name = "bandana selection"
-	path = /obj/item/clothing
-
-/datum/gear/head/bandana/New()
-	..()
-	gear_tweaks += new /datum/gear_tweak/path/specified_types_list(typesof(/obj/item/clothing/mask/bandana) + typesof(/obj/item/clothing/head/bandana))
+/datum/gear/head/informalhat
+	display_name = "Ushanka"
+	path = /obj/item/clothing/head/ushanka
 /*
 /datum/gear/head/hardhat
 	display_name = "hardhat selection"

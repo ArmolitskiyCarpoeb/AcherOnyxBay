@@ -26,6 +26,7 @@
 
 /datum/job/engineer
 	title = "Station Engineer"
+	description = "Самое главное в твоей работе - это заправка и уход за реактором. Просто не забывай проверять температуру и настраивать мощность. Все поломки на станции - чинишь ты."
 	department = "Engineering"
 	department_flag = ENG
 

@@ -1,8 +1,10 @@
 /datum/job/assistant
 	title = "Workman"
+	description = "Ты - наёмный рабочий или человек, отрабатывающий на этой станции свои долги. Занимайся любой доступной работой!"
 	department = "Civilian"
 	department_flag = CIV
 
+	account_allowed = FALSE
 	total_positions = -1
 	spawn_positions = -1
 	supervisors = "the cardinal"

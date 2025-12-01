@@ -1,5 +1,6 @@
 /datum/job/captain
 	title = "Cardinal"
+	description = "Кардинал - представитель Церкви, человек, занимающийся управлением персоналом станции и защитой её от еретиков. Не забывай, что эта шахта - находится в собственности корпорации, однако ты имеешь полный контроль над всеми тут."
 	department = "Command"
 	head_position = 1
 	department_flag = COM
@@ -7,7 +8,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the church and the corporation"
-	selection_color = "#1d1d4f"
+	selection_color = "#4f1d1d"
 	req_admin_notify = 1
 	access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
