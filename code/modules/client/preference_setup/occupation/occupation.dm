@@ -340,12 +340,12 @@
 
 	desc_set = TRUE
 
-	job_desc = "<div class = 'roleDescription' style = 'height:200px; width: 100%;'>"
+	job_desc = "<div class = 'roleDescription' style = 'height:200px; width: 980px;'>"
 
 	job_desc += "<table style='float:left;  table-layout: fixed;' cellpadding='0' cellspacing='0'>"
 
 	//At the top of the table, there's a coloured stripe
-	job_desc += "<tr><td colspan='2'><p style='margin-top: 0px;margin-bottom: 0px; width: 100%; background-color: [job.selection_color];'><br></td></tr>"
+	job_desc += "<tr><td colspan='2'><p style='margin-top: 0px;margin-bottom: 0px; width: 980px; background-color: [job.selection_color];'><br></td></tr>"
 
 	//Actual body of description starts here.
 	//Width 100% needed otherwise a huge gap is left between this and the previous cell
@@ -360,7 +360,7 @@
 	job_desc += "<hr>"
 
 	//Here we have a right-floating textbox that shows user's stats
-	job_desc +="<div style='border: 1px solid grey; float: right; margin-right: 20px; padding: 8px; line-height: 180%;'> <h1 style='padding: 0px;'>DESCRIPTION:</h1>"
+	job_desc +="<div style='border: 1px solid grey; float: left; margin-right: 20px; padding: 8px; line-height: 180%;'> <h1 style='padding: 0px;'>DESCRIPTION:</h1>"
 
 	if(job.alt_titles)
 		job_desc += "<i><b>Alternative titles:</b> [english_list(job.alt_titles)].</i>"
