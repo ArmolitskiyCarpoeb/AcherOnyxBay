@@ -620,8 +620,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 //	if (config && config.vote.allow_vote_mode)
 //		features += "vote"
-
-		features += "ROLEPLAY SERVER - NO FURRIES, NO ERP, NO ADMINS"
+	features += "ROLEPLAY SERVER - NO FURRIES, NO ERP, NO ADMINS"
 //	if (config && config.misc.allow_ai)
 //		features += "AI allowed"
 
