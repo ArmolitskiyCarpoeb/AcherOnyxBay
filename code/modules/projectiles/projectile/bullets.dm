@@ -283,12 +283,14 @@
 	damage = 27.5
 
 /obj/item/projectile/bullet/rifle/a762
-	damage = 37
+	damage = 39
 	armor_penetration = 52
 
 /obj/item/projectile/bullet/rifle/a792
-	damage = 50
-	armor_penetration = 50
+	damage = 60
+	armor_penetration = 55
+	penetration_modifier = 1.1
+	poisedamage = 15.0
 
 /obj/item/projectile/bullet/rifle/a145
 	damage = 80
