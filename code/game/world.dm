@@ -169,9 +169,9 @@ var/server_name = "Ахерон"
 	else
 		name = "[server_name] - [GLOB.using_map.full_name]"
 
-	if(config && config.game.use_age_restriction_for_jobs != null && config.general.server_suffix && world.port > 0)
+//	if(config && config.game.use_age_restriction_for_jobs != null && config.general.server_suffix && world.port > 0)
 		// dumb and hardcoded but I don't care~
-		config.general.server_name += " #[(world.port % 1000) / 100]"
+//		config.general.server_name += " #[(world.port % 1000) / 100]"
 
 	watchlist = new /datum/watchlist
 
@@ -613,16 +613,17 @@ var/world_topic_spam_protect_time = world.timeofday
 	else
 		features += "<b>STARTING</b>"
 
-	if (!config.game.enter_allowed)
-		features += "closed"
+//	if (!config.game.enter_allowed)
+//		features += "closed"
 
-	features += config.misc.abandon_allowed ? "respawn" : "no respawn"
+//	features += config.misc.abandon_allowed ? "respawn" : "no respawn"
 
-	if (config && config.vote.allow_vote_mode)
-		features += "vote"
+//	if (config && config.vote.allow_vote_mode)
+//		features += "vote"
 
-	if (config && config.misc.allow_ai)
-		features += "AI allowed"
+		features += "ROLEPLAY SERVER - NO FURRIES, NO ERP, NO ADMINS"
+//	if (config && config.misc.allow_ai)
+//		features += "AI allowed"
 
 	var/n = 0
 	for (var/mob/M in GLOB.player_list)
@@ -630,13 +631,13 @@ var/world_topic_spam_protect_time = world.timeofday
 			n++
 
 	if (n > 1)
-		features += "~[n] players"
+		features += "~[n] retards"
 	else if (n > 0)
-		features += "~[n] player"
+		features += "~[n] retard"
 
 
-	if (config && config.general.hosted_by)
-		features += "hosted by <b>[config.general.hosted_by]</b>"
+//	if (config && config.general.hosted_by)
+//		features += "hosted by <b>[config.general.hosted_by]</b>"
 
 	if (features)
 		s += ": [jointext(features, ", ")]"
