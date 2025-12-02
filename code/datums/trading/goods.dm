@@ -1,17 +1,24 @@
 /datum/trader/ship/MonsLeibenCargo
 	name = "Joe Hard"
 	origin = "Mons-Laden delivery service"
-
+	trade_flags = TRADER_GOODS|TRADER_MONEY|TRADER_WANTED_ONLY
 	typical_duration = 240
 
 	possible_wanted_items = list(
 							/obj/item/reagent_containers/food/human 							= TRADER_SUBTYPES_ONLY,
-							/obj/item/reagent_containers/food/meat/human 						= TRADER_THIS_TYPE,
-							/mob/living/carbon/human 											= TRADER_ALL,
+							/obj/item/reagent_containers/food/meat								= TRADER_SUBTYPES_ONLY,
+							/obj/item/reagent_containers/food/grown								= TRADER_SUBTYPES_ONLY,
+							// /mob/living/carbon/human 											= TRADER_ALL, //Пока отключил что бы раундстартом не продавали работяг
+							/obj/item/organ														= TRADER_SUBTYPES_ONLY,
 							/obj/item/ore 														= TRADER_ALL
 							)
 
 	possible_trading_items = list(/obj/item/gun/projectile/automatic/as75 						= TRADER_THIS_TYPE,
+							/obj/item/ammo_magazine/c556 										= TRADER_THIS_TYPE,
+							/obj/item/gun/projectile/bolt_action/mauser							= TRADER_THIS_TYPE,
+							/obj/item/ammo_magazine/c792										= TRADER_THIS_TYPE,
+							/obj/item/gun/projectile/revolver/detective/saw620 					= TRADER_THIS_TYPE,
+							/obj/item/ammo_magazine/c38											= TRADER_THIS_TYPE,
 							/obj/item/pizzabox													= TRADER_SUBTYPES_ONLY
 	)
 
@@ -25,8 +32,8 @@
 		TRADER_NO_MONEY           = "Нет денег - нет доставки.",
 		TRADER_NOT_ENOUGH         = "Что поделать, иди достань бабки и приходи обратно!",
 		TRADER_FOUND_UNWANTED     = "Эту дребедень можешь себе оставить.",
-		TRADER_HOW_MUCH           = "Это стоит всего VALUE кредита. Считай быстрее, у сканера штрихкодов батарея садится, а до зарядной станции ещё три километра по тоннелям.",
-		TRADER_WHAT_WANT          = "Что-то настоящее. Фрукт. Мясо. Алкоголь, который не пахнет антисептиком. Слышал, на верхних уровнях такое ещё есть. А ещё руда, как мог забыть про неё.",
+		TRADER_HOW_MUCH           = "Это стоит всего VALUE!. Считай быстрее, у сканера штрихкодов батарея садится, а до зарядной станции ещё три километра по тоннелям.",
+		TRADER_WHAT_WANT          = "Что-то настоящее. Фрукты или овощи. Мясо и... КХЕМ... органы, да. А ещё руда, как мог забыть про неё.",
 
 		TRADER_COMPLEMENT_FAILURE = "Оставь свои комплименты для того кого они волнуют.",
 		TRADER_COMPLEMENT_SUCCESS = "Спасибо. Редко тут услышишь что-то человеческое. Если не считать бормотание из вентиляции.",
@@ -35,6 +42,17 @@
 	)
 
 	mob_transfer_message = "<span class='danger'>You are transported to ORIGIN, and with a sickening thud, you fall unconscious, never to wake again.</span>"
+
+/datum/trader/ship/MonsLeibenCargo/what_do_you_want()
+	return make_response(TRADER_WHAT_WANT)
+
+/datum/trader/ship/MonsLeibenCargo/New()
+	..()
+	wanted_items = possible_wanted_items
+	trading_items = possible_trading_items
+
+/datum/trader/ship/MonsLeibenCargo/tick()
+	return 1
 
 /datum/trader/ship/toyshop
 	name = "Toy Shop Employee"

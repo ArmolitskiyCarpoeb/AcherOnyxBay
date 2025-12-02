@@ -329,10 +329,7 @@
 	//First of all, we check if the user has opted to query any specific job by clicking the ? button
 	if(job_info_selected_rank)
 		job = job_master.GetJob(job_info_selected_rank)
-	else if(job.title == "Workman")
-		job = job_master.GetJob("Workman")
 	else
-		//If not, then we'll attempt to get the job they have set as high priority, if any
 		job = job_master.GetJob(pref.job_high)
 
 	if (!job)
