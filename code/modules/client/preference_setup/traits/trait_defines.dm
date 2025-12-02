@@ -20,131 +20,208 @@
 	qdel(M)
 	return new_desc
 
+// Base groups for trait categories in the UI.
+/datum/trait/modifier/good
+	category = "Положительные" // positive traits, usually cost points
 
-// Physical traits are what they sound like, and involve the character's physical body, as opposed to their mental state.
-/datum/trait/modifier/physical
-	category = "Physical"
+/datum/trait/modifier/bad
+	category = "Отрицательные" // negative traits, usually give points
 
-/datum/trait/modifier/physical/flimsy
+/datum/trait/modifier/neutral
+	category = "Нейтральные" // neutral / flavour traits
+
+
+/// ХОРОШИЕ ТРЕЙТЫ
+
+/datum/trait/modifier/good/high_metabolism
+	name = "Быстрый метаболизм"
+	modifier_type = /datum/modifier/trait/high_metabolism
+	mutually_exclusive = list(/datum/trait/modifier/bad/low_metabolism)
+	trait_cost = 1 // positive: costs points
+
+/datum/trait/modifier/good/high_metabolism/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
+	if(setup.is_FBP())
+		return "Full Body Prosthetics do not have a metabolism."
+	return ..()
+
+/datum/trait/modifier/good/goodhealth
+	name = "В хорошей форме"
+	modifier_type = /datum/modifier/trait/goodhealth
+	mutually_exclusive = list(/datum/trait/modifier/bad/low_metabolism)
+	trait_cost = 2 // positive: costs points
+
+/datum/trait/modifier/good/skilledmarksman
+	name = "Умелый стрелок"
+	modifier_type = /datum/modifier/trait/skilledmarksman
+	mutually_exclusive = list(/datum/trait/modifier/bad/inaccurate)
+	trait_cost = 3 // positive: costs points
+
+/// ПЛОХИЕ ТРЕЙТЫ
+/datum/trait/modifier/bad/autism //ДОБАВИТЬ ИСКЛЮЧЕНИЕ ТРЕЙТОВ НА ЗДОРОВЬЕ И МЕТАБОЛИЗМ
+	name = "Autism"
+	desc = "Тебя часто роняли головой. Удачи!"
+	modifier_type = /datum/modifier/trait/autism
+	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/lisping,
+						/datum/trait/modifier/bad/frail,/datum/trait/modifier/bad/flimsy,/datum/modifier/trait/haemophilia,/datum/trait/modifier/bad/weak,/datum/trait/modifier/bad/weak,
+						/datum/trait/modifier/good/high_metabolism, /datum/trait/modifier/bad/low_metabolism)
+	trait_cost = -4 // mild negative: grants 1 point
+
+/datum/trait/modifier/bad/flimsy
 	name = "Flimsy"
 	desc = "You're more fragile than most, and have less of an ability to endure harm."
 	modifier_type = /datum/modifier/trait/flimsy
-	mutually_exclusive = list(/datum/trait/modifier/physical/frail)
+	mutually_exclusive = list(/datum/trait/modifier/bad/frail)
+	trait_cost = -1 // mild negative: grants 1 point
 
-/datum/trait/modifier/physical/frail
+/datum/trait/modifier/bad/frail
 	name = "Frail"
 	desc = "Your body is very fragile, and has even less of an ability to endure harm."
 	modifier_type = /datum/modifier/trait/frail
-	mutually_exclusive = list(/datum/trait/modifier/physical/flimsy)
+	mutually_exclusive = list(/datum/trait/modifier/bad/flimsy)
+	trait_cost = -2 // stronger negative: grants 2 points
 
-
-/datum/trait/modifier/physical/haemophilia
+/datum/trait/modifier/bad/haemophilia
 	name = "Haemophilia"
 	desc = "Some say that when it rains, it pours.  Unfortunately, this is also true for yourself if you get cut."
 	modifier_type = /datum/modifier/trait/haemophilia
+	trait_cost = -2
 
-/datum/trait/modifier/physical/haemophilia/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
+/datum/trait/modifier/bad/haemophilia/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
 	if(setup.is_FBP())
 		return "Full Body Prosthetics cannot bleed."
 	// If a species lacking blood is added, it is suggested to add a check for them here.
 	return ..()
 
-
-/datum/trait/modifier/physical/weak
+/datum/trait/modifier/bad/weak
 	name = "Weak"
 	desc = "A lack of physical strength causes a diminshed capability in close quarters combat."
 	modifier_type = /datum/modifier/trait/weak
-	mutually_exclusive = list(/datum/trait/modifier/physical/wimpy)
+	mutually_exclusive = list(/datum/trait/modifier/bad/wimpy)
+	trait_cost = -1
 
-
-/datum/trait/modifier/physical/wimpy
+/datum/trait/modifier/bad/wimpy
 	name = "Wimpy"
 	desc = "An extreme lack of physical strength causes a greatly diminished capability in close quarters combat."
 	modifier_type = /datum/modifier/trait/wimpy
-	mutually_exclusive = list(/datum/trait/modifier/physical/weak)
+	mutually_exclusive = list(/datum/trait/modifier/bad/weak)
+	trait_cost = -2
 
-
-/datum/trait/modifier/physical/inaccurate
+/datum/trait/modifier/bad/inaccurate
 	name = "Inaccurate"
 	desc = "You're rather inexperienced with guns, you've never used one in your life, or you're just really rusty.  \
 	Regardless, you find it quite difficult to land shots where you wanted them to go."
 	modifier_type = /datum/modifier/trait/inaccurate
+	mutually_exclusive = list(/datum/trait/modifier/good/skilledmarksman)
+	trait_cost = -1
 
-/datum/trait/modifier/physical/colorblind_protanopia
-	name = "Protanopia"
-	desc = "You have a form of red-green colorblindness. You cannot see reds, and have trouble distinguishing them from yellows and greens."
-	modifier_type = /datum/modifier/trait/colorblind_protanopia
-	mutually_exclusive = list(/datum/trait/modifier/physical/colorblind_deuteranopia, /datum/trait/modifier/physical/colorblind_tritanopia, /datum/trait/modifier/physical/colorblind_monochrome)
-
-/datum/trait/modifier/physical/colorblind_deuteranopia
-	name = "Deuteranopia"
-	desc = "You have a form of red-green colorblindness. You cannot see greens, and have trouble distinguishing them from yellows and reds."
-	modifier_type = /datum/modifier/trait/colorblind_deuteranopia
-	mutually_exclusive = list(/datum/trait/modifier/physical/colorblind_protanopia, /datum/trait/modifier/physical/colorblind_tritanopia, /datum/trait/modifier/physical/colorblind_monochrome)
-
-/datum/trait/modifier/physical/colorblind_tritanopia
-	name = "Tritanopia"
-	desc = "You have a form of blue-yellow colorblindness. You have trouble distinguishing between blues, greens, and yellows, and see blues and violets as dim."
-	modifier_type = /datum/modifier/trait/colorblind_tritanopia
-	mutually_exclusive = list(/datum/trait/modifier/physical/colorblind_protanopia, /datum/trait/modifier/physical/colorblind_deuteranopia, /datum/trait/modifier/physical/colorblind_monochrome)
-
-/datum/trait/modifier/physical/colorblind_monochrome
-	name = "Monochromacy"
-	desc = "You are fully colorblind. Your condition is rare, but you can see no colors at all."
-	modifier_type = /datum/modifier/trait/colorblind_monochrome
-	mutually_exclusive = list(/datum/trait/modifier/physical/colorblind_protanopia, /datum/trait/modifier/physical/colorblind_deuteranopia, /datum/trait/modifier/physical/colorblind_tritanopia)
-
-// These two traits might be borderline, feel free to remove if they get abused.
-/datum/trait/modifier/physical/high_metabolism
-	name = "High Metabolism"
-	modifier_type = /datum/modifier/trait/high_metabolism
-	mutually_exclusive = list(/datum/trait/modifier/physical/low_metabolism)
-
-/datum/trait/modifier/physical/high_metabolism/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
-		return "Full Body Prosthetics do not have a metabolism."
-	return ..()
-
-
-/datum/trait/modifier/physical/low_metabolism
+/datum/trait/modifier/bad/low_metabolism
 	name = "Low Metabolism"
 	modifier_type = /datum/modifier/trait/low_metabolism
-	mutually_exclusive = list(/datum/trait/modifier/physical/high_metabolism)
+	mutually_exclusive = list(/datum/trait/modifier/good/high_metabolism)
+	trait_cost = -1
 
-/datum/trait/modifier/physical/low_metabolism/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
+/datum/trait/modifier/bad/low_metabolism/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
 	if(setup.is_FBP())
 		return "Full Body Prosthetics do not have a metabolism."
 	return ..()
 
-// 'Mental' traits are just those that only sapients can have, for now, and generally involves fears.
-// So far, all of them are just for fluff/don't have mechanical effects.
-/datum/trait/modifier/mental
-	category = "Mental"
-
-/datum/trait/modifier/mental/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
+/datum/trait/modifier/bad/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
 	if(setup.is_FBP())
 		if(setup.get_FBP_type() == PREF_FBP_SOFTWARE)
 			return "Drone Intelligences cannot feel emotions."
 	return ..()
 
-
-/datum/trait/modifier/mental/nyctophobe
+/datum/trait/modifier/bad/nyctophobe
 	name = "Nyctophobic"
 	desc = "More commonly known as the fear of darkness.  The shadows can hide many dangers, which makes the prospect of going into the depths of Maintenance rather worrisome."
 	modifier_type = /datum/modifier/trait/phobia/nyctophobe
+	trait_cost = -1
 
 
-/datum/trait/modifier/mental/haemophobe
+/datum/trait/modifier/bad/haemophobe
 	name = "Haemophobia"
 	desc = "Not to be confused with Haemophilia (which makes you bleed faster), Haemophobia is the fear of blood.  Seeing a bunch of blood isn't really \
 	pleasant for most people, but for you, it is very distressing."
 	modifier_type = /datum/modifier/trait/phobia/haemophobia
+	trait_cost = -1
 
 
-/datum/trait/modifier/mental/claustrophobe
+/datum/trait/modifier/bad/claustrophobe
 	name = "Claustrophobic"
 	desc = "Small spaces and tight quarters makes you feel distressed.  Unfortunately both are rather common when living in space."
 	modifier_type = /datum/modifier/trait/phobia/claustrophobe
+	trait_cost = -1
+
+/datum/trait/modifier/bad/stammering
+	name = "Stutterer"
+	modifier_type = /datum/modifier/trait/stammering
+	mutually_exclusive = list(/datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/lisping, /datum/trait/modifier/bad/autism)
+	trait_cost = -1
+
+/datum/trait/modifier/bad/burrieng
+	name = "Burry"
+	modifier_type = /datum/modifier/trait/burrieng
+	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/lisping, /datum/trait/modifier/bad/autism)
+	trait_cost = -1
+
+/datum/trait/modifier/bad/lisping
+	name = "Lisp"
+	modifier_type = /datum/modifier/trait/lisping
+	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/autism)
+	trait_cost = -1
+
+
+
+/// НЕЙТРАЛЬНЫЕ ТРЕЙТЫ
+
+/datum/trait/modifier/neutral/colorblind_protanopia
+	name = "Protanopia"
+	desc = "You have a form of red-green colorblindness. You cannot see reds, and have trouble distinguishing them from yellows and greens."
+	modifier_type = /datum/modifier/trait/colorblind_protanopia
+	mutually_exclusive = list(
+		/datum/trait/modifier/neutral/colorblind_deuteranopia,
+		/datum/trait/modifier/neutral/colorblind_tritanopia,
+		/datum/trait/modifier/neutral/colorblind_monochrome
+	)
+	trait_cost = 0 // neutral / cosmetic
+
+/datum/trait/modifier/neutral/colorblind_deuteranopia
+	name = "Deuteranopia"
+	desc = "You have a form of red-green colorblindness. You cannot see greens, and have trouble distinguishing them from yellows and reds."
+	modifier_type = /datum/modifier/trait/colorblind_deuteranopia
+	mutually_exclusive = list(
+		/datum/trait/modifier/neutral/colorblind_protanopia,
+		/datum/trait/modifier/neutral/colorblind_tritanopia,
+		/datum/trait/modifier/neutral/colorblind_monochrome
+	)
+	trait_cost = 0
+
+/datum/trait/modifier/neutral/colorblind_tritanopia
+	name = "Tritanopia"
+	desc = "You have a form of blue-yellow colorblindness. You have trouble distinguishing between blues, greens, and yellows, and see blues and violets as dim."
+	modifier_type = /datum/modifier/trait/colorblind_tritanopia
+	mutually_exclusive = list(
+		/datum/trait/modifier/neutral/colorblind_protanopia,
+		/datum/trait/modifier/neutral/colorblind_deuteranopia,
+		/datum/trait/modifier/neutral/colorblind_monochrome
+	)
+	trait_cost = 0
+
+/datum/trait/modifier/neutral/colorblind_monochrome
+	name = "Monochromacy"
+	desc = "You are fully colorblind. Your condition is rare, but you can see no colors at all."
+	modifier_type = /datum/modifier/trait/colorblind_monochrome
+	mutually_exclusive = list(
+		/datum/trait/modifier/neutral/colorblind_protanopia,
+		/datum/trait/modifier/neutral/colorblind_deuteranopia,
+		/datum/trait/modifier/neutral/colorblind_tritanopia
+	)
+	trait_cost = 0
+
+
+
+
+
 
 /*
 
@@ -178,20 +255,23 @@
 		return "Full Body Prosthetics are already partly or fully mechanical."
 	return ..()
 
-/datum/trait/modifier/mental/arachnophobe
+/datum/trait/modifier/bad/arachnophobe
 	name = "Arachnophobic"
 	desc = "Spiders are quite creepy to most people, however for you, those chitters of pure evil inspire pure dread and fear."
 	modifier_type = /datum/modifier/trait/phobia/arachnophobe
+	trait_cost = -1
 
-/datum/trait/modifier/mental/blennophobe
+/datum/trait/modifier/bad/blennophobe
 	name = "Blennophobia"
 	desc = "Metroid are quite dangerous, but just the aspect of something being metroidy is uncomfortable."
 	modifier_type = /datum/modifier/trait/phobia/blennophobe
+	trait_cost = -1
 
-/datum/trait/modifier/mental/trypanophobe
+/datum/trait/modifier/bad/trypanophobe
 	name = "Trypanophobia"
 	desc = "Syringes and needles make you very distressed. You really don't want to get sick..."
 	modifier_type = /datum/modifier/trait/phobia/trypanophobe
+	trait_cost = -1
 
 // Uncomment this when/if these get finished.
 /datum/trait/modifier/mental/synthphobe
@@ -249,18 +329,3 @@
 	desc = "Boilerplate racism for jellos goes here."
 	mutually_exclusive = list(/datum/trait/modifier/mental/xenophobe)
 */
-
-/datum/trait/modifier/physical/stammering
-	name = "Stutterer"
-	modifier_type = /datum/modifier/trait/stammering
-	mutually_exclusive = list(/datum/trait/modifier/physical/burrieng, /datum/trait/modifier/physical/lisping)
-
-/datum/trait/modifier/physical/burrieng
-	name = "Burry"
-	modifier_type = /datum/modifier/trait/burrieng
-	mutually_exclusive = list(/datum/trait/modifier/physical/stammering, /datum/trait/modifier/physical/lisping)
-
-/datum/trait/modifier/physical/lisping
-	name = "Lisp"
-	modifier_type = /datum/modifier/trait/lisping
-	mutually_exclusive = list(/datum/trait/modifier/physical/stammering, /datum/trait/modifier/physical/burrieng)

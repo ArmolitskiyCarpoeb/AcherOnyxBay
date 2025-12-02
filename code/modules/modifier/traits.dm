@@ -15,6 +15,40 @@
 /datum/modifier/trait
 	flags = MODIFIER_GENETIC	// We want traits to persist if the person gets cloned.
 
+/datum/modifier/trait/high_metabolism
+	name = "Быстрый метаболизм"
+	desc = "Обмен веществ в вашем организме быстрее, чем в среднем. Вы быстрее восстанавливаетесь после повреждений, но есть хочется больше"
+
+	metabolism_percent = 2.0
+	incoming_healing_percent = 1.4
+
+/datum/modifier/trait/radimmune
+	name = "Иммунитет к радиации"
+	desc = "Вы невосприимчивы к радиации."
+
+/datum/modifier/trait/holy
+	name = "Святой"
+	desc = "Вы невосприимчивы к культовой магии и злым духам."
+
+/datum/modifier/trait/magicimmune
+	name = "Иммунитет к магии"
+	desc = "Вы невосприимчивы к магии."
+
+/datum/modifier/trait/cold_resist
+	name = "Устойчивость к холоду"
+	desc = "Вы не чувствуете холода!"
+
+/datum/modifier/trait/cold_resist/on_applied()
+	holder.add_mutation(MUTATION_COLD_RESISTANCE)
+
+/datum/modifier/trait/cold_resist/on_expire()
+	holder.remove_mutation(MUTATION_COLD_RESISTANCE)
+
+/datum/modifier/trait/noslip
+	name = "No Slip"
+	desc = "You can't slip!"
+
+/// Плохие трейты, добавляют очки трейтов
 
 /datum/modifier/trait/flimsy
 	name = "flimsy"
@@ -25,6 +59,7 @@
 
 	max_health_percent = 0.8
 
+
 /datum/modifier/trait/frail
 	name = "frail"
 	desc = "Your body is very fragile, and has even less of an ability to endure harm."
@@ -33,6 +68,12 @@
 	on_expired_text = "<span class='notice'>You feel your strength returning to you.</span>"
 
 	max_health_percent = 0.6
+
+/datum/modifier/trait/goodhealth
+	name = "здоровый"
+	desc = "Ты всегда любил спорт и правильно питался. Ты крепче чем остальные"
+
+	max_health_percent = 1.1
 
 /datum/modifier/trait/weak
 	name = "weak"
@@ -60,12 +101,12 @@
 	accuracy = -15
 	accuracy_dispersion = 1
 
-/datum/modifier/trait/high_metabolism
-	name = "High Metabolsim"
-	desc = "Your body's metabolism is faster than average."
+/datum/modifier/trait/skilledmarksman
+	name = "Обучен стрельбе"
+	desc = "Раньше тебе доводилось использовать оружие. Ты знаешь как стрелять."
 
-	metabolism_percent = 2.0
-	incoming_healing_percent = 1.4
+	accuracy = 1
+	accuracy_dispersion = 0.8
 
 /datum/modifier/trait/low_metabolism
 	name = "Low Metabolism"
@@ -74,9 +115,38 @@
 	metabolism_percent = 0.5
 	incoming_healing_percent = 0.6
 
-/datum/modifier/trait/colorblind_protanopia
-	name = "Protanopia"
+/datum/modifier/trait/stammering
+	name = "Заика"
+	desc = "У вас нарушение речи: поток речи прерывается непроизвольными повторами и растягиванием звуков, слогов, слов или фраз, а также непроизвольными паузами, когда вы не можете произнести звук."
+
+	stammering = TRUE
+
+/datum/modifier/trait/burrieng
+	name = "Нечёткая речь"
+	desc = "У вас речевое нарушение — вы не выговариваете некоторые звуки."
+
+	burrieng = TRUE
+
+/datum/modifier/trait/lisping
+	name = "Шепелявость"
 	desc = "You have a form of red-green colorblindness. You cannot see reds, and have trouble distinguishing them from yellows and greens."
+
+	lisping = TRUE
+
+/datum/modifier/trait/autism
+	name = "аутизм"
+	desc = "ЫЫЫы-ыыы-х?"
+
+	metabolism_percent = 0.8
+	bleeding_rate_percent = 0.8
+	max_health_percent = 1.2
+
+	autism = TRUE
+
+// Нейтральное. Берётся без очков трейтов
+/datum/modifier/trait/colorblind_protanopia
+	name = "Deuteranopia"
+	desc = "You have a form of red-green colorblindness. You cannot see greens, and have trouble distinguishing them from yellows and reds."
 
 	client_color = MATRIX_Protanopia
 
@@ -110,57 +180,25 @@
 
 	client_color = MATRIX_Monochromia
 
-/datum/modifier/trait/stammering
-	name = "Stutterer"
-	desc = "Its a speech disorder in which the flow of speech is disrupted by involuntary repetitions and prolongations of sounds, syllables, words or phrases as well as involuntary silent pauses or blocks in which the person who stutters is unable to produce sounds."
-
-	stammering = TRUE
-
-/datum/modifier/trait/burrieng
-	name = "Burry"
-	desc = "You have a speech impediment - you do not pronounce some sounds."
-
-	burrieng = TRUE
-
-/datum/modifier/trait/lisping
-	name = "Lisp"
-	desc = "A lisp is a speech impediment in which a person misarticulates sibilants."
-
-	lisping = TRUE
-
 /datum/modifier/trait/vent_breaker
-	name = "Vent Breaker"
-	desc = "Allows to break welded vents."
+	name = "Ломатель вентиляции"
+	desc = "Позволяет ломать заваренные вентиляционные решётки."
 	var/ignore_size_restrictions = FALSE
 	hidden = TRUE
 
 //Responsible for processing the audibility of sounds depending on the volume of the headphones
 /datum/modifier/trait/headphones_volume
-	name = "Headphones Volume"
-	desc = "Changes the audibility depending on the volume of the music"
+	name = "Громкость наушников"
+	desc = "Меняет слышимость звуков в зависимости от громкости музыки."
 
 	var/volume_status = LOW_VOLUME
 
 /datum/modifier/trait/pacifism
-	name = "Pacifism"
-	desc = "You can't attack!"
+	name = "Пацифизм"
+	desc = "Вы не можете атаковать!"
 
 /datum/modifier/trait/pacifism/on_applied()
 	holder.a_intent_change(I_HELP)
-
-/datum/modifier/trait/cold_resist
-	name = "Cold Resistance"
-	desc = "You don't feel cold!"
-
-/datum/modifier/trait/cold_resist/on_applied()
-	holder.add_mutation(MUTATION_COLD_RESISTANCE)
-
-/datum/modifier/trait/cold_resist/on_expire()
-	holder.remove_mutation(MUTATION_COLD_RESISTANCE)
-
-/datum/modifier/trait/noslip
-	name = "No Slip"
-	desc = "You can't slip!"
 
 /datum/modifier/trait/toxinlover
 	incoming_tox_damage_percent = -0.2
@@ -169,10 +207,9 @@
 	incoming_fire_damage_percent = 0.2
 
 /datum/modifier/trait/blooddeficiency
-	name = "Blood Deficiency"
-	desc = "Your body can't produce enough blood to sustain itself."
+	name = "Нехватка крови"
+	desc = "Ваш организм не может вырабатывать достаточно крови, чтобы поддерживать себя."
 	var/min_blood = BLOOD_VOLUME_BAD // just barely survivable without treatment
-
 
 /datum/modifier/trait/blooddeficiency/on_applied()
 	if(!ishuman(holder))
@@ -201,15 +238,3 @@
 		return
 	// Ensures that we don't reduce total blood volume below min_blood.
 	carbon_target.remove_blood(1.525)
-
-/datum/modifier/trait/radimmune
-	name = "Radiation Immunity"
-	desc = "You're immune to radiation"
-
-/datum/modifier/trait/holy
-	name = "Holy"
-	desc = "You're immune to cult magic and evil spirits"
-
-/datum/modifier/trait/magicimmune
-	name = "Magic Immunity"
-	desc = "You're immune to magic"

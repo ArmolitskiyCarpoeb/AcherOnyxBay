@@ -49,6 +49,7 @@
 	var/stammering
 	var/burrieng
 	var/lisping
+	var/autism
 
 /datum/modifier/New(new_holder, new_origin)
 	holder = new_holder
