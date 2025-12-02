@@ -69,6 +69,11 @@
 	alt_titles = list("Hydroponicist")
 	outfit_type = /decl/hierarchy/outfit/job/service/gardener
 
+/datum/job/hydro/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		H.newgeneratestats(5,15,5,15,5,15,5,15)
+
 //Cargo
 /datum/job/qm
 	title = "Quartermaster"
@@ -78,7 +83,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the cardinal"
-	selection_color = "#857d17"
+	selection_color = "#5e4324"
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant)
 	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant)

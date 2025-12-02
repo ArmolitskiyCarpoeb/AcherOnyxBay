@@ -1,6 +1,6 @@
 /datum/job/captain
 	title = "Cardinal"
-	description = "Церковь дала тебе власть а корпорация эти стены. Твоя воля - закон. Наставляй на пусть истинный тех доходяг, который отправили с тобой в эту дыру, заставь их работать, искорени ересь среди них."
+	description = "Церковь дала тебе власть, а корпорация эти стены. Твоя воля - закон. Наставляй на пусть истинный тех доходяг, которых отправили с тобой в эту дыру, заставь их работать, искорени ересь среди них."
 	department = "Command"
 	head_position = 1
 	department_flag = COM
@@ -8,7 +8,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the church and the corporation"
-	selection_color = "#4f1d1d"
+	selection_color = "#4d0d0d"
 	req_admin_notify = 1
 	access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
@@ -25,6 +25,8 @@
 /datum/job/captain/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
+		var/obj/item/implant/death_alarm/D = new()
+		D.implant_in_mob(H, BP_HEAD)
 		H.newgeneratestats(12,20,5,15,5,15,12,20)
 		var/obj/machinery/nuclearbomb/nuke = locate(/obj/machinery/nuclearbomb/station) in world
 		if(nuke)

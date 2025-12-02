@@ -7,7 +7,7 @@
 	uniform = /obj/item/clothing/under/rank/qm
 	shoes = /obj/item/clothing/shoes/brown
 	glasses = /obj/item/clothing/glasses/sunglasses
-	l_hand = /obj/item/clipboard
+	l_hand = /obj/item/device/price_scanner
 	id_type = /obj/item/card/id/cargo/head
 	pda_type = /obj/item/device/pda/quartermaster
 

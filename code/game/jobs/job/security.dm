@@ -61,17 +61,24 @@
 
 /datum/job/officer
 	title = "Ordinator"
-	description = "Тебя прислали сюда помогать кардиналу и охранять станцию."
+	description = "Тебя прислали сюда помогать кардиналу и охранять станцию. Ты не герой, а рабочие не стоят того, чтобы рисковать своей жизнью."
 	department = "Security"
 	department_flag = SEC
 
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the cardinal"
-	selection_color = "#601c1c"
+	selection_color = "#552828"
 	//alt_titles = list("Junior Officer")
 	economic_modifier = 4
-	access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
+	access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_morgue, access_hydroponics, access_bar, access_kitchen, access_cargo, access_qm, access_mining, access_mining_station, access_external_airlocks)
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 0
 	outfit_type = /decl/hierarchy/outfit/job/security/officer
+
+/datum/job/officer/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		var/obj/item/implant/death_alarm/D = new()
+		D.implant_in_mob(H, BP_HEAD)
+		H.newgeneratestats(11,17,9,15,5,15,11,17)

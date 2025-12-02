@@ -3,10 +3,7 @@
 	set name = "Wiki"
 	set desc = "Visit the wiki."
 	set hidden = 1
-	if( config.link.wiki )
-		send_link(src, config.link.wiki)
-	else
-		to_chat(src, "<span class='warning'>The wiki URL is not set in the server configuration.</span>")
+	send_link(src, "https://wiki.ss13.ru/index.php?title=Guides")
 	return
 /*
 /client/verb/rules()
@@ -43,10 +40,7 @@
 	set name = "Discord"
 	set desc = "Visit the community Discord."
 	set hidden = 1
-	if( config.link.discord )
-		send_link(src, config.link.discord)
-	else
-		to_chat(src, "<span class='warning'>The Discord URL is not set in the server configuration.</span>")
+	send_link(src, "https://discord.gg/zVX9QRU8Cm")
 	return
 /*
 /client/verb/bugreport()
