@@ -6,7 +6,7 @@
 	item_state = "gewehr"
 	wielded_item_state = "gewehr-wielded"
 	w_class = ITEM_SIZE_HUGE
-	force = 15
+	force = 20
 	mod_weight = 1.6
 	mod_reach = 1.25
 	mod_handy = 1.0
