@@ -20,7 +20,6 @@
 	qdel(M)
 	return new_desc
 
-
 // Base groups for trait categories in the UI.
 /datum/trait/modifier/good
 	category = "Положительные" // positive traits, usually cost points
@@ -31,6 +30,41 @@
 /datum/trait/modifier/neutral
 	category = "Нейтральные" // neutral / flavour traits
 
+
+/// ХОРОШИЕ ТРЕЙТЫ
+
+/datum/trait/modifier/good/high_metabolism
+	name = "Быстрый метаболизм"
+	modifier_type = /datum/modifier/trait/high_metabolism
+	mutually_exclusive = list(/datum/trait/modifier/bad/low_metabolism)
+	trait_cost = 1 // positive: costs points
+
+/datum/trait/modifier/good/high_metabolism/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
+	if(setup.is_FBP())
+		return "Full Body Prosthetics do not have a metabolism."
+	return ..()
+
+/datum/trait/modifier/good/goodhealth
+	name = "В хорошей форме"
+	modifier_type = /datum/modifier/trait/goodhealth
+	mutually_exclusive = list(/datum/trait/modifier/bad/low_metabolism)
+	trait_cost = 2 // positive: costs points
+
+/datum/trait/modifier/good/skilledmarksman
+	name = "Умелый стрелок"
+	modifier_type = /datum/modifier/trait/skilledmarksman
+	mutually_exclusive = list(/datum/trait/modifier/bad/inaccurate)
+	trait_cost = 3 // positive: costs points
+
+/// ПЛОХИЕ ТРЕЙТЫ
+/datum/trait/modifier/bad/autism //ДОБАВИТЬ ИСКЛЮЧЕНИЕ ТРЕЙТОВ НА ЗДОРОВЬЕ И МЕТАБОЛИЗМ
+	name = "Autism"
+	desc = "Тебя часто роняли головой. Удачи!"
+	modifier_type = /datum/modifier/trait/autism
+	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/lisping,
+						/datum/trait/modifier/bad/frail,/datum/trait/modifier/bad/flimsy,/datum/modifier/trait/haemophilia,/datum/trait/modifier/bad/weak,/datum/trait/modifier/bad/weak,
+						/datum/trait/modifier/good/high_metabolism, /datum/trait/modifier/bad/low_metabolism)
+	trait_cost = -4 // mild negative: grants 1 point
 
 /datum/trait/modifier/bad/flimsy
 	name = "Flimsy"
@@ -46,7 +80,6 @@
 	mutually_exclusive = list(/datum/trait/modifier/bad/flimsy)
 	trait_cost = -2 // stronger negative: grants 2 points
 
-
 /datum/trait/modifier/bad/haemophilia
 	name = "Haemophilia"
 	desc = "Some say that when it rains, it pours.  Unfortunately, this is also true for yourself if you get cut."
@@ -59,14 +92,12 @@
 	// If a species lacking blood is added, it is suggested to add a check for them here.
 	return ..()
 
-
 /datum/trait/modifier/bad/weak
 	name = "Weak"
 	desc = "A lack of physical strength causes a diminshed capability in close quarters combat."
 	modifier_type = /datum/modifier/trait/weak
 	mutually_exclusive = list(/datum/trait/modifier/bad/wimpy)
 	trait_cost = -1
-
 
 /datum/trait/modifier/bad/wimpy
 	name = "Wimpy"
@@ -75,13 +106,73 @@
 	mutually_exclusive = list(/datum/trait/modifier/bad/weak)
 	trait_cost = -2
 
-
 /datum/trait/modifier/bad/inaccurate
 	name = "Inaccurate"
 	desc = "You're rather inexperienced with guns, you've never used one in your life, or you're just really rusty.  \
 	Regardless, you find it quite difficult to land shots where you wanted them to go."
 	modifier_type = /datum/modifier/trait/inaccurate
+	mutually_exclusive = list(/datum/trait/modifier/good/skilledmarksman)
 	trait_cost = -1
+
+/datum/trait/modifier/bad/low_metabolism
+	name = "Low Metabolism"
+	modifier_type = /datum/modifier/trait/low_metabolism
+	mutually_exclusive = list(/datum/trait/modifier/good/high_metabolism)
+	trait_cost = -1
+
+/datum/trait/modifier/bad/low_metabolism/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
+	if(setup.is_FBP())
+		return "Full Body Prosthetics do not have a metabolism."
+	return ..()
+
+/datum/trait/modifier/bad/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
+	if(setup.is_FBP())
+		if(setup.get_FBP_type() == PREF_FBP_SOFTWARE)
+			return "Drone Intelligences cannot feel emotions."
+	return ..()
+
+/datum/trait/modifier/bad/nyctophobe
+	name = "Nyctophobic"
+	desc = "More commonly known as the fear of darkness.  The shadows can hide many dangers, which makes the prospect of going into the depths of Maintenance rather worrisome."
+	modifier_type = /datum/modifier/trait/phobia/nyctophobe
+	trait_cost = -1
+
+
+/datum/trait/modifier/bad/haemophobe
+	name = "Haemophobia"
+	desc = "Not to be confused with Haemophilia (which makes you bleed faster), Haemophobia is the fear of blood.  Seeing a bunch of blood isn't really \
+	pleasant for most people, but for you, it is very distressing."
+	modifier_type = /datum/modifier/trait/phobia/haemophobia
+	trait_cost = -1
+
+
+/datum/trait/modifier/bad/claustrophobe
+	name = "Claustrophobic"
+	desc = "Small spaces and tight quarters makes you feel distressed.  Unfortunately both are rather common when living in space."
+	modifier_type = /datum/modifier/trait/phobia/claustrophobe
+	trait_cost = -1
+
+/datum/trait/modifier/bad/stammering
+	name = "Stutterer"
+	modifier_type = /datum/modifier/trait/stammering
+	mutually_exclusive = list(/datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/lisping, /datum/trait/modifier/bad/autism)
+	trait_cost = -1
+
+/datum/trait/modifier/bad/burrieng
+	name = "Burry"
+	modifier_type = /datum/modifier/trait/burrieng
+	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/lisping, /datum/trait/modifier/bad/autism)
+	trait_cost = -1
+
+/datum/trait/modifier/bad/lisping
+	name = "Lisp"
+	modifier_type = /datum/modifier/trait/lisping
+	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/autism)
+	trait_cost = -1
+
+
+
+/// НЕЙТРАЛЬНЫЕ ТРЕЙТЫ
 
 /datum/trait/modifier/neutral/colorblind_protanopia
 	name = "Protanopia"
@@ -127,59 +218,10 @@
 	)
 	trait_cost = 0
 
-// These two traits might be borderline, feel free to remove if they get abused.
-/datum/trait/modifier/good/high_metabolism
-	name = "High Metabolism"
-	modifier_type = /datum/modifier/trait/high_metabolism
-	mutually_exclusive = list(/datum/trait/modifier/bad/low_metabolism)
-	trait_cost = 1 // positive: costs points
-
-/datum/trait/modifier/good/high_metabolism/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
-		return "Full Body Prosthetics do not have a metabolism."
-	return ..()
-
-
-/datum/trait/modifier/bad/low_metabolism
-	name = "Low Metabolism"
-	modifier_type = /datum/modifier/trait/low_metabolism
-	mutually_exclusive = list(/datum/trait/modifier/good/high_metabolism)
-	trait_cost = -1
-
-/datum/trait/modifier/bad/low_metabolism/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
-		return "Full Body Prosthetics do not have a metabolism."
-	return ..()
 
 
 
-/datum/trait/modifier/mental/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
-		if(setup.get_FBP_type() == PREF_FBP_SOFTWARE)
-			return "Drone Intelligences cannot feel emotions."
-	return ..()
 
-
-/datum/trait/modifier/bad/nyctophobe
-	name = "Nyctophobic"
-	desc = "More commonly known as the fear of darkness.  The shadows can hide many dangers, which makes the prospect of going into the depths of Maintenance rather worrisome."
-	modifier_type = /datum/modifier/trait/phobia/nyctophobe
-	trait_cost = -1
-
-
-/datum/trait/modifier/bad/haemophobe
-	name = "Haemophobia"
-	desc = "Not to be confused with Haemophilia (which makes you bleed faster), Haemophobia is the fear of blood.  Seeing a bunch of blood isn't really \
-	pleasant for most people, but for you, it is very distressing."
-	modifier_type = /datum/modifier/trait/phobia/haemophobia
-	trait_cost = -1
-
-
-/datum/trait/modifier/bad/claustrophobe
-	name = "Claustrophobic"
-	desc = "Small spaces and tight quarters makes you feel distressed.  Unfortunately both are rather common when living in space."
-	modifier_type = /datum/modifier/trait/phobia/claustrophobe
-	trait_cost = -1
 
 /*
 
@@ -287,21 +329,3 @@
 	desc = "Boilerplate racism for jellos goes here."
 	mutually_exclusive = list(/datum/trait/modifier/mental/xenophobe)
 */
-
-/datum/trait/modifier/bad/stammering
-	name = "Stutterer"
-	modifier_type = /datum/modifier/trait/stammering
-	mutually_exclusive = list(/datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/lisping)
-	trait_cost = -1
-
-/datum/trait/modifier/bad/burrieng
-	name = "Burry"
-	modifier_type = /datum/modifier/trait/burrieng
-	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/lisping)
-	trait_cost = -1
-
-/datum/trait/modifier/bad/lisping
-	name = "Lisp"
-	modifier_type = /datum/modifier/trait/lisping
-	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/burrieng)
-	trait_cost = -1

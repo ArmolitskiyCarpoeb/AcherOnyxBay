@@ -11,29 +11,9 @@
 #define MATRIX_Vulp_Colorblind  list(0.50,	0.40,	0.10,	0.50,	0.40,	0.10,	0,		0.20,	0.80)
 #define MATRIX_Taj_Colorblind   list(0.40,	0.20,	0.40,	0.40,	0.60,	0,		0.20,	0.20,	0.60)
 
-// /datum/category_item/player_setup_item/traits/OnTopic(href, href_list, user)
-// 	if(href_list["toggle_trait"])
-// 		var/datum/trait/T = trait_datums[href_list["toggle_trait"]]
-// 		if(T.name in pref.traits)
-// 			pref.traits -= T.name
-// 		else
-// 			var/invalidity = T.test_for_invalidity(src)
-// 			if(invalidity)
-// 				var/conflicts = T.test_for_trait_conflict(pref.traits)
-// 			if(conflicts)
-//               // Новое: проверяем очки
-// 				var/current_points = get_current_trait_points()
-// 				var/new_points = current_points + T.trait_cost
-// 			if(new_points > TRAIT_POINTS_MAX)
-// 			to_chat(user, SPAN("warning", "Вы не можете взять трейт [T.name]: недостаточно очков трейтов. (Текущие: [current_points], нужно: [T.trait_cost])"))
-// 				return TOPIC_NOACTION
-// 		pref.traits += T.name
-// 	return TOPIC_REFRESH_UPDATE_PREVIEW
 
 /datum/modifier/trait
 	flags = MODIFIER_GENETIC	// We want traits to persist if the person gets cloned.
-
-/// Хорошие трейт, занимают очки трейтов
 
 /datum/modifier/trait/high_metabolism
 	name = "Быстрый метаболизм"
@@ -71,52 +51,66 @@
 /// Плохие трейты, добавляют очки трейтов
 
 /datum/modifier/trait/flimsy
-	name = "Хрупкий"
-	desc = "Вы более хрупки, чем большинство, и хуже переносите повреждения."
+	name = "flimsy"
+	desc = "You're more fragile than most, and have less of an ability to endure harm."
 
 	on_created_text = "<span class='warning'>You feel rather weak.</span>"
 	on_expired_text = "<span class='notice'>You feel your strength returning to you.</span>"
 
 	max_health_percent = 0.8
 
+
 /datum/modifier/trait/frail
-	name = "Чахлый"
-	desc = "Ваше тело очень хрупкое и очень плохо переносит повреждения."
+	name = "frail"
+	desc = "Your body is very fragile, and has even less of an ability to endure harm."
 
 	on_created_text = "<span class='warning'>You feel really weak.</span>"
 	on_expired_text = "<span class='notice'>You feel your strength returning to you.</span>"
 
 	max_health_percent = 0.6
 
+/datum/modifier/trait/goodhealth
+	name = "здоровый"
+	desc = "Ты всегда любил спорт и правильно питался. Ты крепче чем остальные"
+
+	max_health_percent = 1.1
+
 /datum/modifier/trait/weak
-	name = "Слабый"
-	desc = "Недостаток физической силы снижает вашу эффективность в ближнем бою."
+	name = "weak"
+	desc = "A lack of physical strength causes a diminshed capability in close quarters combat"
 
 	outgoing_melee_damage_percent = 0.8
 
 /datum/modifier/trait/wimpy
-	name = "Очень слабый"
-	desc = "Крайний недостаток физической силы сильно снижает вашу эффективность в ближнем бою."
+	name = "wimpy"
+	desc = "An extreme lack of physical strength causes greatly diminished capability in close quarters combat."
 
 	outgoing_melee_damage_percent = 0.6
 
 /datum/modifier/trait/haemophilia
-	name = "Гемофилия"
-	desc = "Вы кровоточите намного быстрее обычного ."
+	name = "haemophilia"
+	desc = "You bleed much faster than average."
 
 	bleeding_rate_percent = 3.0
 
 /datum/modifier/trait/inaccurate
-	name = "Плохой стрелок"
-	desc = "Вы мало обращались с огнестрельным оружием или давно не практиковались. Вам сложно попадать туда, куда вы целитесь."
+	name = "Inaccurate"
+	desc = "You're rather inexperienced with guns, you've never used one in your life, or you're just really rusty.  \
+	Regardless, you find it quite difficult to land shots where you wanted them to go."
 
 	accuracy = -15
 	accuracy_dispersion = 1
 
+/datum/modifier/trait/skilledmarksman
+	name = "Обучен стрельбе"
+	desc = "Раньше тебе доводилось использовать оружие. Ты знаешь как стрелять."
+
+	accuracy = 1
+	accuracy_dispersion = 0.8
 
 /datum/modifier/trait/low_metabolism
-	name = "Низкий метаболизм"
-	desc = "Обмен веществ в вашем организме медленнее, чем в среднем. Вы медленнее восстанавливаетесь после повреждений, но есть хочется меньше."
+	name = "Low Metabolism"
+	desc = "Your body's metabolism is slower than average."
 
 	metabolism_percent = 0.5
 	incoming_healing_percent = 0.6
@@ -135,46 +129,56 @@
 
 /datum/modifier/trait/lisping
 	name = "Шепелявость"
-	desc = "У вас шепелявость — вы неправильно произносите свистящие и шипящие звуки."
+	desc = "You have a form of red-green colorblindness. You cannot see reds, and have trouble distinguishing them from yellows and greens."
+
+	lisping = TRUE
+
+/datum/modifier/trait/autism
+	name = "аутизм"
+	desc = "ЫЫЫы-ыыы-х?"
+
+	metabolism_percent = 0.8
+	bleeding_rate_percent = 0.8
+	max_health_percent = 1.2
+
+	autism = TRUE
 
 // Нейтральное. Берётся без очков трейтов
 /datum/modifier/trait/colorblind_protanopia
-	name = "Протанопия"
-	desc = "У вас форма красно-зелёной дальтонизма: вы не различаете красный цвет и плохо отличаете его от жёлтого и зелёного."
+	name = "Deuteranopia"
+	desc = "You have a form of red-green colorblindness. You cannot see greens, and have trouble distinguishing them from yellows and reds."
 
 	client_color = MATRIX_Protanopia
 
 /datum/modifier/trait/colorblind_deuteranopia
-	name = "Дейтеранопия"
-	desc = "У вас форма красно-зелёной дальтонизма: вы не различаете зелёный цвет и плохо отличаете его от жёлтого и красного."
+	name = "Deuteranopia"
+	desc = "You have a form of red-green colorblindness. You cannot see greens, and have trouble distinguishing them from yellows and reds."
 
 	client_color = MATRIX_Deuteranopia
 
 /datum/modifier/trait/colorblind_tritanopia
-	name = "Тританопия"
-	desc = "У вас форма сине-жёлтой дальтонизма: вы с трудом различаете синий, зелёный и жёлтый, а синий и фиолетовый кажутся тусклыми."
+	name = "Tritanopia"
+	desc = "You have a form of blue-yellow colorblindness. You have trouble distinguishing between blues, greens, and yellows, and see blues and violets as dim."
 
 	client_color = MATRIX_Tritanopia
 
 /datum/modifier/trait/colorblind_taj
-	name = "Дальтонизм — синий-красный"
-	desc = "У вас дальтонизм: вы немного хуже различаете синий цвет и вам сложно отличать его от красного."
+	name = "Colorblind - Blue-red"
+	desc = "You are colorblind. You have a minor issue with blue colors and have difficulty recognizing them from red colors."
 
 	client_color = MATRIX_Taj_Colorblind
 
 /datum/modifier/trait/colorblind_vulp
-	name = "Дальтонизм — красный-зелёный"
-	desc = "У вас дальтонизм: вы сильно хуже различаете зелёный цвет и вам сложно отличать его от красного."
+	name = "Colorblind - Red-green"
+	desc = "You are colorblind. You have a severe issue with green colors and have difficulty recognizing them from red colors."
 
 	client_color = MATRIX_Vulp_Colorblind
 
 /datum/modifier/trait/colorblind_monochrome
-	name = "Монохромазия"
-	desc = "Вы полностью цвето盲ны: при этом редком состоянии вы вовсе не видите цветов."
+	name = "Monochromacy"
+	desc = "You are fully colorblind. Your condition is rare, but you can see no colors at all."
 
 	client_color = MATRIX_Monochromia
-
-	lisping = TRUE
 
 /datum/modifier/trait/vent_breaker
 	name = "Ломатель вентиляции"
