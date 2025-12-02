@@ -14,7 +14,7 @@
 	smoketime = 120
 	brand = "\improper Trans-Stellar Duty-free"
 	hitsound = 'sound/items/pffsh.ogg'
-	var/list/filling = list(/datum/reagent/tobacco = 3) // That's approx. the real volume of tobacco in a single cigarette, love it or hate it.
+	var/list/filling = list(/datum/reagent/tobacco/bad = 2) // That's approx. the real volume of tobacco in a single cigarette, love it or hate it.
 	var/ember_state = "cigember"
 	var/dynamic_icon = TRUE
 

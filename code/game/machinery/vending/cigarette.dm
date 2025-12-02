@@ -47,26 +47,7 @@
 		/obj/item/storage/fancy/cigarettes/cigarello/mint = 2,
 		/obj/item/storage/fancy/cigarettes/cigarello/variety = 2,
 		/obj/item/storage/box/matches = 10,
-		/obj/item/flame/lighter/random = 5,
-		/obj/item/storage/fancy/rollingpapers = 5,
-		/obj/item/storage/fancy/rollingpapers/good = 3,
-		/obj/item/storage/tobaccopack/generic = 2,
-		/obj/item/storage/tobaccopack/menthol = 2,
-		/obj/item/storage/tobaccopack/cherry = 2,
-		/obj/item/storage/tobaccopack/chocolate = 2,
-		/obj/item/clothing/mask/smokable/ecig/simple = 10,
-		/obj/item/clothing/mask/smokable/ecig/util = 5,
-		/obj/item/clothing/mask/smokable/ecig/deluxe = 1,
-		/obj/item/reagent_containers/ecig_cartridge/med_nicotine = 10,
-		/obj/item/reagent_containers/ecig_cartridge/high_nicotine = 5,
-		/obj/item/reagent_containers/ecig_cartridge/orange = 5,
-		/obj/item/reagent_containers/ecig_cartridge/mint = 5,
-		/obj/item/reagent_containers/ecig_cartridge/watermelon = 5,
-		/obj/item/reagent_containers/ecig_cartridge/grape = 5,
-		/obj/item/reagent_containers/ecig_cartridge/lemonlime = 5,
-		/obj/item/reagent_containers/ecig_cartridge/coffee = 5,
-		/obj/item/reagent_containers/ecig_cartridge/blanknico = 2,
-		/obj/item/clothing/mask/smokable/ecig/disposable = 15
+		/obj/item/flame/lighter/random = 5
 		)
 
 	illegal = list(
@@ -83,36 +64,17 @@
 		)
 
 	prices = list(
-		/obj/item/storage/fancy/cigarettes = 45,
-		/obj/item/storage/fancy/cigarettes/luckystars = 50,
-		/obj/item/storage/fancy/cigarettes/jerichos = 65,
-		/obj/item/storage/fancy/cigarettes/menthols = 55,
-		/obj/item/storage/fancy/cigarettes/carcinomas = 65,
-		/obj/item/storage/fancy/cigarettes/professionals = 70,
-		/obj/item/storage/fancy/cigarettes/cigarello = 85,
-		/obj/item/storage/fancy/cigarettes/cigarello/mint = 85,
-		/obj/item/storage/fancy/cigarettes/cigarello/variety = 85,
-		/obj/item/storage/box/matches = 3,
-		/obj/item/flame/lighter/random = 10,
-		/obj/item/storage/fancy/rollingpapers = 20,
-		/obj/item/storage/fancy/rollingpapers/good = 35,
-		/obj/item/storage/tobaccopack/generic = 35,
-		/obj/item/storage/tobaccopack/menthol = 40,
-		/obj/item/storage/tobaccopack/cherry = 50,
-		/obj/item/storage/tobaccopack/chocolate = 50,
-		/obj/item/clothing/mask/smokable/ecig/simple = 50,
-		/obj/item/clothing/mask/smokable/ecig/util = 100,
-		/obj/item/clothing/mask/smokable/ecig/deluxe = 250,
-		/obj/item/reagent_containers/ecig_cartridge/med_nicotine = 15,
-		/obj/item/reagent_containers/ecig_cartridge/high_nicotine = 15,
-		/obj/item/reagent_containers/ecig_cartridge/orange = 15,
-		/obj/item/reagent_containers/ecig_cartridge/mint = 15,
-		/obj/item/reagent_containers/ecig_cartridge/watermelon = 15,
-		/obj/item/reagent_containers/ecig_cartridge/grape = 15,
-		/obj/item/reagent_containers/ecig_cartridge/lemonlime = 15,
-		/obj/item/reagent_containers/ecig_cartridge/coffee = 15,
-		/obj/item/reagent_containers/ecig_cartridge/blanknico = 15,
-		/obj/item/clothing/mask/smokable/ecig/disposable = 25
+		/obj/item/storage/fancy/cigarettes = 199,
+		/obj/item/storage/fancy/cigarettes/luckystars = 230,
+		/obj/item/storage/fancy/cigarettes/jerichos = 249,
+		/obj/item/storage/fancy/cigarettes/menthols = 256,
+		/obj/item/storage/fancy/cigarettes/carcinomas = 399,
+		/obj/item/storage/fancy/cigarettes/professionals = 425,
+		/obj/item/storage/fancy/cigarettes/cigarello = 450,
+		/obj/item/storage/fancy/cigarettes/cigarello/mint = 450,
+		/obj/item/storage/fancy/cigarettes/cigarello/variety = 450,
+		/obj/item/storage/box/matches = 10,
+		/obj/item/flame/lighter/random = 50
 		)
 
 /obj/item/vending_cartridge/cigarette
