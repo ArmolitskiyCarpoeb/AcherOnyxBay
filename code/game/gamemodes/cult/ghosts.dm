@@ -4,15 +4,15 @@
 	if(max_cult_rating >= CULT_GHOSTS_1)
 		M.verbs += /mob/observer/ghost/proc/flick_lights
 		M.verbs += /mob/observer/ghost/proc/bloody_doodle
-		M.verbs += /mob/observer/ghost/proc/shatter_glass
-		M.verbs += /mob/observer/ghost/proc/slice
+		M.verbs += /mob/observer/ghost/proc/bite_someone
+		M.verbs += /mob/observer/ghost/proc/chill_someone
+		M.verbs += /mob/observer/ghost/proc/whisper_to_anyone
+		M.verbs += /mob/observer/ghost/proc/move_item
 		if(max_cult_rating >= CULT_GHOSTS_2)
-			M.verbs += /mob/observer/ghost/proc/move_item
-			M.verbs += /mob/observer/ghost/proc/whisper_to_cultist
-			M.verbs += /mob/observer/ghost/proc/bite_someone
-			M.verbs += /mob/observer/ghost/proc/chill_someone
+			M.verbs += /mob/observer/ghost/proc/bloodless_doodle
 			if(max_cult_rating >= CULT_GHOSTS_3)
-				M.verbs += /mob/observer/ghost/proc/whisper_to_anyone
+				M.verbs += /mob/observer/ghost/proc/shatter_glass
+				M.verbs += /mob/observer/ghost/proc/slice
 				M.verbs += /mob/observer/ghost/proc/bloodless_doodle
 				M.verbs += /mob/observer/ghost/proc/toggle_visiblity
 
@@ -164,12 +164,12 @@
 
 	ghost_magic_cd = world.time + 60 SECONDS
 
-/mob/observer/ghost/proc/whisper_to_cultist()
-	set category = "Cult"
-	set name = "Whisper to cultist"
-	set desc = "Whisper to a human of your choice. They won't understand you unless they're a cultist though."
+// /mob/observer/ghost/proc/whisper_to_cultist()
+// 	set category = "Cult"
+// 	set name = "Whisper to cultist"
+// 	set desc = "Whisper to a human of your choice. They won't understand you unless they're a cultist though."
 
-	whisper_proc()
+// 	whisper_proc()
 
 /mob/observer/ghost/proc/whisper_proc(anyone = 0)
 	if(!ghost_ability_check())
@@ -197,7 +197,7 @@
 			log_and_message_admins("used ghost magic to say '[message]' to \the [choice] but wasn't heard - [x]-[y]-[z]")
 		to_chat(src, "You whisper to \the [choice]. Perhaps they heard you.")
 
-	ghost_magic_cd = world.time + 100 SECONDS
+	ghost_magic_cd = world.time + 120 SECONDS
 
 /mob/observer/ghost/proc/bite_someone()
 	set category = "Cult"
@@ -221,6 +221,7 @@
 	var/method = pick("bit", "scratched")
 	to_chat(choice, "<span class='danger'>Something invisible [method] you!</span>")
 	choice.apply_effect(5, PAIN, 0)
+	choice.apply_damage(rand(1,5), BRUTE)
 	to_chat(src, "<span class='notice'>You [method] \the [choice].</span>")
 
 	log_and_message_admins("used ghost magic to bite \the [choice] - [x]-[y]-[z]")
