@@ -9,7 +9,7 @@ traitor_scaling = true
 disable_objectives = "none"
 
 ## Make ERT's be only called by admins
-ert_admin_only = false
+ert_admin_only = true
 
 ## If security is prohibited from being most antagonists
 protect_roles_from_antagonist = false

@@ -3,7 +3,7 @@
 enable = true
 
 ## When true, all players see the same tip; when false, each player gets a random individual tip each time they join/reconnect
-one_tip_for_everyone = true
+one_tip_for_everyone = false
 
 ## Array of tip messages to display
 tips = [

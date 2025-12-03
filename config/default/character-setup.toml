@@ -15,4 +15,4 @@ extra_loadout_points = 11
 humans_need_surnames = true
 
 ## Uncomment to allow metadata like OOC notes for players.
-allow_metadata = true
+allow_metadata = false

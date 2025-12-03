@@ -6,13 +6,13 @@ allow_vote_restart = true
 allow_vote_mode = true
 
 ## If true, votes can be called to add extra antags to the round.
-allow_extra_antags = false
+allow_extra_antags = true
 
 ## Min delay (deciseconds) between voting sessions (default 10 minutes).
 delay = 6000
 
 ## Time period (deciseconds) which voting session will last (default 1 minute).
-period = 600
+period = 720
 
 ## Autovote initial delay (deciseconds) before first automatic transfer vote call (default 180 minutes).
 autotransfer_initial = 108000

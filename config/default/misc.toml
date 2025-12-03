@@ -30,7 +30,7 @@ respawn_delay = 5
 starlight = 0
 
 ## Disconnect players who did nothing during the set amount of minutes.
-kick_inactive = 25
+kick_inactive = 40
 
 ## Determines... maximum amount of walking mushrooms.
 maximum_mushrooms = 15

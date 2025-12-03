@@ -41,7 +41,7 @@ ticklag = 0.33333333333333333333
 
 ## Defines the fps for the players with 0 in preferences. -1 for synced with server fps.
 ## 65 recommended.
-client_fps = 65
+client_fps = 60
 
 ## Defines the world fps.
 fps = 20
