@@ -269,7 +269,7 @@ english_only - whether to use traditional english letters only (for use in NanoU
 
 	// Обрабатываем последнее слово, если оно есть
 	if(length_char(current_word) > 0)
-		if(prob(75))
+		if(prob(15)) //тут тот же проб, но на последнее слово(первое если слово ОДНО)
 			new_phrase += pick(autisticphrase)
 		else
 			new_phrase += slightly_break_word(current_word)
@@ -296,7 +296,7 @@ english_only - whether to use traditional english letters only (for use in NanoU
 	var/length = length_char(word)
 
 	// Для очень коротких слов оставляем как есть
-	if(length <= 2)
+	if(length <= 4)
 		return word
 
 	// Выбираем случайный тип небольшой "поломки"
