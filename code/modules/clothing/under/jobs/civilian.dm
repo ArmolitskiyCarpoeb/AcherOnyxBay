@@ -306,3 +306,11 @@
 	desc = "It's not very colourful."
 	icon_state = "mime" //TODO: Draw a normal sprite, since the current one smells legacy-like, and only then add skirt and dress versions.
 	item_state = "mime"
+
+/obj/item/clothing/under/rank/workman
+	name = "workman's jumpsuit"
+	desc = "It's a gray jumpsuit for a \"Workman\"."
+	icon_state = "workman"
+	item_state = "workman"
+	rolled_down = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
+	rolled_sleeves = 0 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
