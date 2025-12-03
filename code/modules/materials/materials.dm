@@ -97,7 +97,7 @@ var/list/name_to_material
 	var/melting_point = 1800     // K, walls will take damage if they're next to a fire hotter than this
 	var/brute_armor = 2	 		 // Brute damage to a wall is divided by this value if the wall is reinforced by this material.
 	var/burn_armor				 // Same as above, but for Burn damage type. If blank brute_armor's value is used.
-	var/integrity = 150          // General-use HP value for products.
+	var/integrity = 200          // General-use HP value for products.
 	var/opacity = 1              // Is the material transparent? 0.5< makes transparent walls/doors.
 	var/explosion_resistance = 5 // Only used by walls currently.
 	var/conductive = 1           // Objects with this var add CONDUCTS to flags on spawn.
@@ -383,9 +383,9 @@ var/list/name_to_material
 /material/steel
 	name = MATERIAL_STEEL
 	stack_type = /obj/item/stack/material/steel
-	hardness = 60
-	integrity = 200
-	brute_armor = 5
+	hardness = 65
+	integrity = 275
+	brute_armor = 7
 	icon_base = "solid"
 	icon_reinf = "reinf_over"
 	icon_colour = "#666666"

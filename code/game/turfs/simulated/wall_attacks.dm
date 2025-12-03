@@ -377,7 +377,7 @@
 		user.setClickCooldown(W.update_attack_cooldown())
 		user.do_attack_animation(src)
 		var/dam_prob = min(100, material.hardness*1.5)
-		if(dam_prob < 100 && W.force > (dam_threshhold/10))
+		if(dam_prob < 100 && W.force > (dam_threshhold/8))
 			visible_message(SPAN("danger","\The [user] attacks \the [src] with \the [W]!"))
 			playsound(src, 'sound/effects/metalhit2.ogg', rand(50,75), 1, -1)
 			take_damage(W.force)
