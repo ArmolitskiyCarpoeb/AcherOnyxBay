@@ -6,10 +6,10 @@
 	slot_flags = SLOT_BELT
 	w_class = ITEM_SIZE_HUGE
 	mod_weight = 1.75
-	mod_reach = 1.8
+	mod_reach = 1.75
 	mod_handy = 1.5
-	armor_penetration = 50
-	force_const = 25
+	armor_penetration = 40
+	force_const = 20
 	thrown_force_const = 5
 	force_divisor = 0.4 // 24 when wielded with hardnes 60 (steel)
 	thrown_force_divisor = 0.3 // 6 when thrown with weight 20 (steel)
