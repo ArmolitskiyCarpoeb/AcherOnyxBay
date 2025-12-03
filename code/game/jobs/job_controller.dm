@@ -499,10 +499,10 @@ var/global/datum/controller/occupations/job_master
 				W.add_fingerprint(H)
 
 		//to_chat(H, "<B>Вот те на, ты [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>")
-		to_chat(H, "<B>Вот те на, ты [alt_title ? alt_title : rank].</B>")
+		to_chat(H, "<B>Вот те на, ты же [alt_title ? alt_title : rank].</B>")
 
 		to_chat(H, "<b>Очередная смена на этой проклятой шахте.</b>")
-
+/*
 		if(rank == "Cardinal")
 			to_chat(H, "<b>У тебя имеется возможность диктовать свои законы, если они не противоречат Церкви и Корпорации. Ты можешь разрешить всем владеть оружием или запретить свободу слова.</b>")
 
@@ -517,7 +517,7 @@ var/global/datum/controller/occupations/job_master
 
 		if(rank == "Workman")
 			to_chat(H, "<b>Ты - работник самого низкого класса. Тебя легко заменить и тебе никто ничем не обязан.</b>")
-
+*/
 		if(job.supervisors)
 			to_chat(H, "<b>Как [alt_title ? alt_title : rank] ты отвечаешь перед [job.supervisors]. Но это может поменяться.</b>")
 
