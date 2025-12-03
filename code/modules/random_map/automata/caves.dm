@@ -109,7 +109,7 @@
 	var/count_cosmopterid = 0
 	var/count_shockzard = 0
 	var/count_alpha_goliath = 0
-	var/count_beholder = 0
+	var/count_krivax = 0
 	var/mobs_count = 0
 	for (var/thing in block(locate(origin_x, origin_y, origin_z), locate(limit_x, limit_y, origin_z)))
 		var/turf/T = thing
@@ -131,24 +131,24 @@
 			if(MONSTER_CHAR)
 				new_path = floor_type
 				var/chance = rand(100)
-				if(chance <= 60)
+				if(chance <= 50)
 					new /mob/living/simple_animal/hostile/asteroid/sand_lurker(T)
 					count_cosmopterid++
-				else if(chance <= 78 && chance > 60)
+				else if(chance <= 68 && chance > 50)
 					new /mob/living/simple_animal/hostile/asteroid/hoverhead(T)
 					count_hoverhead++
-				else if(chance <= 88 && chance > 78)
+				else if(chance <= 78 && chance > 68)
 					new /mob/living/simple_animal/hostile/asteroid/goliath(T)
 					count_goliath++
-				else if(chance <= 96 && chance > 88)
+				else if(chance <= 86 && chance > 78)
 					new /mob/living/simple_animal/hostile/asteroid/shooter(T)
 					count_shockzard++
-				else if(chance <= 98 && chance > 96)
+				else if(chance <= 90 && chance > 86)
 					new /mob/living/simple_animal/hostile/asteroid/goliath/alpha(T)
 					count_alpha_goliath++
-				else if(chance > 98)
-					new /mob/living/simple_animal/hostile/asteroid/shooter/beholder(T)
-					count_beholder++
+				else if(chance > 90)
+					new /mob/living/simple_animal/hostile/krivax(T)
+					count_krivax++
 				mobs_count++
 			if(CAVE_BIG_ROCK_CHAR)
 				new_path = floor_type
@@ -167,5 +167,5 @@
 	game_log("ASGEN", "Spawned [count_goliath] goliaths (asteroid).")
 	game_log("ASGEN", "Spawned [count_shockzard] shockzards (asteroid).")
 	game_log("ASGEN", "Spawned [count_alpha_goliath] alpha goliaths (asteroid).")
-	game_log("ASGEN", "Spawned [count_beholder] beholders (asteroid).")
+	game_log("ASGEN", "Spawned [count_krivax] krivaxes (asteroid).")
 	log_to_dd("Spawned [mobs_count] monsters (asteroid).")
