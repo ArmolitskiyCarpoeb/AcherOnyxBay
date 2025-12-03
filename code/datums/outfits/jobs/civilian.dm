@@ -1,6 +1,18 @@
 /decl/hierarchy/outfit/job/assistant
 	name = OUTFIT_JOB_NAME("Assistant")
-	suit = /obj/item/clothing/suit/storage/hazardvest
+	//suit = /obj/item/clothing/suit/storage/hazardvest
+
+/decl/hierarchy/outfit/job/assistant/post_equip(mob/living/carbon/human/H)
+	..()
+	var/obj/item/clothing/C
+	if(prob(20))
+		C = new /obj/item/clothing/suit/storage/hazardvest(src)
+		H.equip_to_appropriate_slot(C)
+	if(prob(20))
+		C = new /obj/item/clothing/suit/storage/leather_jacket(src)
+		H.equip_to_appropriate_slot(C)
+	else
+		return
 
 /decl/hierarchy/outfit/job/service
 	l_ear = /obj/item/device/radio/headset/headset_service
