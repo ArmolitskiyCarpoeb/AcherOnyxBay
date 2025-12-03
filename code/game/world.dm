@@ -630,9 +630,9 @@ var/world_topic_spam_protect_time = world.timeofday
 			n++
 
 	if (n > 1)
-		features += "~[n] retards"
+		features += "~[n] sinners"
 	else if (n > 0)
-		features += "~[n] retard"
+		features += "~[n] sinner"
 
 
 //	if (config && config.general.hosted_by)
