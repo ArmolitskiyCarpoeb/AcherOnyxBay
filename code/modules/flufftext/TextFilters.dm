@@ -240,3 +240,243 @@ english_only - whether to use traditional english letters only (for use in NanoU
 			continue
 		new_phrase += letter
 	return html_encode(new_phrase)
+
+/proc/autismspeech(phrase)
+	phrase = html_decode(phrase)
+	var/new_phrase = ""
+	var/current_word = ""
+	var/autisticphrase = list("ы-ы-ыЫХ","ОХ-","ааабы","АХ-","хых","Ахы","ыХЫ","АХЫ","пу-пу-пу...","Я УМНЫЙ",
+								"Уууу", "аааа", "ыыЫы", "м-м-м", "ээээ", "бр-бр-бр", "гы-гы", "хм-хм","Ва-а")
+
+	for(var/i = 1, i <= length_char(phrase), i++)
+		var/char = copytext_char(phrase, i, i + 1)
+
+		// Проверяем, является ли символ буквой (русской или английской) или частью слова
+		var/is_letter = is_alpha_char(char) || char == "-" || char == "'" || char == "`"
+
+		if(is_letter)
+			current_word += char
+		else
+			// Если накопилось слово, обрабатываем его
+			if(length_char(current_word) > 0)
+				if(prob(15)) // проб на замену слова
+					new_phrase += pick(autisticphrase)
+				else
+					new_phrase += slightly_break_word(current_word)
+				current_word = ""
+			// Добавляем разделитель
+			new_phrase += char
+
+	// Обрабатываем последнее слово, если оно есть
+	if(length_char(current_word) > 0)
+		if(prob(15)) //тут тот же проб, но на последнее слово(первое если слово ОДНО)
+			new_phrase += pick(autisticphrase)
+		else
+			new_phrase += slightly_break_word(current_word)
+
+	return html_encode(new_phrase)
+
+/proc/is_alpha_char(char)
+	// Проверяем, является ли символ буквой (русской или английской)
+	var/lower_char = lowertext(char)
+
+	// Проверяем русские буквы
+	var/russian_letters = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+	if(findtext(russian_letters, lower_char))
+		return 1
+
+	// Проверяем английские буквы
+	var/english_letters = "abcdefghijklmnopqrstuvwxyz"
+	if(findtext(english_letters, lower_char))
+		return 1
+
+	return 0
+
+/proc/slightly_break_word(word)
+	var/length = length_char(word)
+
+	// Для очень коротких слов оставляем как есть
+	if(length <= 4)
+		return word
+
+	// Выбираем случайный тип небольшой "поломки"
+	var/break_type = rand(1, 5)
+
+	switch(break_type)
+		if(1) // Легкая перестановка двух соседних букв
+			return swap_two_letters(word)
+		if(2) // Замена одной случайной буквы
+			return replace_random_letter(word)
+		if(3) // Повторение одной случайной буквы
+			return repeat_random_letter(word)
+		if(4) // Пропуск одной случайной буквы
+			return skip_random_letter(word)
+		if(5) // Добавление одной случайной буквы
+			return add_random_letter(word)
+
+	return word
+
+/proc/swap_two_letters(word)
+	var/length = length_char(word)
+	if(length < 3)
+		return word
+
+	// Выбираем случайную позицию для обмена (кроме последней)
+	var/pos = rand(1, length - 1)
+
+	var/result = ""
+	for(var/i = 1, i <= length, i++)
+		if(i == pos)
+			result += copytext_char(word, i + 1, i + 2)
+			result += copytext_char(word, i, i + 1)
+			i++ // Пропускаем следующую букву, так как мы её уже добавили
+		else if(i != pos + 1) // Не добавляем букву, если она была обменена
+			result += copytext_char(word, i, i + 1)
+
+	return result
+
+/proc/replace_random_letter(word)
+	var/length = length_char(word)
+	var/pos = rand(1, length)
+	var/letter = copytext_char(word, pos, pos + 1)
+
+	// Таблица замен (просто случайные замены, не обязательно похожие)
+	var/list/replacements = list(
+		"а" = list("о", "я", "е"),
+		"о" = list("а", "ё", "у"),
+		"е" = list("э", "и", "е"),
+		"и" = list("ы", "й", "и"),
+		"у" = list("ю", "ы", "у"),
+		"р" = list("л", "рь", "р"),
+		"л" = list("р", "ль", "л"),
+		"с" = list("з", "сь", "с"),
+		"з" = list("с", "зь", "з"),
+		"т" = list("д", "ть", "т"),
+		"д" = list("т", "дь", "д"),
+		"г" = list("к", "гь", "г"),
+		"к" = list("г", "кь", "к"),
+		"б" = list("п", "бь", "б"),
+		"п" = list("б", "пь", "п"),
+		"в" = list("ф", "вь", "в"),
+		"ф" = list("в", "фь", "ф")
+	)
+
+	// Для английских букв
+	var/list/en_replacements = list(
+		"a" = list("o", "e", "i"),
+		"e" = list("a", "i", "o"),
+		"i" = list("e", "o", "u"),
+		"o" = list("a", "u", "e"),
+		"u" = list("o", "i", "a"),
+		"r" = list("l", "r", "rh"),
+		"l" = list("r", "l", "ll"),
+		"s" = list("z", "sh", "s"),
+		"z" = list("s", "zh", "z"),
+		"t" = list("d", "th", "t"),
+		"d" = list("t", "dh", "d"),
+		"g" = list("k", "gh", "g"),
+		"k" = list("g", "kh", "k"),
+		"b" = list("p", "bh", "b"),
+		"p" = list("b", "ph", "p"),
+		"v" = list("f", "vh", "v"),
+		"f" = list("v", "ph", "f")
+	)
+
+	var/lower_letter = lowertext(letter)
+	var/new_letter = lower_letter
+
+	// Пытаемся найти замену
+	if(lower_letter in replacements)
+		var/list/options = replacements[lower_letter]
+		new_letter = pick(options)
+	else if(lower_letter in en_replacements)
+		var/list/options = en_replacements[lower_letter]
+		new_letter = pick(options)
+
+	// Сохраняем регистр
+	if(letter != lower_letter) // Если оригинальная буква была заглавной
+		new_letter = uppertext(new_letter)
+
+	// Собираем слово с заменой
+	var/result = ""
+	for(var/i = 1, i <= length, i++)
+		if(i == pos)
+			result += new_letter
+		else
+			result += copytext_char(word, i, i + 1)
+
+	return result
+
+/proc/repeat_random_letter(word)
+	var/length = length_char(word)
+	var/pos = rand(1, length)
+	var/letter = copytext_char(word, pos, pos + 1)
+
+	// Собираем слово с повторением одной буквы
+	var/result = ""
+	for(var/i = 1, i <= length, i++)
+		result += copytext_char(word, i, i + 1)
+		if(i == pos)
+			result += letter // Добавляем ту же букву ещё раз
+
+	return result
+
+/proc/skip_random_letter(word)
+	var/length = length_char(word)
+	if(length <= 3)
+		return word
+
+	var/pos = rand(1, length)
+
+	// Собираем слово без одной буквы
+	var/result = ""
+	for(var/i = 1, i <= length, i++)
+		if(i != pos)
+			result += copytext_char(word, i, i + 1)
+
+	return result
+
+/proc/add_random_letter(word)
+	var/length = length_char(word)
+	var/pos = rand(1, length + 1)
+
+	// Случайные буквы для добавления
+	var/list/common_letters = list("а", "о", "е", "и", "н", "т", "с", "р", "в", "л", "к", "м", "д", "п", "у", "я", "ы", "ь", "г", "з", "б", "ч", "й", "х", "ж", "ш", "ю", "ц", "щ", "э", "ф")
+	var/list/common_en_letters = list("a", "e", "i", "o", "u", "n", "t", "s", "r", "h", "l", "d", "c", "m", "f", "p", "g", "w", "y", "b", "v", "k", "x", "j", "q", "z")
+
+	// Определяем, какая буква больше подходит на основе слова
+	var/add_letter = pick(common_letters + common_en_letters) // Смешиваем оба списка
+
+	// Проверяем, есть ли в слове русские буквы
+	var/has_russian = 0
+	for(var/i = 1, i <= length, i++)
+		var/char = copytext_char(word, i, i + 1)
+		if(is_alpha_char(char))
+			var/lower_char = lowertext(char)
+			var/russian_letters = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+			if(findtext(russian_letters, lower_char))
+				has_russian = 1
+				break
+
+	// Если в слове есть русские буквы, стараемся использовать русскую букву
+	if(has_russian && prob(80))
+		add_letter = pick(common_letters)
+
+	// Смотрим на регистр соседних букв
+	if(pos <= length)
+		var/neighbor = copytext_char(word, pos, pos + 1)
+		if(neighbor == uppertext(neighbor))
+			add_letter = uppertext(add_letter)
+
+	// Собираем слово с добавленной буквой
+	var/result = ""
+	for(var/i = 1, i <= length, i++)
+		if(i == pos)
+			result += add_letter
+		result += copytext_char(word, i, i + 1)
+
+	// Если добавляем в конец
+	if(pos == length + 1)
+		result += add_letter
+
+	return result

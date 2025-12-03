@@ -110,6 +110,11 @@ var/list/channel_to_radio_key = new
 		message_data["message"] = stutter(message_data["message"])
 		message_data["verb"] = pick("stammers","stutters")
 		. = TRUE
+	if(autism)
+		message_data["message"] = autismspeech(message_data["message"])
+		message_data["verb"] = pick("mumbled","stutters")
+		. = TRUE
+
 
 /mob/living/proc/handle_message_mode(message_mode, message, verb, language, used_radios, alt_name)
 	if(message_mode == "intercom")

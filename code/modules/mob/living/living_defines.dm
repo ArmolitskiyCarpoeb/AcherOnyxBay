@@ -50,6 +50,7 @@
 	var/stammering = null
 	var/burrieng = null
 	var/lisping = null
+	var/autism = null
 
 	var/job = null//Living
 	var/list/obj/aura/auras = null //Basically a catch-all aura/force-field thing.

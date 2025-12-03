@@ -1,11 +1,18 @@
 var/list/trait_datums = list() // Assoc list using name = instance.  Traits are saved as a list of strings.
 var/list/trait_type_to_ref = list() // Similar to above but uses paths, which is more reliable but more risky to save.
 var/list/trait_categories = list() // The categories available for the trait menu.
+var/TRAIT_POINTS_MAX = 0
 
 /hook/startup/proc/populate_trait_list()
 
 	//create a list of trait datums
-	for(var/trait_type in typesof(/datum/trait) - list(/datum/trait, /datum/trait/modifier, /datum/trait/modifier/physical, /datum/trait/modifier/mental))
+	for(var/trait_type in typesof(/datum/trait) - list(
+		/datum/trait,
+		/datum/trait/modifier,
+		/datum/trait/modifier/good,
+		/datum/trait/modifier/bad,
+		/datum/trait/modifier/neutral
+	))
 		var/datum/trait/T = new trait_type
 
 		if(!T.name)
@@ -37,8 +44,21 @@ var/list/trait_categories = list() // The categories available for the trait men
 /datum/category_item/player_setup_item/traits/save_character(datum/pref_record_writer/W)
 	W.write("traits", pref.traits)
 
+/datum/category_item/player_setup_item/traits/proc/get_current_trait_points()
+	var/points = 0
+	if(!islist(pref.traits))
+		return points
+	for(var/trait_name in pref.traits)
+		var/datum/trait/T = trait_datums[trait_name]
+		if(T)
+			points += T.trait_cost
+	return points
+
 /datum/category_item/player_setup_item/traits/content()
 	. = list()
+	var/current_points = get_current_trait_points()
+	. += "<table align = 'center' width = 100%>"
+	. += "<tr><td colspan=3><b><center>Traits (Очки: [current_points]/[TRAIT_POINTS_MAX])</center></b></td></tr>"
 	. += "<table align = 'center' width = 100%>"
 	. += "<tr><td colspan=3><hr></td></tr>"
 	. += "<tr><td colspan=3><b><center>Traits</center></b></td></tr>"
@@ -70,7 +90,7 @@ var/list/trait_categories = list() // The categories available for the trait men
 			style_class = "linkOff"
 		else if(ticked)
 			style_class = "linkOn"
-		. += "<tr style='vertical-align:top;'><td width=25%><div align='center'><a style='white-space:normal;' [style_class ? "class='[style_class]' " : ""]href='?src=\ref[src];toggle_trait=[html_encode(T.name)]'>[T.name]</a></div></td>"
+		. += "<tr style='vertical-align:top;'><td width=25%><div align='center'><a style='white-space:normal;' [style_class ? "class='[style_class]' " : ""]href='?src=\ref[src];toggle_trait=[html_encode(T.name)]'>[T.name] ([T.trait_cost])</a></div></td>"
 //		. += "<td width = 10% style='vertical-align:top'>[G.cost]</td>"
 
 		var/invalidity = T.test_for_invalidity(src)
@@ -132,6 +152,12 @@ var/list/trait_categories = list() // The categories available for the trait men
 				to_chat(user, SPAN("warning", "The [T.name] trait is mutually exclusive with [conflicts]."))
 				return TOPIC_NOACTION
 
+			var/current_points = get_current_trait_points()
+			var/new_points = current_points + T.trait_cost
+			if(new_points > TRAIT_POINTS_MAX)
+				to_chat(user, SPAN("warning", "Вы не можете взять трейт [T.name]: недостаточно очков трейтов. (Текущие: [current_points], нужно: [T.trait_cost])"))
+				return TOPIC_NOACTION
+
 			pref.traits += T.name
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 	else if(href_list["select_category"])
@@ -140,11 +166,13 @@ var/list/trait_categories = list() // The categories available for the trait men
 	return ..()
 
 
+
 /datum/trait
 	var/name = null							// Name to show on UI
 	var/desc = null							// Description of what it does, also shown on UI.
 	var/list/mutually_exclusive = list()	// List of trait types which cannot be taken alongside this trait.
 	var/category = null						// What section to place this trait inside.
+	var/trait_cost = 0						// How many points this trait costs.
 
 // Applies effects to the newly spawned mob.
 /datum/trait/proc/apply_trait_post_spawn(mob/living/L)

@@ -639,6 +639,51 @@
 		if(client.holder || isghost(client.mob))
 			stat("Location:", "([x], [y], [z]) [loc]")
 
+		/// Описание трейтов статус панели
+		/// Сначала положительные
+		if(mind && islist(mind.traits) && mind.traits.len)
+			var/list/trait_status_lines = list()
+
+			if("Быстрый метаболизм" in mind.traits)
+				trait_status_lines += "у меня быстрый метаболизм"
+			if("В хорошей форме" in mind.traits)
+				trait_status_lines += "я в хорошей физической форме"
+			if("Умелый стрелок" in mind.traits)
+				trait_status_lines += "хорошо стреляю"
+
+		/// Потом отрицательные
+			if("Autism" in mind.traits)
+				trait_status_lines += "Ы-Ы-Ых, ЖЫЗНЬ ПРЕКРАСНА"
+			if("Flimsy" in mind.traits)
+				trait_status_lines += "у меня хрупкое тело"
+			if("Frail" in mind.traits)
+				trait_status_lines += "моё тело очень хрупкое"
+			if("Haemophilia" in mind.traits)
+				trait_status_lines += "моя кровь течёт быстрее чем у других"
+			if("Weak" in mind.traits)
+				trait_status_lines += "слабак"
+			if("Wimpy" in mind.traits)
+				trait_status_lines += "невероятный слабак"
+			if("Inaccurate" in mind.traits)
+				trait_status_lines += "плохо стреляю"
+			if("Low Metabolism" in mind.traits)
+				trait_status_lines += "у меня медленный метаболизм"
+			if("Stutterer" in mind.traits)
+				trait_status_lines += "заикаюсь"
+			if("Burry" in mind.traits)
+				trait_status_lines += "плохо выговариваю некоторые буквы"
+			if("Lisp" in mind.traits)
+				trait_status_lines += "шепелявлю"
+
+		/// Теперь нейтральные
+			if(("Protanopia" in mind.traits) || ("Deuteranopia" in mind.traits) || ("Tritanopia" in mind.traits) || ("Tritanopi" in mind.traits) || ("Monochromacy" in mind.traits))
+				trait_status_lines += "у меня дальтонизм"
+
+			if(trait_status_lines.len)
+				for(var/msg in trait_status_lines)
+					stat("Я особенный: ", msg)
+
+
 	if(client.holder)
 		if(statpanel("MC"))
 			stat("CPU:","[world.cpu]")

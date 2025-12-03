@@ -96,6 +96,7 @@
 	handle_stammering()
 	handle_burrieng()
 	handle_lisping()
+	handle_autism()
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
@@ -140,6 +141,13 @@
 			if(!isnull(M.burrieng))
 				burrieng = TRUE
 	return burrieng
+
+/mob/living/proc/handle_autism()
+	if(!autism)
+		for(var/datum/modifier/trait/autism/M in modifiers)
+			if(!isnull(M.autism))
+				autism = TRUE
+	return autism
 
 /mob/living/proc/handle_lisping()
 	if(!lisping)
