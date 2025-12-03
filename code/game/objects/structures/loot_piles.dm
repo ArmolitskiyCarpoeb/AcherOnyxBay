@@ -134,7 +134,6 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/device/flashlight/glowstick/orange,
 		/obj/item/device/flashlight/glowstick/red,
 		/obj/item/device/flashlight/glowstick/yellow,
-		/obj/item/device/flashlight/pen,
 		/obj/item/cell,
 		/obj/item/cell/device,
 		/obj/item/clothing/mask/gas,
@@ -154,19 +153,15 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/clothing/shoes/black,
 		/obj/item/clothing/shoes/leather,
 		/obj/item/clothing/gloves/white,
-		/obj/item/clothing/gloves/rainbow,
 		/obj/item/clothing/glasses/sunglasses,
 		/obj/item/clothing/glasses/hud/standard/meson,
 		/obj/item/clothing/glasses/welding,
-		/obj/item/clothing/head/bio_hood/general,
 		/obj/item/clothing/head/hardhat,
 		/obj/item/clothing/head/hardhat/red,
 		/obj/item/clothing/head/ushanka,
 		/obj/item/clothing/head/welding,
 		/obj/item/clothing/suit/storage/hazardvest,
-		/obj/item/clothing/suit/space/emergency,
 		/obj/item/clothing/suit/storage/toggle/bomber,
-		/obj/item/clothing/suit/bio_suit/general,
 		/obj/item/clothing/suit/storage/toggle/hoodie/black,
 		/obj/item/clothing/suit/storage/toggle/brown_jacket,
 		/obj/item/clothing/under/color/grey,
@@ -178,8 +173,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/card/emag_broken,
 		/obj/item/device/camera,
 		/obj/item/device/pda,
-		/obj/item/device/radio/headset,
-		/obj/item/device/paicard
+		/obj/item/device/radio/headset
 	)
 
 	uncommon_loot = list(
