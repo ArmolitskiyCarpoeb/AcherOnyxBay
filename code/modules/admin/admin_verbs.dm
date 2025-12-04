@@ -180,7 +180,8 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/toggle_space_ninja,
 	/client/proc/check_customitem_activity,
 	/client/proc/nanomapgen_DumpImage,
-	/client/proc/cmd_set_station_date
+	/client/proc/cmd_set_station_date,
+	/datum/admins/proc/toggleneedingjob
 	)
 
 var/list/admin_verbs_debug = list(
@@ -327,7 +328,8 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/test_pt_clear,
 	/client/proc/test_pt_vis,
 	/client/proc/delbook,
-	/client/proc/debug_glob_variables
+	/client/proc/debug_glob_variables,
+	/datum/admins/proc/toggleneedingjob
 	)
 
 var/list/admin_verbs_mod = list(

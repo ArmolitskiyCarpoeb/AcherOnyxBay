@@ -30,6 +30,8 @@ SUBSYSTEM_DEF(ticker)
 	var/pregame_timeleft
 	var/restart_timeout
 
+	var/overriding_needing_jobs = FALSE
+
 /datum/controller/subsystem/ticker/Initialize()
 	pregame_timeleft = config.game.pregame_timeleft
 	restart_timeout = config.game.restart_timeout
@@ -60,8 +62,6 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/setup_tick()
-	var/cardinalhit = FALSE
-	var/quartermasterhit = FALSE
 	switch(choose_gamemode())
 		if(CHOOSE_GAMEMODE_SILENT_REDO)
 			return
@@ -82,36 +82,31 @@ SUBSYSTEM_DEF(ticker)
 			to_world("<B>Unable to choose playable game mode.</B> Restarting world.")
 			world.Reboot("Failure to select gamemode. Tried [english_list(bad_modes)].")
 			return
-	//Это на самом деле пиздец топорно, лучше эту хуйню закинуть в каждый режим игры отдельно. Но пока - так.
-	if (SSticker.master_mode!="extended")
-		for(var/mob/new_player/NN in GLOB.player_list)
-			if(NN.client?.prefs?.job_high == "Cardinal" && NN.ready)
-				cardinalhit = TRUE
-			else if(NN.client?.prefs?.job_high == "Quartermaster" && NN.ready)
-				quartermasterhit = TRUE
-		if(!cardinalhit && quartermasterhit)
-			var/cardinaldesc = pick("злого","порядочного","мрачного","пафосного","опасного","справедливого","сурового","боевого","воинственного")
-			to_world("<b><span style='color:red;'>Как жаль! Станция не может начать своей работы без [cardinaldesc] Кардинала.</span></b>")
-			pregame_timeleft = 60 SECONDS
-			Master.SetRunLevel(RUNLEVEL_LOBBY)
-			return
-		else if (!quartermasterhit && cardinalhit)
-			var/quartermasterdesc = pick("жадного","вредного","невыносимого","внимательного","зазнавшегося","уродливого","умного","щедрого","организованного")
-			to_world("<b><span style='color:red;'>Как жаль! Станция не может начать своей работы без [quartermasterdesc] Завхоза.</span></b>")
-			pregame_timeleft = 60 SECONDS
-			Master.SetRunLevel(RUNLEVEL_LOBBY)
-			return
-		else if(!quartermasterhit && !cardinalhit)
-			var/cardinaldesc = pick("злого","порядочного","мрачного","пафосного","опасного","справедливого","сурового","боевого","воинственного")
-			var/quartermasterdesc = pick("жадного","вредного","невыносимого","внимательного","зазнавшегося","уродливого","умного","щедрого","организованного")
-			to_world("<b><span style='color:red;'>Как жаль! Станция не может начать своей работы без [quartermasterdesc] Завхоза и [cardinaldesc] Кардинала.</span></b>")
+
+	if (LAZYLEN(GLOB.using_map.jobs_needed))
+		var/list/job_list = GLOB.using_map.jobs_needed
+		var/list/active_jobs = list()
+		var/list/unemployed = list()
+		var/desc = ""
+		for(var/job in job_list)
+			for(var/mob/new_player/NN in GLOB.player_list)
+				if(NN.client?.prefs?.job_high == job && NN.ready)
+					LAZYADD(active_jobs, job)
+		if(active_jobs == job_list || SSticker.mode.need_jobs == FALSE || overriding_needing_jobs)
+			GLOB.using_map.setup_economy()
+			Master.SetRunLevel(RUNLEVEL_GAME)
+		else
+			unemployed = job_list - active_jobs
+			for(var/vacancy in unemployed)
+				desc += SPAN_NOTICE("[unemployed[vacancy]], ")
+			LAZY_RECITATION(desc)
+			to_world(SPAN_DANGER("<span style = 'font-size: 170%; font-weight: bold;'>Как жаль! Станция не может начать работу без [desc]</span>"))
 			pregame_timeleft = 60 SECONDS
 			Master.SetRunLevel(RUNLEVEL_LOBBY)
 			return
 
 	// This means we succeeded in picking a game mode.
-	GLOB.using_map.setup_economy()
-	Master.SetRunLevel(RUNLEVEL_GAME)
+
 
 	create_characters() //Create player characters and transfer them
 	collect_minds()

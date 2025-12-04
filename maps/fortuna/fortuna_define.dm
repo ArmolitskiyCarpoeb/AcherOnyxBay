@@ -3,6 +3,7 @@
 	name = "Fortuna"
 	full_name = "MS Fortuna"
 	path = "fortuna"
+	jobs_needed = list("Cardinal" = "Кардинала", "Quartermaster" = "Завхоза")
 
 	shuttle_types = list(
 		/datum/shuttle/autodock/ferry/emergency/centcom/polar,

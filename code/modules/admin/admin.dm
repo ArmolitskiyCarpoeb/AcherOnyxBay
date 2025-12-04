@@ -1532,3 +1532,15 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 		return
 
 	SSlobby.change_lobby_art(chosen_one)
+
+/datum/admins/proc/toggleneedingjob()
+	set category = "Server"
+	set desc="Переключает требование профессий для начала игры"
+	set name="Toggle Job Requirement"
+
+	if(!check_rights(R_ADMIN))
+		return
+	SSticker.overriding_needing_jobs = !SSticker.overriding_needing_jobs
+
+	log_and_message_admins("[SSticker.overriding_needing_jobs ? "отключил" : "включил"] требование профессий.")
+	feedback_add_details("admin_verb","Tjob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
