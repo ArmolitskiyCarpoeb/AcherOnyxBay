@@ -4,6 +4,7 @@
 	shoes = /obj/item/clothing/shoes/white
 	pda_type = /obj/item/device/pda/medical
 	pda_slot = slot_l_store
+	flags = OUTFIT_NO_SURVIVAL
 
 /decl/hierarchy/outfit/job/medical/New()
 	..()

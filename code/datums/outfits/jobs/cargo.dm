@@ -10,6 +10,7 @@
 	l_hand = /obj/item/device/price_scanner
 	id_type = /obj/item/card/id/cargo/head
 	pda_type = /obj/item/device/pda/quartermaster
+	flags = OUTFIT_NO_SURVIVAL
 
 /decl/hierarchy/outfit/job/cargo/cargo_tech
 	name = OUTFIT_JOB_NAME("Cargo technician")
@@ -26,7 +27,7 @@
 	pda_slot = slot_l_store
 	backpack_contents = list(/obj/item/crowbar = 1)
 	belt = /obj/item/storage/ore
-	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL
+	flags = OUTFIT_NO_SURVIVAL
 
 /decl/hierarchy/outfit/job/cargo/mining/New()
 	..()

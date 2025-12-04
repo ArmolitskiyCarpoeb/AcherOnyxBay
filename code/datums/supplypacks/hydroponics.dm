@@ -1,7 +1,7 @@
 /decl/hierarchy/supply_pack/hydroponics
 	name = "Hydroponics"
 	containertype = /obj/structure/closet/crate/hydroponics
-
+/*
 /decl/hierarchy/supply_pack/hydroponics/monkey
 	name = "Monkey crate"
 	contains = list (/obj/item/storage/box/monkeycubes)
@@ -43,12 +43,12 @@
 	cost = 40
 	containertype = /obj/structure/largecrate/animal/parrot
 	containername = "\improper Parrot crate"
-
+*/
 //farm animals - useless and annoying, but potentially a good source of food. expensive because they're live animals and their produce is available cheaper
 /decl/hierarchy/supply_pack/hydroponics/cow
 	name = "Cow crate"
 	contains = list(/mob/living/simple_animal/cow)
-	cost = 80
+	cost = 200
 	containertype = /obj/structure/largecrate/animal/cow
 	containername = "\improper Cow crate"
 	access = access_hydroponics
@@ -56,7 +56,7 @@
 /decl/hierarchy/supply_pack/hydroponics/goat
 	name = "Goat crate"
 	contains = list(/mob/living/simple_animal/hostile/retaliate/goat)
-	cost = 75
+	cost = 175
 	containertype = /obj/structure/largecrate/animal/goat
 	containername = "\improper Goat crate"
 	access = access_hydroponics
@@ -64,7 +64,7 @@
 /decl/hierarchy/supply_pack/hydroponics/chicken
 	name = "Chicken crate"
 	contains = list(/mob/living/simple_animal/chick = 5)
-	cost = 70
+	cost = 125
 	containertype = /obj/structure/largecrate/animal/chick
 	containername = "\improper Chicken crate"
 	access = access_hydroponics
@@ -72,7 +72,7 @@
 /decl/hierarchy/supply_pack/hydroponics/pig
 	name = "Pig crate"
 	contains = list(/mob/living/simple_animal/pig)
-	cost = 60
+	cost = 150
 	containertype = /obj/structure/largecrate/animal/pig
 	containername = "\improper Pig crate"
 	access = access_hydroponics
@@ -89,7 +89,7 @@
 					/obj/item/shovel/spade,
 					/obj/item/storage/box/botanydisk
 					)
-	cost = 15
+	cost = 25
 	containername = "\improper Hydroponics crate"
 	access = access_hydroponics
 
@@ -112,7 +112,7 @@
 					/obj/item/seeds/chantermycelium,
 					/obj/item/seeds/potatoseed,
 					/obj/item/seeds/sugarcaneseed)
-	cost = 10
+	cost = 25
 	containername = "\improper Seeds crate"
 	access = access_hydroponics
 
@@ -133,7 +133,7 @@
 					/obj/item/seeds/reishimycelium,
 					/obj/item/seeds/random = 6,
 					/obj/item/seeds/kudzuseed)
-	cost = 15
+	cost = 80
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Exotic Seeds crate"
 	access = access_hydroponics
@@ -141,14 +141,14 @@
 /decl/hierarchy/supply_pack/hydroponics/watertank
 	name = "Water tank crate"
 	contains = list(/obj/structure/reagent_dispensers/watertank)
-	cost = 8
+	cost = 15
 	containertype = /obj/structure/largecrate
 	containername = "\improper water tank crate"
 
 /decl/hierarchy/supply_pack/hydroponics/composttank
 	name = "Compost tank crate"
 	contains = list(/obj/structure/reagent_dispensers/composttank)
-	cost = 10
+	cost = 25
 	containertype = /obj/structure/largecrate
 	containername = "\improper compost tank crate"
 
@@ -200,7 +200,7 @@
 					/obj/structure/flora/pottedplant/tropical,
 					/obj/structure/flora/pottedplant/dead,
 					/obj/structure/flora/pottedplant/decorative)
-	cost = 6
+	cost = 25
 	containertype = /obj/structure/closet/crate/large/hydroponics
 	containername = "\improper Potted plant crate"
 	supply_method = /decl/supply_method/randomized

@@ -11,8 +11,7 @@
 	pda_slot = slot_belt
 	pda_type = /obj/item/device/pda
 	backpack_contents = list()
-
-	flags = OUTFIT_HAS_BACKPACK
+	flags = OUTFIT_NO_SURVIVAL
 
 /decl/hierarchy/outfit/job/equip_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/C = ..()
