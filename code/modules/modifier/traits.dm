@@ -105,7 +105,7 @@
 	name = "Обучен стрельбе"
 	desc = "Раньше тебе доводилось использовать оружие. Ты знаешь как стрелять."
 
-	accuracy = 1
+	accuracy = 15
 	accuracy_dispersion = 0.8
 
 /datum/modifier/trait/low_metabolism
