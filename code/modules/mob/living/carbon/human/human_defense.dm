@@ -545,6 +545,15 @@ meteor_act
 				else if(prob(effective_force))
 					visible_message(SPAN("danger", "[src] looks momentarily disoriented."), SPAN("danger", "You see stars."))
 					apply_effect(2, EYE_BLUR, blocked)
+					var/turf/T = get_step(get_turf(src), get_dir(get_turf(user), get_turf(src)))
+					if(prob(50))
+						set_dir(GLOB.reverse_dir[src.dir])
+					if(!T.density)
+						step(src, get_dir(get_turf(user), get_turf(src)))
+						visible_message(SPAN("danger", "[pick("[src] was sent flying backward!", "[src] staggers back from the impact!")]"))
+					else
+						visible_message(SPAN("danger", "[src] bumps into \the [T]!"))
+						apply_effect(effective_force * 0.4, WEAKEN, (blocked/2))
 
 			if(BP_L_ARM)
 				if(l_hand && (poise <= effective_force/3*I.mod_weight*1.5))
