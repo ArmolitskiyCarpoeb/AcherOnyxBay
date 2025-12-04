@@ -309,7 +309,7 @@
 
 /obj/item/clothing/under/rank/workman
 	name = "workman's jumpsuit"
-	desc = "It's a gray jumpsuit for a \"Workman\"."
+	desc = "It's a gray jumpsuit for a \"workman\"."
 	icon_state = "workman"
 	item_state = "workman"
 	rolled_down = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
