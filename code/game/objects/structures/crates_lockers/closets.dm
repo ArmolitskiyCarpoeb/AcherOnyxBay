@@ -541,12 +541,12 @@
 							 SPAN("warning", "I [locked ? "enable" : "disable"] the locking modules."))
 	else if(setup & CLOSET_HAS_LOCK)
 		if(W.force)
-			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+			user.setClickCooldown(W.update_attack_cooldown())
 			src.object_shaken()
 			attack_animation(user)
 			user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
 			playsound(loc, hitsound, rand(50,75), 1)
-			src.take_damage(W.force / 1.2)
+			src.take_damage(W.force / 1.25)
 		else
 			src.togglelock(user, W)
 	else
