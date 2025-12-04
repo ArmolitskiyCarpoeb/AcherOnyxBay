@@ -645,44 +645,43 @@
 			var/list/trait_status_lines = list()
 
 			if("Быстрый метаболизм" in mind.traits)
-				trait_status_lines += "у меня быстрый метаболизм"
+				trait_status_lines += "У меня быстрый метаболизм"
 			if("В хорошей форме" in mind.traits)
-				trait_status_lines += "я в хорошей физической форме"
+				trait_status_lines += "Я в хорошей физической форме"
 			if("Умелый стрелок" in mind.traits)
-				trait_status_lines += "хорошо стреляю"
+				trait_status_lines += "Хорошо стреляю"
 
 		/// Потом отрицательные
 			if("Autism" in mind.traits)
 				trait_status_lines += "Ы-Ы-Ых, ЖЫЗНЬ ПРЕКРАСНА"
 			if("Flimsy" in mind.traits)
-				trait_status_lines += "у меня хрупкое тело"
+				trait_status_lines += "У меня хрупкое тело"
 			if("Frail" in mind.traits)
-				trait_status_lines += "моё тело очень хрупкое"
+				trait_status_lines += "Моё тело очень хрупкое"
 			if("Haemophilia" in mind.traits)
-				trait_status_lines += "моя кровь течёт быстрее чем у других"
+				trait_status_lines += "Моя кровь течёт быстрее чем у других"
 			if("Weak" in mind.traits)
-				trait_status_lines += "слабак"
+				trait_status_lines += "Слабак"
 			if("Wimpy" in mind.traits)
-				trait_status_lines += "невероятный слабак"
+				trait_status_lines += "Невероятный слабак"
 			if("Inaccurate" in mind.traits)
-				trait_status_lines += "плохо стреляю"
+				trait_status_lines += "Плохо стреляю"
 			if("Low Metabolism" in mind.traits)
-				trait_status_lines += "у меня медленный метаболизм"
+				trait_status_lines += "У меня медленный метаболизм"
 			if("Stutterer" in mind.traits)
-				trait_status_lines += "заикаюсь"
+				trait_status_lines += "Заикаюсь"
 			if("Burry" in mind.traits)
-				trait_status_lines += "плохо выговариваю некоторые буквы"
+				trait_status_lines += "Плохо выговариваю некоторые буквы"
 			if("Lisp" in mind.traits)
-				trait_status_lines += "шепелявлю"
+				trait_status_lines += "Шепелявлю"
 
 		/// Теперь нейтральные
 			if(("Protanopia" in mind.traits) || ("Deuteranopia" in mind.traits) || ("Tritanopia" in mind.traits) || ("Tritanopi" in mind.traits) || ("Monochromacy" in mind.traits))
-				trait_status_lines += "у меня дальтонизм"
+				trait_status_lines += "У меня дальтонизм"
 
 			if(trait_status_lines.len)
 				for(var/msg in trait_status_lines)
-					stat("Я особенный: ", msg)
-
+					stat("-!-", msg)
 
 	if(client.holder)
 		if(statpanel("MC"))
