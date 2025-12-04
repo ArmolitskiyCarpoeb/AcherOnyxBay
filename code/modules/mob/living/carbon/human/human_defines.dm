@@ -67,7 +67,7 @@
 	var/obj/item/s_store = null
 
 	var/used_skillpoints = 0
-	var/list/skills = list()
+	//var/list/skills = list()
 
 	var/icon/stand_icon = null
 	var/icon/lying_icon = null

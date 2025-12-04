@@ -95,7 +95,6 @@ var/global/datum/body_build/default_body_build = new
 	stomach_capacity   = STOMACH_CAPACITY_LOW
 	poise_pool         = HUMAN_LOW_POISE
 	melee_modifier     = 0.75 // It's kinda hard to club people when you're two times thinner than a regular person.
-
 	equip_adjust = list(
 		"slot_l_hand" = list(
 			"SOUTH" = list("x" = -1, "y" = 0),
@@ -231,7 +230,6 @@ var/global/datum/body_build/default_body_build = new
 	ambiguous_gender   = TRUE
 	melee_modifier     = 1.15 // Force is acceleration times MASS, so...
 	climb_speed        = 2.5 // You're a landwhale; not a, what, tablewhale?
-
 
 /datum/body_build/slim/alt/tajaran //*sigh. I regret of doing this.
 	name                 = "Slim Tajaran"

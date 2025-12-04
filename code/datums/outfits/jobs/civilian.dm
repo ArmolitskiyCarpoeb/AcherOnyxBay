@@ -1,6 +1,7 @@
 /decl/hierarchy/outfit/job/assistant
 	name = OUTFIT_JOB_NAME("Assistant")
 	//suit = /obj/item/clothing/suit/storage/hazardvest
+	flags = OUTFIT_NO_SURVIVAL
 
 /decl/hierarchy/outfit/job/assistant/post_equip(mob/living/carbon/human/H)
 	..()
@@ -41,6 +42,7 @@
 	r_pocket = /obj/item/device/analyzer/plant_analyzer
 	id_type = /obj/item/card/id/civilian/botanist
 	pda_type = /obj/item/device/pda/botanist
+	flags = OUTFIT_NO_SURVIVAL
 
 /decl/hierarchy/outfit/job/service/gardener/New()
 	..()

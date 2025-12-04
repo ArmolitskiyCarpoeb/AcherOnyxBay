@@ -254,7 +254,7 @@
 	cost = 20
 	containertype = /obj/structure/closet/firecloset
 	containername = "\improper fire-safety closet"
-
+/*
 /decl/hierarchy/supply_pack/engineering/voidsuit
 	name = "Engineering voidsuit"
 	contains = list(/obj/item/clothing/suit/space/void/engineering/alt,
@@ -272,3 +272,4 @@
 	containername = "\improper EVA RIG crate"
 	containertype = /obj/structure/closet/crate/secure/engineering
 	access = access_engine_equip
+*/

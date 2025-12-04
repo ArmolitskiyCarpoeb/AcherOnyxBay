@@ -63,18 +63,18 @@
 					/obj/item/reagent_containers/vessel/bottle/pwine)
 
 	name = "Contraband crate"
-	cost = 30
+	cost = 10
 	containername = "\improper Unlabeled crate"
 	contraband = 1
 	supply_method = /decl/supply_method/randomized
-
+/*
 /decl/hierarchy/supply_pack/operations/hoverpod
 	name = "Hoverpod Shipment"
 	contains = list(/obj/mecha/working/hoverpod)
 	cost = 80
 	containertype = /obj/structure/largecrate/hoverpod
 	containername = "\improper Hoverpod Crate"
-
+*/
 /decl/hierarchy/supply_pack/operations/webbing
 	name = "Webbing crate"
 	num_contained = 4
@@ -88,7 +88,7 @@
 					/obj/item/clothing/accessory/storage/drop_pouches/brown,
 					/obj/item/clothing/accessory/storage/drop_pouches/white,
 					/obj/item/clothing/accessory/storage/webbing)
-	cost = 15
+	cost = 25
 	containername = "\improper Webbing crate"
 
 /decl/hierarchy/supply_pack/operations/holsters
@@ -96,7 +96,7 @@
 	contains = list(/obj/item/clothing/accessory/holster = 2,
 					/obj/item/clothing/accessory/holster/thigh = 2,
 					/obj/item/clothing/accessory/holster/hip = 2)
-	cost = 15
+	cost = 25
 	containername = "\improper Holster crate"
 
 /decl/hierarchy/supply_pack/operations/syndicate
@@ -111,6 +111,6 @@
 					/obj/item/clothing/gloves/swat,
 					/obj/item/clothing/shoes/combat,
 					/obj/item/storage/backpack)
-	cost = 40
+	cost = 75
 	containername = "\improper Spec Ops Equipment crate"
 	contraband = 1

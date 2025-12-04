@@ -42,7 +42,7 @@
 					/obj/item/device/assembly/prox_sensor = 3,
 					/obj/item/device/assembly/timer = 3,
 					/obj/item/device/transfer_valve = 3)
-	cost = 10
+	cost = 25
 	containertype = /obj/structure/closet/crate/secure/plasma
 	containername = "\improper Plasma assembly crate"
 	access = access_tox_storage

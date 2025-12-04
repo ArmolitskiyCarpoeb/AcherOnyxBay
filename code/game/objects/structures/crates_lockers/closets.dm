@@ -9,6 +9,8 @@
 	w_class = ITEM_SIZE_NO_CONTAINER
 	layer = STRUCTURE_LAYER
 
+	var/hitsound = 'sound/effects/metalhit2.ogg' //sound door makes when hit with a weapon
+
 	var/icon_closed = "closed"
 	var/icon_opened = "open"
 
@@ -538,9 +540,24 @@
 		user.visible_message(SPAN("warning", "[user] [locked ? "locks" : "unlocks"] \the [name] with a multitool."),
 							 SPAN("warning", "I [locked ? "enable" : "disable"] the locking modules."))
 	else if(setup & CLOSET_HAS_LOCK)
-		src.togglelock(user, W)
+		if(W.force)
+			user.setClickCooldown(W.update_attack_cooldown())
+			src.object_shaken()
+			attack_animation(user)
+			user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
+			playsound(loc, hitsound, rand(50,75), 1)
+			src.take_damage(W.force / 1.25)
+		else
+			src.togglelock(user, W)
 	else
 		src.attack_hand(user)
+
+/obj/structure/closet/proc/take_damage(amount)
+	// If the table is made of a brittle material, and is *not* reinforced with a non-brittle material, damage is multiplied by TABLE_BRITTLE_MATERIAL_MULTIPLIER
+	health -= amount
+	if(health <= 0)
+		visible_message("<span class='warning'>\The [src] breaks down!</span>")
+		return break_open()
 
 /obj/structure/closet/proc/slice_into_parts(obj/item/weldingtool/WT, mob/user)
 	if(!WT.use_tool(src, user, amount = 10))

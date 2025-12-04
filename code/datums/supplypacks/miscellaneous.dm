@@ -1,6 +1,6 @@
 /decl/hierarchy/supply_pack/miscellaneous
 	name = "Miscellaneous"
-
+/*
 /decl/hierarchy/supply_pack/miscellaneous/wizard
 	name = "Wizard costume"
 	contains = list(/obj/item/staff,
@@ -9,53 +9,53 @@
 					/obj/item/clothing/head/wizard)
 	cost = 20
 	containername = "\improper Wizard costume crate"
-
+*/
 /decl/hierarchy/supply_pack/miscellaneous/carpetbrown
 	name = "Brown carpet"
 	contains = list(/obj/item/stack/tile/carpet/fifty)
-	cost = 15
+	cost = 50
 	containername = "\improper Brown carpet crate"
 
 /decl/hierarchy/supply_pack/miscellaneous/carpetblue
 	name = "Blue and gold carpet"
 	contains = list(/obj/item/stack/tile/carpetblue/fifty)
-	cost = 15
+	cost = 50
 	containername = "\improper Blue and gold carpet crate"
 
 /decl/hierarchy/supply_pack/miscellaneous/carpetblue2
 	name = "Blue and silver carpet"
 	contains = list(/obj/item/stack/tile/carpetblue2/fifty)
-	cost = 15
+	cost = 50
 	containername = "\improper Blue and silver carpet crate"
 
 /decl/hierarchy/supply_pack/miscellaneous/carpetpurple
 	name = "Purple carpet"
 	contains = list(/obj/item/stack/tile/carpetpurple/fifty)
-	cost = 15
+	cost = 50
 	containername = "\improper Purple carpet crate"
 
 /decl/hierarchy/supply_pack/miscellaneous/carpetorange
 	name = "Orange carpet"
 	contains = list(/obj/item/stack/tile/carpetorange/fifty)
-	cost = 15
+	cost = 50
 	containername = "\improper Orange carpet crate"
 
 /decl/hierarchy/supply_pack/miscellaneous/carpetgreen
 	name = "Green carpet"
 	contains = list(/obj/item/stack/tile/carpetgreen/fifty)
-	cost = 15
+	cost = 50
 	containername = "\improper Green carpet crate"
 
 /decl/hierarchy/supply_pack/miscellaneous/carpetred
 	name = "Red carpet"
 	contains = list(/obj/item/stack/tile/carpetred/fifty)
-	cost = 15
+	cost = 50
 	containername = "\improper Red carpet crate"
 
 /decl/hierarchy/supply_pack/miscellaneous/linoleum
 	name = "Linoleum"
 	contains = list(/obj/item/stack/tile/linoleum/fifty)
-	cost = 15
+	cost = 50
 	containername = "\improper Linoleum crate"
 
 /decl/hierarchy/supply_pack/miscellaneous/white_tiles
@@ -85,7 +85,7 @@
 /decl/hierarchy/supply_pack/miscellaneous/darkwood_tiles
 	name = "Darkwood floor tiles"
 	contains = list(/obj/item/stack/tile/darkwood/fifty)
-	cost = 25
+	cost = 50
 	containername = "\improper Darkwood floor tile crate"
 
 /decl/hierarchy/supply_pack/miscellaneous/costume
@@ -143,7 +143,7 @@
 	cost = 30
 	containertype = /obj/structure/closet
 	containername = "\improper Formalwear for the best occasions."
-
+/*
 /decl/hierarchy/supply_pack/miscellaneous/card_packs
 	num_contained = 5
 	contains = list(/obj/item/pack/cardemon,
@@ -153,7 +153,7 @@
 	cost = 20
 	containername = "\improper cards crate"
 	supply_method = /decl/supply_method/randomized
-
+*/
 /decl/hierarchy/supply_pack/miscellaneous/eftpos
 	contains = list(/obj/item/device/eftpos)
 	name = "EFTPOS scanner"
@@ -202,7 +202,7 @@
 	cost = 20
 	containername = "\improper Witch costume"
 	containertype = /obj/structure/closet
-
+/*
 /decl/hierarchy/supply_pack/miscellaneous/soviet_pack
 	name = "Kosmicheskaya Stancia 13 uniform"
 	contains = list(/obj/item/clothing/under/soviet,
@@ -215,7 +215,7 @@
 	cost = 50
 	containername = "\improper Soviet crate"
 	containertype = /obj/structure/closet
-
+*/
 /decl/hierarchy/supply_pack/miscellaneous/costume_hats
 	name = "Costume hats"
 	contains = list(/obj/item/clothing/head/redcoat,

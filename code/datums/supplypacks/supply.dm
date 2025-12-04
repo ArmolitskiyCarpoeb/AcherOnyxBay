@@ -10,7 +10,7 @@
 					/obj/item/reagent_containers/food/tofu = 4,
 					/obj/item/reagent_containers/food/meat = 4
 					)
-	cost = 25
+	cost = 50
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Food crate"
 
@@ -32,7 +32,7 @@
 					/obj/item/reagent_containers/rag,
 					/obj/item/grenade/chem_grenade/cleaner = 3,
 					/obj/structure/mopbucket)
-	cost = 10
+	cost = 25
 	containertype = /obj/structure/closet/crate/large
 	containername = "\improper Janitorial supplies"
 
@@ -63,7 +63,7 @@
 /decl/hierarchy/supply_pack/supply/spare_pda
 	name = "Spare PDAs"
 	contains = list(/obj/item/device/pda = 5)
-	cost = 10
+	cost = 25
 	containername = "\improper Spare PDA crate"
 
 /decl/hierarchy/supply_pack/supply/minergear
@@ -81,7 +81,7 @@
 					/obj/item/pickaxe,
 					/obj/item/mining_scanner,
 					/obj/item/clothing/glasses/hud/standard/meson)
-	cost = 15
+	cost = 50
 	containertype = /obj/structure/closet/crate/secure
 	containername = "\improper Shaft miner equipment"
 	access = access_mining

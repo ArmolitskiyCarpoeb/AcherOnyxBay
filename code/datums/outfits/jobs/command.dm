@@ -8,6 +8,7 @@
 	shoes = /obj/item/clothing/shoes/jackboots/tactical
 	id_type = /obj/item/card/id/gold
 	pda_type = /obj/item/device/pda/captain
+	flags = OUTFIT_NO_SURVIVAL
 //	backpack_contents = list(/obj/item/storage/box/ids = 1)
 /*
 /decl/hierarchy/outfit/job/captain/New()

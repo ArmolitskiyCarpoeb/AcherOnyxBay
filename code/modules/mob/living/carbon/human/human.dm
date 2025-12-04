@@ -119,11 +119,23 @@
 		stat("Poise:", "[round(100/poise_pool*poise)]%")
 		stat("Special Ability:", "[active_ability]")
 
+		stat("STATS:")
 		stat("Strength", "[stats[STAT_ST]]")
 		stat("Dexterity", "[stats[STAT_DX]]")
 		stat("Intellect", "[stats[STAT_IQ]]")
 		stat("Health", "[stats[STAT_HT]]")
-
+/*
+		stat("SKILLS:")
+		stat("Melee", "[skills[SKILL_MELEE]]")
+		stat("Ranged", "[skills[SKILL_RANGE]]")
+		stat("Medical", "[skills[SKILL_MED]]")
+		stat("Surgery", "[skills[SKILL_SURGERY]]")
+		stat("Engineering", "[skills[SKILL_ENG]]")
+		stat("Crafting", "[skills[SKILL_CRAFT]]")
+		stat("Cooking", "[skills[SKILL_COOK]]")
+		stat("Science", "[skills[SKILL_SCI]]")
+		stat("Gardening", "[skills[SKILL_GARDEN]]")
+*/
 		if(evacuation_controller)
 			var/eta_status = evacuation_controller.get_status_panel_eta()
 			if(eta_status)

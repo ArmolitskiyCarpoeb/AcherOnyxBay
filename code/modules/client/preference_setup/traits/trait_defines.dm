@@ -44,12 +44,6 @@
 		return "Full Body Prosthetics do not have a metabolism."
 	return ..()
 
-/datum/trait/modifier/good/goodhealth
-	name = "В хорошей форме"
-	modifier_type = /datum/modifier/trait/goodhealth
-	mutually_exclusive = list(/datum/trait/modifier/bad/low_metabolism)
-	trait_cost = 2 // positive: costs points
-
 /datum/trait/modifier/good/skilledmarksman
 	name = "Умелый стрелок"
 	modifier_type = /datum/modifier/trait/skilledmarksman
@@ -62,23 +56,9 @@
 	desc = "Тебя часто роняли головой. Удачи!"
 	modifier_type = /datum/modifier/trait/autism
 	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/lisping,
-						/datum/trait/modifier/bad/frail,/datum/trait/modifier/bad/flimsy,/datum/modifier/trait/haemophilia,/datum/trait/modifier/bad/weak,/datum/trait/modifier/bad/weak,
+						/datum/modifier/trait/haemophilia,
 						/datum/trait/modifier/good/high_metabolism, /datum/trait/modifier/bad/low_metabolism)
 	trait_cost = -4 // mild negative: grants 1 point
-
-/datum/trait/modifier/bad/flimsy
-	name = "Flimsy"
-	desc = "You're more fragile than most, and have less of an ability to endure harm."
-	modifier_type = /datum/modifier/trait/flimsy
-	mutually_exclusive = list(/datum/trait/modifier/bad/frail)
-	trait_cost = -1 // mild negative: grants 1 point
-
-/datum/trait/modifier/bad/frail
-	name = "Frail"
-	desc = "Your body is very fragile, and has even less of an ability to endure harm."
-	modifier_type = /datum/modifier/trait/frail
-	mutually_exclusive = list(/datum/trait/modifier/bad/flimsy)
-	trait_cost = -2 // stronger negative: grants 2 points
 
 /datum/trait/modifier/bad/haemophilia
 	name = "Haemophilia"
@@ -91,20 +71,6 @@
 		return "Full Body Prosthetics cannot bleed."
 	// If a species lacking blood is added, it is suggested to add a check for them here.
 	return ..()
-
-/datum/trait/modifier/bad/weak
-	name = "Weak"
-	desc = "A lack of physical strength causes a diminshed capability in close quarters combat."
-	modifier_type = /datum/modifier/trait/weak
-	mutually_exclusive = list(/datum/trait/modifier/bad/wimpy)
-	trait_cost = -1
-
-/datum/trait/modifier/bad/wimpy
-	name = "Wimpy"
-	desc = "An extreme lack of physical strength causes a greatly diminished capability in close quarters combat."
-	modifier_type = /datum/modifier/trait/wimpy
-	mutually_exclusive = list(/datum/trait/modifier/bad/weak)
-	trait_cost = -2
 
 /datum/trait/modifier/bad/inaccurate
 	name = "Inaccurate"
