@@ -384,7 +384,7 @@ var/list/name_to_material
 	name = MATERIAL_STEEL
 	stack_type = /obj/item/stack/material/steel
 	hardness = 65
-	integrity = 275
+	integrity = 300
 	brute_armor = 7
 	icon_base = "solid"
 	icon_reinf = "reinf_over"
