@@ -75,7 +75,7 @@
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 0
 	outfit_type = /decl/hierarchy/outfit/job/security/officer
-
+	sex_lock = MALE
 /datum/job/officer/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
