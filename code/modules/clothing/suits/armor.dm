@@ -331,3 +331,14 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	armor = list(melee = 60, bullet = 90, laser = 80, energy = 25, bomb = 30, bio = 10)
 	siemens_coefficient = 0.6
+
+/obj/item/clothing/suit/armor/cardinal
+	name = "armored coat"
+	desc = "A greatcoat enhanced with a special alloy for some protection and style."
+	icon_state = "cardinal"
+	item_state = "cardinal"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	armor = list(melee = 45, bullet = 45, laser = 45, energy = 35, bomb = 45, bio = 20)
+	flags_inv = 0
+	siemens_coefficient = 0.6
+	coverage = alist(UPPER_TORSO = 0.7, LOWER_TORSO = 0.7, ARMS = 1, LEGS = 0.7)
