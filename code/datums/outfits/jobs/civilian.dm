@@ -12,6 +12,12 @@
 	if(prob(20))
 		C = new /obj/item/clothing/suit/storage/leather_jacket(src)
 		H.equip_to_appropriate_slot(C)
+	if(prob(20))
+		C = new /obj/item/clothing/suit/storage/toggle/bomber(src)
+		H.equip_to_appropriate_slot(C)
+	if(prob(20))
+		C = new /obj/item/clothing/suit/storage/toggle/track/red(src)
+		H.equip_to_appropriate_slot(C)
 	else
 		return
 

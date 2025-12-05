@@ -55,3 +55,4 @@
 	id_type = /obj/item/card/id/security
 	pda_type = /obj/item/device/pda/security
 	flags = OUTFIT_NO_SURVIVAL
+	back = /obj/item/storage/backpack/satchel/sec
