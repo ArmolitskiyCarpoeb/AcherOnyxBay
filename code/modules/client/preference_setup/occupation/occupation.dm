@@ -132,6 +132,14 @@
 			. += "<del>[rank]</del></td><td> \[MINIMUM CHARACTER AGE: [job.minimum_character_age]]</td></tr>"
 			continue
 
+		if(job.sex_lock && job.sex_lock != user.client.prefs.gender)
+			. += "<del>[rank]</del></td><td><b> \[BAD SEX]</b></td></tr>"
+			continue
+
+		if(job.body_build_lock && job.body_build_lock != pref.body)
+			. += "<del>[rank]</del></td><td><b> \[BAD BODYBUILD]</b></td></tr>"
+			continue
+
 		if(!job.is_species_allowed(S))
 			. += "<del>[rank]</del></td><td><b> \[SPECIES RESTRICTED]</b></td></tr>"
 			continue

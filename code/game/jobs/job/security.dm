@@ -76,6 +76,8 @@
 	minimal_player_age = 0
 	outfit_type = /decl/hierarchy/outfit/job/security/officer
 	sex_lock = MALE
+	body_build_lock = "Default"
+
 /datum/job/officer/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)

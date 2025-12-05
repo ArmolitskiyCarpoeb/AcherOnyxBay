@@ -152,6 +152,8 @@ var/global/datum/controller/occupations/job_master
 				return FALSE
 			if(!job.player_old_enough(player.client))
 				return FALSE
+			if(job.sex_lock && player.client.prefs.gender != job.sex_lock)
+				return FALSE
 			if(job.is_restricted(player.client.prefs))
 				return FALSE
 
@@ -217,6 +219,12 @@ var/global/datum/controller/occupations/job_master
 				continue
 
 			if(job.is_restricted(player.client.prefs))
+				continue
+
+			if(job.sex_lock && player.client.prefs.gender  != job.sex_lock)
+				continue
+
+			if(job.body_build_lock && player.client.prefs.body != job.body_build_lock)
 				continue
 
 			if(job.title in GLOB.command_positions) //If you want a command position, select it!

@@ -350,6 +350,8 @@
 	if(!job.is_position_available()) return 0
 	if(jobban_isbanned(src, job.title))	return 0
 	if(!job.player_old_enough(src.client))	return 0
+	if(job.sex_lock && job.sex_lock != src.client.prefs.gender)	return 0
+	if(job.body_build_lock && job.body_build_lock != src.client.prefs.body )	return 0
 
 	return 1
 
@@ -671,7 +673,7 @@
 /mob/new_player/proc/show_game_tip()
 	if(!config.game_tips.enable)
 		return
-	
+
 	var/atom/movable/screen/text = new()
 
 	text.screen_loc = "CENTER,SOUTH+1%"
