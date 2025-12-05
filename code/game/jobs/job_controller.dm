@@ -224,9 +224,6 @@ var/global/datum/controller/occupations/job_master
 			if(job.sex_lock && player.client.prefs.gender  != job.sex_lock)
 				continue
 
-			if(job.body_build_lock && player.client.prefs.body != job.body_build_lock)
-				continue
-
 			if(job.title in GLOB.command_positions) //If you want a command position, select it!
 				continue
 

@@ -18,7 +18,7 @@
 	faction_restricted = TRUE
 	sex_lock = MALE
 	loadout_allowed = TRUE
-	body_build_lock = "Default"
+	//body_build_lock = "Default"
 	ideal_character_age = 42 // Old geezer captains ftw
 	outfit_type = /decl/hierarchy/outfit/job/captain
 
