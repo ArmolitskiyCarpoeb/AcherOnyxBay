@@ -1,9 +1,9 @@
 /decl/hierarchy/outfit/job/captain
 	name = OUTFIT_JOB_NAME("Captain")
-	head = /obj/item/clothing/head/HoS
+	head = /obj/item/clothing/head/cardinal
 	glasses = /obj/item/clothing/glasses/sunglasses
-	uniform = /obj/item/clothing/under/rank/head_of_security
-	suit = /obj/item/clothing/suit/armor/hos
+	uniform = /obj/item/clothing/under/rank/cardinal
+	suit = /obj/item/clothing/suit/armor/cardinal
 	l_ear = /obj/item/device/radio/headset/heads/captain
 	shoes = /obj/item/clothing/shoes/jackboots/tactical
 	id_type = /obj/item/card/id/gold

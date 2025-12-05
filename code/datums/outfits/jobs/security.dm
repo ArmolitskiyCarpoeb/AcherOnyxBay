@@ -49,9 +49,9 @@
 
 /decl/hierarchy/outfit/job/security/officer
 	name = OUTFIT_JOB_NAME("Security Officer")
-	uniform = /obj/item/clothing/under/rank/security
+	uniform = /obj/item/clothing/under/rank/ordinator
 	l_pocket = /obj/item/device/flash
-	r_pocket = /obj/item/handcuffs
+	//r_pocket = /obj/item/handcuffs
 	id_type = /obj/item/card/id/security
 	pda_type = /obj/item/device/pda/security
 	flags = OUTFIT_NO_SURVIVAL
