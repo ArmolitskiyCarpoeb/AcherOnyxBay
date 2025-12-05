@@ -71,7 +71,7 @@
 	name = "Быстрые ноги"
 	desc = "Ты торопишься. Нет, ты ОЧЕНЬ торопишься."
 	modifier_type = /datum/modifier/movespeed/fast_legs
-	mutually_exclusive = list(/datum/modifier/movespeed/slow_legs)
+	mutually_exclusive = list(/datum/trait/modifier/bad/slow_legs)
 	trait_cost = 2 // positive: costs points
 
 /// ПЛОХИЕ ТРЕЙТЫ
@@ -89,7 +89,7 @@
 	name = "Медленные ноги"
 	desc = "Ты не торопишься. Нет, ты ОЧЕНЬ не торопишься."
 	modifier_type = /datum/modifier/movespeed/slow_legs
-	mutually_exclusive = list(/datum/modifier/movespeed/fast_legs)
+	mutually_exclusive = list(/datum/trait/modifier/good/fast_legs)
 	trait_cost = -2 // positive: costs points
 
 /datum/trait/modifier/bad/haemophilia
