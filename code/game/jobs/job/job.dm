@@ -44,6 +44,7 @@
 
 	var/hud_icon						  //icon used for Sec HUD overlay
 	var/show_in_setup = TRUE
+	var/sex_lock = FALSE
 
 /datum/job/New()
 	..()

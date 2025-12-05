@@ -16,7 +16,7 @@
 	minimum_character_age = 28
 	economic_modifier = 25
 	faction_restricted = TRUE
-
+	sex_lock = MALE
 	loadout_allowed = TRUE
 
 	ideal_character_age = 42 // Old geezer captains ftw
@@ -33,6 +33,7 @@
 			H.mind.store_memory("<B>ПРИ ЗАХВАТЕ ЕРЕТИКАМИ, ПРЕДАТЕЛЯМИ КОРПОРАЦИИ И ВРАГАМИ НАРОДА, ШАХТЁРСКИЙ АВАНПОСТ ФОРТУНА ПОДЛЕЖИТ УНИЧТОЖЕНИЮ</B>")
 			H.mind.store_memory("[nuke.r_code]")
 			H.mind.store_memory("")
+
 /*
 /datum/job/captain/equip(mob/living/carbon/human/H)
 	. = ..()
