@@ -253,3 +253,12 @@
 	name = "warden's drill hat"
 	desc = "You've definitely have seen that hat before."
 	icon_state = "wardendrill"
+
+/obj/item/clothing/head/cardinal
+	name = "Cardinal's Hat"
+	desc = "The hat of the Cardinal reinforced with a plasteel plate. For showing the workers who's in charge."
+	icon_state = "cardinal"
+	body_parts_covered = HEAD
+	armor = list(melee = 10, bullet = 10, laser = 8, energy = 8, bomb = 5, bio = 5)
+	siemens_coefficient = 0.6
+	coverage = 0.7
