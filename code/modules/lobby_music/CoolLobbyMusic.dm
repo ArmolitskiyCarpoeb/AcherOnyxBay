@@ -9,8 +9,8 @@
 	song = 'sound/music/CoolLobbyMusic/ElTigr3_RideHome.ogg'
 */
 /lobby_music/Replicator
-	artist = "System Shock 2"
-	title = "The Replicator Song"
+	artist = "The Unknown Entity"
+	title = "The Joyful Nusic"
 	song = 'sound/music/CoolLobbyMusic/System_Shock_Replicator.ogg'
 
 /lobby_music/tree
