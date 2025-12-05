@@ -102,7 +102,7 @@ var/TRAIT_POINTS_MAX = 0
 			invalid += "This trait is mutually exclusive with [conflicts]."
 
 		. += "<td width = 75%><font size=2><i>[T.desc]</i>\
-		[invalid ? "<font color='#FF0000'><br>Cannot take trait.  Reason: [invalid]</font>":""]</font></td></tr>"
+		[invalid ? "<font color='#FF0000'><br>Cannot take trait. Reason: [invalid]</font>":""]</font></td></tr>"
 //		if(ticked)
 //			. += "<tr><td colspan=3>"
 //			for(var/datum/gear_tweak/tweak in G.gear_tweaks)
@@ -129,7 +129,7 @@ var/TRAIT_POINTS_MAX = 0
 			var/invalidity = T.test_for_invalidity(src)
 			if(invalidity)
 				pref.traits -= trait_name
-				to_chat(preference_mob, SPAN("warning", "You cannot take the [trait_name] trait.  Reason: [invalidity]"))
+				to_chat(preference_mob, SPAN("warning", "You cannot take the [trait_name] trait. Reason: [invalidity]"))
 
 			var/conflicts = T.test_for_trait_conflict(pref.traits)
 			if(conflicts)
@@ -144,7 +144,7 @@ var/TRAIT_POINTS_MAX = 0
 		else
 			var/invalidity = T.test_for_invalidity(src)
 			if(invalidity)
-				to_chat(user, SPAN("warning", "You cannot take the [T.name] trait.  Reason: [invalidity]"))
+				to_chat(user, SPAN("warning", "You cannot take the [T.name] trait. Reason: [invalidity]"))
 				return TOPIC_NOACTION
 
 			var/conflicts = T.test_for_trait_conflict(pref.traits)

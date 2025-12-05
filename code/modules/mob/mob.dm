@@ -681,7 +681,7 @@
 
 			if(trait_status_lines.len)
 				for(var/msg in trait_status_lines)
-					stat("<!>", msg)
+					stat("!!!", msg)
 
 	if(client.holder)
 		if(statpanel("MC"))
