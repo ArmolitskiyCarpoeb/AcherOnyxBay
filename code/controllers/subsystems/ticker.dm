@@ -104,6 +104,9 @@ SUBSYSTEM_DEF(ticker)
 			pregame_timeleft = 60 SECONDS
 			Master.SetRunLevel(RUNLEVEL_LOBBY)
 			return
+	else
+		GLOB.using_map.setup_economy()
+		Master.SetRunLevel(RUNLEVEL_GAME)
 
 	// This means we succeeded in picking a game mode.
 
