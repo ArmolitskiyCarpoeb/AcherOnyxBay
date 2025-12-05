@@ -153,3 +153,20 @@
 	icon_state = "hos_jensen_dress"
 	item_state = "hos_jensen_dress"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+
+/obj/item/clothing/under/rank/cardinal
+	name = "cardinal's jumpsuit"
+	desc = "It's a jumpsuit worn by those few with the dedication to achieve the position of \"Cardinal\". It has additional armor to protect the wearer."
+	icon_state = "cardinal"
+	item_state = "cardinal"
+	armor = list(melee = 45, bullet = 45, laser = 35, energy = 10, bomb = 5, bio = 5)
+	siemens_coefficient = 0.7
+	coverage = alist(UPPER_TORSO = 1.0, LOWER_TORSO = 0.2, ARMS = 0.1, LEGS = 0.1)
+
+/obj/item/clothing/under/rank/ordinator
+	name = "ordinator's jumpsuit"
+	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
+	icon_state = "ordinator"
+	item_state = "ordinator"
+	armor = list(melee = 10, bullet = 5, laser = 5, energy = 5, bomb = 0, bio = 0)
+	siemens_coefficient = 0.7
