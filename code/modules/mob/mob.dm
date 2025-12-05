@@ -643,7 +643,7 @@
 		/// Сначала положительные
 		if(mind && islist(mind.traits) && mind.traits.len)
 			var/list/trait_status_lines = list()
-
+			stat("TRAITS:")
 			if("Быстрый метаболизм" in mind.traits)
 				trait_status_lines += "У меня быстрый метаболизм"
 			if("В хорошей форме" in mind.traits)
@@ -691,7 +691,7 @@
 
 			if(trait_status_lines.len)
 				for(var/msg in trait_status_lines)
-					stat("<!>", msg)
+					stat("  !  ", msg)
 
 	if(client.holder)
 		if(statpanel("MC"))
