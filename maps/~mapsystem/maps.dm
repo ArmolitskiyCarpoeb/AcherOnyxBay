@@ -26,6 +26,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	var/name = "Unnamed Map"
 	var/full_name = "Unnamed Map"
 	var/path
+	var/jobs_needed = list() // Объявляет на карте, кто необходим для старта раунда, по формату "Название профы" = "Русское название в родительном падеже".
 
 	var/shuttle_types = null         // Only the specified shuttles will be initialized.
 	var/list/map_levels

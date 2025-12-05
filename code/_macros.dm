@@ -238,4 +238,11 @@
 
 #define FONT_GIANT(X)    SPAN("giant", X)
 
+// Делает из "Один, два, три," -> "Один, два и три."
+#define LAZY_RECITATION(X) \
+    if(X && findlasttext_char(X, ",")) { \
+        X = replacetext(X, ",", ".", findlasttext_char(X, ",")); \
+        X = replacetext(X, ",", " и", findlasttext_char(X, ",")); \
+    }
+
 #define EMPTY_BITFIELD 0

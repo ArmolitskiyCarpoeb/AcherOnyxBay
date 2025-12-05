@@ -34,6 +34,8 @@ var/global/list/additional_antag_types = list()
 	var/waittime_l = 60 SECONDS				 // Lower bound on time before start of shift report
 	var/waittime_h = 180 SECONDS		     // Upper bounds on time before start of shift report
 
+	var/need_jobs = TRUE
+
 	//Format: list(start_animation = duration, hit_animation, miss_animation). null means animation is skipped.
 	var/cinematic_icon_states = list(
 		"intro_nuke" = 35,
