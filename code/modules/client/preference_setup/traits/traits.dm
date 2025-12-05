@@ -155,7 +155,7 @@ var/TRAIT_POINTS_MAX = 0
 			var/current_points = get_current_trait_points()
 			var/new_points = current_points + T.trait_cost
 			if(new_points > TRAIT_POINTS_MAX)
-				to_chat(user, SPAN("warning", "Вы не можете взять трейт [T.name]: недостаточно очков трейтов. (Текущие: [current_points], нужно: [T.trait_cost])"))
+				to_chat(user, SPAN("warning", "Вы не можете взять трейт ''[T.name]'': недостаточно очков трейтов. (Текущие: [current_points], нужно: [T.trait_cost])"))
 				return TOPIC_NOACTION
 
 			pref.traits += T.name

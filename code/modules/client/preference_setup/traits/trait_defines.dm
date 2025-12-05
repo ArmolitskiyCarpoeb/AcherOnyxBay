@@ -44,21 +44,53 @@
 		return "Full Body Prosthetics do not have a metabolism."
 	return ..()
 
+/datum/trait/modifier/good/less_stun
+	name = "Быстрое восстановление"
+	desc = "Ты часто падал. Но всё равно вставал. Это тебя кое-чему научило."
+	modifier_type = /datum/modifier/trait/less_stun
+	trait_cost = 2 // positive: costs points
+
+/datum/trait/modifier/good/toxinlover
+	name = "Житель индустриального района"
+	modifier_type = /datum/modifier/trait/toxinlover
+	trait_cost = 2 // positive: costs points
+
 /datum/trait/modifier/good/skilledmarksman
 	name = "Умелый стрелок"
 	modifier_type = /datum/modifier/trait/skilledmarksman
 	mutually_exclusive = list(/datum/trait/modifier/bad/inaccurate)
-	trait_cost = 3 // positive: costs points
+	trait_cost = 2 // positive: costs points
+
+/datum/trait/modifier/good/fast_hands
+	name = "Быстрые руки"
+	desc = "Поспешишь - людей насмешишь."
+	modifier_type = /datum/modifier/actionspeed/timecookie
+	trait_cost = 2 // positive: costs points
+
+/datum/trait/modifier/good/fast_legs
+	name = "Быстрые ноги"
+	desc = "Ты торопишься. Нет, ты ОЧЕНЬ торопишься."
+	modifier_type = /datum/modifier/movespeed/fast_legs
+	mutually_exclusive = list(/datum/modifier/movespeed/slow_legs)
+	trait_cost = 2 // positive: costs points
 
 /// ПЛОХИЕ ТРЕЙТЫ
+
 /datum/trait/modifier/bad/autism //ДОБАВИТЬ ИСКЛЮЧЕНИЕ ТРЕЙТОВ НА ЗДОРОВЬЕ И МЕТАБОЛИЗМ
-	name = "Autism"
+	name = "Аутизм"
 	desc = "Тебя часто роняли головой. Удачи!"
 	modifier_type = /datum/modifier/trait/autism
 	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/lisping,
 						/datum/modifier/trait/haemophilia,
 						/datum/trait/modifier/good/high_metabolism, /datum/trait/modifier/bad/low_metabolism)
-	trait_cost = -4 // mild negative: grants 1 point
+	trait_cost = -4
+
+/datum/trait/modifier/bad/slow_legs
+	name = "Медленные ноги"
+	desc = "Ты не торопишься. Нет, ты ОЧЕНЬ не торопишься."
+	modifier_type = /datum/modifier/movespeed/slow_legs
+	mutually_exclusive = list(/datum/modifier/movespeed/fast_legs)
+	trait_cost = -2 // positive: costs points
 
 /datum/trait/modifier/bad/haemophilia
 	name = "Haemophilia"

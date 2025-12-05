@@ -15,6 +15,10 @@
 /datum/modifier/trait
 	flags = MODIFIER_GENETIC	// We want traits to persist if the person gets cloned.
 
+/datum/modifier/trait/less_stun
+	name = "Less negative effect duration"
+	disable_duration_percent = 0.85
+
 /datum/modifier/trait/high_metabolism
 	name = "Быстрый метаболизм"
 	desc = "Обмен веществ в вашем организме быстрее, чем в среднем. Вы быстрее восстанавливаетесь после повреждений, но есть хочется больше"
@@ -140,6 +144,7 @@
 	metabolism_percent = 0.8
 	bleeding_rate_percent = 0.8
 	max_health_percent = 1.2
+	incoming_healing_percent = 0.8
 
 	autism = TRUE
 
@@ -201,7 +206,9 @@
 	holder.a_intent_change(I_HELP)
 
 /datum/modifier/trait/toxinlover
-	incoming_tox_damage_percent = -0.2
+	name = "Житель индустриального района"
+	desc = "Вы всю жизнь жили в загрязнённом районе Нового Рима - одного из многих человейников Артемиды, поэтому вы менее восприимчивы к токсинам."
+	incoming_tox_damage_percent = 0.85
 
 /datum/modifier/trait/resist_heat_hands
 	incoming_fire_damage_percent = 0.2

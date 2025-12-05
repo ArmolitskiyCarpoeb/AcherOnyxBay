@@ -31,6 +31,18 @@
 	variable = TRUE
 	slowdown = 0
 
+/datum/modifier/movespeed/slow_legs
+	movespeed_modifier_path = /datum/movespeed_modifier/slow_legs
+
+/datum/movespeed_modifier/slow_legs
+	slowdown = 1
+
+/datum/modifier/movespeed/fast_legs
+	movespeed_modifier_path = /datum/movespeed_modifier/fast_legs
+
+/datum/movespeed_modifier/fast_legs
+	slowdown = -1
+
 /datum/modifier/movespeed/lightpink
 	movespeed_modifier_path = /datum/movespeed_modifier/lightpink
 
