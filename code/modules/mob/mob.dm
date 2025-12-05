@@ -650,6 +650,14 @@
 				trait_status_lines += "Я в хорошей физической форме"
 			if("Умелый стрелок" in mind.traits)
 				trait_status_lines += "Хорошо стреляю"
+			if("Быстрые руки" in mind.traits)
+				trait_status_lines += "Быстро делаю дела"
+			if("Быстрые ноги" in mind.traits)
+				trait_status_lines += "Быстро хожу и бегаю"
+			if("Житель индустриального района" in mind.traits)
+				trait_status_lines += "Менее восприимчив к токсинам"
+			if("Быстрое восстановление" in mind.traits)
+				trait_status_lines += "Быстро восстанавливаюсь"
 
 		/// Потом отрицательные
 			if("Autism" in mind.traits)
@@ -674,6 +682,8 @@
 				trait_status_lines += "Плохо выговариваю некоторые буквы"
 			if("Lisp" in mind.traits)
 				trait_status_lines += "Шепелявлю"
+			if("Медленные ноги" in mind.traits)
+				trait_status_lines += "Медленно хожу и бегаю"
 
 		/// Теперь нейтральные
 			if(("Protanopia" in mind.traits) || ("Deuteranopia" in mind.traits) || ("Tritanopia" in mind.traits) || ("Tritanopi" in mind.traits) || ("Monochromacy" in mind.traits))
@@ -681,7 +691,7 @@
 
 			if(trait_status_lines.len)
 				for(var/msg in trait_status_lines)
-					stat("!!!", msg)
+					stat("<!>", msg)
 
 	if(client.holder)
 		if(statpanel("MC"))
