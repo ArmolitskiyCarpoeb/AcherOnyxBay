@@ -74,7 +74,7 @@
 		should_stop = should_stop || (prob(10) && owner.shock_stage >= 120) //traumatic shock
 		should_stop = should_stop || (prob(10) && pulse == PULSE_THREADY) //erratic heart patterns, usually caused by oxyloss
 		if(should_stop) // The heart has stopped due to going into traumatic or cardiovascular shock.
-			to_chat(owner, "<span class='danger'>Your heart has stopped!</span>")
+			to_chat(owner, SPAN_DANGER("Твоё сердце остановилось!"))
 			pulse = PULSE_NONE
 			return
 	if(pulse && oxy <= BLOOD_VOLUME_SURVIVE && !owner.chem_effects[CE_STABLE])	//I SAID MOAR OXYGEN

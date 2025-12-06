@@ -5,6 +5,7 @@
 	var/current_fear = 0                // Counter for how 'afraid' the holder is.
 	var/max_fear = 100                  // Cap for current_fear.
 	var/fear_decay_rate = 1             // How much is subtracted every Life() tick when not being spooked by something.
+	var/should_not_fear = 0
 
 	var/list/zero_fear_up = list()      // Message displayed to holder when current_fear raises above 0.
 	var/list/zero_fear_down = list()    // Message displayed when reaching 0.
@@ -18,8 +19,12 @@
 /datum/modifier/trait/phobia/tick()
 	if(holder.stat)
 		return // You got bigger problems.
+
 	var/new_fear = should_fear()
 	if(new_fear)
+		if(should_not_fear > 0)
+			should_not_fear--
+			return
 		adjust_fear(new_fear)
 	else
 		adjust_fear(-fear_decay_rate)
@@ -31,8 +36,13 @@
 	// Handle messages.  safepick() is used so that if no messages are defined, it just does nothing, verses runtiming.
 	var/message = null
 	if(amount > 0) // Increase in spooks.
+	// H.internal_organs_by_name[BP_HEART]
 		if(current_fear == max_fear && last_fear < max_fear)
 			message = safepick(full_fear_up)
+			holder.emote("scream", intentional = FALSE)
+			holder.emote("faint", intentional = FALSE)
+			current_fear = max_fear / 2
+			should_not_fear = 10
 		else if(current_fear >= (max_fear / 2) && last_fear < (max_fear / 2))
 			message = safepick(half_fear_up)
 		else if(current_fear > 0 && last_fear == 0)
@@ -56,40 +66,40 @@
 // Actual phobia trait implementations below.
 
 /datum/modifier/trait/phobia/haemophobia
-	name = "haemophobia"
-	desc = "Seeing a bunch of blood isn't really pleasant for most people, but for you, it is very distressing."
+	name = "Гемофобия"
+	desc = "Вид крови не очень приятен большинству людей, но для тебя вгоняет в панику."
 	fear_decay_rate = 4
 
-	on_created_text = "<span class='warning'>You are terrified of seeing blood.</span>"
-	on_expired_text = "<span class='notice'>You feel that blood doesn't bother you, at least, as much as it used to.</span>"
+	on_created_text = "<span class='warning'>Ты боишься увидеть кровь.</span>"
+	on_expired_text = "<span class='notice'>Ты чувствуешь, что кровь, по крайней мере, не беспокоит тебя так сильно, как раньше.</span>"
 
 	zero_fear_up = list(
-		"<span class='warning'><font size='3'>You see some blood nearby...</font></span>",
-		"<span class='warning'><font size='3'>You try to avoid looking at the blood nearby.</font></span>"
+		"<span class='warning'><font size='3'>Ты обращаешь внимание на кровь...</font></span>",
+		"<span class='warning'><font size='3'>Ты стараешься не смотреть на кровь.</font></span>"
 		)
 	zero_fear_down = list(
-		"<span class='notice'>You feel better now, with no blood in sight.</span>",
-		"<span class='notice'>At last, the blood is gone.</span>",
-		"<span class='notice'>Hopefully you won't see anymore blood today.</span>"
+		"<span class='notice'>Ты ощущаешь себя лучше, без крови вокруг.</span>",
+		"<span class='notice'>Наконец, крови нет.</span>",
+		"<span class='notice'>Есть еще надежда, что ты больше не увидишь кровь за сегодня.</span>"
 		)
 
 	half_fear_up = list(
-		"<span class='danger'><font size='3'>You're still near the blood!</font></span>",
-		"<span class='danger'><font size='3'>So much blood... You can't stand it.</font></span>"
+		"<span class='danger'><font size='3'>Кровь всё ещё поблизости!</font></span>",
+		"<span class='danger'><font size='3'>Столько крови... Ты не можешь устоять.</font></span>"
 		)
 	half_fear_down = list(
-		"<span class='warning'>The blood is gone now, but you're still worked up.</span>",
-		"<span class='warning'>You can't see the blood now, but you're still anxious.</span>"
+		"<span class='warning'>Крови больше нет, но напряжение осталось.</span>",
+		"<span class='warning'>Тебе тревожно, хоть крови и нет поблизости.</span>"
 		)
 
 	full_fear_up = list(
-		"<span class='danger'><font size='4'>The blood is too much!</font></span>",
-		"<span class='danger'><font size='4'>There is so much blood here, you need to leave!</font></span>",
-		"<span class='danger'><font size='4'>You gotta get away from the blood!</font></span>"
+		"<span class='danger'><font size='4'>Слишком много крови!</font></span>",
+		"<span class='danger'><font size='4'>Тут слишком много крови, это омерзительно!</font></span>",
+		"<span class='danger'><font size='4'>Ты не можешь устоять перед видом всей этой крови!</font></span>"
 		)
 	full_fear_down = list(
-		"<span class='danger'>The blood is gone, but you're still very anxious.</span>",
-		"<span class='danger'>No more blood... Please.</span>"
+		"<span class='danger'>Крови нет, но тревога не отступает.</span>",
+		"<span class='danger'>Пожалуйста... Пусть больше крови не будет.</span>"
 		)
 
 /datum/modifier/trait/phobia/haemophobia/check_if_valid()
@@ -152,42 +162,42 @@
 
 
 /datum/modifier/trait/phobia/nyctophobe
-	name = "nyctophobia"
-	desc = "More commonly known as the fear of darkness.  The shadows can hide many dangers, which makes the prospect of going into the depths of Maintenance rather worrisome."
+	name = "Никтофобия"
+	desc = "Более известный как страх темноты. Тени могут скрывать множество опасностей, поэтому перспектива погружения в глубины технических туннелей довольно тревожна."
 	fear_decay_rate = 5
 
-	on_created_text = "<span class='warning'>You are terrified of the dark.</span>"
-	on_expired_text = "<span class='notice'>You feel that darkness isn't quite as scary anymore.</span>"
+	on_created_text = "<span class='warning'>Ты боишься темноты.</span>"
+	on_expired_text = "<span class='notice'>Ты больше не боишься темноты.</span>"
 
 	var/fear_threshold = 0.5 // Average lighting needs to be below this to start increasing fear.
 
 	zero_fear_up = list(
-		"<span class='warning'><font size='3'>It's so dark here!</font></span>",
-		"<span class='warning'><font size='3'>It's too dark!</font></span>"
+		"<span class='warning'><font size='3'>Тут так темно!</font></span>",
+		"<span class='warning'><font size='3'>Слишком темно!</font></span>"
 		)
 	zero_fear_down = list(
-		"<span class='notice'>You feel calmer, now that you're in the light.</span>",
-		"<span class='notice'>At last, no more darkness.</span>",
-		"<span class='notice'>The light makes you feel calmer.</span>"
+		"<span class='notice'>Ты ощущаешь себя спокойней, на свету.</span>",
+		"<span class='notice'>По крайней мере, тут светлее.</span>",
+		"<span class='notice'>Свет делает тебя спокойнее.</span>"
 		)
 
 	half_fear_up = list(
-		"<span class='danger'><font size='3'>You need to escape this darkness!</font></span>",
-		"<span class='danger'><font size='3'>Something might be lurking near you, but you can't see in this darkness.</font></span>",
-		"<span class='danger'><font size='3'>You need to find a light!</font></span>",
+		"<span class='danger'><font size='3'>Тебе надо сбежать из этой темноты!</font></span>",
+		"<span class='danger'><font size='3'>Что-то может скрываться рядом с тобой, но ты не можешь этого увидеть в этой темноте.</font></span>",
+		"<span class='danger'><font size='3'>Тебе надо выйти на свет!</font></span>",
 		)
 	half_fear_down = list(
-		"<span class='warning'>The darkness is gone, for now...</span>",
-		"<span class='warning'>You're not in the dark anymore, but you're still anxious.</span>"
+		"<span class='warning'>Тьма отошла</span>",
+		"<span class='warning'>Ты больше не в темноте, но от одной мысли, тревожно.</span>"
 		)
 
 	full_fear_up = list(
-		"<span class='danger'><font size='4'>What was that?</font></span>",
-		"<span class='danger'><font size='4'>Something is nearby...</font></span>"
+		"<span class='danger'><font size='4'>Сзади!</font></span>",
+		"<span class='danger'><font size='4'>Тебя что-то коснулось...</font></span>"
 		)
 	full_fear_down = list(
-		"<span class='danger'>Light, at last!</span>",
-		"<span class='danger'>The darkness is finally gone!</span>"
+		"<span class='danger'>Свет, наконец!</span>",
+		"<span class='danger'>Тьмы наконец нет!</span>"
 		)
 
 /datum/modifier/trait/phobia/nyctophobe/should_fear()
@@ -229,8 +239,8 @@
 	return fear_amount
 
 /datum/modifier/trait/phobia/claustrophobe
-	name = "claustrophobia"
-	desc = "Small spaces and tight quarters makes you feel distressed.  Unfortunately both are rather common when living in space."
+	name = "Клаустрофобия"
+	desc = "Тесное пространство и теснота создают ощущение дискомфорта. К сожалению, и то, и другое довольно распространено в космосе."
 	fear_decay_rate = 2
 
 	var/open_tiles_needed = 15 // Tends to be just right, as maint triggers this but hallways don't.
