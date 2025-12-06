@@ -249,8 +249,8 @@
 /datum/emote/collapse
 	key = "collapse"
 
-	message_1p = "You collapse!"
-	message_3p = "collapses!"
+	message_1p = "Ты падаешь"
+	message_3p = "падает!"
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -275,8 +275,8 @@
 /datum/emote/faint
 	key = "faint"
 
-	message_1p = "You faint!"
-	message_3p = "faints!"
+	message_1p = "Ты падаешь в обморок!"
+	message_3p = "теряет сознание!"
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -290,7 +290,7 @@
 	. = ..()
 	if(!intentional && isliving(user))
 		var/mob/living/L = user
-		L.SetSleeping(10 SECONDS)
+		L.SetSleeping(10)
 
 /mob/proc/faint_emote()
 	set name = "Faint"

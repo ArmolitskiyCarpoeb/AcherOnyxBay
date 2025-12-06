@@ -46,14 +46,19 @@
 /datum/poster/tg_5
 	name = "Syndicate Recruitment Poster"
 	desc = "Meet new people! Enjoy cool things! Shatter corrupt megacorporations! Join today!"
-	icon_state="poster5"
+	icon_state = "poster5"
 
 /datum/poster/poster12
 	name = "Сатана"
 	desc = "На постере изображён предатель, демон и враг всего человечества - Хешуос Кристов."
-	icon_state="poster12"
+	icon_state = "poster12"
+
+/datum/poster/poster13
+	name = "Тёмный мессия"
+	desc = "На постере изображён человек в парадной форме, чья нижняя часть лица превращена в кальмара. Снизу, на белом фоне, красными буквами написано \"М'уых\"."
+	icon_state = "poster13"
 
 /datum/poster/tg_6
 	name = "Clown"
 	desc = "Honk."
-	icon_state="poster6"
+	icon_state = "poster6"
