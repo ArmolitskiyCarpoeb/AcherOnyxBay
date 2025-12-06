@@ -128,13 +128,13 @@
 		if(setup.get_FBP_type() == PREF_FBP_SOFTWARE)
 			return "Drone Intelligences cannot feel emotions."
 	return ..()
-
+/*
 /datum/trait/modifier/bad/nyctophobe
 	name = "Nyctophobic"
 	desc = "More commonly known as the fear of darkness.  The shadows can hide many dangers, which makes the prospect of going into the depths of Maintenance rather worrisome."
 	modifier_type = /datum/modifier/trait/phobia/nyctophobe
 	trait_cost = -1
-
+*/
 
 /datum/trait/modifier/bad/haemophobe
 	name = "Haemophobia"
@@ -142,7 +142,6 @@
 	pleasant for most people, but for you, it is very distressing."
 	modifier_type = /datum/modifier/trait/phobia/haemophobia
 	trait_cost = -1
-
 
 /datum/trait/modifier/bad/claustrophobe
 	name = "Claustrophobic"
