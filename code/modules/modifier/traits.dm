@@ -133,7 +133,7 @@
 
 /datum/modifier/trait/lisping
 	name = "Шепелявость"
-	desc = "You have a form of red-green colorblindness. You cannot see reds, and have trouble distinguishing them from yellows and greens."
+	desc = "У вас речевое нарушение — вы шепелявите."
 
 	lisping = TRUE
 
