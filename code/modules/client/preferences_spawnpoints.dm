@@ -34,7 +34,7 @@ GLOBAL_VAR(spawntypes)
 /datum/spawnpoint/arrivals/New()
 	..()
 	turfs = GLOB.latejoin
-
+/*
 /datum/spawnpoint/gateway
 	display_name = "Gateway"
 	msg = "has completed translation from offsite gateway"
@@ -60,7 +60,7 @@ GLOBAL_VAR(spawntypes)
 /datum/spawnpoint/cyborg/New()
 	..()
 	turfs = GLOB.latejoin_cyborg
-
+*/
 /datum/spawnpoint/default
 	display_name = DEFAULT_SPAWNPOINT_ID
 	msg = "has arrived on the station"
