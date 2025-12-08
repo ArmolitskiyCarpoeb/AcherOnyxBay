@@ -34,7 +34,7 @@
 
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the cardinal and the corporation"
+	supervisors = "кардиналом"
 	selection_color = "#8f741b"
 	economic_modifier = 7
 	minimal_player_age = 0

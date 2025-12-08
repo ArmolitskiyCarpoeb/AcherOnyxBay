@@ -164,7 +164,7 @@
 	coverage = alist(UPPER_TORSO = 1.0, LOWER_TORSO = 0.2, ARMS = 0.1, LEGS = 0.1)
 
 /obj/item/clothing/under/rank/ordinator
-	name = "ordinator's jumpsuit"
+	name = "operative's jumpsuit"
 	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
 	icon_state = "ordinator"
 	item_state = "ordinator"

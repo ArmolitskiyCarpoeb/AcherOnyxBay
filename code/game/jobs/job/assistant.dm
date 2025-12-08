@@ -1,14 +1,14 @@
 /datum/job/assistant
-	title = "Workman"
-	description = "Неважно кто ты, бывший заключённый, сбежавший от семьи или доходяга с долгами - это всё в прошлом. Ты тут, что бы выполнять грязную работу. Копай руду, выращивай овощи или готовь пайки. Твоя смена кончается только в двух случаях: когда закончится вахта или когда ты умрёшь. У тебя нет аккаунта, постарайся заработать немного денег на этой смене."
+	title = "Nobody"
+	description = "Ты - человек без работы и денег. Тебя здесь не любят!"
 	department = "Civilian"
 	department_flag = CIV
 
 	account_allowed = FALSE
 	total_positions = -1
 	spawn_positions = -1
-	supervisors = "the cardinal"
-	selection_color = "#515151"
+	supervisors = "Богом"
+	selection_color = "#1f1d1d"
 	economic_modifier = 1
 	access = list(access_maint_tunnels)
 	minimal_access = list(access_maint_tunnels)

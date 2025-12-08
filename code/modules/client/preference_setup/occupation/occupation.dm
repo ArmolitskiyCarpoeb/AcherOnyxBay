@@ -364,11 +364,11 @@
 	job_desc +="<div style='border: 1px solid grey; float: left; margin-right: 20px; padding: 8px; line-height: 180%;'> <h1 style='padding: 0px;'>DESCRIPTION:</h1>"
 
 	if(job.alt_titles)
-		job_desc += "<i><b>Alternative titles:</b> [english_list(job.alt_titles)].</i>"
+		job_desc += "<i><b>Альтернативно именуем:</b> [english_list(job.alt_titles)].</i>"
 	job_desc += "<br>"
-	job_desc += "You answer to <b>[job.supervisors]</b> normally."
+	job_desc += "Ты отвечаешь перед <b>[job.supervisors]</b>, обычно."
 	job_desc += "<br>"
-	job_desc += "The Ideal character age for this role is <b>[job.ideal_character_age] years</b>."
+	job_desc += "Твоему возрасту лучше бы быть равным <b>[job.ideal_character_age] годам</b>."
 	job_desc += "<br>"
 
 	//if(config.wikiurl)

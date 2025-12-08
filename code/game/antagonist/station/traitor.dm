@@ -51,7 +51,7 @@ GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
 	if(!..())
 		return
 
-	if(istype(traitor.current, /mob/living/silicon))
+	if(istype(traitor.current, /mob/living/carbon/human))
 		for(var/i=1, i <= 2, i++)
 			if(prob(50))
 				var/datum/objective/assassinate/kill_objective = new

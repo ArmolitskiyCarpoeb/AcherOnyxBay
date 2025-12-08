@@ -60,14 +60,14 @@
 	outfit_type = /decl/hierarchy/outfit/job/security/detective
 
 /datum/job/officer
-	title = "Ordinator"
+	title = "Security Operative"
 	description = "Ты — инструмент, а не герой. Приказ слепо выполнен — вот и вся твоя доблесть. Хорошо подумай прежде чем рискнуть жизнь ради кого-то: твоя жизнь — расходник, а на твоё место уже стоит в очереди следующий."
 	department = "Security"
 	department_flag = SEC
 
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the cardinal"
+	supervisors = "кардиналом"
 	selection_color = "#552828"
 	//alt_titles = list("Junior Officer")
 	economic_modifier = 4

@@ -19,14 +19,16 @@
 		new /datum/space_level/fortuna_4
 	)
 
-	allowed_jobs = list(
-			/datum/job/assistant,
-			/datum/job/hydro,
+	allowed_jobs = list(/datum/job/assistant,
+			/datum/job/captain,
+			/datum/job/officer,
 			/datum/job/qm,
 			/datum/job/doctor,
 			/datum/job/engineer,
-			/datum/job/officer,
-			/datum/job/captain
+			/datum/job/mining,
+			/datum/job/bartender,
+			/datum/job/chef,
+			/datum/job/hydro
 		)
 
 	station_name  = "MS Fortuna"

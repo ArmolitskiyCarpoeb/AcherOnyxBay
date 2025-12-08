@@ -5,7 +5,7 @@
 	department_flag = SRV
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "кардиналом и завхозом"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_bar)
@@ -15,19 +15,25 @@
 	. = ..()
 	if(.)
 		H.add_mutation(MUTATION_BARTENDER)
+		H.newgeneratestats(5,15,5,15,5,15,5,15)
 
 /datum/job/chef
 	title = "Chef"
 	department = "Service"
 	department_flag = SRV
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = "the head of personnel"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "кардиналом и завхозом"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_kitchen)
 	alt_titles = list("Cook")
 	outfit_type = /decl/hierarchy/outfit/job/service/chef
+
+/datum/job/chef/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		H.newgeneratestats(5,15,5,15,5,15,5,15)
 
 /datum/job/barmonkey
 	title = "Waiter"
@@ -62,11 +68,10 @@
 	department_flag = SRV
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the cardinal"
-	selection_color = "#116927"
+	supervisors = "кардиналом и завхозом"
+	selection_color = "#515151"
 	access = list(access_maint_tunnels, access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_maint_tunnels, access_hydroponics)
-	alt_titles = list("Hydroponicist")
 	outfit_type = /decl/hierarchy/outfit/job/service/gardener
 
 /datum/job/hydro/equip(mob/living/carbon/human/H)
@@ -82,7 +87,7 @@
 	department_flag = SUP
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the cardinal"
+	supervisors = "кардиналом и корпорацией"
 	selection_color = "#5e4324"
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant)
@@ -112,15 +117,20 @@
 	title = "Shaft Miner"
 	department = "Supply"
 	department_flag = SUP
-	total_positions = 3
-	spawn_positions = 3
-	supervisors = "the quartermaster"
+	total_positions = 4
+	spawn_positions = 4
+	supervisors = "кардиналом и завхозом"
 	selection_color = "#515151"
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
 	//alt_titles = list("Drill Technician","Prospector")
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
+
+/datum/job/mining/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		H.newgeneratestats(8,15,5,14,5,12,6,13)
 
 /datum/job/janitor
 	title = "Janitor"

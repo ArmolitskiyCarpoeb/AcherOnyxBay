@@ -34,7 +34,7 @@
 	minimal_player_age = 0
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the cardinal and the corporation"
+	supervisors = "кардиналом"
 	selection_color = "#13817e"
 	economic_modifier = 9
 	access = list(access_medical, access_medical_equip, access_morgue, access_heads,
@@ -43,11 +43,6 @@
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_maint_tunnels, access_external_airlocks)
-	alt_titles = list(
-		"Surgeon" = /decl/hierarchy/outfit/job/medical/doctor/surgeon,
-		"Emergency Physician" = /decl/hierarchy/outfit/job/medical/doctor/emergency_physician,
-		"Nurse" = /decl/hierarchy/outfit/job/medical/doctor/nurse,
-		)
 	outfit_type = /decl/hierarchy/outfit/job/medical/doctor
 
 /datum/job/doctor/equip(mob/living/carbon/human/H)

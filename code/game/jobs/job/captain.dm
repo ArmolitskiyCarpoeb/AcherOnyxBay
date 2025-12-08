@@ -7,7 +7,7 @@
 
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the church and the corporation"
+	supervisors = "церковью и корпорацией"
 	selection_color = "#4d0d0d"
 	req_admin_notify = 1
 	access = list() 			//See get_access()

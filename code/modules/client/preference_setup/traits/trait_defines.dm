@@ -134,7 +134,7 @@
 	desc = "More commonly known as the fear of darkness.  The shadows can hide many dangers, which makes the prospect of going into the depths of Maintenance rather worrisome."
 	modifier_type = /datum/modifier/trait/phobia/nyctophobe
 	trait_cost = -1
-*/
+
 
 /datum/trait/modifier/bad/haemophobe
 	name = "Haemophobia"
@@ -148,7 +148,7 @@
 	desc = "Small spaces and tight quarters makes you feel distressed.  Unfortunately both are rather common when living in space."
 	modifier_type = /datum/modifier/trait/phobia/claustrophobe
 	trait_cost = -1
-
+*/
 /datum/trait/modifier/bad/stammering
 	name = "Stutterer"
 	modifier_type = /datum/modifier/trait/stammering
@@ -166,8 +166,6 @@
 	modifier_type = /datum/modifier/trait/lisping
 	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/autism)
 	trait_cost = -1
-
-
 
 /// НЕЙТРАЛЬНЫЕ ТРЕЙТЫ
 

@@ -1,24 +1,51 @@
 /decl/hierarchy/outfit/job/assistant
 	name = OUTFIT_JOB_NAME("Assistant")
+	uniform = null
 	//suit = /obj/item/clothing/suit/storage/hazardvest
 	flags = OUTFIT_NO_SURVIVAL
+	pda_type = null
+
+/decl/hierarchy/outfit/job/assistant/equip_id(mob/living/carbon/human/H, rank, assignment, equip_adjustments)
+	var/obj/item/card/id/W = new id_type(H)
+	var/obj/item/device/pda/D = new pda_type(/obj/item/device/pda)
+	if(id_desc)
+		W.desc = id_desc
+	if(rank)
+		W.rank = rank
+	if(assignment)
+		W.assignment = assignment
+	H.set_id_info(W)
+	H.put_in_l_hand(W)
+	H.put_in_r_hand(D)
+	return W
 
 /decl/hierarchy/outfit/job/assistant/post_equip(mob/living/carbon/human/H)
 	..()
 	var/obj/item/clothing/C
-	if(prob(20))
-		C = new /obj/item/clothing/suit/storage/hazardvest(src)
+	if(prob(25))
+		C = new /obj/item/clothing/under/casual_pants(src)
 		H.equip_to_appropriate_slot(C)
-	if(prob(20))
-		C = new /obj/item/clothing/suit/storage/leather_jacket(src)
+		if(prob(25))
+			C = new /obj/item/clothing/suit/storage/leather_jacket(src)
+			H.equip_to_appropriate_slot(C)
+		if(prob(25))
+			C = new /obj/item/clothing/suit/storage/toggle/bomber(src)
+			H.equip_to_appropriate_slot(C)
+		if(prob(25))
+			C = new /obj/item/clothing/suit/storage/toggle/track/red(src)
+			H.equip_to_appropriate_slot(C)
+	if(prob(12))
+		C = new /obj/item/clothing/under/suit_jacket(src)
 		H.equip_to_appropriate_slot(C)
-	if(prob(20))
-		C = new /obj/item/clothing/suit/storage/toggle/bomber(src)
-		H.equip_to_appropriate_slot(C)
-	if(prob(20))
-		C = new /obj/item/clothing/suit/storage/toggle/track/red(src)
+	if(prob(25))
+		C = new /obj/item/clothing/under/camo/urban(src)
 		H.equip_to_appropriate_slot(C)
 	else
+		C = new /obj/item/clothing/under/color/orange(src)
+		H.equip_to_appropriate_slot(C)
+		if(prob(25))
+			C = new /obj/item/clothing/suit/storage/toggle/bomber(src)
+			H.equip_to_appropriate_slot(C)
 		return
 
 /decl/hierarchy/outfit/job/service
@@ -31,6 +58,7 @@
 	id_type = /obj/item/card/id/civilian/bartender
 	pda_type = /obj/item/device/pda/bar
 	suit = /obj/item/clothing/suit/armor/vest
+	flags = OUTFIT_NO_SURVIVAL
 
 /decl/hierarchy/outfit/job/service/chef
 	name = OUTFIT_JOB_NAME("Chef")
@@ -39,6 +67,7 @@
 	head = /obj/item/clothing/head/chefhat
 	id_type = /obj/item/card/id/civilian/chef
 	pda_type = /obj/item/device/pda/chef
+	flags = OUTFIT_NO_SURVIVAL
 
 /decl/hierarchy/outfit/job/service/gardener
 	name = OUTFIT_JOB_NAME("Gardener")
@@ -59,6 +88,7 @@
 	uniform = /obj/item/clothing/under/rank/janitor
 	id_type = /obj/item/card/id/civilian/janitor
 	pda_type = /obj/item/device/pda/janitor
+	flags = OUTFIT_NO_SURVIVAL
 
 /decl/hierarchy/outfit/job/service/barmonkey
 	name = OUTFIT_JOB_NAME("Bar Monkey")
