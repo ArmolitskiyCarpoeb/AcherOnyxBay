@@ -24,7 +24,7 @@
 "cs" = (/obj/machinery/embedded_controller/radio/simple_docking_controller{name = "cargo bay hatch controller"; dir = 4; pixel_x = -30; frequency = 1380; req_one_access = list(13,31); id_tag = "cargo_bay"; tag_door = "cargo_bay_door"},/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
 "cu" = (/obj/effect/floor_decal/industrial/warning{dir = 8},/turf/simulated/floor/plating,/area/polarplanet/street)
 "cA" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
-"cH" = (/obj/effect/landmark/start/crew/assistant,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
+"cH" = (/obj/effect/landmark/start/crew/chef,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
 "cY" = (/obj/structure/window_frame/rglass,/turf/simulated/floor/plating/airless,/area/polarplanet/street)
 "de" = (/obj/machinery/door/airlock/hatch{name = "Telecoms Control Room"; req_access = list(61)},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
 "du" = (/obj/machinery/light{dir = 4},/turf/simulated/floor/plating,/area/polarplanet/tcommsat/computer)
@@ -149,7 +149,7 @@
 "sd" = (/obj/effect/decal/cleanable/dirt,/obj/effect/floor_decal/rust,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
 "si" = (/obj/machinery/door/airlock/maintenance_hatch{name = "Telecoms Server Access"; req_access = list(61)},/turf/simulated/floor/grid/bluegrid{icon_state = "dark"; name = "Mainframe Floor"; temperature = 80},/area/polarplanet/tcommsat/chamber)
 "so" = (/obj/effect/decal/cleanable/dirt,/obj/effect/floor_decal/rust,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
-"sq" = (/obj/structure/bed/chair/shuttle/blue{dir = 1},/obj/effect/landmark/joinlate/gate,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
+"sq" = (/obj/structure/bed/chair/shuttle/blue{dir = 1},/obj/effect/landmark/start/crew/bartender,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
 "sz" = (/obj/machinery/light/small/red{dir = 8},/obj/effect/floor_decal/rust,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
 "sB" = (/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/machinery/atmospherics/pipe/simple/hidden{dir = 4},/obj/machinery/embedded_controller/radio/airlock/airlock_controller{id_tag = "tcom_airlock_control"; tag_exterior_door = "tcom_airlock_exterior"; tag_interior_door = "tcom_airlock_interior"; tag_airpump = "tcom_airlock_pump"; tag_chamber_sensor = "tcom_airlock_sensor"; pixel_y = 28},/obj/machinery/airlock_sensor{frequency = 1380; id_tag = "tcom_airlock_sensor"; pixel_y = -25; dir = 1},/turf/simulated/floor/plating,/area/polarplanet/tcommsat/chamber)
 "td" = (/obj/structure/cable/green{d2 = 4; icon_state = "0-4"},/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
@@ -160,6 +160,7 @@
 "tL" = (/obj/item/caution/cone,/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
 "tP" = (/obj/machinery/light/small/red{dir = 1},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
 "tS" = (/obj/machinery/light{dir = 1},/obj/effect/decal/cleanable/dirt,/obj/effect/floor_decal/rust,/obj/effect/floor_decal/corner/brown{dir = 5},/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
+"tT" = (/obj/structure/bed/chair/shuttle/blue{dir = 1},/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
 "ua" = (/obj/structure/closet/crate,/obj/item/aicard,/obj/item/device/multitool,/obj/machinery/light/he{dir = 1},/obj/effect/floor_decal/rust,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
 "ub" = (/obj/structure/cable/yellow{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/plating,/area/polarplanet/street)
 "uc" = (/obj/machinery/door/airlock/external/bolted{id_tag = "train_dock_hatch"; frequency = 2880},/obj/machinery/door/firedoor/border_only,/obj/structure/catwalk/catwalk_new,/turf/simulated/floor/plating,/area/polarplanet/tcommsat/computer)
@@ -218,7 +219,7 @@
 "BO" = (/obj/effect/shuttle_landmark/supply/station{docking_controller = null},/turf/simulated/floor/plating,/area/polarplanet/supply/station)
 "BQ" = (/obj/effect/landmark/start/crew/captain,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
 "BS" = (/obj/structure/window_frame/grille/rglass,/turf/simulated/floor/plating,/area/polarplanet/tcommsat/computer)
-"BZ" = (/obj/effect/landmark/joinlate/gate,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
+"BZ" = (/obj/effect/landmark/start/crew/miner,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
 "Cc" = (/obj/effect/floor_decal/industrial/warning{dir = 4},/obj/effect/floor_decal/industrial/standclear/yellow{dir = 8},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
 "Cg" = (/obj/structure/closet/wardrobe/black,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
 "Ci" = (/obj/effect/floor_decal/corner/brown{dir = 5},/obj/structure/sign/flag/church{pixel_y = 32},/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
@@ -273,7 +274,7 @@
 "Iv" = (/obj/item/storage/toolbox/electrical{pixel_x = 1; pixel_y = -1},/turf/simulated/floor/plating/airless,/area/polarplanet/street)
 "Iw" = (/obj/structure/table/steel,/obj/random/toolbox,/turf/simulated/floor/plating,/area/polarplanet/tcommsat/chamber)
 "Ix" = (/obj/machinery/light,/obj/effect/floor_decal/corner/brown{dir = 10},/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
-"IC" = (/obj/machinery/light{dir = 8},/obj/structure/bed/chair{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/effect/landmark/start/crew/assistant,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
+"IC" = (/obj/machinery/light{dir = 8},/obj/structure/bed/chair{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
 "IE" = (/obj/machinery/door/airlock/external{name = "Arrival Airlock"},/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
 "IX" = (/obj/structure/disposalpipe/segment,/obj/machinery/floodlight,/turf/simulated/floor/plating,/area/polarplanet/tcommsat/computer)
 "Jb" = (/obj/structure/closet/wardrobe/grey,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
@@ -351,7 +352,7 @@
 "Se" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/plating,/area/polarplanet/tcommsat/chamber)
 "Sj" = (/obj/structure/lattice,/obj/random/contraband,/turf/simulated/floor/asteroid,/area/polarplanet/street)
 "Sk" = (/obj/machinery/atmospherics/pipe/simple/hidden{dir = 9},/turf/simulated/floor/plating,/area/polarplanet/tcommsat/computer)
-"Sn" = (/obj/structure/bed/chair{dir = 4},/obj/effect/decal/cleanable/dirt,/obj/effect/landmark/start/crew/assistant,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
+"Sn" = (/obj/structure/bed/chair{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
 "St" = (/obj/structure/window_frame/grille/rglass,/obj/structure/cable{d2 = 8; dir = 1; icon_state = "0-8"},/turf/simulated/floor/plating,/area/polarplanet/tcommsat/computer)
 "Sz" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/effect/floor_decal/industrial/warning{dir = 8},/obj/effect/floor_decal/rust,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/entrance)
 "SE" = (/obj/effect/floor_decal/corner/alt/red{dir = 9},/obj/structure/bed/chair/red{dir = 4},/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
@@ -368,6 +369,7 @@
 "To" = (/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/plating,/area/polarplanet/street)
 "TA" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/entrance)
 "TB" = (/obj/machinery/atmospherics/unary/freezer{dir = 1},/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
+"TC" = (/obj/structure/bed/chair/shuttle/blue{dir = 1},/obj/effect/landmark/start/crew/qm,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
 "TR" = (/obj/effect/landmark/start/crew/doctor,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
 "TY" = (/obj/structure/sign/directions/evac{dir = 4; pixel_y = 32; tag = "icon-departsign (EAST)"},/turf/simulated/floor/plating,/area/polarplanet/tcommsat/computer)
 "Uc" = (/obj/structure/window_frame/grille/rglass,/obj/structure/cable{d2 = 8; icon_state = "0-8"},/obj/structure/cable{d2 = 2; icon_state = "0-2"},/obj/machinery/door/firedoor/border_only,/turf/simulated/floor/plating,/area/polarplanet/tcommsat/computer)
@@ -410,10 +412,12 @@
 "Yb" = (/obj/effect/landmark/map_data{height = 2},/turf/unsimulated/mineral,/area/polarplanet/mine/explored)
 "Yf" = (/obj/machinery/door/airlock/hatch{name = "Telecoms Control Room"; req_access = list(61)},/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
 "Yp" = (/obj/structure/bed/chair/office/dark{dir = 4},/obj/effect/floor_decal/rust,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
-"YD" = (/obj/structure/bed/chair/shuttle/blue{dir = 1},/obj/effect/landmark/joinlate,/obj/machinery/camera/network/telecom{c_tag = "Arrival Shuttle"; dir = 4},/obj/machinery/light{dir = 8},/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
+"YD" = (/obj/structure/bed/chair/shuttle/blue{dir = 1},/obj/machinery/camera/network/telecom{c_tag = "Arrival Shuttle"; dir = 4},/obj/machinery/light{dir = 8},/obj/effect/landmark/joinlate,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
 "YL" = (/obj/structure/bed/chair/office/dark{dir = 1},/obj/effect/floor_decal/rust,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
+"YR" = (/obj/structure/bed/chair/shuttle/blue{dir = 1},/obj/effect/landmark/start/crew/miner,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
 "YV" = (/obj/structure/bed/chair{dir = 4},/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
 "Zg" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
+"Zk" = (/obj/effect/landmark/start/crew/gartender,/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1})
 "Zq" = (/obj/structure/railing/steel,/obj/effect/floor_decal/industrial/warning,/obj/structure/closet/emcloset,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/computer)
 "Zv" = (/turf/simulated/mineral/frozen,/area/polarplanet/street)
 "ZN" = (/obj/machinery/light{dir = 4},/obj/machinery/camera/network/telecom{c_tag = "Telecoms Teleporter"; dir = 1},/obj/effect/floor_decal/industrial/warning{dir = 6},/obj/effect/floor_decal/rust,/turf/simulated/floor/tiled/dark,/area/polarplanet/tcommsat/entrance)
@@ -487,19 +491,19 @@ hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbN
 hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNeTeTeTeTeTeTeTeTeTeTbNbNbNbNvPVtVdLyzbvPbNbNbNbNcuhQhQhQhQhQhQPSPSPSPSPSPSPShQhQhQhQhQhQNXbNbNbNbNbNbNbNbNbNbNbNXsXsXsXsXsXsXsXsXsXsXshPhPhPhPhP
 GjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNiuoyFYZgjQiubNbNbNbNcuhQhQhQhQhQhQPSPSPSPSPSPSPShQhQhQhQhQhQNXbNbNbNbNbNbNbNbNbNbNbNbNXsXsXsXsXsXsXsXsXsXshPhPhPhPhP
 hBhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNeTbNvPJAXDjGoyvPbNbNbNbNcuhQhQhQhQhQhQPSPSPSPSPSPSPShQhQhQhQhQhQNXbNbNbNbNbNbNbNbNbNbNbNbNXsXsXsXsXsXsXsXsXsXshPhPhPhPhP
-hBhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxbNbNvPvPNbxyvPvPiuiuiuNecuhQPSPSPSPShQPSPSPSPSPSPSPShQPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXsXsXsXsXsXshPhPhPhPhP
-hBhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxbNbNiuJHFusoNjkFbQbQEzKBiuiuPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXsXsXsXsXsXshPhPhPhPhP
-hBhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNGxGxGxGxGxGxGxGxGxGxGxGxGxGxieGxbNeTiuwIFubETiFYoyjQCcKfnbpbPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXsXsXshPhPhPhPhP
-hBhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxbNeTiuwIFukzXoxdURjANYmhCnaYPSPSPSPSPSPSPSPSfhPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXshPhPhPhPhP
-hBhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxbNeTNeoqIXjGxzoyFYjQGpASiuiuPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXshPhPhPhPhP
+hBhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxbNbNvPvPNbxyvPvPiuiuiuNecuhQPSPSPSPShQPSPSPSPSPSPSPShQPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXsXsXsXsXsXshPhPhPhPhP
+hBbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxbNbNiuJHFusoNjkFbQbQEzKBiuiuPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXsXsXsXsXsXshPhPhPhPhP
+hBbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNGxGxGxGxGxGxGxGxGxGxGxGxGxGxieGxbNeTiuwIFubETiFYoyjQCcKfnbpbPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXsXsXshPhPhPhPhP
+hBbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxbNeTiuwIFukzXoxdURjANYmhCnaYPSPSPSPSPSPSPSPSfhPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXshPhPhPhPhP
+hBhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxGxbNeTNeoqIXjGxzoyFYjQGpASiuiuPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXshPhPhPhPhP
 hBhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNNeiuucuciuNeNeHDNeiuucuciuNeeTeTeTiuNpzkjGxzeWzpzpmuiucuhQPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXshPhPhPhPhP
 GjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjGjbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNNebtLoLowUNebNbNNeKMNpNpbMNebNbNeTNeUtgukzZWNeStbbavNecuhQPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXshPhPhPhPhP
 hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNnFFtwrFWlMbNbNbNbNbNbNbNbNbNbNbNbNNejUFYjQVKNeNeNeNeDNFYNpduNeNeNeNeNezvjQjGZWmRSEVeRViuiuiuPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXsXshPhPhPhPhP
-hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNKYmeBZmemANeNeNeNeiuiuiuNeiuiuiuNeNeJHjQjQwgNeEYaFNeSnFYFYjQNesareWVNeMfjQlLtBWmnRWORdzwPPLHPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXshPhPhPhPhP
-hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNKYcHBQTRIEjQjQEWcptScpjOCijOjOMNPdTYezmXmXvvLPQzDVBvsdpzmXjQFHQzQzDVqyFYjQjQiHTgWEjGyXKBiuiuPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXshPhPhPhPhP
-hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNKYYDsqmetGNeBSNeClgsFYjQjQjQjQsdsdHjjQjQjQjQjQHjHjjQjQjQjQjQgsFYoyoytijQFYjQqoNeSPnkbjNecuhQPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXshPhPhPhPhP
-hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNKYcHpBcHIEjQjQEWMEIxrNrNBmrgrgWkhHSNjQjQjQFYvJybDQvbjQjQtduvFRFYHmKItijQHmjQtLNevslqzfNecuhQhQPSPSPSPSPShQPSPSPShQPSPSPSPSPShQhQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXshPhPhPhPhP
-hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNKYmesqmeacNeNeNeNeiuiuiuNeiuiuiuNeKHYVNpjQAKeJNeNeNeYVsdjQNpNeNeNeNeNeNeNeNeDfNebNbNbNbNcuhQhQhQPSPSPShQhQhQhQhQhQhQPSPSPShQhQhQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXshPhPhPhPhP
+hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNKYYRBZYRmANeNeNeNeiuiuiuNeiuiuiuNeNeJHjQjQwgNeEYaFNeSnFYFYjQNesareWVNeMfjQlLtBWmnRWORdzwPPLHPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXsXshPhPhPhPhP
+hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNKYBZBQTRIEjQjQEWcptScpjOCijOjOMNPdTYezmXmXvvLPQzDVBvsdpzmXjQFHQzQzDVqyFYjQjQiHTgWEjGyXKBiuiuPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXshPhPhPhPhP
+hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNKYYDmemetGNeBSNeClgsFYjQjQjQjQsdsdHjjQjQjQjQjQHjHjjQjQjQjQjQgsFYoyoytijQFYjQqoNeSPnkbjNecuhQPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPShQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXshPhPhPhPhP
+hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNKYpBZkcHIEjQjQEWMEIxrNrNBmrgrgWkhHSNjQjQjQFYvJybDQvbjQjQtduvFRFYHmKItijQHmjQtLNevslqzfNecuhQhQPSPSPSPSPShQPSPSPShQPSPSPSPSPShQhQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXshPhPhPhPhP
+hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNKYTCsqtTacNeNeNeNeiuiuiuNeiuiuiuNeKHYVNpjQAKeJNeNeNeYVsdjQNpNeNeNeNeNeNeNeNeDfNebNbNbNbNcuhQhQhQPSPSPShQhQhQhQhQhQhQPSPSPShQhQhQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXshPhPhPhPhP
 hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNnFbSCgJlJbSWlMbNbNbNbNbNbNbNbNbNbNbNNeICFYsdpMBSbNbNBSoqFYFYfXNehPhPhPNexEjpqhSkiubNbNbNbNcuhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQhQNXbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXshPhPhPhPhP
 hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNKYvxvxacvxvxKYbNbNbNbNbNbNbNbNbNbNbNNeOnLYUSTlBSbNbNBSZqUSaQvLNehPhPhPNenYLKrnBnNebNbNbNbNOtVHVHVHVHVHVHVHVHVHVHVHVHVHVHVHVHVHVHVHCUbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXshPhPhPhPhP
 hPhPhPhPhPhPXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsXsbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNmQXXXXmAXXXXESbNbNbNbNbNbNbNbNbNbNbNNeiuQDQDiuNeNeNeNeiuQDQDiuNeNeNeNeNeNeiuiuNeNebNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNbNXsXshPhPhPhPhP

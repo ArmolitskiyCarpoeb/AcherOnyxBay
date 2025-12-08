@@ -10,8 +10,8 @@
 	supervisors = "the cardinal"
 	selection_color = "#515151"
 	economic_modifier = 1
-	access = list(access_maint_tunnels, access_hydroponics, access_bar, access_kitchen, access_cargo, access_qm, access_mining, access_mining_station)
-	minimal_access = list(access_maint_tunnels, access_hydroponics, access_bar, access_kitchen, access_cargo, access_qm, access_mining, access_mining_station)
+	access = list(access_maint_tunnels)
+	minimal_access = list(access_maint_tunnels)
 //	alt_titles = list("Technical Assistant","Medical Intern","Research Assistant")
 	outfit_type = /decl/hierarchy/outfit/job/assistant
 	can_be_hired = FALSE

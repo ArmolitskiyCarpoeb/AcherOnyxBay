@@ -2,6 +2,9 @@
 // Shuttle areas must contain at least two areas in a subgroup if you want to move a shuttle from one place to another.
 // Look at escape shuttle for example.
 // All shuttles should now be under shuttle since we have smooth-wall code.
+/area
+	base_turf = /turf/simulated/floor/asteroid/air
+
 /area/shuttle/administration/centcom
 	name = "\improper Administration Shuttle"
 	icon_state = "shuttlered"
@@ -133,6 +136,7 @@
 
 /area/shuttle/arrival
 	name = "\improper Arrival Shuttle"
+	base_turf = /turf/simulated/floor/asteroid/air
 
 /area/shuttle/arrival/station
 	icon_state = "shuttle"

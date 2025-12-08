@@ -18,9 +18,9 @@
 	var/spawn_count = 1
 	var/players_count = length(GLOB.player_list)
 	if(players_count >= 7)
-		spawn_count = 6
+		spawn_count = 3
 	else if(players_count < 5)
-		spawn_count = 2
+		spawn_count = 1
 
 	if(!location)
 		log_debug("heretic_portals event failed to find a proper spawn point. Aborting.")
@@ -34,6 +34,9 @@
 			spawn_count--
 
 			new	/obj/effect/portal/wormhole2(T)
-			new /mob/living/simple_animal/hostile/creature(T)
+			if(prob(50))
+				new /mob/living/simple_animal/hostile/creature(T)
+			if(prob(50))
+				new /mob/living/simple_animal/hostile/giant_spider/nurse/scrawny(T)
 
 	SSannounce.play_station_announce(/datum/announce/heretic_monsters)

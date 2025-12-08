@@ -26,7 +26,7 @@ GLOBAL_VAR(spawntypes)
 		return 0
 
 	return 1
-
+/*
 /datum/spawnpoint/arrivals
 	display_name = "Arrivals Shuttle"
 	msg = "has arrived on the station"
@@ -34,7 +34,7 @@ GLOBAL_VAR(spawntypes)
 /datum/spawnpoint/arrivals/New()
 	..()
 	turfs = GLOB.latejoin
-/*
+
 /datum/spawnpoint/gateway
 	display_name = "Gateway"
 	msg = "has completed translation from offsite gateway"

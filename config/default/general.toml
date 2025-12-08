@@ -1,7 +1,7 @@
 [general]
 ## Server name: This appears at the top of the screen in-game.
 ## In this case it will read "tgstation: station_name" where station_name is the randomly generated name of the station for the round.
-server_name = "[RU] Acheron - Underground Mining Station ''Fortune''"
+server_name = "[RU] Acheron - Underground Mining Station ''Fortuna''"
 
 ## Subserver name: Only used as part of game's window title name.
 ## Leave commented and it won't appear.
