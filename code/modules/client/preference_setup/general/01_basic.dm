@@ -110,7 +110,7 @@
 		if(new_age && CanUseTopic(user))
 			pref.age = max(min(round(text2num(new_age)), S.max_age), S.min_age)
 			return TOPIC_REFRESH
-
+/*
 	else if(href_list["spawnpoint"])
 		var/list/spawnkeys = list()
 		for(var/spawntype in spawntypes())
@@ -119,7 +119,7 @@
 		if(!choice || !spawntypes()[choice] || !CanUseTopic(user))	return TOPIC_NOACTION
 		pref.spawnpoint = choice
 		return TOPIC_REFRESH
-/*
+
 	else if(href_list["metadata"])
 		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , pref.metadata) as message|null)
 		if(new_metadata && CanUseTopic(user))
