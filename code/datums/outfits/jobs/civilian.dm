@@ -4,10 +4,9 @@
 	//suit = /obj/item/clothing/suit/storage/hazardvest
 	flags = OUTFIT_NO_SURVIVAL
 	pda_type = null
+	id_type = null
 
 /decl/hierarchy/outfit/job/assistant/equip_id(mob/living/carbon/human/H, rank, assignment, equip_adjustments)
-	var/obj/item/card/id/W = new id_type(H)
-	var/obj/item/device/pda/D = new pda_type(/obj/item/device/pda)
 	if(id_desc)
 		W.desc = id_desc
 	if(rank)
@@ -15,8 +14,6 @@
 	if(assignment)
 		W.assignment = assignment
 	H.set_id_info(W)
-	H.put_in_l_hand(W)
-	H.put_in_r_hand(D)
 	return W
 
 /decl/hierarchy/outfit/job/assistant/post_equip(mob/living/carbon/human/H)
