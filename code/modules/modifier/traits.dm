@@ -138,7 +138,7 @@
 	lisping = TRUE
 
 /datum/modifier/trait/autism
-	name = "аутизм"
+	name = "Аутизм"
 	desc = "ЫЫЫы-ыыы-х?"
 
 	metabolism_percent = 0.8

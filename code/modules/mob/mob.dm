@@ -660,7 +660,7 @@
 				trait_status_lines += "Быстро восстанавливаюсь"
 
 		/// Потом отрицательные
-			if("Autism" in mind.traits)
+			if("Аутизм" in mind.traits)
 				trait_status_lines += "Ы-Ы-Ых, ЖЫЗНЬ ПРЕКРАСНА"
 			if("Flimsy" in mind.traits)
 				trait_status_lines += "У меня хрупкое тело"
