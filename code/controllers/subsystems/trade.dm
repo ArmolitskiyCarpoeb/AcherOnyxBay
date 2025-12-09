@@ -1,3 +1,5 @@
+#define UNIQUE_TRADER_PROB 25
+
 SUBSYSTEM_DEF(trade)
 	name = "Trade"
 	wait = 1 MINUTE
@@ -10,8 +12,8 @@ SUBSYSTEM_DEF(trade)
 /datum/controller/subsystem/trade/Initialize()
 	. = ..()
 	for(var/i in 1 to rand(1,3))
-		generate_trader(1)
-	traders += new /datum/trader/ship/MonsLeibenCargo
+		generate_trader()
+	traders += new /datum/trader/ship/MonsLadenCargo
 
 /datum/controller/subsystem/trade/fire(resumed = FALSE)
 	if (!resumed)
@@ -33,15 +35,12 @@ SUBSYSTEM_DEF(trade)
 /datum/controller/subsystem/trade/stat_entry()
 	..("Traders: [traders.len]")
 
-/datum/controller/subsystem/trade/proc/generate_trader(stations = 0)
+/datum/controller/subsystem/trade/proc/generate_trader()
 	var/list/possible = list()
-	if(stations)
-		possible += subtypesof(/datum/trader) - typesof(/datum/trader/ship)
+	if(prob(UNIQUE_TRADER_PROB))
+		possible += typesof(/datum/trader/ship/contraband)
 	else
-		if(prob(5))
-			possible += /datum/trader/ship/MonsLeibenCargo
-		else
-			possible += subtypesof(/datum/trader/ship) - typesof(/datum/trader/ship/unique)
+		possible += /datum/trader/ship/MonsLadenCargo
 
 	if(length(possible))
 		for(var/i in 1 to 10)
@@ -55,3 +54,4 @@ SUBSYSTEM_DEF(trade)
 				continue
 			traders += new type
 			return
+#undef UNIQUE_TRADER_PROB
