@@ -117,7 +117,7 @@ var/list/datum/power/changeling/powerinstances = list()
 	name = "DNA Extraction Sting"
 	desc = "We stealthily sting a target and extract the DNA from them."
 	helptext = "Will give us the DNA of our target, allowing us to transform into them. Does not count towards absorb objectives."
-	genomecost = 4
+	genomecost = 2
 	allowduringlesserform = 1
 	power_path = /datum/changeling_power/toggled/sting/extract_dna
 
@@ -128,22 +128,22 @@ var/list/datum/power/changeling/powerinstances = list()
 	helptext = "The target does not notice they have been stung. The effect occurs after 30 to 60 seconds."
 	genomecost = 3
 	power_path = /datum/changeling_power/toggled/sting/hallucination
-
+/*
 /datum/power/changeling/sting_fake_armblade
 	name = "Fake Armblade Sting"
 	desc = "We sting our victim, causing one of their arms to reform into a fake armblade."
 	helptext = "The effect is irreversible."
 	genomecost = 4
 	power_path = /datum/changeling_power/toggled/sting/fake_armblade
+*/
 
-/*
 /datum/power/changeling/DeathSting
 	name = "Death Sting"
 	desc = "We sting a human, filling them with potent chemicals. Their rapid death is all but assured, but our crime will be obvious."
 	helptext = "It will be clear to any surrounding witnesses if you use this power."
 	genomecost = 10
 	verbpath = /mob/proc/changeling_death_sting
-*/
+
 
 /datum/power/changeling/boost_range
 	name = "Ranged Stinger"
@@ -157,7 +157,7 @@ var/list/datum/power/changeling/powerinstances = list()
 	name = "Mimic Voice"
 	desc = "We shape our vocal glands to sound like a desired voice."
 	helptext = "Will turn our voice into the name that we enter. We must constantly expend chemicals to maintain our form like this"
-	genomecost = 3
+	genomecost = 1
 	allowduringlesserform = 1
 	power_path = /datum/changeling_power/toggled/mimic_voice
 
@@ -215,7 +215,7 @@ var/list/datum/power/changeling/powerinstances = list()
 	enhancedtext = "Can run while hidden."
 	genomecost = 8
 	power_path = /datum/changeling_power/toggled/visible_camouflage
-
+/*
 // Changeling items
 /datum/power/changeling/armblade
 	name = "Arm Blade"
@@ -224,13 +224,13 @@ var/list/datum/power/changeling/powerinstances = list()
 	enhancedtext = "The blade gets increased damage and a bit higher armor penetration."
 	genomecost = 8
 	power_path = /datum/changeling_power/item/armblade
-
+*/
 /datum/power/changeling/claw
 	name = "Claw"
 	desc = "We reform one of our arms into a deadly claw."
 	helptext = "We may retract our claw by dropping it."
 	enhancedtext = "The claw gets increased armor penetration and a bit higher damage."
-	genomecost = 6
+	genomecost = 8
 	power_path = /datum/changeling_power/item/claw
 
 /datum/power/changeling/lockpick
@@ -275,7 +275,7 @@ var/list/datum/power/changeling/powerinstances = list()
 	name = "Division"
 	desc = "We infest a humanoid with a clone of our true body, making them the same as we are."
 	helptext = "Dead bodies cannot be successfully infested."
-	genomecost = 4
+	genomecost = 0
 	power_path = /datum/changeling_power/division
 
 /*datum/power/changeling/chem_disp_sting
@@ -300,7 +300,7 @@ var/list/datum/power/changeling/powerinstances = list()
 	helptext = "Spends chemicals."
 	genomecost = 6
 	power_path = /datum/changeling_power/toggled/regeneration
-
+/*
 /datum/power/changeling/bioelectrogenesis
 	name = "Bioelectrogenesis"
 	desc = "We make adjustments to our mitochondria, allowing us to emmit rather powerful electromagnetic pulses at will."
@@ -308,7 +308,7 @@ var/list/datum/power/changeling/powerinstances = list()
 	enhancedtext = "EMP has a strong effect in a 2 tile radius."
 	genomecost = 5
 	power_path = /datum/changeling_power/bioelectrogenesis
-
+*/
 /datum/power/changeling/darksight
 	name = "Dark Sight"
 	desc = "We change the composition of our eyes, banishing the shadows from our vision."
