@@ -6,16 +6,6 @@
 	pda_type = null
 	id_type = null
 
-/decl/hierarchy/outfit/job/assistant/equip_id(mob/living/carbon/human/H, rank, assignment, equip_adjustments)
-	if(id_desc)
-		W.desc = id_desc
-	if(rank)
-		W.rank = rank
-	if(assignment)
-		W.assignment = assignment
-	H.set_id_info(W)
-	return W
-
 /decl/hierarchy/outfit/job/assistant/post_equip(mob/living/carbon/human/H)
 	..()
 	var/obj/item/clothing/C
