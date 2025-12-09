@@ -135,7 +135,7 @@ var/list/datum/power/changeling/powerinstances = list()
 	helptext = "The effect is irreversible."
 	genomecost = 4
 	power_path = /datum/changeling_power/toggled/sting/fake_armblade
-*/
+
 
 /datum/power/changeling/DeathSting
 	name = "Death Sting"
@@ -143,7 +143,7 @@ var/list/datum/power/changeling/powerinstances = list()
 	helptext = "It will be clear to any surrounding witnesses if you use this power."
 	genomecost = 10
 	verbpath = /mob/proc/changeling_death_sting
-
+*/
 
 /datum/power/changeling/boost_range
 	name = "Ranged Stinger"
