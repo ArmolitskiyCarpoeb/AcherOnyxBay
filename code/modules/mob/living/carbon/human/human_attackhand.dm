@@ -32,6 +32,10 @@
 			H.do_attack_animation(src)
 			return 0
 
+		if(H != src && try_dex_evade(H, FALSE))
+			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+			return 0
+
 		if(istype(H.gloves, /obj/item/clothing/gloves/boxing/hologloves))
 			H.do_attack_animation(src)
 			var/damage = rand(0, 9)
@@ -340,6 +344,10 @@
 	if(blocking && blockable)
 		if(handle_block_normal(user, damage))
 			return 0
+
+	if(try_dex_evade(user, FALSE))
+		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+		return 0
 
 	var/dam_zone = pick(organs_by_name)
 	var/obj/item/organ/external/affecting = get_organ(ran_zone(dam_zone))

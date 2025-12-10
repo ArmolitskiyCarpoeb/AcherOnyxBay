@@ -163,6 +163,24 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	if(stats[STAT_HT] >= 20)
 		return FALSE
 
+/mob/living/carbon/human/proc/get_dex_evade_chance(var/is_disarm = FALSE)
+	// 3% per point of DX above 10, capped to keep it sane.
+	var/dx = stats ? stats[STAT_DX] : 10
+	var/chance = max(0, dx - 10) * 3
+	if(is_disarm)
+		chance += 5 // Slightly easier to slip a disarm than a solid hit.
+	return clamp(chance, 0, 60)
+
+/mob/living/carbon/human/proc/try_dex_evade(var/mob/living/carbon/human/attacker, var/is_disarm = FALSE)
+	var/chance = get_dex_evade_chance(is_disarm)
+	if(!chance)
+		return FALSE
+	if(prob(chance))
+		var/msg = is_disarm ? "[src] nimbly avoids [attacker]'s swing!" : "[src] twists away from [attacker]'s hands!"
+		src.visible_message(SPAN_WARNING(msg))
+		return TRUE
+	return FALSE
+
 /mob/proc/temporary_stat_adjust(var/stat, var/modifier, var/time)
 	if(stats[stat] && modifier && time)//In case you somehow call this without using all three vars.
 		stats[stat] += modifier

@@ -656,6 +656,10 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		if(target.handle_block_normal(attacker))
 			return
 
+	if(target.try_dex_evade(attacker, TRUE))
+		playsound(target.loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+		return
+
 	if(target.w_uniform)
 		target.w_uniform.add_fingerprint(attacker)
 	var/obj/item/organ/external/affecting = target.get_organ(ran_zone(attacker.zone_sel.selecting))
