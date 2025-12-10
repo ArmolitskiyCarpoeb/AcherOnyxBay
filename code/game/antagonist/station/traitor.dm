@@ -78,7 +78,7 @@ GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
 		contract_objective.owner = traitor
 		traitor.objectives += contract_objective */
 
-		if(prob(5))
+		if(prob(85))
 			var/datum/objective/hijack/hijack_objective = new
 			hijack_objective.owner = traitor
 			traitor.objectives += hijack_objective
