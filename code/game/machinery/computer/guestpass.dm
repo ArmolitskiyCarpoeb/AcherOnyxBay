@@ -48,9 +48,9 @@
 	icon_screen = "pass"
 	icon_keyboard = "guest_key"
 	light_color = "#0099FF"
-	light_max_bright_on = 1.0
+	light_max_bright_on = 0.5
 	light_inner_range_on = 0.5
-	light_outer_range_on = 2
+	light_outer_range_on = 1
 	density = 0
 	turf_height_offset = 0
 
