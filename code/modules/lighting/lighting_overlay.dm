@@ -89,6 +89,17 @@
 	var/ag = ca.cache_g
 	var/ab = ca.cache_b
 
+	if(config.misc.per_tile_lighting)
+		// Flatten per-tile lighting: average corner values so each turf renders uniformly.
+		// This recreates blocky lighting without breaking the existing light propagation.
+		var/flat_r = (rr + gr + br + ar) / 4
+		var/flat_g = (rg + gg + bg + ag) / 4
+		var/flat_b = (rb + gb + bb + ab) / 4
+
+		rr = gr = br = ar = flat_r
+		rg = gg = bg = ag = flat_g
+		rb = gb = bb = ab = flat_b
+
 	#if LIGHTING_SOFT_THRESHOLD != 0
 	var/set_luminosity = max > LIGHTING_SOFT_THRESHOLD
 	#else
