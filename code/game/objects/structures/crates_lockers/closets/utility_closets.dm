@@ -282,6 +282,37 @@
 		/obj/item/device/destTagger,
 		/obj/item/packageWrap)
 
+
+ //Emergency wall closet
+
+/obj/structure/closet/emergency_wall
+	name = "аварийный настенный шкафчик"
+	desc = "Аварийно откроется во время синего или красного кода. Ждём."
+	icon_state = "shipping_wall"
+	icon_closed = "shipping_wall"
+	icon_opened = "shipping_wall_open"
+	anchored = 1
+	density = 0
+	wall_mounted = 1
+	storage_types = CLOSET_STORAGE_ITEMS
+	setup = 0
+	dremovable = 0
+	intact_closet = FALSE
+
+/obj/structure/closet/emergency_wall/WillContain()
+	return list(
+		/obj/item/crowbar,
+		/obj/item/device/flashlight/glowstick)
+
+/obj/structure/closet/emergency_wall/attack_hand(mob/user)
+	if(ishuman(user))
+		var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
+		var/decl/security_level/code_blue_level = decls_repository.get_decl(/decl/security_level/default/code_blue)
+		if(!security_state.current_security_level_is_same_or_higher_than(code_blue_level))
+			to_chat(user, SPAN_WARNING("О нет! Нужен синий или красный код на станции!"))
+			return
+	return ..()
+
 /obj/structure/closet/survial
 	name = "survival gear closet"
 	desc = "Closet with all that necessary for survival in wilderness."
