@@ -20,6 +20,8 @@
 	var/list/stance_limbs
 	var/list/grasp_limbs
 	var/last_body_response_to_pain = 0
+	var/last_poise_warn_level = 0        // 0 none, 1 exhausted, 2 very exhausted
+	var/last_poise_sound_time = 0        // world.time when we last played an exhaustion sound
 
 /mob/living/carbon/human/New(new_loc, new_species = null)
 
