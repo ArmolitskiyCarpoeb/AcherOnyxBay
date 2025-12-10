@@ -47,6 +47,9 @@
 		for(var/mob/M in view())
 			sound_to(M, sound('sound/effects/mousesqueek.ogg'))
 
+	if(!stat)
+		try_chew_cable()
+
 	if(!ckey && stat == CONSCIOUS && prob(0.5))
 		set_stat(UNCONSCIOUS)
 		icon_state = "mouse_[body_color]_sleep"
@@ -179,6 +182,21 @@
 	else
 		return ..()
 
+/mob/living/simple_animal/mouse/proc/try_chew_cable()
+	if(prob(1)) // small chance each life tick
+		var/obj/structure/cable/target
+		var/min_dist = 2 // only chew cables in adjacent tiles (including own)
+		for(var/obj/structure/cable/C in range(1, src))
+			var/d = get_dist(src, C)
+			if(d <= min_dist)
+				target = C
+				min_dist = d
+				break
+
+		if(target)
+			visible_message(SPAN_WARNING("[src] gnaws on a power cable!"))
+			playsound(src.loc, SFX_SPARK, 50, 1)
+			qdel(target)
 /mob/living/simple_animal/mouse/attackby(obj/item/O, mob/user)
 	if(!holding_item && user.a_intent == I_HELP && istype(user.get_inactive_hand(), /obj/item/tape_roll) && O.w_class == ITEM_SIZE_TINY)
 		user.visible_message(SPAN_NOTICE("[user] is trying to attach \a [O] with duct tape to \the [name]."),
