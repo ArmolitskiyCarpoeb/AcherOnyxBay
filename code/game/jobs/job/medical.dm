@@ -48,7 +48,7 @@
 /datum/job/doctor/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(5,15,5,15,11,20,5,15)
+		H.newgeneratestats(5,15,8,15,11,18,5,15)
 
 /datum/job/virologist
 	title = "Virologist"

@@ -99,7 +99,7 @@
 /datum/job/qm/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(5,15,5,15,5,15,5,15)
+		H.newgeneratestats(5,13,7,12,9,15,5,15)
 
 /datum/job/cargo_tech
 	title = "Cargo Technician"
@@ -122,7 +122,7 @@
 	supervisors = "кардиналом и завхозом"
 	selection_color = "#515151"
 	economic_modifier = 5
-	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
+	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
 	//alt_titles = list("Drill Technician","Prospector")
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
@@ -130,7 +130,7 @@
 /datum/job/mining/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(8,15,5,14,5,12,6,13)
+		H.newgeneratestats(10,16,6,14,5,12,6,14)
 
 /datum/job/janitor
 	title = "Janitor"

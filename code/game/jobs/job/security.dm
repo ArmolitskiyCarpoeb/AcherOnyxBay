@@ -83,4 +83,4 @@
 	if(.)
 		var/obj/item/implant/death_alarm/D = new()
 		D.implant_in_mob(H, BP_HEAD)
-		H.newgeneratestats(11,17,9,15,5,15,11,17)
+		H.newgeneratestats(10,17,9,15,5,13,10,17)

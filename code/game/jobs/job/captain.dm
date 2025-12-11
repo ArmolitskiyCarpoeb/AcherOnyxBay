@@ -27,7 +27,7 @@
 	if(.)
 		var/obj/item/implant/death_alarm/D = new()
 		D.implant_in_mob(H, BP_HEAD)
-		H.newgeneratestats(12,20,5,15,5,15,12,20)
+		H.newgeneratestats(10,18,8,16,8,16,10,18)
 		var/obj/machinery/nuclearbomb/nuke = locate(/obj/machinery/nuclearbomb/station) in world
 		if(nuke)
 			H.mind.store_memory("<B>ПРИ ЗАХВАТЕ ЕРЕТИКАМИ, ПРЕДАТЕЛЯМИ КОРПОРАЦИИ И ВРАГАМИ НАРОДА, ШАХТЁРСКИЙ АВАНПОСТ ФОРТУНА ПОДЛЕЖИТ УНИЧТОЖЕНИЮ</B>")
