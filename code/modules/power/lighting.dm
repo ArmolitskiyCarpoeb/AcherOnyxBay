@@ -744,7 +744,7 @@
 	b_max_bright = 1.0
 	b_outer_range = 7
 	b_curve = 3.5
-	b_color = "#dfda9d"
+	b_color = "#ebe6b6"
 	lighting_modes = list(
 		LIGHTMODE_EMERGENCY  = list(l_max_bright = 0.7,  l_inner_range = 1, l_outer_range = 5, l_falloff_curve = 3.5, l_color = "#da0205"),
 		LIGHTMODE_EVACUATION = list(l_max_bright = 1.0, l_inner_range = 1, l_outer_range = 7, l_falloff_curve = 3.5, l_color = "#bf6600"),
@@ -771,7 +771,7 @@
 	base_state = "lhetube"
 	b_outer_range = 7
 	b_max_bright = 0.9
-	b_color = "#33cccc"
+	b_color = "#50e0e0"
 	matter = list(MATERIAL_STEEL = 60, MATERIAL_GLASS = 300)
 	random_tone = FALSE
 	tone_overlay = FALSE
@@ -799,7 +799,7 @@
 	b_inner_range = 0.9
 	b_outer_range = 5
 	b_curve = 4.5
-	b_color = "#be9c5d"
+	b_color = "#dabe8b"
 	lighting_modes = list(
 		LIGHTMODE_EMERGENCY  = list(l_max_bright = 0.8, l_inner_range = 0.5,  l_outer_range = 4, l_falloff_curve = 4.5, l_color = "#da0205"),
 		LIGHTMODE_EVACUATION = list(l_max_bright = 0.85, l_inner_range = 0.6, l_outer_range = 5, l_falloff_curve = 4.5, l_color = "#bf6600"),
@@ -816,7 +816,7 @@
 	base_state = "lhebulb"
 	b_max_bright = 0.6
 	b_outer_range = 5
-	b_color = "#33cccc"
+	b_color = "#98dada"
 	matter = list(MATERIAL_STEEL = 30, MATERIAL_GLASS = 150)
 	random_tone = FALSE
 	tone_overlay = FALSE
@@ -838,14 +838,14 @@
 	broken_chance = 1
 	b_max_bright = 0.85
 	b_outer_range = 6
-	b_color = "#ec8b2f"
+	b_color = "#f09540"
 	random_tone = FALSE
 	tone_overlay = FALSE
 
 /obj/item/light/bulb/red
 	b_outer_range = 4
-	color = "#da0205"
-	b_color = "#da0205"
+	color = "#e6161a"
+	b_color = "#eb1b1e"
 	random_tone = FALSE
 	tone_overlay = TRUE
 

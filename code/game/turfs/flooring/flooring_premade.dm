@@ -104,9 +104,9 @@
 	icon = 'icons/turf/flooring/circuit.dmi'
 	icon_state = "pcircuit"
 	initial_flooring = /decl/flooring/reinforced/circuit/purple
-	light_inner_range = 1
+	light_inner_range = 0.5
 	light_outer_range = 2
-	light_max_bright = 1
+	light_max_bright = 1.6
 	light_color = COLOR_PURPLE
 
 /turf/simulated/floor/grid/greengrid
