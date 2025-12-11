@@ -164,12 +164,12 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 		return FALSE
 
 /mob/living/carbon/human/proc/get_dex_evade_chance(var/is_disarm = FALSE)
-	// 3% per point of DX above 10, capped to keep it sane.
+	// 10% per point of DX above 10, -10 per point below.
 	var/dx = stats ? stats[STAT_DX] : 10
-	var/chance = max(0, dx - 10) * 3
+	var/chance = (dx - 10) * 10
 	if(is_disarm)
 		chance += 5 // Slightly easier to slip a disarm than a solid hit.
-	return clamp(chance, 0, 60)
+	return clamp(chance, 0, 75)
 
 /mob/living/carbon/human/proc/try_dex_evade(var/mob/living/carbon/human/attacker, var/is_disarm = FALSE)
 	var/chance = get_dex_evade_chance(is_disarm)
@@ -180,6 +180,14 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 		src.visible_message(SPAN_WARNING(msg))
 		return TRUE
 	return FALSE
+
+/mob/living/carbon/human/proc/get_dex_hit_chance(var/hand_attack = TRUE)
+	// 10% per point of DX above 10, -10% per point below 10.
+	var/dx = stats ? stats[STAT_DX] : 10
+	var/chance = (dx - 10) * 10
+	if(!hand_attack)
+		chance -= 10 // (Optional small penalty if not hands, tweak if needed)
+	return clamp(chance, 5, 95)
 
 /mob/proc/temporary_stat_adjust(var/stat, var/modifier, var/time)
 	if(stats[stat] && modifier && time)//In case you somehow call this without using all three vars.
@@ -310,6 +318,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	if(istype(H.body_build, /datum/body_build/fat))
 		adjustStrength(rand(-2,2))
 		adjustDexterity(rand(-5,-3))
+
 /* LEGACY STAT CODE
 /mob/proc/statcheck(var/stat, var/requirement, var/show_message, var/message = "I have failed to do this.")//Requirement needs to be 1 through 20
 	if(stat < requirement)
