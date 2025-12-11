@@ -8,12 +8,7 @@
 	title = "Ride Home"
 	song = 'sound/music/CoolLobbyMusic/ElTigr3_RideHome.ogg'
 */
-/lobby_music/Replicator
-	artist = "The Unknown Entity"
-	title = "The Joyful Nusic"
-	song = 'sound/music/CoolLobbyMusic/System_Shock_Replicator.ogg'
-
 /lobby_music/tree
-	artist = "Aphex Twin"
-	title = "Tree"
-	song = 'sound/music/CoolLobbyMusic/tree.ogg'
+	artist = null
+	title = "System Shock - Intro"
+	song = 'sound/music/CoolLobbyMusic/SS_intro.ogg'
