@@ -26,3 +26,4 @@ __pycache__
 .idea
 
 sql/test_db
+tmp/dummySave.sav
