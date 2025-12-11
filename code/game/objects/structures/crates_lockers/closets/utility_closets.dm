@@ -288,9 +288,9 @@
 /obj/structure/closet/emergency_wall
 	name = "аварийный настенный шкафчик"
 	desc = "Аварийно откроется во время синего или красного кода. Ждём."
-	icon_state = "shipping_wall"
-	icon_closed = "shipping_wall"
-	icon_opened = "shipping_wall_open"
+	icon_state = "emergency_wall"
+	icon_closed = "emergency_wall"
+	icon_opened = "emergency_wall_open"
 	anchored = 1
 	density = 0
 	wall_mounted = 1
