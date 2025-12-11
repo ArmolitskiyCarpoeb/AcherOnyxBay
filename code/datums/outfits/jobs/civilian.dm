@@ -21,9 +21,6 @@
 		if(prob(25))
 			C = new /obj/item/clothing/suit/storage/toggle/track/red(src)
 			H.equip_to_appropriate_slot(C)
-	if(prob(12))
-		C = new /obj/item/clothing/under/suit_jacket(src)
-		H.equip_to_appropriate_slot(C)
 	if(prob(25))
 		C = new /obj/item/clothing/under/camo/urban(src)
 		H.equip_to_appropriate_slot(C)
@@ -32,6 +29,9 @@
 		H.equip_to_appropriate_slot(C)
 		if(prob(25))
 			C = new /obj/item/clothing/suit/storage/toggle/bomber(src)
+			H.equip_to_appropriate_slot(C)
+		if(prob(25))
+			C = new /obj/item/clothing/suit/storage/toggle/track/red(src)
 			H.equip_to_appropriate_slot(C)
 		return
 
