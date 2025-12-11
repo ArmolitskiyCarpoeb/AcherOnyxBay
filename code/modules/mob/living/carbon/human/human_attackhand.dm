@@ -247,13 +247,18 @@
 				*/
 				if(prob(80))
 					hit_zone = ran_zone(hit_zone)
-				if(prob(15) && hit_zone != BP_CHEST) // Missed!
-					if(!lying)
-						attack_message = "[H] attempted to strike [src], but missed!"
-					else
-						attack_message = "[H] attempted to strike [src], but \he rolled out of the way!"
-						set_dir(pick(GLOB.cardinal))
-					miss_type = 1
+				// Replace the unarmed 15% miss chance with a DX-modified one for human attackers
+				if(istype(H) && hit_zone != BP_CHEST)
+					var/dx_bonus = H.get_dex_hit_chance(TRUE)
+					// 15% base miss, minus dx_bonus (so at dx=15, 15-15=0%), minimum 1%, maximum 95% to be safe
+					var/miss_chance = Clamp(15 - dx_bonus, 5, 95)
+					if(prob(miss_chance))
+						if(!lying)
+							attack_message = "[H] attempted to strike [src], but missed!"
+						else
+							attack_message = "[H] attempted to strike [src], but he rolled out of the way!"
+							set_dir(pick(GLOB.cardinal))
+						miss_type = 1
 
 			if(!miss_type && parrying)
 				if(handle_parry(H, null))
