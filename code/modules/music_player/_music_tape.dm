@@ -99,7 +99,7 @@
 
 /obj/item/music_tape/random/proc/setup_music_tracks(list/tracklist)
 	. = list()
-	for(var/i=1 to rand(3,6))
+	for(var/i=1 to rand(4,6))
 		var/track_name = pick(tracklist)
 		if(track_name)
 			. += new /datum/track(track_name, tracklist[track_name])
