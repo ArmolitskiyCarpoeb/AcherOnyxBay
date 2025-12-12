@@ -12,7 +12,7 @@
 	track = new /datum/track("Space Asshole", 'sound/music/space_asshole.ogg')
 
 /obj/item/music_tape/random/aprovedmusic1  //Надо треков по ~10 добавить. Рандомно от 4 до 6 выбирается
-	name = "aproved music 1"
+	name = "Одобренные треки 1"
 	desc = "Церковь одобрила эти треки. Да познает душа слушающих радость"
 	tracklist = list(
 		"Hishmaliin"					= 'sound/music/aprovedmusic1/Dvar_-_Hishmaliin.ogg',
@@ -25,7 +25,7 @@
 	)
 
 /obj/item/music_tape/random/aprovedmusic2
-	name = "aproved music 2"
+	name = "Одобренные треки 1"
 	desc = "Церковь одобрила эти треки. Да познает душа слушающих счастье"
 	tracklist = list(
 		"Little Dark Age"				= 'sound/music/aprovedmusic2/Little Dark Age.ogg',
@@ -37,7 +37,7 @@
 	)
 
 /obj/item/music_tape/random/nonaprovedmusic
-	name = "nonaproved music "
+	name = "Не одобренные треки"
 	tracklist = list(
 		"At Doom's Gate"				= 'sound/music/nonaprovedmusic/At Doom Gate.ogg',
 		"Hallo Spaceboy"				= 'sound/music/nonaprovedmusic/David Bowie - Hallo Spaceboy.ogg',
