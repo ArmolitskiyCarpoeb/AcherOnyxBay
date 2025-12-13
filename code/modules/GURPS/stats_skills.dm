@@ -166,7 +166,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 /mob/living/carbon/human/proc/get_dex_evade_chance(var/is_disarm = FALSE)
 	// 10% per point of DX above 10, -10 per point below.
 	var/dx = stats ? stats[STAT_DX] : 10
-	var/chance = (dx - 10) * 10
+	var/chance = dx + (skills["melee"] - 20)
 	if(is_disarm)
 		chance += 5 // Slightly easier to slip a disarm than a solid hit.
 	return clamp(chance, 0, 75)
@@ -184,7 +184,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 /mob/living/carbon/human/proc/get_dex_hit_chance(var/hand_attack = TRUE)
 	// 10% per point of DX above 10, -10% per point below 10.
 	var/dx = stats ? stats[STAT_DX] : 10
-	var/chance = (dx - 10) * 10
+	var/chance = dx + (skills["melee"] - 20)
 	if(!hand_attack)
 		chance -= 10 // (Optional small penalty if not hands, tweak if needed)
 	return clamp(chance, 5, 95)
@@ -224,7 +224,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 
 
 /mob/proc/skillcheck(var/skill, var/requirement, var/message = null, var/skill_type = null)//1 - 100
-	log_debug("[skill_type] check!  Skill value: [skill], DC [requirement] source: [src]") //Debuging
+	//log_debug("[skill_type] check!  Skill value: [skill], DC [requirement] source: [src]") //Debuging
 	//learn_skills(skill_type) We can't have nice things
 	if(skill >= requirement)//If we already surpass the skill requirements no need to roll.
 		if(prob(get_success_chance()))//Only thing we roll for is a crit success.
@@ -245,24 +245,24 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 /mob/proc/learn_skills(var/skill_type)
 	var/initial_skill = round(skills[skill_type])
 	if(skills[skill_type] < 30 && stat_to_modifier(stats[STAT_IQ]) >= 0) //the minimum for reading
-		skills[skill_type] += 0.01 * stat_to_modifier(stats[STAT_IQ])
+		skills[skill_type] += (stats[STAT_IQ])
 	else //Learn slower past 30
 		if(skills[skill_type] >= 70)
 			return 0 //cant learn above 70 in any skill because this was abused
 		else
-			skills[skill_type] += 0.001
+			skills[skill_type] += 1
 	if(round(skills[skill_type]) > initial_skill)
-		to_chat(src,"You feel like live you've gained new insights.")
+		to_chat(src,"Я чувствую, как чему-то учусь!")
 
 //Skill helpers.
 /mob/proc/skillnumtodesc(var/skill)
 	switch(skill)
 		if(0)
-			return "неумёха."
+			return "неумёха"
 		if(1 to 24)
 			return "<small>новичок</small>"
 		if(25 to 44)
-			return "ОК"
+			return "любитель"
 		if(45 to 59)
 			return "умелый"
 		if(60 to 79)
@@ -303,12 +303,12 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	set category = "IC"
 
 	var/msg = "\n<div class='firstdiv'><div class='box'>"
-	msg += "<span class='info'><EM>I try to remember what I'm good at.</EM></span>\n"
+	msg += "<span class='info'><EM>Сейчас вспомню, в чём же я хорош....</EM></span>\n"
 	msg += "<hr class='linexd'>"
-	msg += "<span class='wakeup'>My skills:</span>\n<BR>"
+	msg += "<span class='wakeup'>Мои навыки:</span>\n<BR>"
 	for(var/skill in skills)
 		if(skills[skill] >= 0)
-			msg += "I am <b>[skillnumtodesc(skills[skill])]</b> at [skill].\n"
+			msg += "Я - <b>[skillnumtodesc(skills[skill])]</b> [skill].\n"
 	msg += "</div></div>"
 	to_chat(src, msg)
 /*
