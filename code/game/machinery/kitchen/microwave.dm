@@ -18,6 +18,7 @@
 	var/global/list/acceptable_reagents // List of the reagents you can put in
 	var/global/max_n_of_items = 0
 	var/cook_speed = 1
+	var/mob/cooking_user // User who started cooking for skill checks
 
 	component_types = list(
 		/obj/item/circuitboard/microwave,
@@ -309,11 +310,22 @@
 			for(var/obj/item/I in cooked)
 				I.dropInto(loc)
 			return
+		// Check cooking skill before making food
+		if(cooking_user && !cooking_user.skillcheck(cooking_user.skills["cooking"], 50, "Я всё испортил!!!", "cooking"))
+			stop()
+			cooked = fail()
+			if(cooked)
+				for(var/obj/item/I in cooked)
+					I.dropInto(loc)
+			cooking_user.learn_skills("cooking")
+			cooking_user = null
+			return
 		cooked = recipe.make_food(src)
 		stop()
 		if(cooked)
 			for(var/obj/item/I in cooked)
 				I.dropInto(loc)
+		cooking_user = null
 		return
 
 /obj/machinery/microwave/proc/wzhzhzh(seconds as num) // Whoever named this proc is fucking literally Satan. ~ Z
@@ -415,6 +427,7 @@
 
 	switch(href_list["action"])
 		if ("cook")
+			cooking_user = usr
 			cook()
 
 		if ("dispose")

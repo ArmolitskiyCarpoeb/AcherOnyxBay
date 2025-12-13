@@ -31,6 +31,7 @@
 	var/can_burn_food = FALSE		// Can the object burn food that is left inside?
 	var/burn_chance = 10			// How likely is the food to burn?
 	var/atom/movable/thing_inside	// Holder for the currently cooking object.
+	var/mob/cooking_user			// User who inserted the item for cooking skill checks
 
 	// If the machine has multiple output modes, define them here.
 	var/selected_option
@@ -40,6 +41,7 @@
 	var/cooking_done_time
 	var/next_burn_time
 	var/cooking_is_done = FALSE
+	var/skillcheck_done = FALSE  // Track if skillcheck has been performed
 
 
 /obj/machinery/cooker/Destroy()
@@ -130,6 +132,9 @@
 	thing_inside.forceMove(src)
 	is_cooking = 1
 	cooking_is_done = FALSE
+	cooking_user = user
+	skillcheck_done = FALSE
+	burn_chance = initial(burn_chance)  // Reset burn_chance to default (10)
 	icon_state = on_icon
 
 	if(inserted_mob)
@@ -194,6 +199,16 @@
 					I.cooked_types |= cook_type
 				cooking_is_done = TRUE
 
+				// Check cooking skill when food first becomes cooked
+				if(can_burn_food && cooking_user && !skillcheck_done)
+					skillcheck_done = TRUE
+					if(!cooking_user.skillcheck(cooking_user.skills["cooking"], 50, null, "cooking"))
+						var/obj/item/reagent_containers/food/food_item = thing_inside
+						if(istype(food_item))
+							burn_chance = 35
+							to_chat(cooking_user, SPAN_WARNING("Что-то пошло не так и [food_item.name] испортится! Однако это чему-то тебя научило..."))
+							cooking_user.learn_skills("cooking")
+
 				src.visible_message(SPAN_NOTICE("\The [src] pings!"))
 				if(cooked_sound)
 					playsound(src, cooked_sound, 50, 1)
@@ -245,6 +260,8 @@
 
 	thing_inside = null
 	cooking_is_done = FALSE
+	cooking_user = null
+	skillcheck_done = FALSE
 	if(is_cooking)
 		stop()
 
