@@ -72,6 +72,8 @@
 	dock_target = "train_shuttle"
 	warmup_time = 5
 	move_time = 5 SECONDS
+	sound_takeoff = 'sound/tramstart.ogg'
+	sound_landing = 'sound/tramstop.ogg'
 
 /obj/effect/shuttle_landmark/train/station
 	name = "Pathos-I"
