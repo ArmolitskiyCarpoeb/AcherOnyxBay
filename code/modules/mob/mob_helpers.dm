@@ -79,6 +79,16 @@
 	Miss Chance
 */
 
+var/list/global/hit_zones = list(
+	BP_HEAD,
+	BP_CHEST,
+	BP_GROIN,
+	BP_L_LEG,
+	BP_R_LEG,
+	BP_L_ARM,
+	BP_R_ARM,
+)
+
 //TODO: Integrate defence zones and targeting body parts with the actual organ system, move these into organ definitions.
 
 //The base miss chance for the different defence zones
@@ -86,14 +96,14 @@ var/list/global/base_miss_chance = list(
 	BP_HEAD = 55,
 	BP_CHEST = 10,
 	BP_GROIN = 20,
-	BP_L_LEG = 30,
-	BP_R_LEG = 30,
-	BP_L_ARM = 25,
-	BP_R_ARM = 25,
-	BP_L_HAND = 40,
-	BP_R_HAND = 40,
-	BP_L_FOOT = 75,
-	BP_R_FOOT = 75,
+	BP_L_LEG = 32,
+	BP_R_LEG = 32,
+	BP_L_ARM = 27,
+	BP_R_ARM = 27,
+	BP_L_HAND = 45,
+	BP_R_HAND = 45,
+	BP_L_FOOT = 80,
+	BP_R_FOOT = 80,
 )
 
 //Used to weight organs when an organ is hit randomly (i.e. not a directed, aimed attack).
@@ -101,15 +111,15 @@ var/list/global/base_miss_chance = list(
 var/list/global/organ_rel_size = list(
 	BP_HEAD = 25,
 	BP_CHEST = 70,
-	BP_GROIN = 30,
+	BP_GROIN = 40,
 	BP_L_LEG = 25,
 	BP_R_LEG = 25,
 	BP_L_ARM = 25,
 	BP_R_ARM = 25,
-	BP_L_HAND = 10,
-	BP_R_HAND = 10,
-	BP_L_FOOT = 10,
-	BP_R_FOOT = 10,
+	BP_L_HAND = 5,
+	BP_R_HAND = 5,
+	BP_L_FOOT = 5,
+	BP_R_FOOT = 5,
 )
 
 /proc/check_zone(zone)
@@ -167,13 +177,14 @@ var/list/global/organ_rel_size = list(
 				return zone
 
 	var/miss_chance = 10
-	if (zone in base_miss_chance)
+	//var/mob/living/carbon/human/H
+	if(zone in base_miss_chance)
 		miss_chance = base_miss_chance[zone]
 	miss_chance = max(miss_chance + miss_chance_mod, 0)
 	if(prob(miss_chance))
-		if(prob(0))
+		if(prob(50))
 			return null
-		return pick(base_miss_chance)
+		return pick(hit_zones)
 	return zone
 
 
