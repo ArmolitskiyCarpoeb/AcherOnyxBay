@@ -454,3 +454,13 @@
 
 /obj/structure/bed/wheel/luxury/New(newloc)
 	..(newloc, MATERIAL_GOLD, MATERIAL_CARPET)
+
+/obj/structure/bed/matrac
+	name = "матрац"
+	desc = "Комфорт и уют."
+	icon_state = "matrac"
+	base_icon = "matrac"
+	buckle_pixel_shift = "x=0;y=2"
+
+/obj/structure/bed/matrac/New(newloc)
+	..(newloc, MATERIAL_COTTON)
