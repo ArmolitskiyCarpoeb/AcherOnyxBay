@@ -126,7 +126,7 @@
 		stat("Dexterity", "[stats[STAT_DX]]")
 		stat("Intellect", "[stats[STAT_IQ]]")
 		stat("Health", "[stats[STAT_HT]]")
-/*
+
 		stat("SKILLS:")
 		stat("Melee", "[skills[SKILL_MELEE]]")
 		stat("Ranged", "[skills[SKILL_RANGE]]")
@@ -137,7 +137,7 @@
 		stat("Cooking", "[skills[SKILL_COOK]]")
 		stat("Science", "[skills[SKILL_SCI]]")
 		stat("Gardening", "[skills[SKILL_GARDEN]]")
-*/
+
 		if(evacuation_controller)
 			var/eta_status = evacuation_controller.get_status_panel_eta()
 			if(eta_status)
