@@ -455,20 +455,24 @@
 	P.accuracy = accuracy + acc_mod
 	P.dispersion = disp_mod
 
-	if(!user.skillcheck(user.skills["ranged"], 45, "Как целиться?!", "ranged"))//Being unskilled at guns decreased accuracy.
-		P.accuracy -= 3
-		P.dispersion += 2
-
-	if(user.skillcheck(user.skills["ranged"], 75, null, "ranged"))
-		P.accuracy += 3
-		P.dispersion -= 1
-
-	//accuracy bonus from aiming
-	if (aim_targets && (target in aim_targets))
+	//accuracy bonus from aiming - нихуя не работает
+	if(aim_targets && (target in aim_targets))
 		//If you aim at someone beforehead, it'll hit more often.
 		//Kinda balanced by fact you need like 2 seconds to aim
 		//As opposed to no-delay pew pew
-		P.accuracy += 2
+		acc_mod += 2
+		disp_mod -= 2
+		P.accuracy += 3
+		P.dispersion -= 1
+
+	if(!user.skillcheck(user.skills["ranged"], 45, null, "ranged") && !aim_targets)//Being unskilled at guns decreased accuracy.
+		P.accuracy -= 3
+		P.dispersion += 1
+		if(aim_targets && (target in aim_targets))
+			acc_mod += 2
+			disp_mod -= 2
+			P.accuracy += 3
+			P.dispersion -= 1
 
 //does the actual launching of the projectile
 /obj/item/gun/proc/process_projectile(obj/projectile, atom/movable/firer, atom/target, target_zone, params=null)

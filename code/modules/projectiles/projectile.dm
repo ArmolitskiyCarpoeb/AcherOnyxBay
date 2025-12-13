@@ -198,12 +198,16 @@
 	setAngle(new_Angle)
 
 //Called when the projectile intercepts a mob. Returns 1 if the projectile hit the mob, 0 if it missed and should keep flying.
-/obj/item/projectile/proc/attack_mob(mob/living/target_mob, distance, miss_modifier=0)
+/obj/item/projectile/proc/attack_mob(mob/living/target_mob, distance, miss_modifier=70)
 	if(!istype(target_mob))
 		return
 
 	//roll to-hit
-	miss_modifier = max(15*(distance-2) - round(15*accuracy) + miss_modifier + target_mob.get_evasion(), 0)
+	miss_modifier = rand(50,80)
+	var/tmp/list/mob/living/aim_targets
+	if(aim_targets && (target_mob in aim_targets))
+		miss_modifier = -25
+	miss_modifier = max(15*(distance-2) - round(15*accuracy) + miss_modifier + target_mob.get_evasion() - (firer.skills["ranged"]), 0)
 	var/hit_zone = get_zone_with_miss_chance(def_zone, target_mob, miss_modifier, ranged_attack=(distance > 1 || original != target_mob)) //if the projectile hits a target we weren't originally aiming at then retain the chance to miss
 
 	var/result = PROJECTILE_FORCE_MISS
