@@ -11,6 +11,51 @@
 	name = "Unsuspicious Music Tape"
 	track = new /datum/track("Space Asshole", 'sound/music/space_asshole.ogg')
 
+/obj/item/music_tape/random/aprovedmusic1  //Надо треков по ~10 добавить. Рандомно от 4 до 6 выбирается
+	name = "Одобренные треки 1"
+	desc = "Церковь одобрила эти треки. Да познает душа слушающих радость"
+	tracklist = list(
+		"Hishmaliin"					= 'sound/music/aprovedmusic1/Dvar_-_Hishmaliin.ogg',
+		"Swallowed_Burning_Coals"		= 'sound/music/aprovedmusic1/EI_Tigr3_-_She_Swallowed_Burning_Coals.ogg',
+		"Hot Plates"					= 'sound/music/aprovedmusic1/Judge Bitch — Hot Plates.ogg',
+		"Main Theme"					= 'sound/music/aprovedmusic1/Max Payne - Main Theme.ogg',
+		"Unreleased Track"				= 'sound/music/aprovedmusic1/Squarepusher & Aphex Twin — Unreleased Track.ogg',
+		"Take Me Down Below"			= 'sound/music/aprovedmusic1/Kiss - Take Me Down Below.ogg',
+		"I Was Made For Lovin You"		= 'sound/music/aprovedmusic1/Kiss - I Was Made For Lovin You.ogg'
+	)
+
+/obj/item/music_tape/random/aprovedmusic2
+	name = "Одобренные треки 1"
+	desc = "Церковь одобрила эти треки. Да познает душа слушающих счастье"
+	tracklist = list(
+		"Little Dark Age"				= 'sound/music/aprovedmusic2/Little Dark Age.ogg',
+		"9mm"							= 'sound/music/aprovedmusic2/Memphis Cult - 9mm.ogg',
+		"Army of the Night"				= 'sound/music/aprovedmusic2/Powerwolf - Army of the Night.ogg',
+		"We Drink Your Blood"			= 'sound/music/aprovedmusic2/Powerwolf - We Drink Your Blood.ogg',
+		"Dragula"						= 'sound/music/aprovedmusic2/Rob Zombie - Dragula.ogg',
+		"Living Dead Girl"				= 'sound/music/aprovedmusic2/Rob Zombie - Living Dead Girl.ogg'
+	)
+
+/obj/item/music_tape/random/nonaprovedmusic
+	name = "Не одобренные треки"
+	tracklist = list(
+		"At Doom's Gate"				= 'sound/music/nonaprovedmusic/At Doom Gate.ogg',
+		"Hallo Spaceboy"				= 'sound/music/nonaprovedmusic/David Bowie - Hallo Spaceboy.ogg',
+		"Decadence"						= 'sound/music/nonaprovedmusic/Disturbed - Decadence.ogg',
+		"Hard Bass"						= 'sound/music/nonaprovedmusic/Hard Bass School.ogg',
+		"Smells_Blood"					= 'sound/music/nonaprovedmusic/Kensuke_Ushio_-_Smells_Blood.ogg',
+		"Nas ne dogonyat"				= 'sound/music/nonaprovedmusic/t.A.T.u․ - Нас не догонят.ogg',
+		"Ich hasse Kinder"				= 'sound/music/nonaprovedmusic/Till Lindemann - Ich hasse Kinder.ogg',
+		"Vse po plany"					= 'sound/music/nonaprovedmusic/Егор Летов - Всё идёт по плану.ogg',
+		"Ispoved vampira"				= 'sound/music/nonaprovedmusic/Король и Шут - Исповедь вампира.ogg',
+		"Mertviy anarhist"				= 'sound/music/nonaprovedmusic/Король и Шут - Мёртвый анархист.ogg',
+		"Pohorony panka"				= 'sound/music/nonaprovedmusic/Король и Шут - Похороны панка.ogg',
+		"Huarit tak chto ohyet"			= 'sound/music/nonaprovedmusic/ШЛЕМ - Хуярит так, что охуеть.ogg'
+		// "   "							= 'sound/music/nonaprovedmusic/  .ogg',
+		// "   "							= 'sound/music/nonaprovedmusic/  .ogg',
+		// "   "							= 'sound/music/nonaprovedmusic/  .ogg'
+	)
+
 /obj/item/music_tape/random/newyear
 	name = "Christmas Music Tape"
 	tracklist = list(
