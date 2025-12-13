@@ -132,7 +132,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 // Has large amounts of possible items, most of which may or may not be useful.
 /obj/structure/loot_pile/maint/junk
 	name = "pile of junk"
-	desc = "Lots of junk lying around.  They say one man's trash is another man's treasure."
+	desc = "Что для одного мусор – для другого сокровище. Эта куча мусора повидала былые деньки."
 	icon_states_to_use = list("junk_pile1", "junk_pile2", "junk_pile3", "junk_pile4", "junk_pile5")
 
 	common_loot = list(
