@@ -329,6 +329,13 @@
 	initial_flooring = /decl/flooring/darkwood
 	footstep_sound = SFX_FOOTSTEP_WOOD
 
+/turf/simulated/floor/trim/wood2
+	name = "wooden floor"
+	icon_state = "wood2"
+	icon = 'icons/turf/flooring/wood.dmi'
+	initial_flooring = /decl/flooring/darkwood
+	footstep_sound = SFX_FOOTSTEP_WOOD
+
 /turf/simulated/floor/trim/wood/broken0
 	name = "wooden floor"
 	icon_state = "wood_broken0"
@@ -678,3 +685,18 @@
 	if(istype(AM, /mob/living))
 		var/mob/living/M = AM
 		M.slip(src, 4)
+
+/turf/simulated/floor/steel
+	name = "steel floor"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "metal1"
+//	base_icon = 'icons/turf/flooring/tiles.dmi'
+//	base_icon_state = "metal1"
+	var/rand_state = TRUE
+	initial_flooring = /decl/flooring/tiling/metal
+	footstep_sound = SFX_FOOTSTEP_PLATING
+
+/turf/simulated/floor/steel/New()
+	if(rand_state)
+		icon_state = "metal[rand(1, 2)]"
+	..()

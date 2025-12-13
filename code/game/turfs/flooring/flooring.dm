@@ -359,6 +359,16 @@ var/list/flooring_types
 	icon_base = "sand_floor"
 	flags = TURF_REMOVE_CROWBAR
 
+/decl/flooring/tiling/metal
+	name = "old floor"
+	desc = "A strange old floor."
+	icon_base = "metal1"
+	has_damage_range = 4
+	damage_temperature = 1400 CELSIUS
+	flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN
+	build_type = /obj/item/stack/tile/floor
+	can_paint = FALSE
+
 /decl/flooring/tiling/vox1
 	name = "old floor"
 	desc = "A strange old floor."
