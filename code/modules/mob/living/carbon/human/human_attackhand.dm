@@ -250,8 +250,8 @@
 				// Replace the unarmed 15% miss chance with a DX-modified one for human attackers
 				if(istype(H) && hit_zone != BP_CHEST)
 					var/dx_bonus = H.get_dex_hit_chance(TRUE)
-					// 15% base miss, minus dx_bonus (so at dx=15, 15-15=0%), minimum 1%, maximum 95% to be safe
-					var/miss_chance = Clamp(15 - dx_bonus, 5, 95)
+					// 15% base miss, minus dx_bonus (so at dx=15, 15-15=0%)
+					var/miss_chance = clamp((Clamp(60 - dx_bonus, 0, 60) - (src.skills["melee"] / 2.5)), 0, 50)
 					if(prob(miss_chance))
 						if(!lying)
 							attack_message = "[H] attempted to strike [src], but missed!"
