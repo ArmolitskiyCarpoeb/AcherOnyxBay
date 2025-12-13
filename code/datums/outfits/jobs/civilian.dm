@@ -21,9 +21,6 @@
 		if(prob(25))
 			C = new /obj/item/clothing/suit/storage/toggle/track/red(src)
 			H.equip_to_appropriate_slot(C)
-	if(prob(25))
-		C = new /obj/item/clothing/under/camo/urban(src)
-		H.equip_to_appropriate_slot(C)
 	else
 		C = new /obj/item/clothing/under/color/orange(src)
 		H.equip_to_appropriate_slot(C)

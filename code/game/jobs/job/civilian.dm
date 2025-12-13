@@ -16,6 +16,8 @@
 	if(.)
 		H.add_mutation(MUTATION_BARTENDER)
 		H.newgeneratestats(5,15,5,15,5,15,5,15)
+		H.generate_skills()
+		H.skills["cooking"] = rand(35, 50)
 
 /datum/job/chef
 	title = "Chef"
@@ -34,6 +36,8 @@
 	. = ..()
 	if(.)
 		H.newgeneratestats(5,15,5,15,5,15,5,15)
+		H.generate_skills()
+		H.skills["cooking"] = rand(50, 85)
 
 /datum/job/barmonkey
 	title = "Waiter"
@@ -78,6 +82,8 @@
 	. = ..()
 	if(.)
 		H.newgeneratestats(5,15,5,15,5,15,5,15)
+		H.generate_skills()
+		H.skills["gardening"] = rand(50, 85)
 
 //Cargo
 /datum/job/qm
@@ -100,6 +106,7 @@
 	. = ..()
 	if(.)
 		H.newgeneratestats(5,13,7,12,9,15,5,15)
+		H.generate_skills()
 
 /datum/job/cargo_tech
 	title = "Cargo Technician"
@@ -131,6 +138,8 @@
 	. = ..()
 	if(.)
 		H.newgeneratestats(10,16,6,14,5,12,6,14)
+		H.generate_skills()
+		H.skills["melee"] = rand(25, 60)
 
 /datum/job/janitor
 	title = "Janitor"

@@ -54,6 +54,8 @@
 	. = ..()
 	if(.)
 		H.newgeneratestats(7,14,7,14,10,18,8,16)
+		H.generate_skills()
+		H.skills["engineering"] = rand(50, 85)
 
 /datum/job/atmos
 	title = "Atmospheric Technician"

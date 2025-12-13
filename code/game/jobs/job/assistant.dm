@@ -23,7 +23,8 @@
 	if(.)
 		H.newgeneratestats(5,15,5,15,5,15,5,15)
 		H.generate_skills()
-		H.skills["ranged"] = rand(50, 100)
+		H.skills["ranged"] = rand(15, 50)
+		H.skills["melee"] = rand(15, 50)
 /*
 /datum/job/assistant/get_access()
 	if(config.game.assistant_maint)

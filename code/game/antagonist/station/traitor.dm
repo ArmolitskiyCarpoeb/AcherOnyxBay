@@ -101,6 +101,8 @@ GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
 		return 0
 	spawn_uplink(traitor_mob)
 	give_intel(traitor_mob)
+	traitor_mob.skills["ranged"] = rand(50,70)
+	traitor_mob.skills["melee"] = rand(50,70)
 
 /datum/antagonist/traitor/proc/give_intel(mob/living/traitor_mob)
 	ASSERT(traitor_mob)
