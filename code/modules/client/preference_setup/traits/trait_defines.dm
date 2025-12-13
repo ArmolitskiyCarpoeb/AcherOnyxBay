@@ -54,13 +54,13 @@
 	name = "Житель индустриального района"
 	modifier_type = /datum/modifier/trait/toxinlover
 	trait_cost = 2 // positive: costs points
-
+/*
 /datum/trait/modifier/good/skilledmarksman
 	name = "Умелый стрелок"
 	modifier_type = /datum/modifier/trait/skilledmarksman
 	mutually_exclusive = list(/datum/trait/modifier/bad/inaccurate)
 	trait_cost = 2 // positive: costs points
-
+*/
 /datum/trait/modifier/good/fast_hands
 	name = "Быстрые руки"
 	desc = "Поспешишь - людей насмешишь."
@@ -103,7 +103,7 @@
 		return "Full Body Prosthetics cannot bleed."
 	// If a species lacking blood is added, it is suggested to add a check for them here.
 	return ..()
-
+/*
 /datum/trait/modifier/bad/inaccurate
 	name = "Inaccurate"
 	desc = "You're rather inexperienced with guns, you've never used one in your life, or you're just really rusty.  \
@@ -111,7 +111,7 @@
 	modifier_type = /datum/modifier/trait/inaccurate
 	mutually_exclusive = list(/datum/trait/modifier/good/skilledmarksman)
 	trait_cost = -1
-
+*/
 /datum/trait/modifier/bad/low_metabolism
 	name = "Low Metabolism"
 	modifier_type = /datum/modifier/trait/low_metabolism
