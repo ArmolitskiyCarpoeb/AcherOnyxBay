@@ -337,6 +337,7 @@ meteor_act
 			//visible_message("Debug \[MISS\]: pyatka") // Debug Message
 
 			miss_chance = 100
+
 		var/obj/item/organ/external/O = H.organs_by_name[zone]
 		if(prob(miss_chance))
 
