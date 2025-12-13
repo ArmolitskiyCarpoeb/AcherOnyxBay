@@ -455,6 +455,14 @@
 	P.accuracy = accuracy + acc_mod
 	P.dispersion = disp_mod
 
+	if(!user.skillcheck(user.skills["ranged"], 45, "Как целиться?!", "ranged"))//Being unskilled at guns decreased accuracy.
+		P.accuracy -= 3
+		P.dispersion += 2
+
+	if(user.skillcheck(user.skills["ranged"], 75, null, "ranged"))
+		P.accuracy += 3
+		P.dispersion -= 1
+
 	//accuracy bonus from aiming
 	if (aim_targets && (target in aim_targets))
 		//If you aim at someone beforehead, it'll hit more often.
