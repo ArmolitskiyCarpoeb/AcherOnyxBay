@@ -139,7 +139,10 @@
 				if(!do_mob(user, M, W.damage/5))
 					to_chat(user, SPAN("warning", "You must stand still to bandage wounds."))
 					break
-
+				if (!user.skillcheck(user.skills["medical"], 20, null, "medical"))
+					to_chat(user, SPAN("warning", "Не получилось!"))
+					user.learn_skills("medical")
+					break
 				if (W.current_stage <= W.max_bleeding_stage)
 					user.visible_message(SPAN("notice", "\The [user] bandages \a [W.desc] on [M]'s [affecting.name]."), \
 					                              SPAN("notice", "You bandage \a [W.desc] on [M]'s [affecting.name]."))
@@ -151,6 +154,8 @@
 					user.visible_message(SPAN("notice", "\The [user] places a bandaid over \a [W.desc] on [M]'s [affecting.name]."), \
 					                              SPAN("notice", "You place a bandaid over \a [W.desc] on [M]'s [affecting.name]."))
 				W.bandage()
+				if (user.skillcheck(user.skills["medical"], 60, null, "medical"))
+					heal_brute += user.skills["medical"] * 0.2
 				W.heal_damage(heal_brute)
 				used++
 			affecting.update_damages()
@@ -199,6 +204,8 @@
 				return 1
 			user.visible_message(SPAN("notice", "[user] salved wounds on [M]'s [affecting.name]."), \
 			                        SPAN("notice", "You salved wounds on [M]'s [affecting.name]."))
+			if (user.skillcheck(user.skills["medical"], 60, null, "medical"))
+				heal_burn += user.skills["medical"] * 0.2
 			use(1)
 			affecting.salve()
 			affecting.disinfect()
@@ -275,6 +282,8 @@
 					user.visible_message(SPAN("notice", "\The [user] smears some somatic gel over \a [W.desc] on [M]'s [affecting.name]."), \
 					                              SPAN("notice", "You smear some somatic gel over \a [W.desc] on [M]'s [affecting.name]."))
 				W.bandage()
+				if (user.skillcheck(user.skills["medical"], 60, null, "medical"))
+					heal_brute += user.skills["medical"] * 0.2
 				W.disinfect()
 				W.heal_damage(heal_brute)
 				used++
@@ -321,6 +330,8 @@
 				return 1
 			user.visible_message(SPAN("notice", "[user] covers wounds on [M]'s [affecting.name] with protein-renaturating gel."), \
 					                 SPAN("notice", "You cover wounds on [M]'s [affecting.name] with protein-renaturating gel."))
+			if (user.skillcheck(user.skills["medical"], 60, null, "medical"))
+				heal_burn += user.skills["medical"] * 0.2
 			affecting.heal_damage(0,heal_burn)
 			use(1)
 			affecting.salve()
@@ -349,6 +360,10 @@
 			return
 		if(affecting.splinted)
 			to_chat(user, SPAN("notice", "[M]'s [limb] is already splinted!"))
+			return
+		if (!user.skillcheck(user.skills["medical"], 20, null, "medical"))
+			to_chat(user, SPAN("warning", "Похоже, ты не умеешь это делать!"))
+			user.learn_skills("medical")
 			return
 		if (M != user)
 			user.visible_message(SPAN("notice", "[user] starts to apply \the [src] to [M]'s [limb]."), \

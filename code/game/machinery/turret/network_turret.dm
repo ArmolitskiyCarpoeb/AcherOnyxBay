@@ -11,7 +11,7 @@
 	gun_looting_prob = 100
 
 	traverse = 360
-	turning_rate = 270
+	turning_rate = 338 // Increased from 270 by 25%
 
 	hostility = /datum/hostility/turret/network
 

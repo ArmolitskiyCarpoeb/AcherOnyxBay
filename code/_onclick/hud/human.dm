@@ -338,21 +338,6 @@
 	mymob.gun_setting_icon.alpha = ui_alpha
 	static_inventory |= mymob.gun_setting_icon
 
-	mymob.item_use_icon = new /atom/movable/screen/gun/item(null)
-	mymob.item_use_icon.icon = ui_style
-	mymob.item_use_icon.color = ui_color
-	mymob.item_use_icon.alpha = ui_alpha
-
-	mymob.gun_move_icon = new /atom/movable/screen/gun/move(null)
-	mymob.gun_move_icon.icon = ui_style
-	mymob.gun_move_icon.color = ui_color
-	mymob.gun_move_icon.alpha = ui_alpha
-
-	mymob.radio_use_icon = new /atom/movable/screen/gun/radio(null)
-	mymob.radio_use_icon.icon = ui_style
-	mymob.radio_use_icon.color = ui_color
-	mymob.radio_use_icon.alpha = ui_alpha
-
 	inventory_shown = FALSE
 
 /mob/living/carbon/human/rejuvenate()

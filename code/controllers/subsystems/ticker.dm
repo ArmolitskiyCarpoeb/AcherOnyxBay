@@ -124,6 +124,13 @@ SUBSYSTEM_DEF(ticker)
 	callHook("roundstart")
 	SEND_GLOBAL_SIGNAL(SIGNAL_ROUNDSTART)
 
+	// Station-wide production objectives: always issue at round start.
+	if(GLOB.station_objectives && !GLOB.station_objectives.active)
+		var/list/tasks = GLOB.station_objectives.generate_tasks()
+		var/time_limit = rand(20, 40) * 1 MINUTES
+		spawn(1200) //2 minutes ready time
+		GLOB.station_objectives.start_directive(tasks, time_limit, null)
+
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
 		to_world("<span class='info'><B>Enjoy the game!</B></span>")

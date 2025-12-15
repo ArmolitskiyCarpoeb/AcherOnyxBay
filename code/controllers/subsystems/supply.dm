@@ -89,6 +89,7 @@ SUBSYSTEM_DEF(supply)
 		for(var/atom/movable/AM in subarea)
 			if(AM.anchored)
 				continue
+
 			if(istype(AM, /obj/structure/closet/crate/))
 				var/obj/structure/closet/crate/CR = AM
 				callHook("sell_crate", list(CR, subarea))
@@ -111,12 +112,23 @@ SUBSYSTEM_DEF(supply)
 						var/material/material = P.get_material()
 						if(material_buy_prices[material.type])
 							material_count[material.type] += P.get_amount()
+						if(GLOB.station_objectives)
+							GLOB.station_objectives.record_shipment(A)
 						continue
 
 					// Must sell ore detector disks in crates
 					if(istype(A, /obj/item/disk/survey))
 						var/obj/item/disk/survey/D = A
 						add_points_from_source(round(D.Value() * 0.005), "gep")
+
+					if(GLOB.station_objectives)
+						GLOB.station_objectives.record_shipment(A)
+
+				qdel(AM)
+				continue
+
+			if(GLOB.station_objectives)
+				GLOB.station_objectives.record_shipment(AM)
 			qdel(AM)
 
 	if(material_count.len)

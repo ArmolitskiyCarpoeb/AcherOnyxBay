@@ -33,7 +33,7 @@
 
 	station_name  = "MS Fortuna"
 	station_short = "Fortuna"
-	dock_name     = "Space Docks"
+	dock_name     = "Orbital Station ''Outerland''"
 	boss_name     = "Mons-Laden Corporation"
 	boss_short    = "MLC"
 	company_name  = "The Great Novotheist Church"

@@ -69,6 +69,22 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 			delay = rand(4 SECONDS, 6 SECONDS) // default
 
 		if(do_after(user, delay, src, luck_check_type = LUCK_CHECK_COMBAT))
+			// Check if human has bare hands and apply damage/virus
+			if(ishuman(user))
+				var/mob/living/carbon/human/H = user
+				var/obj/item/gloves = H.get_equipped_item(slot_gloves)
+				if(!gloves) // Bare hands
+					// 85% chance to cut hands (5 brute damage)
+					if(prob(85))
+						var/hand_to_damage = prob(50) ? BP_L_HAND : BP_R_HAND
+						H.apply_damage(5, BRUTE, hand_to_damage)
+						to_chat(H, "<span class='warning'>You cut your [hand_to_damage == BP_L_HAND ? "left" : "right"] hand on something sharp in \the [src]!</span>")
+
+					// 50% chance to get a random virus
+					if(prob(50))
+						infect_mob_random_lesser(H)
+						to_chat(H, "<span class='warning'>You feel something sticky on your hands...</span>")
+
 			// The loot's all gone.
 			if(loot_depletion && loot_left <= 0)
 				to_chat(L, "<span class='warning'>\The [src] has been picked clean.</span>")

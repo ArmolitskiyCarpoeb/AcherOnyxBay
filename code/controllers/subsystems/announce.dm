@@ -181,4 +181,4 @@ SUBSYSTEM_DEF(announce)
 	. = "<h2 class='alert'>[title]</h2>"
 	. += "<br><span class='alert'>[text]</span>"
 	if (sender)
-		. += "<br><span class='alert'> -[html_encode(sender)]</span>"
+		. += "<br><span class='alert'> - [html_encode(sender)]</span>"

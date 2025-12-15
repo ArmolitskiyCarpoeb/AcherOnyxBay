@@ -167,18 +167,35 @@
 	worth = 1000
 
 /proc/spawn_money(sum, spawnloc, mob/living/carbon/human/human_user)
+	var/obj/item/spacecash/cash
 	if(sum in list(1000, 500, 200, 100, 50, 20, 10, 1))
 		var/cash_type = text2path("/obj/item/spacecash/bundle/c[sum]")
-		var/obj/cash = new cash_type(usr.loc)
-		if(ishuman(human_user))
-			human_user.pick_or_drop(cash)
+		cash = new cash_type(spawnloc)
 	else
-		var/obj/item/spacecash/bundle/bundle = new(spawnloc)
-		bundle.worth = sum
-		bundle.update_icon()
-		if(ishuman(human_user))
-			human_user.pick_or_drop(bundle, spawnloc)
-	return
+		cash = new /obj/item/spacecash/bundle(spawnloc)
+		cash.worth = sum
+		cash.update_icon()
+
+	if(ishuman(human_user))
+		// Try to put money in pockets first (if jumpsuit is equipped), then hands
+		// Note: spawn_money is called before jumpsuit is equipped, so we try both immediately and with a delay
+		if(human_user.w_uniform)
+			// Jumpsuit exists, try pockets first using normal equip helpers
+			if(human_user.equip_to_slot_if_possible(cash, slot_l_store, del_on_fail = 0, disable_warning = 1))
+				return cash
+			if(human_user.equip_to_slot_if_possible(cash, slot_r_store, del_on_fail = 0, disable_warning = 1))
+				return cash
+
+		// If jumpsuit not equipped yet, put in hands temporarily, then try pockets after a short delay
+		human_user.pick_or_drop(cash, spawnloc)
+		// Try to move to pockets after equipment is done (delayed check)
+		spawn(1)
+			if(human_user && cash && cash.loc == human_user && human_user.w_uniform)
+				if(human_user.equip_to_slot_if_possible(cash, slot_l_store, del_on_fail = 0, disable_warning = 1))
+					return
+				human_user.equip_to_slot_if_possible(cash, slot_r_store, del_on_fail = 0, disable_warning = 1)
+
+	return cash
 
 /obj/item/spacecash/ewallet
 	name = "Charge card"

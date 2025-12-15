@@ -136,6 +136,9 @@ var/list/name_to_material
 	if(!rod_product)
 		to_chat(user, "<span class='warning'>You cannot make anything out of \the [target_stack]</span>")
 		return
+	if(!user.skillcheck(user.skills["engineering"], 40, "Вот зараза, ничего не получается!", "engineering"))
+		user.learn_skills("engineering")
+		return
 	if(used_stack.get_amount() < 1 || target_stack.get_amount() < 1)
 		to_chat(user, "<span class='warning'>You need one rod and one sheet of [display_name] to make anything useful.</span>")
 		return
@@ -148,6 +151,9 @@ var/list/name_to_material
 /material/proc/build_wired_product(mob/user, obj/item/stack/used_stack, obj/item/stack/target_stack)
 	if(!wire_product)
 		to_chat(user, "<span class='warning'>You cannot make anything out of \the [target_stack]</span>")
+		return
+	if(!user.skillcheck(user.skills["engineering"], 40, "Вот зараза, ничего не получается!", "engineering"))
+		user.learn_skills("engineering")
 		return
 	if(used_stack.get_amount() < 5 || target_stack.get_amount() < 1)
 		to_chat(user, "<span class='warning'>You need five wires and one sheet of [display_name] to make anything useful.</span>")
@@ -503,6 +509,10 @@ var/list/name_to_material
 
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, "<span class='warning'>This task is too complex for your clumsy hands.</span>")
+		return 1
+
+	if(!user.skillcheck(user.skills["engineering"], 40, "Вот зараза, ничего не получается!", "engineering"))
+		user.learn_skills("engineering")
 		return 1
 
 	var/turf/T = user.loc

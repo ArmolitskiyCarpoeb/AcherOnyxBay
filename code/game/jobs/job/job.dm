@@ -31,7 +31,7 @@
 	var/create_record = TRUE              // Do we announce/make records for people who spawn on this job?
 
 	var/account_allowed = FALSE           // Does this job type come with a station account?
-	var/economic_modifier = 2             // With how much does this job modify the initial account amount?
+	var/economic_modifier = 1             // With how much does this job modify the initial account amount?
 
 	var/outfit_type                       // The outfit the employee will be dressed in, if any
 	var/list/preview_override             // Overrides the preview mannequin w/ given icon. Must be formatted as 'list(icon_state, icon)'.
@@ -71,7 +71,7 @@
 	. = outfit_by_type(.)
 
 /datum/job/proc/setup_account(mob/living/carbon/human/H)
-	if(!account_allowed || (H.mind && H.mind.initial_account))
+	if(H.mind && H.mind.initial_account)
 		return
 
 	var/loyalty = 1
@@ -89,7 +89,14 @@
 
 	var/species_modifier = economic_species_modifier[H.species.type]
 
-	var/money_amount = (rand(5,50) + rand(5, 50)) * loyalty * economic_modifier * species_modifier * GLOB.using_map.salary_modifier
+	var/money_amount = round((rand(5,50) + rand(5, 50)) * loyalty * economic_modifier * species_modifier * GLOB.using_map.salary_modifier)
+
+	// If account is not allowed, spawn all money as physical cash instead
+	if(!account_allowed)
+		spawn_money(money_amount, H.loc, H)
+		return
+
+	// Create bank account for jobs that allow it
 	var/datum/money_account/M = create_account(H.real_name, money_amount, null, off_station)
 	if(H.client)
 		M.security_level = H.client.prefs.bank_security
@@ -110,6 +117,8 @@
 		H.mind.initial_account = M
 
 	to_chat(H, SPAN("notice", "<b>Your account number is: [M.account_number], your account pin is: [M.remote_access_pin]</b>"))
+
+	// Give physical cash in pocket (or hand if no pocket)
 
 // overrideable separately so AIs/borgs can have cardborg hats without unneccessary new()/qdel()
 /datum/job/proc/equip_preview(mob/living/carbon/human/H, alt_title)

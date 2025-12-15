@@ -70,7 +70,7 @@
 	supervisors = "кардиналом"
 	selection_color = "#552828"
 	//alt_titles = list("Junior Officer")
-	economic_modifier = 4
+	economic_modifier = 1.5
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_morgue, access_hydroponics, access_bar, access_kitchen, access_cargo, access_qm, access_mining, access_mining_station, access_external_airlocks)
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 0

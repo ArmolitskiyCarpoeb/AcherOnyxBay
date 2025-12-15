@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(all_turrets)
 	icon = 'icons/obj/turrets.dmi'
 	icon_state = "turretCover"
 	anchored = TRUE
-	density = TRUE
+	density = FALSE
 	idle_power_usage = 50 WATTS
 	active_power_usage = 300 WATTS
 	interact_offline = TRUE
@@ -57,7 +57,7 @@ GLOBAL_LIST_EMPTY(all_turrets)
 	var/current_bearing = 0 // Current absolute angle the turret has, used to calculate if it needs to turn to try to shoot the target.
 	var/target_bearing = 0 // The desired bearing. If the current bearing is too far from this, the turret will turn towards it until within tolerence.
 	var/bearing_tolerence = 3 // Degrees that the turret must be within to be able to shoot at the target.
-	var/turning_rate = 90 // Degrees per second.
+	var/turning_rate = 113 // Degrees per second. (increased from 90 by 25%)
 	var/default_bearing = null // If no target is found, the turret will return to this bearing automatically.
 
 	// Detection.
@@ -618,6 +618,7 @@ GLOBAL_LIST_EMPTY(all_turrets)
 	flick_holder.SetTransform(rotation = current_bearing)
 	flick(flick_icon, flick_holder)
 	raised = TRUE
+	density = TRUE
 	update_icon()
 	sleep(10)
 	qdel(flick_holder)

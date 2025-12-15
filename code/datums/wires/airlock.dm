@@ -9,6 +9,9 @@
 	holder_type = /obj/machinery/door/airlock
 	wire_count = 12
 	window_y = 570
+	// Temporary wire mapping for current low-skill user interaction
+	var/list/current_user_wires = null
+	var/mob/current_user = null
 
 var/const/AIRLOCK_WIRE_IDSCAN = 1
 var/const/AIRLOCK_WIRE_MAIN_POWER1 = 2
@@ -33,12 +36,37 @@ var/const/AIRLOCK_WIRE_LIGHT = 2048
 		return 1
 	return 0
 
-/datum/wires/airlock/GetInteractWindow()
+/datum/wires/airlock/GetInteractWindow(mob/user)
 	var/obj/machinery/door/airlock/A = holder
 	var/haspower = A.arePowerSystemsOn() //If there's no power, then no lights will be on.
 
-	. += ..()
-	. += text("<br>\n[]<br>\n[]<br>\n[]<br>\n[]<br>\n[]<br>\n[]<br>\n[]<br>\n[]",
+	// Get user-specific wire mapping if they have low engineering skill
+	var/list/display_wires = wires
+	if(user && isliving(user))
+		var/mob/living/L = user
+		if(L.skills && !L.skillcheck(L.skills["engineering"], 50, null, "engineering") && !L.statcheck(L.stats[STAT_IQ], 13, null, STAT_IQ)) // Low engineering skill threshold
+			// Regenerate wires for low-skill users (randomizes each time they view)
+			current_user_wires = GenerateUserWires()
+			current_user = L
+			display_wires = current_user_wires
+
+	var/html = "<div class='block'>"
+	html += "<h3>Exposed Wires</h3>"
+	html += "<table[table_options]>"
+
+	for(var/colour in display_wires)
+		var/actual_index = display_wires[colour]
+		var/is_cut = IsIndexCut(actual_index)
+		html += "<tr>"
+		html += "<td[row_options1]><font color='[colour]'>&#9724;</font>[capitalize(colour)]</td>"
+		html += "<td[row_options2]>"
+		html += "<A href='?src=\ref[src];action=1;cut=[colour]'>[is_cut ? "Mend" :  "Cut"]</A>"
+		html += " <A href='?src=\ref[src];action=1;pulse=[colour]'>Pulse</A>"
+		html += " <A href='?src=\ref[src];action=1;attach=[colour]'>[IsAttached(colour) ? "Detach" : "Attach"] Signaller</A></td></tr>"
+	html += "</table>"
+	html += "</div>"
+
+	html += text("<br>\n[]<br>\n[]<br>\n[]<br>\n[]<br>\n[]<br>\n[]<br>\n[]<br>\n[]",
 	(A.locked ? "The door bolts have fallen!" : "The door bolts look up."),
 	((A.lights && haspower) ? "The door bolt lights are on." : "The door bolt lights are off!"),
 	((haspower) ? "The test light is on." : "The test light is off!"),
@@ -47,6 +75,107 @@ var/const/AIRLOCK_WIRE_LIGHT = 2048
 	((A.safe==0 && haspower)? "The 'Check Wiring' light is on." : "The 'Check Wiring' light is off."),
 	((A.normalspeed==0 && haspower)? "The 'Check Timing Mechanism' light is on." : "The 'Check Timing Mechanism' light is off."),
 	((A.aiDisabledIdScanner==0 && haspower)? "The IDScan light is on." : "The IDScan light is off."))
+
+	if (random)
+		html += "<i>\The [holder] appears to have tamper-resistant electronics installed.</i><br><br>"
+
+	return html
+
+/datum/wires/airlock/proc/GenerateUserWires()
+	// Generate a randomized wire mapping for this user
+	var/list/user_wires = list()
+	var/list/colours_to_pick = wireColours.Copy()
+	var/list/indexes_to_pick = list()
+
+	// Generate our indexes (same as base wires)
+	for(var/i = 1; i < (1 << wire_count); i += i)
+		indexes_to_pick += i
+
+	colours_to_pick.len = wire_count
+
+	// Shuffle the mapping
+	while(colours_to_pick.len && indexes_to_pick.len)
+		var/colour = pick_n_take(colours_to_pick)
+		var/index = pick_n_take(indexes_to_pick)
+		user_wires[colour] = index
+
+	return user_wires
+
+/datum/wires/airlock/proc/GetUserWireMapping(mob/user)
+	// Get the user's wire mapping, or return base wires if they have high skill
+	if(!user || !isliving(user))
+		return wires
+
+	var/mob/living/L = user
+	if(L.skills && L.skills["engineering"] >= 30)
+		return wires // High skill users see real wires
+
+	// Low skill users: if this is the same user and we have a current mapping, use it
+	// Otherwise generate new randomized wires (happens on each cut/pulse action)
+	if(current_user == L && current_user_wires)
+		var/list/mapping = current_user_wires
+		// Regenerate for next time
+		current_user_wires = GenerateUserWires()
+		return mapping
+
+	// Generate new randomized wires
+	current_user_wires = GenerateUserWires()
+	current_user = L
+	return current_user_wires
+
+/datum/wires/airlock/CutWireColour(colour, mob/user)
+	// Translate user's color to actual wire index
+	var/list/user_wires = GetUserWireMapping(user)
+	var/actual_index = user_wires[colour]
+	if(!actual_index)
+		// Fallback to base wires if color not found
+		actual_index = GetIndex(colour)
+	CutWireIndex(actual_index)
+
+/datum/wires/airlock/PulseColour(colour, mob/user)
+	// Translate user's color to actual wire index
+	var/list/user_wires = GetUserWireMapping(user)
+	var/actual_index = user_wires[colour]
+	if(!actual_index)
+		// Fallback to base wires if color not found
+		actual_index = GetIndex(colour)
+	PulseIndex(actual_index)
+
+/datum/wires/airlock/Topic(href, href_list)
+	..()
+	if(in_range(holder, usr) && isliving(usr))
+		var/mob/living/L = usr
+		if(CanUse(L) && href_list["action"])
+			var/obj/item/I = L.get_active_hand()
+			holder.add_hiddenprint(L)
+			if(href_list["cut"]) // Toggles the cut/mend status
+				if(isWirecutter(I))
+					var/colour = href_list["cut"]
+					CutWireColour(colour, L)
+				else
+					to_chat(L, "<span class='error'>You need wirecutters!</span>")
+			else if(href_list["pulse"])
+				if(isMultitool(I))
+					var/colour = href_list["pulse"]
+					PulseColour(colour, L)
+				else
+					to_chat(L, "<span class='error'>You need a multitool!</span>")
+			else if(href_list["attach"])
+				var/colour = href_list["attach"]
+				// Detach
+				if(IsAttached(colour))
+					var/obj/item/O = Detach(colour)
+					if(O)
+						L.pick_or_drop(O)
+				// Attach
+				else
+					if(istype(I, /obj/item/device/assembly/signaler) && L.drop(I))
+						Attach(colour, I)
+					else
+						to_chat(L, "<span class='error'>You need a remote signaller!</span>")
+
+		// Update Window
+		Interact(usr)
 
 /datum/wires/airlock/UpdateCut(index, mended)
 

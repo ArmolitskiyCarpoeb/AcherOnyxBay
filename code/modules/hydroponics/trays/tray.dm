@@ -292,6 +292,9 @@
 		return
 
 	if(user)
+		if(!user.skillcheck(user.skills["gardening"], 35, "You fail to harvest the plant properly.", "gardening"))
+			user.learn_skills("gardening")
+			return
 		seed.harvest(user,yield_mod)
 	else
 		seed.harvest(get_turf(src),yield_mod)
@@ -444,6 +447,10 @@
 			to_chat(user, "The plant is dead.")
 			return
 
+		if(!user.skillcheck(user.skills["gardening"], 40, "You fail to take a proper sample from the plant.", "gardening"))
+			user.learn_skills("gardening")
+			return
+
 		// Create a sample.
 		seed.harvest(user,yield_mod,1)
 		health -= (rand(3,5)*10)
@@ -536,6 +543,10 @@
 	if(!S.seed)
 		to_chat(user, "The packet seems to be empty. You throw it away.")
 		qdel(S)
+		return
+
+	if(!user.skillcheck(user.skills["gardening"], 25, "You fail to plant the seeds properly.", "gardening"))
+		user.learn_skills("gardening")
 		return
 
 	to_chat(user, "You plant the [S.seed.seed_name] [S.seed.seed_noun].")

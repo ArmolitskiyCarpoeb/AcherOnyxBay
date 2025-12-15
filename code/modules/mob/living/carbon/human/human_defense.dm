@@ -381,12 +381,48 @@ meteor_act
 		visible_message(SPAN("warning", "\The [user] misses [src] with \the [I]!"))
 		return null
 
+	if(user.skillcheck(user.skills["melee"], 60, null, "melee") == CRIT_FAILURE)
+		user.resolve_critical_miss(I)
+		user.learn_skills("melee")
+		return null
+
+	if(!user.skillcheck(user.skills["melee"], 30, null, "melee"))
+		if(prob(user.skills["melee"]/3))
+			visible_message("<span class='danger'>[user] botches the attack on [src]!</span>")
+			user.learn_skills("melee")
+			return null
+
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
 	if (!affecting || affecting.is_stump())
 		to_chat(user, SPAN("danger", "They are missing that limb!"))
 		return null
 
 	return hit_zone
+
+/mob/living/proc/resolve_critical_miss(var/obj/item/I)
+	var/result = rand(1,3)
+
+	if(!I)
+		visible_message("<span class='danger'>[src] punches themself in the face!</span>")
+		attack_hand(src)
+		return
+
+	switch(result)
+		if(1)//They drop their weapon.
+			visible_message("<span class='combat'><big>CRITICAL FAILURE! \The [I] flies out of [src]'s hand!</big></span>")
+			drop(I)
+			throw_at(get_edge_target_turf(I, pick(GLOB.alldirs)), rand(1,3), throw_speed)//Throw that sheesh away
+			return
+		if(2)
+			visible_message("<span class='combat'><big>CRITICAL FAILURE! [src] botches the attack, stumbles, and falls!</big></span>")
+			playsound(loc, 'sound/weapons/punchmiss.ogg', 50, 1)
+			Weaken(1)
+			Stun(3)
+			return
+		if(3)
+			visible_message("<span class='combat'><big>CRITICAL FAILURE! [src] botches the attack and hits themself!</big></span>")
+			I.attack(src, src, zone_sel)
+			apply_damage(rand(5,10), BRUTE)
 
 //aka Regular Attack
 //Jesus Christ what a mess I've made ~Toby
@@ -681,6 +717,11 @@ meteor_act
 					failing = 1
 			if(failing)
 				visible_message(SPAN("warning", "[defender] fails to parry [attacker]'s [weapon_atk.name] with their [weapon_def.name]."))
+				defender.parrying = 0
+				return 0
+			if(!defender.skillcheck(defender.skills["melee"], 45, null, "melee")) //Need to be decent at melee fighting to parry everything
+				visible_message(SPAN("warning", "[defender] fails to parry [attacker]'s [weapon_atk.name] with their [weapon_def.name]."))
+				defender.learn_skills("melee")
 				defender.parrying = 0
 				return 0
 			defender.next_move = world.time+1 //Well I'd prefer to use setClickCooldown but it ain't gonna work here.

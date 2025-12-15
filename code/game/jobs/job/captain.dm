@@ -14,7 +14,7 @@
 	minimal_access = list() 	//See get_access()
 	minimal_player_age = 0
 	minimum_character_age = 28
-	economic_modifier = 25
+	economic_modifier = 2
 	faction_restricted = TRUE
 	sex_lock = MALE
 	loadout_allowed = TRUE

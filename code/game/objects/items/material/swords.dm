@@ -5,11 +5,11 @@
 	item_state = "claymore"
 	slot_flags = SLOT_BELT
 	w_class = ITEM_SIZE_HUGE
-	mod_weight = 1.75
+	mod_weight = 1.85
 	mod_reach = 1.75
-	mod_handy = 1.5
-	armor_penetration = 40
-	force_const = 20
+	mod_handy = 1.45
+	armor_penetration = 35
+	force_const = 14
 	thrown_force_const = 5
 	force_divisor = 0.4 // 24 when wielded with hardnes 60 (steel)
 	thrown_force_divisor = 0.3 // 6 when thrown with weight 20 (steel)

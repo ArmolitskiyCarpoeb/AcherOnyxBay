@@ -22,6 +22,7 @@ GLOBAL_LIST_EMPTY(premade_manuals) // List of wiki topics, associated with hardc
 // Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it. Also headset, for things that should be affected by comms outages.
 GLOBAL_DATUM_INIT(global_announcer, /obj/item/device/radio/announcer, new)
 GLOBAL_DATUM_INIT(global_headset, /obj/item/device/radio/announcer/subspace, new)
+GLOBAL_DATUM_INIT(station_objectives, /datum/station_objective_manager, new)
 
 var/host = null //only here until check @ code\modules\ghosttrap\trap.dm:112 is fixed
 GLOBAL_DATUM_INIT(sun, /datum/sun, new)

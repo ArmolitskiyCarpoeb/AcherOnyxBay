@@ -95,7 +95,7 @@
 	spawn_positions = 1
 	supervisors = "кардиналом и корпорацией"
 	selection_color = "#5e4324"
-	economic_modifier = 5
+	economic_modifier = 2
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant)
 	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant)
 	minimal_player_age = 7
@@ -128,7 +128,7 @@
 	spawn_positions = 4
 	supervisors = "кардиналом и завхозом"
 	selection_color = "#515151"
-	economic_modifier = 5
+	economic_modifier = 0.9
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
 	//alt_titles = list("Drill Technician","Prospector")

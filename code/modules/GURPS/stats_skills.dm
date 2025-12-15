@@ -165,8 +165,8 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 
 /mob/living/carbon/human/proc/get_dex_evade_chance(var/is_disarm = FALSE)
 	// 10% per point of DX above 10, -10 per point below.
-	var/dx = stats ? stats[STAT_DX] : 10
-	var/chance = dx + (skills["melee"] - 20)
+	var/dx = stats ? stats[STAT_DX] : 5
+	var/chance = dx + (skills["melee"] / 2) // 95% for max melee and max dx
 	if(is_disarm)
 		chance += 5 // Slightly easier to slip a disarm than a solid hit.
 	return clamp(chance, 0, 75)
@@ -183,8 +183,8 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 
 /mob/living/carbon/human/proc/get_dex_hit_chance(var/hand_attack = TRUE)
 	// 10% per point of DX above 10, -10% per point below 10.
-	var/dx = stats ? stats[STAT_DX] : 10
-	var/chance = dx + (skills["melee"] - 20)
+	var/dx = stats ? stats[STAT_DX] : 5
+	var/chance = dx + (skills["melee"] / 2) // 95% for max melee and max dx
 	if(!hand_attack)
 		chance -= 10 // (Optional small penalty if not hands, tweak if needed)
 	return clamp(chance, 5, 95)
@@ -275,10 +275,10 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	var/list/rand_skills = skills.Copy()
 	//Roll a new random roll for each stat
 	for(var/skill in generate_skills)
-		skills[skill] = 40 + (rand(1,25) + rand(1,30))
+		skills[skill] = 45 + (rand(1,25) + rand(1,30))
 		rand_skills -= skill
 	for(var/skill in rand_skills)
-		skills[skill] = (rand(1,16) + rand(1,12) + rand(1,10))
+		skills[skill] = (rand(1,10) + rand(3,20) + rand(2,15))
 
 /mob/proc/newgenerateskills(var/list/newgenerateskills, var/skill1, var/skill2)
 	for(var/skill in newgenerateskills)

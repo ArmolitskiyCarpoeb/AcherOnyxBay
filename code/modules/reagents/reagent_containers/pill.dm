@@ -25,6 +25,24 @@
 	if(mimic_color)
 		color = reagents.get_color()
 
+/obj/item/reagent_containers/pill/examine(mob/user, infix)
+	. = list()
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.stats[STAT_IQ] <= 15 || H.skills[SKILL_MED] <= 50 )
+			//to_chat(user, "<span class='uppertext'>That's a pill.</span>\n<span class='statustext'>Don't know what's in it.</span>")
+			. += SPAN_WARNING("<span class='uppertext'>Похоже на пилюлю.</span>\n<span class='statustext'>Не знаю, что внутри!</span>")
+			return .
+		else
+			//to_chat(user, "<span class='uppertext'>That's [name].</span>\n<span class='statustext'>[desc]</span>")
+			. += SPAN_WARNING("<span class='uppertext'>Это же пилюля.</span>\n<span class='statustext'>[desc]</span>")
+			return .
+
+	. += "[src]"  // This will show the actual name
+	. += desc
+	return .
+
 /obj/item/reagent_containers/pill/attack(mob/M, mob/user, def_zone)
 	if(M == user)
 		if(!M.can_eat(src))
@@ -99,98 +117,84 @@
 
 //We lied - it's pills all the way down
 /obj/item/reagent_containers/pill/tox
-	name = "toxins pill"
-	desc = "Highly toxic."
+	desc = "toxins pill. Highly toxic."
 	icon_state = "pill4"
 	startswith = list(/datum/reagent/toxin)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/cyanide
-	name = "strange pill"
-	desc = "It's marked 'KCN'. Smells vaguely of almonds."
+	desc = "strange pill. It's marked 'KCN'. Smells vaguely of almonds."
 	icon_state = "pill9"
 	startswith = list(/datum/reagent/toxin/cyanide)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/adminordrazine
-	name = "Adminordrazine pill"
-	desc = "It's magic. We don't have to explain it."
+	desc = "Adminordrazine pill. It's magic. We don't have to explain it."
 	icon_state = "pillA"
 	startswith = list(/datum/reagent/adminordrazine)
 
 /obj/item/reagent_containers/pill/stox
-	name = "Soporific (15 ml)"
-	desc = "Commonly used to treat insomnia."
+	desc = "Soporific (15 ml). Commonly used to treat insomnia."
 	icon_state = "pill3"
 	startswith = list(/datum/reagent/soporific = 15)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/kelotane
-	name = "Kelotane (15 ml)"
-	desc = "Used to treat burns."
+	desc = "Kelotane (15 ml). Used to treat burns."
 	icon_state = "pill2"
 	startswith = list(/datum/reagent/kelotane = 15)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/paracetamol
-	name = "Paracetamol (15 ml)"
-	desc = "A painkiller for the ages. Chewables!"
+	desc = "Paracetamol (15 ml). A painkiller for the ages. Chewables!"
 	icon_state = "pill3"
 	startswith = list(/datum/reagent/painkiller/paracetamol = 15)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/tramadol
-	name = "Tramadol (15 ml)"
-	desc = "A simple painkiller."
+	desc = "Tramadol (15 ml). A simple painkiller."
 	icon_state = "pill3"
 	startswith = list(/datum/reagent/painkiller/tramadol = 15)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/inaprovaline
-	name = "Inaprovaline (30 ml)"
-	desc = "Used to stabilize patients."
+	desc = "Inaprovaline (30 ml). Used to stabilize patients."
 	icon_state = "pill1"
 	startswith = list(/datum/reagent/inaprovaline)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/dexalin
-	name = "Dexalin (15ml)"
-	desc = "Used to treat oxygen deprivation."
+	desc = "Dexalin (15ml). Used to treat oxygen deprivation."
 	icon_state = "pill1"
 	startswith = list(/datum/reagent/dexalin = 15)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/dexalin_plus
-	name = "Dexalin Plus (15 ml)"
-	desc = "Used to treat extreme oxygen deprivation."
+	desc = "Dexalin Plus (15 ml). Used to treat extreme oxygen deprivation."
 	icon_state = "pill2"
 	startswith = list(/datum/reagent/dexalinp = 15)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/dermaline
-	name = "Dermaline (15 ml)"
-	desc = "Used to treat burn wounds."
+	desc = "Dermaline (15 ml). Used to treat burn wounds."
 	icon_state = "pill2"
 	startswith = list(/datum/reagent/dermaline = 15)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/dylovene
-	name = "Dylovene (15 ml)"
-	desc = "A broad-spectrum anti-toxin."
+	desc = "Dylovene (15 ml). A broad-spectrum anti-toxin."
 	icon_state = "pill1"
 	startswith = list(/datum/reagent/dylovene = 15)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/bicaridine
-	name = "Bicaridine (20 ml)"
-	desc = "Used to treat physical injuries."
+	desc = "Bicaridine (20 ml). Used to treat physical injuries."
 	icon_state = "pill2"
 	startswith = list(/datum/reagent/bicaridine = 20)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/happy
-	name = "happy pill"
-	desc = "Happy happy joy joy!"
+	desc = "happy pill. Happy happy joy joy!"
 	icon_state = "pill4"
 	startswith = list(
 		/datum/reagent/space_drugs = 15,
@@ -198,8 +202,7 @@
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/zoom
-	name = "zoom pill"
-	desc = "Zoooom!"
+	desc = "zoom pill. Zoooom!"
 	icon_state = "pill4"
 	startswith = list(
 		/datum/reagent/impedrezene = 10,
@@ -208,29 +211,25 @@
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/spaceacillin
-	name = "Spaceacillin (10 ml)"
-	desc = "Contains antiviral agents."
+	desc = "Spaceacillin (10 ml). Contains antiviral agents."
 	icon_state = "pill3"
 	startswith = list(/datum/reagent/spaceacillin = 10)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/diet
-	name = "diet pill"
-	desc = "Guaranteed to get you slim!"
+	desc = "diet pill. Guaranteed to get you slim!"
 	icon_state = "pill4"
 	startswith = list(/datum/reagent/lipozine = 2)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/noexcutite
-	name = "Noexcutite (15 ml)"
-	desc = "Feeling jittery? This should calm you down."
+	desc = "Noexcutite (15 ml). Feeling jittery? This should calm you down."
 	icon_state = "pill4"
 	startswith = list(/datum/reagent/noexcutite = 15)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/antidexafen
-	name = "Antidexafen (15 ml)"
-	desc = "Common cold mediciation. Safe for babies!"
+	desc = "Antidexafen (15 ml). Common cold mediciation. Safe for babies!"
 	icon_state = "pill4"
 	startswith = list(
 		/datum/reagent/antidexafen = 10,
@@ -240,60 +239,52 @@
 
 //Psychiatry pills.
 /obj/item/reagent_containers/pill/methylphenidate
-	name = "Methylphenidate (15 ml)"
-	desc = "Improves the ability to concentrate."
+	desc = "Methylphenidate (15 ml). Improves the ability to concentrate."
 	icon_state = "pill2"
 	startswith = list(/datum/reagent/methylphenidate = 15)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/citalopram
-	name = "Citalopram (15 ml)"
-	desc = "Mild anti-depressant."
+	desc = "Citalopram (15 ml). Mild anti-depressant."
 	icon_state = "pill4"
 	startswith = list(/datum/reagent/citalopram = 15)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/paroxetine
-	name = "Paroxetine (10 ml)"
-	desc = "Before you swallow a bullet: try swallowing this!"
+	desc = "Paroxetine (10 ml). Before you swallow a bullet: try swallowing this!"
 	icon_state = "pill4"
 	startswith = list(/datum/reagent/paroxetine = 10)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/hyronalin
-	name = "Hyronalin (10 ml)"
-	desc = "Got some rads? Eat this!"
+	desc = "Hyronalin (10 ml). Got some rads? Eat this!"
 	icon_state = "pill4"
 	startswith = list(/datum/reagent/hyronalin = 10)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/glucose
-	name = "Glucose (20 ml)"
-	desc = "Used to treat blood loss"
+	desc = "Glucose (20 ml). Used to treat blood loss"
 	icon_state = "pill4"
 	startswith = list(/datum/reagent/nutriment/glucose = 20)
 	mimic_color = TRUE
 
 //Mining pills.
 /obj/item/reagent_containers/pill/leporazine
-	name = "Thermostabilizine"
-	desc = "Contents 15 ml of leporazine. Effectively stabilizes body temperature."
+	desc = "Thermostabilizine. Contents 15 ml of leporazine. Effectively stabilizes body temperature."
 	icon_state = "pill2"
 	startswith = list(/datum/reagent/leporazine = 15)
 	mimic_color = TRUE
 
 //Not actually a pill, but pills type provide everything needed for this
 /obj/item/reagent_containers/pill/sugar_cube
-	name = "sugar cube"
-	desc = "Sugar pressed together in block shape that is used to sweeten drinks."
+	desc = "sugar cube. Sugar pressed together in block shape that is used to sweeten drinks."
 	icon_state = "sugar_cubes"
 	startswith = list(/datum/reagent/sugar = 15)
 	mimic_color = TRUE
 
 //Not actually a pill, but pills type provide everything needed for this
 /obj/item/reagent_containers/pill/cleanerpod
-	name = "space cleaner pod"
-	desc = "BLAM!-brand non-foaming space cleaner in concentrated form! Use one pod per half a liter water. Should not be consumed, but hey I'm not your mom nor a doctor."
+	desc = "space cleaner pod. BLAM!-brand non-foaming space cleaner in concentrated form! Use one pod per half a liter water. Should not be consumed, but hey I'm not your mom nor a doctor."
 	icon_state = "cleanerpod"
 	startswith = list(/datum/reagent/space_cleaner/dry = 10)
 	mimic_color = FALSE
@@ -301,57 +292,49 @@
 //Pills that probably won't be used anywhere, except in merchants or mapping, but who cares?
 
 /obj/item/reagent_containers/pill/oxycodone
-	name = "Oxycodone (15 ml)"
-	desc = "A complex painkiller."
+	desc = "Oxycodone (15 ml). A complex painkiller."
 	icon_state = "pill3"
 	startswith = list(/datum/reagent/painkiller/tramadol/oxycodone = 15)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/metazine
-	name = "Metazine (10 ml)"
-	desc = "A combat painkiller."
+	desc = "Metazine (10 ml). A combat painkiller."
 	icon_state = "pill24"
 	startswith = list(/datum/reagent/painkiller = 10)
 	mimic_color = FALSE
 
 /obj/item/reagent_containers/pill/tricordrazine
-	name = "Tricordrazine (20 ml)"
-	desc = "Used to slowly treat external injuries."
+	desc = "Tricordrazine (20 ml). Used to slowly treat external injuries."
 	icon_state = "pill2"
 	startswith = list(/datum/reagent/tricordrazine = 20)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/alkysine
-	name = "Alkysine (5 ml)"
-	desc = "Do you have a headache? Just eat me!"
+	desc = "Alkysine (5 ml). Do you have a headache? Just eat me!"
 	icon_state = "pill2"
 	startswith = list(/datum/reagent/alkysine = 5)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/imidazoline
-	name = "Imidazoline (10 ml)"
-	desc = "Used to treat eye injuries."
+	desc = "Imidazoline (10 ml). Used to treat eye injuries."
 	icon_state = "pill2"
 	startswith = list(/datum/reagent/imidazoline = 10)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/ryetalyn
-	name = "Ryetalyn (5 ml)"
-	desc = "Used for genetic defects, including cataracts."
+	desc = "Ryetalyn (5 ml). Used for genetic defects, including cataracts."
 	icon_state = "pill3"
 	startswith = list(/datum/reagent/ryetalyn = 5)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/peridaxon
-	name = "Peridaxon (10 ml)"
-	desc = "Used to restore the internal organs and nervous system."
+	desc = "Peridaxon (10 ml). Used to restore the internal organs and nervous system."
 	icon_state = "pill2"
 	startswith = list(/datum/reagent/peridaxon = 10)
 	mimic_color = TRUE
 
 /obj/item/reagent_containers/pill/albumin
-	name = "Albumin (20 ml)"
-	desc = "Used to restore blood loss."
+	desc = "Albumin (20 ml). Used to restore blood loss."
 	icon_state = "pill3"
 	startswith = list(
 		/datum/reagent/albumin = 15,

@@ -27,6 +27,9 @@
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
 		return 0
 
+	if(!user.skillcheck(user.skills["melee"], 35, null, "melee")) //Need to be decent at melee fighting to parry everything
+		return 0
+
 	return 1
 
 /obj/item/shield

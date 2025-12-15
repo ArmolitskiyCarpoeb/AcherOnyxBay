@@ -286,7 +286,45 @@
 
 	p_diff /= breakability // 2 for a normal grab, 3 for agressive and kill grabs
 
-	//assailant.visible_message("Debug: p_diff = [p_diff] | breakability = [breakability]") //Debug message
+	// Factor in the difference between assailant's and target's ST stat and melee skill
+	// Only the difference matters - bigger difference = harder to break free
+	var/assailant_st = 10
+	var/assailant_melee = 0
+	var/target_st = 10
+	var/target_melee = 0
+
+	if(assailant.stats && assailant.stats[STAT_ST])
+		assailant_st = assailant.stats[STAT_ST]
+	if(assailant.skills && assailant.skills[SKILL_MELEE])
+		assailant_melee = assailant.skills[SKILL_MELEE]
+	if(affecting.stats && affecting.stats[STAT_ST])
+		target_st = affecting.stats[STAT_ST]
+	if(affecting.skills && affecting.skills[SKILL_MELEE])
+		target_melee = affecting.skills[SKILL_MELEE]
+
+	// Calculate ST difference (target - assailant)
+	// Positive difference = target stronger = easier to break (positive modifier)
+	// Negative difference = assailant stronger = harder to break (negative modifier)
+	var/st_diff = target_st - assailant_st
+
+	// Modifier from ST difference - scales with the difference (very reduced impact)
+	// st_diff means: if target is stronger (positive diff), modifier is positive (easier to break)
+	// if assailant is stronger (negative diff), modifier is negative (harder to break)
+	var/st_modifier = st_diff * 0.1 // +1% per point of ST advantage for target
+
+	// Calculate melee skill difference (target - assailant)
+	var/melee_diff = target_melee - assailant_melee
+
+	// Modifier from melee skill difference - scales with the difference (very reduced impact)
+	var/melee_modifier = melee_diff / 40.0 // +2.5% at 100 skill advantage for target
+
+	// Apply modifiers to break chance (both can stack)
+	p_diff += st_modifier + melee_modifier
+	// Ensure break chance doesn't go below a minimum (still possible but very hard)
+	p_diff = max(p_diff, 2.0)
+
+	// Debug message to verify it's working (uncomment to test)
+	//assailant.visible_message("Debug: ST [assailant_st] vs [target_st] (diff=[st_diff], mod=[st_modifier]) | Melee [assailant_melee] vs [target_melee] (diff=[melee_diff], mod=[melee_modifier]) | p_diff=[p_diff]")
 
 	if(p_diff > assailant.poise && prob(p_diff))
 		if(can_downgrade_on_resist && !prob(p_diff))

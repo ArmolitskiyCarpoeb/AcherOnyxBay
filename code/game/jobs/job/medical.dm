@@ -36,7 +36,7 @@
 	spawn_positions = 1
 	supervisors = "кардиналом"
 	selection_color = "#13817e"
-	economic_modifier = 9
+	economic_modifier = 1.5
 	access = list(access_medical, access_medical_equip, access_morgue, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_maint_tunnels, access_external_airlocks)

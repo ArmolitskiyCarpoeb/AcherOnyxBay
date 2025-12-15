@@ -75,6 +75,40 @@
 	sound_takeoff = 'sound/tramstart.ogg'
 	sound_landing = 'sound/tramstop.ogg'
 
+/datum/shuttle/autodock/ferry/train/proc/play_train_sound(atom/location, sound/sound_to_play)
+	if(sound_to_play)
+		// Boosted volume so the tram start/stop is clearly audible.
+		playsound(location, sound_to_play, 500, 35, 10)
+
+/datum/shuttle/autodock/ferry/train/long_jump(obj/effect/shuttle_landmark/destination, obj/effect/shuttle_landmark/interim, travel_time)
+	if(moving_status != SHUTTLE_IDLE) return
+
+	var/obj/effect/shuttle_landmark/start_location = current_location
+
+	moving_status = SHUTTLE_WARMUP
+	play_train_sound(current_location, sound_takeoff)
+	spawn(warmup_time*10)
+		if(moving_status == SHUTTLE_IDLE)
+			return	//someone cancelled the launch
+
+		arrive_time = world.time + travel_time*10
+		moving_status = SHUTTLE_INTRANSIT
+		if(attempt_move(interim))
+			// Keep the pass-by effect for listeners outside the shuttle.
+			while (world.time < arrive_time)
+				if((arrive_time - world.time) < 100)
+					play_arrive_sound(destination)
+					break
+				sleep(5)
+			var/moved = attempt_move(destination)
+			if(moved && sound_landing)
+				// Play as soon as the shuttle snaps to the destination, before docking/airlock cycle.
+				play_train_sound(destination, sound_landing)
+			else if(!moved)
+				attempt_move(start_location) //try to go back to where we started. If that fails, we're stuck in the interim location
+
+		moving_status = SHUTTLE_IDLE
+
 /obj/effect/shuttle_landmark/train/station
 	name = "Pathos-I"
 	landmark_tag = "nav_train_station"

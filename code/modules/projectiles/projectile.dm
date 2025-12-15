@@ -207,7 +207,8 @@
 	var/tmp/list/mob/living/aim_targets
 	if(aim_targets && (target_mob in aim_targets))
 		miss_modifier = -25
-	miss_modifier = max(15*(distance-2) - round(15*accuracy) + miss_modifier + target_mob.get_evasion() - (firer.skills["ranged"]), 0)
+	var/firer_skill = ismob(firer) ? firer.skills["ranged"] : 0
+	miss_modifier = max(15*(distance-2) - round(15*accuracy) + miss_modifier + target_mob.get_evasion() - firer_skill, 0)
 	var/hit_zone = get_zone_with_miss_chance(def_zone, target_mob, miss_modifier, ranged_attack=(distance > 1 || original != target_mob)) //if the projectile hits a target we weren't originally aiming at then retain the chance to miss
 
 	var/result = PROJECTILE_FORCE_MISS
@@ -491,7 +492,7 @@
 	else if(targloc && curloc)
 		yo = targloc.y - curloc.y
 		xo = targloc.x - curloc.x
-		setAngle(get_projectile_angle(src, targloc))
+		setAngle(get_projectile_angle(source, target))
 	else
 		util_crash_with("WARNING: Projectile [type] fired without either mouse parameters, or a target atom to aim at!")
 		qdel(src)
