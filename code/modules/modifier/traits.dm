@@ -52,6 +52,21 @@
 	name = "No Slip"
 	desc = "You can't slip!"
 
+/datum/modifier/trait/skiled_doctor
+	name = "Обученый врач"
+
+/datum/modifier/trait/skiled_doctor/on_applied()
+	if(holder.skills)
+		holder.skills["medical"] += 30
+		holder.skills["surgery"] += 25
+
+/datum/modifier/trait/skiled_melee
+	name = "Неплохо дерусь"
+
+/datum/modifier/trait/skiled_melee/on_applied()
+	if(holder.skills)
+		holder.skills["melee"] += 25
+
 /// Плохие трейты, добавляют очки трейтов
 
 /datum/modifier/trait/flimsy

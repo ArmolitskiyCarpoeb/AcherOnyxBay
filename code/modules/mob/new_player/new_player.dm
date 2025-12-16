@@ -561,7 +561,6 @@
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
 		mind = null
 
-	new_character.apply_traits()
 	new_character.SetName(real_name)
 	new_character.dna.ready_dna(new_character)
 	new_character.dna.b_type = client.prefs.b_type

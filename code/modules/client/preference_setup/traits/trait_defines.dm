@@ -32,6 +32,17 @@
 
 
 /// ХОРОШИЕ ТРЕЙТЫ
+/datum/trait/modifier/good/skiled_doctor
+	name = "Учился врачевать"
+	desc = "Одно время ты подрабатывал в больнице и нахватался полезных знаний"
+	modifier_type = /datum/modifier/trait/skiled_doctor
+	trait_cost = 2
+
+/datum/trait/modifier/good/skiled_melee
+	name = "Умею махать кулаками"
+	desc = "Ты высор среди преступников и сброда, жизнь научила тебя махать кулаками"
+	modifier_type = /datum/modifier/trait/skiled_melee
+	trait_cost = 2
 
 /datum/trait/modifier/good/high_metabolism
 	name = "Быстрый метаболизм"

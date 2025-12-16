@@ -488,6 +488,9 @@ var/global/datum/controller/occupations/job_master
 				if("AI")
 					return H
 
+		// Apply traits after job equip so modifier effects (skills, etc.) are not overwritten by profession setup.
+		H.apply_traits()
+
 		// put any loadout items that couldn't spawn into storage or on the ground
 		for(var/datum/gear/G in spawn_in_storage)
 			G.spawn_in_storage_or_drop(H, H.client.prefs.Gear()[G.display_name])
