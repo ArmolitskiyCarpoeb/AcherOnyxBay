@@ -75,8 +75,8 @@
 	explosion_resistance = 5
 	opacity = 0
 	glass = 1
-	open_sound_powered = 'sound/new_open3.ogg'
-	close_sound_powered = 'sound/new_close3.ogg'
+	open_sound_powered = 'sound/new_open5.ogg'
+	close_sound_powered = 'sound/new_close5.ogg'
 
 /obj/machinery/door/airlock/glass/Initialize()
 	. = ..()
