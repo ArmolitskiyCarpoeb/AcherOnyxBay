@@ -258,15 +258,15 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 /mob/proc/skillnumtodesc(var/skill)
 	switch(skill)
 		if(0)
-			return "неумёха"
+			return "бездарь"
 		if(1 to 24)
-			return "<small>новичок</small>"
+			return "новичок"
 		if(25 to 44)
 			return "любитель"
 		if(45 to 59)
 			return "умелый"
 		if(60 to 79)
-			return "профи"
+			return "профессионал"
 		if(80 to INFINITY)
 			return "<b>легенда</b>"
 
