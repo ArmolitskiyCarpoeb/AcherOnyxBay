@@ -367,7 +367,7 @@
 /area/polarplanet/shuttle/train/station
 	name = "Pathos I - Train Station"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/open
+	base_turf = /turf/simulated/floor/plating
 	environment_type = ENVIRONMENT_ROOM
 	ambient_music_tags = list(MUSIC_TAG_NORMAL, MUSIC_TAG_SPACE)
 

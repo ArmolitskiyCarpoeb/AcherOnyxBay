@@ -11,9 +11,9 @@ GLOBAL_DATUM_INIT(deathsquad, /datum/antagonist/deathsquad, new)
 	antaghud_indicator = "huddeathsquad"
 
 	hard_cap = 4
-	hard_cap_round = 8
-	initial_spawn_req = 4
-	initial_spawn_target = 6
+	hard_cap_round = 4
+	initial_spawn_req = 1
+	initial_spawn_target = 4
 
 	valid_species = list(SPECIES_HUMAN) // NT don't like xenos.
 
