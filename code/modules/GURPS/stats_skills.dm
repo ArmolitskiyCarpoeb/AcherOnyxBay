@@ -260,7 +260,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 		if(0)
 			return "неумёха"
 		if(1 to 24)
-			return "<small>новичок</small>"
+			return "новичок"
 		if(25 to 44)
 			return "любитель"
 		if(45 to 59)
