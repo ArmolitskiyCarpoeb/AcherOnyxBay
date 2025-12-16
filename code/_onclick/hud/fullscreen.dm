@@ -182,3 +182,9 @@
 
 /atom/movable/screen/fullscreen/lighting_backdrop/stretch_to_view(view)
 	return // Special snowflake
+
+/obj/screen/fullscreen/freakout
+	icon = 'icons/hud/screen.dmi'
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	icon_state = "extreme"
+	blend_mode = BLEND_MULTIPLY

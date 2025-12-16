@@ -455,6 +455,10 @@
 	P.accuracy = accuracy + acc_mod
 	P.dispersion = disp_mod
 
+	if(user.horror_loop)//They're freaking the fuck out, make it hard to aim.
+		P.dispersion += 5
+		P.accuracy -= 3
+
 	//accuracy bonus from aiming
 	if (aim_targets && (target in aim_targets))
 		//If you aim at someone beforehead, it'll hit more often.

@@ -735,3 +735,28 @@
 	set name = "Jump"
 	set category = "Emotes"
 	emote("jump", intentional = TRUE)
+
+/mob/proc/freakout_emote()
+	if(stat)
+		return
+	var/screamsound = null
+	var/message = null
+
+	var/muzzled = istype(src.wear_mask, /obj/item/clothing/mask/muzzle)
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		if(!muzzled)
+			if(isMonkey(H))
+				return
+
+			message = "loses his mind!"
+		else
+			message = "makes a loud noise!"
+
+		screamsound = "sound/voice/gagscream[rand(1,3)].wav"
+
+	if(screamsound)
+		playsound(src, screamsound, 50, 0, 1)
+
+	if(message)
+		custom_emote(2,message)

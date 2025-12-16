@@ -300,6 +300,25 @@ GLOBAL_LIST_INIT(organ_tag_to_name, list(
 #define VISIBLE_MESSAGE 1
 #define AUDIBLE_MESSAGE 2
 
+//Moods levels for humans
+#define MOOD_LEVEL_HAPPY4 20
+#define MOOD_LEVEL_HAPPY3 15
+#define MOOD_LEVEL_HAPPY2 10
+#define MOOD_LEVEL_HAPPY1 5
+#define MOOD_LEVEL_NEUTRAL 0
+#define MOOD_LEVEL_SAD1 -5
+#define MOOD_LEVEL_SAD2 -10
+#define MOOD_LEVEL_SAD3 -15
+#define MOOD_LEVEL_SAD4 -20
+
+//Hygiene levels for humans
+#define HYGIENE_LEVEL_CLEAN 250
+#define HYGIENE_LEVEL_NORMAL 200
+#define HYGIENE_LEVEL_DIRTY 75
+#define HYGIENE_FACTOR_LOWEST 0.09
+#define HYGIENE_FACTOR 0.05
+#define HYGIENE_FACTOR_HIGHEST 0.055
+
 //used for getting species temp values
 #define COLD_LEVEL_1 -1
 #define COLD_LEVEL_2 -2
