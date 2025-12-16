@@ -33,8 +33,10 @@
 		H.skills["melee"] = rand(50, 85)
 		var/obj/machinery/nuclearbomb/nuke = locate(/obj/machinery/nuclearbomb/station) in world
 		if(nuke)
+			H.mind.store_memory("")
 			H.mind.store_memory("<B>ПРИ ЗАХВАТЕ ЕРЕТИКАМИ, ПРЕДАТЕЛЯМИ КОРПОРАЦИИ И ВРАГАМИ НАРОДА, ШАХТЁРСКИЙ АВАНПОСТ ФОРТУНА ПОДЛЕЖИТ УНИЧТОЖЕНИЮ</B>")
-			H.mind.store_memory("[nuke.r_code]")
+			H.mind.store_memory("")
+			H.mind.store_memory("<B>КОД АКТИВАЦИИ ЯДЕРНОГО ЗАРЯДА: [nuke.r_code]</B>")
 			H.mind.store_memory("")
 
 /*
