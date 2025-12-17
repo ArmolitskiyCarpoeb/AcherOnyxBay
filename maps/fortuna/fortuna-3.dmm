@@ -292,7 +292,7 @@
 "Iw" = (/obj/structure/table/steel,/obj/random/toolbox,/turf/simulated/floor/plating,/area/polarplanet/tcommsat/chamber)
 "Ix" = (/obj/machinery/light,/obj/effect/floor_decal/corner/brown{dir = 10},/turf/simulated/floor/tiled/dark,/area/polarplanet/hallway/secondary/entry/port)
 "IC" = (/obj/machinery/light{dir = 8},/obj/structure/bed/chair{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/dark,/area/polarplanet/hallway/secondary/entry/port)
-"IE" = (/obj/machinery/door/airlock/external{name = "Arrival Airlock"},/turf/simulated/floor/shuttle/yellow,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1; base_turf = /turf/simulated/floor/asteroid/air})
+"IE" = (/obj/machinery/door/airlock/external{name = "Arrival Airlock"},/turf/simulated/floor/shuttle/pod,/area/polarplanet/shuttle/arrival/station{always_unpowered = 1; base_turf = /turf/simulated/floor/asteroid/air})
 "IX" = (/obj/structure/disposalpipe/segment,/obj/machinery/floodlight,/turf/simulated/floor/plating,/area/polarplanet/hallway/secondary/entry/port)
 "Jb" = (/turf/simulated/shuttle/wall/engie{dir = 1},/area/polarplanet/shuttle/arrival/station{always_unpowered = 1; base_turf = /turf/simulated/floor/asteroid/air})
 "Jk" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/polarplanet/tcommsat/chamber)
