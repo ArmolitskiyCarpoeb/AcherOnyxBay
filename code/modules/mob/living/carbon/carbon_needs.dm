@@ -14,6 +14,8 @@
 		msg += "<span class='info'>I feel indifferent.</span>\n"
 	else if(happiness < MOOD_LEVEL_SAD2)
 		msg += "<span class='warning'>I am stressed out!</span>\n"
+	else if(happiness > MOOD_LEVEL_HAPPY2)
+		msg += "<span class='warning'>I feel good!</span>\n"
 
 	msg += "<hr class='linexd'>"
 
