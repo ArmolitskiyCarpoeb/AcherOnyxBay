@@ -75,7 +75,7 @@
 	if(round(stats[stat_type]) > initial_stat)
 		to_chat(src,"You feel like live you've gained new insights.")
 
-/*
+
 //having a bad mood fucks your shit up fam.
 /mob/proc/mood_affect(var/stat, var/skill)
 	//Just check this first
@@ -88,7 +88,7 @@
 	if(skill)
 		return C.happiness * -2 //This will be ADDED to the skill roll.  Goes from +20 - -20  *PENDING REWORK&*
 	return 0
-*/
+
 
 proc/stat_to_modifier(var/stat)
 	return round((stat - 10) * 0.5)
