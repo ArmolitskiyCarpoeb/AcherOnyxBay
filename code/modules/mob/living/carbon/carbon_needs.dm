@@ -89,8 +89,8 @@
 /mob/proc/flash_sadness()
 	if(prob(2))
 		flick("sadness",pain)
-		var/spoopysound = pick('sound/effects/badmood1.ogg','sound/effects/badmood2.ogg','sound/effects/badmood3.ogg','sound/effects/badmood4.ogg')
-		sound_to(src, spoopysound)
+		//var/spoopysound = pick('sound/effects/badmood1.ogg','sound/effects/badmood2.ogg','sound/effects/badmood3.ogg','sound/effects/badmood4.ogg')
+		//sound_to(src, spoopysound)
 
 /mob/living/carbon/proc/handle_happiness()
 	if(happiness > MOOD_LEVEL_SAD4)
