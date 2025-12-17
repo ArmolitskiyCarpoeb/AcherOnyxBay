@@ -3272,3 +3272,6 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/ss13_new/l14
 	name = "L14"
 	icon_state = "CL14"
+
+/obj/effect/floor_decal/monsladen
+	icon_state = "monsladen"
