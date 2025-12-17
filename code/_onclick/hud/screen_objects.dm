@@ -108,7 +108,7 @@
 /atom/movable/screen/stored/Click()
 	return 1
 
-/obj/screen/happiness_icon/Click()
+/atom/movable/screen/happiness_icon/Click()
 	var/mob/living/carbon/C = usr
 	C.print_happiness(C)
 

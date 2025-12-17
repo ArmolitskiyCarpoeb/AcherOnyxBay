@@ -320,7 +320,7 @@
 		infodisplay |= mymob.poise_icon
 
 	if(hud_data.has_happiness)
-		mymob.happiness_icon = new /obj/screen()
+		mymob.happiness_icon = new /atom/movable/screen/happiness_icon()
 		mymob.happiness_icon.name = "mood"
 		mymob.happiness_icon.icon = ui_style
 		mymob.happiness_icon.icon_state = "mood4"
