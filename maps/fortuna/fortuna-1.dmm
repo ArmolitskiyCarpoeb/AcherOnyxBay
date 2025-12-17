@@ -1,6 +1,6 @@
 "ac" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{icon_state = "intact-supply"; dir = 4},/obj/random/trash,/turf/simulated/floor/plating,/area/maintenance/medbay)
 "ag" = (/obj/machinery/portable_atmospherics/hydroponics,/obj/machinery/light/quartz{dir = 4},/turf/simulated/floor/plating,/area/crew_quarters/mess)
-"ak" = (/obj/structure/ladder,/turf/simulated/floor/tiled/techfloor/grid,/area/maintenance/engineering)
+"ak" = (/obj/structure/ladder/up,/turf/simulated/floor/tiled/techfloor/grid,/area/maintenance/engineering)
 "ap" = (/obj/machinery/door/firedoor,/obj/machinery/door/airlock/maintenance{name = "Cargo Bay Warehouse Maintenance"; req_access = list(41)},/turf/simulated/floor/plating,/area/quartermaster/storage)
 "aq" = (/obj/machinery/space_heater,/obj/effect/floor_decal/corner/blue/mono,/turf/simulated/floor/tiled/white/mono,/area/medical/medbay3/underground)
 "ar" = (/obj/random/tool,/obj/machinery/light/small{dir = 8},/turf/simulated/floor/plating,/area/polarplanet/mine/unexplored)
