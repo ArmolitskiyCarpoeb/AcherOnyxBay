@@ -154,7 +154,7 @@ var/datum/paiController/paiController			// Global handler for pAI candidates
 				}
 				td.button {
 					border: 1px solid #161616;
-					background-color: #40628a;
+					background-color: #5a6a77;
 				}
 				td.desc {
 					font-weight:bold;
@@ -288,12 +288,12 @@ var/datum/paiController/paiController			// Global handler for pAI candidates
 					}
 					td.button {
 						border: 1px solid #161616;
-						background-color: #40628a;
+						background-color: #5a6a77;
 						text-align: center;
 					}
 					td.download {
 						border: 1px solid #161616;
-						background-color: #40628a;
+						background-color: #5a6a77;
 						text-align: center;
 					}
 					th {
