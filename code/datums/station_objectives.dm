@@ -144,7 +144,7 @@
 	var/time_left_minutes = round(time_limit / (1 MINUTE))
 	var/list/lines = list("Новая производственная директива.",
 		"Лимит времени: [time_left_minutes] мин.",
-		"Отправьте все ресурсы через челнок снабжения. В случае провала директивы будут применены санкции в виде отряда зачистки и ультрашоковой терапии.")
+		"Отправьте все ресурсы через челнок снабжения. В случае провала директивы будут применены санкции в виде отряда зачистки или ультрашоковой терапии.")
 
 	for(var/datum/station_objective_task/task in tasks)
 		lines += "- [task.required_amount]x [task.name]"
@@ -157,14 +157,14 @@
 
 	sanction_running = TRUE
 
-	if(prob(50))
+	if(prob(15))
 		start_shock_pulses()
 	else
 		dispatch_deathsquad()
 
 /datum/station_objective_manager/proc/start_shock_pulses()
 	shock_end_time = world.time + (2 MINUTES)
-	SSannounce.play_station_announce(/datum/announce/command_report, "САНКЦИЯ: Ультрашоковая терапия в течение двух минут.")
+	SSannounce.play_station_announce(/datum/announce/command_report, "САНКЦИЯ: Ультрашоковая терапия - 2 минуты!")
 	do_shock_pulse()
 
 /datum/station_objective_manager/proc/do_shock_pulse()
@@ -176,9 +176,9 @@
 		if(H.stat == DEAD)
 			continue
 		if(!electrocute_mob(H, get_area(H), src, 0.5))
-			H.electrocute_act(3, src, 0.5)
+			H.electrocute_act(rand(25, 70), src, 0.5, ran_zone(BP_CHEST, 50))
 
-	spawn(5 SECONDS)
+	spawn(30 SECONDS)
 		do_shock_pulse()
 
 /datum/station_objective_manager/proc/dispatch_deathsquad()
