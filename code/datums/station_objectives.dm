@@ -56,12 +56,21 @@
 	while(selected.len < target && pool.len)
 		var/list/choice = pick(pool)
 		pool -= choice
-		selected += list(list(
-			"name" = choice["name"],
-			"item_type" = choice["item_type"],
-			"required_amount" = rand(choice["min"], choice["max"]),
-			"include_subtypes" = TRUE
-		))
+
+		// Check if we already have a task with this name and item_type
+		var/duplicate = FALSE
+		for(var/list/existing in selected)
+			if(existing["name"] == choice["name"] && existing["item_type"] == choice["item_type"])
+				duplicate = TRUE
+				break
+
+		if(!duplicate)
+			selected += list(list(
+				"name" = choice["name"],
+				"item_type" = choice["item_type"],
+				"required_amount" = rand(choice["min"], choice["max"]),
+				"include_subtypes" = TRUE
+			))
 
 	return selected
 
