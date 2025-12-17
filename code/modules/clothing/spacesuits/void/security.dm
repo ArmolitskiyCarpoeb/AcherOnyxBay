@@ -61,3 +61,12 @@
 /obj/item/clothing/suit/space/void/security/hos/prepared
 	helmet = /obj/item/clothing/head/helmet/space/void/security/hos
 	boots = /obj/item/clothing/shoes/magboots
+
+/obj/item/clothing/head/helmet/space/void/doomsquad
+	name = "закрытый боевой шлем"
+	desc = "Закрытый боевой шлем М3 производства ИД-Тактикс."
+	icon_state = "doomsquad"
+	item_state = "sec_helm"
+	armor = list(melee = 70, bullet = 100, laser = 70, energy = 5, bomb = 45, bio = 100)
+	siemens_coefficient = 0.6
+	light_overlay = "helmet_light_dual"
