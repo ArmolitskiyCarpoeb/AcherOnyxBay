@@ -46,7 +46,7 @@
 	var/secured_wires = 0
 	var/datum/wires/airlock/wires = null
 
-	var/open_sound_powered = 'sound/new_open5.ogg'
+	var/open_sound_powered = list('sound/new_open5.ogg')
 	var/open_sound_unpowered = 'sound/machines/airlock/open_force1.ogg'
 	var/open_failure_access_denied = 'sound/error.ogg'
 
