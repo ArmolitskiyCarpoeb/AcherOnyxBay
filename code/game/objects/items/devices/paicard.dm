@@ -84,11 +84,11 @@
 					}
 					td.button {
 					    border: 1px solid #161616;
-					    background-color: #40628a;
+					    background-color: #5a6a77;
 					}
 					td.button {
 					    border: 1px solid #161616;
-					    background-color: #40628a;
+					    background-color: #5a6a77;
 					    text-align: center;
 					}
 					td.button_red {
@@ -98,7 +98,7 @@
 					}
 					td.download {
 					    border: 1px solid #161616;
-					    background-color: #40628a;
+					    background-color: #5a6a77;
 					    text-align: center;
 					}
 					th {
