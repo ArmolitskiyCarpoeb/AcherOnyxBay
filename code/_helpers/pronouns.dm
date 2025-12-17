@@ -1,12 +1,12 @@
-#define P_THEY(g) g == MALE && "he" \
-               || g == FEMALE && "she" \
-               || g == NEUTER && "it" \
-               || "they"
+#define P_THEY(g) g == MALE && "он" \
+               || g == FEMALE && "она" \
+               || g == NEUTER && "оно" \
+               || "они"
 
-#define P_THEM(g) g == MALE && "him" \
-               || g == FEMALE && "her" \
-               || "them"
+#define P_THEM(g) g == MALE && "его" \
+               || g == FEMALE && "её" \
+               || "их"
 
-#define P_THEIR(g) g == MALE && "his" \
-               || g == FEMALE && "her" \
-               || "their"
+#define P_THEIR(g) g == MALE && "его" \
+               || g == FEMALE && "её" \
+               || "их"
