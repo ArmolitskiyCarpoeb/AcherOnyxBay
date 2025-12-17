@@ -17,7 +17,7 @@ GLOBAL_VAR_CONST(PREF_ANNOUNCER_TGSTATION, "\[Cargo\] /TG/station (Legacy)")
 /datum/announce/heretic_monsters
 	text = "На %STATION_NAME% был обнаружен повышенный уровень пространственно-временной деформации! Замечены агрессивные формы жизни!"
 	title = "ТРЕВОГА!"
-	sender	= "OS Outland"
+	sender	= "Орбитальные Сенсоры"
 
 /datum/announce/ion_storm
 	text = "It has come to our attention that the %STATION_NAME% passed through an ion storm. Please monitor all electronic equipment for malfunctions."
@@ -139,17 +139,17 @@ GLOBAL_VAR_CONST(PREF_ANNOUNCER_TGSTATION, "\[Cargo\] /TG/station (Legacy)")
 
 /datum/announce/station_objectives
 	title = "Производственная директива"
-	sender = "Пункт Корпкомандования №19"
+	sender = "Центральное Командование"
 	text = "Новая производственная директива, выполнить в указанные сроки."
 
 /datum/announce/station_objectives_success
 	title = "Производственная директива"
-	sender = "Пункт Корпкомандования №19"
+	sender = "Центральное Командование"
 	text = "Производственная директива выполнена успешно. Хорошая работа."
 
 /datum/announce/station_objectives_failure
 	title = "Производственная директива"
-	sender = "Пункт Корпкомандования №19"
+	sender = "Центральное Командование"
 	text = "Производственная директива провалена. Применяем санкции."
 
 /datum/announce/slot_machine
