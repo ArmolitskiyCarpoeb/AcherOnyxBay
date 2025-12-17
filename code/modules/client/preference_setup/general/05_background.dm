@@ -71,11 +71,11 @@
 	. += "Religion: <a href='?src=\ref[src];religion=1'>[pref.religion]</a><br/>"
 	if(pref.religion == "Novotheism")
 		. += "Основная религия всего человечества. Именно благодаря ей мы ещё живы.<br>"
-
+/*
 	. += "<br/><b>Bank Account</b>:<br/>"
 	. += "Security Level: <a href='?src=\ref[src];bank_security=1'>[pref.bank_security ? pref.bank_security == 2 ? "Maximum" : "Moderate" : "Minimum" ]</a><br>"
 	. += "PIN: <a href='?src=\ref[src];bank_pin=1'>[pref.bank_pin ? pref.bank_pin : "Random"]</a><br>"
-
+*/
 	. += "<br/><b>Records</b>:<br/>"
 	if(jobban_isbanned(user, "Records"))
 		. += "<span class='danger'>You are banned from using character records.</span><br>"
