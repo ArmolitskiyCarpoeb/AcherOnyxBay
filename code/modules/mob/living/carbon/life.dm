@@ -32,7 +32,7 @@
 
 		handle_viruses()
 
-		handle_smelly_things()
+		//handle_smelly_things()
 
 		handle_happiness()
 
