@@ -108,6 +108,10 @@
 /atom/movable/screen/stored/Click()
 	return 1
 
+/obj/screen/happiness_icon/Click()
+	var/mob/living/carbon/C = usr
+	C.print_happiness(C)
+
 /atom/movable/screen/zone_sel
 	name = "damage zone"
 	icon_state = "zone_sel"

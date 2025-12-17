@@ -65,6 +65,7 @@
 	var/atom/movable/screen/gun/move/gun_move_icon = null
 	var/atom/movable/screen/gun/run/gun_run_icon = null
 	var/atom/movable/screen/gun/mode/gun_setting_icon = null
+	var/obj/screen/happiness_icon = null
 
 	var/atom/movable/screen/movable/ability_master/ability_master = null
 
@@ -92,6 +93,7 @@
 	var/next_move = null
 	var/hand = null
 	var/real_name = null
+	var/happiness = 0
 
 	var/bhunger = 0			//Carbon
 
@@ -245,6 +247,8 @@
 
 	///For storing what do_after's someone has, key = string, value = amount of interactions of that type happening.
 	var/list/do_afters
+
+	var/horror_loop = FALSE
 
 /datum/rad_resist/mob
 	alpha_particle_resist = 6 MEGA ELECTRONVOLT

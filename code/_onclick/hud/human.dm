@@ -319,6 +319,14 @@
 		mymob.poise_icon.screen_loc = ui_health
 		infodisplay |= mymob.poise_icon
 
+	if(hud_data.has_happiness)
+		mymob.happiness_icon = new /obj/screen()
+		mymob.happiness_icon.name = "mood"
+		mymob.happiness_icon.icon = ui_style
+		mymob.happiness_icon.icon_state = "mood4"
+		mymob.happiness_icon.screen_loc = ui_happiness
+		infodisplay |= mymob.happiness_icon
+
 
 	mymob.pain = new /atom/movable/screen/fullscreen/pain( null )
 	infodisplay |= mymob.pain

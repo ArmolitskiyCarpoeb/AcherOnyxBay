@@ -21,6 +21,7 @@
 	var/has_rest = TRUE        // Set to draw the rest button.
 	var/has_poise = TRUE       // Set to draw the poise meter.
 	var/has_jump = TRUE
+	var/has_happiness = TRUE   // Для отображения счастья
 	var/list/equip_slots = list() // Checked by mob_can_equip().
 
 	// Contains information on the position and tag for all inventory slots

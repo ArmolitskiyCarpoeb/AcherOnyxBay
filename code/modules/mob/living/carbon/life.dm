@@ -32,6 +32,11 @@
 
 		handle_viruses()
 
+		handle_smelly_things()
+
+		handle_happiness()
+
+		handle_hygiene()
 		. = 1
 
 		if(!client && !mind && species)
