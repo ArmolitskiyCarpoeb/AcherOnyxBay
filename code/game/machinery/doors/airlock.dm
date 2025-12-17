@@ -46,11 +46,11 @@
 	var/secured_wires = 0
 	var/datum/wires/airlock/wires = null
 
-	var/open_sound_powered = list('sound/machines/airlock/open1.ogg', 'sound/machines/airlock/open2.ogg', 'sound/machines/airlock/open3.ogg')
+	var/open_sound_powered = 'sound/new_open5.ogg'
 	var/open_sound_unpowered = 'sound/machines/airlock/open_force1.ogg'
 	var/open_failure_access_denied = 'sound/error.ogg'
 
-	var/close_sound_powered = 'sound/machines/airlock/close1.ogg'
+	var/close_sound_powered = 'sound/new_close5.ogg'
 	var/close_sound_unpowered = 'sound/machines/airlock/close_force1.ogg'
 	var/close_failure_blocked = 'sound/machines/airlock/error1.ogg'
 
@@ -815,14 +815,15 @@ About the new airlock wires panel:
 	//if the door is unpowered then it doesn't make sense to hear the woosh of a pneumatic actuator
 	if(arePowerSystemsOn())
 		if(islist(open_sound_powered))
-			playsound(loc, pick(open_sound_powered), 70, 0)
+			playsound(loc, pick(open_sound_powered), 100, 0)
 		else
-			playsound(loc, open_sound_powered, 70, 0)
+			playsound(loc, open_sound_powered, 100, 0)
+		playsound(loc, 'sound/beep1.ogg', 75, 1)
 	else
 		if(islist(open_sound_unpowered))
-			playsound(loc, pick(open_sound_unpowered), 70, 1)
+			playsound(loc, pick(open_sound_unpowered), 80, 1)
 		else
-			playsound(loc, open_sound_unpowered, 70, 1)
+			playsound(loc, open_sound_unpowered, 25, 0, 1)
 
 	if(closeOther != null && istype(closeOther, /obj/machinery/door/airlock/) && !closeOther.density)
 		INVOKE_ASYNC(closeOther, nameof(.proc/close))
@@ -855,9 +856,9 @@ About the new airlock wires panel:
 	use_power_oneoff(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	tryingToLock = FALSE
 	if(arePowerSystemsOn())
-		playsound(src.loc, close_sound_powered, 70, 0)
+		playsound(src.loc, close_sound_powered, 100, 0)
 	else
-		playsound(src.loc, close_sound_unpowered, 70, 1)
+		playsound(src.loc, close_sound_unpowered, 80, 1)
 
 	return ..(forced, safe)
 

@@ -7,6 +7,8 @@
 	name = "Airlock"
 	icon = 'icons/obj/doors/doorcom.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
+	open_sound_powered = 'sound/new_open5.ogg'
+	close_sound_powered = 'sound/new_close5.ogg'
 
 //////////////////////////////////////////
 /obj/machinery/door/airlock/security
@@ -147,8 +149,8 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
 	glass = 1
-	open_sound_powered = 'sound/machines/airlock/glass_open1.ogg'
-	close_sound_powered = 'sound/machines/airlock/glass_close1.ogg'
+	open_sound_powered = 'sound/new_open5.ogg'
+	close_sound_powered = 'sound/new_close5.ogg'
 
 /obj/machinery/door/airlock/glass_command/Initialize()
 	. = ..()
@@ -192,8 +194,8 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eng
 	glass = 1
-	open_sound_powered = 'sound/machines/airlock/glass_open1.ogg'
-	close_sound_powered = 'sound/machines/airlock/glass_close1.ogg'
+	open_sound_powered = 'sound/new_open5.ogg'
+	close_sound_powered = 'sound/new_close5.ogg'
 
 /obj/machinery/door/airlock/glass_engineering/Initialize()
 	. = ..()
@@ -209,8 +211,8 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_sec
 	glass = 1
-	open_sound_powered = 'sound/machines/airlock/glass_open1.ogg'
-	close_sound_powered = 'sound/machines/airlock/glass_close1.ogg'
+	open_sound_powered = 'sound/new_open5.ogg'
+	close_sound_powered = 'sound/new_close5.ogg'
 
 /obj/machinery/door/airlock/glass_security/Initialize()
 	. = ..()
@@ -226,8 +228,8 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_med
 	glass = 1
-	open_sound_powered = 'sound/machines/airlock/glass_open1.ogg'
-	close_sound_powered = 'sound/machines/airlock/glass_close1.ogg'
+	open_sound_powered = 'sound/new_open5.ogg'
+	close_sound_powered = 'sound/new_close5.ogg'
 
 /obj/machinery/door/airlock/glass_medical/Initialize()
 	. = ..()
@@ -243,8 +245,8 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_viro
 	glass = 1
-	open_sound_powered = 'sound/machines/airlock/glass_open1.ogg'
-	close_sound_powered = 'sound/machines/airlock/glass_close1.ogg'
+	open_sound_powered = 'sound/new_open5.ogg'
+	close_sound_powered = 'sound/new_close5.ogg'
 
 /obj/machinery/door/airlock/glass_virology/Initialize()
 	. = ..()
@@ -255,6 +257,8 @@
 	name = "Mining Airlock"
 	icon = 'icons/obj/doors/doormining.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_min
+	open_sound_powered = 'sound/new_open5.ogg'
+	close_sound_powered = 'sound/new_close5.ogg'
 
 //////////////////////////////////////////
 /obj/machinery/door/airlock/atmos
@@ -309,8 +313,8 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
 	glass = 1
-	open_sound_powered = 'sound/machines/airlock/glass_open1.ogg'
-	close_sound_powered = 'sound/machines/airlock/glass_close1.ogg'
+	open_sound_powered = 'sound/new_open5.ogg'
+	close_sound_powered = 'sound/new_close5.ogg'
 
 /obj/machinery/door/airlock/glass_atmos/Initialize()
 	. = ..()
