@@ -27,7 +27,7 @@
 	if(.)
 		var/obj/item/implant/death_alarm/D = new()
 		D.implant_in_mob(H, BP_HEAD)
-		H.newgeneratestats(10,18,8,16,8,16,10,18)
+		H.newgeneratestats(11,18,8,16,8,16,10,18)
 		H.generate_skills()
 		H.skills["ranged"] = rand(50, 85)
 		H.skills["melee"] = rand(50, 85)

@@ -32,7 +32,7 @@
 	loadout_allowed = TRUE
 
 	minimal_player_age = 0
-	total_positions = 1
+	total_positions = 2
 	spawn_positions = 1
 	supervisors = "кардиналом"
 	selection_color = "#13817e"

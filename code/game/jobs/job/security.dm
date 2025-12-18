@@ -65,7 +65,7 @@
 	department = "Security"
 	department_flag = SEC
 
-	total_positions = 1
+	total_positions = 2
 	spawn_positions = 1
 	supervisors = "кардиналом"
 	selection_color = "#552828"

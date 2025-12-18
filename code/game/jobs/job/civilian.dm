@@ -23,7 +23,7 @@
 	title = "Chef"
 	department = "Service"
 	department_flag = SRV
-	total_positions = 1
+	total_positions = 2
 	spawn_positions = 1
 	supervisors = "кардиналом и завхозом"
 	selection_color = "#515151"
@@ -70,7 +70,7 @@
 	description = "Голодный человек самый опасный. Вырасти работягам им чего поесть и, может, не сьедят тебя."
 	department = "Service"
 	department_flag = SRV
-	total_positions = 1
+	total_positions = 2
 	spawn_positions = 1
 	supervisors = "кардиналом и завхозом"
 	selection_color = "#515151"
@@ -124,7 +124,7 @@
 	title = "Shaft Miner"
 	department = "Supply"
 	department_flag = SUP
-	total_positions = 4
+	total_positions = 6
 	spawn_positions = 4
 	supervisors = "кардиналом и завхозом"
 	selection_color = "#515151"

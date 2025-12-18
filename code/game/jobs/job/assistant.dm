@@ -15,7 +15,7 @@
 //	alt_titles = list("Technical Assistant","Medical Intern","Research Assistant")
 	outfit_type = /decl/hierarchy/outfit/job/assistant
 	can_be_hired = FALSE
-
+	no_latejoin = TRUE
 	loadout_allowed = TRUE
 
 /datum/job/assistant/equip(mob/living/carbon/human/H)
