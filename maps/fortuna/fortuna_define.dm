@@ -80,7 +80,9 @@
 
 	home_system_choices = list(
 		"Acheron",
-		"Artemis"
+		"OS Outland",
+		"New Rome"
+		//"Artemis"
 		)
 
 	religion_choices = list(
