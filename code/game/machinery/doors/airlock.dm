@@ -815,15 +815,15 @@ About the new airlock wires panel:
 	//if the door is unpowered then it doesn't make sense to hear the woosh of a pneumatic actuator
 	if(arePowerSystemsOn())
 		if(islist(open_sound_powered))
-			playsound(loc, pick(open_sound_powered), 100, 0)
+			playsound(loc, pick(open_sound_powered), 80, 0)
 		else
-			playsound(loc, open_sound_powered, 100, 0)
-		playsound(loc, 'sound/beep1.ogg', 75, 1)
+			playsound(loc, open_sound_powered, 80, 0)
+		playsound(loc, 'sound/beep1.ogg', 15, 0)
 	else
 		if(islist(open_sound_unpowered))
 			playsound(loc, pick(open_sound_unpowered), 80, 1)
 		else
-			playsound(loc, open_sound_unpowered, 25, 0, 1)
+			playsound(loc, open_sound_unpowered, 80, 1)
 
 	if(closeOther != null && istype(closeOther, /obj/machinery/door/airlock/) && !closeOther.density)
 		INVOKE_ASYNC(closeOther, nameof(.proc/close))
@@ -856,7 +856,7 @@ About the new airlock wires panel:
 	use_power_oneoff(360)	//360 W seems much more appropriate for an actuator moving an industrial door capable of crushing people
 	tryingToLock = FALSE
 	if(arePowerSystemsOn())
-		playsound(src.loc, close_sound_powered, 100, 0)
+		playsound(src.loc, close_sound_powered, 80, 0)
 	else
 		playsound(src.loc, close_sound_unpowered, 80, 1)
 
