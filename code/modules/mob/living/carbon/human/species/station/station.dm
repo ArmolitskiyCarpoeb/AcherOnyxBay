@@ -17,6 +17,10 @@
 	max_age = 100
 	gluttonous = GLUT_TINY
 
+	cold_level_1 = 260 //Default 260 - Lower is better
+	cold_level_2 = 253 //Default 200
+	cold_level_3 = 245 //Default 120
+
 	body_builds = list(
 		new /datum/body_build,
 		new /datum/body_build/slim,
