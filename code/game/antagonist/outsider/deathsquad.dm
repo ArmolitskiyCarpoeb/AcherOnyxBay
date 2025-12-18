@@ -4,7 +4,7 @@ GLOBAL_DATUM_INIT(deathsquad, /datum/antagonist/deathsquad, new)
 	id = MODE_DEATHSQUAD
 	role_text = "Death Commando"
 	role_text_plural = "Death Commandos"
-	welcome_text = "You are sent to blow the station sky-high to kingdom come."
+	welcome_text = "УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ!"
 	landmark_id = "Death Commando"
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_OVERRIDE_MOB | ANTAG_HAS_NUKE | ANTAG_HAS_LEADER | ANTAG_RANDOM_EXCEPTED
 	default_access = list(access_cent_general, access_cent_specops, access_cent_living, access_cent_storage)
@@ -40,7 +40,8 @@ GLOBAL_DATUM_INIT(deathsquad, /datum/antagonist/deathsquad, new)
 	else
 		player.equip_to_slot_or_del(new /obj/item/clothing/under/syndicate/combat(player), slot_w_uniform)
 */
-	player.equip_to_slot_or_del(new /obj/item/clothing/under/syndicate/combat(player), slot_w_uniform)
+	//player.equip_to_slot_or_del(new /obj/item/clothing/under/syndicate/combat(player), slot_w_uniform)
+	player.equip_to_slot_or_del(new /obj/item/clothing/under/tactical(player), slot_w_uniform)
 	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/swat(player), slot_shoes)
 	player.equip_to_slot_or_del(new /obj/item/clothing/gloves/swat(player), slot_gloves)
 	player.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/shades/thermal/sunshield(player), slot_glasses)
@@ -73,15 +74,18 @@ GLOBAL_DATUM_INIT(deathsquad, /datum/antagonist/deathsquad, new)
 		id.icon_state = "card_centcom"
 	create_radio(DTH_FREQ, player)
 
+	if(player.gender == FEMALE)
+		player.gender = MALE
+
 /datum/antagonist/deathsquad/update_antag_mob(datum/mind/player)
 
 	..()
 
 	var/syndicate_commando_rank
 	if(leader && player == leader)
-		syndicate_commando_rank = pick("Corporal", "Sergeant", "Staff Sergeant", "Sergeant 1st Class", "Master Sergeant", "Sergeant Major")
+		syndicate_commando_rank = pick("Капитан", "Сержант")
 	else
-		syndicate_commando_rank = pick("Lieutenant", "Captain", "Major")
+		syndicate_commando_rank = pick("Боец")
 
 	var/syndicate_commando_name = pick(GLOB.last_names)
 
