@@ -104,8 +104,7 @@
 #define ui_borg_health "EAST-1:28,CENTER-1:13" //borgs have the health display where humans have the pressure damage indicator.
 #define ui_alien_health "EAST-1:28,CENTER-1:13" //aliens have the health display where humans have the pressure damage indicator.
 
-//#define ui_happiness "EAST+1, NORTH-14"
-#define ui_happiness "EAST-1, NORTH-1"
+//#define ui_happiness "EAST-1, NORTH-1" УДАЛИЛ ПОКА ШТО!!!!!
 
 //Pop-up inventory
 #define ui_shoes "WEST+1:8,SOUTH:5"
