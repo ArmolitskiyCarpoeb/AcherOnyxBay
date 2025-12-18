@@ -251,7 +251,7 @@
 		else
 			owner.emote(pick("shiver","twitch"))
 
-	if(damage || owner.chem_effects[CE_BREATHLOSS] || owner.nervous_system_failure() || world.time > last_successful_breath + 2 MINUTES)
+	if(damage >= min_bruised_damage || owner.chem_effects[CE_BREATHLOSS] || owner.nervous_system_failure() || world.time > last_successful_breath + 2 MINUTES)
 		owner.adjustOxyLoss(HUMAN_MAX_OXYLOSS * breath_fail_ratio)
 
 	owner.oxygen_alert = max(owner.oxygen_alert, 2)
@@ -261,7 +261,7 @@
 	if((breath.temperature < species.cold_level_1 || breath.temperature > species.heat_level_1) && !(MUTATION_COLD_RESISTANCE in owner.mutations))
 		var/damage = 0
 		if(breath.temperature <= species.cold_level_1)
-			if(prob(20))
+			if(prob(10))
 				to_chat(owner, "<span class='danger'>You feel your face freezing and icicles forming in your lungs!</span>")
 
 			if (breath.temperature <= species.cold_level_3)
@@ -287,7 +287,7 @@
 				to_chat(owner, "<span class='danger'>You feel your face burning and a searing heat in your lungs!</span>")
 
 			if (breath.temperature >= species.heat_level_3)
-				damage = HEAT_GAS_DAMAGE_LEVEL_3
+				damage = HEAT_GAS_DAMAGE_LEVEL_3 / 2
 			else if (breath.temperature >= species.heat_level_3)
 				damage = HEAT_GAS_DAMAGE_LEVEL_2
 			else
@@ -311,7 +311,7 @@
 
 		if (temp_adj > BODYTEMP_HEATING_MAX) temp_adj = BODYTEMP_HEATING_MAX
 		if (temp_adj < BODYTEMP_COOLING_MAX) temp_adj = BODYTEMP_COOLING_MAX
-//		log_debug("Breath: [breath.temperature], [src]: [bodytemperature], Adjusting: [temp_adj]")
+		//log_debug("Breath: [breath.temperature], [src]: [bodytemperature], Adjusting: [temp_adj]")
 		owner.bodytemperature += temp_adj
 
 	else if(breath.temperature >= species.heat_discomfort_level)
