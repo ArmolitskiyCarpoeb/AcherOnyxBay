@@ -78,7 +78,7 @@
 /datum/shuttle/autodock/ferry/train/proc/play_train_sound(atom/location, sound/sound_to_play)
 	if(sound_to_play)
 		// Boosted volume so the tram start/stop is clearly audible.
-		playsound(location, sound_to_play, 500, 35, 10)
+		playsound(location, sound_to_play, 100, 0, 10)
 
 /datum/shuttle/autodock/ferry/train/long_jump(obj/effect/shuttle_landmark/destination, obj/effect/shuttle_landmark/interim, travel_time)
 	if(moving_status != SHUTTLE_IDLE) return
@@ -86,6 +86,7 @@
 	var/obj/effect/shuttle_landmark/start_location = current_location
 
 	moving_status = SHUTTLE_WARMUP
+	spawn(30)
 	play_train_sound(current_location, sound_takeoff)
 	spawn(warmup_time*10)
 		if(moving_status == SHUTTLE_IDLE)

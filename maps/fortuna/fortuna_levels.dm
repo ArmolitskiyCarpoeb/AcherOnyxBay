@@ -31,7 +31,7 @@
 	)
 	travel_chance = 5
 	exterior_atmosphere = list("carbon_dioxide" = MOLES_CELLSTANDARD, "nitrogen" = MOLES_N2STANDARD)
-	exterior_atmos_temp = -155 CELSIUS
+	exterior_atmos_temp = -100 CELSIUS
 
 /datum/space_level/fortuna_4
 	path = 'fortuna-4.dmm'
