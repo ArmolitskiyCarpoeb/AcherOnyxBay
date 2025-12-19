@@ -52,10 +52,10 @@
 	name = "No Slip"
 	desc = "You can't slip!"
 
-/datum/modifier/trait/skiled_doctor
+/datum/modifier/trait/skiled_medical
 	name = "Обученый врач"
 
-/datum/modifier/trait/skiled_doctor/on_applied()
+/datum/modifier/trait/skiled_medical/on_applied()
 	if(holder.skills)
 		holder.skills["medical"] += 30
 		holder.skills["surgery"] += 25
@@ -66,6 +66,28 @@
 /datum/modifier/trait/skiled_melee/on_applied()
 	if(holder.skills)
 		holder.skills["melee"] += 25
+
+/datum/modifier/trait/skiled_ranged
+	name = "Умелый стрелок"
+
+/datum/modifier/trait/skiled_ranged/on_applied()
+	if(holder.skills)
+		holder.skills["ranged"] += 25
+
+/datum/modifier/trait/skiled_cooking
+	name = "Умелый повар"
+
+/datum/modifier/trait/skiled_cooking/on_applied()
+	if(holder.skills)
+		holder.skills["cooking"] += 40
+		holder.skills["gardening"] += 40
+
+/datum/modifier/trait/skiled_engineering
+	name = "Неплохой инженер"
+
+/datum/modifier/trait/skiled_engineering/on_applied()
+	if(holder.skills)
+		holder.skills["engineering"] += 25
 
 /// Плохие трейты, добавляют очки трейтов
 

@@ -84,8 +84,6 @@
 	modifier_type = /datum/modifier/trait/toxinlover
 	trait_cost = 2 // positive: costs points
 
-
-
 /datum/trait/modifier/good/fast_hands
 	name = "Быстрые руки"
 	desc = "Поспешишь - людей насмешишь."
