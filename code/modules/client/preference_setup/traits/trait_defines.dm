@@ -32,7 +32,7 @@
 
 
 /// ХОРОШИЕ ТРЕЙТЫ
-/datum/trait/modifier/good/skiled_doctor
+/datum/trait/modifier/good/skiled_medical
 	name = "Учился врачевать"
 	desc = "Одно время ты работал в больнице и нахватался полезных знаний."
 	modifier_type = /datum/modifier/trait/skiled_doctor
@@ -42,6 +42,24 @@
 	name = "Умею махать кулаками"
 	desc = "Ты вырос среди преступников и сброда, жизнь научила тебя махать кулаками."
 	modifier_type = /datum/modifier/trait/skiled_melee
+	trait_cost = 2
+
+/datum/trait/modifier/good/skiled_ranged
+	name = "Умелый стрелок"
+	desc = "Воевал ли ты или просто стрелял из винтовки на охоте уже не важно. В любом случае ты неплохо стреляешь!"
+	modifier_type = /datum/modifier/trait/skiled_ranged
+	trait_cost = 2
+
+/datum/trait/modifier/good/skiled_engineering
+	name = "Неплохой инженер"
+	desc = "Когда-то у тебя был свой шаттл. Не важно что он не работал, зато ты умеешь его чинить!"
+	modifier_type = /datum/modifier/trait/skiled_engineering
+	trait_cost = 2
+
+/datum/trait/modifier/good/skiled_cooking
+	name = "Хорошо готовлю"
+	desc = "Твои навыки кулинарии на высоте!"
+	modifier_type = /datum/modifier/trait/skiled_cooking
 	trait_cost = 2
 
 /datum/trait/modifier/good/high_metabolism
@@ -65,13 +83,9 @@
 	name = "Житель индустриального района"
 	modifier_type = /datum/modifier/trait/toxinlover
 	trait_cost = 2 // positive: costs points
-/*
-/datum/trait/modifier/good/skilledmarksman
-	name = "Умелый стрелок"
-	modifier_type = /datum/modifier/trait/skilledmarksman
-	mutually_exclusive = list(/datum/trait/modifier/bad/inaccurate)
-	trait_cost = 2 // positive: costs points
-*/
+
+
+
 /datum/trait/modifier/good/fast_hands
 	name = "Быстрые руки"
 	desc = "Поспешишь - людей насмешишь."
