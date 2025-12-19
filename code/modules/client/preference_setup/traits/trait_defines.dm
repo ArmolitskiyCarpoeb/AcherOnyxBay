@@ -35,7 +35,7 @@
 /datum/trait/modifier/good/skiled_medical
 	name = "Учился врачевать"
 	desc = "Одно время ты работал в больнице и нахватался полезных знаний."
-	modifier_type = /datum/modifier/trait/skiled_doctor
+	modifier_type = /datum/modifier/trait/skiled_medical
 	trait_cost = 2
 
 /datum/trait/modifier/good/skiled_melee
