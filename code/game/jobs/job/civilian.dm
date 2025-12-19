@@ -2,6 +2,7 @@
 /datum/job/bartender
 	title = "Bartender"
 	department = "Service"
+	description = "Готовь коктейли, барыжь наркотиками, бери с клиентов деньги."
 	department_flag = SRV
 	total_positions = 1
 	spawn_positions = 1
@@ -21,6 +22,7 @@
 
 /datum/job/chef
 	title = "Chef"
+	description = "У тебя большой выбор специй для твоего супа - мышиный помёт, тараканы, мухи, древняя пыль и крошки со стола. Накорми работяг."
 	department = "Service"
 	department_flag = SRV
 	total_positions = 2
@@ -67,7 +69,7 @@
 
 /datum/job/hydro
 	title = "Hydroponist"
-	description = "Голодный человек самый опасный. Вырасти работягам им чего поесть и, может, не сьедят тебя."
+	description = "Главный ботаник этой станции. Копай картошку, расти бананы!"
 	department = "Service"
 	department_flag = SRV
 	total_positions = 2
@@ -124,6 +126,7 @@
 	title = "Shaft Miner"
 	department = "Supply"
 	department_flag = SUP
+	description = "Простой человек, который был привлечён лозунгами типа 'захватывающий риск, захватывающая оплата, захватывающие приключения' и прилетел сюда копать руду."
 	total_positions = 6
 	spawn_positions = 4
 	supervisors = "кардиналом и завхозом"

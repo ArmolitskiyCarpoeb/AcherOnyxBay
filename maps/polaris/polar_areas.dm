@@ -1040,7 +1040,7 @@
 /area/polarplanet/hallway/secondary/entry/port
 	name = "\improper Arrival Shuttle Hallway - Port"
 	icon_state = "entry_2"
-	base_turf = /turf/simulated/open
+	//base_turf = /turf/simulated/open
 
 /area/polarplanet/hallway/secondary/entry/starboard
 	name = "\improper Arrival Shuttle Hallway - Starboard"
