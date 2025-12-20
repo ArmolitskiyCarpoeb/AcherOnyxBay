@@ -128,7 +128,7 @@ SUBSYSTEM_DEF(ticker)
 	// Station-wide production objectives: always issue at round start.
 	if(GLOB.station_objectives && !GLOB.station_objectives.active)
 		var/list/tasks = GLOB.station_objectives.generate_tasks()
-		var/time_limit = rand(20, 40) * 1 MINUTES
+		var/time_limit = rand(35, 50) * 1 MINUTES
 		spawn(1200) //2 minutes ready time
 		GLOB.station_objectives.start_directive(tasks, time_limit, null)
 
