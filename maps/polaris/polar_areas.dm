@@ -9,7 +9,7 @@
 
 /area/polarplanet
 	name = "polarplanet"
-	base_turf = /turf/unsimulated/floor/frozenground
+	base_turf = /turf/simulated/floor/asteroid/air
 
 /area/polarplanet/street
 	name = "Polarplanet - street"

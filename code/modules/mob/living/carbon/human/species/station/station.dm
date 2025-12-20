@@ -7,7 +7,7 @@
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 	blurb = "Ублюдки."
 	num_alternate_languages = 1
-	secondary_langs = list(LANGUAGE_SOL_COMMON, LANGUAGE_SPACER, LANGUAGE_GUTTER)
+	secondary_langs = list(LANGUAGE_SPACER, LANGUAGE_GUTTER)
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
 	min_age = 18
 	max_age = 100
