@@ -21,7 +21,7 @@
 // 'basic' language; spoken by default.
 /datum/language/common
 	name = LANGUAGE_GALCOM
-	desc = "The common galactic tongue."
+	desc = "The common tongue."
 	speech_verb = "says"
 	whisper_verb = "whispers"
 	key = "0"
@@ -46,6 +46,7 @@
 	colour = "moon"
 	key = "2"
 	space_chance = 100
+	language_flags = RESTRICTED
 	syllables = list("lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit",
 					 "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore",
 					 "magna", "aliqua", "ut", "enim", "ad", "minim", "veniam", "quis", "nostrud",

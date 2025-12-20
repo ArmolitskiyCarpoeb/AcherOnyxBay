@@ -30,7 +30,7 @@
 	exclaim_verb = "roars"
 	colour = "soghun"
 	key = "o"
-	language_flags = WHITELISTED
+	language_flags = WHITELISTED | RESTRICTED
 	space_chance = 40
 	syllables = list(
 		"za", "az", "ze", "ez", "zi", "iz", "zo", "oz", "zu", "uz", "zs", "sz",
@@ -51,7 +51,7 @@
 	exclaim_verb = "yowls"
 	colour = "tajaran"
 	key = "j"
-	language_flags = WHITELISTED
+	language_flags = WHITELISTED | RESTRICTED
 	syllables = list("mrr","rr","tajr","kir","raj","kii","mir","kra","ahk","nal","vah","khaz","jri","ran","darr",
 	"mi","jri","dynh","manq","rhe","zar","rrhaz","kal","chur","eech","thaa","dra","jurl","mah","sanu","dra","ii'r",
 	"ka","aasi","far","wa","baq","ara","qara","zir","sam","mak","hrar","nja","rir","khan","jun","dar","rik","kah",
@@ -75,7 +75,7 @@
 	exclaim_verb = "warbles"
 	colour = "skrell"
 	key = "k"
-	language_flags = WHITELISTED
+	language_flags = WHITELISTED | RESTRICTED
 	syllables = list("qr","qrr","xuq","qil","quum","xuqm","vol","xrim","zaoo","qu-uu","qix","qoo","zix","*","!")
 	shorthand = "SK"
 
@@ -86,7 +86,7 @@
 	whisper_verb = "whispers"
 	colour = "solcom"
 	key = "1"
-	language_flags = WHITELISTED
+	language_flags = WHITELISTED | RESTRICTED
 	shorthand = "Sol"
 
 	//syllables are at the bottom of the file
@@ -116,7 +116,7 @@
 	exclaim_verb = "whistles loudly"
 	colour = "changeling"
 	key = "6"
-	language_flags = NO_STUTTER
+	language_flags = NO_STUTTER | RESTRICTED
 	syllables = list("beep","beep","beep","beep","beep","boop","boop","boop","bop","bop","dee","dee","doo","doo","hiss","hss","buzz","buzz","bzz","ksssh","keey","wurr","wahh","tzzz")
 	space_chance = 10
 	shorthand = "EAL"
@@ -196,7 +196,7 @@
 	signlang_verb = list("uses their tail to convey", "gestures with their tail", "gestures with their tail elaborately")
 	colour = "tajaran"
 	key = "l"
-	language_flags = WHITELISTED | SIGNLANG | NO_STUTTER | NONVERBAL
+	language_flags = WHITELISTED | SIGNLANG | NO_STUTTER | NONVERBAL | RESTRICTED
 	shorthand = "TS"
 
 /datum/language/confederate
@@ -209,6 +209,7 @@
 	"danya","da","mied","zan","das","krem","myka","to","st","no","na","ni",
 	"ko","ne","en","po","ra","li","on","byl","cto","eni","ost","ol","ego","ver","stv","pro")
 	shorthand = "IN"
+	language_flags = RESTRICTED
 
 /datum/language/spacer
 	name = LANGUAGE_SPACER
