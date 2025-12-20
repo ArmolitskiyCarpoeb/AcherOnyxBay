@@ -15,6 +15,6 @@
 		if(status)
 			return TRUE
 		if(user.skillcheck(user.skills["surgery"], 50, null, "surgery") || user.statcheck(user.stats[STAT_IQ], 12, null, STAT_IQ))
-			user.learn_skills("surgery")
+			//user.learn_skills("surgery")
 			return TRUE
 	return FALSE

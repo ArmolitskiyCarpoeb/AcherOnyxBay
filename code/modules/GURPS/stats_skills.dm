@@ -225,7 +225,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 
 /mob/proc/skillcheck(var/skill, var/requirement, var/message = null, var/skill_type = null)//1 - 100
 	//log_debug("[skill_type] check!  Skill value: [skill], DC [requirement] source: [src]") //Debuging
-	//learn_skills(skill_type) We can't have nice things
+	learn_skills(skill_type)
 	if(skill >= requirement)//If we already surpass the skill requirements no need to roll.
 		if(prob(get_success_chance()))//Only thing we roll for is a crit success.
 			return CRIT_SUCCESS
@@ -244,7 +244,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 
 /mob/proc/learn_skills(var/skill_type)
 	var/initial_skill = round(skills[skill_type])
-	if(skills[skill_type] < 30 && stat_to_modifier(stats[STAT_IQ]) >= 0) //the minimum for reading
+	if(skills[skill_type] < 30 && stats[STAT_IQ] >= 0)
 		skills[skill_type] += (stats[STAT_IQ])
 	else //Learn slower past 30
 		if(skills[skill_type] >= 70)

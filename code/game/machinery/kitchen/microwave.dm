@@ -317,7 +317,7 @@
 			if(cooked)
 				for(var/obj/item/I in cooked)
 					I.dropInto(loc)
-			cooking_user.learn_skills("cooking")
+			//cooking_user.learn_skills("cooking")
 			cooking_user = null
 			return
 		cooked = recipe.make_food(src)

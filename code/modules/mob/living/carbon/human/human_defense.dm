@@ -383,13 +383,13 @@ meteor_act
 
 	if(user.skillcheck(user.skills["melee"], 60, null, "melee") == CRIT_FAILURE)
 		user.resolve_critical_miss(I)
-		user.learn_skills("melee")
+		//user.learn_skills("melee")
 		return null
 
 	if(!user.skillcheck(user.skills["melee"], 30, null, "melee"))
 		if(prob(user.skills["melee"]/3))
 			visible_message("<span class='danger'>[user] botches the attack on [src]!</span>")
-			user.learn_skills("melee")
+			//user.learn_skills("melee")
 			return null
 
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
@@ -721,7 +721,7 @@ meteor_act
 				return 0
 			if(!defender.skillcheck(defender.skills["melee"], 45, null, "melee")) //Need to be decent at melee fighting to parry everything
 				visible_message(SPAN("warning", "[defender] fails to parry [attacker]'s [weapon_atk.name] with their [weapon_def.name]."))
-				defender.learn_skills("melee")
+				//defender.learn_skills("melee")
 				defender.parrying = 0
 				return 0
 			defender.next_move = world.time+1 //Well I'd prefer to use setClickCooldown but it ain't gonna work here.

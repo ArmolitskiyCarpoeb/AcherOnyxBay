@@ -45,7 +45,7 @@
 			if(!S.get_damage())
 				to_chat(user, "<span class='notice'>Nothing to fix here.</span>")
 			if(!do_after(usr, 1 SECOND) && !user.skillcheck(user.skills["engineering"], 50, "Провал!.", "engineering"))
-				user.learn_skills("engineering")
+				//user.learn_skills("engineering")
 				return
 			else if(can_use(1))
 				user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)

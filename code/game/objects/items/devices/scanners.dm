@@ -39,7 +39,7 @@ REAGENT SCANNER
 
 	if(!user.skillcheck(user.skills["medical"], 50, null, "medical") || !user.statcheck(user.stats[STAT_IQ], 12, null, STAT_IQ))
 		to_chat(user, "<span class='warning'>Ты не понимаешь, как этим пользоваться!</span>")
-		user.learn_skills("medical")
+		//user.learn_skills("medical")
 		return
 
 	if(!istype(H) || H.isSynthetic())

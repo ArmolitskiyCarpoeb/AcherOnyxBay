@@ -81,7 +81,7 @@
 
 /datum/language/human
 	name = LANGUAGE_SOL_COMMON
-	desc = "A bastardized hybrid of informal English and elements of Mandarin Chinese; the common language of the Sol system."
+	desc = "A bastardized hybrid of informal English and elements of Russian; the common language of the Zeta-8 system."
 	speech_verb = "says"
 	whisper_verb = "whispers"
 	colour = "solcom"
