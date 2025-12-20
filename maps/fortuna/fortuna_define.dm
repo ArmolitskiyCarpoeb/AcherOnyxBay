@@ -75,13 +75,15 @@
 
 	background_choices = list(
 		"The Great Novotheist Church",
-		"Mons-Laden Corporation"
+		"Mons-Laden Corporation",
+		"Unknown"
 		)
 
 	home_system_choices = list(
 		"Acheron",
 		"OS Outland",
-		"New Rome"
+		"New Rome",
+		"Unknown"
 		//"Artemis"
 		)
 
