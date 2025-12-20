@@ -92,11 +92,12 @@ SUBSYSTEM_DEF(ticker)
 			for(var/mob/new_player/NN in GLOB.player_list)
 				if(NN.client?.prefs?.job_high == job && NN.ready)
 					LAZYADD(active_jobs, job)
-		if(active_jobs == job_list || SSticker.mode.need_jobs == FALSE || overriding_needing_jobs)
+		var/list/missing_jobs = job_list - active_jobs
+		if(!length(missing_jobs) || SSticker.mode.need_jobs == FALSE || overriding_needing_jobs)
 			GLOB.using_map.setup_economy()
 			Master.SetRunLevel(RUNLEVEL_GAME)
 		else
-			unemployed = job_list - active_jobs
+			unemployed = missing_jobs
 			for(var/vacancy in unemployed)
 				desc += SPAN_NOTICE("[unemployed[vacancy]], ")
 			LAZY_RECITATION(desc)
