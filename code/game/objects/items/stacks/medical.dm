@@ -141,7 +141,7 @@
 					break
 				if (!user.skillcheck(user.skills["medical"], 20, null, "medical"))
 					to_chat(user, SPAN("warning", "Не получилось!"))
-					user.learn_skills("medical")
+					//user.learn_skills("medical")
 					break
 				if (W.current_stage <= W.max_bleeding_stage)
 					user.visible_message(SPAN("notice", "\The [user] bandages \a [W.desc] on [M]'s [affecting.name]."), \
@@ -363,7 +363,7 @@
 			return
 		if (!user.skillcheck(user.skills["medical"], 20, null, "medical"))
 			to_chat(user, SPAN("warning", "Похоже, ты не умеешь это делать!"))
-			user.learn_skills("medical")
+			//user.learn_skills("medical")
 			return
 		if (M != user)
 			user.visible_message(SPAN("notice", "[user] starts to apply \the [src] to [M]'s [limb]."), \

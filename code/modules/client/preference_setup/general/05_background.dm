@@ -56,21 +56,25 @@
 	pref.nanotrasen_relation = sanitize_inlist(pref.nanotrasen_relation, COMPANY_ALIGNMENTS, initial(pref.nanotrasen_relation))
 
 /datum/category_item/player_setup_item/general/background/content(mob/user)
-	. += "<b>Background Information</b><br>"
-	. += "[GLOB.using_map.company_name] Relation: <a href='?src=\ref[src];nt_relation=1'>[pref.nanotrasen_relation]</a><br/>"
-	. += "Place of birth: <a href='?src=\ref[src];home_system=1'>[pref.home_system]</a><br/>"
+	. += "<b>ДАННЫЕ</b><br>"
+	. += "[GLOB.using_map.company_name] Отношение: <a href='?src=\ref[src];nt_relation=1'>[pref.nanotrasen_relation]</a><br/>"
+	. += "Место проживания: <a href='?src=\ref[src];home_system=1'>[pref.home_system]</a><br/>"
 	if(pref.home_system == "New Rome")
 		. += "Гигантский мегаполис, столица Церкви, располагающаяся на экваторе Артемиды. Имеет много индустриальных районов, бедные слои живут рядом с большими заводами, тогда как элита проживает под биокуполами, где воссозданы райские условия.<br>"
 	if(pref.home_system == "Acheron")
 		. += "Мёртвая планета Ахерон, под землёй которой мы сейчас находимся. Стала таковой из-за Корпоративной Войны 59-69 годов. Ранее её называли Эдем из-за благоприятного климата. \n Кто-то не может попрощаться с трупом, либо процесс затянулся. А может вы живёте на рабочем месте? Большинству людей будет отвратно и ужасно тоскливо здесь жить. Возможно, вам просто больше негде.<br>"
 	if(pref.home_system == "OS Outland")
 		. += "Орбитальная Станция 'Чужбина' - Там располагается Центральное Командование, управляющее производством на Ахероне. На этой станции есть достаточно места - там постоянно проживает около 600 человек.<br>"
-	. += "Background: <a href='?src=\ref[src];background=1'>[pref.background]</a><br/>"
+	if(pref.home_system == "Unknown")
+		. += "Неизвестно.<br>"
+	. += "Происхождение: <a href='?src=\ref[src];background=1'>[pref.background]</a><br/>"
 	if(pref.background == "The Great Novotheist Church")
 		. += "Великая Новотеистическая Церковь - религиозная мегакорпорация, имеющая огромное влияние на все экономические и политические процессы.<br>"
 	if(pref.background == "Mons-Laden Corporation")
 		. += "Корпорация, которая первая вернула производство на мёртвую планету. Ей принадлежит эта шахта и многие сотрудники.<br>"
-	. += "Religion: <a href='?src=\ref[src];religion=1'>[pref.religion]</a><br/>"
+	if(pref.background == "Unknown")
+		. += "Неизвестно. Тут может быть любая другая корпорация поменьше.<br>"
+	. += "Религия: <a href='?src=\ref[src];religion=1'>[pref.religion]</a><br/>"
 	if(pref.religion == "Novotheism")
 		. += "Основная религия всего человечества. Именно благодаря ей мы ещё живы.<br>"
 /*
@@ -78,7 +82,7 @@
 	. += "Security Level: <a href='?src=\ref[src];bank_security=1'>[pref.bank_security ? pref.bank_security == 2 ? "Maximum" : "Moderate" : "Minimum" ]</a><br>"
 	. += "PIN: <a href='?src=\ref[src];bank_pin=1'>[pref.bank_pin ? pref.bank_pin : "Random"]</a><br>"
 */
-	. += "<br/><b>Records</b>:<br/>"
+	. += "<br/><b>ДОСЬЕ</b>:<br/>"
 	if(jobban_isbanned(user, "Records"))
 		. += "<span class='danger'>You are banned from using character records.</span><br>"
 	else

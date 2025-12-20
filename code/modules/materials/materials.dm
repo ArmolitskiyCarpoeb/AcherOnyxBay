@@ -137,7 +137,7 @@ var/list/name_to_material
 		to_chat(user, "<span class='warning'>You cannot make anything out of \the [target_stack]</span>")
 		return
 	if(!user.skillcheck(user.skills["engineering"], 40, "Вот зараза, ничего не получается!", "engineering"))
-		user.learn_skills("engineering")
+		//user.learn_skills("engineering")
 		return
 	if(used_stack.get_amount() < 1 || target_stack.get_amount() < 1)
 		to_chat(user, "<span class='warning'>You need one rod and one sheet of [display_name] to make anything useful.</span>")
@@ -153,7 +153,7 @@ var/list/name_to_material
 		to_chat(user, "<span class='warning'>You cannot make anything out of \the [target_stack]</span>")
 		return
 	if(!user.skillcheck(user.skills["engineering"], 40, "Вот зараза, ничего не получается!", "engineering"))
-		user.learn_skills("engineering")
+		//user.learn_skills("engineering")
 		return
 	if(used_stack.get_amount() < 5 || target_stack.get_amount() < 1)
 		to_chat(user, "<span class='warning'>You need five wires and one sheet of [display_name] to make anything useful.</span>")
@@ -512,7 +512,7 @@ var/list/name_to_material
 		return 1
 
 	if(!user.skillcheck(user.skills["engineering"], 40, "Вот зараза, ничего не получается!", "engineering"))
-		user.learn_skills("engineering")
+		//user.learn_skills("engineering")
 		return 1
 
 	var/turf/T = user.loc

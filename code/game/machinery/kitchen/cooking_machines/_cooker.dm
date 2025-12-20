@@ -206,8 +206,8 @@
 						var/obj/item/reagent_containers/food/food_item = thing_inside
 						if(istype(food_item))
 							burn_chance = 35
-							to_chat(cooking_user, SPAN_WARNING("Что-то пошло не так и [food_item.name] испортится! Однако это чему-то тебя научило..."))
-							cooking_user.learn_skills("cooking")
+							//to_chat(cooking_user, SPAN_WARNING("Что-то пошло не так и [food_item.name] испортится! Однако это чему-то тебя научило..."))
+							//cooking_user.learn_skills("cooking")
 
 				src.visible_message(SPAN_NOTICE("\The [src] pings!"))
 				if(cooked_sound)

@@ -81,7 +81,7 @@
 
 /datum/language/human
 	name = LANGUAGE_SOL_COMMON
-	desc = "A bastardized hybrid of informal English and elements of Mandarin Chinese; the common language of the Sol system."
+	desc = "A bastardized hybrid of informal English and elements of Russian; the common language of the Zeta-8 system."
 	speech_verb = "says"
 	whisper_verb = "whispers"
 	colour = "solcom"
@@ -212,7 +212,7 @@
 
 /datum/language/spacer
 	name = LANGUAGE_SPACER
-	desc = "A pidgin language spoken by haulers, merchants, traders, travellers, and cocky fly-boys across the galaxy."
+	desc = "На этом языке разговаривают обитатели орбитальных станций, колоний на спутниках и астероидах."
 	colour = "spacer"
 	key = "v"
 	syllables = list ("die", "en", "skei", "van", "son", "der", "aar", "ch", "op", "ruk", "aa", "be", "ne", "het",
