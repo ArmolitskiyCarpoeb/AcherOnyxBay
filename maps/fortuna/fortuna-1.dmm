@@ -86,6 +86,7 @@
 "fk" = (/obj/structure/cable/green{icon_state = "1-2"; d2 = 2; d1 = 1},/turf/simulated/floor/tiled/dark/mono,/area/quartermaster/miningdock)
 "fo" = (/obj/structure/cable{icon_state = "2-4"; d2 = 4; d1 = 2},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/tiled/rough,/area/maintenance/ghetto_toilet)
 "fr" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 1},/turf/simulated/floor/tiled/techfloor/grid,/area/quartermaster/miningdock)
+"ft" = (/mob/living/simple_animal/hostile/clop,/turf/simulated/floor/plating,/area/maintenance/medbay)
 "fD" = (/obj/structure/cable/green{icon_state = "1-8"; d2 = 8; d1 = 1},/turf/simulated/floor/trim/wood2,/area/maintenance/ghetto_dorm)
 "fG" = (/obj/machinery/door/airlock/freezer{name = "Kitchen cold room"; req_access = list(28)},/obj/machinery/atmospherics/pipe/simple/hidden/supply{icon_state = "intact-supply"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/tiled/freezer,/area/crew_quarters/mess)
 "fM" = (/obj/structure/spider/stickyweb,/obj/random/ammo,/turf/simulated/floor/tiled/dark/usedup,/area/polarplanet/mine/unexplored)
@@ -248,7 +249,7 @@
 "oc" = (/obj/structure/cable/green{icon_state = "1-2"; d2 = 2; d1 = 1},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/simulated/floor/plating,/area/maintenance/cargo)
 "od" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/light{dir = 4},/turf/simulated/floor/tiled/rough,/area/hallway/primary/central_three)
 "oe" = (/obj/structure/spider/stickyweb,/obj/random/tech_supply,/turf/simulated/floor/plating,/area/polarplanet/mine/unexplored)
-"ok" = (/obj/machinery/mining/drill,/turf/simulated/floor/asteroid/air/prison{temperature = 250},/area/polarplanet/mine/unexplored)
+"ok" = (/obj/machinery/mining/drill,/turf/simulated/floor/asteroid/air/prison{temperature = 260},/area/polarplanet/mine/unexplored)
 "or" = (/obj/random/advdevice,/turf/simulated/floor/tiled/dark/usedup,/area/polarplanet/mine/unexplored)
 "ou" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{icon_state = "intact-supply"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/effect/floor_decal/corner/grey/diagonal,/turf/simulated/floor/tiled/freezer,/area/crew_quarters/mess)
 "oy" = (/obj/machinery/shower{dir = 8; pixel_x = -5; pixel_y = -2},/obj/structure/curtain/open/shower,/turf/simulated/floor/tiled/freezer,/area/medical/medbay3/underground)
@@ -304,7 +305,7 @@
 "ri" = (/obj/machinery/door/airlock/multi_tile/glass{dir = 2; name = "Bar"},/obj/structure/catwalk/catwalk_new,/obj/machinery/door/firedoor,/turf/simulated/floor/plating,/area/crew_quarters/mess)
 "rk" = (/obj/structure/spider/stickyweb,/obj/random/junk,/turf/simulated/floor/plating,/area/polarplanet/mine/unexplored)
 "ro" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/random/trash,/obj/structure/catwalk/catwalk_new,/turf/simulated/floor/plating,/area/maintenance/medbay)
-"rp" = (/obj/structure/disposalpipe/trunk{dir = 4},/obj/structure/disposaloutlet,/turf/simulated/floor/asteroid/air/prison{temperature = 250},/area/polarplanet/mine/unexplored)
+"rp" = (/obj/structure/disposalpipe/trunk{dir = 4},/obj/structure/disposaloutlet,/turf/simulated/floor/asteroid/air/prison{temperature = 260},/area/polarplanet/mine/unexplored)
 "rs" = (/obj/random/smokes,/turf/simulated/floor/plating,/area/polarplanet/mine/unexplored)
 "rt" = (/obj/random/trash,/obj/random/energy,/turf/simulated/floor/plating,/area/polarplanet/mine/unexplored)
 "ru" = (/obj/machinery/atmospherics/unary/vent_pump/on{dir = 1; layer = 2.4; level = 2},/obj/random/medical,/turf/simulated/floor/plating,/area/maintenance/medbay)
@@ -374,7 +375,7 @@
 "vd" = (/obj/structure/sign/warning/biohazard,/turf/simulated/wall/r_wall,/area/medical/virology)
 "vh" = (/obj/structure/reagent_dispensers/composttank,/turf/simulated/floor/tiled/mono,/area/crew_quarters/mess)
 "vj" = (/obj/effect/decal/cleanable/dirt,/obj/structure/cable/green{icon_state = "1-2"; d2 = 2; d1 = 1},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk/catwalk_new,/turf/simulated/floor/plating,/area/quartermaster/miningdock)
-"vl" = (/obj/random/trash,/obj/machinery/access_button{name = "exterior access button"; dir = 4; layer = 7; pixel_x = 25; frequency = 1379; req_access = null; command = "cycle_exterior"; master_tag = "main_exit"},/turf/simulated/floor/asteroid/air/prison{temperature = 250},/area/polarplanet/mine/unexplored)
+"vl" = (/obj/random/trash,/obj/machinery/access_button{name = "exterior access button"; dir = 4; layer = 7; pixel_x = 25; frequency = 1379; req_access = null; command = "cycle_exterior"; master_tag = "main_exit"},/turf/simulated/floor/asteroid/air/prison{temperature = 260},/area/polarplanet/mine/unexplored)
 "vn" = (/obj/machinery/light/small/hl,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/tiled/rough,/area/maintenance/ghetto_toilet)
 "vq" = (/obj/structure/catwalk/catwalk_new,/turf/simulated/floor/plating,/area/maintenance/ghetto_toilet)
 "vu" = (/obj/effect/floor_decal/corner/purple/diagonal,/turf/simulated/floor/tiled/dark/usedup,/area/crew_quarters/mess)
@@ -396,7 +397,7 @@
 "wm" = (/obj/machinery/disease2/isolator,/obj/item/storage/secure/safe{pixel_x = 5; pixel_y = 29},/obj/effect/floor_decal/corner/lime/full,/turf/simulated/floor/tiled/white/rough,/area/medical/virology)
 "wn" = (/obj/machinery/portable_atmospherics/hydroponics,/obj/effect/floor_decal/oldflood,/turf/simulated/floor/plating,/area/crew_quarters/mess)
 "wo" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled/techfloor/grid,/area/crew_quarters/mess)
-"wq" = (/turf/simulated/floor/asteroid/air/prison{temperature = 250},/area/polarplanet/mine/unexplored)
+"wq" = (/turf/simulated/floor/asteroid/air/prison{temperature = 260},/area/polarplanet/mine/unexplored)
 "wr" = (/obj/structure/spider/stickyweb,/obj/random/junk,/obj/random/contraband,/turf/simulated/floor/plating,/area/polarplanet/mine/unexplored)
 "wv" = (/obj/effect/decal/cleanable/cobweb,/obj/structure/spider/stickyweb,/turf/simulated/floor/plating,/area/polarplanet/mine/unexplored)
 "wy" = (/obj/structure/cable{icon_state = "1-2"; d2 = 2; d1 = 1},/obj/structure/catwalk/catwalk_new,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/plating,/area/maintenance/ghetto_toilet)
@@ -546,7 +547,7 @@
 "Ej" = (/obj/structure/cable{icon_state = "16-0"; d2 = 0; d1 = 16},/obj/machinery/atmospherics/pipe/zpipe/up/supply,/obj/machinery/atmospherics/pipe/zpipe/up/scrubbers,/obj/structure/girder,/obj/structure/cable{d2 = 4; icon_state = "0-4"},/turf/simulated/floor/plating,/area/maintenance/medbay)
 "En" = (/obj/effect/floor_decal/industrial/hatch/yellow,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/closet/crate,/obj/random/bomb_supply,/turf/simulated/floor/plating,/area/quartermaster/storage)
 "Eo" = (/obj/structure/table/marble,/obj/item/reagent_containers/vessel/condiment/small/saltshaker,/obj/random/snack,/obj/machinery/door/firedoor,/obj/machinery/door/blast/shutters{name = "South Kitchen Shutter"; icon_state = "shutter0"; opacity = 0; density = 0; dir = 2; id = "kitchen1"},/turf/simulated/floor/tiled/dark/usedup,/area/crew_quarters/mess)
-"Ep" = (/obj/machinery/mining/brace,/turf/simulated/floor/asteroid/air/prison{temperature = 250},/area/polarplanet/mine/unexplored)
+"Ep" = (/obj/machinery/mining/brace,/turf/simulated/floor/asteroid/air/prison{temperature = 260},/area/polarplanet/mine/unexplored)
 "Es" = (/obj/structure/cable{icon_state = "4-8"; d2 = 8; d1 = 4},/obj/structure/catwalk/catwalk_new,/turf/simulated/floor/plating,/area/crew_quarters/mess)
 "Et" = (/obj/effect/floor_decal/corner/blue/mono,/turf/simulated/floor/tiled/white/mono,/area/medical/medbay3/underground)
 "Eu" = (/obj/structure/cable{icon_state = "4-8"; d2 = 8; d1 = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/tiled/rough,/area/maintenance/ghetto_toilet)
@@ -581,7 +582,7 @@
 "FP" = (/obj/structure/kitchenspike,/turf/simulated/floor/tiled/freezer,/area/crew_quarters/mess)
 "FQ" = (/obj/structure/railing{dir = 4},/obj/structure/railing{dir = 1},/obj/structure/catwalk/catwalk_new,/turf/simulated/floor/plating,/area/quartermaster/miningdock)
 "FS" = (/obj/structure/cable/green{icon_state = "1-2"; d2 = 2; d1 = 1},/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 8},/turf/simulated/floor/plating,/area/maintenance/ghetto_dorm)
-"FV" = (/turf/simulated/floor/tiled/mono,/area/maintenance/medbay)
+"FV" = (/mob/living/simple_animal/hostile/clop,/turf/simulated/floor/tiled/mono,/area/maintenance/medbay)
 "Ge" = (/obj/machinery/computer/centrifuge,/obj/effect/floor_decal/corner/lime/full,/turf/simulated/floor/tiled/white/rough,/area/medical/virology)
 "Gh" = (/obj/machinery/door/airlock/external,/turf/simulated/floor/plating,/area/polarplanet/mine/unexplored)
 "Gk" = (/obj/structure/cable/green{icon_state = "4-8"; d2 = 8; d1 = 4},/obj/machinery/cooker/grill,/obj/effect/floor_decal/corner/grey/diagonal,/turf/simulated/floor/tiled/freezer,/area/crew_quarters/mess)
@@ -596,7 +597,7 @@
 "GH" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/steel,/area/crew_quarters/mess)
 "GJ" = (/turf/simulated/wall,/area/medical/medbay3/underground)
 "GL" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{icon_state = "intact-supply"; dir = 4},/obj/structure/cable{icon_state = "4-8"; d2 = 8; d1 = 4},/turf/simulated/floor/plating,/area/maintenance/medbay)
-"GT" = (/turf/simulated/floor/asteroid/air/prison{temperature = 250},/area/maintenance/cargo)
+"GT" = (/turf/simulated/floor/asteroid/air/prison{temperature = 260},/area/maintenance/cargo)
 "GU" = (/obj/structure/table/rack{dir = 8},/obj/random/maintenance/clean,/obj/random/closet/maint/science,/obj/random/closet/maint/bio,/obj/random/material,/turf/simulated/floor/tiled/dark/usedup,/area/maintenance/medbay)
 "GX" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/trim/wood,/area/crew_quarters/mess)
 "Hb" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/steel,/area/quartermaster/storage)
@@ -718,7 +719,7 @@
 "MK" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{icon_state = "intact-supply"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 10},/turf/simulated/floor/tiled/freezer,/area/crew_quarters/mess)
 "MM" = (/obj/structure/cable/green{icon_state = "4-8"; d2 = 8; d1 = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/catwalk/catwalk_new,/turf/simulated/floor/plating,/area/hallway/primary/central_three)
 "MN" = (/obj/random/handgun,/turf/simulated/floor/plating,/area/polarplanet/mine/unexplored)
-"MO" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/simulated/floor/asteroid/air/prison{temperature = 250},/area/polarplanet/mine/unexplored)
+"MO" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/simulated/floor/asteroid/air/prison{temperature = 260},/area/polarplanet/mine/unexplored)
 "MP" = (/obj/structure/cable/green{icon_state = "1-2"; d2 = 2; d1 = 1},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/random/trash,/turf/simulated/floor/plating,/area/maintenance/ghetto_dorm)
 "MV" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/turf/simulated/floor/tiled/white/rough,/area/medical/virology)
 "Na" = (/obj/structure/railing,/mob/living/simple_animal/hostile/clop,/turf/simulated/floor/plating,/area/maintenance/medbay)
@@ -865,7 +866,7 @@
 "Vf" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/turf/simulated/floor/tiled/techfloor/grid,/area/crew_quarters/mess)
 "Vh" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/catwalk/catwalk_new,/obj/machinery/computer/guestpass{pixel_x = -28},/turf/simulated/floor/plating,/area/quartermaster/miningdock)
 "Vi" = (/obj/structure/cable/green{icon_state = "2-8"; d2 = 8; d1 = 2},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 10},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 10},/obj/random/trash,/turf/simulated/floor/plating,/area/maintenance/ghetto_dorm)
-"Vl" = (/obj/random/trash,/turf/simulated/floor/asteroid/air/prison{temperature = 250},/area/polarplanet/mine/unexplored)
+"Vl" = (/obj/random/trash,/turf/simulated/floor/asteroid/air/prison{temperature = 260},/area/polarplanet/mine/unexplored)
 "Vm" = (/obj/structure/closet/crate/hydroponics,/obj/item/shovel/spade,/obj/item/material/minihoe,/obj/item/device/analyzer/plant_analyzer,/obj/item/clothing/gloves/thick/botany,/obj/item/seeds/random,/obj/item/seeds/random,/obj/item/seeds/random,/turf/simulated/floor/tiled/mono,/area/crew_quarters/mess)
 "Vo" = (/turf/simulated/wall/r_wall,/area/maintenance/cargo)
 "Vr" = (/obj/machinery/status_display/supply_display,/turf/simulated/wall,/area/quartermaster/storage)
@@ -1112,7 +1113,7 @@ SjLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLn
 SjLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnQvMbEbKAKAShQvpZBNBNBNQvtCEjRsVxNzGLGLwgQvQvQvQvQvBNBNpZQvLnLlLlLlLlLlLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnSj
 SjLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnQvQvQvQvBNQvQvQvBNQvMjYPacwXfgZDEVVeQvpZBNBNpZBNBNpZBNXzQvLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnSj
 SjLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnQvNDpZCemHQvMwQvQvQvQvQvQvQvQvQvQvMwQvQvQvQvQvQvQvQvQvLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnSj
-SjLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnQvpZBNpZBNBNBNpZBNpZBNpZOkBNpZBNBNpZQvLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnSj
+SjLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnQvpZftpZBNBNBNpZBNpZBNpZOkBNpZBNBNpZQvLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnSj
 SjLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvQvLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnSj
 SjLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnSj
 SjLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnLnSj
