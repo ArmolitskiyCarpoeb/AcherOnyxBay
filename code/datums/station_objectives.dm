@@ -165,11 +165,13 @@
 		return
 
 	sanction_running = TRUE
-
+/*
 	if(prob(15))
 		start_shock_pulses()
 	else
 		dispatch_deathsquad()
+*/
+	dispatch_deathsquad()
 
 /datum/station_objective_manager/proc/start_shock_pulses()
 	shock_end_time = world.time + (2 MINUTES)
