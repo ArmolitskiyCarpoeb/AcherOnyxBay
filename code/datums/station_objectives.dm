@@ -171,7 +171,14 @@
 	else
 		dispatch_deathsquad()
 */
-	dispatch_deathsquad()
+	for(var/mob/observer/ghost/O in GLOB.player_list)
+		if(O.client)
+			to_chat(O, SPAN_DEADSAY("Введена санкция за провал директивы. Приготовьтесь снаряжатся."))
+
+	SSticker.looking_for_antags = 1
+	spawn(10 SECONDS)
+		dispatch_deathsquad()
+	return TRUE
 
 /datum/station_objective_manager/proc/start_shock_pulses()
 	shock_end_time = world.time + (2 MINUTES)
@@ -194,8 +201,15 @@
 
 /datum/station_objective_manager/proc/dispatch_deathsquad()
 	SSannounce.play_station_announce(/datum/announce/station_objectives_sanction, "Отряд зачистки выслан, оставайтесь на своих местах, сопротивление бесполезно.")
+	var/i = 4 // Количество оперативников отряда зачистки
 	if(GLOB.deathsquad)
-		GLOB.deathsquad.attempt_auto_spawn(TRUE)
+		for(var/mob/observer/ghost/G in GLOB.player_list)
+			if(i)
+				// The most active players are more likely to become an deathsquad operative
+				if(((G.client.inactivity/10)/60) <= 1)
+					if(!(G.mind && G.mind.current && !G.mind.current.is_ooc_dead()))
+						GLOB.deathsquad.create_default(G)
+						i--
 	sanction_running = FALSE
 
 /datum/station_objective_task
