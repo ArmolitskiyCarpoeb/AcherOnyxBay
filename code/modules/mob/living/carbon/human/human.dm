@@ -1828,7 +1828,9 @@
 			src.blockswitch_icon.icon_state = "act_blockswitch0"
 
 /mob/living/carbon/human/verb/succumb()
-	set hidden = 1
+	set name = "УМЕРЕТЬ"
+	set desc = "ПОПРОЩАТЬСЯ С ЖИЗНЬЮ"
+	set category = "IC"
 
 	if(internal_organs_by_name[BP_BRAIN])
 		var/obj/item/organ/internal/cerebrum/brain/brain = internal_organs_by_name[BP_BRAIN]
