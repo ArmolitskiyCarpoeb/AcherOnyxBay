@@ -143,12 +143,17 @@ GLOBAL_VAR_CONST(PREF_ANNOUNCER_TGSTATION, "\[Cargo\] /TG/station (Legacy)")
 	text = "Новая производственная директива, выполнить в указанные сроки."
 
 /datum/announce/station_objectives_success
-	title = "Производственная директива"
+	title = "Производственная директива: УСПЕХ"
 	sender = "Центральное Командование"
 	text = "Производственная директива выполнена успешно. Хорошая работа."
 
 /datum/announce/station_objectives_failure
-	title = "Производственная директива"
+	title = "Производственная директива: ПРОВАЛ"
+	sender = "Центральное Командование"
+	text = "Производственная директива провалена. Применяем санкции."
+
+/datum/announce/station_objectives_sanction
+	title = "Производственная директива: САНКЦИЯ"
 	sender = "Центральное Командование"
 	text = "Производственная директива провалена. Применяем санкции."
 
