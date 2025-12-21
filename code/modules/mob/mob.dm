@@ -1087,21 +1087,21 @@
 		src.throw_icon.icon_state = "act_throw_on"
 
 /mob/proc/toggle_antag_pool()
-	set name = "Toggle Add-Antag Candidacy"
-	set desc = "Toggles whether or not you will be considered a candidate by an add-antag vote."
+	set name = "БЫТЬ ЗЛОДЕЕМ"
+	set desc = "Переключает желание быть антагонистом или нет."
 	set category = "OOC"
 	if(isghostmind(src.mind) || isnewplayer(src))
 		if(SSticker.looking_for_antags)
 			if(src.mind in SSticker.antag_pool)
 				SSticker.antag_pool -= src.mind
-				to_chat(usr, "You have left the antag pool.")
+				to_chat(usr, "Ты вышел из пула антагонистов.")
 			else
 				SSticker.antag_pool += src.mind
-				to_chat(usr, "You have joined the antag pool. Make sure you have the needed role set to high!")
+				to_chat(usr, "Ты присоединился к пулу антагонистов.")
 		else
-			to_chat(usr, "The game is not currently looking for antags.")
+			to_chat(usr, "Игра сейчас не ищет антагонистов.")
 	else
-		to_chat(usr, "You must be observing or in the lobby to join the antag pool.")
+		to_chat(usr, "Чтобы присоединится к пулу антагонистов, ты должен быть в призраках или в лобби.")
 /mob/proc/is_invisible_to(mob/viewer)
 	return (!alpha || !mouse_opacity || viewer.see_invisible < invisibility)
 
