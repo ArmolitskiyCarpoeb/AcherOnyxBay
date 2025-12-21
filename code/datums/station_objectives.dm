@@ -204,7 +204,7 @@
 	var/i = 4 // Количество оперативников отряда зачистки
 	if(GLOB.deathsquad)
 		for(var/mob/observer/ghost/G in GLOB.player_list)
-			while(i)
+			if(i)
 				// The most active players are more likely to become an deathsquad operative
 				if(((G.client.inactivity/10)/60) <= 1)
 					if(!(G.mind && G.mind.current && !G.mind.current.is_ooc_dead()))
