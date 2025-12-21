@@ -17,7 +17,7 @@ config/*
 !config/default/
 !config/dev/
 !config/lobby_art/README.md
-!config/lobby_art/images/
+!config/lobby_art/images/default_lobby.dmi
 build_log.txt
 use_map
 stopserver
