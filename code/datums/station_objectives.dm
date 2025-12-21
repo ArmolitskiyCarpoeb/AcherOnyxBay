@@ -173,7 +173,7 @@
 
 /datum/station_objective_manager/proc/start_shock_pulses()
 	shock_end_time = world.time + (2 MINUTES)
-	SSannounce.play_station_announce(/datum/announce/command_report, "САНКЦИЯ: Ультрашоковая терапия - 2 минуты!")
+	SSannounce.play_station_announce(/datum/announce/station_objectives_sanction, "Ультрашоковая терапия - 2 минуты!")
 	do_shock_pulse()
 
 /datum/station_objective_manager/proc/do_shock_pulse()
@@ -191,7 +191,7 @@
 		do_shock_pulse()
 
 /datum/station_objective_manager/proc/dispatch_deathsquad()
-	SSannounce.play_station_announce(/datum/announce/command_report, "САНКЦИЯ: Отряд зачистки выслан, оставайтесь на своих местах, сопротивление бесполезно.")
+	SSannounce.play_station_announce(/datum/announce/station_objectives_sanction, "Отряд зачистки выслан, оставайтесь на своих местах, сопротивление бесполезно.")
 	if(GLOB.deathsquad)
 		GLOB.deathsquad.attempt_auto_spawn(TRUE)
 	sanction_running = FALSE
