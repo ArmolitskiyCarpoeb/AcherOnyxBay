@@ -5,7 +5,7 @@
 //Think up of lots of items. Not everything needs to be unique or even mining-special, but it should be neat. Convert most of /tg/'s items. 25% of this at least
 //	should be bling. Things that shorten the distance between base and mining. Instant-teleporters should be one use.
 var/global/list/minevendor_list = list( //keep in order of price
-	new /datum/data/mining_equipment("Food Ration",                  /obj/item/reagent_containers/food/liquidfood,              10,     150),
+	new /datum/data/mining_equipment("Food Ration",                  /obj/item/reagent_containers/food/liquidfood,              10,     15),
 	new /datum/data/mining_equipment("Poster",                       /obj/item/contraband/poster,                                      10,    20),
 	new /datum/data/mining_equipment("Thermostabilizine Pill",       /obj/item/reagent_containers/pill/leporazine,                     15,    35),
 	new /datum/data/mining_equipment("Radfi-X",                      /obj/item/reagent_containers/hypospray/autoinjector/antirad/mine, 15,    35),
@@ -14,13 +14,13 @@ var/global/list/minevendor_list = list( //keep in order of price
 	new /datum/data/mining_equipment("5 Green Flags",                /obj/item/stack/flag/green,                                       10,    50),
 	new /datum/data/mining_equipment("5 Yellow Flags",               /obj/item/stack/flag/yellow,                                      10,    50),
 	new /datum/data/mining_equipment("Ore-bag",                      /obj/item/storage/ore,                                            25,    50),
-	new /datum/data/mining_equipment("Meat Pizza",                   /obj/item/pizzabox/meat,                                          25,    350),
+	new /datum/data/mining_equipment("Meat Pizza",                   /obj/item/pizzabox/meat,                                          25,    75),
 	new /datum/data/mining_equipment("Lantern",                      /obj/item/device/flashlight/lantern,                              10,    75),
 	new /datum/data/mining_equipment("Shovel",                       /obj/item/shovel,                                                 15,   100),
 	new /datum/data/mining_equipment("Silver Pickaxe",               /obj/item/pickaxe/silver,                                         10,   100),
 	new /datum/data/mining_equipment("Ore Box",                      /obj/structure/ore_box,                                           -1,   150,  1),
 	new /datum/data/mining_equipment("Emergency Floodlight",         /obj/item/floodlight_diy,                                         -1,   150,  1),
-	new /datum/data/mining_equipment("Premium Cigar",                /obj/item/clothing/mask/smokable/cigarette/cigar/havana,          30,   350),
+	new /datum/data/mining_equipment("Premium Cigar",                /obj/item/clothing/mask/smokable/cigarette/cigar/havana,          30,   150),
 	//new /datum/data/mining_equipment("Lottery Chip",                 /obj/item/spacecash/ewallet/lotto,                                50,   200),
 	new /datum/data/mining_equipment("Ripley Paint Kit",             /obj/item/device/kit/paint/ripley/random,                         15,   200),
 	new /datum/data/mining_equipment("Mining Drill",                 /obj/item/pickaxe/drill,                                          10,   200),
