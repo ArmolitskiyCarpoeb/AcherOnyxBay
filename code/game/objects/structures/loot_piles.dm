@@ -40,6 +40,68 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 	var/list/uncommon_loot = list()	// Uncommon is actually maybe some useful items, usually the reason someone bothers looking inside.
 	var/list/rare_loot = list()		// Rare is really powerful, or at least unique items.
 
+/obj/structure/loot_pile/attackby(obj/item/W, mob/user)
+	if(isliving(user))
+		var/mob/living/L = user
+
+		if(busy)
+			to_chat(L, "<span class='warning'>\The [src] is already being searched.</span>")
+			return
+
+		var/delay
+		var/has_shovel = FALSE
+		if(istype(W, /obj/item/shovel) || istype(W, /obj/item/shovel/spade))
+			has_shovel = TRUE
+
+		if(has_shovel)
+			delay = rand(2 SECONDS, 4 SECONDS) // 2-4 seconds with shovel
+			L.visible_message("[user] digs through the [src] with a shovel.","<span class='notice'>You quickly dig through the [src] with a shovel.</span>")
+			playsound(src.loc, SFX_TRASH, rand(35, 95), 1)
+
+		if(do_after(user, delay, src, luck_check_type = LUCK_CHECK_COMBAT))
+
+			if(loot_depletion && loot_left <= 0)
+				to_chat(L, "<span class='warning'>\The [src] has been picked clean.</span>")
+				busy = FALSE
+				return
+			//You already searched this one
+			if((user.ckey in searched_by) && !allow_multiple_looting)
+				to_chat(L, "<span class='warning'>You can't find anything else vaguely useful in \the [src].  Another set of eyes might, however.</span>")
+				busy = FALSE
+				return
+			// You got unlucky.
+			if(chance_nothing && prob(chance_nothing))
+				to_chat(L, "<span class='warning'>Nothing in this pile really catches your eye...</span>")
+				searched_by |= user.ckey
+				busy = FALSE
+				return
+
+			// You found something!
+			var/obj/item/loot = null
+			var/span = "notice" // Blue
+
+			if(prob(chance_rare) && rare_loot.len) // You won THE GRAND PRIZE!
+				loot = produce_rare_item()
+				span = "cult" // Purple and bold.
+			else if(prob(chance_uncommon) && uncommon_loot.len) // Otherwise you might still get something good.
+				loot = produce_uncommon_item()
+				span = "alium" // Green
+			else // Welp.
+				loot = produce_common_item()
+			if(loot)
+				searched_by |= user.ckey
+				loot.forceMove(get_turf(src))
+				to_chat(L, "<span class='[span]'>You found \a [loot]!</span>")
+				if(loot_depletion)
+					loot_left--
+					if(loot_left <= 0)
+						to_chat(L, "<span class='warning'>You seem to have gotten the last of the spoils inside \the [src].</span>")
+						if(delete_on_depletion)
+							qdel(src)
+		busy = FALSE
+	else
+		return ..()
+
 /obj/structure/loot_pile/attack_hand(mob/user)
 	//Human mob
 	if(isliving(user))
@@ -49,24 +111,13 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 			to_chat(L, "<span class='warning'>\The [src] is already being searched.</span>")
 			return
 
-		var/has_shovel = FALSE
-		var/active_item = get_active_item(L)
-		if(istype(active_item, /obj/item/shovel) || istype(active_item, /obj/item/shovel/spade))
-			has_shovel = TRUE
-
-		if(has_shovel)
-			L.visible_message("[user] digs through the [src] with a shovel.","<span class='notice'>You quickly dig through the [src] with a shovel.</span>")
-		else
-			L.visible_message("[user] searches through the [src].","<span class='notice'>You search through the [src].</span>")
+		L.visible_message("[user] searches through the [src].","<span class='notice'>You search through the [src].</span>")
 		playsound(src.loc, SFX_TRASH, rand(35, 95), 1)
 
 		//Do the searching
 		busy = TRUE
 		var/delay
-		if(has_shovel)
-			delay = rand(2 SECONDS, 4 SECONDS) // 2-4 seconds with shovel
-		else
-			delay = rand(4 SECONDS, 6 SECONDS) // default
+		delay = rand(4 SECONDS, 6 SECONDS) // default
 
 		if(do_after(user, delay, src, luck_check_type = LUCK_CHECK_COMBAT))
 			// Check if human has bare hands and apply damage/virus
