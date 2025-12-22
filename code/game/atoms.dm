@@ -314,7 +314,8 @@ its easier to just keep the beam vertical.
 		else
 			f_name += "[name][infix] (в машинном масле)."
 
-	. = list("\icon[src] Это [f_name][infix]")
+	//. = list("\icon[src] [f_name][infix]")
+	. = list("\icon[src] [f_name]")
 	. += desc
 
 	return
