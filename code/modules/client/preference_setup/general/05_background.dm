@@ -6,7 +6,7 @@
 	var/memory = ""
 
 	//Some faction information.
-	var/home_system = "Artemis"           //System of birth.
+	var/home_system = "New Rome"           //System of birth.
 	var/background = "The Great Novotheist Church"          //General associated faction.
 	var/religion = "Novotheism"               //Religious association.
 
