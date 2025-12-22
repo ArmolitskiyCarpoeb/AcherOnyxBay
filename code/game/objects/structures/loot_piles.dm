@@ -74,8 +74,8 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 				var/mob/living/carbon/human/H = user
 				var/obj/item/gloves = H.get_equipped_item(slot_gloves)
 				if(!gloves) // Bare hands
-					// 85% chance to cut hands (5 brute damage)
-					if(prob(85))
+					// 60% chance to cut hands (5 brute damage)
+					if(prob(60))
 						var/hand_to_damage = prob(50) ? BP_L_HAND : BP_R_HAND
 						H.apply_damage(5, BRUTE, hand_to_damage)
 						to_chat(H, "<span class='warning'>You cut your [hand_to_damage == BP_L_HAND ? "left" : "right"] hand on something sharp in \the [src]!</span>")
