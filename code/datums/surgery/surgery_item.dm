@@ -8,7 +8,17 @@
 	if(!target.can_operate(user))
 		return FALSE
 
-	if(!user.skillcheck(user.skills["surgery"], 50, null, "surgery") || !user.newstatcheck(user.stats[STAT_IQ], 12, null, STAT_IQ))
+	var/required_skill = 50
+	var/required_iq = 12
+
+	// Lowered thresholds for tongue removal with wirecutters (grim improvisation)
+	if(istype(src, /obj/item/wirecutters))
+		var/sel_zone = user.zone_sel?.selecting
+		if(sel_zone in list(BP_MOUTH, BP_HEAD))
+			required_skill = 25
+			required_iq = 7
+
+	if(!user.skillcheck(user.skills["surgery"], required_skill, null, "surgery") || !user.newstatcheck(user.stats[STAT_IQ], required_iq, null, STAT_IQ))
 		return FALSE
 
 	for(var/datum/surgery_step/S in GLOB.surgery_steps)

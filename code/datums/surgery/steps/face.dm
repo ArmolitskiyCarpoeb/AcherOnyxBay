@@ -65,6 +65,81 @@
 		)
 	target.losebreath += 10
 
+//Отрезание языка кусачками
+/datum/surgery_step/face/cut_off_tongue
+
+	duration = 300
+	blood_level = BLOODY_HANDS
+	shock_level = 60
+
+	allowed_tools = list(
+		/obj/item/wirecutters = 100,
+		)
+
+	preop_sound = 'sound/items/Wirecutter.ogg'
+	success_sound = 'sound/items/Wirecutter.ogg'
+	failure_sound = 'sound/weapons/bladeslice.ogg'
+
+/datum/surgery_step/face/cut_off_tongue/check_zone(mob/living/carbon/human/target, target_zone)
+	return (..() && target_zone in list(BP_MOUTH, BP_HEAD))
+
+/datum/surgery_step/face/cut_off_tongue/pick_target_organ(atom/user, mob/living/carbon/human/target, target_zone)
+	return target.internal_organs_by_name[BP_TONGUE]
+
+/datum/surgery_step/face/cut_off_tongue/check_target_organ(obj/item/organ/target_organ, mob/living/carbon/human/target, obj/item/tool, atom/user)
+	if(!target.should_have_organ(BP_TONGUE))
+		return FALSE
+
+	return istype(target_organ, /obj/item/organ/internal/tongue)
+
+/datum/surgery_step/face/cut_off_tongue/initiate(obj/item/organ/external/parent_organ, obj/item/organ/target_organ, mob/living/carbon/human/target, obj/item/tool, mob/user)
+	announce_preop(user,
+		"[user] медленно сжимает зубцы, подводя их к корню языка [target].",
+		"Ты подводишь холодные зубцы к корню языка [target]."
+		)
+	target.custom_pain(
+		"Сталь впивается в мясо языка [target], кровь заполняет горло.",
+		60,
+		affecting = parent_organ
+		)
+	return ..()
+
+/datum/surgery_step/face/cut_off_tongue/success(obj/item/organ/external/parent_organ, obj/item/organ/target_organ, mob/living/carbon/human/target, obj/item/tool, mob/user)
+	announce_success(user,
+		"[user] разводит лезвия кусачек, фиксируя язык [target] для отсечения. Одно движение и ты остался без языка!.",
+		"Вы слышите скрип стали, фиксируя язык перед отсечением. ЧИК И ГОТОВО, [target] больше не поговорит!"
+		)
+
+	parent_organ.take_external_damage(
+		10,
+		0,
+		(DAM_SHARP|DAM_EDGE),
+		used_weapon = tool
+		)
+
+	// Второй удар по голове, имитирующий финальный срез.
+	parent_organ.take_external_damage(
+		10,
+		0,
+		(DAM_SHARP|DAM_EDGE),
+		used_weapon = tool
+		)
+
+	var/obj/item/organ/internal/tongue/T = target_organ
+	T.removed(user)
+
+/datum/surgery_step/face/cut_off_tongue/failure(obj/item/organ/external/parent_organ, obj/item/organ/target_organ, mob/living/carbon/human/target, obj/item/tool, mob/user)
+	announce_failure(user,
+		"Рука [user] срывается, мясо рвётся, зубы скрипят под металлом.",
+		"Ваша рука срывается, мясо рвётся, зубы скрипят под металлом."
+		)
+
+	parent_organ.take_external_damage(
+		25,
+		0,
+		(DAM_SHARP|DAM_EDGE),
+		used_weapon = tool
+		)
 /**
  * Vaocal mending step.
  */
