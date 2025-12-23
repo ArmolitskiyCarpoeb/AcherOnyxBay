@@ -142,7 +142,9 @@
 	if(.)
 		H.newgeneratestats(10,16,6,14,5,12,6,14)
 		H.generate_skills()
-		H.skills["melee"] = rand(25, 60)
+		H.skills["melee"] = rand(35, 65)
+		H.skills["crafting"] = rand(25, 60)
+		H.skills["ranged"] = rand(25, 60)
 
 /datum/job/janitor
 	title = "Janitor"
