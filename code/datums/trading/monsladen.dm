@@ -5,8 +5,6 @@
 	typical_duration = 240
 
 	possible_wanted_items = list(
-							/obj/item/reagent_containers/food/human 							= TRADER_SUBTYPES_ONLY,
-							/obj/item/reagent_containers/food/meat								= TRADER_ALL,
 							/obj/item/reagent_containers/food/grown								= TRADER_ALL,
 							/obj/item/ore 														= TRADER_ALL,
 							/obj/item/seeds  													= TRADER_ALL,
@@ -69,10 +67,13 @@
 	possible_wanted_items = list(
 							// /mob/living/carbon/human 											= TRADER_ALL, //Пока отключил что бы раундстартом не продавали работяг
 							/obj/item/organ/internal/											= TRADER_SUBTYPES_ONLY,
+							/obj/item/organ/external/											= TRADER_SUBTYPES_ONLY,
 							/obj/item/gun/projectile/automatic/									= TRADER_SUBTYPES_ONLY,
 							/obj/item/gun/projectile/bolt_action/								= TRADER_SUBTYPES_ONLY,
 							/obj/item/gun/projectile/revolver/									= TRADER_SUBTYPES_ONLY,
 							/obj/item/gun/projectile/pistol										= TRADER_SUBTYPES_ONLY,
+							/obj/item/reagent_containers/food/human								= TRADER_ALL,
+							/obj/item/reagent_containers/food/meat 								= TRADER_ALL,
 							/obj/item/gun/energy/ 												= TRADER_SUBTYPES_ONLY
 							)
 
