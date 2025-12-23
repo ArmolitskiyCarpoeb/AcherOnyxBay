@@ -45,7 +45,7 @@
 
 /datum/category_item/player_setup_item/general/background/sanitize_character()
 	if(!pref.home_system)
-		pref.home_system = "Artemis"
+		pref.home_system = "New Rome"
 	if(!pref.background)
 		pref.background = "The Great Novotheist Church"
 	if(!pref.religion)

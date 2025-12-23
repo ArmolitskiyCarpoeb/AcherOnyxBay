@@ -706,7 +706,7 @@
 		return
 
 	if(isliving(user) && user.skills && !harvest_sample)
-		if(!user.skillcheck(user.skills["gardening"], 15, "You fail to harvest the plant properly.", "gardening"))
+		if(!user.skillcheck(user.skills["gardening"], 15, "You fail to harvest the plant.", "gardening"))
 			//user.learn_skills("gardening")
 			if(!force_amount && get_trait(TRAIT_YIELD) == 0)
 				to_chat(user, "<span class='danger'>You fail to harvest anything useful.</span>")

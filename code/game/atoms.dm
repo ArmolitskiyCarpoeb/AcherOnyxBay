@@ -307,15 +307,14 @@ its easier to just keep the beam vertical.
 	var/f_name = "\a [SPAN("info", "<em>[src][infix]</em>")]."
 	if(is_bloodied && !istype(src, /obj/effect/decal))
 
-		f_name = (gender == PLURAL) ? "немного " : " "//"a "
+		//f_name = (gender == PLURAL) ? "немного " : " "//"a "
 
 		if(blood_color != SYNTH_BLOOD_COLOUR)
 			f_name += "[SPAN("info", "<em>[name][infix]</em>")] <span class='danger'>(окровавлено)</span>!"
 		else
 			f_name += "[name][infix] (в машинном масле)."
 
-	//. = list("\icon[src] [f_name][infix]")
-	. = list("\icon[src] [f_name]")
+	. = list("\icon[src] [f_name][infix]")
 	. += desc
 
 	return

@@ -426,7 +426,7 @@
 		I.blend_mode = BLEND_ADD
 		I.alpha = round(255*power_output/max_power_output)
 		AddOverlays(I)
-		set_light(0.7, 0.1, rad_power + power_output - max_safe_output, 2, "#3b97ca")
+		set_light(0.7, 0.1, rad_power + power_output - max_safe_output, 2, "#85d320")
 	else
 		set_light(0)
 
@@ -466,8 +466,8 @@
 /obj/machinery/power/port_gen/pacman/super/potato/UseFuel()
 	if(reagents.has_reagent("vodka"))
 		rad_power = 2
-		temperature_gain = 60
-		reagents.remove_any(10)
+		temperature_gain = 30
+		reagents.remove_any(100)
 		if(prob(2))
 			audible_message("<span class='notice'>[src] churns happily</span>", splash_override = "*churn*")
 	else

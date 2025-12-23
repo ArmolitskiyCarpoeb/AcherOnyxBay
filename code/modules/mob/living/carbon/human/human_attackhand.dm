@@ -32,10 +32,6 @@
 			H.do_attack_animation(src)
 			return 0
 
-		if(H != src && try_dex_evade(H, FALSE))
-			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-			return 0
-
 		if(istype(H.gloves, /obj/item/clothing/gloves/boxing/hologloves))
 			H.do_attack_animation(src)
 			var/damage = rand(0, 9)
@@ -131,6 +127,10 @@
 			return H.make_grab(H, src)
 
 		if(I_HURT)
+			if(H != src && try_dex_evade(H, FALSE))
+				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+				return 0
+
 			if(!prob(M.client?.get_luck_for_type(LUCK_CHECK_COMBAT)))
 				visible_message(SPAN_DANGER("[M] attempted to swing at \the [src], but failed miserably!"))
 				return
@@ -255,10 +255,9 @@
 					if(prob(miss_chance))
 						if(!lying)
 							attack_message = "[H] attempted to strike [src], but missed!"
-						else
-							attack_message = "[H] attempted to strike [src], but he rolled out of the way!"
-							set_dir(pick(GLOB.cardinal))
-						miss_type = 1
+						//	attack_message = "[H] attempted to strike [src], but he rolled out of the way!"
+						//	set_dir(pick(GLOB.cardinal))
+							miss_type = 1
 
 			if(!miss_type && parrying)
 				if(handle_parry(H, null))
@@ -350,9 +349,9 @@
 		if(handle_block_normal(user, damage))
 			return 0
 
-	if(try_dex_evade(user, FALSE))
-		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-		return 0
+//	if(try_dex_evade(user, FALSE))
+//		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+//		return 0
 
 	var/dam_zone = pick(organs_by_name)
 	var/obj/item/organ/external/affecting = get_organ(ran_zone(dam_zone))

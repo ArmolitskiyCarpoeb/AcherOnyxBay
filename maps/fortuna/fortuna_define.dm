@@ -8,7 +8,7 @@
 	shuttle_types = list(
 		/datum/shuttle/autodock/ferry/deathsquad/polar,
 		/datum/shuttle/autodock/ferry/emergency/centcom/polar,
-		/datum/shuttle/autodock/ferry/supply/drone/polar,
+		/datum/shuttle/autodock/ferry/supply/drone/fortuna,
 		/datum/shuttle/autodock/ferry/train
 	)
 	load_legacy_saves = TRUE
