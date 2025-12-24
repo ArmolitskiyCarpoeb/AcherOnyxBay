@@ -829,4 +829,5 @@ var/list/worths = list(
 					//ниже отбалансенные цены
 					/obj/item/music_tape = 500,
 					/obj/item/music_player/boombox = 1500,
+					/obj/item/pizzabox = 120,
 					) //Must be in descending order. Child before parents, otherwise it doesn't work.,
