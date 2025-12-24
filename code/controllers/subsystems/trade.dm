@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(trade)
 	. = ..()
 	for(var/i in 1 to rand(1,3))
 		generate_trader()
-	traders += new /datum/trader/ship/MonsLadenCargo
+	add_trader_if_missing(/datum/trader/ship/MonsLadenCargo)
 
 /datum/controller/subsystem/trade/fire(resumed = FALSE)
 	if (!resumed)
@@ -35,16 +35,28 @@ SUBSYSTEM_DEF(trade)
 /datum/controller/subsystem/trade/stat_entry()
 	..("Traders: [traders.len]")
 
+/datum/controller/subsystem/trade/proc/add_trader_if_missing(type)
+	for(var/datum/trader/T in traders)
+		if(istype(T, type))
+			return
+	traders += new type
+
 /datum/controller/subsystem/trade/proc/generate_trader()
 	var/list/possible = list()
 	if(prob(UNIQUE_TRADER_PROB))
-		possible += typesof(/datum/trader/ship/contraband)
+		possible += subtypesof(/datum/trader/ship/contraband)
 	else
 		possible += /datum/trader/ship/MonsLadenCargo
+
+	// Фильтруем базовый тип /datum/trader/, который не должен появляться
+	possible -= /datum/trader
 
 	if(length(possible))
 		for(var/i in 1 to 10)
 			var/type = pick(possible)
+			// Дополнительная проверка на базовый тип
+			if(type == /datum/trader)
+				continue
 			var/bad = 0
 			for(var/trader in traders)
 				if(istype(trader, type))

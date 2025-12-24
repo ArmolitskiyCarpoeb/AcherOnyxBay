@@ -10,6 +10,8 @@
 	var/list/operated_organs = list()
 	/// Number, used to detemine current face surgery step, refactor this shit.
 	var/face = 0
+	/// Progress flag for multi-stage tongue removal (0 = not started, 1 = first stage done).
+	var/tongue_cut = 0
 
 /datum/surgery_status/proc/start_surgery(obj/item/organ/target_organ, target_zone)
 	LAZYADD(ongoing_steps, target_zone)
