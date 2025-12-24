@@ -292,8 +292,9 @@
 		return
 
 	if(user)
-		if(!user.skillcheck(user.skills["gardening"], 35, "You fail to harvest the plant properly.", "gardening"))
+		if(!user.skillcheck(user.skills["gardening"], 25, "You fail to harvest the plant properly.", "gardening"))
 			//user.learn_skills("gardening")
+			seed.harvest(get_turf(src),0)
 			return
 		seed.harvest(user,yield_mod)
 	else
@@ -449,6 +450,7 @@
 
 		if(!user.skillcheck(user.skills["gardening"], 40, "You fail to take a proper sample from the plant.", "gardening"))
 			//user.learn_skills("gardening")
+			health -= 25
 			return
 
 		// Create a sample.
@@ -547,6 +549,7 @@
 
 	if(!user.skillcheck(user.skills["gardening"], 25, "You fail to plant the seeds properly.", "gardening"))
 		//user.learn_skills("gardening")
+		qdel(S)
 		return
 
 	to_chat(user, "You plant the [S.seed.seed_name] [S.seed.seed_noun].")

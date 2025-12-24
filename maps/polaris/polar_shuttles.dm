@@ -3,6 +3,9 @@
 /datum/shuttle/autodock/ferry/supply/drone/polar
 	shuttle_area = /area/polarplanet/supply/dock
 
+/datum/shuttle/autodock/ferry/supply/drone/fortuna
+	shuttle_area = /area/polarplanet/supply/dock
+
 // Emergency
 
 /datum/shuttle/autodock/ferry/emergency/centcom/polar

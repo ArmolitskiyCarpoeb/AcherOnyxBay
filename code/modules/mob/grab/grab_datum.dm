@@ -310,7 +310,7 @@
 	// Modifier from ST difference - scales with the difference (very reduced impact)
 	// st_diff means: if target is stronger (positive diff), modifier is positive (easier to break)
 	// if assailant is stronger (negative diff), modifier is negative (harder to break)
-	var/st_modifier = st_diff * 0.1 // +1% per point of ST advantage for target
+	var/st_modifier = st_diff * 0.5 // +5% per point of ST advantage for target
 
 	// Calculate melee skill difference (target - assailant)
 	var/melee_diff = target_melee - assailant_melee
@@ -321,7 +321,7 @@
 	// Apply modifiers to break chance (both can stack)
 	p_diff += st_modifier + melee_modifier
 	// Ensure break chance doesn't go below a minimum (still possible but very hard)
-	p_diff = max(p_diff, 2.0)
+	p_diff = max(p_diff, 3.0)
 
 	// Debug message to verify it's working (uncomment to test)
 	//assailant.visible_message("Debug: ST [assailant_st] vs [target_st] (diff=[st_diff], mod=[st_modifier]) | Melee [assailant_melee] vs [target_melee] (diff=[melee_diff], mod=[melee_modifier]) | p_diff=[p_diff]")

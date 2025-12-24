@@ -352,6 +352,9 @@
 		if(ismob(item))
 			var/mob/M = item
 
+			if(!src.newstatcheck(src.stats[STAT_ST], 15, null, STAT_ST))
+				return
+
 			//limit throw range by relative mob size
 			next_move = world.time + 15
 			throw_range = round(M.throw_range * min(mob_size / M.mob_size, 1))

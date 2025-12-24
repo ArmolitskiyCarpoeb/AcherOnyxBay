@@ -55,7 +55,7 @@
 
 /mob/proc/newstatcheck(var/stat, var/requirement, var/message = null, var/type = null)//min requirement
 	if(stat >= requirement)
-		log_debug("[stat] meets the [requirement]")
+		//log_debug("[stat] meets the [requirement]")
 		return 1
 	else
 		if(message)
@@ -169,13 +169,13 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	var/chance = dx + (skills["melee"] / 2) // 95% for max melee and max dx
 	if(is_disarm)
 		chance += 5 // Slightly easier to slip a disarm than a solid hit.
-	return clamp(chance, 0, 75)
+	return clamp(chance, 0, 50)
 
 /mob/living/carbon/human/proc/try_dex_evade(var/mob/living/carbon/human/attacker, var/is_disarm = FALSE)
 	var/chance = get_dex_evade_chance(is_disarm)
 	if(!chance)
 		return FALSE
-	if(prob(chance))
+	if(prob(chance) && src.stat < 1)
 		var/msg = is_disarm ? "[src] nimbly avoids [attacker]'s swing!" : "[src] twists away from [attacker]'s hands!"
 		src.visible_message(SPAN_WARNING(msg))
 		return TRUE
@@ -184,10 +184,10 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 /mob/living/carbon/human/proc/get_dex_hit_chance(var/hand_attack = TRUE)
 	// 10% per point of DX above 10, -10% per point below 10.
 	var/dx = stats ? stats[STAT_DX] : 5
-	var/chance = dx + (skills["melee"] / 2) // 95% for max melee and max dx
+	var/chance = dx + (skills["melee"]) // 100% for max melee and max dx
 	if(!hand_attack)
-		chance -= 10 // (Optional small penalty if not hands, tweak if needed)
-	return clamp(chance, 5, 95)
+		chance -= 3 // (Optional small penalty if not hands, tweak if needed)
+	return clamp(chance, 5, 100)
 
 /mob/proc/temporary_stat_adjust(var/stat, var/modifier, var/time)
 	if(stats[stat] && modifier && time)//In case you somehow call this without using all three vars.
