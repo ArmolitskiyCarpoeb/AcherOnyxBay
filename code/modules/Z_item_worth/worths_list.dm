@@ -826,4 +826,7 @@ var/list/worths = list(
 					/obj/machinery/libraryscanner = -1000,
 					/obj/machinery/bookbinder = -1200,
 					/obj/machinery = -1000,
+					//ниже отбалансенные цены
+					/obj/item/music_tape = 500,
+					/obj/item/music_player/boombox = 1500,
 					) //Must be in descending order. Child before parents, otherwise it doesn't work.,
