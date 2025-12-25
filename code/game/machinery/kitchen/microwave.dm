@@ -310,7 +310,7 @@
 			for(var/obj/item/I in cooked)
 				I.dropInto(loc)
 			return
-		// Check cooking skill before making food
+		/* ЭТА ХУЙНЯ ПЛОХО РАБОТАЕТ + МИКРОВОЛНОВКА НЕ ДОЛЖНА ТАК РАБОТАТЬ
 		if(cooking_user && !cooking_user.skillcheck(cooking_user.skills["cooking"], 50, "Я всё испортил!!!", "cooking"))
 			stop()
 			cooked = fail()
@@ -322,6 +322,7 @@
 			return
 		cooked = recipe.make_food(src)
 		stop()
+		*/
 		if(cooked)
 			for(var/obj/item/I in cooked)
 				I.dropInto(loc)
