@@ -48,7 +48,7 @@
 /datum/job/doctor/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(5,15,8,15,11,18,5,15)
+		H.newgeneratestats(5,13,8,14,11,20,7,15)
 		H.generate_skills()
 		H.skills["medical"] = rand(60, 95)
 		H.skills["surgery"] = rand(50, 85)
