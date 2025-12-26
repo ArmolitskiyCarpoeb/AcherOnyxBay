@@ -6,7 +6,7 @@
 	)
 	travel_chance = 5
 	exterior_atmosphere = list("oxygen" = 1.05 * MOLES_O2STANDARD, "nitrogen" = 1.05 * MOLES_N2STANDARD, "carbon_dioxide" = MOLES_CELLSTANDARD * 0.1)
-	exterior_atmos_temp = -35 CELSIUS
+	exterior_atmos_temp = -23 CELSIUS
 
 /datum/space_level/fortuna_1/generate(z)
 	new /datum/random_map/automata/cave_system/air(null, 1, 1, z, 256, 256)
@@ -21,7 +21,7 @@
 	)
 	travel_chance = 5
 	exterior_atmosphere = list("oxygen" = MOLES_O2STANDARD, "nitrogen" = MOLES_N2STANDARD)
-	exterior_atmos_temp = -40 CELSIUS
+	exterior_atmos_temp = -23 CELSIUS
 
 /datum/space_level/fortuna_3
 	path = 'fortuna-3.dmm'
@@ -31,7 +31,7 @@
 	)
 	travel_chance = 5
 	exterior_atmosphere = list("carbon_dioxide" = MOLES_CELLSTANDARD, "nitrogen" = MOLES_N2STANDARD)
-	exterior_atmos_temp = -80 CELSIUS
+	exterior_atmos_temp = -35 CELSIUS
 
 /datum/space_level/fortuna_4
 	path = 'fortuna-4.dmm'
