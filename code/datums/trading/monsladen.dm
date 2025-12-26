@@ -25,7 +25,12 @@
 							/obj/item/device/binoculars 										= TRADER_THIS_TYPE,
 							/obj/item/music_player/boombox										= TRADER_THIS_TYPE,
 							/obj/item/cell/device/high											= TRADER_THIS_TYPE,
-							/obj/item/music_tape/custom											= TRADER_THIS_TYPE
+							/obj/item/music_tape/custom											= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/capacitor/adv									= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/capacitor/super								= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/capacitor/rectangular							= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/micro_laser									= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/matter_bin									= TRADER_THIS_TYPE
 							)
 
 	blacklisted_trade_items = null
