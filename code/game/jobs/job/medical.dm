@@ -50,8 +50,9 @@
 	if(.)
 		H.newgeneratestats(5,15,8,15,11,18,5,15)
 		H.generate_skills()
-		H.skills["medical"] = rand(50, 85)
+		H.skills["medical"] = rand(60, 95)
 		H.skills["surgery"] = rand(50, 85)
+		H.body_build_stats()
 
 /datum/job/virologist
 	title = "Virologist"

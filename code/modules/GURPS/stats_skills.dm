@@ -151,6 +151,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 /mob/proc/adjustDexterity(value)
 	stats[STAT_DX] += value
 	if(stats[STAT_DX] >= 20)
+		stats[STAT_DX] = 20
 		return FALSE
 
 /mob/proc/adjustInteligence(value)
@@ -278,7 +279,8 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 		skills[skill] = 45 + (rand(1,25) + rand(1,30))
 		rand_skills -= skill
 	for(var/skill in rand_skills)
-		skills[skill] = (rand(1,10) + rand(3,20) + rand(2,15))
+		//skills[skill] = (rand(1,10) + rand(3,20) + rand(2,15))
+		skills[skill] = (rand(1,15) + rand(0,25) + rand(0,10))
 
 /mob/proc/newgenerateskills(var/list/newgenerateskills, var/skill1, var/skill2)
 	for(var/skill in newgenerateskills)
@@ -330,7 +332,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 /mob/living/carbon/human/proc/body_build_stats(var/mob/living/carbon/human/H)
 	if(istype(H.body_build, /datum/body_build/slim))
 		adjustStrength(rand(-5,-3))
-		adjustDexterity(rand(1,5))
+		adjustDexterity(rand(2,5))
 	if(istype(H.body_build, /datum/body_build/fat))
 		adjustStrength(rand(-2,2))
 		adjustDexterity(rand(-5,-3))
