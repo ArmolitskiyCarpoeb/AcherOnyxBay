@@ -31,6 +31,7 @@
 		H.skills["medical"] = rand(0, 100)
 		H.skills["surgery"] = rand(0, 100)
 		H.skills["gardening"] = rand(0, 100)
+		H.body_build_stats()
 /*
 /datum/job/assistant/get_access()
 	if(config.game.assistant_maint)
