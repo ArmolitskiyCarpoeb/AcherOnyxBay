@@ -34,7 +34,11 @@
 	icon_state = "clop_intestines"
 	item_state = "clop_intestines"
 	filling_color = "#72794d"
-	startswith = list(/datum/reagent/nutriment/protein = 30)
+	startswith = list(/datum/reagent/nutriment/protein = 15,
+	/datum/reagent/capsaicin = 2.5,
+	/datum/reagent/toxin = 1
+	)
+	nutriment_amt = 35
 	health = 90
 	bitesize = 15
 
