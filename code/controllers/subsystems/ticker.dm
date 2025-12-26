@@ -128,13 +128,13 @@ SUBSYSTEM_DEF(ticker)
 	// Station-wide production objectives: always issue at round start.
 	if(GLOB.station_objectives && !GLOB.station_objectives.active)
 		var/list/tasks = GLOB.station_objectives.generate_tasks()
-		var/time_limit = rand(55, 75) * 1 MINUTES
+		var/time_limit = rand(45, 60) * 1 MINUTES
 		spawn(3000) //5 minutes ready time
 		GLOB.station_objectives.start_directive(tasks, time_limit, null)
 
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
-		to_world("<span class='info'><B>Enjoy the game!</B></span>")
+		to_world("<span class='info'><B>Наслаждаемся!</B></span>")
 
 		for(var/mob/M in GLOB.player_list)
 			M.playsound_local(M.loc, GLOB.using_map.welcome_sound, 75)

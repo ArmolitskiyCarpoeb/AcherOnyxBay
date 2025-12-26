@@ -9,11 +9,13 @@
 	var/list/tasks = list()
 	/// Pool of possible tasks to pick from each round.
 	var/list/task_pool = list(
-		list("name" = "УГОЛЬ", "item_type" = /obj/item/ore/coal, "min" = 25, "max" = 40),
-		list("name" = "СТАЛЬ", "item_type" = /obj/item/stack/material/steel, "min" = 15, "max" = 50),
-		list("name" = "СТЕКЛО", "item_type" = /obj/item/stack/material/glass, "min" = 15, "max" = 50),
-		list("name" = "БАНАН", "item_type" = /obj/item/reagent_containers/food/grown/banana, "min" = 8, "max" = 16),
-		list("name" = "ПЛАЗМА", "item_type" = /obj/item/ore/plasma, "min" = 20, "max" = 50)
+		list("name" = "УГОЛЬ", "item_type" = /obj/item/ore/coal, "min" = 25, "max" = 100),
+		list("name" = "УРАН", "item_type" = /obj/item/stack/material/uranium, "min" = 5, "max" = 30),
+		list("name" = "СТАЛЬ", "item_type" = /obj/item/stack/material/steel, "min" = 15, "max" = 100),
+		list("name" = "СТЕКЛО", "item_type" = /obj/item/stack/material/glass, "min" = 15, "max" = 100),
+		list("name" = "БАНАН", "item_type" = /obj/item/reagent_containers/food/grown/banana, "min" = 12, "max" = 24),
+		list("name" = "КАРТОШКА", "item_type" = /obj/item/reagent_containers/food/grown/potato, "min" = 15, "max" = 32),
+		list("name" = "ПЛАЗМА", "item_type" = /obj/item/ore/plasma, "min" = 20, "max" = 65)
 	)
 	/// If we're currently executing a punishment.
 	var/sanction_running = FALSE
