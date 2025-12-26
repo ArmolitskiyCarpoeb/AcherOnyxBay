@@ -744,7 +744,7 @@
 	b_max_bright = 1.0
 	b_outer_range = 7
 	b_curve = 3.5
-	b_color = "#ebe6b6"
+	b_color = "#f0efee"
 	lighting_modes = list(
 		LIGHTMODE_EMERGENCY  = list(l_max_bright = 0.7,  l_inner_range = 1, l_outer_range = 5, l_falloff_curve = 3.5, l_color = "#da0205"),
 		LIGHTMODE_EVACUATION = list(l_max_bright = 1.0, l_inner_range = 1, l_outer_range = 7, l_falloff_curve = 3.5, l_color = "#bf6600"),
@@ -799,7 +799,7 @@
 	b_inner_range = 0.9
 	b_outer_range = 5
 	b_curve = 4.5
-	b_color = "#dabe8b"
+	b_color = "#dfd5c2"
 	lighting_modes = list(
 		LIGHTMODE_EMERGENCY  = list(l_max_bright = 0.8, l_inner_range = 0.5,  l_outer_range = 4, l_falloff_curve = 4.5, l_color = "#da0205"),
 		LIGHTMODE_EVACUATION = list(l_max_bright = 0.85, l_inner_range = 0.6, l_outer_range = 5, l_falloff_curve = 4.5, l_color = "#bf6600"),
