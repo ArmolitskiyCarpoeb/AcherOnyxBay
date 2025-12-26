@@ -71,13 +71,6 @@
 
 	BITSET(hud_updateflag, STATUS_HUD)
 
-	if(istype(src.body_build, /datum/body_build/slim))
-		adjustStrength(rand(-5,-3))
-		adjustDexterity(rand(1,5))
-	if(istype(src.body_build, /datum/body_build/fat))
-		adjustStrength(rand(-2,2))
-		adjustDexterity(rand(-5,-3))
-
 /mob/living/carbon/human/Destroy()
 	GLOB.human_mob_list -= src
 	worn_underwear = null

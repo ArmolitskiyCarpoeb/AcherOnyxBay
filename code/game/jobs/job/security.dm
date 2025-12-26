@@ -87,4 +87,4 @@
 		H.generate_skills()
 		H.skills["melee"] = rand(55, 95)
 		H.skills["ranged"] = rand(55, 95)
-		H.body_build_stats()
+		H.body_build_stats(H)

@@ -52,7 +52,7 @@
 		H.generate_skills()
 		H.skills["medical"] = rand(60, 95)
 		H.skills["surgery"] = rand(50, 85)
-		H.body_build_stats()
+		H.body_build_stats(H)
 
 /datum/job/virologist
 	title = "Virologist"

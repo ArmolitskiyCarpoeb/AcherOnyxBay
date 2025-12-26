@@ -31,7 +31,7 @@
 		H.generate_skills()
 		H.skills["ranged"] = rand(50, 95)
 		H.skills["melee"] = rand(50, 95)
-		H.body_build_stats()
+		H.body_build_stats(H)
 		var/obj/machinery/nuclearbomb/nuke = locate(/obj/machinery/nuclearbomb/station) in world
 		if(nuke)
 			H.mind.store_memory("")

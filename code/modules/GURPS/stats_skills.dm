@@ -330,9 +330,11 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 			stats[stat] = 100
 
 /mob/living/carbon/human/proc/body_build_stats(var/mob/living/carbon/human/H)
-	if(istype(H.body_build, /datum/body_build/slim))
+	if(istype(H.body_build, /datum/body_build/slim) || istype(H.body_build, /datum/body_build/slim/flat) || istype(H.body_build, /datum/body_build/slim/male) || istype(H.body_build, /datum/body_build/slim/alt))
 		adjustStrength(rand(-5,-3))
+		//H.stats[STAT_ST] -= rand(-5,-3)
 		adjustDexterity(rand(2,5))
+		//H.stats[STAT_DX] -= rand(2,5)
 	if(istype(H.body_build, /datum/body_build/fat))
 		adjustStrength(rand(-2,2))
 		adjustDexterity(rand(-5,-3))

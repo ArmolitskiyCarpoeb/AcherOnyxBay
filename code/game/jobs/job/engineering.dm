@@ -57,7 +57,7 @@
 		H.generate_skills()
 		H.skills["engineering"] = rand(50, 95)
 		H.skills["crafting"] = rand(50, 95)
-		H.body_build_stats()
+		H.body_build_stats(H)
 
 /datum/job/atmos
 	title = "Atmospheric Technician"
