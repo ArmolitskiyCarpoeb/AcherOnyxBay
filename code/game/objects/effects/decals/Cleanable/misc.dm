@@ -109,6 +109,18 @@
 	name = "dried vomit"
 	color = "#cccc00"
 
+/obj/effect/decal/cleanable/blood/clop
+	name = "гемолимфа"
+	desc = ""
+	icon = 'icons/effects/blood.dmi'
+	icon_state = "gibbl"
+	basecolor = "#72794d"
+	random_icon_states = list("gib1", "gib2", "gib3", "gib5", "gib6")
+	viruses = list()
+
+/obj/effect/decal/cleanable/blood/clop/think()
+	viruses.Cut()
+
 /obj/effect/decal/cleanable/tomato_smudge
 	name = "tomato smudge"
 	desc = "It's red."

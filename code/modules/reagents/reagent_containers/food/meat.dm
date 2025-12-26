@@ -28,6 +28,19 @@
 	else
 		..()
 
+/obj/item/reagent_containers/food/meat/clop
+	name = "внутренности клопа"
+	desc = "Традиционная Ахеронская закуска к пиву."
+	icon_state = "clop_intestines"
+	item_state = "clop_intestines"
+	filling_color = "#72794d"
+	startswith = list(/datum/reagent/nutriment/protein = 30)
+	health = 90
+	bitesize = 15
+
+/obj/item/reagent_containers/food/meat/clop/attackby(obj/item/W, mob/user)
+	return
+
 /obj/item/reagent_containers/food/meat/syntiflesh
 	name = "synthetic meat"
 	desc = "A synthetic slab of flesh."

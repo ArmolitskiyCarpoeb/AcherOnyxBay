@@ -6,6 +6,7 @@
 	icon_state = "clop"
 	icon_living = "clop"
 	item_state = "clop"
+	icon_gib = "gib"
 	icon_dead = "dead"
 	health = 5
 	maxHealth = 5
@@ -21,9 +22,22 @@
 	universal_speak = 0
 	universal_understand = 1
 	controllable = TRUE
+	meat_type = /obj/item/reagent_containers/food/meat/clop
+	meat_amount = 1
+	mob_size = MOB_SMALL
 
 /decl/simple_animal_bodyparts/clop
 	hit_zones = list("segmented body", "sting", "eye", "segmented legs")
+
+/mob/living/simple_animal/hostile/clop/harvest(mob/user)
+	var/actual_meat_amount = max(1,(meat_amount/2))
+	if(meat_type && actual_meat_amount>0 && (is_ooc_dead()))
+		for(var/i=0;i<actual_meat_amount;i++)
+			var/obj/item/meat = new meat_type(get_turf(src))
+			meat.SetName("[meat.name]")
+			user.visible_message("<span class='danger'>[user] chops up \the [src]!</span>")
+			new /obj/effect/decal/cleanable/blood/clop(get_turf(src))
+			qdel(src)
 
 /mob/living/simple_animal/hostile/clop/Initialize()
 	. = ..()
@@ -34,12 +48,12 @@
 		name = "[name] ([sequential_id(/mob/living/simple_animal/hostile/clop)])"
 	real_name = name
 
-	if(prob(85))
+	if(prob(25))
 		if(prob(1))
 			virus = new (VIRUS_EXOTIC)
-		else if(prob(10))
+		else if(prob(5))
 			virus = new (VIRUS_ENGINEERED)
-		else if(prob(50))
+		else if(prob(15))
 			virus = new (VIRUS_COMMON)
 		else
 			virus = new (VIRUS_MILD)
