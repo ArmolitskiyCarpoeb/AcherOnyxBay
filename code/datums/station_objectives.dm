@@ -15,7 +15,7 @@
 		list("name" = "СТЕКЛО", "item_type" = /obj/item/stack/material/glass, "min" = 15, "max" = 100),
 		list("name" = "БАНАН", "item_type" = /obj/item/reagent_containers/food/grown/banana, "min" = 12, "max" = 24),
 		list("name" = "КАРТОШКА", "item_type" = /obj/item/reagent_containers/food/grown/potato, "min" = 15, "max" = 32),
-		list("name" = "ПЛАЗМА", "item_type" = /obj/item/ore/plasma, "min" = 20, "max" = 65)
+		list("name" = "ПЛАЗМА", "item_type" = /obj/item/stack/material/plasma, "min" = 20, "max" = 65)
 	)
 	/// If we're currently executing a punishment.
 	var/sanction_running = FALSE
@@ -117,7 +117,14 @@
 
 	if(progress_changed && all_tasks_completed())
 		complete_directive()
+	if(progress_changed && half_tasks_completed())
+		half_complete_directive()
 
+/datum/station_objective_manager/proc/half_tasks_completed()
+	for(var/datum/station_objective_task/task in tasks)
+		if(task.is_half_complete())
+			return TRUE
+	return FALSE
 /datum/station_objective_manager/proc/all_tasks_completed()
 	if(!tasks.len)
 		return FALSE
@@ -135,12 +142,24 @@
 	active = FALSE
 	SSannounce.play_station_announce(/datum/announce/station_objectives_success, format_status_text("Все задачи выполнены вовремя."))
 
+/datum/station_objective_manager/proc/half_complete_directive()
+	if(!active)
+		return
+
+	active = FALSE
+	SSannounce.play_station_announce(/datum/announce/station_objectives_success, format_status_text("ЗАДАЧИ ВЫПОЛНЕНЫ НАПОЛОВИНУ."))
+	start_shock_pulses()
+	if(GLOB.station_objectives && !GLOB.station_objectives.active)
+		var/list/tasks = GLOB.station_objectives.generate_tasks()
+		var/time_limit = rand(30, 45) * 1 MINUTES
+		spawn(1500)
+		GLOB.station_objectives.start_directive(tasks, time_limit, null)
+
 /datum/station_objective_manager/proc/fail_directive(reason)
 	if(!active)
 		return
 
 	active = FALSE
-
 	var/text = format_status_text("СТАТУС ДИРЕКТИВЫ: ПРОВАЛ. [reason || "Недостаточно поставок."]")
 	SSannounce.play_station_announce(/datum/announce/station_objectives_failure, text)
 	apply_sanction()
@@ -155,7 +174,7 @@
 	var/time_left_minutes = round(time_limit / (1 MINUTE))
 	var/list/lines = list("Новая производственная директива.",
 		"Лимит времени: [time_left_minutes] мин.",
-		"Отправьте все ресурсы через челнок снабжения. В случае провала директивы будут применены санкции в виде отряда зачистки или ультрашоковой терапии.")
+		"Отправьте все переработанные ресурсы через челнок снабжения. В случае провала директивы будут применены санкции в виде отряда зачистки или ультрашоковой терапии.")
 
 	for(var/datum/station_objective_task/task in tasks)
 		lines += "- [task.required_amount]x [task.name]"
@@ -179,14 +198,14 @@
 			to_chat(O, SPAN_DEADSAY("Чтобы присоединится к отряду зачистки выберите БЫТЬ ЗЛОДЕЕМ в ООС."))
 
 	SSticker.looking_for_antags = 1
-	spawn(2 MINUTES)
+	spawn(3 MINUTES)
 		dispatch_deathsquad()
 		SSticker.looking_for_antags = 0
 	return TRUE
 
 /datum/station_objective_manager/proc/start_shock_pulses()
-	shock_end_time = world.time + (2 MINUTES)
-	SSannounce.play_station_announce(/datum/announce/station_objectives_sanction, "Ультрашоковая терапия - 2 минуты!")
+	shock_end_time = world.time + (1 MINUTES)
+	SSannounce.play_station_announce(/datum/announce/station_objectives_sanction, "Ультрашоковая терапия!")
 	do_shock_pulse()
 
 /datum/station_objective_manager/proc/do_shock_pulse()
@@ -198,9 +217,9 @@
 		if(H.stat == DEAD)
 			continue
 		if(!electrocute_mob(H, get_area(H), src, 0.5))
-			H.electrocute_act(rand(25, 70), src, 0.5, ran_zone(BP_CHEST, 50))
+			H.electrocute_act(rand(50, 100), src, 0.5, ran_zone(BP_CHEST, 50))
 
-	spawn(30 SECONDS)
+	spawn(59 SECONDS)
 		do_shock_pulse()
 
 /datum/station_objective_manager/proc/dispatch_deathsquad()
@@ -235,3 +254,6 @@
 
 /datum/station_objective_task/proc/is_complete()
 	return current_amount >= required_amount
+
+/datum/station_objective_task/proc/is_half_complete()
+	return (current_amount < required_amount) && (current_amount > 0)
