@@ -18,22 +18,18 @@
 		"Hishmaliin"					= 'sound/music/aprovedmusic1/Dvar_-_Hishmaliin.ogg',
 		"Swallowed_Burning_Coals"		= 'sound/music/aprovedmusic1/EI_Tigr3_-_She_Swallowed_Burning_Coals.ogg',
 		"Hot Plates"					= 'sound/music/aprovedmusic1/Judge Bitch — Hot Plates.ogg',
-		"Main Theme"					= 'sound/music/aprovedmusic1/Max Payne - Main Theme.ogg',
 		"Unreleased Track"				= 'sound/music/aprovedmusic1/Squarepusher & Aphex Twin — Unreleased Track.ogg',
-		"Take Me Down Below"			= 'sound/music/aprovedmusic1/Kiss - Take Me Down Below.ogg',
 		"I Was Made For Lovin You"		= 'sound/music/aprovedmusic1/Kiss - I Was Made For Lovin You.ogg'
 	)
 
 /obj/item/music_tape/random/aprovedmusic2
-	name = "Одобренные треки 1"
+	name = "Одобренные треки 2"
 	desc = "Церковь одобрила эти треки. Да познает душа слушающих счастье"
 	tracklist = list(
-		"Little Dark Age"				= 'sound/music/aprovedmusic2/Little Dark Age.ogg',
-		"9mm"							= 'sound/music/aprovedmusic2/Memphis Cult - 9mm.ogg',
 		"Army of the Night"				= 'sound/music/aprovedmusic2/Powerwolf - Army of the Night.ogg',
-		"We Drink Your Blood"			= 'sound/music/aprovedmusic2/Powerwolf - We Drink Your Blood.ogg',
-		"Dragula"						= 'sound/music/aprovedmusic2/Rob Zombie - Dragula.ogg',
-		"Living Dead Girl"				= 'sound/music/aprovedmusic2/Rob Zombie - Living Dead Girl.ogg'
+		"Take Me Down Below"			= 'sound/music/aprovedmusic2/Kiss - Take Me Down Below.ogg',
+		"Main Theme"					= 'sound/music/aprovedmusic2/Max Payne - Main Theme.ogg',
+		"Dragula"						= 'sound/music/aprovedmusic2/Rob Zombie - Dragula.ogg'
 	)
 
 /obj/item/music_tape/random/nonaprovedmusic
