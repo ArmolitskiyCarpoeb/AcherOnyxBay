@@ -461,6 +461,7 @@
 #include "code\datums\movement\robot.dm"
 #include "code\datums\movement\~defines.dm"
 #include "code\datums\outfits\_defines.dm"
+#include "code\datums\outfits\herecy.dm"
 #include "code\datums\outfits\horror_killers.dm"
 #include "code\datums\outfits\misc.dm"
 #include "code\datums\outfits\nanotrasen.dm"

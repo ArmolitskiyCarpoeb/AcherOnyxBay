@@ -42,7 +42,6 @@
 		"At Doom's Gate"				= 'sound/music/nonaprovedmusic/At Doom Gate.ogg',
 		"Hallo Spaceboy"				= 'sound/music/nonaprovedmusic/David Bowie - Hallo Spaceboy.ogg',
 		"Decadence"						= 'sound/music/nonaprovedmusic/Disturbed - Decadence.ogg',
-		"Hard Bass"						= 'sound/music/nonaprovedmusic/Hard Bass School.ogg',
 		"Smells_Blood"					= 'sound/music/nonaprovedmusic/Kensuke_Ushio_-_Smells_Blood.ogg',
 		"Nas ne dogonyat"				= 'sound/music/nonaprovedmusic/t.A.T.u․ - Нас не догонят.ogg',
 		"Ich hasse Kinder"				= 'sound/music/nonaprovedmusic/Till Lindemann - Ich hasse Kinder.ogg',
