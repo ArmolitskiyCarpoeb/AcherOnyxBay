@@ -14,23 +14,33 @@
 							)
 
 	possible_trading_items = list(
-							/obj/item/pizzabox													= TRADER_SUBTYPES_ONLY,
 							/mob/living/simple_animal/pig 										= TRADER_THIS_TYPE,
 							/obj/item/reagent_containers/food/soydope 							= TRADER_THIS_TYPE,
 							/datum/design/item/powercell/device/high							= TRADER_THIS_TYPE,
-							/obj/item/stack/material/plastic/fifty 								= TRADER_THIS_TYPE,
-							/obj/item/stack/material/marble/fifty 								= TRADER_THIS_TYPE,
-							/obj/item/stack/material/glass/plass/ten 							= TRADER_THIS_TYPE,
 							/obj/item/bodybag/cryobag 											= TRADER_THIS_TYPE,
-							/obj/item/device/binoculars 										= TRADER_THIS_TYPE,
 							/obj/item/music_player/boombox										= TRADER_THIS_TYPE,
 							/obj/item/cell/device/high											= TRADER_THIS_TYPE,
 							/obj/item/music_tape/custom											= TRADER_THIS_TYPE,
+
+							/obj/item/stock_parts/capacitor										= TRADER_THIS_TYPE,
 							/obj/item/stock_parts/capacitor/adv									= TRADER_THIS_TYPE,
-							/obj/item/stock_parts/capacitor/super								= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/capacitor/super 								= TRADER_THIS_TYPE,
 							/obj/item/stock_parts/capacitor/rectangular							= TRADER_THIS_TYPE,
+
+							/obj/item/stock_parts/manipulator									= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/manipulator/nano								= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/manipulator/pico								= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/manipulator/femto								= TRADER_THIS_TYPE,
+
 							/obj/item/stock_parts/micro_laser									= TRADER_THIS_TYPE,
-							/obj/item/stock_parts/matter_bin									= TRADER_THIS_TYPE
+							/obj/item/stock_parts/micro_laser/high								= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/micro_laser/ultra								= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/micro_laser/quadultra							= TRADER_THIS_TYPE,
+
+							/obj/item/stock_parts/matter_bin									= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/matter_bin/adv								= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/matter_bin/super								= TRADER_THIS_TYPE,
+							/obj/item/stock_parts/matter_bin/bluespace							= TRADER_THIS_TYPE,
 							)
 
 	blacklisted_trade_items = null
@@ -82,7 +92,9 @@
 							/obj/item/gun/energy/ 												= TRADER_SUBTYPES_ONLY
 							)
 
-	possible_trading_items = list(/obj/item/gun/projectile/automatic/as75 						= TRADER_THIS_TYPE,
+	possible_trading_items = list(
+							/obj/item/storage/toolbox/syndicate									= TRADER_THIS_TYPE,
+							/obj/item/gun/projectile/automatic/as75 							= TRADER_THIS_TYPE,
 							/obj/item/ammo_magazine/c556 										= TRADER_THIS_TYPE,
 							/obj/item/gun/projectile/bolt_action/mauser							= TRADER_THIS_TYPE,
 							/obj/item/ammo_magazine/c792										= TRADER_THIS_TYPE,
