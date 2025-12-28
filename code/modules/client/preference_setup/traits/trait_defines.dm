@@ -114,6 +114,12 @@
 						/datum/trait/modifier/good/high_metabolism, /datum/trait/modifier/bad/low_metabolism)
 	trait_cost = -4
 
+/datum/trait/modifier/bad/bad_eyes
+	name = "Плохое зрение"
+	desc = "У тебя плохое зрение"
+	modifier_type = /datum/modifier/trait/bad_eyes
+	trait_cost = -3
+
 /datum/trait/modifier/bad/unskiled_medical
 	name = "Врач-шарлатан"
 	desc = "Пока ты работал в больнице, смертей стало больше. Интересно почему?"

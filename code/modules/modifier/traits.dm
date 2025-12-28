@@ -91,6 +91,13 @@
 
 /// Плохие трейты, добавляют очки трейтов
 
+/datum/modifier/trait/bad_eyes
+	name = "Слабое зрение"
+
+/datum/modifier/trait/bad_eyes/on_applied()
+	holder.sdisabilities |= NEARSIGHTED
+	holder.disabilities |= NEARSIGHTED
+
 /datum/modifier/trait/more_stun
 	name = "Less negative effect duration"
 	disable_duration_percent = 1.25
@@ -118,7 +125,7 @@
 		holder.skills["ranged"] += -25
 
 /datum/modifier/trait/unskiled_cooking
-	name = ""
+	name = "Плохой повар"
 
 /datum/modifier/trait/unskiled_cooking/on_applied()
 	if(holder.skills)
