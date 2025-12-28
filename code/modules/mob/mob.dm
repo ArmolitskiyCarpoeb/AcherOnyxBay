@@ -646,8 +646,16 @@
 			stat("TRAITS:")
 			if("Быстрый метаболизм" in mind.traits)
 				trait_status_lines += "У меня быстрый метаболизм"
-			if("В хорошей форме" in mind.traits)
-				trait_status_lines += "Я в хорошей физической форме"
+			if("Учился врачевать" in mind.traits)
+				trait_status_lines += "Я неплохой врач"
+			if("Умею махать кулаками" in mind.traits)
+				trait_status_lines += "Я умею драться"
+			if("Умелый стрелок" in mind.traits)
+				trait_status_lines += "Стрельба это моё призвание"
+			if("Неплохой инженер" in mind.traits)
+				trait_status_lines += "Обязательно починю всё"
+			if("Хорошо готовлю" in mind.traits)
+				trait_status_lines += "Люблю вкусно готовить"
 			if("Умелый стрелок" in mind.traits)
 				trait_status_lines += "Хорошо стреляю"
 			if("Быстрые руки" in mind.traits)
@@ -662,6 +670,18 @@
 		/// Потом отрицательные
 			if("Аутизм" in mind.traits)
 				trait_status_lines += "Ы-Ы-Ых, ЖЫЗНЬ ПРЕКРАСНА"
+			if("Плохое зрение" in mind.traits)
+				trait_status_lines += "Мои глаза плохо видят"
+			if("Тюфяк" in mind.traits)
+				trait_status_lines += "Плохо дерусь"
+			if("Не разбираюсь в оружии" in mind.traits)
+				trait_status_lines += "Огнестрел не для меня"
+			if("Бездарный инженер" in mind.traits)
+				trait_status_lines += "Инженерия не моё"
+			if("Массовый отравитель" in mind.traits)
+				trait_status_lines += "Готовка на кухне не для меня"
+			if("Любитель полежать" in mind.traits)
+				trait_status_lines += "Не тороплюсь вставать"
 			if("Flimsy" in mind.traits)
 				trait_status_lines += "У меня хрупкое тело"
 			if("Frail" in mind.traits)
