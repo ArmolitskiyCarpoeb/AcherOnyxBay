@@ -21,9 +21,16 @@
 	var/sanction_running = FALSE
 	/// When the shock punishment stops (world.time).
 	var/shock_end_time = 0
+	var/succ_obj = 0
 
 /datum/station_objective_manager/proc/start_directive(list/task_definitions, time_limit_seconds, datum/event/source_event)
 	if(!task_definitions || !task_definitions.len)
+		return FALSE
+
+	if(succ_obj == 2)
+		if(evacuation_controller.is_evacuating())
+			return
+		init_autotransfer()
 		return FALSE
 
 	reset_directive()
@@ -117,6 +124,7 @@
 
 	if(progress_changed && all_tasks_completed())
 		complete_directive()
+		succ_obj += 1
 	if(progress_changed && half_tasks_completed())
 		half_complete_directive()
 
@@ -174,7 +182,7 @@
 	var/time_left_minutes = round(time_limit / (1 MINUTE))
 	var/list/lines = list("Новая производственная директива.",
 		"Лимит времени: [time_left_minutes] мин.",
-		"Отправьте все переработанные ресурсы через челнок снабжения. В случае провала директивы будут применены санкции в виде отряда зачистки или ультрашоковой терапии.")
+		"Отправьте все переработанные ресурсы через челнок снабжения. Не пользуйтесь челноком снабжения до погрузки на него всех необходимых ресурсов. В случае провала директивы будут применены санкции в виде отряда зачистки или ультрашоковой терапии.")
 
 	for(var/datum/station_objective_task/task in tasks)
 		lines += "- [task.required_amount]x [task.name]"
@@ -217,7 +225,7 @@
 		if(H.stat == DEAD)
 			continue
 		if(!electrocute_mob(H, get_area(H), src, 0.5))
-			H.electrocute_act(rand(50, 100), src, 0.5, ran_zone(BP_CHEST, 50))
+			H.electrocute_act(rand(75, 125), src, 0.5, ran_zone(BP_CHEST, 50))
 
 	spawn(59 SECONDS)
 		do_shock_pulse()
