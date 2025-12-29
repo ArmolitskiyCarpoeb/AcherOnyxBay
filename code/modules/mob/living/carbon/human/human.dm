@@ -1834,10 +1834,11 @@
 
 	if(internal_organs_by_name[BP_BRAIN])
 		var/obj/item/organ/internal/cerebrum/brain/brain = internal_organs_by_name[BP_BRAIN]
-		if(!brain.is_broken() || stat != UNCONSCIOUS)
+		if(!brain.max_damage / 2 || stat != UNCONSCIOUS)
+			to_chat(src, SPAN("notice", "Очень жаль, ты не готов сейчас умереть."))
 			return
 
-		to_chat(src, SPAN("notice", "You have given up life and succumbed to death."))
+		to_chat(src, SPAN("notice", "Ты прощаешься с этой дрянной жизнью."))
 		log_and_message_admins("has succumbed")
 		adjustBrainLoss(300)
 		adjustInternalLoss(300)
