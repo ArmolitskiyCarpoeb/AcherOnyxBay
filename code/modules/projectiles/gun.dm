@@ -430,6 +430,7 @@
 		if(H.lying)
 			max_mult *= 1.5
 	P.damage *= max_mult
+	P.dispersion = 0
 	P.accuracy += 4
 
 /obj/item/gun/proc/process_accuracy(obj/projectile, atom/movable/firer, atom/target, burst, held_twohanded)
@@ -466,17 +467,25 @@
     	//If you aim at someone beforehead, it'll hit more often.
     	//Kinda balanced by fact you need like 2 seconds to aim
     	//As opposed to no-delay pew pew
-			P.accuracy += 3
-			P.dispersion -= 1
+			P.accuracy += 4
+			P.dispersion = 0
 
 		// Running while moving makes shots less accurate
 		if(L.moving && L.m_intent == M_RUN)
-			P.accuracy -= 2
-			P.dispersion += 2
+			P.accuracy -= 1
+			P.dispersion += 1
 
-	if(isliving(user) && !user.skillcheck(user.skills["ranged"], 45, null, "ranged") && !aim_targets)//Being unskilled at guns decreased accuracy.
+	if(isliving(user) && !user.skillcheck(user.skills["ranged"], 20, null, "ranged") && !aim_targets)//Being unskilled at guns decreased accuracy.
 		P.accuracy -= 3
 		P.dispersion += 1
+
+	if(isliving(user) && !user.skillcheck(user.skills["ranged"], 45, null, "ranged") && !aim_targets)//Being unskilled at guns decreased accuracy.
+		P.accuracy -= 2
+		P.dispersion += 0.6
+
+	if(isliving(user) && user.skillcheck(user.skills["ranged"], 75, null, "ranged"))
+		P.accuracy += 3
+		P.dispersion = 0
 
 //does the actual launching of the projectile
 /obj/item/gun/proc/process_projectile(obj/projectile, atom/movable/firer, atom/target, target_zone, params=null)
