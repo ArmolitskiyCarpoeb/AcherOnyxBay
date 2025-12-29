@@ -241,7 +241,11 @@
 						if(!(G.mind && G.mind.current && !G.mind.current.is_ooc_dead()))
 							GLOB.deathsquad.create_default(G)
 							i--
-	sanction_running = FALSE
+		if(i == initial(i))
+			sleep(5 MINUTE)
+			apply_sanction()
+		else
+			sanction_running = FALSE
 
 /datum/station_objective_task
 	var/name = "item"

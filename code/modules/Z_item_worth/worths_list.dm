@@ -3,6 +3,40 @@
 //stuff like that.
 
 var/list/worths = list(
+//ниже отбалансенные цены
+					/obj/item/stock_parts/capacitor = 150,
+					/obj/item/stock_parts/capacitor/adv = 270,
+					/obj/item/stock_parts/capacitor/super = 500,
+					/obj/item/stock_parts/capacitor/rectangular = 900,
+
+					/obj/item/stock_parts/manipulator = 150,
+					/obj/item/stock_parts/manipulator/nano = 270,
+					/obj/item/stock_parts/manipulator/pico = 500,
+					/obj/item/stock_parts/manipulator/femto = 900,
+
+					/obj/item/stock_parts/micro_laser = 170,
+					/obj/item/stock_parts/micro_laser/high = 270,
+					/obj/item/stock_parts/micro_laser/ultra = 500,
+					/obj/item/stock_parts/micro_laser/quadultra = 900,
+
+					/obj/item/stock_parts/matter_bin = 170,
+					/obj/item/stock_parts/matter_bin/adv = 270,
+					/obj/item/stock_parts/matter_bin/super = 500,
+					/obj/item/stock_parts/matter_bin/bluespace = 900,
+
+					/mob/living/simple_animal/pig = 3000,
+					/obj/item/music_tape = 500,
+					/obj/item/music_player/boombox = 1500,
+					/obj/item/pizzabox = 120,
+					/obj/item/storage/toolbox/syndicate = 700,
+
+					/obj/item/gun/projectile/automatic/as75 = 9000,
+					/obj/item/ammo_magazine/c556 = 700,
+					/obj/item/gun/projectile/bolt_action = 7500,
+					/obj/item/ammo_magazine/c792 = 400,
+					/obj/item/gun/projectile/revolver/detective/saw620 = 4000,
+					/obj/item/ammo_magazine/c38 = 600,
+
 //ROBOT ASSEMBLIES,
 					/obj/item/secbot_assembly = 180,
 					/obj/item/secbot_assembly/ed209_assembly = 280,
@@ -64,7 +98,6 @@ var/list/worths = list(
 					/obj/item/gun/launcher = 300,
 //AUTOMATICS,
 					/obj/item/gun/projectile/automatic/c20r = 3250,
-					/obj/item/gun/projectile/automatic/as75 = 3800,
 					/obj/item/gun/projectile/automatic/z8 = 3100,
 					/obj/item/gun/projectile/automatic/l6_saw = 13400,
 					/obj/item/gun/projectile/automatic/machine_pistol/mini_uzi/usi = 2000,
@@ -183,15 +216,6 @@ var/list/worths = list(
 					/obj/item/stock_parts/scanning_module/adv = 160,
 					/obj/item/stock_parts/scanning_module/phasic = 300,
 					/obj/item/stock_parts/scanning_module/triphasic = 550,
-					/obj/item/stock_parts/manipulator/nano = 160,
-					/obj/item/stock_parts/manipulator/pico = 250,
-					/obj/item/stock_parts/manipulator/femto = 400,
-					/obj/item/stock_parts/micro_laser/high = 160,
-					/obj/item/stock_parts/micro_laser/ultra = 290,
-					/obj/item/stock_parts/micro_laser/quadultra = 450,
-					/obj/item/stock_parts/matter_bin/adv = 160,
-					/obj/item/stock_parts/matter_bin/super = 310,
-					/obj/item/stock_parts/matter_bin/bluespace = 700,
 					/obj/item/stock_parts/subspace/ansible = 500,
 					/obj/item/stock_parts/subspace/filter = 560,
 					/obj/item/stock_parts/subspace/amplifier = 540,
@@ -823,13 +847,5 @@ var/list/worths = list(
 					/obj/machinery/libraryscanner = -1000,
 					/obj/machinery/bookbinder = -1200,
 					/obj/machinery = -1000,
-					//ниже отбалансенные цены
-					/obj/item/stock_parts/capacitor/adv = 350,
-					/obj/item/stock_parts/capacitor/super = 550,
-					/obj/item/stock_parts/capacitor/rectangular = 700,
-					/obj/item/stock_parts/micro_laser = 550,
-					/obj/item/stock_parts/matter_bin = 550,
-					/obj/item/music_tape = 500,
-					/obj/item/music_player/boombox = 1500,
-					/obj/item/pizzabox = 120,
+
 					) //Must be in descending order. Child before parents, otherwise it doesn't work.,

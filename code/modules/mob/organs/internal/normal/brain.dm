@@ -64,7 +64,14 @@
 
 	if(damage > max_damage / 2 && healed_threshold)
 		spawn()
-			alert(owner, "You have taken massive brain damage! You will not be able to remember the events leading up to your injury.", "Brain Damaged")
+			var/autism_chance = 10
+			if(owner.autism == TRUE)
+				alert(owner, "Ты получил обширную травму мозга. Тебе повезло, ты привыкший к таким вещам и ничего нового не произошло", "Brain Damaged")
+			else if(prob(autism_chance))
+				alert(owner, "Обширные травмы мозга привели к необратимым изменениям", "Brain Damaged")
+				owner.autism = TRUE
+			else
+				alert(owner, "Ты получил обширную травму мозга. Ты плохо помнишь последние события", "Brain Damaged")
 		healed_threshold = 0
 
 	if(damage < (max_damage / 4))

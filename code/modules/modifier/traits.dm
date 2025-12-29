@@ -91,6 +91,55 @@
 
 /// Плохие трейты, добавляют очки трейтов
 
+/datum/modifier/trait/bad_eyes
+	name = "Слабое зрение"
+
+/datum/modifier/trait/bad_eyes/on_applied()
+	holder.sdisabilities |= NEARSIGHTED
+	holder.disabilities |= NEARSIGHTED
+
+/datum/modifier/trait/more_stun
+	name = "Less negative effect duration"
+	disable_duration_percent = 1.25
+
+/datum/modifier/trait/unskiled_medical
+	name = "Бездарный врач"
+
+/datum/modifier/trait/unskiled_medical/on_applied()
+	if(holder.skills)
+		holder.skills["medical"] += -30
+		holder.skills["surgery"] += -25
+
+/datum/modifier/trait/unskiled_melee
+	name = "Тюфяк"
+
+/datum/modifier/trait/unskiled_melee/on_applied()
+	if(holder.skills)
+		holder.skills["melee"] += -25
+
+/datum/modifier/trait/unskiled_ranged
+	name = "Умелый стрелок"
+
+/datum/modifier/trait/unskiled_ranged/on_applied()
+	if(holder.skills)
+		holder.skills["ranged"] += -25
+
+/datum/modifier/trait/unskiled_cooking
+	name = "Плохой повар"
+
+/datum/modifier/trait/unskiled_cooking/on_applied()
+	if(holder.skills)
+		holder.skills["cooking"] += -40
+		holder.skills["gardening"] += -40
+
+/datum/modifier/trait/unskiled_engineering
+	name = "Неплохой инженер"
+
+/datum/modifier/trait/unskiled_engineering/on_applied()
+	if(holder.skills)
+		holder.skills["engineering"] += -25
+
+
 /datum/modifier/trait/flimsy
 	name = "flimsy"
 	desc = "You're more fragile than most, and have less of an ability to endure harm."
