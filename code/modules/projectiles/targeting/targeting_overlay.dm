@@ -167,6 +167,11 @@
 	update_icon()
 	forceMove(get_turf(target))
 	set_next_think(world.time)
+	var/lock_time_skilled = world.time + 35
+	if(isliving(owner) && owner.skills["ranged"] >= 75)
+		lock_time_skilled = world.time + 5
+	if(isliving(owner) && owner.skills["ranged"] >= 45)
+		lock_time_skilled = world.time + 15
 
 	if(do_after(owner,12,target,progress = 0))
 		to_chat(target, "<span class='danger'>You now have a gun pointed at you. No sudden moves!</span>")
@@ -179,7 +184,7 @@
 		owner.add_movespeed_modifier(/datum/movespeed_modifier/aiming_tally)
 		toggle_active(1)
 		update_icon()
-		lock_time = world.time + 35
+		lock_time = lock_time_skilled
 		register_signal(owner, SIGNAL_MOVED, nameof(.proc/update_aiming))
 		register_signal(aiming_at, SIGNAL_MOVED, nameof(.proc/target_moved))
 		register_signal(aiming_at, SIGNAL_QDELETING, nameof(.proc/cancel_aiming))
