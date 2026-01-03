@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(supply)
 
 	var/illegal_alert_chance = 0
 	//supply points
-	var/points = 50
+	var/points = 500
 	var/points_per_process = 1
 	var/points_per_slip = 2
 	var/material_buy_prices = list(
