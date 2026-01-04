@@ -67,6 +67,14 @@
 	desc = "Закрытый боевой шлем М3 производства ИД-Тактикс."
 	icon_state = "doomsquad"
 	item_state = "sec_helm"
-	armor = list(melee = 70, bullet = 100, laser = 70, energy = 5, bomb = 45, bio = 100)
+	armor = list(melee = 70, bullet = 100, laser = 70, energy = 10, bomb = 45, bio = 100)
 	siemens_coefficient = 0.6
 	light_overlay = "helmet_light_dual"
+
+/obj/item/clothing/suit/space/void/doomsquad
+	name = "боевой скафандр"
+	desc = "Боевой скафандр."
+	icon_state = "doomsquad"
+	item_state = "sechos_voidsuit"
+	armor = list(melee = 80, bullet = 115, laser = 75, energy = 25, bomb = 45, bio = 100)
+	siemens_coefficient = 0.6
