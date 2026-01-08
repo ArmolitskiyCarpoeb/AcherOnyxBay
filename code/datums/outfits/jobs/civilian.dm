@@ -50,9 +50,9 @@
 
 	// 3. Маска
 	if(prob(50))
-	var/mask_type = masks[rand(1, masks.len)]
-	var/obj/item/clothing/M = new mask_type
-	H.equip_to_slot_or_del(M, slot_wear_mask)
+		var/mask_type = masks[rand(1, masks.len)]
+		var/obj/item/clothing/M = new mask_type
+		H.equip_to_slot_or_del(M, slot_wear_mask)
 
 	// 4. Левая рука (Сюда не очень смешное, обычные или около-обычные вещи, максимум граната дымовая или газовая, дубинка, нож, игрушка плюшевая, КУЧА ДЕНЕГ)
 	if(prob(60))
