@@ -42,8 +42,12 @@ var/list/organ_cache = list()
 	qdel(src)
 
 /obj/item/organ/proc/update_food_from_organ()
+	if(!food_organ)
+		return
+
 	food_organ.SetName(name)
 	food_organ.appearance = src
+
 	reagents.trans_to(food_organ, reagents.total_volume)
 
 /obj/item/organ/Destroy()
@@ -330,7 +334,7 @@ var/list/organ_cache = list()
 	if(status & ORGAN_ROBOTIC || !istype(target) || !istype(user) || (user != target && user.a_intent == I_HELP))
 		return ..()
 
-	if(food_organ.bitecount == 0)
+	if(!food_organ)   //food_organ.bitecount == 0
 		if(alert("Do you really want to use this organ as food? It will be useless for anything else afterwards.",,"Ew, no.","Bon appetit!") == "Ew, no.")
 			to_chat(user, SPAN_NOTICE("You successfully repress your cannibalistic tendencies."))
 			return
