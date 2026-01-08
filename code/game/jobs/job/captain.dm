@@ -1,6 +1,6 @@
 /datum/job/captain
 	title = "Cardinal"
-	description = "Церковь дала тебе власть, а корпорация эти стены. Твоя воля - закон. Наставляй на пусть истинный тех доходяг, которых отправили с тобой в эту дыру, заставь их работать, искорени ересь среди них."
+	description = "Церковь дала тебе власть, а корпорация эти стены. Твоя воля - закон. Наставляй на пусть истинный тех доходяг, которых отправили с тобой в эту дыру, заставь их работать, искорени ересь среди них. Отыгрыш: Заставь работать тех кто не хочет работать. Заставь верить тех кто не хочет верить. Ты - закон."
 	department = "Command"
 	head_position = 1
 	department_flag = COM
@@ -31,6 +31,8 @@
 		H.generate_skills()
 		H.skills["ranged"] = rand(50, 95)
 		H.skills["melee"] = rand(50, 95)
+		H.skills["medical"] = rand(25, 35)
+		H.skills["surgery"] = rand(25, 35)
 		H.body_build_stats(H)
 		var/obj/machinery/nuclearbomb/nuke = locate(/obj/machinery/nuclearbomb/station) in world
 		if(nuke)

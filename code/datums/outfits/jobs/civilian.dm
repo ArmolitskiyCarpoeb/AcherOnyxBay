@@ -8,29 +8,71 @@
 
 /decl/hierarchy/outfit/job/assistant/post_equip(mob/living/carbon/human/H)
 	..()
-	var/obj/item/clothing/C
-	if(prob(25))
-		C = new /obj/item/clothing/under/casual_pants(src)
-		H.equip_to_appropriate_slot(C)
-		if(prob(25))
-			C = new /obj/item/clothing/suit/storage/leather_jacket(src)
-			H.equip_to_appropriate_slot(C)
-		if(prob(25))
-			C = new /obj/item/clothing/suit/storage/toggle/bomber(src)
-			H.equip_to_appropriate_slot(C)
-		if(prob(25))
-			C = new /obj/item/clothing/suit/storage/toggle/track/red(src)
-			H.equip_to_appropriate_slot(C)
-	else
-		C = new /obj/item/clothing/under/color/orange(src)
-		H.equip_to_appropriate_slot(C)
-		if(prob(25))
-			C = new /obj/item/clothing/suit/storage/toggle/bomber(src)
-			H.equip_to_appropriate_slot(C)
-		if(prob(25))
-			C = new /obj/item/clothing/suit/storage/toggle/track/red(src)
-			H.equip_to_appropriate_slot(C)
+
+	// Списки вариантов
+	var/list/uniforms = list(
+		/obj/item/clothing/under/casual_pants,
+		/obj/item/clothing/under/color/orange
+	)
+
+	var/list/jackets = list(
+		/obj/item/clothing/suit/storage/leather_jacket,
+		/obj/item/clothing/suit/storage/toggle/bomber,
+		/obj/item/clothing/suit/storage/toggle/track/red
+	)
+
+	var/list/masks = list(
+		/obj/item/clothing/mask/balaclava,
+		/obj/item/clothing/mask/surgical
+	)
+
+	var/list/left_hand_items = list(
+		/obj/item/material/hatchet/tacknife,
+		/obj/item/flame/lighter/zippo,
+		/obj/item/grenade/chem_grenade/incendiary
+	)
+
+	var/list/right_hand_items = list(
+		/obj/item/gun/projectile/automatic/as75
+	)
+
+	// 1. Униформа
+	if(prob(90))
+		var/uniform_type = uniforms[rand(1, uniforms.len)]
+		var/obj/item/clothing/U = new uniform_type
+		H.equip_to_slot_or_del(U, slot_w_uniform)
+
+	// 2. Куртка
+	if(prob(50))
+		var/jacket_type = jackets[rand(1, jackets.len)]
+		var/obj/item/clothing/J = new jacket_type
+		H.equip_to_slot_or_del(J, slot_wear_suit)
+
+	// 3. Маска
+	if(prob(50))
+	var/mask_type = masks[rand(1, masks.len)]
+	var/obj/item/clothing/M = new mask_type
+	H.equip_to_slot_or_del(M, slot_wear_mask)
+
+	// 4. Левая рука (Сюда не очень смешное, обычные или около-обычные вещи, максимум граната дымовая или газовая, дубинка, нож, игрушка плюшевая, КУЧА ДЕНЕГ)
+	if(prob(60))
+		var/left_item_type = left_hand_items[rand(1, left_hand_items.len)]
+		var/obj/item/L = new left_item_type
+		H.equip_to_slot_or_del(L, slot_l_hand)
+
+	// 5. Правая рука (Сюда особенно опасное или слишком смешное, чем место в раунде прям с натяжкой)
+	if(prob(10))
+		var/right_item_type = right_hand_items[rand(1, right_hand_items.len)]
+		var/obj/item/R = new right_item_type
+		H.equip_to_slot_or_del(R, slot_r_hand)
 		return
+
+	if(prob(30)) //обычная вещь в правую руку если не прокнуло опасное
+		var/right_item_type = right_hand_items[rand(1, left_hand_items.len)]
+		var/obj/item/R = new right_item_type
+		H.equip_to_slot_or_del(R, slot_r_hand)
+
+	return
 
 /decl/hierarchy/outfit/job/service
 	l_ear = /obj/item/device/radio/headset/headset_service

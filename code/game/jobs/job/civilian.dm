@@ -2,7 +2,7 @@
 /datum/job/bartender
 	title = "Bartender"
 	department = "Service"
-	description = "Готовь коктейли, барыжь наркотиками, бери с клиентов деньги."
+	description = "Твоя святая обазанность напоить персонал, выслушать их нытьё и брать деньги за напитки."
 	department_flag = SRV
 	total_positions = 1
 	spawn_positions = 1
