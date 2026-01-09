@@ -95,7 +95,7 @@
 	name = "Слабое зрение"
 
 /datum/modifier/trait/bad_eyes/on_applied()
-	holder.sdisabilities |= NEARSIGHTED
+	//holder.sdisabilities |= NEARSIGHTED
 	holder.disabilities |= NEARSIGHTED
 
 /datum/modifier/trait/more_stun
