@@ -12,28 +12,49 @@
 	// Списки вариантов
 	var/list/uniforms = list(
 		/obj/item/clothing/under/casual_pants,
-		/obj/item/clothing/under/color/orange
+		/obj/item/clothing/under/color/orange,
+		/obj/item/clothing/under/soviet,
+		/obj/item/clothing/under/kilt,
+		/obj/item/clothing/under/bluepyjamas
+
 	)
 
 	var/list/jackets = list(
 		/obj/item/clothing/suit/storage/leather_jacket,
 		/obj/item/clothing/suit/storage/toggle/bomber,
-		/obj/item/clothing/suit/storage/toggle/track/red
+		/obj/item/clothing/suit/storage/toggle/track/red,
+		/obj/item/clothing/suit/cultrobes,
+		/obj/item/clothing/suit/armor/bulletproof,
+		/obj/item/clothing/suit/chickensuit
 	)
 
 	var/list/masks = list(
 		/obj/item/clothing/mask/balaclava,
-		/obj/item/clothing/mask/surgical
+		/obj/item/clothing/mask/surgical,
+		/obj/item/clothing/mask/gas/old,
+		/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba,
+		/obj/item/clothing/mask/muzzle
 	)
 
 	var/list/left_hand_items = list(
 		/obj/item/material/hatchet/tacknife,
 		/obj/item/flame/lighter/zippo,
-		/obj/item/grenade/chem_grenade/incendiary
+		/obj/item/stack/medical/advanced/bruise_pack,
+		/obj/item/clothing/shoes/jackboots,
+		/obj/item/ammo_magazine/c556,
+		/obj/item/clothing/accessory/stethoscope,
+		/obj/item/defibrillator/loaded,
+		/obj/item/storage/toolbox/,
+		/obj/item/music_player/boombox,
+		/obj/item/device/camera,
+		/obj/item/material/twohanded/baseballbat,
+		/obj/item/material/harpoon
 	)
 
 	var/list/right_hand_items = list(
-		/obj/item/gun/projectile/automatic/as75
+		/obj/item/gun/projectile/automatic/as75,
+		/obj/item/material/twohanded/fireaxe,
+		/obj/item/storage/firstaid/surgery/syndie
 	)
 
 	// 1. Униформа
@@ -60,14 +81,14 @@
 		var/obj/item/L = new left_item_type
 		H.equip_to_slot_or_del(L, slot_l_hand)
 
-	// 5. Правая рука (Сюда особенно опасное или слишком смешное, чем место в раунде прям с натяжкой)
+	// 5. Правая рука (Сюда особенно опасное или слишком смешное, чему место в раундах редко)
 	if(prob(10))
 		var/right_item_type = right_hand_items[rand(1, right_hand_items.len)]
 		var/obj/item/R = new right_item_type
 		H.equip_to_slot_or_del(R, slot_r_hand)
 		return
 
-	if(prob(30)) //обычная вещь в правую руку если не прокнуло опасное
+	if(prob(25)) //обычная вещь в правую руку если не прокнуло опасное
 		var/right_item_type = right_hand_items[rand(1, left_hand_items.len)]
 		var/obj/item/R = new right_item_type
 		H.equip_to_slot_or_del(R, slot_r_hand)
