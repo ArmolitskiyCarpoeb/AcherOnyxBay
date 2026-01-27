@@ -37,6 +37,11 @@ var/list/worths = list(
 					/obj/item/gun/projectile/revolver/detective/saw620 = 4000,
 					/obj/item/ammo_magazine/c38 = 600,
 
+					/obj/item/storage/firstaid/surgery/syndie = 10000,
+					/obj/item/storage/firstaid/surgery/ = 3000,
+					/obj/item/storage/box/bloodpacks = 1000,
+					/obj/item/clothing/glasses/hud/standard/medical/ = 550,
+
 //ROBOT ASSEMBLIES,
 					/obj/item/secbot_assembly = 180,
 					/obj/item/secbot_assembly/ed209_assembly = 280,

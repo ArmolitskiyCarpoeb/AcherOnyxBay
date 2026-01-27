@@ -70,6 +70,9 @@
 			else if(prob(autism_chance))
 				alert(owner, "Обширные травмы мозга привели к необратимым изменениям", "Brain Damaged")
 				owner.autism = TRUE
+				owner.lisping = FALSE
+				owner.burrieng = FALSE
+				owner.stammering = FALSE
 			else
 				alert(owner, "Ты получил обширную травму мозга. Ты плохо помнишь последние события", "Brain Damaged")
 		healed_threshold = 0

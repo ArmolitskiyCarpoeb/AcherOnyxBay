@@ -139,7 +139,6 @@
 	if(holder.skills)
 		holder.skills["engineering"] += -25
 
-
 /datum/modifier/trait/flimsy
 	name = "flimsy"
 	desc = "You're more fragile than most, and have less of an ability to endure harm."

@@ -2,7 +2,7 @@
 
 SUBSYSTEM_DEF(trade)
 	name = "Trade"
-	wait = 1 MINUTE
+	wait = 5 MINUTE
 	priority = SS_PRIORITY_TRADE
 	//Initializes at default time
 
@@ -11,8 +11,8 @@ SUBSYSTEM_DEF(trade)
 
 /datum/controller/subsystem/trade/Initialize()
 	. = ..()
-	for(var/i in 1 to rand(1,3))
-		generate_trader()
+	//for(var/i in 1 to rand(1,3))
+	generate_trader()
 	add_trader_if_missing(/datum/trader/ship/MonsLadenCargo)
 
 /datum/controller/subsystem/trade/fire(resumed = FALSE)
