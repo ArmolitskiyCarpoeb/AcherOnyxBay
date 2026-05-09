@@ -377,3 +377,4 @@
 	containername = "\improper crate"
 	hidden = 1
 	contraband = 1
+*/

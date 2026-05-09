@@ -62,7 +62,7 @@
 	assembly_type = /obj/structure/door_assembly/door_assembly_ext
 	open_sound_powered = list('sound/machines/airlock/open_exterior1.ogg', 'sound/machines/airlock/open_exterior2.ogg', 'sound/machines/airlock/open_exterior3.ogg', 'sound/machines/airlock/open_exterior4.ogg')
 	open_sound_unpowered = list('sound/machines/airlock/open_exterior1.ogg', 'sound/machines/airlock/open_exterior2.ogg', 'sound/machines/airlock/open_exterior3.ogg', 'sound/machines/airlock/open_exterior4.ogg')
-	close_sound_powered = list('sound/machines/airlock/close2.ogg')
+	close_sound_powered = list('sound/machines/airlock/hatch_close.ogg')
 
 /obj/machinery/door/airlock/external/bolted
 	icon_state = "door_locked"

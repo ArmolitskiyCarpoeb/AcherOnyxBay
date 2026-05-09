@@ -1835,7 +1835,7 @@
 		log_and_message_admins("has succumbed")
 		adjustBrainLoss(300)
 		adjustInternalLoss(300)
-		updatehealth()
+		//updatehealth()
 
 /mob/living/carbon/human/verb/remove_underwear()
 	set name = "Remove Underwear"

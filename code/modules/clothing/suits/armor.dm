@@ -76,7 +76,7 @@
 	icon_state = "hos"
 	item_state = "hos"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor = list(melee = 70, bullet = 90, laser = 100, energy = 35, bomb = 55, bio = 20)
+	armor_values = list(melee = 70, bullet = 90, laser = 100, energy = 35, bomb = 55, bio = 20)
 	flags_inv = HIDEJUMPSUIT
 	siemens_coefficient = 0.6
 
@@ -338,7 +338,7 @@
 	icon_state = "cardinal"
 	item_state = "cardinal"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor = list(melee = 45, bullet = 45, laser = 45, energy = 35, bomb = 45, bio = 20)
+	armor_values = list(melee = 45, bullet = 45, laser = 45, energy = 35, bomb = 45, bio = 20)
 	flags_inv = 0
 	siemens_coefficient = 0.6
 	coverage = alist(UPPER_TORSO = 0.7, LOWER_TORSO = 0.7, ARMS = 1, LEGS = 0.7)

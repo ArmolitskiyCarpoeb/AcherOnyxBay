@@ -39,7 +39,7 @@
 	var/list/left_hand_items = list(
 		/obj/item/material/hatchet/tacknife,
 		/obj/item/flame/lighter/zippo,
-		/obj/item/stack/medical/advanced/bruise_pack,
+		///obj/item/stack/medical/advanced/bruise_pack,
 		/obj/item/clothing/shoes/jackboots,
 		/obj/item/ammo_magazine/c556,
 		/obj/item/clothing/accessory/stethoscope,
@@ -102,7 +102,7 @@
 /decl/hierarchy/outfit/job/service/bartender
 	name = OUTFIT_JOB_NAME("Bartender")
 	uniform = /obj/item/clothing/under/rank/bartender
-	id_type = /obj/item/card/id/civilian/bartender
+	id_type = /obj/item/card/id/provisioning/bartender
 	pda_type = /obj/item/device/pda/bar
 	suit = /obj/item/clothing/suit/armor/vest
 	flags = OUTFIT_NO_SURVIVAL
@@ -112,7 +112,7 @@
 	uniform = /obj/item/clothing/under/rank/chef
 	suit = /obj/item/clothing/suit/chef
 	head = /obj/item/clothing/head/chefhat
-	id_type = /obj/item/card/id/civilian/chef
+	id_type = /obj/item/card/id/provisioning/chef
 	pda_type = /obj/item/device/pda/chef
 	flags = OUTFIT_NO_SURVIVAL
 
@@ -122,7 +122,7 @@
 	suit = /obj/item/clothing/suit/apron
 	gloves = /obj/item/clothing/gloves/thick/botany
 	r_pocket = /obj/item/device/analyzer/plant_analyzer
-	id_type = /obj/item/card/id/civilian/botanist
+	id_type = /obj/item/card/id/provisioning/botanist
 	pda_type = /obj/item/device/pda/botanist
 	flags = OUTFIT_NO_SURVIVAL
 
@@ -133,7 +133,7 @@
 /decl/hierarchy/outfit/job/service/janitor
 	name = OUTFIT_JOB_NAME("Janitor")
 	uniform = /obj/item/clothing/under/rank/janitor
-	id_type = /obj/item/card/id/civilian/janitor
+	id_type = /obj/item/card/id/provisioning/janitor
 	pda_type = /obj/item/device/pda/janitor
 	flags = OUTFIT_NO_SURVIVAL
 

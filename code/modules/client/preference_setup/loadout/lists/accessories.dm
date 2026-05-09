@@ -95,9 +95,6 @@
 /datum/gear/accessory/pin/New()
 	..()
 	var/pinies = list()
-	pinies["NanoTrasen pin"] = /obj/item/clothing/accessory/pin
 	pinies["pig pin"]        = /obj/item/clothing/accessory/pin/pig
-	pinies["skull pin"]      = /obj/item/clothing/accessory/pin/skull
-	pinies["rainbow pin"]    = /obj/item/clothing/accessory/pin/pride
 
 	gear_tweaks += new /datum/gear_tweak/path(pinies)

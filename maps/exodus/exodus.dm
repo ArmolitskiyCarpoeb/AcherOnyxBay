@@ -5,7 +5,7 @@
 	#include "exodus_shuttles.dm"
 	#include "exodus_jobs.dm"
 
-	#define USING_MAP_DATUM /datum/map/fortuna
+	#define USING_MAP_DATUM /datum/map/exodus
 
 #elif !defined(MAP_OVERRIDE)
 

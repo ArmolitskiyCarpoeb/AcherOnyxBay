@@ -69,11 +69,11 @@
 
 	if(m_intent == M_RUN && bodytemperature <= 360 && (MUTATION_FAT in mutations))
 		bodytemperature += 2
-
+/*
 	// Moving around increases germ_level faster
 	if(germ_level < GERM_LEVEL_MOVE_CAP && prob(8))
 		germ_level++
-
+*/
 /mob/living/carbon/human/Move(newloc, direct)
 	var/turf/initial_turf = src.loc
 	. = ..()

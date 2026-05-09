@@ -3,7 +3,7 @@
     if(H.skills)
         H.skills["ranged"] += rand(15,65)
         H.skills["melee"] += rand(15,65)
-
+/*
 /decl/hierarchy/outfit/terro/terro_1
 	name = "A terro PILL"
 	uniform = /obj/item/clothing/under/color/orange
@@ -33,7 +33,7 @@
 	// r_pocket = /obj/item/storage/pill_bottle/herecy
 	// l_hand = /obj/item/material/hatchet/tacknife
 	// r_hand = /obj/item/material/twohanded/fireaxe/cult
-
+*/
 /decl/hierarchy/outfit/terro/terro_2
 	name = "A terro FUEL"
 	uniform = /obj/item/clothing/under/color/orange

@@ -97,6 +97,7 @@
 		H.body_build_stats(H)
 
 //Cargo
+/*
 /datum/job/qm
 	title = "Quartermaster"
 	description = "Денежные потоки колонии в твоих руках. Работяги будут тянуться к тебе за лучшей долей. Гоняй этих оболтусов по поручениям, заставь копать руду, мыть кровь в коридоре или что-то ещё. Ну или продай на органы... Деньги это власть, пока в твою дверь настойчиво не постучат."
@@ -112,7 +113,7 @@
 	minimal_player_age = 7
 	ideal_character_age = 40
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
-
+*/
 /datum/job/qm/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)

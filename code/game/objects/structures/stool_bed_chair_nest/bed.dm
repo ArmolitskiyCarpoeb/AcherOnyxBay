@@ -464,7 +464,7 @@
 	name = "матрац"
 	desc = "Комфорт и уют."
 	icon_state = "matrac"
-	base_icon = "matrac"
+	base_icon_state = "matrac"
 	buckle_pixel_shift = "x=0;y=2"
 
 /obj/structure/bed/matrac/New(newloc)

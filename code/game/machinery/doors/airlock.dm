@@ -47,11 +47,11 @@
 	var/datum/wires/airlock/wires = null
 
 	var/open_sound_powered = list('sound/new_open5.ogg')
-	var/open_sound_unpowered = 'sound/machines/airlock/open_force1.ogg'
+	var/open_sound_unpowered = 'sound/machines/airlock/force_open.ogg'
 	var/open_failure_access_denied = 'sound/error.ogg'
 
 	var/close_sound_powered = list('sound/new_close5.ogg')
-	var/close_sound_unpowered = 'sound/machines/airlock/close_force1.ogg'
+	var/close_sound_unpowered = 'sound/machines/airlock/force_close.ogg'
 	var/close_failure_blocked = 'sound/machines/airlock/error1.ogg'
 
 	var/bolts_rising = 'sound/machines/bolts_up.ogg'

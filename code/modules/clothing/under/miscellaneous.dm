@@ -18,7 +18,7 @@
 	armor_values = alist(melee = 15, bullet = 10, laser = 0, energy = 0, bomb = 0, bio = 0)
 
 /obj/item/clothing/under/gorka/badgorka
-	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0)
+	armor_values = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0)
 
 // /obj/item/clothing/under/gorka/mob_can_equip(mob/user)
 // 	.=..()

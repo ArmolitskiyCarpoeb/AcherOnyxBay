@@ -5,7 +5,7 @@
 		ZTRAIT_CONTACT
 	)
 	travel_chance = 5
-	exterior_atmosphere = list("oxygen" = 1.05 * MOLES_O2STANDARD, "nitrogen" = 1.05 * MOLES_N2STANDARD, "carbon_dioxide" = MOLES_CELLSTANDARD * 0.1)
+	exterior_atmosphere = list("oxygen" = 1.05 * MOLES_O2_STANDARD, "nitrogen" = 1.05 * MOLES_N2_STANDARD, "carbon_dioxide" = MOLES_CELL_STANDARD * 0.1)
 	exterior_atmos_temp = -23 CELSIUS
 
 /datum/space_level/fortuna_1/generate(z)
@@ -20,7 +20,7 @@
 		ZTRAIT_CONTACT
 	)
 	travel_chance = 5
-	exterior_atmosphere = list("oxygen" = MOLES_O2STANDARD, "nitrogen" = MOLES_N2STANDARD)
+	exterior_atmosphere = list("oxygen" = MOLES_O2_STANDARD, "nitrogen" = MOLES_N2_STANDARD)
 	exterior_atmos_temp = -23 CELSIUS
 
 /datum/space_level/fortuna_3
@@ -30,7 +30,7 @@
 		ZTRAIT_CONTACT
 	)
 	travel_chance = 5
-	exterior_atmosphere = list("carbon_dioxide" = MOLES_CELLSTANDARD, "nitrogen" = MOLES_N2STANDARD)
+	exterior_atmosphere = list("carbon_dioxide" = MOLES_CELL_STANDARD, "nitrogen" = MOLES_N2_STANDARD)
 	exterior_atmos_temp = -35 CELSIUS
 
 /datum/space_level/fortuna_4

@@ -212,7 +212,7 @@
 		mymob.aim_assist_icon.icon = ui_style
 		mymob.aim_assist_icon.icon_state = "aim_assist0"
 		mymob.aim_assist_icon.SetName("Click Mode")
-		mymob.aim_assist_icon.screen_loc = ui_aim_assist
+		//mymob.aim_assist_icon.screen_loc = ui_aim_assist
 		mymob.aim_assist_icon.color = ui_color
 		mymob.aim_assist_icon.alpha = ui_alpha
 		static_inventory += mymob.aim_assist_icon

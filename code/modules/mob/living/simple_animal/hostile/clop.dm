@@ -100,7 +100,7 @@
 				return
 		*/
 		if(H.apply_damage(rand(1, 5), BRUTE, limb.organ_tag, blocked) && !BP_IS_ROBOTIC(limb) && prob(70 - blocked))
-			limb.germ_level += rand(75, 150)
+			//limb.germ_level += rand(75, 150)
 			if(virus)
 				infect_virus2(H, virus)
 		visible_message(SPAN_DANGER("[src] stings [H]'s [organ_name_by_zone(H, limb.organ_tag)]!"),
