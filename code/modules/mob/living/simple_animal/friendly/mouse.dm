@@ -35,6 +35,7 @@
 	shy_animal = 1
 	controllable = TRUE
 	bodyparts = /decl/simple_animal_bodyparts/quadruped
+	burnt_remains = /obj/item/remains/mouse
 	var/obj/item/holding_item = null
 	var/datum/disease2/disease/virus = null
 
@@ -147,7 +148,6 @@
 				return
 
 		if(H.apply_damage(rand(1, 2), BRUTE, limb.organ_tag, blocked) && !BP_IS_ROBOTIC(limb) && prob(70 - blocked))
-			limb.germ_level += rand(75, 150)
 			if(virus)
 				infect_virus2(H, virus)
 		visible_message(SPAN_DANGER("[src] bites [H]'s [organ_name_by_zone(H, limb.organ_tag)]!"),
@@ -164,7 +164,7 @@
 		var/mob/M = AM
 		to_chat(M, SPAN("warning", "\icon[src] Squeek!"))
 		playsound(loc, 'sound/effects/mousesqueek.ogg', 40)
-		resting = 0
+		set_resting(FALSE)
 		icon_state = "mouse_[body_color]"
 		if(prob(50))
 			UnarmedAttack(M)

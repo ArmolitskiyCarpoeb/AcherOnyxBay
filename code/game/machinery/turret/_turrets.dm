@@ -221,8 +221,8 @@ GLOBAL_LIST_EMPTY(all_turrets)
 			store_ammo(I, user)
 			return
 
-	if(istype(I, /obj/item/card/id) || istype(I, /obj/item/device/pda))
-		if(allowed(user))
+	if(I?.get_id_card())
+		if(check_access(I))
 			if(emagged)
 				show_splash_text(user, "Control panel is unresponsive")
 			else
@@ -265,7 +265,7 @@ GLOBAL_LIST_EMPTY(all_turrets)
 
 /// Called after the gun gets instantiated or slotted in.
 /obj/machinery/turret/proc/setup_gun()
-	pass()
+	return
 
 // State machine processing steps, called by looping timer
 /obj/machinery/turret/proc/process_turning()

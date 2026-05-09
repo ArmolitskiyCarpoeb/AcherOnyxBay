@@ -330,3 +330,61 @@
 		return
 	// Ensures that we don't reduce total blood volume below min_blood.
 	carbon_target.remove_blood(1.525)
+
+/datum/modifier/trait/radimmune
+	name = "Radiation Immunity"
+	desc = "You're immune to radiation"
+
+/datum/modifier/trait/holy
+	name = "Holy"
+	desc = "You're immune to cult magic and evil spirits"
+
+/datum/modifier/trait/magicimmune
+	name = "Magic Immunity"
+	desc = "You're immune to magic"
+
+/datum/modifier/trait/opiat_addiction
+	name = "Зависимость от опиатов"
+	desc = "Подлый отказ от героина вынудет твой организм отказаться от существования."
+
+/datum/modifier/trait/opiat_addiction/on_applied()
+	. = ..()
+	var/mob/living/carbon/human/H = holder
+	if(H)
+		var/datum/addiction/opioid/A = new
+		H.add_addiction(A, (rand(40, 70) * 0.25))
+
+/datum/modifier/trait/alcohol_addiction
+	name = "Алкоголик"
+	desc = "Между первой и второй - перерывчик небольшой."
+
+/datum/modifier/trait/alcohol_addiction/on_applied()
+	. = ..()
+	var/mob/living/carbon/human/H = holder
+	if(H)
+		var/datum/addiction/alcohol/A = new
+		H.add_addiction(A, (rand(40, 70) * 0.25))
+
+
+/datum/modifier/trait/cannabis_addiction
+	name = "Любитель марихуаны"
+	desc = "Без марихуаны расслабиться не выйдет. Увы!"
+
+/datum/modifier/trait/cannabis_addiction/on_applied()
+	. = ..()
+	var/mob/living/carbon/human/H = holder
+	if(H)
+		var/datum/addiction/cannabis/A = new
+		H.add_addiction(A, (rand(40, 70) * 0.25))
+
+
+/datum/modifier/trait/smoker
+	name = "Курильщик"
+	desc = "Но если есть в кармане пачка сигарет... Значит, всё не так уж плохо на сегодняшний день."
+
+/datum/modifier/trait/smoker/on_applied()
+	. = ..()
+	var/mob/living/carbon/human/H = holder
+	if(H)
+		var/datum/addiction/nicotine/A = new
+		H.add_addiction(A, (rand(40, 70) * 0.25))

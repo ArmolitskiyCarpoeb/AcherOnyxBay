@@ -86,6 +86,9 @@ Class Procs:
 	pull_sound = SFX_PULL_MACHINE
 	layer = BELOW_OBJ_LAYER
 
+	throw_speed = 1
+	throw_range = 5
+
 	var/stat = 0
 	var/emagged = 0
 	var/malf_upgraded = 0
@@ -293,8 +296,12 @@ Class Procs:
 
 /obj/machinery/CouldUseTopic(mob/user)
 	..()
-	if(user)
-		user.set_machine(src)
+	if(!user)
+		return
+
+	user.set_machine(src)
+	if(clicksound && iscarbon(user))
+		playsound(src, clicksound, clickvol)
 
 /obj/machinery/CouldNotUseTopic(mob/user)
 	if(user)
@@ -460,11 +467,6 @@ Class Procs:
 		return TRUE
 
 	if(clicksound && istype(usr, /mob/living/carbon))
-		playsound(src, clicksound, clickvol)
-
-/obj/machinery/CouldUseTopic(mob/user)
-	..()
-	if(clicksound && istype(user, /mob/living/carbon))
 		playsound(src, clicksound, clickvol)
 
 /obj/machinery/proc/get_parts_infotext()

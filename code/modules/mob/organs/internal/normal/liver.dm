@@ -13,8 +13,8 @@
 	var/coagulation = COAGULATION_NORMAL
 	var/filtering_efficiency = 3.0
 
-/obj/item/organ/internal/liver/New(mob/living/carbon/holder)
-	..(holder)
+/obj/item/organ/internal/liver/Initialize()
+	. = ..()
 	update_coagulation()
 
 /obj/item/organ/internal/liver/robotize()
@@ -61,13 +61,6 @@
 
 	update_coagulation()
 
-	if(germ_level > INFECTION_LEVEL_ONE)
-		if(prob(1))
-			to_chat(owner, "<span class='danger'>Your skin itches.</span>")
-	if(germ_level > INFECTION_LEVEL_TWO)
-		if(prob(1))
-			spawn owner.vomit()
-
 	// Update the filtering efficiency of the liver.
 	filtering_efficiency = 3
 	// Not enough to cease functions, but works at reduced efficiency..
@@ -75,7 +68,7 @@
 		filtering_efficiency -= 1
 	// That's where we're in trouble.
 	if(is_broken())
-		filtering_efficiency -= 2
+		filtering_efficiency -= 1
 	// Robotic organs filter better but don't get benefits from dylovene for filtering.
 	if(BP_IS_ROBOTIC(src) || owner.chem_effects[CE_ANTITOX])
 		filtering_efficiency += 1
@@ -89,6 +82,11 @@
 	// If the liver's not too busy, the body slowly regains its "anti-toxic shield".
 	if(filtering_efficiency >= 2 && !owner.chem_effects[CE_TOXIN])
 		stored_tox = max(damage, (stored_tox - filtering_efficiency * 0.1))
+
+/obj/item/organ/internal/liver/die()
+	..()
+	if(status & ORGAN_DEAD)
+		filtering_efficiency = 0
 
 /obj/item/organ/internal/liver/autoheal()
 	if(!damage)

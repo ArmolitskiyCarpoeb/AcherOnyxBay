@@ -11,7 +11,6 @@
 	var/throwpass = 0
 	var/hitby_sound = null
 	var/hitby_loudness_multiplier = 1.0
-	var/germ_level = GERM_LEVEL_AMBIENT // The higher the germ level, the more germ on the atom.
 	var/simulated = 1 //filter for actions - used by lighting overlays
 	var/fluorescent // Shows up under a UV light.
 
@@ -131,6 +130,7 @@
 	QDEL_NULL(proximity_monitor)
 	ClearOverlays()
 	underlays.Cut()
+	animate(src) // Animations can possibly cause hard-dels. TODO: Test it out to find out for sure if it's true or not (in which case this line should be removed).
 	return ..()
 
 /atom/proc/reveal_blood()
@@ -158,7 +158,7 @@
 /atom/proc/on_reagent_change()
 	return
 
-/atom/proc/Bumped(AM as mob|obj)
+/atom/proc/Bumped(atom/movable/AM)
 	return
 
 // Convenience proc to see if a container is open for chemistry handling
@@ -196,6 +196,7 @@
 
 /atom/proc/bullet_act(obj/item/projectile/P, def_zone)
 	P.on_hit(src, 0, def_zone)
+	SEND_SIGNAL(src, SIGNAL_BULLET_ACT, src, P)
 	. = 0
 
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
@@ -317,6 +318,9 @@ its easier to just keep the beam vertical.
 	. = list("\icon[src] [f_name][infix]")
 	. += desc
 
+	SEND_SIGNAL(src, SIGNAL_EXAMINED, user, .)
+	SEND_SIGNAL(user, SIGNAL_MOB_EXAMINED, src, .)
+
 	return
 
 /atom/proc/baked_examine(...)
@@ -380,9 +384,9 @@ its easier to just keep the beam vertical.
 	CAN_BE_REDEFINED(TRUE)
 	return
 
-/atom/proc/hitby(atom/movable/AM, speed = 0, nomsg = FALSE)
+/atom/proc/hitby(atom/movable/AM, datum/thrownthing/TT, nomsg = FALSE)
+	SHOULD_CALL_PARENT(TRUE)
 	if(density)
-		AM.throwing = 0
 		play_hitby_sound(AM)
 		if(!nomsg)
 			visible_message(SPAN("warning", "[src] was hit by \the [AM]."))
@@ -442,7 +446,6 @@ its easier to just keep the beam vertical.
 		return FALSE
 	is_bloodied = FALSE
 	fluorescent = 0
-	germ_level = 0
 	if(islist(blood_DNA))
 		blood_DNA.Cut()
 	blood_color = null
@@ -475,7 +478,7 @@ its easier to just keep the beam vertical.
 /atom/proc/visible_message(message, blind_message, range = world.view, checkghosts = null)
 	var/list/seeing_mobs = list()
 	var/list/seeing_objs = list()
-	get_mobs_and_objs_in_view_fast(get_turf(src), range, seeing_mobs, seeing_objs, checkghosts)
+	get_listeners_in_range(get_turf(src), range, seeing_mobs, seeing_objs, checkghosts)
 
 	for(var/o in seeing_objs)
 		var/obj/O = o
@@ -497,7 +500,7 @@ its easier to just keep the beam vertical.
 /atom/proc/audible_message(message, deaf_message, hearing_distance = world.view, checkghosts = null, splash_override = null)
 	var/list/hearing_mobs = list()
 	var/list/hearing_objs = list()
-	get_mobs_and_objs_in_view_fast(get_turf(src), hearing_distance, hearing_mobs, hearing_objs, checkghosts)
+	get_listeners_in_range(get_turf(src), hearing_distance, hearing_mobs, hearing_objs, checkghosts)
 
 	for(var/o in hearing_objs)
 		var/obj/O = o
@@ -506,6 +509,8 @@ its easier to just keep the beam vertical.
 	for(var/m in hearing_mobs)
 		var/mob/M = m
 		M.show_message(message, AUDIBLE_MESSAGE, deaf_message, VISIBLE_MESSAGE)
+		if(!M.client)
+			continue
 		if(M.get_preference_value("CHAT_RUNECHAT") == GLOB.PREF_YES)
 			M.create_chat_message(src, splash_override ? splash_override : message)
 
@@ -635,22 +640,25 @@ its easier to just keep the beam vertical.
 
 			if(affecting)
 				to_chat(M, "<span class='danger'>You land heavily on your [affecting.name]!</span>")
-				affecting.take_external_damage(damage, 0)
+				affecting.take_blunt_damage(damage)
 				if(affecting.parent)
 					affecting.parent.add_autopsy_data("Misadventure", damage)
 			else
 				to_chat(H, "<span class='danger'>You land heavily!</span>")
 				H.adjustBruteLoss(damage)
 
-			H.UpdateDamageIcon()
-			H.updatehealth()
+			H.update_damage_overlays()
+			H.update_health()
 
-/atom/MouseDrop_T(atom/movable/target, mob/user)
+/atom/MouseDrop_T(atom/movable/target, mob/user, params)
+	. = ..()
+	if(.)
+		return
+
 	var/mob/living/H = user
 	if(istype(H) && can_climb(H) && target == user)
 		do_climb(target)
-	else
-		return ..()
+		return TRUE
 
 // Called after we wrench/unwrench this object
 /obj/proc/wrenched_change()
@@ -675,7 +683,7 @@ its easier to just keep the beam vertical.
 	var/list/valid_turfs = list()
 	for(var/dir_to_test in GLOB.cardinal)
 		var/turf/new_turf = get_step(T, dir_to_test)
-		if(!new_turf.contains_dense_objects(FALSE))
+		if(!new_turf.contains_dense_objects(check_mobs = FALSE))
 			valid_turfs |= new_turf
 
 	while(valid_turfs.len)
@@ -703,7 +711,7 @@ its easier to just keep the beam vertical.
 
 	for(var/dir_to_test in valid_dirs)
 		var/turf/new_turf = get_step(T, dir_to_test)
-		if(!new_turf.contains_dense_objects(FALSE))
+		if(!new_turf.contains_dense_objects(check_mobs = FALSE))
 			valid_turfs.Add("[dir_to_test]")
 			valid_turfs["[dir_to_test]"] = new_turf
 
@@ -826,3 +834,7 @@ its easier to just keep the beam vertical.
 ///Return the values you get when an RCD eats you?
 /atom/proc/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	return FALSE
+
+/// Adds the debris element for projectile impacts
+/atom/proc/add_debris_element()
+	AddElement(/datum/element/debris, null, -15, 8, 0.7)

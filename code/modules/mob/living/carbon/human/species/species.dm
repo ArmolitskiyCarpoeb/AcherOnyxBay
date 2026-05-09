@@ -51,6 +51,7 @@
 	var/icon/icon_template = 'icons/mob/human_races/r_template.dmi' // Used for mob icon generation for non-32x32 species.
 	var/pixel_offset_x = 0                    // Used for offsetting large icons.
 	var/pixel_offset_y = 0                    // Used for offsetting large icons.
+	var/pixel_offset_z = 0                    // Used for offsetting large icons.
 
 	var/mob_size	= MOB_MEDIUM
 	var/strength    = STR_MEDIUM
@@ -121,10 +122,12 @@
 	var/heat_level_2 = 500                            // Heat damage level 2 above this point.
 	var/heat_level_3 = 1000                           // Heat damage level 3 above this point.
 	var/passive_temp_gain = 0		                  // Species will gain this much temperature every second
+
 	var/hazard_high_pressure = HAZARD_HIGH_PRESSURE   // Dangerously high pressure.
 	var/warning_high_pressure = WARNING_HIGH_PRESSURE // High pressure warning.
 	var/warning_low_pressure = WARNING_LOW_PRESSURE   // Low pressure warning.
 	var/hazard_low_pressure = HAZARD_LOW_PRESSURE     // Dangerously low pressure.
+
 	var/body_temperature = 310.15	                  // Species will try to stabilize at this temperature.
 	                                                  // (also affects temperature processing)
 
@@ -223,7 +226,7 @@
 	var/icon_scale = 1
 	var/y_shift = 0 // Vertically shifts the icon, mostly for monkeys.
 
-	var/xenomorph_type = /mob/living/carbon/alien/larva // What type of larva is spawned if infected with an alien embryo
+	var/xenomorph_type = /mob/living/carbon/larva/xenomorph // What type of larva is spawned if infected with an alien embryo
 /*
 These are all the things that can be adjusted for equipping stuff and
 each one can be in the NORTH, SOUTH, EAST, and WEST direction. Specify
@@ -302,40 +305,40 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 				E.internal_organs.Remove(O)
 				H.internal_organs.Remove(O)
 				foreign_organs |= O
-		if(E.implants.len)
+		if(LAZYLEN(E.implants))
 			implants_from_external_organs[E.organ_tag] = list()
-		for(var/I in E.implants)
-			implants_from_external_organs[E.organ_tag] += I
+			for(var/I in E.implants)
+				implants_from_external_organs[E.organ_tag] += I
 
 	for(var/obj/item/organ/organ in H.contents)
-		if((organ in H.organs) || (organ in H.internal_organs))
+		if((organ in H.external_organs) || (organ in H.internal_organs))
 			qdel(organ)
 
-	if(H.organs)                  H.organs.Cut()
+	if(H.external_organs)         H.external_organs.Cut()
 	if(H.internal_organs)         H.internal_organs.Cut()
-	if(H.organs_by_name)          H.organs_by_name.Cut()
+	if(H.external_organs_by_name) H.external_organs_by_name.Cut()
 	if(H.internal_organs_by_name) H.internal_organs_by_name.Cut()
 
-	H.organs = list()
+	H.external_organs = list()
 	H.internal_organs = list()
-	H.organs_by_name = list()
-	H.internal_organs_by_name = list()
+	H.external_organs_by_name = alist()
+	H.internal_organs_by_name = alist()
 
 	for(var/limb_type in has_limbs)
 		var/list/organ_data = has_limbs[limb_type]
 		var/limb_path = organ_data["path"]
-		new limb_path(H, H)
+		new limb_path(H)
 
 	for(var/organ_tag in has_organ)
 		var/organ_type = has_organ[organ_tag]
-		var/obj/item/organ/O = new organ_type(H, H)
+		var/obj/item/organ/O = new organ_type(H)
 		if(organ_tag != O.organ_tag)
 			warning("[O.type] has a default organ tag \"[O.organ_tag]\" that differs from the species' organ tag \"[organ_tag]\". Updating organ_tag to match.")
 			O.organ_tag = organ_tag
 		H.internal_organs_by_name[organ_tag] = O
 
-	for(var/name in H.organs_by_name)
-		H.organs |= H.organs_by_name[name]
+	for(var/name in H.external_organs_by_name)
+		H.external_organs |= H.external_organs_by_name[name]
 
 	for(var/name in H.internal_organs_by_name)
 		H.internal_organs |= H.internal_organs_by_name[name]
@@ -348,7 +351,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		H.internal_organs_by_name[organ.organ_tag] = organ
 		organ.handle_foreign()
 
-	for(var/obj/item/organ/O in (H.organs|H.internal_organs))
+	for(var/obj/item/organ/O in (H.external_organs|H.internal_organs))
 		O.owner = H
 
 	H.sync_organ_dna()
@@ -769,3 +772,8 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	else
 		var/list/A = list(max(64, H.r_hair), max(64, H.g_hair), max(64, H.b_hair))
 		return A
+
+/datum/species/proc/check_no_slip(mob/living/user, magboots_only)
+	if(can_overcome_gravity(user))
+		return TRUE
+	return (species_flags & SPECIES_FLAG_NO_SLIP)

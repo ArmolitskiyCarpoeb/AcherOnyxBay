@@ -22,7 +22,7 @@
 		return FALSE
 
 	for(var/datum/surgery_step/S in GLOB.surgery_steps)
-		var/status = S.do_step(user, target, src, user.zone_sel.selecting)
+		var/status = S.do_step(user, target, src, user.zone_sel.selecting, user.rightclicked)
 		if(status == SURGERY_FAILURE)
 			return FALSE
 		if(status)

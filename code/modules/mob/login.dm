@@ -84,12 +84,22 @@
 
 	update_client_color()
 
-	//set macro to normal incase it was overriden (like cyborg currently does)
-	var/hotkey_mode = client.get_preference_value("DEFAULT_HOTKEY_MODE")
-	if(hotkey_mode == GLOB.PREF_YES)
-		winset(src, null, "mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true input.focus=false")
-	else
-		winset(src, null, "mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true")
+	update_mouse_pointer()
+
+	client.mouse_click_opportunity_window = get_preference_value(/datum/client_preference/click_precision_assist)
+	switch(client.mouse_click_opportunity_window)
+		if(GLOB.PREF_CLICK_PRECISION_NONE)
+			client.mouse_click_opportunity_window = 0
+		if(GLOB.PREF_CLICK_PRECISION_1DS)
+			client.mouse_click_opportunity_window = 1
+		if(GLOB.PREF_CLICK_PRECISION_2DS)
+			client.mouse_click_opportunity_window = 2
+		if(GLOB.PREF_CLICK_PRECISION_3DS)
+			client.mouse_click_opportunity_window = 3
+		if(GLOB.PREF_CLICK_PRECISION_4DS)
+			client.mouse_click_opportunity_window = 4
+		if(GLOB.PREF_CLICK_PRECISION_5DS)
+			client.mouse_click_opportunity_window = 5
 
 	if(!skybox)
 		skybox = new(src)

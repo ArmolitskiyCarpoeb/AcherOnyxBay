@@ -10,9 +10,9 @@ GLOBAL_LIST_EMPTY(dept_data)
 		list("[key]" = list(), "header" = "Security", "flag" = SEC),
 		list("[key]" = list(), "header" = "Medical", "flag" = MED),
 		list("[key]" = list(), "header" = "Engineering", "flag" = ENG),
-		list("[key]" = list(), "header" = "Supply", "flag" = SUP),
+		list("[key]" = list(), "header" = "Cargo", "flag" = SUP),
 		list("[key]" = list(), "header" = "Exploration", "flag" = EXP),
-		list("[key]" = list(), "header" = "Service", "flag" = SRV),
+		list("[key]" = list(), "header" = "Provisioning", "flag" = SRV),
 		list("[key]" = list(), "header" = "Civilian", "flag" = CIV),
 		list("[key]" = list(), "header" = "Miscellaneous", "flag" = MSC),
 		list("[key]" = list(), "header" = "Silicon")
@@ -132,7 +132,7 @@ GLOBAL_LIST_EMPTY(dept_data)
 				empty_command_positions -= command_position
 				var/ckey = candidates[priority][candidate]
 				if(!command_positions_by_ckey[ckey])
-					command_positions_by_ckey[ckey] = list(
+					command_positions_by_ckey[ckey] = alist(
 						"positions" = alist(
 							JOB_PRIORITY_HIGH = list(),
 							JOB_PRIORITY_MIDDLE = list(),

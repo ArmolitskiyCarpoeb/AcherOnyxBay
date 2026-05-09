@@ -81,7 +81,7 @@ There are several things that need to be remembered:
 
 >	There are also these special cases:
 		update_mutations()	//handles updating your appearance for certain mutations.  e.g TK head-glows
-		UpdateDamageIcon()	//handles damage overlays for brute/burn damage //(will rename this when I geta round to it)
+		update_damage_overlays()	//handles damage overlays for brute/burn damage
 		update_body()	//Handles updating your mob's icon to reflect their gender/race/complexion etc
 		update_hair()	//Handles updating your hair overlay (used to be update_face, but mouth and
 																			...eyes were merged into update_body)
@@ -171,19 +171,20 @@ Please contact me on #coderbus IRC. ~Carn x
 	SetOverlays(overlays_to_apply)
 
 	update_transform()
+	update_floating()
 
 var/global/list/damage_icon_parts = list()
 
 //DAMAGE OVERLAYS
 //constructs damage icon for each organ from mask * damage field and saves it in our overlays_ lists
-/mob/living/carbon/human/UpdateDamageIcon(update_icons = 1)
+/mob/living/carbon/human/update_damage_overlays(update_icons = 1)
 	// first check whether something actually changed about damage appearance
 	var/damage_appearance = ""
 
 	if(!species.damage_overlays || !body_build?.dam_mask)
 		return
 
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in external_organs)
 		if(O.is_stump())
 			continue
 		damage_appearance += O.damage_state
@@ -197,7 +198,7 @@ var/global/list/damage_icon_parts = list()
 	var/image/standing_image = image(species.damage_overlays, icon_state = "00")
 
 	// blend the individual damage states with our icons
-	for(var/obj/item/organ/external/O in organs)
+	for(var/obj/item/organ/external/O in external_organs)
 		O.update_damstate()
 		O.update_icon()
 		if(O.damage_state == "00")
@@ -227,7 +228,7 @@ var/global/list/damage_icon_parts = list()
 		return
 	var/image/standing_image = image(bandage_icon, icon_state = "0")
 	if(overlays_standing[HO_DAMAGE_LAYER])
-		for(var/obj/item/organ/external/O in organs)
+		for(var/obj/item/organ/external/O in external_organs)
 			if(O.is_stump())
 				continue
 			var/bandage_level = O.bandage_level()
@@ -244,7 +245,7 @@ var/global/list/damage_icon_parts = list()
 	var/list/needs_update = list()
 	var/limb_count_update = FALSE
 	for(var/organ_tag in species.has_limbs)
-		var/obj/item/organ/external/limb = organs_by_name[organ_tag]
+		var/obj/item/organ/external/limb = external_organs_by_name[organ_tag]
 		if(!QDELETED(limb))
 			var/old_key = limb_render_keys?[organ_tag] // Checks the mob's icon render key list for the bodypart
 			var/new_key = json_encode(limb.get_icon_key()) // Generates a key for the current bodypart
@@ -259,7 +260,7 @@ var/global/list/damage_icon_parts = list()
 	if(length(needs_update) || limb_count_update)
 		//GENERATE NEW LIMBS
 		var/list/new_limbs = list()
-		for(var/obj/item/organ/external/limb in organs)
+		for(var/obj/item/organ/external/limb in external_organs)
 			if(limb in needs_update)
 				var/list/limb_overlays = limb.get_overlays()
 				GLOB.limb_overlays_cache[limb_render_keys[limb.organ_tag]] = limb_overlays
@@ -425,7 +426,7 @@ var/global/list/damage_icon_parts = list()
 	update_inv_pockets(0)
 	update_fire(0)
 	update_surgery(0)
-	UpdateDamageIcon()
+	update_damage_overlays()
 	queue_icon_update()
 	//Hud Stuff
 	update_hud()
@@ -520,11 +521,12 @@ var/global/list/damage_icon_parts = list()
 
 // Suit Storage
 /mob/living/carbon/human/update_inv_s_store(update_icons=1)
-	if(s_store && !((wear_suit && wear_suit.flags_inv & HIDESUITSTORAGE)))
+	if(s_store && !((wear_suit && wear_suit.flags_inv & HIDESUITSTORAGE) || (back && back.flags_inv & HIDERIG)))
 		overlays_standing[HO_SUIT_STORE_LAYER] = s_store.get_mob_overlay(src, slot_s_store_str)
 	else
 		overlays_standing[HO_SUIT_STORE_LAYER] = null
 
+	update_inv_back(FALSE)
 	if(update_icons) queue_icon_update()
 
 // Head
@@ -581,7 +583,8 @@ var/global/list/damage_icon_parts = list()
 
 // Back
 /mob/living/carbon/human/update_inv_back(update_icons=1)
-	if(back)
+	var/hideback = (s_store && (s_store.flags_inv & HIDERIG)) && istype(back, /obj/item/rig)
+	if(back && !hideback)
 		overlays_standing[HO_BACK_LAYER] = back.get_mob_overlay(src,slot_back_str)
 	else
 		overlays_standing[HO_BACK_LAYER] = null
@@ -767,8 +770,16 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/update_fire(update_icons=1)
 	overlays_standing[HO_FIRE_LAYER] = null
 	if(on_fire)
-		var/image/standing = overlay_image('icons/mob/onfire.dmi', "Standing", RESET_COLOR)
-		overlays_standing[HO_FIRE_LAYER] = standing
+		switch(get_fire_level())
+			if(3)
+				var/image/standing = overlay_image('icons/mob/onfire.dmi', "burning3", RESET_COLOR)
+				overlays_standing[HO_FIRE_LAYER] = standing
+			if(2)
+				var/image/standing = overlay_image('icons/mob/onfire.dmi', "burning2", RESET_COLOR)
+				overlays_standing[HO_FIRE_LAYER] = standing
+			if(1)
+				var/image/standing = overlay_image('icons/mob/onfire.dmi', "burning1", RESET_COLOR)
+				overlays_standing[HO_FIRE_LAYER] = standing
 
 	if(update_icons) queue_icon_update()
 
@@ -776,9 +787,9 @@ var/global/list/damage_icon_parts = list()
 /mob/living/carbon/human/proc/update_surgery(update_icons=1)
 	overlays_standing[HO_SURGERY_LAYER] = null
 	var/image/total = new
-	for(var/obj/item/organ/external/E in organs)
-		if(!BP_IS_ROBOTIC(E) && E.open())
-			var/image/I = image("icon"='icons/mob/surgery.dmi', "icon_state"="[E.icon_name][round(E.open())]", "layer"=-HO_SURGERY_LAYER)
+	for(var/obj/item/organ/external/E in external_organs)
+		if(!BP_IS_ROBOTIC(E) && E.is_surgically_open())
+			var/image/I = image("icon"='icons/mob/surgery.dmi', "icon_state"="[E.icon_name][round(E.is_surgically_open())]", "layer"=-HO_SURGERY_LAYER)
 			total.AddOverlays(I)
 	total.appearance_flags = DEFAULT_APPEARANCE_FLAGS | RESET_COLOR
 	overlays_standing[HO_SURGERY_LAYER] = total

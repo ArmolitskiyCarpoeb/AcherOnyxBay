@@ -52,7 +52,8 @@
 
 	illegal = list(
 		/obj/item/flame/lighter/zippo = 4,
-		/obj/item/storage/tobaccopack/contraband = 1
+		/obj/item/storage/tobaccopack/contraband = 1,
+		/obj/item/storage/fancy/cigarettes/syndi_cigs/tricordrazine = 1
 		)
 
 	premium = list(
@@ -149,7 +150,8 @@
 
 	illegal = list(
 		/obj/item/flame/lighter/zippo = 4,
-		/obj/item/storage/tobaccopack/contraband = 1
+		/obj/item/storage/tobaccopack/contraband = 1,
+		/obj/item/storage/fancy/cigarettes/syndi_cigs/tricordrazine = 1
 		)
 
 	premium = list(

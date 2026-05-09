@@ -12,7 +12,7 @@
 	ingest_met = 0.75
 	digest_met = 3.5
 	ingest_absorbability = 0.5
-	digest_absorbability = 1.0
+	digest_absorbability = 0.0 // Works directly from the guts, and only poisons one if injected.
 	touch_met = 5
 
 	var/nutriment_factor = 0
@@ -29,13 +29,17 @@
 
 /datum/reagent/ethanol/touch_mob(mob/living/L, amount)
 	if(istype(L))
-		L.adjust_fire_stacks(amount / 100)
+		if(strength >= 30) // So that things like beer and wine extinguish you instead of making you burn brighter.
+			L.adjust_fire_stacks(-1 * ceil(amount / 10)) // The same as water, let's not make things overcomplicated.
+		else
+			L.adjust_fire_stacks(ceil(amount / strength)) // Thus, pure ethanol has a half of welding fuel's flammability, further decreasing as the drink gets softer.
 
 /datum/reagent/ethanol/affect_blood(mob/living/carbon/M, alien, removed)
 	M.adjustToxLoss(removed * 2 * toxicity)
 	return
 
 /datum/reagent/ethanol/affect_digest(mob/living/carbon/M, alien, removed)
+	..()
 	M.add_nutrition(nutriment_factor * removed)
 	var/strength_mod = 0.2
 	if(alien == IS_SKRELL)
@@ -67,7 +71,7 @@
 		M.Sleeping(30)
 
 	if(druggy != 0)
-		M.druggy = max(M.druggy, druggy)
+		M.make_drugged(druggy)
 
 	if(adj_temp > 0 && M.bodytemperature < targ_temp) // 310 is the normal bodytemp. 310.055
 		M.bodytemperature = min(targ_temp, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
@@ -883,7 +887,9 @@
 	if(alien == IS_DIONA)
 		return
 	M.adjustOxyLoss(-4 * removed)
-	M.heal_organ_damage(2 * removed, 2 * removed)
+	M.add_chemical_effect(CE_BRUTE_REGEN, 0.75)
+	M.add_chemical_effect(CE_BURN_REGEN, 0.75)
+
 	M.adjustToxLoss(-2 * removed)
 	if(M.dizziness)
 		M.dizziness = max(0, M.dizziness - 15)
@@ -1406,7 +1412,10 @@
 	if(alien == IS_DIONA)
 		return
 	M.adjustOxyLoss(-4 * removed)
-	M.heal_organ_damage(2 * removed, 2 * removed)
+
+	M.add_chemical_effect(CE_BRUTE_REGEN, 1.0)
+	M.add_chemical_effect(CE_BURN_REGEN, 1.0)
+
 	M.adjustToxLoss(-2 * removed)
 	if(M.dizziness)
 		M.dizziness = max(0, M.dizziness - 15)
@@ -1436,7 +1445,7 @@
 
 	var/threshold = 10
 
-	M.druggy = max(M.druggy, 30)
+	M.make_drugged(30)
 
 	if(M.chem_doses[type] < 1 * threshold)
 		M.apply_effect(3, STUTTER)
@@ -1455,7 +1464,7 @@
 		M.add_up_to_chemical_effect(CE_SPEEDBOOST, 1.25)
 		M.add_chemical_effect(CE_PULSE, 3)
 
-		M.druggy = max(M.druggy, 35)
+		M.make_drugged(35)
 		if(prob(10))
 			M.emote(pick("twitch", "blink_r", "shiver"))
 	else
@@ -1468,7 +1477,7 @@
 		M.add_up_to_chemical_effect(CE_SPEEDBOOST, 2)
 		M.add_chemical_effect(CE_PULSE, 4)
 
-		M.druggy = max(M.druggy, 40)
+		M.make_drugged(40)
 		if(prob(15))
 			M.emote(pick("twitch", "blink_r", "shiver"))
 
@@ -1774,4 +1783,6 @@
 	..()
 	if(alien == IS_DIONA)
 		return
-	M.heal_organ_damage(3 * removed, 3 * removed)
+
+	M.add_chemical_effect(CE_BRUTE_REGEN, 1.0)
+	M.add_chemical_effect(CE_BURN_REGEN, 1.0)

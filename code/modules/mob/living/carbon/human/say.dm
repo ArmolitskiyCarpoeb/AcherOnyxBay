@@ -80,6 +80,11 @@
 			temp += pick(append)
 		say(temp)
 
+	// Never trust a winget() not to be late for the party
+	// YES I KNOW spawns are bad. Could care less in this particular case.
+	spawn(1)
+		remove_speech_bubble()
+
 /mob/living/carbon/human/say_understands(mob/other,datum/language/language = null)
 
 	if(has_brain_worms()) //Brain worms translate everything. Even mice and alien speak.
@@ -88,9 +93,15 @@
 	if(species.can_understand(other))
 		return TRUE
 
+	var/obj/item/organ/external/head/head = external_organs_by_name[BP_HEAD]
+	if(istype(head))
+		var/obj/item/organ_module/active/translator/translator = locate() in head
+		if(language && translator?.toggled && (language.name in translator.languages))
+			return TRUE
+
 	//These only pertain to common. Languages are handled by mob/say_understands()
 	if(!language)
-		if(istype(other, /mob/living/carbon/alien/diona))
+		if(istype(other, /mob/living/carbon/larva/diona))
 			if(other.languages.len >= 2) //They've sucked down some blood and can speak common now.
 				return TRUE
 		if(istype(other, /mob/living/silicon))
@@ -157,7 +168,7 @@
 		message_data["message"] = ""
 		return TRUE
 	if(should_have_organ(BP_TONGUE) && !(message_data["language"]?.language_flags & (NONVERBAL|SIGNLANG)))
-		var/obj/item/organ/internal/tongue/T = internal_organs_by_name[BP_KIDNEYS]
+		var/obj/item/organ/internal/tongue/T = internal_organs_by_name[BP_TONGUE]
 		if(!T)
 			message_data["message"] = mutespeech(message_data["message"], 95)
 			message_data["verb"] = "mumbles"

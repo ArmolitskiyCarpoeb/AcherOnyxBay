@@ -3,18 +3,24 @@
 /obj/item/organ/internal/cerebrum/brain
 	name = "\improper Brain"
 	desc = "A piece of juicy meat found in a person's head."
+	w_class = ITEM_SIZE_NORMAL
 
+	max_damage = 100
+	relative_size = 70
 	food_organ_type = /obj/item/reagent_containers/food/organ/brain
+	traumatic_damage_multiplier = 2.0
 
 	var/damage_threshold_value
 	var/healed_threshold = 1
 
 	relative_size = 90
 
-/obj/item/organ/internal/cerebrum/brain/New(newLoc, mob/living/carbon/holder)
+/obj/item/organ/internal/cerebrum/brain/Initialize()
 	. = ..()
 
-	max_damage = isnull(holder?.species) ? 100 : species.total_health
+	if(species)
+		max_damage = species.total_health
+
 	min_bruised_damage = max_damage * 0.25
 	min_broken_damage = max_damage * 0.75
 
@@ -161,12 +167,10 @@
 		to_chat(owner, SPAN("warning", "It becomes hard to see for some reason."))
 		owner.eye_blurry = 10
 
-	if(damage >= 0.5 * max_damage && prob(1) && owner.get_active_hand())
+	if(damage >= 0.5 * max_damage && prob(1) && (owner.get_active_hand() || owner.get_inactive_hand()))
 		to_chat(owner, SPAN("danger", "Your hand won't respond properly, and you drop what you are holding!"))
-		if(prob(50))
-			owner.drop_active_hand()
-		else
-			owner.drop_inactive_hand()
+		owner.drop_active_hand()
+		owner.drop_inactive_hand()
 
 	if(damage >= 0.6 * max_damage)
 		owner.slurring = max(owner.slurring, 2)

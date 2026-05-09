@@ -24,6 +24,8 @@
 // Grab Types
 #define GRAB_NORMAL			"normal"
 #define GRAB_QUICKCHOKE     "choke"
+#define GRAB_NORM_AGGRESSIVE_GRACE (2 SECONDS)
+#define GRAB_RESIST_CD (1 SECOND)
 
 // Grab levels.
 #define NORM_PASSIVE    "normal passive"
@@ -449,8 +451,8 @@ GLOBAL_LIST_INIT(organ_tag_to_name, list(
 #define TOXLOSS_SEVERE   50
 #define TOXLOSS_CRITICAL 75
 #define TOXLOSS_LETHAL   100
-#define TOXLOSS_SOFTCAP  150
-#define TOXLOSS_HARDCAP  200
+#define TOXLOSS_SOFTCAP  125
+#define TOXLOSS_HARDCAP  150
 
 #define HUMAN_POWER_NONE    "None"
 #define HUMAN_POWER_SPIT    "Spit"
@@ -533,3 +535,13 @@ GLOBAL_LIST_INIT(organ_tag_to_name, list(
 #define HO_MODIFIER_EFFECTS_LAYER  37
 #define HO_TARGETED_LAYER          38
 #define HO_TOTAL_LAYERS            39
+
+#define MOB_ANIM_ATTACK "attack"
+#define MOB_ANIM_FLOATING "floating"
+#define MOB_ANIM_HEIGHT_OFFSET "height_offset"
+#define MOB_ANIM_GRAB "grab"
+#define MOB_ANIM_TWITCH "twitch"
+#define MOB_ANIM_TWITCH_V "twitch_violently"
+#define MOB_ANIM_TREMBLE "tremble"
+#define MOB_ANIM_SHIVER "shiver"
+#define MOB_ANIM_SWAY "sway"

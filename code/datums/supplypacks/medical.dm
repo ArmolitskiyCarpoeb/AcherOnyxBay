@@ -20,14 +20,14 @@
 
 /decl/hierarchy/supply_pack/medical/somaticgel
 	name = "Somatic gel crate"
-	contains = list(/obj/item/stack/medical/advanced/bruise_pack = 3)
-	cost = 50
+	contains = list(/obj/item/stack/medical/gel/brute = 5)
+	cost = 10
 	containername = "\improper Somatic gel crate"
 
 /decl/hierarchy/supply_pack/medical/burngel
 	name = "Burn gel crate"
-	contains = list(/obj/item/stack/medical/advanced/ointment = 3)
-	cost = 50
+	contains = list(/obj/item/stack/medical/gel/burn = 5)
+	cost = 10
 	containername = "\improper Burn gel crate"
 
 /decl/hierarchy/supply_pack/medical/somaticgeltank
@@ -86,16 +86,22 @@
 	containername = "\improper Syringe cartridges crate"
 
 /decl/hierarchy/supply_pack/medical/bloodpack
-	name = "Blood pack crate"
+	name = "IV bags crate"
 	contains = list(/obj/item/storage/box/bloodpacks = 3)
-	cost = 125
-	containername = "\improper Blood pack crate"
+	cost = 10
+	containername = "\improper IV bags crate"
 
 /decl/hierarchy/supply_pack/medical/blood
-	name = "Nanoblood crate"
+	name = "IV bags (nanoblood) crate"
 	contains = list(/obj/item/reagent_containers/ivbag/nanoblood = 4)
 	cost = 200
 	containername = "\improper Nanoblood crate"
+
+/decl/hierarchy/supply_pack/medical/saline
+	name = "IV bags (saline) crate"
+	contains = list(/obj/item/reagent_containers/ivbag/saline = 10)
+	cost = 10
+	containername = "\improper Saline crate"
 
 /decl/hierarchy/supply_pack/medical/bodybag
 	name = "Body bag crate"
@@ -191,9 +197,8 @@
 					/obj/item/clothing/glasses/hud/one_eyed/oneye/medical,
 					/obj/item/clothing/suit/storage/toggle/labcoat,
 					/obj/item/clothing/under/rank/medical/paramedic,
-					/obj/item/clothing/suit/storage/toggle/fr_jacket,
+					/obj/item/clothing/suit/storage/toggle/paramedic,
 					/obj/item/clothing/mask/gas,
-					/obj/item/clothing/under/rank/medical/paramedic,
 					/obj/item/clothing/accessory/stethoscope,
 					/obj/item/storage/firstaid/adv,
 					/obj/item/clothing/shoes/jackboots,

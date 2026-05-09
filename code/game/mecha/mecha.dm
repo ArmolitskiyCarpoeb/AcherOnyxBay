@@ -216,7 +216,7 @@
 	cabin_air = new
 	cabin_air.temperature = 20 CELSIUS
 	cabin_air.volume = 200
-	cabin_air.adjust_multi("oxygen", O2STANDARD*cabin_air.volume/(R_IDEAL_GAS_EQUATION*cabin_air.temperature), "nitrogen", N2STANDARD*cabin_air.volume/(R_IDEAL_GAS_EQUATION*cabin_air.temperature))
+	cabin_air.adjust_multi("oxygen", O2_STANDARD*cabin_air.volume/(R_IDEAL_GAS_EQUATION*cabin_air.temperature), "nitrogen", N2_STANDARD*cabin_air.volume/(R_IDEAL_GAS_EQUATION*cabin_air.temperature))
 	return cabin_air
 
 /obj/mecha/proc/add_radio()
@@ -631,7 +631,7 @@
 		log_append_to_last("Armor saved.")
 	return
 
-/obj/mecha/hitby(atom/movable/AM, speed, nomsg = TRUE)
+/obj/mecha/hitby(atom/movable/AM, datum/thrownthing/TT, nomsg = TRUE)
 	..()
 	log_message("Hit by [AM].",1)
 	if(istype(AM, /obj/item/mecha_parts/mecha_tracking))
@@ -785,7 +785,7 @@
 		return
 
 	var/obj/item/card/id/id_card = W.get_id_card()
-	if(id_card)
+	if(istype(id_card))
 		if(add_req_access || maint_access)
 			if(internals_access_allowed(usr))
 				output_maintenance_dialog(id_card, user)
@@ -890,15 +890,19 @@
 	else
 		src.log_message("Attacked by [W]. Attacker - [user]")
 
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-		if(deflect_hit(is_melee=1))
-			to_chat(user, "<span class='danger'>\The [W] bounces off [src.name].</span>")
+		W.set_cooldown()
+		user.do_attack_animation(src)
+		obj_attack_sound(W)
+
+		if(deflect_hit(is_melee = TRUE))
+			to_chat(user, SPAN("danger", "\The [W] bounces off [src]."))
 			src.log_append_to_last("Armor saved.")
 		else
 			src.occupant_message("<font color='red'><b>[user] hits [src] with [W].</b></font>")
 			user.visible_message("<font color='red'><b>[user] hits [src] with [W].</b></font>", "<font color='red'><b>You hit [src] with [W].</b></font>")
 			src.hit_damage(W.force, W.damtype, is_melee=1)
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
+		return
 
 	return
 
@@ -1137,6 +1141,7 @@
 	icon_state = src.reset_icon()
 	update_icon()
 	set_dir(dir_in)
+	playsound(src, 'sound/mecha/mecha_in.ogg', 20, 1)
 	playsound(src, 'sound/machines/windowdoor.ogg', 50, 1)
 	if(!hasInternalDamage())
 		sound_to(occupant, sound('sound/mecha/nominal.ogg', volume = 50))
@@ -1324,14 +1329,14 @@
 /////////////////////////
 
 /obj/mecha/proc/operation_allowed(mob/living/carbon/human/H)
-	for(var/atom/ID in list(H.get_active_hand(), H.wear_id, H.belt))
+	for(var/atom/ID in list(H.get_active_hand(), H.get_inactive_hand(), H.wear_id, H.belt))
 		if(src.check_access(ID,src.operation_req_access))
 			return 1
 	return 0
 
 
 /obj/mecha/proc/internals_access_allowed(mob/living/carbon/human/H)
-	for(var/atom/ID in list(H.get_active_hand(), H.wear_id, H.belt))
+	for(var/atom/ID in list(H.get_active_hand(), H.get_inactive_hand(), H.wear_id, H.belt))
 		if(src.check_access(ID,src.internals_req_access))
 			return 1
 	return 0
@@ -1819,7 +1824,7 @@
 		O.fireloss = AI.getFireLoss()
 		O.bruteloss = AI.getBruteLoss()
 		O.toxloss = AI.toxloss
-		O.updatehealth()
+		O.update_health()
 		src.occupant = O
 		if(AI.mind)
 			AI.mind.transfer_to(O)
@@ -1837,7 +1842,7 @@
 			AI.fireloss = O.getFireLoss()
 			AI.bruteloss = O.getBruteLoss()
 			AI.toxloss = O.toxloss
-			AI.updatehealth()
+			AI.update_health()
 			qdel(O)
 			if (!AI.stat)
 				AI.icon_state = "ai"
@@ -2036,3 +2041,14 @@
 */
 /obj/mecha/fall_damage()
 	return 550
+
+/obj/mecha/handle_fall_effect(turf/landing)
+	if(istype(landing, /turf/simulated/open))
+		visible_message("\The [src] falls from the deck above through \the [landing]!", "You hear a whoosh of displaced air.")
+	else
+		visible_message("\The [src] falls from the deck above and slams into \the [landing]!", "You hear a loud metallic crash.")
+		playsound(landing, pick('sound/effects/metalhit.ogg', 'sound/effects/metalhit2.ogg'), 75)
+		if(fall_damage())
+			for(var/mob/living/M in landing.contents)
+				visible_message("\The [src] hits \the [M.name]!")
+				M.take_overall_damage(fall_damage())

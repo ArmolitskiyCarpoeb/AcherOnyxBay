@@ -411,7 +411,7 @@ GLOBAL_LIST_INIT(syndicate_factions, list(
 	var/weakref/alternative_target // obj/item
 	var/weakref/H // mob/living/carbon/human
 	var/full_reward_mod = 1.5
-	wanted_jobs = list(/datum/job/captain,/datum/job/hop,/datum/job/rd,/datum/job/chief_engineer,/datum/job/cmo,/datum/job/hos, /datum/job/warden, /datum/job/detective, /datum/job/qm)
+	wanted_jobs = list(/datum/job/captain,/datum/job/hop,/datum/job/rd,/datum/job/chief_engineer,/datum/job/cmo,/datum/job/hos, /datum/job/warden, /datum/job/detective)
 
 /datum/antag_contract/item/assassinate/New(datum/contract_organization/contract_organization, reason, datum/mind/target)
 	organization = contract_organization
@@ -476,10 +476,10 @@ GLOBAL_LIST_INIT(syndicate_factions, list(
 	brain = weakref(_H.internal_organs_by_name[BP_BRAIN])
 
 	var/obj/item/organ/_target
-	if(_H.organs_by_name[BP_STACK])
+	if(_H.external_organs_by_name[BP_STACK])
 		_target = _H.internal_organs_by_name[BP_STACK]
 	else
-		_target = _H.organs_by_name[BP_HEAD]
+		_target = _H.external_organs_by_name[BP_HEAD]
 	target = weakref(_target)
 
 	var/datum/gender/T = gender_datums[_H.get_gender()]

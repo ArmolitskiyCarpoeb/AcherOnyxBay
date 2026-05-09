@@ -11,9 +11,9 @@
 //Breaths however only happen once every MOB_BREATH_DELAY life ticks. The delay between life ticks is set by the mob process.
 #define HUMAN_CRIT_MAX_OXYLOSS ( MOB_BREATH_DELAY * process_schedule_interval("mob") * (HUMAN_CRIT_HEALTH_CUSHION/HUMAN_CRIT_TIME_CUSHION) )
 
-#define HEAT_DAMAGE_LEVEL_1 2 //Amount of damage applied when your body temperature just passes the 360.15k safety point
-#define HEAT_DAMAGE_LEVEL_2 4 //Amount of damage applied when your body temperature passes the 400K point
-#define HEAT_DAMAGE_LEVEL_3 8 //Amount of damage applied when your body temperature passes the 1000K point
+#define HEAT_DAMAGE_LEVEL_1 0.5 // Amount of damage applied to each limb when your body temperature just passes the 360.15k safety point
+#define HEAT_DAMAGE_LEVEL_2 2.0 // Amount of damage applied to each limb when your body temperature passes the 400K point
+#define HEAT_DAMAGE_LEVEL_3 8.0 // Amount of damage applied to each limb when your body temperature passes the 1000K point
 
 #define COLD_DAMAGE_LEVEL_1 5 //0.5 //Amount of damage applied when your body temperature just passes the 260.15k safety point
 #define COLD_DAMAGE_LEVEL_2 10 //Amount of damage applied when your body temperature passes the 200K point
@@ -38,6 +38,8 @@
 	var/pressure_alert = 0
 	var/temperature_alert = 0
 	var/heartbeat = 0
+	var/cpu_overload_since = 0
+	var/cpu_overload_warned_at = 0
 
 /mob/living/carbon/human/Initialize()
 	. = ..()
@@ -80,6 +82,7 @@
 	//No need to update all of these procs if the guy is dead.
 	if(!is_ooc_dead() && !InStasis())
 		//Organs and blood
+		handle_addictions()
 		handle_organs()
 		handle_organs_pain()
 		stabilize_body_temperature() //Body temperature adjusts itself (self-regulation)
@@ -88,6 +91,7 @@
 		handle_toxins()
 		handle_shock()
 		handle_pain()
+		handle_cpu_overload()
 		handle_medical_side_effects()
 		handle_poise()
 		update_canmove(TRUE) // Otherwise we'll have a 1 tick latency between actual getting-up and the animation update
@@ -124,53 +128,6 @@
 		if(L)
 			active_breaths = L.active_breathing
 		..(active_breaths)
-
-// Calculate how vulnerable the human is to under- and overpressure.
-// Returns 0 (equals 0 %) if sealed in an undamaged suit, 1 if unprotected (equals 100%).
-// Suitdamage can modifiy this in 10% steps.
-/mob/living/carbon/human/proc/get_pressure_weakness()
-
-	var/pressure_adjustment_coefficient = 1 // Assume no protection at first.
-
-	if(wear_suit && (wear_suit.item_flags & ITEM_FLAG_STOPPRESSUREDAMAGE) && head && (head.item_flags & ITEM_FLAG_STOPPRESSUREDAMAGE)) // Complete set of pressure-proof suit worn, assume fully sealed.
-		pressure_adjustment_coefficient = 0
-
-		// Handles breaches in your space suit. 10 suit damage equals a 100% loss of pressure protection.
-		if(istype(wear_suit, /obj/item/clothing/suit/space))
-			var/obj/item/clothing/suit/space/S = wear_suit
-			if(S.can_breach && S.damage)
-				pressure_adjustment_coefficient += S.damage * 0.1
-
-	pressure_adjustment_coefficient = min(1, max(pressure_adjustment_coefficient, 0)) // So it isn't less than 0 or larger than 1.
-
-	return pressure_adjustment_coefficient
-
-// Calculate how much of the enviroment pressure-difference affects the human.
-/mob/living/carbon/human/calculate_affecting_pressure(pressure)
-	var/pressure_difference
-
-	// First get the absolute pressure difference.
-	if(pressure < ONE_ATMOSPHERE) // We are in an underpressure.
-		pressure_difference = ONE_ATMOSPHERE - pressure
-
-	else //We are in an overpressure or standard atmosphere.
-		pressure_difference = pressure - ONE_ATMOSPHERE
-
-	if(pressure_difference < 5) // If the difference is small, don't bother calculating the fraction.
-		pressure_difference = 0
-
-	else
-		// Otherwise calculate how much of that absolute pressure difference affects us, can be 0 to 1 (equals 0% to 100%).
-		// This is our relative difference.
-		pressure_difference *= get_pressure_weakness()
-
-	// The difference is always positive to avoid extra calculations.
-	// Apply the relative difference on a standard atmosphere to get the final result.
-	// The return value will be the adjusted_pressure of the human that is the basis of pressure warnings and damage.
-	if(pressure < ONE_ATMOSPHERE)
-		return ONE_ATMOSPHERE - pressure_difference
-	else
-		return ONE_ATMOSPHERE + pressure_difference
 
 /mob/living/carbon/human/handle_impaired_vision()
 	..()
@@ -260,7 +217,7 @@
 		if(radiation > (2 SIEVERT))
 			if(!full_prosthetic && !isundead(src))
 				if(prob(5))
-					take_overall_damage(0, damage, used_weapon = "Radiation Burns")
+					take_overall_damage(0, damage, 0, "Radiation Burns", FALSE)
 				if(prob(1))
 					to_chat(src, SPAN("warning", "You feel strange!"))
 					adjustCloneLoss(radiation * damage)
@@ -269,10 +226,10 @@
 		if(damage)
 			damage *= full_prosthetic ? 0.5 : species.radiation_mod
 			adjustToxLoss(damage)
-			updatehealth()
+			update_health()
 
-			if(!full_prosthetic && !isundead(src) && organs.len)
-				var/obj/item/organ/external/O = pick(organs)
+			if(!full_prosthetic && !isundead(src) && length(external_organs))
+				var/obj/item/organ/external/O = pick(external_organs)
 				if(istype(O))
 					O.add_autopsy_data("Radiation Poisoning", damage)
 
@@ -327,6 +284,41 @@
 		failed_last_breath = L.handle_breath(breath) //if breath is null or vacuum, the lungs will handle it for us
 	return !failed_last_breath
 
+
+// Calculate how vulnerable the human is to under- and overpressure.
+// Returns 0 (equals 0 %) if sealed in an undamaged suit, 1 if unprotected (equals 100%).
+// Suitdamage can modifiy this in 10% steps.
+/mob/living/carbon/human/proc/get_pressure_weakness()
+
+	var/pressure_adjustment_coefficient = 1 // Assume no protection at first.
+
+	if(wear_suit && (wear_suit.item_flags & ITEM_FLAG_STOPPRESSUREDAMAGE) && head && (head.item_flags & ITEM_FLAG_STOPPRESSUREDAMAGE)) // Complete set of pressure-proof suit worn, assume fully sealed.
+		pressure_adjustment_coefficient = 0
+
+		// Handles breaches in your space suit. 10 suit damage equals a 100% loss of pressure protection.
+		if(istype(wear_suit, /obj/item/clothing/suit/space))
+			var/obj/item/clothing/suit/space/S = wear_suit
+			if(S.can_breach && S.damage)
+				pressure_adjustment_coefficient += S.damage * 0.1
+
+	pressure_adjustment_coefficient = min(1, max(pressure_adjustment_coefficient, 0)) // So it isn't less than 0 or larger than 1.
+
+	return pressure_adjustment_coefficient
+
+// Calculate how much of the enviroment pressure-difference affects the human.
+/mob/living/carbon/human/calculate_affecting_pressure(pressure)
+	// First get the pressure difference.
+	. = pressure - ONE_ATMOSPHERE
+
+	// If the absolute difference is small, don't bother calculating the fraction.
+	if(abs(.) < 5)
+		return ONE_ATMOSPHERE
+
+	// Otherwise calculate how much of that absolute pressure difference affects us, can be 0 to 1 (equals 0% to 100%).
+	// Apply the relative difference on a standard atmosphere to get the final result.
+	// The return value will be the adjusted_pressure of the human that is the basis of pressure warnings and damage.
+	return ONE_ATMOSPHERE + (. * get_pressure_weakness())
+
 /mob/living/carbon/human/handle_environment(datum/gas_mixture/environment)
 	if(!environment)
 		return
@@ -354,7 +346,7 @@
 			var/temperature_gain = heat_gain/HUMAN_HEAT_CAPACITY
 			bodytemperature += temperature_gain //temperature_gain will often be negative
 
-	var/relative_density = (environment.total_moles/environment.volume) / (MOLES_CELLSTANDARD/CELL_VOLUME)
+	var/relative_density = (environment.total_moles/environment.volume) / (MOLES_CELL_STANDARD/CELL_VOLUME)
 	if(relative_density > 0.02) //don't bother if we are in vacuum or near-vacuum
 		var/loc_temp = environment.temperature
 
@@ -380,21 +372,20 @@
 	if(bodytemperature >= getSpeciesOrSynthTemp(HEAT_LEVEL_1))
 		//Body temperature is too hot.
 		fire_alert = max(fire_alert, 1)
-		if(status_flags & GODMODE)	return 1	//godmode
 		var/burn_dam = 0
+
 		if(bodytemperature < getSpeciesOrSynthTemp(HEAT_LEVEL_2))
 			burn_dam = HEAT_DAMAGE_LEVEL_1
 		else if(bodytemperature < getSpeciesOrSynthTemp(HEAT_LEVEL_3))
 			burn_dam = HEAT_DAMAGE_LEVEL_2
 		else
 			burn_dam = HEAT_DAMAGE_LEVEL_3
-		take_overall_damage(burn=burn_dam, used_weapon = "High Body Temperature")
+
+		take_overall_damage(0, burn_dam, 0, "High Body Temperature", FALSE)
 		fire_alert = max(fire_alert, 2)
 
 	else if(bodytemperature <= getSpeciesOrSynthTemp(COLD_LEVEL_1))
 		fire_alert = max(fire_alert, 1)
-		if(status_flags & GODMODE)	return 1	//godmode
-
 		var/burn_dam = 0
 
 		if(bodytemperature > getSpeciesOrSynthTemp(COLD_LEVEL_2))
@@ -403,19 +394,16 @@
 			burn_dam = COLD_DAMAGE_LEVEL_2
 		else
 			burn_dam = COLD_DAMAGE_LEVEL_3
+
 		SetStasis(getCryogenicFactor(bodytemperature), STASIS_COLD)
 		if(!chem_effects[CE_CRYO])
-			take_overall_damage(burn=burn_dam, used_weapon = "Low Body Temperature")
+			take_overall_damage(0, burn_dam, 0, "Low Body Temperature", FALSE)
 			fire_alert = max(fire_alert, 1)
 
-	// Account for massive pressure differences.  Done by Polymorph
-	// Made it possible to actually have something that can protect against high pressure... Done by Errorage. Polymorph now has an axe sticking from his head for his previous hardcoded nonsense!
-	if(status_flags & GODMODE)
-		return 1	//godmode
-
+	// Hazardous pressure
 	if(adjusted_pressure >= species.hazard_high_pressure)
-		var/pressure_damage = min( ( (adjusted_pressure / species.hazard_high_pressure) -1 )*PRESSURE_DAMAGE_COEFFICIENT , MAX_HIGH_PRESSURE_DAMAGE)
-		take_overall_damage(brute=pressure_damage, used_weapon = "High Pressure")
+		var/pressure_damage = min(((adjusted_pressure / species.hazard_high_pressure) - 1) * PRESSURE_DAMAGE_COEFFICIENT, MAX_HIGH_PRESSURE_DAMAGE)
+		take_overall_damage(pressure_damage, 0, 0, "High Pressure", FALSE)
 		pressure_alert = 2
 	else if(adjusted_pressure >= species.warning_high_pressure)
 		pressure_alert = 1
@@ -424,7 +412,7 @@
 	else if(adjusted_pressure >= species.hazard_low_pressure)
 		pressure_alert = -1
 	else
-		take_overall_damage(brute=LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
+		take_overall_damage(LOW_PRESSURE_DAMAGE, 0, 0, "Low Pressure", FALSE)
 		if(getOxyLoss() < 55) // 11 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
 			adjustOxyLoss(4)  // 16 OxyLoss per 4 ticks when no internals present; unconsciousness in 13 ticks, roughly twenty seconds
 		pressure_alert = -2
@@ -573,7 +561,7 @@
 		if(chem_traces[T] <= 0)
 			chem_traces.Remove(T)
 
-	updatehealth()
+	update_health()
 
 	return //TODO: DEFERRED
 
@@ -600,7 +588,7 @@
 		blinded = 1
 		silent = 0
 	else				//ALIVE. LIGHTS ARE ON
-		updatehealth()	//TODO
+		update_health()	//TODO
 
 		if(handle_death_check())
 			death()
@@ -641,11 +629,6 @@
 
 		// Check everything else.
 
-		//Periodically double-check embedded_flag
-		if(embedded_flag && !(life_tick % 10))
-			if(!embedded_needs_process())
-				embedded_flag = 0
-
 		//Resting
 		if(resting)
 			dizziness = max(0, dizziness - 15)
@@ -667,10 +650,6 @@
 					Sleeping(5)
 
 		confused = max(0, confused - 1)
-
-		// If you're dirty, your gloves will become dirty, too.
-		if(gloves && germ_level > gloves.germ_level && prob(10))
-			gloves.germ_level += 1
 
 		if(vsc.plc.CONTAMINATION_LOSS)
 			var/total_plasmaloss = 0
@@ -876,7 +855,7 @@
 					else
 						bowels_icon.icon_state = "bowels5"
 
-		if(full_prosthetic)
+		if(cells)
 			var/obj/item/organ/internal/cell/C = internal_organs_by_name[BP_CELL]
 			if(istype(C))
 				var/chargeNum = Clamp(ceil(C.percent()/25), 0, 4)	//0-100 maps to 0-4, but give it a paranoid clamp just in case.
@@ -956,7 +935,7 @@
 	return 1
 
 /mob/living/carbon/human/handle_hud_icons_health()
-	if(!healths)
+	if(!healths || !should_update_healths)
 		return
 
 	healths.ClearOverlays()
@@ -981,7 +960,7 @@
 	// Collect and apply the images all at once to avoid appearance churn.
 	var/no_damage = TRUE
 	var/list/health_images = list()
-	for(var/obj/item/organ/external/E in organs)
+	for(var/obj/item/organ/external/E in external_organs)
 		if(no_damage && (E.brute_dam || E.burn_dam))
 			no_damage = FALSE
 		health_images += E.get_damage_hud_image(painkiller_mult)
@@ -1042,12 +1021,16 @@
 		shock_stage = 0
 		return
 
+	var/is_shock_increasing = FALSE
+
 	if(is_asystole() && !isundead(src))
 		shock_stage = max(shock_stage, 61)
+
 	var/traumatic_shock = get_shock()
-	if(traumatic_shock >= max(30, 0.8 * shock_stage))
+	if(traumatic_shock >= max(30, shock_stage))
 		shock_stage += 1
-	else
+		is_shock_increasing = TRUE
+	else if(shock_stage)
 		shock_stage = min(shock_stage, 160)
 		var/recovery = 1
 		if(traumatic_shock < 0.5 * shock_stage) //lower shock faster if pain is gone completely
@@ -1055,45 +1038,53 @@
 		if(traumatic_shock < 0.25 * shock_stage)
 			recovery++
 		shock_stage = max(shock_stage - recovery, 0)
-		return
-	if(stat || (shock_stage < 10)) return 0
 
-	if(shock_stage == 10)
+	if(stat || (shock_stage < 10))
+		return
+
+	if(shock_stage >= 150)
+		if(shock_stage == 150 && is_shock_increasing)
+			visible_message("<b>[src]</b> can no longer stand, collapsing!")
+		Weaken(20)
+
+	if(shock_stage >= 120)
+		if(prob(2))
+			visible_message("<b>[src]</b> blacks out!")
+			custom_pain("[pick("You black out", "You feel like you could die any moment now", "You're about to lose consciousness")]!", shock_stage, nohalloss = TRUE)
+			Paralyse(5)
+			return
+
+	if(shock_stage >= 80)
+		if(prob(5))
+			custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!", shock_stage, nohalloss = TRUE)
+			Weaken(20)
+			return
+
+	if(shock_stage >= 60)
+		if(shock_stage == 60 && is_shock_increasing)
+			visible_message("<b>[src]</b>'s body becomes limp.")
+		if(prob(2))
+			custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!", shock_stage, nohalloss = TRUE)
+			Weaken(10)
+			return
+
+	if(shock_stage == 40 && is_shock_increasing)
+		custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!", 40, nohalloss = TRUE)
+
+	if(shock_stage >= 30)
+		if(shock_stage == 30 && is_shock_increasing)
+			visible_message("<b>[src]</b> is having trouble keeping \his eyes open.")
+		if(prob(30))
+			eye_blurry = max(2, eye_blurry)
+			stuttering = max(stuttering, 5)
+			return
+
+	if(shock_stage == 10 && is_shock_increasing)
 		// Please be very careful when calling custom_pain() from within code that relies on pain/trauma values. There's the
 		// possibility of a feedback loop from custom_pain() being called with a positive power, incrementing pain on a limb,
 		// which triggers this proc, which calls custom_pain(), etc. Make sure you call it with nohalloss = TRUE in these cases!
 		custom_pain("[pick("It hurts so much", "You really need some painkillers", "Dear god, the pain")]!", 10, nohalloss = TRUE)
-
-	if(shock_stage >= 30)
-		if(shock_stage == 30) visible_message("<b>[src]</b> is having trouble keeping \his eyes open.")
-		if(prob(30))
-			eye_blurry = max(2, eye_blurry)
-			stuttering = max(stuttering, 5)
-
-	if(shock_stage == 40)
-		custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!", 40, nohalloss = TRUE)
-	if (shock_stage >= 60)
-		if(shock_stage == 60) visible_message("<b>[src]</b>'s body becomes limp.")
-		if (prob(2))
-			custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!", shock_stage, nohalloss = TRUE)
-			Weaken(10)
-
-	if(shock_stage >= 80)
-		if (prob(5))
-			custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!", shock_stage, nohalloss = TRUE)
-			Weaken(20)
-
-	if(shock_stage >= 120)
-		if (prob(2))
-			custom_pain("[pick("You black out", "You feel like you could die any moment now", "You're about to lose consciousness")]!", shock_stage, nohalloss = TRUE)
-			Paralyse(5)
-
-	if(shock_stage == 150)
-		visible_message("<b>[src]</b> can no longer stand, collapsing!")
-		Weaken(20)
-
-	if(shock_stage >= 150)
-		Weaken(20)
+	return
 
 // Stance is being used in the Onyx fighting system. I wanted to call it stamina, but screw it.
 /mob/living/carbon/human/proc/handle_poise()
@@ -1372,9 +1363,9 @@
 	if(burn_temperature < 1)
 		return
 
-	for(var/obj/item/organ/external/E in organs)
+	for(var/obj/item/organ/external/E in external_organs)
 		if(!(E.body_part & protected_limbs) && prob(40))
-			E.take_external_damage(burn = round(species_heat_mod * log(10, (burn_temperature + 10)), 0.1), used_weapon = fire)
+			E.take_burn_damage(round(species_heat_mod * log(10, (burn_temperature + 10)), 0.1), "Burning")
 
 	var/list/cig_places = list(wear_mask, l_ear, r_ear, r_hand, l_hand)
 	for(var/obj/item/clothing/mask/smokable/cig in cig_places)

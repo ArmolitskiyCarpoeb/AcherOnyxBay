@@ -48,8 +48,8 @@
 	botcard.access = botcard_access.Copy()
 
 	access_scanner = new /obj(src)
-	access_scanner.req_access = req_access.Copy()
-	access_scanner.req_one_access = req_one_access.Copy()
+	access_scanner.req_access = req_access
+	access_scanner.req_one_access = req_one_access
 
 /mob/living/bot/Initialize()
 	. = ..()
@@ -76,7 +76,7 @@
 
 	update_icons()
 
-/mob/living/bot/updatehealth()
+/mob/living/bot/update_health()
 	if(status_flags & GODMODE)
 		health = maxHealth
 		set_stat(CONSCIOUS)
@@ -99,8 +99,8 @@
 	explode()
 
 /mob/living/bot/attackby(obj/item/O, mob/user)
-	if(O.get_id_card())
-		if(access_scanner.allowed(user) && !open)
+	if(O?.get_id_card())
+		if(access_scanner.check_access(O) && !open)
 			locked = !locked
 			to_chat(user, "<span class='notice'>Controls are now [locked ? "locked." : "unlocked."]</span>")
 			Interact(usr)
@@ -206,7 +206,7 @@
 	return
 
 /mob/living/bot/proc/CanToggle(mob/user)
-	return (!RequiresAccessToToggle || access_scanner.allowed(user) || issilicon(user))
+	return (!RequiresAccessToToggle || access_scanner.check_access(user) || issilicon(user))
 
 /mob/living/bot/proc/CanAccessPanel(mob/user)
 	return (!locked || issilicon(user))
@@ -221,9 +221,9 @@
 
 	..(message, null, verb)
 
-/mob/living/bot/Bump(atom/A)
-	if(on && botcard && istype(A, /obj/machinery/door))
-		var/obj/machinery/door/D = A
+/mob/living/bot/Bump(atom/movable/AM, yes)
+	if(on && botcard && istype(AM, /obj/machinery/door))
+		var/obj/machinery/door/D = AM
 		if(!istype(D, /obj/machinery/door/firedoor) && !istype(D, /obj/machinery/door/blast) && D.check_access(botcard))
 			D.open()
 	else

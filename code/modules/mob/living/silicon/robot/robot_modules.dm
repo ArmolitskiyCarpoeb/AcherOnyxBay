@@ -198,7 +198,8 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		"Basic" = new /datum/robot_hull/legs/robot_old,
 		"Android" = new /datum/robot_hull/spider/droid,
 		"Drone" = new /datum/robot_hull/flying/drone_standard,
-		"Doot" = new /datum/robot_hull/flying/eyebot_standard
+		"Doot" = new /datum/robot_hull/flying/eyebot_standard,
+		"Kerfur" = new /datum/robot_hull/sphere/kerfur_standart,
 	)
 
 /obj/item/robot_module/standard/New()
@@ -218,7 +219,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/datum/matter_synth/medicine = new /datum/matter_synth/medicine(5000)
 	synths += medicine
 
-	var/obj/item/stack/medical/bruise_pack/B = new /obj/item/stack/medical/bruise_pack(src)
+	var/obj/item/stack/medical/bandage/B = new /obj/item/stack/medical/bandage(src)
 	B.uses_charge = 1
 	B.charge_costs = list(1000)
 	B.synths = list(medicine)
@@ -280,7 +281,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	synths += medicine
 
 	var/obj/item/stack/medical/ointment/O = new /obj/item/stack/medical/ointment(src)
-	var/obj/item/stack/medical/bruise_pack/B = new /obj/item/stack/medical/bruise_pack(src)
+	var/obj/item/stack/medical/bandage/B = new /obj/item/stack/medical/bandage(src)
 	var/obj/item/stack/medical/splint/S = new /obj/item/stack/medical/splint(src)
 	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
 	N.uses_charge = 1
@@ -361,8 +362,8 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/datum/matter_synth/medicine = new /datum/matter_synth/medicine(25000)
 	synths += medicine
 
-	var/obj/item/stack/medical/advanced/ointment/O = new /obj/item/stack/medical/advanced/ointment(src)
-	var/obj/item/stack/medical/advanced/bruise_pack/B = new /obj/item/stack/medical/advanced/bruise_pack(src)
+	var/obj/item/stack/medical/gel/burn/O = new /obj/item/stack/medical/gel/burn(src)
+	var/obj/item/stack/medical/gel/brute/B = new /obj/item/stack/medical/gel/brute(src)
 	var/obj/item/stack/medical/splint/S = new /obj/item/stack/medical/splint(src)
 	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
 	N.uses_charge = 1
@@ -416,8 +417,9 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		"Antique" = new /datum/robot_hull/legs/engineerrobot,
 		"Landmate" = new /datum/robot_hull/spider/landmate,
 		"Landmate - Treaded" = new /datum/robot_hull/truck/engiborg_tread,
+		"Kerfur" = new /datum/robot_hull/sphere/kerfur_engineer,
 		"Drone" = new /datum/robot_hull/flying/drone_engineer,
-		"Doot" = new /datum/robot_hull/flying/eyebot_engineering
+		"Doot" = new /datum/robot_hull/flying/eyebot_engineering,
 	)
 
 	no_slip = 1
@@ -625,9 +627,10 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		"Black Knight" = new /datum/robot_hull/legs/securityrobot,
 		"Bloodhound" = new /datum/robot_hull/spider/bloodhound,
 		"Bloodhound - Treaded" = new /datum/robot_hull/truck/secborg_tread,
+		"Kerfur" = new /datum/robot_hull/sphere/kerfur_security,
 		"Drone" = new /datum/robot_hull/flying/drone_sec,
 		"Doot" = new /datum/robot_hull/flying/eyebot_security,
-		"Tridroid" = new /datum/robot_hull/flying/orb_security
+		"Tridroid" = new /datum/robot_hull/flying/orb_security,
 	)
 
 /obj/item/robot_module/security/general/New()
@@ -679,7 +682,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 /obj/item/robot_module/janitor
 	name = "janitorial robot module"
 	icon_state = "robot_mod_yellow"
-	channels = list("Service" = 1)
+	channels = list("Provisioning" = 1)
 	hulls = list(
 		"Default" = new /datum/robot_hull/spider/robot_janitor,
 		"Basic" = new /datum/robot_hull/legs/janbot2,
@@ -725,7 +728,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 /obj/item/robot_module/service
 	name = "service robot module"
 	icon_state = "robot_mod_yellow"
-	channels = list("Service" = 1)
+	channels = list("Provisioning" = 1)
 	languages = list(
 					LANGUAGE_SOL_COMMON	= 1,
 					LANGUAGE_UNATHI		= 1,
@@ -745,6 +748,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 /obj/item/robot_module/service/butler
 	hulls = list(
 		"Default" = new /datum/robot_hull/spider/robot_service,
+		"Kerfur" = new /datum/robot_hull/sphere/kerfur_service,
 		"Waitress" = new /datum/robot_hull/legs/service,
 		"Kent" = new /datum/robot_hull/flying/toiletbot,
 		"Bro" = new /datum/robot_hull/legs/brobot,
@@ -753,7 +757,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		"Drone - Service" = new /datum/robot_hull/flying/drone_service,
 		"Drone - Hydro" = new /datum/robot_hull/flying/drone_hydro,
 		"Doot" = new /datum/robot_hull/flying/eyebot_standard,
-		"Robo-Maid" = new /datum/robot_hull/legs/maidbot
+		"Robo-Maid" = new /datum/robot_hull/legs/maidbot,
 	)
 
 /obj/item/robot_module/service/butler/New()
@@ -803,7 +807,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	name = "miner robot module"
 	icon_state = "robot_mod_brown"
 	subsystems = list(/datum/nano_module/supply)
-	channels = list("Supply" = 1, "Science" = 1)
+	channels = list("Cargo" = 1, "Science" = 1)
 	networks = list(NETWORK_MINE)
 	hulls = list(
 		"Default" = new /datum/robot_hull/spider/robot_mining,
@@ -857,9 +861,10 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	networks = list(NETWORK_RESEARCH)
 	hulls = list(
 		"Default" = new /datum/robot_hull/spider/robot_science,
+		"Kerfur" = new /datum/robot_hull/sphere/kerfur_science,
 		"Droid" = new /datum/robot_hull/legs/droid_science,
 		"Drone" = new /datum/robot_hull/flying/drone_science,
-		"Doot" = new /datum/robot_hull/flying/eyebot_science
+		"Doot" = new /datum/robot_hull/flying/eyebot_science,
 	)
 
 /obj/item/robot_module/research/general/New()

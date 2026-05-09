@@ -5,6 +5,7 @@
 /datum/gear/uniform/suit
 	display_name = "clothes selection"
 	path = /obj/item/clothing/under
+	subgroup = "Formal & Work"
 
 /datum/gear/uniform/suit/New()
 	..()

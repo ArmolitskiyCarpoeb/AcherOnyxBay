@@ -135,8 +135,7 @@
 	return user.has_internal_radio_channel_access(internal_channels[freq])
 
 /mob/proc/has_internal_radio_channel_access(list/req_one_accesses)
-	var/obj/item/card/id/I = get_id_card()
-	return has_access(list(), req_one_accesses, I ? I.GetAccess() : list())
+	return has_access(null, req_one_accesses, GetAccess())
 
 /mob/observer/ghost/has_internal_radio_channel_access(list/req_one_accesses)
 	return can_admin_interact()
@@ -530,7 +529,7 @@
 	return
 
 /obj/item/device/radio/proc/receive()
-	return
+	playsound(loc, 'sound/effects/radiohiss.ogg', 15, 0, -1)
 
 ///////////////////////////////
 //////////Borg Radios//////////
@@ -727,7 +726,7 @@
 	canhear_range = 0
 	anchored = 1
 	simulated = 0
-	channels=list("Engineering" = 1, "Security" = 1, "Medical" = 1, "Command" = 1, "Common" = 1, "Science" = 1, "Supply" = 1, "Service" = 1, "Exploration" = 1)
+	channels=list("Engineering" = 1, "Security" = 1, "Medical" = 1, "Command" = 1, "Common" = 1, "Science" = 1, "Cargo" = 1, "Provisioning" = 1, "Exploration" = 1)
 
 /obj/item/device/radio/announcer/Destroy()
 	util_crash_with("attempt to delete a [src.type] detected, and prevented.")

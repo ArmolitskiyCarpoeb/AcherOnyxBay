@@ -8,7 +8,7 @@
 	w_class = ITEM_SIZE_TINY
 	throw_range = 15
 	matter = list(MATERIAL_STEEL = 60)
-	attack_verb = list("stamped")
+	attack_verb = "stamped"
 
 /obj/item/stamp/attack(mob/living/M, mob/living/user, target_zone)
 	if(user.a_intent == I_HURT && target_zone == BP_HEAD)
@@ -29,7 +29,7 @@
 	item_state = "stamp-cap"
 
 /obj/item/stamp/hop
-	name = "head of personnel's rubber stamp"
+	name = "head of provisioning's rubber stamp"
 	icon_state = "stamp-hop"
 	item_state = "stamp-hop"
 

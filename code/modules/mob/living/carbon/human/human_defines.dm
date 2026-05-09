@@ -123,7 +123,6 @@
 	var/poise_pool = HUMAN_DEFAULT_POISE
 	var/poise = HUMAN_DEFAULT_POISE
 	var/poise_immune_until = 0
-	var/blocking_hand = 0 // 0 for main hand, 1 for offhand
 	var/last_block = 0
 
 	var/obj/item/grab/current_grab_type 	// What type of grab they use when they grab someone.
@@ -132,6 +131,7 @@
 	var/full_pain = 0 // Cheaper to actually store this than iterate over all the organs for every single check
 	var/full_pain_lasttick = 0
 
+	var/snowflake_organs = 0
 	var/push_ups = FALSE
 
 	var/debug = 0

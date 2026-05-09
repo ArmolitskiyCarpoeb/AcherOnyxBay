@@ -18,13 +18,14 @@
 //	causeerrorheresoifixthis
 	var/obj/item/master = null
 	var/list/origin_tech = null	//Used by R&D to determine what research bonuses it grants.
-	var/list/attack_verb = list("hit") //Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
+	var/attack_verb = "hit" //Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]". Can be a string or a list.
 	var/lock_picking_level = 0 //used to determine whether something can pick a lock, and how well.
 
 	//Totally Realistic Onyx Fighting System stuff
 	var/force = 0
 	var/attack_cooldown = DEFAULT_WEAPON_COOLDOWN // 0.5 second
 	var/attack_cooldown_real //Debug variable
+	var/on_cooldown_until = 0
 	var/mod_handy = 0.25 //Handiness modifier. i.e. 0.5 - pain in the ass to use, 1.0 - decent weapon, 1.5 - specialized for melee combat.
 	var/mod_reach = 0.25 //Length modifier. i.e. 0.35 - knives, 0.75 - toolboxes, 1.0 - crowbars, 1.25 - batons, 1.5 - spears and mops.
 	var/mod_weight = 0.25 //Weight modifier. i.e. 0.33 - knives, 0.67 - hatchets, 1.0 - crowbars and batons, 1.33 - tanks, 1.66 - toolboxes, 2.0 - axes.
@@ -56,11 +57,11 @@
 	var/permeability_coefficient = 1 // for chemicals/diseases
 	var/siemens_coefficient = 1 // for electrical admittance/conductance (electrocution checks and shit)
 	var/slowdown_general = 0 // How much clothing is slowing you down. Negative values speeds you up. This is a genera##l slowdown, no matter equipment slot.
-	var/slowdown_per_slot[slot_last] // How much clothing is slowing you down. This is an associative list: item slot - slowdown
+	var/alist/slowdown_per_slot // How much clothing is slowing you down. This is an associative list: item slot - slowdown
 	var/slowdown_accessory // How much an accessory will slow you down when attached to a worn article of clothing.
 	var/canremove = 1 //Mostly for Ninja code at this point but basically will not allow the item to be removed if set to 0. /N
 	var/force_drop = FALSE // Allows the item to be manually dropped by the wielder even if canremove is set to FALSE.
-	var/list/armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0)
+	var/alist/armor_values = null
 	var/list/allowed = null //suit storage stuff.
 	var/zoomdevicename = null //name used for message when binoculars/scope is used
 	var/zoom = 0 //1 if item is actively being used to zoom. For scoped guns and binoculars.
@@ -73,7 +74,7 @@
 
 	//** These specify item/icon overrides for _slots_
 
-	var/list/item_state_slots = list(slot_wear_id_str = "id") //overrides the default item_state for particular slots.
+	var/alist/item_state_slots = null //overrides the default item_state for particular slots.
 
 	// Used to specify the icon file to be used when the item is worn. If not set the default icon for that slot will be used.
 	// If icon_override is set it will take precendence over this, assuming they apply to the slot in question.
@@ -83,7 +84,7 @@
 	var/tmp/sprite_group = null
 
 	// Species-specific sprite sheets for inventory sprites. Used in clothing/refit_for_species() proc.
-	var/list/sprite_sheets_obj = list()
+	var/alist/sprite_sheets_obj = null
 
 	/// Played when the item is picked up
 	var/pickup_sound = SFX_PICKUP_GENERIC
@@ -163,7 +164,7 @@
 	//is probabilistic so we can't do that and it would be unfair to just check one.
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/hand = H.organs_by_name[check_hand]
+		var/obj/item/organ/external/hand = H.external_organs_by_name[check_hand]
 		if(istype(hand) && hand.is_usable())
 			return TRUE
 	return FALSE
@@ -263,19 +264,27 @@
 		return
 	if(anchored)
 		return ..()
-	if(hasorgans(user))
+	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(loc != H && H.IsAdvancedToolUser(TRUE) == FALSE)
+		if(loc != H && !H.IsAdvancedToolUser(TRUE))
 			to_chat(user, SPAN("notice", "I'm not smart enough to do that!"))
 			return
-		var/obj/item/organ/external/temp = H.organs_by_name[BP_R_HAND]
-		if (user.hand)
-			temp = H.organs_by_name[BP_L_HAND]
-		if(temp && !temp.is_usable())
-			to_chat(user, SPAN("notice", "You try to move your [temp.name], but cannot!"))
+		if(!H.is_hand_usable())
 			return
-		if(!temp)
-			to_chat(user, SPAN("notice", "You try to use your hand, but realize it is no longer attached!"))
+
+	return handle_pickup(user)
+
+// Trying to get picked up by user, via attack_hand, MouseDrop_T, etc.
+/obj/item/proc/handle_pickup(mob/user, certain_hand = -1)
+	if(anchored)
+		return
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(loc != H && !H.IsAdvancedToolUser(TRUE))
+			to_chat(user, SPAN("notice", "I'm not smart enough to do that!"))
+			return
+		if(!H.is_hand_usable(FALSE, certain_hand) || H.restrained())
 			return
 
 	var/old_loc = loc
@@ -297,14 +306,24 @@
 	else if(!isturf(loc) && loc != user.loc)
 		return
 
-	throwing = 0
+	if(!QDELETED(throwing))
+		throwing.finalize(hit = TRUE)
 
 	if(QDELETED(src)) // Unequipping may change src gc_destroyed, so must check here
 		return
 
 	pickup(user, changing_slots)
 
-	if(user.put_in_active_hand(src))
+	var/put_in_hands_result
+	switch(certain_hand)
+		if(-1)
+			put_in_hands_result = user.put_in_clicking_hand(src)
+		if(ACTIVE_HAND_LEFT)
+			put_in_hands_result = user.put_in_l_hand(src)
+		if(ACTIVE_HAND_RIGHT)
+			put_in_hands_result = user.put_in_r_hand(src)
+
+	if(put_in_hands_result)
 		if(isturf(old_loc))
 			var/obj/effect/temporary/item_pickup_ghost/ghost = new /obj/effect/temporary/item_pickup_ghost(old_loc, src)
 			ghost.animate_towards(user)
@@ -315,7 +334,33 @@
 		else if(randpixel == 0)
 			pixel_x = 0
 			pixel_y = 0
+		return TRUE
+
 	return
+
+/obj/item/MouseDrop(atom/over, atom/src_location, atom/over_location, src_control, over_control, params)
+	// Normal pickup, trying to put us into the active hand.
+	if(ishuman(over) && over == usr)
+		if(!CanMouseDrop(over))
+			return FALSE
+		if(usr.active_hand == ACTIVE_HAND_LEFT && usr.l_hand)
+			return FALSE
+		if(usr.active_hand == ACTIVE_HAND_RIGHT && usr.r_hand)
+			return FALSE
+		handle_pickup(usr, usr.active_hand)
+		return TRUE
+
+	// Trying to put us into a certain hand via mouse-dropping into a hand slot.
+	if(istype(over, /atom/movable/screen/inventory))
+		var/atom/movable/screen/inventory/inv_box = over
+		if(inv_box.slot_id == slot_r_hand && !usr.r_hand)
+			handle_pickup(usr, ACTIVE_HAND_RIGHT)
+			return TRUE
+		else if(inv_box.slot_id == slot_l_hand && !usr.l_hand)
+			handle_pickup(usr, ACTIVE_HAND_LEFT)
+			return TRUE
+
+	return ..()
 
 /obj/item/attack_ai(mob/user)
 	if (istype(src.loc, /obj/item/robot_module))
@@ -554,10 +599,10 @@ var/list/global/slot_flags_enumeration = list(
 	if(src.anchored) //Object isn't anchored
 		to_chat(usr, SPAN("warning", "You can't pick that up!"))
 		return
-	if(!usr.hand && usr.r_hand) //Right hand is not full
+	if(usr.active_hand == ACTIVE_HAND_RIGHT && usr.r_hand) //Right hand is not full
 		to_chat(usr, SPAN("warning", "Your right hand is full."))
 		return
-	if(usr.hand && usr.l_hand) //Left hand is not full
+	if(usr.active_hand == ACTIVE_HAND_LEFT && usr.l_hand) //Left hand is not full
 		to_chat(usr, SPAN("warning", "Your left hand is full."))
 		return
 	if(!istype(src.loc, /turf)) //Object is on a turf
@@ -711,7 +756,7 @@ var/list/global/slot_flags_enumeration = list(
 					to_chat(M, SPAN("warning", "You go blind!"))
 
 		var/obj/item/organ/external/affecting = H.get_organ(eyes.parent_organ)
-		affecting.take_external_damage(7)
+		affecting.take_pierce_damage(7)
 	else
 		M.take_organ_damage(7)
 	M.eye_blurry += rand(3,4)
@@ -885,16 +930,16 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	return 0 // Process Kill
 
 /obj/item/proc/get_icon_state(slot)
-	if (item_state_slots)
-		if (item_state_slots[slot])
+	if(item_state_slots)
+		if(item_state_slots[slot])
 			return item_state_slots[slot]
 
-		switch (slot)
-			if (slot_l_hand_str, slot_r_hand_str)
-				if (item_state_slots[slot_hand_str])
+		switch(slot)
+			if(slot_l_hand_str, slot_r_hand_str)
+				if(item_state_slots[slot_hand_str])
 					return item_state_slots[slot_hand_str]
-			if (slot_l_ear_str, slot_r_ear_str)
-				if (item_state_slots[slot_ear_str])
+			if(slot_l_ear_str, slot_r_ear_str)
+				if(item_state_slots[slot_ear_str])
 					return item_state_slots[slot_ear_str]
 
 	if (item_state)
@@ -1034,6 +1079,13 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	attack_cooldown_real = res_cd //Debug
 	return res_cd
 
+/obj/item/proc/set_cooldown(override)
+	on_cooldown_until = world.time + (override ? override : update_attack_cooldown())
+	return on_cooldown_until
+
+/obj/item/proc/check_cooldown()
+	return (world.time > on_cooldown_until)
+
 /obj/item/proc/update_weapon_desc()
 	return
 
@@ -1041,11 +1093,6 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	return
 
 /obj/item/proc/on_restraint_apply(mob/living/carbon/C)
-	return
-
-/obj/item/Bump(mob/M)
-	spawn()
-		..()
 	return
 
 /obj/item/proc/play_drop_sound()

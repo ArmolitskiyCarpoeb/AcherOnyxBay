@@ -24,6 +24,11 @@
 	if(istype(M, /mob/living/carbon/metroid) || alien == IS_METROID)
 		M.adjustToxLoss(removed)
 		return
+	if(holder.has_reagent(/datum/reagent/salt, removed * 0.009)) // IV Saline Solution
+		holder.remove_reagent(/datum/reagent/salt, removed * 0.009)
+		M.add_hydration(removed * hydration_value * 3.0)
+	else
+		M.add_hydration(removed * hydration_value * 0.5)
 
 /datum/reagent/water/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(istype(M, /mob/living/carbon/metroid) || alien == IS_METROID)
@@ -39,7 +44,7 @@
 	..()
 	return
 
-/datum/reagent/water/touch_turf(turf/simulated/T)
+/datum/reagent/water/touch_turf(turf/simulated/T, amount)
 	if(!istype(T))
 		return
 
@@ -49,7 +54,7 @@
 	var/hotspot = (locate(/obj/fire) in T)
 	if(hotspot && !istype(T, /turf/space))
 		var/datum/gas_mixture/lowertemp = T.remove_air(T:air:total_moles)
-		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
+		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 273.15) // It's 273.15 since we don't want extinguishers to drop the room temp down to the absolute zero.
 		lowertemp.react()
 		T.assume_air(lowertemp)
 		qdel(hotspot)
@@ -59,12 +64,12 @@
 		qdel(flamer)
 
 	if(environment && environment.temperature > min_temperature) // Abstracted as steam or something
-		var/removed_heat = between(0, volume * WATER_LATENT_HEAT, -environment.get_thermal_energy_change(min_temperature))
+		var/removed_heat = between(0, amount * WATER_LATENT_HEAT, -environment.get_thermal_energy_change(min_temperature))
 		environment.add_thermal_energy(-removed_heat)
 		if(prob(5))
 			T.visible_message(SPAN("warning", "The water sizzles as it lands on \the [T]!"))
 
-	else if(volume >= 100 && slippery)
+	else if(amount >= 100 && slippery)
 		var/turf/simulated/S = T
 		S.wet_floor(1, TRUE)
 
@@ -89,14 +94,10 @@
 
 /datum/reagent/water/touch_mob(mob/living/L, amount)
 	if(istype(L))
-		var/needed = L.fire_stacks * 100
-		if(amount > needed)
-			L.fire_stacks = 0
-			L.ExtinguishMob()
-			remove_self(needed)
-		else
-			L.adjust_fire_stacks(-(amount / 100))
-			remove_self(amount)
+		var/removed_amount = L.fire_stacks
+		L.adjust_fire_stacks(-1 * ceil(amount / 10))
+		removed_amount = L.fire_stacks - removed_amount
+		remove_self(removed_amount)
 
 /datum/reagent/water/affect_touch(mob/living/carbon/M, alien, removed)
 	if(!istype(M, /mob/living/carbon/metroid) && alien != IS_METROID)
@@ -258,8 +259,11 @@
 /datum/reagent/hydrazine/affect_blood(mob/living/carbon/M, alien, removed)
 	M.adjustToxLoss(4 * removed)
 
+/datum/reagent/hydrazine/touch_mob(mob/living/L, amount)
+	if(istype(L))
+		L.adjust_fire_stacks(ceil(amount / 5))
+
 /datum/reagent/hydrazine/affect_touch(mob/living/carbon/M, alien, removed) // Hydrazine is both toxic and flammable.
-	M.adjust_fire_stacks(removed / 12)
 	M.adjustToxLoss(0.2 * removed)
 
 /datum/reagent/hydrazine/touch_turf(turf/T)
@@ -435,8 +439,8 @@
 
 	// Stomach is either missing or peforated, burning the chest
 	var/obj/item/organ/external/chest = H.get_organ(BP_CHEST)
-	if(chest)
-		chest.take_external_damage(0, removed * power * 0.5)
+	if(istype(chest))
+		chest.take_burn_damage(removed * power * 0.5, "Corrosive Chemicals")
 	return
 
 /datum/reagent/acid/affect_digest(mob/living/carbon/M, alien, removed, affecting_dose)
@@ -454,11 +458,11 @@
 
 	// Intestines are done, melting the groin and chest
 	var/obj/item/organ/external/chest = H.get_organ(BP_CHEST)
-	if(chest)
-		chest.take_external_damage(0, removed * power * 0.25)
+	if(istype(chest))
+		chest.take_burn_damage(removed * power * 0.25, "Corrosive Chemicals")
 	var/obj/item/organ/external/groin = H.get_organ(BP_GROIN)
-	if(groin)
-		groin.take_external_damage(0, removed * power * 0.5)
+	if(istype(groin))
+		groin.take_burn_damage(removed * power * 0.5, "Corrosive Chemicals")
 	return
 
 /datum/reagent/acid/affect_touch(mob/living/carbon/M, alien, removed) // This is the most interesting
@@ -516,7 +520,7 @@
 		if(removed && ishuman(M) && prob(100 * removed / meltdose)) // Applies disfigurement
 			var/mob/living/carbon/human/H = M
 			var/screamed
-			for(var/obj/item/organ/external/affecting in H.organs)
+			for(var/obj/item/organ/external/affecting in H.external_organs)
 				if(!screamed && affecting.can_feel_pain())
 					screamed = 1
 					H.emote("scream")

@@ -5,6 +5,7 @@
 /datum/gear/suit/suit_jacket
 	display_name = "standard suit jackets"
 	path = /obj/item/clothing/suit/storage/toggle/suit
+	subgroup = "Jackets & Coats"
 
 /datum/gear/suit/suit_jacket/New()
 	..()

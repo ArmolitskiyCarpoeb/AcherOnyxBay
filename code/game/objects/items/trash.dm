@@ -126,6 +126,12 @@
 	name = "\improper old canned food"
 	icon_state = "surstromming"
 
+/obj/item/trash/plastic_cup
+	name = "crushed plastic cup"
+	desc = "This is rubbish. Somebody wasn't careful enough."
+	icon_state = "plastic_cup"
+	matter = list(MATERIAL_PLASTIC = 100)
+
 /obj/item/trash/cans
 	name = "crushed can"
 	icon_state = "can"
@@ -211,6 +217,19 @@
 	name = "\improper Startrucks Cold Brew"
 	icon_state = "startrucks"
 
+/obj/item/trash/eggshell
+	name = "eggshell"
+	icon_state = "eggshell"
+
+/obj/item/trash/eggshell/Initialize(mapload, new_color)
+	. = ..(mapload)
+	if(new_color)
+		set_shell_color(new_color)
+
+/obj/item/trash/eggshell/proc/set_shell_color(new_color)
+	icon_state = "eggshell-white"
+	color = new_color
+
 /obj/item/trash/attack(mob/M as mob, mob/living/user as mob)
 	return
 
@@ -237,7 +256,7 @@
 			to_chat(user, SPAN("warning", "The stack is too high!"))
 
 /obj/item/trash/dish/attack_hand(mob/user)
-	if(user.get_inactive_hand() != src)
+	if(!user.has_in_passive_hand(src))
 		..()
 		return
 

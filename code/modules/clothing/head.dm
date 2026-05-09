@@ -37,7 +37,7 @@
 	var/cache_key = "[light_overlay]_[species_name]"
 	if(on && light_overlay_cache[cache_key] && slot == slot_head_str)
 		ret.AddOverlays(light_overlay_cache[cache_key])
-	if(item_state_slots && item_state_slots[slot])
+	if(item_state_slots?[slot])
 		ret.icon_state = item_state_slots[slot]
 	else
 		ret.icon_state = icon_state
@@ -84,8 +84,8 @@
 		else
 			D.wear_hat(src)
 			success = 1
-	else if(istype(user, /mob/living/carbon/alien/diona))
-		var/mob/living/carbon/alien/diona/D = user
+	else if(istype(user, /mob/living/carbon/larva/diona))
+		var/mob/living/carbon/larva/diona/D = user
 		if(D.hat)
 			success = 2
 		else

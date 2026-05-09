@@ -29,6 +29,16 @@
 	update_nearby_tiles()
 	update_icon()
 	hitsound = pick(SFX_GLASS_HIT)
+	add_debris_element()
+	add_think_ctx("hack_context", CALLBACK(src, nameof(.proc/on_hacked)), 0)
+
+/obj/machinery/door/window/examine(mob/user, infix)
+	. = ..()
+	if(Adjacent(user) && operating == DOOR_FAILURE)
+		. += SPAN("warning", "It appears to be jammed, and its lock looks cooked.")
+
+/obj/machinery/door/window/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_GLASS, -10, 5)
 
 /obj/machinery/door/window/on_update_icon()
 	ClearOverlays()
@@ -54,13 +64,11 @@
 	var/obj/item/airlock_electronics/ae
 	if(!electronics)
 		ae = new /obj/item/airlock_electronics(loc)
-		if(!req_access)
-			check_access()
-		if(req_access.len)
+		if(length(req_access))
 			ae.conf_access = req_access
-		else if(req_one_access.len)
+		else if(length(req_one_access))
 			ae.conf_access = req_one_access
-			ae.one_access = 1
+			ae.one_access = TRUE
 	else
 		ae = electronics
 		electronics = null
@@ -96,15 +104,14 @@
 
 	else if(istype(AM, /obj/mecha))
 		var/obj/mecha/mech = AM
-		if(mech.occupant && allowed(mech.occupant))
+		if(check_access(mech.occupant))
 			if(density)
 				INVOKE_ASYNC(src, nameof(.proc/open))
 			else
 				INVOKE_ASYNC(src, nameof(.proc/close))
 
-	else if(ismob(AM))
-		var/mob/M = AM
-		if(allowed(M))
+	else if(isobj(AM) || ismob(AM))
+		if(check_access(AM))
 			if(density)
 				INVOKE_ASYNC(src, nameof(.proc/open))
 			else
@@ -211,20 +218,27 @@
 
 /obj/machinery/door/window/emag_act(remaining_charges, mob/user)
 	if(density && operable())
-		operating = DOOR_FAILURE
 		flick("[base_state]spark", src)
-		set_next_think(world.time + 1 SECOND)
+		set_next_think_ctx("hack_context", world.time + 1 SECONDS)
 		return 1
 
 /obj/machinery/door/window/think()
 	INVOKE_ASYNC(src, nameof(.proc/open), FALSE, TRUE)
+
+/obj/machinery/door/window/proc/on_hacked()
+	if(density)
+		INVOKE_ASYNC(src, nameof(.proc/open), FALSE, FALSE)
+		set_next_think_ctx("hack_context", world.time + 1 SECONDS)
+		return
+	operating = DOOR_FAILURE
+	return
 
 /obj/machinery/door/emp_act(severity)
 	if(prob(60 / severity))
 		INVOKE_ASYNC(src, nameof(.proc/open), FALSE, TRUE)
 
 /obj/machinery/door/window/attackby(obj/item/I, mob/user)
-	if(operating)
+	if(operating > 0)
 		return
 
 	if(istype(I, /obj/item/melee/energy/blade))
@@ -261,14 +275,13 @@
 
 			var/obj/item/airlock_electronics/ae
 			if(!electronics)
-				ae = new /obj/item/airlock_electronics( loc )
-				if(!req_access)
-					check_access()
-				if(req_access.len)
+				ae = new /obj/item/airlock_electronics(loc)
+				ae.conf_access = null
+				if(length(req_access))
 					ae.conf_access = req_access
-				else if(req_one_access.len)
+				else if(length(req_one_access))
 					ae.conf_access = req_one_access
-					ae.one_access = 1
+					ae.one_access = TRUE
 			else
 				ae = electronics
 				electronics = null
@@ -294,7 +307,7 @@
 		var/aforce = I.force
 		playsound(loc, GET_SFX(SFX_GLASS_HIT), 75, 1)
 		visible_message("<span class='danger'>[src] was hit by [I].</span>")
-		user.setClickCooldown(I.update_attack_cooldown())
+		I.set_cooldown()
 		user.do_attack_animation(src)
 		if(I.damtype == BRUTE || I.damtype == BURN)
 			take_damage(aforce)
@@ -303,7 +316,7 @@
 
 	add_fingerprint(user, 0, I)
 
-	if(allowed(user))
+	if(check_access(user))
 		if(density)
 			INVOKE_ASYNC(src, nameof(.proc/open))
 		else

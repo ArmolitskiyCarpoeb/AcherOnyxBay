@@ -62,7 +62,7 @@
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	attack_verb = list("burnt")
+	attack_verb = "burnt"
 	drop_sound = SFX_DROP_SCREWDRIVER
 	pickup_sound = SFX_PICKUP_SCREWDRIVER
 
@@ -86,7 +86,7 @@
 	mod_handy = 0.9
 	armor_penetration = 40
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	attack_verb = list("drilled")
+	attack_verb = "drilled"
 	drop_sound = SFX_DROP_ACCESSORY
 	pickup_sound = SFX_PICKUP_ACCESSORY
 
@@ -403,11 +403,11 @@
 		icon_state = "[initial(icon_state)]"
 
 /obj/item/organfixer/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/stack/medical/advanced/bruise_pack))
+	if(istype(I, /obj/item/stack/medical/gel/brute))
 		if(gel_amt_max == -1)
 			to_chat(user, SPAN("notice", "\The [src] doesn't seem to be reloadable."))
 			return
-		var/obj/item/stack/medical/advanced/bruise_pack/O = I
+		var/obj/item/stack/medical/gel/brute/O = I
 		if(!O.get_amount())
 			to_chat(user, SPAN("warning", "You are trying to refill \the [src] using an empty container."))
 			return

@@ -15,6 +15,48 @@
 	min_broken_damage = 35
 	var/open
 
+/obj/item/organ/internal/heart/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/organ_module))
+		var/obj/item/organ_module/module = I
+		if(owner)
+			to_chat(user, SPAN_NOTICE("You need to remove the heart first."))
+			return
+		if(!module.can_install_in(src, user))
+			return
+		if(!user.drop(I, src))
+			return
+		module.install(src)
+		to_chat(user, SPAN_NOTICE("You install \the [module] into \the [src]."))
+		return
+	return ..()
+
+/obj/item/organ/internal/heart/proc/remove_all_augmentations(mob/user)
+	if(!user || user.stat)
+		return
+	if(owner)
+		to_chat(user, SPAN_NOTICE("You need to remove the heart first."))
+		return
+	if(!LAZYLEN(organ_modules))
+		to_chat(user, SPAN_NOTICE("There are no augmentations installed in \the [src]."))
+		return
+
+	var/list/removed = list()
+	for(var/obj/item/organ_module/module in organ_modules.Copy())
+		removed += module.name
+		module.remove(src)
+	if(length(removed))
+		to_chat(user, SPAN_NOTICE("You remove [english_list(removed)] from \the [src]."))
+
+/obj/item/organ/internal/heart/verb/remove_augmentations()
+	set name = "Remove augmentations"
+	set category = "Object"
+	set src in view(1)
+	remove_all_augmentations(usr)
+
+/obj/item/organ/internal/heart/attack_self(mob/user)
+	. = ..()
+	remove_all_augmentations(user)
+
 /obj/item/organ/internal/heart/die()
 	if(dead_icon)
 		icon_state = dead_icon
@@ -113,33 +155,24 @@
 		//Bleeding out
 		var/blood_max = 0
 		var/list/do_spray = list()
-		for(var/obj/item/organ/external/temp in owner.organs)
+		for(var/obj/item/organ/external/temp in owner.external_organs)
 
 			if(BP_IS_ROBOTIC(temp))
 				continue
 
 			var/open_wound
 			if(temp.status & ORGAN_BLEEDING)
-
-				for(var/datum/wound/W in temp.wounds)
-
-					if(!open_wound && (W.damage_type == CUT || W.damage_type == PIERCE) && W.damage && !W.is_treated())
-						open_wound = TRUE
-
-					if(W.bleeding())
-						if(temp.applied_pressure)
-							if(ishuman(temp.applied_pressure))
-								var/mob/living/carbon/human/H = temp.applied_pressure
-								H.bloody_hands(src, 0)
-							//somehow you can apply pressure to every wound on the organ at the same time
-							//you're basically forced to do nothing at all, so let's make it pretty effective
-							var/min_eff_damage = max(0, W.damage - 10) / 6 //still want a little bit to drip out, for effect
-							blood_max += max(min_eff_damage, W.damage - 30) * 0.25
-						else
-							blood_max += W.damage * 0.25
+				if(temp.applied_pressure)
+					if(ishuman(temp.applied_pressure))
+						var/mob/living/carbon/human/H = temp.applied_pressure
+						H.bloody_hands(owner)
+					blood_max += temp.bleeding * 0.15 // still want a little bit to drip out, for effect
+				else
+					blood_max += temp.bleeding * 0.75
+					open_wound = TRUE
 
 			if(temp.status & ORGAN_ARTERY_CUT)
-				var/bleed_amount = Floor((owner.vessel.total_volume / (temp.applied_pressure || !open_wound ? 400 : 250)) * temp.arterial_bleed_severity)
+				var/bleed_amount = Floor((owner.vessel.total_volume / (open_wound ? 250 : 400)) * temp.arterial_bleed_severity)
 				if(bleed_amount)
 					if(open_wound)
 						blood_max += bleed_amount
@@ -156,7 +189,7 @@
 				blood_max *= 1.5
 
 		if(CE_STABLE in owner.chem_effects) // inaprovaline
-			blood_max *= 0.8
+			blood_max *= 0.75
 
 		if(world.time >= next_blood_squirt && istype(owner.loc, /turf) && do_spray.len)
 			owner.visible_message("<span class='danger'>Blood squirts from [pick(do_spray)]!</span>")

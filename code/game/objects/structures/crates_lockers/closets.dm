@@ -58,6 +58,9 @@
 	density = FALSE
 	intact_closet = FALSE
 
+/obj/structure/closet/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -10, 5)
+
 /obj/item/shield/closet
 	name = "closet door"
 	desc = "An essential part of a closet. Could it be used as a tower shield?.."
@@ -82,8 +85,8 @@
 	matter = list(MATERIAL_STEEL = 1000)
 	attack_verb = list("shoved", "bashed")
 
-	req_access = list()
-	req_one_access = list()
+	req_access = null
+	req_one_access = null
 
 	var/icon_closed = "closed"
 	var/icon_opened = "open"
@@ -131,6 +134,7 @@
 
 	if(intact_closet && (z in GLOB.using_map.get_levels_with_trait(ZTRAIT_STATION)))
 		GLOB.intact_station_closets.Add(src)
+	add_debris_element()
 
 	return INITIALIZE_HINT_LATELOAD
 
@@ -790,7 +794,7 @@
 		return FALSE
 
 /obj/structure/closet/proc/CanToggleLock(mob/user, obj/item/card/id/id_card)
-	return allowed(user) || (istype(id_card) && check_access_list(id_card.GetAccess()))
+	return check_access(user) || check_access(id_card)
 
 /obj/structure/closet/AltClick(mob/user)
 	if(!src.opened)
@@ -812,8 +816,8 @@
 			if(!locked)
 				open()
 			else
-				src.req_access = list()
-				src.req_access += pick(get_all_station_access())
+				req_access = list()
+				req_access += pick(get_all_station_access())
 	..()
 
 /obj/structure/closet/emag_act(remaining_charges, mob/user, obj/item/emag_source, visual_feedback = "", audible_feedback = "")

@@ -43,6 +43,7 @@
 #define ui_equip "CENTER-1:16,SOUTH+1:5"
 #define ui_swaphand1 "CENTER-1:16,SOUTH+1:5"
 #define ui_swaphand2 "CENTER:16,SOUTH+1:5"
+#define ui_twohanded "CENTER:16,SOUTH+1:5"
 #define ui_storage1 "CENTER+1:16,SOUTH:5"
 #define ui_storage2 "CENTER+2:16,SOUTH:5"
 

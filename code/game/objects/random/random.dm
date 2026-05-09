@@ -190,12 +190,12 @@
 	spawn_nothing_percentage = 25
 
 /obj/random/medical/lite/spawn_choices()
-	return list(/obj/item/stack/medical/bruise_pack = 4,
+	return list(/obj/item/stack/medical/bandage = 4,
 				/obj/item/stack/medical/ointment = 4,
 				/obj/item/storage/pill_bottle/antidexafen = 2,
 				/obj/item/storage/pill_bottle/paracetamol = 2,
-				/obj/item/stack/medical/advanced/bruise_pack = 2,
-				/obj/item/stack/medical/advanced/ointment = 2,
+				/obj/item/stack/medical/gel/brute = 2,
+				/obj/item/stack/medical/gel/burn = 2,
 				/obj/item/stack/medical/splint = 1,
 				/obj/item/bodybag/cryobag = 1,
 				/obj/item/storage/pill_bottle/kelotane = 2,
@@ -1536,6 +1536,12 @@ var/list/multi_point_spawns
 	icon_state = "landmark_autolathe"
 	id = "Circuit board (autolathe)"
 	item_path = /obj/item/circuitboard/autolathe
+
+/obj/random_multi/single_item/rocky
+	name = "multi point - Rocky"
+	icon_state = "landmark_rocky"
+	id = "Rocky"
+	item_path = /obj/structure/rocky
 
 // Broken items, or stuff that could be picked up.
 /obj/random/junk

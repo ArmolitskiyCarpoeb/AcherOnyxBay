@@ -221,6 +221,11 @@
 	explosion_block = EXPLOSION_BLOCK_PROC
 	update_nearby_tiles(need_rebuild = TRUE)
 	update_nearby_icons()
+	add_debris_element()
+
+/obj/structure/window_frame/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_GLASS, -10, 5)
+
 
 /obj/structure/window_frame/GetExplosionBlock()
 	. += outer_pane?.explosion_block
@@ -569,7 +574,7 @@
 		if(W.item_flags & ITEM_FLAG_NO_BLUDGEON)
 			return
 
-		user.setClickCooldown(W.update_attack_cooldown())
+		W.set_cooldown()
 		user.do_attack_animation(src)
 		if(affected)
 			if((W.damtype == BRUTE || W.damtype == BURN) && W.force >= 3)
@@ -852,8 +857,8 @@
 
 	return FALSE
 
-/obj/structure/window_frame/hitby(atom/movable/AM, speed, nomsg)
-	..(AM, speed, TRUE)
+/obj/structure/window_frame/hitby(atom/movable/AM, datum/thrownthing/TT, nomsg = TRUE)
+	..()
 	var/tforce = 0
 	if(ismob(AM)) // All mobs have a multiplier and a size according to mob_defines.dm
 		var/mob/I = AM
@@ -952,6 +957,19 @@
 		health -= damage
 		healthcheck()
 
+/obj/structure/window_frame/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+	if(the_rcd.mode == RCD_DECONSTRUCT)
+		return list("delay" = 2 SECONDS, "cost" = 5)
+
+	return FALSE
+
+/obj/structure/window_frame/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, list/rcd_data)
+	if(rcd_data["[RCD_DESIGN_MODE]"] == RCD_DECONSTRUCT)
+		qdel_self()
+		return TRUE
+
+	return FALSE
+
 /obj/structure/window_frame/proc/toggle_tint()
 	if(frame_state != FRAME_ELECTRIC && frame_state != FRAME_RELECTRIC)
 		return
@@ -1021,6 +1039,12 @@
 	pane_melee_mult = 0.9
 
 	rad_resist_type = /datum/rad_resist/none
+
+/obj/structure/window_frame/reinforced/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+	if(the_rcd.mode == RCD_DECONSTRUCT)
+		return list("delay" = 3 SECONDS, "cost" = 10)
+
+	return FALSE
 
 // Pretty much the same as the old grille, but smarter.
 /obj/structure/window_frame/grille
@@ -1280,6 +1304,7 @@
 	return
 
 /obj/structure/window_frame/indestructible/hitby()
+	SHOULD_CALL_PARENT(FALSE)
 	return
 
 

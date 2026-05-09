@@ -4,18 +4,18 @@
 	var/list/active_timers  //for SStimer
 
 	/// Components attached to this datum.
-	var/list/datum_components = list()
+	var/list/datum_components
 	/// Any datum registered to receive signals from this datum is in this list.
-	var/list/comp_lookup = list()
+	var/alist/comp_lookup
 	/// Lazy associated list of signals that are run when the datum receives that signal
-	var/list/signal_procs = list()
+	var/list/signal_procs
 	/// Used to avoid unnecessary refstring creation in Destroy().
 	var/has_state_machine = FALSE
 	/// Status traits attached to this datum. associative list of the form: list(trait name (string) = list(source1, source2, source3,...))
 	var/list/_status_traits
 
 	// Thinking
-	var/list/_think_ctxs
+	var/alist/_think_ctxs
 	var/datum/think_context/_main_think_ctx
 
 #ifdef TESTING
@@ -41,7 +41,7 @@
 	SSnano && SSnano.close_uis(src)
 
 	var/list/dc = datum_components
-	if(dc)
+	if(length(dc))
 		var/all_components = dc[/datum/component]
 		if(length(all_components))
 			QDEL_NULL_LIST(all_components)
@@ -66,7 +66,7 @@
 /// Only override this if you know what you're doing. You do not know what you're doing
 /// This is a threat
 /datum/proc/clear_signal_refs()
-	var/list/lookup = comp_lookup
+	var/alist/lookup = comp_lookup
 	if(lookup)
 		for(var/sig in lookup)
 			var/list/comps = lookup[sig]
@@ -78,8 +78,9 @@
 				comp.unregister_signal(src, sig)
 		comp_lookup = lookup = null
 
-	for(var/target in signal_procs)
-		unregister_signal(target, signal_procs[target])
+	if(length(signal_procs))
+		for(var/target in signal_procs)
+			unregister_signal(target, signal_procs[target])
 
 /datum/proc/Process()
 	set waitfor = 0
@@ -135,7 +136,7 @@
 /// * `time` - when to call the context.
 /// * `...` - arguments to be passed to the "think" function.
 /datum/proc/add_think_ctx(name, datum/callback/clbk, time, ...)
-	LAZYINITLIST(_think_ctxs)
+	A_LAZYINITLIST(_think_ctxs)
 
 	if(!QDELETED(_think_ctxs[name]))
 		CRASH("Thinking context [name] already exists")
@@ -151,7 +152,7 @@
 ///
 /// * `name` - name of the context.
 /datum/proc/remove_think_ctx(name)
-	if(!islist(_think_ctxs))
+	if(isnull(_think_ctxs))
 		return
 
 	if(QDELETED(_think_ctxs[name]))
@@ -172,7 +173,7 @@
 /// * `time` - when to call the context.
 /// * `...` - arguments to be passed to the "think" function.
 /datum/proc/try_add_think_ctx(name, datum/callback/clbk, time, ...)
-	LAZYINITLIST(_think_ctxs)
+	A_LAZYINITLIST(_think_ctxs)
 
 	if(!QDELETED(_think_ctxs[name]))
 		set_next_think_ctx(name, time)
@@ -212,5 +213,6 @@
 /// Mainly used in `/proc/Destroy`.
 /datum/proc/clear_think()
 	set_next_think(0)
-	QDEL_LIST_ASSOC_VAL(_think_ctxs)
+	QDEL_ALIST(_think_ctxs)
+	_think_ctxs = null
 	QDEL_NULL(_main_think_ctx)

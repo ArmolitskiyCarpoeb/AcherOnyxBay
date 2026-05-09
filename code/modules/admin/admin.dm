@@ -935,10 +935,10 @@ var/global/floorIsLava = 0
 	SSticker.round_progressing = !SSticker.round_progressing
 	if (!SSticker.round_progressing)
 		to_world("<b>The game start has been delayed.</b>")
-		log_admin("[key_name(usr)] delayed the game.")
+		log_and_message_admins("delayed the game.")
 	else
 		to_world("<b>The game will start soon.</b>")
-		log_admin("[key_name(usr)] removed the delay.")
+		log_and_message_admins("removed the delay.")
 	feedback_add_details("admin_verb","DELAY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adjump()
@@ -978,6 +978,34 @@ var/global/floorIsLava = 0
 	else
 		alert("[M.name] is not prisoned.")
 	feedback_add_details("admin_verb","UP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/datum/admins/proc/ring_unready()
+	set category = "Server"
+	set desc = "(Pre-round only) Send an audio and text notification to all non-ready players."
+	set name = "Ring Unready"
+
+	if(!check_rights(R_SERVER))
+		return
+
+	if(GAME_STATE > RUNLEVEL_LOBBY)
+		to_chat(usr, "Ring Unready is only available during the pre-round lobby.")
+		return
+
+	var/secs_to_roundstart = round(SSticker.pregame_timeleft / 10)
+	var/players_rung = 0
+
+	for(var/mob/new_player/player in GLOB.player_list)
+		if(player.ready)
+			continue
+
+		to_chat(player, "<font size = '6'>READY UP! The round is starting in [secs_to_roundstart] seconds!</font>")
+		sound_to(player, sound('sound/effects/adminhelp.ogg'))
+		players_rung++
+
+	to_chat(usr, "[players_rung] unready players notified.")
+	log_and_message_admins("notified [players_rung] unready players.")
+
+	feedback_add_details("admin_verb","RING") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
 
@@ -1544,3 +1572,26 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 
 	log_and_message_admins("[SSticker.overriding_needing_jobs ? "отключил" : "включил"] требование профессий.")
 	feedback_add_details("admin_verb","Tjob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/datum/admins/proc/change_lobby_music()
+	set name = "Change Lobby Music"
+	set category = "Server"
+
+	if(!check_rights(R_SERVER))
+		return
+
+	var/list/music_choices = list()
+	for (var/type in typesof(/lobby_music))
+		var/lobby_music/temp = new type()
+		music_choices[temp.title] = type
+
+	var/choice = input("Choose a new lobby music to set.", "Lobby Music") as null|anything in music_choices
+
+	if (choice)
+		var/lobby_music/M = music_choices[choice]
+		GLOB.lobby_music = new M()
+		message_admins("[key_name(usr)] has changed lobby music to [M.title].")
+		for(var/client/C in GLOB.clients)
+			if(C.mob && isnewplayer(C.mob))
+				sound_to(C, sound(null, repeat = 0, wait = 0, volume = 0, channel = 1))
+				C.playtitlemusic()

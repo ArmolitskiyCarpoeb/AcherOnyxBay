@@ -13,6 +13,7 @@
 	obj_flags = OBJ_FLAG_ANCHOR_BLOCKS_ROTATION
 	req_access = list(access_engine_equip)
 	rad_resist_type = /datum/rad_resist/none
+	pull_slowdown = PULL_SLOWDOWN_HEAVY // The barrel must be made of the immovable rod if it withstands so that much
 
 	var/id = null
 
@@ -207,11 +208,11 @@
 					disconnect_from_network()
 		return
 
-	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/device/pda))
+	if(W?.get_id_card())
 		if(emagged)
 			to_chat(user, "<span class='warning'>The lock seems to be broken.</span>")
 			return
-		if(allowed(user))
+		if(check_access(W))
 			toggle_lock(user)
 		else
 			to_chat(user, "<span class='warning'>Access denied.</span>")

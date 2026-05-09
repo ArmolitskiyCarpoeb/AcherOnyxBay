@@ -77,6 +77,10 @@
 		return
 	..()
 
+/obj/machinery/door/airlock/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -10, 5)
+
+
 /obj/machinery/door/airlock/get_material()
 	return get_material_by_name(mineral ? mineral : MATERIAL_STEEL)
 
@@ -281,7 +285,7 @@ About the new airlock wires panel:
 	if(density)
 		if(locked && lights && power_systems_on)
 			icon_state = "door_locked"
-			AddOverlays(OVERLAY(icon, "lights_bolts"))
+			AddOverlays(OVERLAY(icon, "lights_bolts", dir = src.dir))
 			AddOverlays(emissive_appearance(icon, "lights_bolts_ea"))
 			set_light(0.35, 0.9, 1.5, 3, COLOR_RED_LIGHT)
 		else
@@ -289,18 +293,18 @@ About the new airlock wires panel:
 
 		if(p_open || welded)
 			if(p_open)
-				AddOverlays(OVERLAY(icon, "panel_open"))
+				AddOverlays(OVERLAY(icon, "panel_open", dir = src.dir))
 			if(!(stat & NOPOWER))
 				if(stat & BROKEN)
-					AddOverlays(OVERLAY(icon, "sparks_broken"))
+					AddOverlays(OVERLAY(icon, "sparks_broken", dir = src.dir))
 					AddOverlays(emissive_appearance(icon, "sparks_broken_ea"))
 				else if(health < maxhealth * 0.75)
-					AddOverlays(OVERLAY(icon, "sparks_damaged"))
+					AddOverlays(OVERLAY(icon, "sparks_damaged", dir = src.dir))
 					AddOverlays(emissive_appearance(icon, "sparks_damaged_ea"))
 			if(welded)
-				AddOverlays(OVERLAY(icon, "welded"))
+				AddOverlays(OVERLAY(icon, "welded", dir = src.dir))
 		else if(health < maxhealth * 0.75 && !(stat & NOPOWER))
-			AddOverlays(OVERLAY(icon, "sparks_damaged"))
+			AddOverlays(OVERLAY(icon, "sparks_damaged", dir = src.dir))
 			AddOverlays(emissive_appearance(icon, "sparks_damaged_ea"))
 
 		if(!p_open && power_systems_on && !operating)
@@ -310,7 +314,7 @@ About the new airlock wires panel:
 		if(power_systems_on && !p_open) // Doors with opened panels have no green lights on their icons
 			set_light(0.30, 0.9, 1.5, 3, COLOR_LIME)
 		if((stat & BROKEN) && !(stat & NOPOWER))
-			AddOverlays(OVERLAY(icon, "sparks_open"))
+			AddOverlays(OVERLAY(icon, "sparks_open", dir = src.dir))
 			AddOverlays(emissive_appearance(icon, "sparks_open_ea"))
 
 	if(brace)
@@ -641,7 +645,7 @@ About the new airlock wires panel:
 			to_chat(user, "You must close \the [src] before installing \the [B]!")
 			return
 
-		if((!B.req_access.len && !B.req_one_access) && (alert("\the [B]'s 'Access Not Set' light is flashing. Install it anyway?", "Access not set", "Yes", "No") == "No"))
+		if((!length(B.req_access) && !length(B.req_one_access)) && (alert("\the [B]'s 'Access Not Set' light is flashing. Install it anyway?", "Access not set", "Yes", "No") == "No"))
 			return
 
 		if(do_after(user, 50, src, luck_check_type = LUCK_CHECK_ENG) && density && user.drop(B, src))
@@ -891,10 +895,12 @@ About the new airlock wires panel:
 	update_icon()
 	return 1
 
-/obj/machinery/door/airlock/allowed(mob/M)
+/obj/machinery/door/airlock/check_access()
 	if(locked)
-		return 0
-	return ..(M)
+		return FALSE // Completely locked
+	if(maint_all_access && check_access_list(list(access_maint_tunnels)))
+		return TRUE // We are a maintenance airlock and there's a full access to maints.
+	return ..()
 
 /obj/machinery/door/airlock/New(newloc, obj/structure/door_assembly/assembly = null)
 	..()
@@ -914,12 +920,14 @@ About the new airlock wires panel:
 
 		//update the door's access to match the electronics'
 		secured_wires = electronics.secure
-		if(electronics.one_access)
-			req_access.Cut()
-			req_one_access = src.electronics.conf_access
-		else
-			req_one_access.Cut()
-			req_access = src.electronics.conf_access
+
+		req_access = null
+		req_one_access = null
+		if(length(electronics.conf_access))
+			if(electronics.one_access)
+				req_one_access = list(electronics.conf_access)
+			else
+				req_access = list(electronics.conf_access)
 
 		//get the name from the assembly
 		if(assembly.created_name)
@@ -940,6 +948,7 @@ About the new airlock wires panel:
 		wires = new /datum/wires/airlock(src)
 
 /obj/machinery/door/airlock/Initialize()
+	add_debris_element()
 	if(closeOtherId != null)
 		for(var/obj/machinery/door/airlock/A in world)
 			if(A.closeOtherId == closeOtherId && A != src)
@@ -976,13 +985,12 @@ About the new airlock wires panel:
 		electronics = new /obj/item/airlock_electronics( src.loc )
 
 	//update the electronics to match the door's access
-	if(!req_access)
-		check_access()
-	if(req_access.len)
+	electronics.conf_access = null
+	if(length(req_access))
 		electronics.conf_access = req_access
-	else if(req_one_access.len)
+	else if(length(req_one_access))
 		electronics.conf_access = req_one_access
-		electronics.one_access = 1
+		electronics.one_access = TRUE
 
 /obj/machinery/door/airlock/emp_act(severity)
 	if(prob(20 / severity))

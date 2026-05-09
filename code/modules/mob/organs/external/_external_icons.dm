@@ -6,9 +6,19 @@ var/list/limb_icon_cache = list()
 /obj/item/organ/external/set_dir()
 	return
 
+/obj/item/organ/external/Move(newloc, direct)
+	. = ..()
+	if(!owner)
+		dir = SOUTH
+
 /obj/item/organ/external/proc/compile_icon()
 	ClearOverlays()
 	update_icon()
+	if(!owner && length(children))
+		for(var/obj/item/organ/external/E in children)
+			E.compile_icon()
+			E.ImmediateOverlayUpdate()
+			AddOverlays(E)
 
 /obj/item/organ/external/proc/sync_colour_to_human(mob/living/carbon/human/human)
 	s_tone = null
@@ -243,7 +253,7 @@ var/list/limb_icon_cache = list()
 		mob_overlays += limb_em_block
 
 	AddOverlays(mob_overlays)
-	dir = EAST
+	dir = SOUTH
 	icon = null
 
 /obj/item/organ/external/proc/update_icon_drop(mob/living/carbon/human/powner)
@@ -315,15 +325,10 @@ var/list/robot_hud_colours = list("#ffffff","#cccccc","#aaaaaa","#888888","#6666
 	return applying
 
 /obj/item/organ/external/proc/bandage_level()
-	if(damage_state_text() == "00")
+	if(bandaged <= 0)
 		return 0
-	if(!is_bandaged())
-		return 0
-	if(burn_dam + brute_dam == 0)
-		. = 0
-	else if (burn_dam + brute_dam < (max_damage * 0.25 / 2))
-		. = 1
-	else if (burn_dam + brute_dam < (max_damage * 0.75 / 2))
-		. = 2
-	else
-		. = 3
+	if(bandaged < max_damage * 0.25)
+		return 1
+	if(bandaged < max_damage * 0.75)
+		return 2
+	return 3

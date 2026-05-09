@@ -67,11 +67,10 @@ var/list/holder_mob_icon_cache = list()
 	return ..()
 
 /obj/item/holder/get_id_card()
-	return held_mob.get_id_card()
+	return held_mob?.get_id_card()
 
 /obj/item/holder/GetAccess()
-	var/obj/item/I = get_id_card()
-	return I ? I.GetAccess() : ..()
+	return held_mob?.GetAccess()
 
 /obj/item/holder/attack_self()
 	if(!held_mob.show_inv(usr))
@@ -163,7 +162,8 @@ var/list/holder_mob_icon_cache = list()
 
 /obj/item/holder/attackby(obj/item/W, mob/user)
 	held_mob.attackby(W, user)
-	sync()
+	if(!QDELETED(held_mob)) // i.e. chopping up a chicken
+		sync()
 
 //Mob procs and vars for scooping up
 /mob/living/var/holder_type

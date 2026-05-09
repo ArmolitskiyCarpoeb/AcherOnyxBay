@@ -57,12 +57,12 @@
 	..()
 
 /obj/item/gun/launcher/rocket/handle_war_crime(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	var/obj/item/grab/G = user.get_inactive_hand()
+	var/obj/item/grab/G = user.rightclicked ? user.get_active_hand() : user.get_inactive_hand()
 	if(G?.affecting != target || !G?.current_grab?.can_absorb)
 		to_chat(user, SPAN_NOTICE("You need a better grab for this."))
 		return
 
-	var/obj/item/organ/external/head/head = target.organs_by_name[BP_HEAD]
+	var/obj/item/organ/external/head/head = target.external_organs_by_name[BP_HEAD]
 	if(!istype(head))
 		to_chat(user, SPAN_NOTICE("You can't shoot in [target]'s mouth because you can't find their head."))
 		return

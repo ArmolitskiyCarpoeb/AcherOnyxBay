@@ -135,7 +135,7 @@
 		if (iscarbon(buckled_mob))
 			var/mob/living/carbon/C = buckled_mob
 			slab_nutrition = C.nutrition / 15
-			if (istype(buckled_mob, /mob/living/carbon/alien))
+			if (istype(buckled_mob, /mob/living/carbon/larva))
 				slab_type = /obj/item/reagent_containers/food/meat/xeno
 
 		if (istype(buckled_mob,/mob/living/simple_animal))
@@ -182,7 +182,7 @@
 		return
 
 	var/meat_limbs_left = 0
-	for (var/obj/item/organ/external/O in H.organs)
+	for (var/obj/item/organ/external/O in H.external_organs)
 		if (BP_IS_ROBOTIC(O) || O.is_stump())
 			continue
 		var/obj/item/organ/external/chest/OC = O

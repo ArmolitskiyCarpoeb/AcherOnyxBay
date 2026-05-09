@@ -4,8 +4,8 @@
 	icon_name = "head"
 	name = "head"
 	slot_flags = SLOT_BELT
-	max_damage = 75
-	min_broken_damage = 40
+	max_damage = 80
+	min_broken_damage = 45
 	w_class = ITEM_SIZE_NORMAL
 	body_part = HEAD
 	parent_organ = BP_CHEST
@@ -18,6 +18,8 @@
 
 	internal_organs_size = 4 // Brain = 2, eyes = 1, tongue = 1
 
+	max_module_size = 3
+
 	var/can_intake_reagents = 1
 
 	var/has_lips = TRUE
@@ -28,23 +30,19 @@
 
 	var/skull_path = /obj/item/skull
 
-/obj/item/organ/external/head/New()
-		. = ..()
-		forehead_stamps = list()
-
-/obj/item/organ/external/head/droplimb(clean, disintegrate = DROPLIMB_EDGE, ignore_children, silent)
+/obj/item/organ/external/head/droplimb(clean, disintegrate = DROPLIMB_EDGE, ignore_children, silent, drop_modules = FALSE)
 	if(BP_IS_ROBOTIC(src) && disintegrate == DROPLIMB_BURN)
 		var/obj/item/organ/internal/cerebrum/mmi/MMI = owner.internal_organs_by_name[BP_BRAIN]
 		if(istype(MMI))
 			MMI.visible_message(SPAN_NOTICE("[owner]'s head ejects an MMI!"), SPAN_DANGER("You see a bright flash as you get catapulted out of your body. You feel disoriented, which must be normal since you're just a brain in a can."))
 			MMI.removed()
-	return ..()
+	return ..(clean, disintegrate, ignore_children, silent, drop_modules)
 
 /obj/item/organ/external/head/organ_eaten(mob/user)
 	. = ..()
 	var/obj/item/skull/SK = new /obj/item/skull(get_turf(src))
 	if(!isturf(loc))
-		user.put_in_active_hand(SK)
+		user.put_in_clicking_hand(SK)
 
 /obj/item/organ/external/head/examine(mob/user, infix)
 	. = ..()
@@ -129,11 +127,13 @@
 	. = ..(company, skip_prosthetics, 1)
 	has_lips = FALSE
 
-/obj/item/organ/external/head/take_external_damage(brute, burn, damage_flags, used_weapon = null)
+/obj/item/organ/external/head/take_external_damage(brute, burn, damage_flags = 0, used_weapon = null)
 	. = ..()
-	if ((brute_dam > 40) && prob(50))
+	if(!. || (damage_flags & DAM_CLEAN) || (species && (species.species_flags & SPECIES_FLAG_NO_MINOR_CUT))) // Disfigured xenomorphs and golems are cringeworthy.
+		return
+	if(brute >= 5.0 && brute_ratio >= 1.0)
 		disfigure("brute")
-	if (burn_dam > 40)
+	if(burn && burn_ratio >= 1.0)
 		disfigure("burn")
 
 /obj/item/organ/external/head/get_icon_key()

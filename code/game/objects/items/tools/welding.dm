@@ -72,7 +72,7 @@
 /obj/item/weldingtool/attack(mob/living/M, mob/living/user, target_zone)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/external/S = H.organs_by_name[target_zone]
+		var/obj/item/organ/external/S = H.external_organs_by_name[target_zone]
 
 		if(!S || !BP_IS_ROBOTIC(S) || user.a_intent != I_HELP)
 			return ..()
@@ -132,7 +132,7 @@
 	..()
 
 /obj/item/weldingtool/attack_hand(mob/user as mob)
-	if(tank && user.get_inactive_hand() == src)
+	if(tank && user.has_in_passive_hand(src))
 		if(!welding)
 			if(tank.can_remove)
 				user.visible_message("[user] removes \the [tank] from \the [src].", "You remove \the [tank] from \the [src].")

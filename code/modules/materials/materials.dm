@@ -458,6 +458,24 @@ var/list/name_to_material
 	icon_colour = "#d1e6e3"
 	icon_reinf = "reinf_metal"
 
+/material/duranium
+	name = MATERIAL_DURANIUM
+	stack_type = /obj/item/stack/material/duranium
+	integrity = 600
+	melting_point = 12000
+	icon_base = "solid"
+	icon_reinf = "reinf_over"
+	icon_colour = "#9AAFA9"
+	shard_type = SHARD_SCRAP
+	explosion_resistance = 35
+	brute_armor = 15
+	burn_armor = 30
+	hardness = 95
+	weight = 21
+	resilience = 49
+	reflectance = 40
+	stack_origin_tech = list(TECH_MATERIAL = 4)
+
 /material/plasteel/ocp
 	name = MATERIAL_OSMIUM_CARBIDE_PLASTEEL
 	stack_type = /obj/item/stack/material/ocp
@@ -986,6 +1004,16 @@ var/list/name_to_material
 	melting_point = 300 CELSIUS
 	conductive = 0
 	craft_tool = 1
+
+/material/cloth_red
+	name = "red"
+	display_name ="red"
+	use_name = "red cloth"
+	icon_colour = "#da020a"
+	material_flags = MATERIAL_PADDING
+	ignition_point = 232 CELSIUS
+	melting_point = 300 CELSIUS
+	conductive = 0
 
 /material/cloth_teal
 	name = "teal"

@@ -73,13 +73,14 @@
 
 /mob/living/carbon/human/Destroy()
 	GLOB.human_mob_list -= src
-	worn_underwear = null
-	QDEL_NULL_LIST(organs)
-	QDEL_NULL_LIST(stance_limbs)
-	QDEL_NULL_LIST(grasp_limbs)
-	QDEL_NULL_LIST(bad_external_organs)
 
+	QDEL_NULL_LIST(worn_underwear)
 	QDEL_LIST_ASSOC(hud_list)
+
+	// carbon/Destroy() will handle qdeling the organs, let's just clear the lists.
+	stance_limbs.Cut()
+	grasp_limbs.Cut()
+	bad_external_organs.Cut()
 
 	QDEL_NULL(vessel)
 	return ..()
@@ -120,6 +121,10 @@
 		stat("Move Mode:", "[m_intent]")
 		stat("Poise:", "[round(100/poise_pool*poise)]%")
 		stat("Special Ability:", "[active_ability]")
+		var/cpu_total = get_cpu_power()
+		var/cpu_used = get_active_cpu_load()
+		if(cpu_total || cpu_used)
+			stat("CPU:", "[cpu_used]/[cpu_total]")
 
 		stat("STATS:")
 		stat("Strength", "[stats[STAT_ST]]")
@@ -193,6 +198,7 @@
 
 	var/b_loss = null
 	var/f_loss = null
+	var/cochlear = has_cochlear_implant()
 	switch(severity)
 		if(1.0)
 			b_loss = 400
@@ -208,21 +214,19 @@
 				//user.throw_at(target, 200, 4)
 
 		if(2.0)
-			b_loss = 60
-			f_loss = 60
+			b_loss = 100
+			f_loss = 50
 
 			if(get_ear_protection() < 2)
-				ear_damage += 30
-				ear_deaf += 120
-			if(prob(70))
+				adjustEarDamage(30, 120)
+			if(!cochlear && prob(70))
 				Paralyse(10)
 
 		if(3.0)
-			b_loss = 30
+			b_loss = 50
 			if(get_ear_protection() < 2)
-				ear_damage += 15
-				ear_deaf += 60
-			if(prob(50))
+				adjustEarDamage(15, 60)
+			if(!cochlear && prob(50))
 				Paralyse(10)
 
 	// factor in armour
@@ -231,23 +235,14 @@
 	f_loss *= protection
 
 	// focus most of the blast on one organ
-	var/obj/item/organ/external/take_blast = pick(organs)
-	take_blast.take_external_damage(b_loss * 0.7, f_loss * 0.7, used_weapon = "Explosive blast")
+	var/obj/item/organ/external/take_blast = pick(external_organs)
+	take_blast.take_external_damage(b_loss * 0.7, f_loss * 0.7, used_weapon = "Explosive Blast")
 
 	// distribute the remaining 30% on all limbs equally (including the one already dealt damage)
 	b_loss *= 0.3
 	f_loss *= 0.3
-
-	var/weapon_message = "Explosive Blast"
-	for(var/obj/item/organ/external/temp in organs)
-		var/loss_val
-		if(temp.organ_tag  == BP_HEAD)
-			loss_val = 0.2
-		else if(temp.organ_tag == BP_CHEST)
-			loss_val = 0.4
-		else
-			loss_val = 0.05
-		temp.take_external_damage(b_loss * loss_val, f_loss * loss_val, used_weapon = weapon_message)
+	for(var/obj/item/organ/external/temp in external_organs)
+		temp.take_external_damage(b_loss, f_loss, used_weapon = "Explosive Blast")
 
 /mob/living/carbon/human/blob_act(damage)
 	if(is_ic_dead())
@@ -262,7 +257,7 @@
 	var/obj/item/implant/loyalty/L = new /obj/item/implant/loyalty(M)
 	L.imp_in = M
 	L.implanted = 1
-	var/obj/item/organ/external/affected = M.organs_by_name[BP_HEAD]
+	var/obj/item/organ/external/affected = M.external_organs_by_name[BP_HEAD]
 	affected.implants += L
 	L.part = affected
 	L.implanted(src)
@@ -270,7 +265,7 @@
 /mob/living/carbon/human/proc/is_loyalty_implanted(mob/living/carbon/human/M)
 	for(var/L in M.contents)
 		if(istype(L, /obj/item/implant/loyalty))
-			for(var/obj/item/organ/external/O in M.organs)
+			for(var/obj/item/organ/external/O in M.external_organs)
 				if(L in O.implants)
 					return 1
 	return 0
@@ -493,14 +488,14 @@
 /mob/living/carbon/human/apply_shock(shock_damage, def_zone, base_siemens_coeff = 1.0)
 	var/obj/item/organ/external/initial_organ = get_organ(check_zone(def_zone))
 	if(!initial_organ)
-		initial_organ = pick(organs)
+		initial_organ = pick(external_organs)
 
 	var/obj/item/organ/external/floor_organ
 
 	if(!lying)
 		var/list/obj/item/organ/external/standing = list()
 		for(var/limb_tag in list(BP_L_FOOT, BP_R_FOOT))
-			var/obj/item/organ/external/E = organs_by_name[limb_tag]
+			var/obj/item/organ/external/E = external_organs_by_name[limb_tag]
 			if(E && E.is_usable())
 				standing[E.organ_tag] = E
 		if((def_zone == BP_L_FOOT || def_zone == BP_L_LEG) && standing[BP_L_FOOT])
@@ -511,7 +506,7 @@
 			floor_organ = standing[pick(standing)]
 
 	if(!floor_organ)
-		floor_organ = pick(organs)
+		floor_organ = pick(external_organs)
 
 	var/list/obj/item/organ/external/to_shock = trace_shock(initial_organ, floor_organ)
 
@@ -538,7 +533,7 @@
 
 	for(var/obj/item/organ/external/E in list(floor, init))
 		while(E && E.parent_organ)
-			E = organs_by_name[E.parent_organ]
+			E = external_organs_by_name[E.parent_organ]
 			traced_organs += E
 			if(E == init)
 				return traced_organs
@@ -886,7 +881,7 @@
 
 /mob/living/carbon/human/proc/vomit(toxvomit = 0, timevomit = 1, level = 3, silent = FALSE)
 	set waitfor = 0
-	if(!check_has_mouth() || isSynthetic() || !timevomit || !level)
+	if(!timevomit || !level || chem_effects[CE_NOVOMIT] || !check_has_mouth() || isSynthetic())
 		return
 	level = Clamp(level, 1, 3)
 	timevomit = Clamp(timevomit, 1, 10)
@@ -979,12 +974,6 @@
 		return NEUTER
 	return ..()
 
-/mob/living/carbon/human/proc/increase_germ_level(n)
-	if(gloves)
-		gloves.germ_level += n
-	else
-		germ_level += n
-
 /mob/living/carbon/human/revive(ignore_prosthetic_prefs = FALSE)
 	if(should_have_organ(BP_HEART))
 		vessel.add_reagent(/datum/reagent/blood, species.blood_volume - vessel.total_volume)
@@ -1043,65 +1032,36 @@
 	if(gloves)
 		if(gloves.clean_blood())
 			update_inv_gloves(0)
-		gloves.germ_level = 0
 	else
 		if(!isnull(bloody_hands))
 			bloody_hands = null
 			update_inv_gloves(0)
-		germ_level = 0
 	update_icons()	//apply the now updated overlays to the mob
 
-/mob/living/carbon/human/get_visible_implants(class = 0)
+/mob/living/carbon/human/get_visible_implants()
 	var/list/visible_implants = ..()
 
-	for(var/obj/item/organ/external/organ in src.organs)
+	for(var/obj/item/organ/external/organ in external_organs)
 		for(var/obj/item/O in organ.implants)
-			if(!istype(O,/obj/item/implant) && (O.w_class > class) && !istype(O,/obj/item/material/shard/shrapnel))
-				visible_implants += O
+			if(!istype(O, /obj/item/organ_module))
+				continue
+			var/obj/item/organ_module/module = O
+			if(!(module.module_flags & OM_FLAG_INSPECTABLE))
+				continue
+			visible_implants += O
 
-	return(visible_implants)
+	return visible_implants
 
-/mob/living/carbon/human/embedded_needs_process()
-	for(var/obj/item/organ/external/organ in src.organs)
-		for(var/obj/item/O in organ.implants)
-			if(!istype(O, /obj/item/implant)) //implant type items do not cause embedding effects, see handle_embedded_objects()
-				return 1
-	return 0
+/mob/living/carbon/human/get_embedded_objects(class = 0)
+	var/list/embedded_objects = ..()
 
-/mob/living/carbon/human/proc/handle_embedded_and_stomach_objects()
-	for(var/obj/item/organ/external/organ in src.organs)
-		if(organ.splinted)
-			continue
-		for(var/obj/item/O in organ.implants)
-			if(!istype(O,/obj/item/implant) && O.w_class > 1 && prob(5)) //Moving with things stuck in you could be bad.
-				jossle_internal_object(organ, O)
-	var/obj/item/organ/external/groin = src.get_organ(BP_GROIN)
-	if(groin && stomach_contents && stomach_contents.len)
-		for(var/obj/item/O in stomach_contents)
-			if(O.edge || O.sharp)
-				if(prob(1))
-					stomach_contents.Remove(O)
-					if(can_feel_pain())
-						to_chat(src, "<span class='danger'>You feel something rip out of your stomach!</span>")
-						groin.embed(O)
-				else if(prob(5))
-					jossle_internal_object(groin,O)
+	for(var/obj/item/organ/external/organ in external_organs)
+		for(var/obj/O in organ.embedded_objects)
+			if((O.w_class <= class) || istype(O,/obj/item/material/shard/shrapnel))
+				continue
+			embedded_objects += O
 
-/mob/living/carbon/human/proc/jossle_internal_object(obj/item/organ/external/organ, obj/item/O)
-	// All kinds of embedded objects cause bleeding.
-	if(!can_feel_pain())
-		to_chat(src, "<span class='warning'>You feel [O] moving inside your [organ.name].</span>")
-	else
-		var/msg = pick( \
-			"<span class='warning'>A spike of pain jolts your [organ.name] as you bump [O] inside.</span>", \
-			"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>", \
-			"<span class='warning'>Your movement jostles [O] in your [organ.name] painfully.</span>")
-		custom_pain(msg,40,affecting = organ)
-
-	organ.take_external_damage(rand(1,3), 0, 0)
-	if(!BP_IS_ROBOTIC(organ) && (should_have_organ(BP_HEART))) //There is no blood in protheses.
-		organ.status |= ORGAN_BLEEDING
-		adjustInternalLoss(rand(1,3))
+	return embedded_objects
 
 /mob/living/carbon/human/verb/check_pulse()
 	set category = "Object"
@@ -1438,10 +1398,9 @@
 	return 0
 
 /mob/living/carbon/human/slip(slipped_on, stun_duration = 8)
-	if((species.species_flags & SPECIES_FLAG_NO_SLIP) || (shoes && (shoes.item_flags & ITEM_FLAG_NOSLIP)))
-		return 0
-	damage_poise(stun_duration*5)
-	return !!(..(slipped_on, stun_duration))
+	. = ..()
+	if(.)
+		damage_poise(stun_duration*5)
 
 /mob/living/carbon/human/proc/undislocate()
 	set category = "Object"
@@ -1469,8 +1428,8 @@
 		self = 1 // Removing object from yourself.
 
 	var/list/limbs = list()
-	for(var/limb in organs_by_name)
-		var/obj/item/organ/external/current_limb = organs_by_name[limb]
+	for(var/limb in external_organs_by_name)
+		var/obj/item/organ/external/current_limb = external_organs_by_name[limb]
 		if(current_limb && current_limb.dislocated > 0 && !current_limb.is_parent_dislocated()) //if the parent is also dislocated you will have to relocate that first
 			limbs |= current_limb
 	var/obj/item/organ/external/current_limb = input(usr,"Which joint do you wish to relocate?") as null|anything in limbs
@@ -1495,7 +1454,7 @@
 	current_limb.undislocate()
 
 /mob/living/carbon/human/drop(obj/item/W, atom/Target = null, force = null, changing_slots)
-	if(W in organs)
+	if(W in external_organs)
 		return
 	. = ..()
 
@@ -1617,11 +1576,11 @@
 
 	var/obj/item/organ/external/affecting
 	if(organ_check in list(BP_HEART, BP_LUNGS, BP_STOMACH, BP_LIVER))
-		affecting = organs_by_name[BP_CHEST]
+		affecting = external_organs_by_name[BP_CHEST]
 	else if(organ_check in list(BP_KIDNEYS, BP_BLADDER, BP_INTESTINES))
-		affecting = organs_by_name[BP_GROIN]
+		affecting = external_organs_by_name[BP_GROIN]
 	else if(organ_check in list(BP_EYES, BP_TONGUE))
-		affecting = organs_by_name[BP_HEAD]
+		affecting = external_organs_by_name[BP_HEAD]
 
 	if(affecting && BP_IS_ROBOTIC(affecting))
 		return 0
@@ -1634,7 +1593,7 @@
 		return
 
 	var/obj/item/organ/external/limb
-	limb = organs_by_name[limb_check]
+	limb = external_organs_by_name[limb_check]
 
 	if(limb && !limb.is_stump())
 		if(BP_IS_ROBOTIC(limb))
@@ -1648,7 +1607,7 @@
 		return
 
 	var/obj/item/organ/external/limb
-	limb = organs_by_name[limb_check]
+	limb = external_organs_by_name[limb_check]
 
 	if(limb && !limb.is_stump() && !(limb.status & ORGAN_DISFIGURED))
 		if(BP_IS_ROBOTIC(limb))
@@ -1694,7 +1653,7 @@
 			"<span class='notice'>You check yourself for injuries.</span>" \
 			)
 
-		for(var/obj/item/organ/external/org in organs)
+		for(var/obj/item/organ/external/org in external_organs)
 			var/list/status = list()
 
 			var/feels = 1 + round(org.get_pain()/100, 0.1)
@@ -1749,9 +1708,9 @@
 			if(L)
 				active_breaths = L.active_breathing
 		if(!nervous_system_failure() && active_breaths)
-			visible_message("\The [src] jerks and gasps for breath!")
+			visible_message("<b>\The [src]</b> jerks and gasps for breath!")
 		else
-			visible_message("\The [src] twitches a bit as \his heart restarts!")
+			visible_message("<b>\The [src]</b> twitches a bit as \his heart restarts!")
 		shock_stage = min(shock_stage, 100) // 120 is the point at which the heart stops.
 		if(getOxyLoss() >= 75)
 			setOxyLoss(75)
@@ -1811,21 +1770,55 @@
 		src.block_icon.icon_state = "act_block1"
 
 
-/mob/living/carbon/human/verb/blockswitch()
-	set name = "Block Hand Toggle"
-	set desc = "Choose whether to use your main hand or your off hand to block incoming attacks."
+/mob/living/carbon/human/verb/toggle_aim_assist()
+	set name = "Toggle Click Mode"
+	set desc = "Choose whether to click on anything or mobs only."
 	set category = "IC"
 
-	if(!blocking_hand)
-		blocking_hand = 1
-		to_chat(src, "<span class='notice'>You will use your off hand to block.</span>")
-		if(src.blockswitch_icon)
-			src.blockswitch_icon.icon_state = "act_blockswitch1"
+	if(!aim_assist)
+		aim_assist = TRUE
+		to_chat(src, SPAN("notice", "You will now prioritize mobs when clicking."))
+		if(aim_assist_icon)
+			aim_assist_icon.icon_state = "aim_assist1"
 	else
-		blocking_hand = 0
-		to_chat(src, "<span class='notice'>You will use your main hand to block.</span>")
-		if(src.blockswitch_icon)
-			src.blockswitch_icon.icon_state = "act_blockswitch0"
+		aim_assist = FALSE
+		to_chat(src, SPAN("notice", "You will now click on things normally."))
+		if(aim_assist_icon)
+			aim_assist_icon.icon_state = "aim_assist0"
+
+/mob/living/carbon/human/proc/verb_toggle_twohanded_mode()
+	set name = "Toggle Two-Handed Mode"
+	set desc = "Choose whether your RMB clicks things with offhand or acts normally."
+	set category = "IC"
+
+	toggle_twohanded_mode()
+
+/mob/living/carbon/human/proc/toggle_twohanded_mode(new_state = -1, silent = FALSE)
+	twohanded_mode = (new_state == -1) ? !twohanded_mode : new_state
+
+	if(twohanded_mode)
+		if(!silent)
+			to_chat(src, SPAN("notice", "Your can now use your offhand via right-clicking."))
+		if(twohanded_mode_icon)
+			twohanded_mode_icon.icon_state = "act_twohanded1"
+	else
+		if(!silent)
+			to_chat(src, SPAN("notice", "You will no longer use your offhand via right-clicking."))
+		if(twohanded_mode_icon)
+			twohanded_mode_icon.icon_state = "act_twohanded0"
+
+	if(my_client)
+		winset(my_client, "mapwindow.rightclickblocker", "is-visible=[twohanded_mode ? "true" : "false"]") // Please, forgive me for this abomination, but I can't think of a faster, mostly-client-sided way to preserve Shift, Ctrl and Alt macros' behavior.
+		winset(my_client, "mapwindow.map", "right-click=[twohanded_mode ? "true" : "false"]")
+
+/mob/living/carbon/human/is_deaf()
+	var/obj/item/organ/external/head/head = external_organs_by_name[BP_HEAD]
+	if((sdisabilities & DEAF) && istype(head))
+		var/obj/item/organ_module/cochlear/coch = locate() in head
+		if(istype(coch))
+			return FALSE
+
+	return ..()
 
 /mob/living/carbon/human/verb/succumb()
 	set name = "УМЕРЕТЬ"
@@ -1865,3 +1858,16 @@
 				to_chat(grabber, SPAN("warning", "You can't scoop up \the [src] because of the [M]"))
 				return
 	. = ..()
+
+/mob/living/carbon/human/lay_down()
+	if(crawling && canClick())
+		var/obj/structure/table/T = locate() in loc.contents
+		if(!istype(T))
+			..()
+			return
+
+		T.headbumped(src)
+		return
+
+	..()
+	return

@@ -49,11 +49,8 @@
 	var/datum/follow_panel/follow_panel = new()
 
 /mob/observer/ghost/Initialize()
+	. = ..()
 	see_in_dark = 100
-
-	verbs += /mob/proc/toggle_antag_pool
-	verbs += /mob/proc/join_as_actor
-	verbs += /mob/proc/join_response_team
 
 	var/turf/T
 	if(ismob(loc))
@@ -90,7 +87,9 @@
 
 	GLOB.ghost_mob_list |= src
 
-	. = ..()
+	verbs += /mob/proc/toggle_antag_pool
+	verbs += /mob/proc/join_as_actor
+	verbs += /mob/proc/join_response_team
 
 /mob/observer/ghost/Destroy()
 	GLOB.ghost_mob_list.Remove(src)
@@ -178,17 +177,15 @@ Works together with spawning an observer, noted above.
 
 
 /mob/observer/ghost/proc/process_medHUD(mob/M)
-	var/client/C = M.client
 	for(var/mob/living/carbon/human/patient in oview(M, 14))
-		C.images += patient.hud_list[HEALTH_HUD]
-		C.images += patient.hud_list[STATUS_HUD_OOC]
+		M.add_client_image(patient.hud_list[HEALTH_HUD])
+		M.add_client_image(patient.hud_list[STATUS_HUD_OOC])
 
 /mob/observer/ghost/proc/assess_targets(list/target_list, mob/observer/ghost/U)
-	var/client/C = U.client
 	for(var/mob/living/carbon/human/target in target_list)
-		C.images += target.hud_list[SPECIALROLE_HUD]
+		U.add_client_image(target.hud_list[SPECIALROLE_HUD])
 	for(var/mob/living/silicon/target in target_list)
-		C.images += target.hud_list[SPECIALROLE_HUD]
+		U.add_client_image(target.hud_list[SPECIALROLE_HUD])
 	return 1
 
 /mob/proc/ghostize(can_reenter_corpse = CORPSE_CAN_REENTER)
@@ -608,16 +605,17 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/ghost/proc/updateghostsight()
 	set_see_invisible(ghostvision ? SEE_INVISIBLE_OBSERVER : SEE_INVISIBLE_LIVING)
 
-	var/atom/movable/renderer/lighting/l_renderer = renderers[LIGHTING_RENDERER]
-	switch(get_preference_value("GHOST_DARKVISION"))
-		if(GLOB.PREF_DARKNESS_VISIBLE)
-			l_renderer.relay.alpha = 255
-		if(GLOB.PREF_DARKNESS_MOSTLY_VISIBLE)
-			l_renderer.relay.alpha = 192
-		if(GLOB.PREF_DARKNESS_BARELY_VISIBLE)
-			l_renderer.relay.alpha = 128
-		if(GLOB.PREF_DARKNESS_INVISIBLE)
-			l_renderer.relay.alpha = 0
+	var/atom/movable/renderer/lighting/l_renderer = A_LAZYACCESS(renderers, LIGHTING_RENDERER)
+	if(istype(l_renderer))
+		switch(get_preference_value("GHOST_DARKVISION"))
+			if(GLOB.PREF_DARKNESS_VISIBLE)
+				l_renderer.relay.alpha = 255
+			if(GLOB.PREF_DARKNESS_MOSTLY_VISIBLE)
+				l_renderer.relay.alpha = 192
+			if(GLOB.PREF_DARKNESS_BARELY_VISIBLE)
+				l_renderer.relay.alpha = 128
+			if(GLOB.PREF_DARKNESS_INVISIBLE)
+				l_renderer.relay.alpha = 0
 
 /mob/observer/ghost/MayRespawn(feedback = FALSE, respawn_time = 0)
 	if(!client)
