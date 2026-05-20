@@ -11,7 +11,7 @@
 	name = "bed"
 	desc = "This is used to lie in, sleep in or strap on."
 	icon = 'icons/obj/furniture.dmi'
-	icon_state = "bed_preview"
+	icon_state = "bed"
 	base_icon_state = "bed"
 	anchored = 1
 	can_buckle = 1
