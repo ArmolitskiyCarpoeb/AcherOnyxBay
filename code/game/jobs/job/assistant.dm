@@ -21,7 +21,7 @@
 /datum/job/assistant/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(5,15,5,15,5,15,5,15)
+		H.newgeneratestats(5,12,5,12,5,12,5,12)
 		H.generate_skills()
 		H.skills["ranged"] = rand(0, 100)
 		H.skills["melee"] = rand(0, 100)

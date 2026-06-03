@@ -28,7 +28,7 @@
 	d2 = 2;
 	d1 = 1
 	},
-/turf/simulated/floor/tiled/mono,
+/turf/simulated/floor/tiled/graytile,
 /area/bridge)
 "bB" = (
 /obj/structure/railing/steel{
@@ -69,7 +69,7 @@
 	icon_state = "tube1";
 	dir = 4
 	},
-/turf/simulated/floor/tiled/mono,
+/turf/simulated/floor/tiled/graytile,
 /area/bridge)
 "cr" = (
 /obj/machinery/door/airlock/maintenance,
@@ -632,6 +632,9 @@
 /obj/effect/landmark/joinlate,
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
+"rj" = (
+/turf/simulated/floor/tiled/graytile,
+/area/hallway/primary/central_one)
 "rm" = (
 /obj/effect/floor_decal/corner/blue/full,
 /obj/structure/flora/pottedplant/large,
@@ -825,7 +828,7 @@
 	d2 = 8;
 	d1 = 4
 	},
-/turf/simulated/floor/tiled/mono,
+/turf/simulated/floor/tiled/graytile,
 /area/bridge)
 "xz" = (
 /obj/machinery/door/airlock/hatch{
@@ -960,7 +963,7 @@
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "AZ" = (
-/turf/simulated/floor/tiled/mono,
+/turf/simulated/floor/tiled/graytile,
 /area/bridge)
 "Bc" = (
 /obj/structure/railing/steel{
@@ -1193,7 +1196,7 @@
 	d2 = 4;
 	d1 = 1
 	},
-/turf/simulated/floor/tiled/mono,
+/turf/simulated/floor/tiled/graytile,
 /area/bridge)
 "Kf" = (
 /obj/structure/closet/emcloset,
@@ -36556,11 +36559,11 @@ jZ
 fA
 fA
 zf
-eT
+rj
 Lz
-eT
+rj
 Lz
-eT
+rj
 zf
 zx
 nR
@@ -36812,13 +36815,13 @@ sY
 fA
 fA
 HN
-eT
+rj
 Lz
 Ds
 Ds
 Ds
 Lz
-eT
+rj
 HN
 zx
 Vh
@@ -37071,9 +37074,9 @@ Xz
 HN
 Lz
 Ds
-ve
+rj
 Eq
-ve
+rj
 Ds
 Lz
 HN
@@ -37326,13 +37329,13 @@ Kc
 SU
 yY
 HN
-eT
+rj
 Ds
-ve
+rj
 Eq
-ve
+rj
 Ds
-eT
+rj
 HN
 QA
 YH
@@ -37840,13 +37843,13 @@ Rj
 SU
 yY
 HN
-eT
+rj
 Ds
-ve
+rj
 Eq
-ve
+rj
 Ds
-eT
+rj
 HN
 iO
 YH
@@ -38099,9 +38102,9 @@ Xz
 HN
 Lz
 Ds
-ve
+rj
 Eq
-ve
+rj
 Ds
 Lz
 HN
@@ -38354,13 +38357,13 @@ hb
 hb
 hb
 HN
-eT
+rj
 Lz
 Ds
 Ds
 Ds
 Lz
-eT
+rj
 HN
 Vh
 Vh
@@ -38612,11 +38615,11 @@ uK
 hb
 hb
 WY
-eT
+rj
 Lz
-eT
+rj
 Lz
-eT
+rj
 WY
 zx
 Vh

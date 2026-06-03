@@ -1,7 +1,7 @@
 
 /datum/map/outland
 	name = "Outland"
-	full_name = "SS Outland"
+	full_name = "OS Outland"
 	path = "outland"
 
 	shuttle_types = list(
@@ -52,7 +52,7 @@
 		)
 	)
 
-	station_name  = "SS Outland"
+	station_name  = "OS Outland"
 	station_short = "Outland"
 	dock_name     = "NAS Crescent"
 	boss_name     = "Central Command"
