@@ -91,10 +91,10 @@
 	icon = 'icons/turf/flooring/circuit.dmi'
 	icon_state = "bcircuit"
 	initial_flooring = /decl/flooring/reinforced/circuit
-	light_inner_range = 1
-	light_outer_range = 2
-	light_max_bright = 1
-	light_color = COLOR_BLUE
+	light_inner_range = 2
+	light_outer_range = 3
+	light_max_bright = 2
+	light_color = COLOR_BLUE_GRAY
 
 /turf/simulated/floor/grid/bluegrid/airless
 	initial_gas = /decl/initial_gas_mix/empty
@@ -173,6 +173,18 @@
 	name = "steel floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "steel"
+	initial_flooring = /decl/flooring/tiling
+
+/turf/simulated/floor/tiled/redtile
+	name = "red tile"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "redtile"
+	initial_flooring = /decl/flooring/tiling
+
+/turf/simulated/floor/tiled/graytile
+	name = "gray tile"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "graytile"
 	initial_flooring = /decl/flooring/tiling
 
 /turf/simulated/floor/tiled/rough
@@ -330,7 +342,7 @@
 	name = "wooden floor"
 	icon_state = "wood2"
 	icon = 'icons/turf/flooring/wood.dmi'
-	initial_flooring = /decl/flooring/darkwood
+	initial_flooring = /decl/flooring/wood2
 	footstep_sound = SFX_FOOTSTEP_WOOD
 
 /turf/simulated/floor/trim/wood/broken0

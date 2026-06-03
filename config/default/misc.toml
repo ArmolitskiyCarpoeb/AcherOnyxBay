@@ -88,5 +88,5 @@ toggle_gun_safety = true
 ## Set to false to disable non-HRP stuff (i.e. Mykola the Pig, traitor chef's hook)
 meme_content = false
 
-## Set to true to use blocky per-tile lighting (averaged per turf). False keeps smooth lighting.
-per_tile_lighting = false
+## LFWB
+per_tile_lighting = true

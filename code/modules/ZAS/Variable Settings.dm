@@ -273,19 +273,19 @@ var/global/vs_control/vsc = new
 			airflow_mob_slowdown = 2
 
 		if("ZAS - Hellish")
-			airflow_lightest_pressure = 20
-			airflow_light_pressure = 30
-			airflow_medium_pressure = 40
-			airflow_heavy_pressure = 50
-			airflow_dense_pressure = 60
+			airflow_lightest_pressure = 15
+			airflow_light_pressure = 25
+			airflow_medium_pressure = 35
+			airflow_heavy_pressure = 45
+			airflow_dense_pressure = 55
 			airflow_stun_pressure = 40
-			airflow_stun_cooldown = 40
-			airflow_stun = 3
-			airflow_damage = 5
+			airflow_stun_cooldown = 25
+			airflow_stun = 4
+			airflow_damage = 7
 			airflow_speed_decay = 1
-			airflow_delay = 20
+			airflow_delay = 15
 			airflow_mob_slowdown = 3
-			connection_insulation = 0
+			connection_insulation = 0.5
 
 		if("ZAS/Plasma - Initial")
 			fire_consuption_rate 			= initial(fire_consuption_rate)

@@ -25,6 +25,8 @@
 	var/material/material = null
 	var/material/reinforced = null
 
+	var/legacy = 0
+
 	// Gambling tables. I'd prefer reinforced with carpet/felt/cloth/whatever, but AFAIK it's either harder or impossible to get /obj/item/stack/material of those.
 	// Convert if/when you can easily get stacks of these.
 	var/carpeted = 0
@@ -414,7 +416,16 @@
 	return shards
 
 /obj/structure/table/on_update_icon()
-	if(flipped != 1)
+	if(legacy == 1 && flipped != 1)
+		//icon_state = "blank"
+		ClearOverlays()
+
+		var/image/I
+
+		for(var/i = 1 to 4)
+			I = OVERLAY(icon, "[icon_state]_[connections[i]]", dir = 1<<(i-1))
+			AddOverlays(I)
+	if(legacy != 1 && flipped != 1)
 		icon_state = "blank"
 		ClearOverlays()
 
@@ -446,7 +457,7 @@
 			for(var/i = 1 to 4)
 				I = OVERLAY(icon, "carpet_[connections[i]]", dir = 1<<(i-1))
 				AddOverlays(I)
-	else
+	if(legacy != 1 && flipped == 1)
 		ClearOverlays()
 		var/type = 0
 		var/tabledirs = 0

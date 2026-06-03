@@ -325,3 +325,17 @@
 /obj/item/gun/projectile/revolver/grenade_launcher/on_update_icon()
 	icon_state = "grenade_launcher[!!loaded.len]"
 	..()
+
+/obj/item/gun/projectile/revolver/argument
+	name = "Argument 90"
+	desc = "Иногда для решения сложного вопроса нужен веский аргумент."
+	icon_state = "argument"
+	item_state = "revolver"
+	caliber = "357"
+	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3)
+	handle_casings = CYCLE_CASINGS
+	max_shells = 6
+	mod_weight = 0.65
+	mod_reach = 0.5
+	mod_handy = 1.1
+	ammo_type = /obj/item/ammo_casing/a357

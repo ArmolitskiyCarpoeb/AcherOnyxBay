@@ -79,3 +79,10 @@
 /obj/structure/table/glass/plass
 	color = "#8f29a3"
 	material = MATERIAL_PLASS
+
+/obj/structure/table/hardtable
+	icon_state = "hardtable"
+	//color = COLOR_GRAY40
+	reinforced = MATERIAL_STEEL
+	material = MATERIAL_STEEL
+	legacy = 1

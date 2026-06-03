@@ -393,7 +393,7 @@ var/list/name_to_material
 	integrity = 300
 	brute_armor = 7
 	icon_base = "solid"
-	icon_reinf = "reinf_over"
+	icon_reinf = "reinf_over_alt"
 	icon_colour = "#666666"
 	shard_type = SHARD_SCRAP
 	hitsound = 'sound/effects/fighting/Genhit.ogg'
@@ -430,7 +430,7 @@ var/list/name_to_material
 	integrity = 400
 	melting_point = 6000
 	icon_base = "solid"
-	icon_reinf = "reinf_over"
+	icon_reinf = "reinf_over_alt"
 	icon_colour = "#777777"
 	shard_type = SHARD_SCRAP
 	explosion_resistance = 25
@@ -464,7 +464,7 @@ var/list/name_to_material
 	integrity = 600
 	melting_point = 12000
 	icon_base = "solid"
-	icon_reinf = "reinf_over"
+	icon_reinf = "reinf_over_alt"
 	icon_colour = "#9AAFA9"
 	shard_type = SHARD_SCRAP
 	explosion_resistance = 35
@@ -482,7 +482,7 @@ var/list/name_to_material
 	integrity = 300
 	melting_point = 12000
 	icon_base = "solid"
-	icon_reinf = "reinf_over"
+	icon_reinf = "reinf_over_alt"
 	icon_colour = "#9bc6f2"
 	brute_armor = 4
 	burn_armor = 20
@@ -708,7 +708,7 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/plastic
 	material_flags = MATERIAL_BRITTLE
 	icon_base = "solid"
-	icon_reinf = "reinf_over"
+	icon_reinf = "reinf_over_alt"
 	icon_colour = "#cccccc"
 	hardness = 10
 	weight = 5
@@ -885,7 +885,7 @@ var/list/name_to_material
 	material_flags = MATERIAL_BRITTLE
 	integrity = 10
 	icon_base = "solid"
-	icon_reinf = "reinf_over"
+	icon_reinf = "reinf_over_alt"
 	icon_colour = "#aaaaaa"
 	hardness = 1
 	brute_armor = 1

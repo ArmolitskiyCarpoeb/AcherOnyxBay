@@ -159,6 +159,20 @@ var/list/flooring_types
 	can_paint = TRUE
 	footstep_sound = SFX_FOOTSTEP_TILES
 
+/decl/flooring/tiling/redtile
+	name = "floor"
+	desc = "Scuffed from the passage of countless greyshirts."
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_base = "redtile"
+	can_paint = FALSE
+
+/decl/flooring/tiling/graytile
+	name = "floor"
+	desc = "Scuffed from the passage of countless greyshirts."
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_base = "graytile"
+	can_paint = FALSE
+
 /decl/flooring/tiling/rough
 	icon_base = "steel_rough"
 	build_type = /obj/item/stack/tile/floor_rough
@@ -280,6 +294,12 @@ var/list/flooring_types
 /decl/flooring/wood/broken6
 	name = "broken wooden floor"
 	icon_base = "wood_broken6"
+
+/decl/flooring/wood2
+	name = "wooden floor"
+	desc = "Под этим полом - пустота."
+	icon_base = "wood2"
+	icon = 'icons/turf/flooring/wood.dmi'
 
 /decl/flooring/reinforced
 	name = "reinforced floor"
