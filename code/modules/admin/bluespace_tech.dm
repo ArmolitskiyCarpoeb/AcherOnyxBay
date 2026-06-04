@@ -232,7 +232,7 @@
 	translate_hive = 1
 
 //Clothes
-//Nobody ever wears the formal assistant uniform so this is fine
+//Assistant ever wears the formal assistant uniform so this is fine
 /obj/item/clothing/under/assistantformal/bluespace_tech
 	name = "bluespace technician's uniform"
 	desc = "A Bluespace Technician's Uniform. There is a logo on the sleeve that reads 'BST'."
