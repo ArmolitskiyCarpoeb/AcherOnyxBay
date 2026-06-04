@@ -42,7 +42,7 @@ GLOBAL_VAR(spawntypes)
 /datum/spawnpoint/gateway/New()
 	..()
 	turfs = GLOB.latejoin_gateway
-
+*/
 /datum/spawnpoint/cryo
 	display_name = "Cryogenic Storage"
 	msg = "has completed cryogenic revival"
@@ -51,7 +51,7 @@ GLOBAL_VAR(spawntypes)
 /datum/spawnpoint/cryo/New()
 	..()
 	turfs = GLOB.latejoin_cryo
-
+/*
 /datum/spawnpoint/cyborg
 	display_name = "Cyborg Storage"
 	msg = "has been activated from storage"
