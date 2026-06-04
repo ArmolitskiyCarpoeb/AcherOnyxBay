@@ -2,15 +2,15 @@
 ## Default state for unspecified events (enable all the other events in this case)
 default = true
 ## Disables the event 'meteor_wave_base'
-"meteor_wave_base" = false
+"meteor_wave_base" = true
 "carp_migration_base" = false
-"gravity" = false
+"gravity" = true
 "ion_storm" = false
-"psychic rift" = false
+"psychic rift" = true
 "rogue_drones" = false
 "shipping_error" = false
-"solar_storm" = false
-"space_dust_base" = false
+"solar_storm" = true
+"space_dust_base" = true
 "space_vine" = false
 "trivial_news" = false
 "wormholes" = false
