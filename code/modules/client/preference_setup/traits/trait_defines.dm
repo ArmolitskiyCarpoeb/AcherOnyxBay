@@ -295,22 +295,22 @@
 
 
 
-/datum/trait/modifier/mental/opiat_addiction
+/datum/trait/modifier/bad/opiat_addiction
 	name = "Opiate Dependence"
 	desc = "You rely on opiates to feel normal. Without them, your body and mind quickly turn against you."
 	modifier_type = /datum/modifier/trait/opiat_addiction
 
-/datum/trait/modifier/mental/cannabis_addiction
+/datum/trait/modifier/bad/cannabis_addiction
 	name = "Cannabis Dependence"
 	desc = "You are used to calming your thoughts with cannabis. Without it, staying relaxed becomes difficult."
 	modifier_type = /datum/modifier/trait/cannabis_addiction
 
-/datum/trait/modifier/mental/alcohol_addiction
+/datum/trait/modifier/bad/alcohol_addiction
 	name = "Alcohol Dependence"
 	desc = "Alcohol has become a part of your routine. Going without it makes everything feel just a little worse."
 	modifier_type = /datum/modifier/trait/alcohol_addiction
 
-/datum/trait/modifier/mental/smoker
+/datum/trait/modifier/bad/smoker
 	name = "Smoker"
 	desc = "You are used to nicotine. Going without a cigarette makes you restless and irritable."
 	modifier_type = /datum/modifier/trait/smoker
