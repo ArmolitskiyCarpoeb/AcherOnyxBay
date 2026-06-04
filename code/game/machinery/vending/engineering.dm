@@ -25,6 +25,16 @@
 					/obj/item/clothing/gloves/insulated/cheap = 2)
 	premium = list( /obj/item/clothing/gloves/insulated = 1,
 					/obj/item/device/multitool = 1)
+	prices = list(	/obj/item/stack/cable_coil/random = 100,
+					/obj/item/crowbar = 50,
+					/obj/item/weldingtool = 30,
+					/obj/item/wirecutters = 50,
+					/obj/item/wrench = 50,
+					/obj/item/device/analyzer = 50,
+					/obj/item/device/t_scanner = 50,
+					/obj/item/screwdriver = 50,
+					/obj/item/device/flashlight/glowstick = 30,
+					/obj/item/device/flashlight/glowstick/red = 30)
 
 	vending_sound = SFX_VENDING_GENERIC
 
@@ -56,6 +66,14 @@
 					/obj/item/airlock_brace = 4,
 					/obj/item/crowbar/brace_jack = 1)
 	premium = list(/obj/item/storage/belt/utility = 3)
+	prices = list(	/obj/item/clothing/glasses/hud/standard/meson = 20,
+					/obj/item/device/multitool = 40,
+					/obj/item/device/geiger = 40,
+					/obj/item/airlock_electronics = 100,
+					/obj/item/module/power_control = 100,
+					/obj/item/airalarm_electronics = 100,
+					/obj/item/cell = 100,
+					/obj/item/clamp = 100)
 
 /obj/item/vending_cartridge/engivend
 	name = "engi"

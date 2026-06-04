@@ -36,11 +36,11 @@
 		)
 
 	prices = list(
-		/obj/item/reagent_containers/vessel/coffee = 3,
-		/obj/item/reagent_containers/vessel/tea = 3,
-		/obj/item/reagent_containers/vessel/h_chocolate = 3,
-		/obj/item/reagent_containers/vessel/can/startrucks = 10,
-		/obj/item/storage/pill_bottle/sugar_cubes = 10
+		/obj/item/reagent_containers/vessel/coffee = 30,
+		/obj/item/reagent_containers/vessel/tea = 30,
+		/obj/item/reagent_containers/vessel/h_chocolate = 30,
+		/obj/item/reagent_containers/vessel/can/startrucks = 100,
+		/obj/item/storage/pill_bottle/sugar_cubes = 50
 		)
 
 /obj/item/vending_cartridge/coffee

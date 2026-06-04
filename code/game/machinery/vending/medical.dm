@@ -85,6 +85,13 @@
 		/obj/item/reagent_containers/pill/tox = 1
 		)
 
+	prices = list(
+		/obj/item/stack/medical/bandage = 20,
+		/obj/item/stack/medical/ointment = 20,
+		/obj/item/stack/medical/bandaids = 40,
+		/obj/item/reagent_containers/hypospray/autoinjector = 40
+		)
+
 /obj/item/vending_cartridge/wallmed1
 	icon_state = "refill_medical"
 	build_path = /obj/machinery/vending/wallmed1
