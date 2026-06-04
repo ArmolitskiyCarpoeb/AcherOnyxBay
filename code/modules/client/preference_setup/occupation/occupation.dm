@@ -218,7 +218,7 @@
 	else if(href_list["job_info"])
 		job_info_selected_rank = href_list["job_info"]
 		create_job_description(user)
-		return TOPIC_REFRESH
+		return (pref.equip_preview_mob ? TOPIC_REFRESH_UPDATE_PREVIEW : TOPIC_REFRESH)
 
 	return ..()
 
@@ -361,16 +361,15 @@
 	job_desc += "<hr>"
 
 	//Here we have a right-floating textbox that shows user's stats
-	job_desc +="<div style='border: 1px solid grey; float: left; margin-right: 20px; padding: 8px; line-height: 180%;'> <h1 style='padding: 0px;'>DESCRIPTION:</h1>"
+	job_desc +="<div style='border: 1px solid grey; float: left; margin-right: 20px; padding: 8px; line-height: 180%;'> <h1 style='padding: 0px;'>ОПИСАНИЕ:</h1>"
 
 	if(job.alt_titles)
-		job_desc += "<i><b>Альтернативно именуем:</b> [english_list(job.alt_titles)].</i>"
+		job_desc += "<i><b>Альтернативно:</b> [english_list(job.alt_titles)].</i>"
 	job_desc += "<br>"
-	job_desc += "Ты отвечаешь перед <b>[job.supervisors]</b>, обычно."
+	job_desc += "Ты отвечаешь перед следующими лицами:<b>[job.supervisors]</b>."
 	job_desc += "<br>"
-	job_desc += "Твоему возрасту лучше бы быть равным <b>[job.ideal_character_age] годам</b>."
+	job_desc += "Подходящий возраст: <b>[job.ideal_character_age]</b>."
 	job_desc += "<br>"
-
 	//if(config.wikiurl)
 	//	job_desc += "<a href='?src=\ref[src];job_info_selected_rank_wiki=[job_info_selected_rank]'>Open wiki page in browser</a>"
 	var/description = job.get_description_blurb()
