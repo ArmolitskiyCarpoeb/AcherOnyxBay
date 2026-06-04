@@ -52,8 +52,8 @@
 	dock_name     = "NAS Crescent"
 	boss_name     = "Central Command"
 	boss_short    = "Centcomm"
-	company_name  = "Mons-Laden"
-	company_short = "NT"
+	company_name  = "Mons-Laden Corporation"
+	company_short = "MLC"
 	system_name   = "Nyx"
 
 	evac_controller_type = /datum/evacuation_controller/shuttle
@@ -101,7 +101,6 @@
 			/datum/job/chef,
 			/datum/job/hydro,
 			/datum/job/assistant
-
 		)
 
 	background_choices = list(
@@ -120,3 +119,6 @@
 	religion_choices = list(
 		"Novotheism"
 		)
+
+	allowed_spawns = list("Cryogenic Storage")
+	default_spawn = "Cryogenic Storage"

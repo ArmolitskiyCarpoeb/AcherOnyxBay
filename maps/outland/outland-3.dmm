@@ -1,4 +1,21 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ai" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/closet/emergency_wall{
+	pixel_x = -32
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/library)
 "an" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -21,7 +38,7 @@
 	req_access = list(40);
 	id_tag = "cmodoor"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/cmo)
 "at" = (
@@ -120,6 +137,9 @@
 	d1 = 32;
 	dir = 8
 	},
+/obj/structure/railing/steel{
+	dir = 4
+	},
 /turf/simulated/open,
 /area/maintenance/library)
 "bQ" = (
@@ -169,7 +189,7 @@
 /area/bridge)
 "cr" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
@@ -183,7 +203,7 @@
 /area/crew_quarters/heads/cmo)
 "cx" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
@@ -228,6 +248,7 @@
 /area/bridge)
 "cJ" = (
 /obj/structure/window_frame/reinforced/hull,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/locker)
 "cM" = (
@@ -324,7 +345,7 @@
 /area/hallway/primary/central_one)
 "ej" = (
 /obj/effect/landmark/map_data{
-	height = 2
+	height = 3
 	},
 /turf/space,
 /area/space)
@@ -396,13 +417,13 @@
 	dir = 1
 	},
 /turf/simulated/open,
-/area/space)
+/area/maintenance/locker)
 "fA" = (
 /turf/simulated/wall/r_wall,
 /area/bridge)
 "fB" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
@@ -477,7 +498,7 @@
 /area/shuttle/escape_pod1/station)
 "gZ" = (
 /obj/machinery/door/airlock/glass_command,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -486,6 +507,12 @@
 "hb" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/captain)
+"hg" = (
+/obj/structure/closet/emergency_wall{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/rough,
+/area/hallway/primary/central_one)
 "hn" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -501,6 +528,9 @@
 	dir = 8
 	},
 /obj/effect/landmark/start/crew/cmo,
+/obj/structure/closet/emergency_wall{
+	pixel_x = 32
+	},
 /turf/simulated/floor/trim/carpet/gblue,
 /area/crew_quarters/heads/cmo)
 "hL" = (
@@ -590,7 +620,7 @@
 	req_access = list(40);
 	id_tag = "cmodoor"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -601,7 +631,7 @@
 /area/crew_quarters/heads/cmo)
 "jc" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
 "jg" = (
@@ -692,6 +722,9 @@
 "ke" = (
 /obj/machinery/light/small,
 /obj/structure/table/woodentable,
+/obj/structure/closet/emergency_wall{
+	pixel_x = -32
+	},
 /turf/simulated/floor/trim/carpet/red,
 /area/crew_quarters/heads/hos)
 "kj" = (
@@ -808,6 +841,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/graytile,
 /area/bridge)
+"md" = (
+/obj/effect/floor_decal/corner/blue{
+	dir = 9
+	},
+/obj/structure/closet/emergency_wall{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/rough,
+/area/hallway/primary/central_one)
 "mj" = (
 /obj/structure/cable/green{
 	icon_state = "1-8";
@@ -825,7 +867,7 @@
 	name = "Conference Room";
 	req_access = list(19)
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
@@ -939,6 +981,7 @@
 /area/crew_quarters/heads/hos)
 "oe" = (
 /obj/structure/window_frame/reinforced/hull,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "oi" = (
@@ -968,7 +1011,7 @@
 /area/maintenance/locker)
 "oM" = (
 /obj/structure/window_frame/rglass,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
 "oN" = (
@@ -995,6 +1038,9 @@
 	layer = 3.1;
 	pixel_y = -32
 	},
+/obj/structure/closet/emergency_wall{
+	pixel_x = -32
+	},
 /turf/simulated/floor/tiled/dark/rough,
 /area/maintenance/substation/command)
 "pm" = (
@@ -1011,6 +1057,14 @@
 "pB" = (
 /turf/simulated/floor/steel,
 /area/shuttle/escape_pod1/station)
+"pC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_access = list(12)
+	},
+/turf/simulated/floor/plating,
+/area/hallway/primary/central_one)
 "pG" = (
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
@@ -1030,7 +1084,7 @@
 /area/hallway/primary/central_one)
 "pL" = (
 /obj/machinery/door/airlock/glass_command,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "4-8";
 	d2 = 8;
@@ -1123,9 +1177,6 @@
 	},
 /turf/simulated/floor/trim/wood2,
 /area/bridge/meeting_room)
-"ri" = (
-/turf/simulated/wall/r_wall,
-/area/space)
 "rj" = (
 /turf/simulated/floor/tiled/graytile,
 /area/hallway/primary/central_one)
@@ -1152,7 +1203,7 @@
 	req_access = list(20);
 	id_tag = "captaindoor"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "4-8";
 	d2 = 8;
@@ -1362,7 +1413,7 @@
 	dir = 2;
 	id = "bridge blast"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/cable/green{
 	icon_state = "1-2";
@@ -1381,6 +1432,12 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/railing/steel{
+	dir = 8
+	},
+/obj/structure/railing/steel{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/locker)
 "tH" = (
@@ -1569,7 +1626,7 @@
 	req_access = list(20);
 	id_tag = "captaindoor"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
@@ -1753,9 +1810,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "As" = (
-/obj/machinery/door/airlock/maintenance,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_access = list(12)
+	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/hallway/primary/central_one)
 "Aw" = (
@@ -1794,7 +1854,7 @@
 	req_access = list(58);
 	id_tag = "HoSdoor"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "1-2";
 	d2 = 2;
@@ -1804,7 +1864,7 @@
 /area/crew_quarters/heads/hos)
 "AW" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
@@ -1942,6 +2002,9 @@
 /obj/machinery/vending/wallmed1{
 	pixel_y = -32
 	},
+/obj/structure/closet/emergency_wall{
+	pixel_x = -32
+	},
 /turf/simulated/floor/trim/wood2,
 /area/bridge/meeting_room)
 "Ee" = (
@@ -2060,7 +2123,6 @@
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
 "Gs" = (
-/obj/machinery/door/airlock/maintenance,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
@@ -2068,6 +2130,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_access = list(12)
+	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/hallway/primary/central_one)
 "Gz" = (
@@ -2304,7 +2370,7 @@
 	req_access = list(58);
 	id_tag = "HoSdoor"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hos)
 "Kp" = (
@@ -2350,7 +2416,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -2385,7 +2451,7 @@
 /area/maintenance/library)
 "LN" = (
 /obj/structure/window_frame/rglass,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/hallway/primary/central_one)
 "LQ" = (
@@ -2447,7 +2513,7 @@
 /area/maintenance/locker)
 "MS" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
@@ -2549,6 +2615,12 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/hallway/primary/central_one)
+"OH" = (
+/obj/structure/closet/emergency_wall{
+	pixel_x = -32
+	},
+/turf/simulated/floor/steel,
+/area/hallway/primary/central_one)
 "OR" = (
 /turf/simulated/floor/tiled/freezer,
 /area/hallway/primary/central_one)
@@ -2599,7 +2671,7 @@
 /area/hallway/primary/central_one)
 "PO" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "4-8";
 	d2 = 8;
@@ -2610,7 +2682,7 @@
 "PT" = (
 /obj/structure/lattice,
 /turf/simulated/wall/r_wall,
-/area/space)
+/area/hallway/primary/central_one)
 "Qa" = (
 /obj/effect/floor_decal/corner/blue{
 	dir = 10
@@ -2666,7 +2738,10 @@
 /turf/simulated/open,
 /area/hallway/primary/central_one)
 "QG" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance_hatch{
+	req_access = list(12)
+	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/hallway/primary/central_one)
 "QJ" = (
@@ -2694,7 +2769,7 @@
 	req_access = list(20);
 	id_tag = "captaindoor"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
 "QU" = (
@@ -2812,7 +2887,7 @@
 	dir = 2;
 	id = "bridge blast"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/bridge)
 "SX" = (
@@ -2937,7 +3012,7 @@
 	req_access = list(58);
 	id_tag = "HoSdoor"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "4-8";
 	d2 = 8;
@@ -3023,6 +3098,12 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/grid/bluegrid,
 /area/hallway/primary/central_one)
+"Wz" = (
+/obj/structure/closet/emergency_wall{
+	pixel_x = 32
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/locker)
 "WF" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/rough,
@@ -3037,7 +3118,7 @@
 	req_access = list(40);
 	id_tag = "cmodoor"
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "4-8";
 	d2 = 8;
@@ -3134,7 +3215,7 @@
 /area/shuttle/escape_pod1/station)
 "YH" = (
 /obj/structure/window_frame/rglass,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "YW" = (
@@ -3184,7 +3265,7 @@
 /area/maintenance/substation/command)
 "Zv" = (
 /obj/structure/window_frame/reinforced/hull,
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/hallway/primary/central_one)
 "Zw" = (
@@ -33948,7 +34029,7 @@ CU
 zx
 gO
 Eq
-Zp
+hg
 Xc
 Zp
 Eq
@@ -34454,7 +34535,7 @@ Cs
 Cs
 Cs
 nh
-wU
+ai
 rL
 rL
 rL
@@ -34474,8 +34555,8 @@ sI
 sI
 mA
 YW
-ri
-ri
+YW
+YW
 Cs
 Cs
 Cs
@@ -34732,7 +34813,7 @@ zx
 Ze
 tE
 fz
-ri
+YW
 Cs
 Cs
 Cs
@@ -34988,8 +35069,8 @@ io
 zx
 se
 YW
-ri
-ri
+YW
+YW
 Cs
 Cs
 Cs
@@ -35756,7 +35837,7 @@ Si
 Si
 Cm
 Si
-As
+pC
 oB
 Bp
 Ku
@@ -36272,7 +36353,7 @@ nR
 nR
 nR
 se
-YW
+hZ
 hZ
 YW
 Cs
@@ -36530,7 +36611,7 @@ ke
 nR
 se
 YW
-YW
+hZ
 YW
 Cs
 Cs
@@ -36787,7 +36868,7 @@ Kw
 nR
 JM
 mA
-YW
+hZ
 YW
 Cs
 Cs
@@ -37806,7 +37887,7 @@ Kp
 dk
 iV
 HN
-HN
+OH
 zx
 nR
 Iz
@@ -41413,7 +41494,7 @@ ro
 xQ
 ss
 Pf
-YW
+hZ
 YW
 Cs
 Cs
@@ -41670,7 +41751,7 @@ hs
 xQ
 pY
 YW
-YW
+hZ
 YW
 Cs
 Cs
@@ -41926,7 +42007,7 @@ xQ
 xQ
 xQ
 pY
-YW
+hZ
 hZ
 YW
 Cs
@@ -42169,7 +42250,7 @@ zx
 uv
 Ro
 Ro
-Ro
+md
 Ro
 Zp
 Zp
@@ -43210,7 +43291,7 @@ Zp
 Zp
 dG
 zx
-hZ
+Wz
 YW
 Cs
 Cs
