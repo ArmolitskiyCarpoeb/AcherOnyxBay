@@ -49,7 +49,7 @@
 
 // Civilian
 /obj/effect/landmark/start/crew/assistant
-	name = "Nobody"
+	name = "Assistant"
 	icon_state = "landmark_assistant"
 
 /obj/effect/landmark/start/crew/chaplain
