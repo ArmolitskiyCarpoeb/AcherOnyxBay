@@ -1,14 +1,12 @@
-
 /datum/map/outland
 	name = "Outland"
 	full_name = "OS Outland"
 	path = "outland"
+	jobs_needed = list("Captain" = "Капитана", "Quartermaster" = "Завхоза")
 
 	shuttle_types = list(
 		/datum/shuttle/autodock/ferry/escape_pod/escape_pod1,
 		/datum/shuttle/autodock/ferry/escape_pod/escape_pod2,
-		/datum/shuttle/autodock/ferry/escape_pod/escape_pod3,
-		/datum/shuttle/autodock/ferry/escape_pod/escape_pod5,
 		/datum/shuttle/autodock/ferry/supply/drone,
 		/datum/shuttle/autodock/ferry/elevator,
 		/datum/shuttle/autodock/multi/antag/mining,
@@ -36,10 +34,7 @@
 	)
 
 	derelict_levels = list(
-		new /datum/space_level/construction_site,
-		new /datum/space_level/snow_asteroid,
 		new /datum/space_level/derelict,
-		new /datum/space_level/jungle_level,
 		new /datum/space_level/old_restaurant,
 		new /datum/space_level/sensor_array,
 		list(
@@ -57,7 +52,7 @@
 	dock_name     = "NAS Crescent"
 	boss_name     = "Central Command"
 	boss_short    = "Centcomm"
-	company_name  = "Nanotrasen"
+	company_name  = "Mons-Laden"
 	company_short = "NT"
 	system_name   = "Nyx"
 
@@ -91,3 +86,37 @@
 
 	post_round_safe_areas = list (
 	)
+
+	allowed_jobs = list(
+			/datum/job/captain,
+			/datum/job/hos,
+			/datum/job/officer,
+			/datum/job/qm,
+			/datum/job/cmo,
+			/datum/job/doctor,
+			/datum/job/engineer,
+			/datum/job/cargo_tech,
+			/datum/job/mining,
+			/datum/job/bartender,
+			/datum/job/chef,
+			/datum/job/hydro,
+			/datum/job/assistant
+
+		)
+
+	background_choices = list(
+		"The Great Novotheist Church",
+		"Mons-Laden Corporation",
+		"Unknown"
+		)
+
+	home_system_choices = list(
+		"Acheron",
+		"New Rome",
+		"Unknown"
+		//"Artemis"
+		)
+
+	religion_choices = list(
+		"Novotheism"
+		)
