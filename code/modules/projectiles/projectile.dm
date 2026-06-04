@@ -215,12 +215,12 @@
 		return
 
 	//roll to-hit
-	miss_modifier = rand(50,80)
+	miss_modifier = rand(45,90)
 	var/tmp/list/mob/living/aim_targets
 	if(aim_targets && (target_mob in aim_targets))
 		miss_modifier = -25
 	var/firer_skill = ismob(firer) ? firer.skills["ranged"] : 0
-	miss_modifier = max(15*(distance-2) - round(15*accuracy) + miss_modifier + target_mob.get_evasion() - firer_skill, 0)
+	miss_modifier = max(20*(distance-1) - round(15*accuracy) + miss_modifier + target_mob.get_evasion() - firer_skill, 0)
 	var/hit_zone = get_zone_with_miss_chance(def_zone, target_mob, miss_modifier, ranged_attack=(distance > 1 || original != target_mob)) //if the projectile hits a target we weren't originally aiming at then retain the chance to miss
 
 	var/result = PROJECTILE_FORCE_MISS

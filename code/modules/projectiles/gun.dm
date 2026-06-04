@@ -546,15 +546,15 @@
 			P.accuracy -= 1
 			P.dispersion += 1
 
-	if(isliving(user) && !user.skillcheck(user.skills["ranged"], 20, null, "ranged") && !aim_targets)//Being unskilled at guns decreased accuracy.
-		P.accuracy -= 3
+	if(isliving(user) && !user.skillcheck(user.skills["ranged"], 15, null, "ranged"))//Being unskilled at guns decreased accuracy.
+		P.accuracy -= 2
 		P.dispersion += 1
 
-	if(isliving(user) && !user.skillcheck(user.skills["ranged"], 45, null, "ranged") && !aim_targets)//Being unskilled at guns decreased accuracy.
-		P.accuracy -= 2
-		P.dispersion += 0.6
+	if(isliving(user) && !user.skillcheck(user.skills["ranged"], 35, null, "ranged")) //&& !aim_targets
+		P.accuracy -= 1
+		P.dispersion += 0.5
 
-	if(isliving(user) && user.skillcheck(user.skills["ranged"], 75, null, "ranged"))
+	if(isliving(user) && user.skillcheck(user.skills["ranged"], 60, null, "ranged"))
 		P.accuracy += 3
 		P.dispersion = 0
 
