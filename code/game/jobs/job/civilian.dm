@@ -106,10 +106,14 @@
 	spawn_positions = 1
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#5e4324"
-	economic_modifier = 2
-	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant)
-	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant)
-	minimal_player_age = 7
+	economic_modifier = 10
+	access = list(access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant,
+			access_bar, access_construction, access_kitchen, access_hydroponics, access_janitor, access_tech_storage,
+			access_heads, access_hop, access_RC_announce, access_keycard_auth, access_sec_doors, access_eva, access_maint_tunnels, access_external_airlocks, access_change_ids, access_teleporter)
+	minimal_access = list(access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant,
+			access_bar, access_construction, access_kitchen, access_hydroponics, access_janitor, access_tech_storage,
+			access_heads, access_hop, access_RC_announce, access_keycard_auth, access_sec_doors, access_eva, access_maint_tunnels, access_external_airlocks, access_change_ids, access_teleporter)
+	minimal_player_age = 0
 	ideal_character_age = 40
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
 
