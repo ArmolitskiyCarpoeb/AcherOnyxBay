@@ -10,7 +10,7 @@
 	dremovable = 0
 
 /obj/structure/closet/secure_closet/bar/WillContain()
-	return list(/obj/item/reagent_containers/vessel/bottle/small/beer = 10)
+	return list(/obj/item/reagent_containers/vessel/bottle/small/beer = 4)
 
 /obj/structure/closet/secure_closet/empty
 	name = "secure closet"
