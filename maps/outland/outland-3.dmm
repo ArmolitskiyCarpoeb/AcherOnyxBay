@@ -15,6 +15,12 @@
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/cmo)
+"at" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/grid/bluegrid,
+/area/hallway/primary/central_one)
 "aH" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
@@ -39,6 +45,13 @@
 	},
 /turf/simulated/open,
 /area/hallway/primary/central_one)
+"bN" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/trim/wood2,
+/area/bridge/meeting_room)
 "bQ" = (
 /obj/structure/cable/green{
 	icon_state = "1-4";
@@ -148,7 +161,7 @@
 "dA" = (
 /obj/structure/table/hardtable,
 /turf/simulated/floor/shuttle/pod,
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "dE" = (
 /obj/item/modular_computer/console/preset/medical,
 /obj/effect/floor_decal/corner/blue/full,
@@ -222,6 +235,12 @@
 /obj/effect/landmark/start/crew/captain,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
+"gn" = (
+/obj/machinery/alarm{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/brown,
+/area/crew_quarters/heads/cmo)
 "gv" = (
 /obj/item/modular_computer/console/preset/command,
 /obj/effect/floor_decal/corner/blue/mono,
@@ -255,7 +274,7 @@
 "gS" = (
 /obj/structure/bed/chair/shuttle/blue,
 /turf/simulated/floor/shuttle/pod,
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "gZ" = (
 /obj/machinery/door/airlock/glass_command,
 /obj/machinery/door/firedoor/border_only,
@@ -283,6 +302,12 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark/rough,
 /area/maintenance/substation/command)
+"hR" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/graytile,
+/area/hallway/primary/central_one)
 "hZ" = (
 /turf/simulated/floor/plating,
 /area/maintenance/locker)
@@ -447,7 +472,7 @@
 	},
 /obj/structure/bed/chair/shuttle/blue,
 /turf/simulated/floor/shuttle/pod,
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "lv" = (
 /obj/machinery/message_server,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -514,11 +539,14 @@
 	icon_state = "whiteship";
 	dir = 2
 	},
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "nc" = (
 /obj/effect/floor_decal/corner/blue/full,
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/alarm{
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/rough,
 /area/bridge)
@@ -532,12 +560,17 @@
 /area/maintenance/library)
 "nt" = (
 /turf/simulated/shuttle/wall/corner/smoothwhite/sw,
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "nv" = (
 /obj/item/folder/blue,
 /obj/structure/table/hardtable,
 /turf/simulated/floor/trim/carpet/blue,
 /area/bridge)
+"nM" = (
+/obj/structure/table/woodentable,
+/obj/item/storage/secure/briefcase/nukedisk,
+/turf/simulated/floor/trim/carpet/blue,
+/area/crew_quarters/captain)
 "nR" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/heads/hos)
@@ -553,6 +586,15 @@
 /obj/structure/window_frame/reinforced/hull,
 /turf/simulated/floor/plating,
 /area/maintenance/library)
+"oi" = (
+/obj/effect/floor_decal/corner/blue{
+	dir = 5
+	},
+/obj/machinery/alarm{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/rough,
+/area/hallway/primary/central_one)
 "oM" = (
 /obj/structure/window_frame/rglass,
 /obj/machinery/door/firedoor/border_only,
@@ -569,6 +611,9 @@
 	},
 /turf/simulated/floor/tiled/rough,
 /area/bridge)
+"pB" = (
+/turf/simulated/floor/steel,
+/area/shuttle/escape_pod1/station)
 "pG" = (
 /obj/structure/table/woodentable,
 /obj/item/paper_bin,
@@ -602,6 +647,12 @@
 /obj/item/modular_computer/console/preset/command,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
+"qo" = (
+/obj/machinery/alarm{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/mono,
+/area/hallway/primary/central_one)
 "qv" = (
 /obj/effect/floor_decal/corner/blue/full,
 /obj/machinery/vending/wallmed1{
@@ -622,9 +673,21 @@
 	},
 /turf/simulated/floor/tiled/rough,
 /area/bridge)
+"qJ" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/graytile,
+/area/hallway/primary/central_one)
 "rc" = (
 /obj/structure/bed/chair/black{
 	dir = 8
+	},
+/turf/simulated/floor/trim/wood2,
+/area/bridge/meeting_room)
+"rh" = (
+/obj/machinery/alarm{
+	pixel_y = 24
 	},
 /turf/simulated/floor/trim/wood2,
 /area/bridge/meeting_room)
@@ -640,6 +703,13 @@
 /obj/structure/flora/pottedplant/large,
 /turf/simulated/floor/tiled/rough,
 /area/bridge)
+"ro" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/trim/carpet/gblue,
+/area/crew_quarters/heads/cmo)
 "rs" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/trim/carpet/blue,
@@ -709,7 +779,7 @@
 "sS" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/shuttle/pod,
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "sY" = (
 /obj/structure/railing/steel{
 	dir = 4
@@ -822,6 +892,12 @@
 	},
 /turf/simulated/open,
 /area/hallway/primary/central_one)
+"xo" = (
+/obj/machinery/alarm{
+	pixel_y = 24
+	},
+/turf/simulated/floor/trim/carpet/red,
+/area/crew_quarters/heads/hos)
 "xr" = (
 /obj/structure/cable/green{
 	icon_state = "4-8";
@@ -830,6 +906,13 @@
 	},
 /turf/simulated/floor/tiled/graytile,
 /area/bridge)
+"xv" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -25
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/locker)
 "xz" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Captain's Quarters";
@@ -840,6 +923,13 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
+"xA" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/mono,
+/area/hallway/primary/central_one)
 "xQ" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/heads/cmo)
@@ -851,6 +941,19 @@
 /obj/item/device/flashlight/lamp/green,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
+"yh" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/steel,
+/area/hallway/primary/central_one)
+"yq" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/grid/bluegrid,
+/area/hallway/primary/central_one)
 "yr" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/trim/carpet/red,
@@ -909,7 +1012,7 @@
 /obj/machinery/light,
 /obj/structure/table/hardtable,
 /turf/simulated/floor/shuttle/pod,
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "zx" = (
 /turf/simulated/wall/r_wall,
 /area/hallway/primary/central_one)
@@ -1028,10 +1131,38 @@
 	},
 /turf/simulated/floor/tiled/mono,
 /area/hallway/primary/central_one)
+"Dn" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/grid/bluegrid,
+/area/hallway/primary/central_one)
 "Ds" = (
 /obj/structure/catwalk/catwalk_new,
 /turf/simulated/open,
 /area/hallway/primary/central_one)
+"DR" = (
+/obj/machinery/nuclearbomb/station,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/primary/central_one)
+"DT" = (
+/obj/machinery/vending/wallmed1{
+	pixel_y = -32
+	},
+/turf/simulated/floor/trim/wood2,
+/area/crew_quarters/heads/hos)
+"DY" = (
+/obj/machinery/vending/wallmed1{
+	pixel_y = -32
+	},
+/turf/simulated/floor/trim/carpet/gblue,
+/area/crew_quarters/heads/cmo)
+"Eb" = (
+/obj/machinery/vending/wallmed1{
+	pixel_y = -32
+	},
+/turf/simulated/floor/trim/wood2,
+/area/bridge/meeting_room)
 "Ee" = (
 /obj/structure/flora/pottedplant/minitree,
 /obj/machinery/light{
@@ -1043,6 +1174,9 @@
 "El" = (
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/alarm{
+	pixel_y = 24
 	},
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
@@ -1059,7 +1193,7 @@
 /area/hallway/primary/central_one)
 "Et" = (
 /turf/simulated/shuttle/wall/corner/smoothwhite/se,
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "EF" = (
 /obj/structure/table/standard{
 	name = "plastic table frame"
@@ -1075,7 +1209,7 @@
 /area/bridge/meeting_room)
 "FE" = (
 /turf/simulated/shuttle/wall/corner/smoothwhite/ne,
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "FI" = (
 /obj/machinery/light{
 	dir = 4
@@ -1088,6 +1222,12 @@
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/dark/rough,
 /area/maintenance/substation/command)
+"Gp" = (
+/obj/machinery/alarm{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/rough,
+/area/hallway/primary/central_one)
 "Gz" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/substation/command)
@@ -1128,6 +1268,13 @@
 /obj/item/modular_computer/console/preset/medical,
 /turf/simulated/floor/trim/carpet/blue,
 /area/bridge)
+"Iz" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/simulated/floor/trim/wood2,
+/area/crew_quarters/heads/hos)
 "IF" = (
 /obj/structure/bed/chair/beige,
 /turf/simulated/floor/tiled/techfloor/ridge,
@@ -1247,6 +1394,7 @@
 /area/bridge)
 "Lj" = (
 /obj/structure/bed/padded,
+/obj/item/bedsheet/hos,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/heads/hos)
 "Lm" = (
@@ -1288,6 +1436,13 @@
 /obj/structure/catwalk/catwalk_new,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/cmo)
+"ML" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -25
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/library)
 "MS" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor/border_only,
@@ -1313,7 +1468,7 @@
 	icon_state = "whiteship";
 	dir = 1
 	},
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "NG" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/machinery/light/small{
@@ -1329,7 +1484,7 @@
 /area/crew_quarters/heads/cmo)
 "NN" = (
 /turf/simulated/shuttle/wall/corner/smoothwhite/nw,
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "NO" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -1383,8 +1538,9 @@
 /turf/simulated/floor/tiled/rough,
 /area/bridge)
 "Qc" = (
+/obj/effect/shuttle_landmark/escape_pod/start/pod1,
 /turf/simulated/floor/shuttle/pod,
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "Ql" = (
 /obj/machinery/power/apc{
 	name = "north bump";
@@ -1395,6 +1551,7 @@
 /area/maintenance/library)
 "Qn" = (
 /obj/structure/bed/captain,
+/obj/item/bedsheet/ian,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "QA" = (
@@ -1411,6 +1568,12 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/hallway/primary/central_one)
+"QJ" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/graytile,
+/area/hallway/primary/central_one)
 "QR" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Captain's Quarters";
@@ -1420,6 +1583,10 @@
 /obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
+"QU" = (
+/obj/effect/floor_decal/industrial/warning/corner,
+/turf/simulated/floor/tiled/graytile,
+/area/hallway/primary/central_one)
 "Rh" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -1477,7 +1644,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "SU" = (
 /obj/structure/window_frame/rglass,
 /obj/machinery/door/blast/shutters/open{
@@ -1522,6 +1689,13 @@
 /obj/structure/cable/green{
 	icon_state = "0-4";
 	d2 = 4
+	},
+/turf/simulated/floor/tiled/dark/rough,
+/area/maintenance/substation/command)
+"Um" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -25
 	},
 /turf/simulated/floor/tiled/dark/rough,
 /area/maintenance/substation/command)
@@ -1572,6 +1746,7 @@
 /area/bridge)
 "VT" = (
 /obj/structure/bed/padded,
+/obj/item/bedsheet/blue,
 /turf/simulated/floor/trim/carpet/gblue,
 /area/crew_quarters/heads/cmo)
 "Wa" = (
@@ -1579,17 +1754,24 @@
 	icon_state = "whiteship_straight";
 	dir = 4
 	},
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "Wb" = (
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/tiled/rough,
 /area/bridge)
+"Wj" = (
+/turf/simulated/floor/shuttle/pod,
+/area/shuttle/escape_pod1/station)
 "Wu" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/locker)
+"Ww" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/grid/bluegrid,
+/area/hallway/primary/central_one)
 "WF" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/rough,
@@ -1672,7 +1854,7 @@
 	id_tag = "escape_pod_1_hatch"
 	},
 /turf/simulated/floor/plating,
-/area/hallway/primary/central_one)
+/area/shuttle/escape_pod1/station)
 "YH" = (
 /obj/structure/window_frame/rglass,
 /obj/machinery/door/firedoor/border_only,
@@ -1710,6 +1892,7 @@
 /obj/item/device/radio/intercom{
 	pixel_y = 24
 	},
+/obj/effect/landmark/event/nuke/code,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "ZR" = (
@@ -31932,13 +32115,13 @@ Cs
 CU
 CU
 zx
-eT
+qo
 Zp
 Mf
 vf
 eP
 Zp
-eT
+xA
 zx
 CU
 CU
@@ -33731,7 +33914,7 @@ fd
 jA
 NP
 Zf
-rX
+Um
 Gz
 Zp
 Zp
@@ -34504,7 +34687,7 @@ zP
 lv
 wZ
 Gz
-Zp
+Gp
 Zp
 Zp
 Zp
@@ -35280,7 +35463,7 @@ WF
 Zp
 mX
 nR
-Kw
+xo
 Kw
 Kw
 Kw
@@ -36309,12 +36492,12 @@ HN
 HN
 zx
 nR
-xR
+Iz
 xR
 xR
 Hv
 xR
-xR
+DT
 nR
 nR
 hZ
@@ -36832,7 +37015,7 @@ Vh
 Vh
 Vh
 hZ
-hZ
+xv
 YW
 Cs
 Cs
@@ -37086,7 +37269,7 @@ Vd
 qy
 AS
 AS
-AS
+Eb
 Vh
 hZ
 aH
@@ -37331,9 +37514,9 @@ yY
 HN
 rj
 Ds
-rj
-Eq
-rj
+QU
+yq
+hR
 Ds
 rj
 HN
@@ -37574,7 +37757,7 @@ Cs
 oe
 cy
 cy
-cy
+ML
 fA
 rz
 xr
@@ -37588,9 +37771,9 @@ Xz
 HN
 Lz
 Ds
-Eq
-Eq
-Eq
+Ww
+DR
+Dn
 Ds
 Lz
 HN
@@ -37845,9 +38028,9 @@ yY
 HN
 rj
 Ds
-rj
-Eq
-rj
+qJ
+at
+QJ
 Ds
 rj
 HN
@@ -38364,14 +38547,14 @@ Ds
 Ds
 Lz
 rj
-HN
+yh
 Vh
 Vh
-AS
+rh
 kZ
 kZ
 kZ
-AS
+bN
 Vh
 hZ
 ji
@@ -39123,7 +39306,7 @@ uK
 yd
 rs
 UC
-rs
+up
 up
 up
 uK
@@ -39379,7 +39562,7 @@ hb
 uK
 qd
 IU
-up
+nM
 up
 up
 up
@@ -39652,7 +39835,7 @@ as
 yU
 yU
 bW
-bW
+DY
 xQ
 xQ
 hZ
@@ -39906,10 +40089,10 @@ Zp
 WF
 mX
 xQ
-yU
+gn
 BI
 Ny
-bW
+ro
 xQ
 hZ
 hZ
@@ -40157,7 +40340,7 @@ YB
 uK
 uK
 hb
-pJ
+oi
 Zp
 WF
 Zp
@@ -42472,7 +42655,7 @@ CU
 zx
 Wa
 sS
-HN
+pB
 sS
 Wa
 zx
@@ -42729,7 +42912,7 @@ CU
 zx
 Wa
 gS
-HN
+pB
 dA
 Wa
 zx
@@ -42986,7 +43169,7 @@ CU
 zx
 Wa
 lh
-HN
+pB
 zt
 Wa
 zx
@@ -43243,7 +43426,7 @@ CU
 zx
 Wa
 gS
-HN
+pB
 dA
 Wa
 zx
@@ -43499,9 +43682,9 @@ CU
 CU
 zx
 Wa
+Wj
 Qc
-Qc
-Qc
+Wj
 Wa
 zx
 CU
