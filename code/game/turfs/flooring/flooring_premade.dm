@@ -179,13 +179,13 @@
 	name = "red tile"
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "redtile"
-	initial_flooring = /decl/flooring/tiling
+	initial_flooring = /decl/flooring/tiling/redtile
 
 /turf/simulated/floor/tiled/graytile
 	name = "gray tile"
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "graytile"
-	initial_flooring = /decl/flooring/tiling
+	initial_flooring = /decl/flooring/tiling/graytile
 
 /turf/simulated/floor/tiled/rough
 	name = "steel rough floor"
