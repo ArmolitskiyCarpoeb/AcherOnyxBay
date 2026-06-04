@@ -1,5 +1,5 @@
-/decl/hierarchy/outfit/job/captain
-	name = OUTFIT_JOB_NAME("Captain")
+/decl/hierarchy/outfit/job/cardinal
+	name = OUTFIT_JOB_NAME("Cardinal")
 	head = /obj/item/clothing/head/cardinal
 	glasses = /obj/item/clothing/glasses/hud/aviators/security
 	uniform = /obj/item/clothing/under/rank/cardinal
@@ -17,6 +17,16 @@
 	backpack_overrides[/decl/backpack_outfit/satchel]       = /obj/item/storage/backpack/satchel/cap
 	backpack_overrides[/decl/backpack_outfit/messenger_bag] = /obj/item/storage/backpack/messenger/com
 */
+/decl/hierarchy/outfit/job/captain
+	name = OUTFIT_JOB_NAME("Captain")
+	head = /obj/item/clothing/head/caphat
+	glasses = /obj/item/clothing/glasses/sunglasses
+	uniform = /obj/item/clothing/under/rank/captain
+	l_ear = /obj/item/device/radio/headset/heads/captain
+	shoes = /obj/item/clothing/shoes/brown
+	id_type = /obj/item/card/id/gold
+	pda_type = /obj/item/device/pda/captain
+	backpack_contents = list(/obj/item/storage/box/ids = 1)
 
 /decl/hierarchy/outfit/job/captain/post_equip(mob/living/carbon/human/H)
 	..()

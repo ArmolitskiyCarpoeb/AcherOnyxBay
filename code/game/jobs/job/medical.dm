@@ -1,12 +1,13 @@
 /datum/job/cmo
 	title = "Chief Medical Officer"
+	description = "Ты преуспел в деле врачевания и теперь за лечение берёшь в два раза дороже, чем раньше."
 	head_position = 1
 	department = "Medical"
 	department_flag = MED|COM
 
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
+	supervisors = "Капитан и Корпорация"
 	selection_color = "#026865"
 	req_admin_notify = 1
 	economic_modifier = 10
@@ -23,9 +24,18 @@
 	ideal_character_age = 50
 	outfit_type = /decl/hierarchy/outfit/job/medical/cmo
 
+/datum/job/cmo/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		H.newgeneratestats(5,11,8,12,12,20,7,15)
+		H.generate_skills()
+		H.skills["medical"] = rand(75, 95)
+		H.skills["surgery"] = rand(75, 95)
+		H.body_build_stats(H)
+
 /datum/job/doctor
 	title = "Medical Doctor"
-	description = "Купил ли ты свой диплом или потратил несколько лет на обучение уже не важно. Твоя задача — чтобы пациент ушёл на своих ногах и с головой на плечах. Ты здесь — последняя грань между жизнью и тем, что ждёт в этих коридорах. Ошибешься и станешь следующим в морге. Отыгрыш: скорее всего ты единственный кто умеет лечить в этом месте, и вряд ли ты филантроп. Требуй деньги, проси оказать услугу взамен или просто капризничай, показывая свою важность, ведь кто если не ты им поможет?"
+	description = "Тебе предстоит полностью оправдать все те слухи о том, что ты купил свой диплом и ни разу никого не лечил до этой смены."
 	department = "Medical"
 	department_flag = MED
 
@@ -34,7 +44,7 @@
 	minimal_player_age = 0
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "кардиналом"
+	supervisors = "Капитан и Корпорация"
 	selection_color = "#13817e"
 	economic_modifier = 1.5
 	access = list(access_medical, access_medical_equip, access_morgue, access_heads,
@@ -48,10 +58,10 @@
 /datum/job/doctor/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(5,13,8,14,11,20,7,15)
+		H.newgeneratestats(5,11,8,12,11,18,7,12)
 		H.generate_skills()
-		H.skills["medical"] = rand(60, 95)
-		H.skills["surgery"] = rand(50, 85)
+		H.skills["medical"] = rand(45, 90)
+		H.skills["surgery"] = rand(45, 90)
 		H.body_build_stats(H)
 
 /datum/job/virologist

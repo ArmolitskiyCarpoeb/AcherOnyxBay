@@ -530,7 +530,7 @@ var/global/datum/controller/occupations/job_master
 		//to_chat(H, "<B>Вот те на, ты [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>")
 		to_chat(H, "<B>Вот те на, ты же [alt_title ? alt_title : rank].</B>")
 
-		to_chat(H, "<b>Очередная смена на этой проклятой шахте.</b>")
+		to_chat(H, "<b>Очередная смена на этой проклятой станции</b>")
 /*
 		if(rank == "Cardinal")
 			to_chat(H, "<b>У тебя имеется возможность диктовать свои законы, если они не противоречат Церкви и Корпорации. Ты можешь разрешить всем владеть оружием или запретить свободу слова.</b>")
@@ -548,13 +548,13 @@ var/global/datum/controller/occupations/job_master
 			to_chat(H, "<b>Ты - работник самого низкого класса. Тебя легко заменить и тебе никто ничем не обязан.</b>")
 */
 		if(job.supervisors)
-			to_chat(H, "<b>Как [alt_title ? alt_title : rank] ты отвечаешь перед [job.supervisors]. Но это может поменяться.</b>")
+			to_chat(H, "<b>Как [alt_title ? alt_title : rank] ты в ответе перед следующими лицами: [job.supervisors].</b>")
 
 		to_chat(H, "<b>Говорить на своём канале - :h. Осмотри наушник, чтобы узнать другие каналы связи.</b>")
 
 		if(rank == "Merchant" && GLOB.merchant_illegalness)
-			to_chat(H, SPAN_DANGER("<b>Your trading license is a forgery. Trading on [station_name()] is illegal!</b>"))
-			H.mind.store_memory("Your trading license is a forgery. Trading on [station_name()] is illegal.")
+			to_chat(H, SPAN_DANGER("<b>Твоя торговая лицензия - подделка. Торговать на [station_name()] - нелегально!</b>"))
+			H.mind.store_memory("Твоя торговая лицензия - подделка. Торговать на [station_name()] - нелегально.")
 
 		if(job.req_admin_notify)
 			to_chat(H, "<b>You are very important. Don't forget it.</b>")

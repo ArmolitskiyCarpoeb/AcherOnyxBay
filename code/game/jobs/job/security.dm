@@ -1,15 +1,16 @@
 /datum/job/hos
 	title = "Head of Security"
+	description = "Порядок. Безопасность. Защита. Не забудешь?"
 	head_position = 1
 	department = "Security"
 	department_flag = SEC|COM
 
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
-	selection_color = "#8e2929"
+	supervisors = "Капитан и Корпорация"
+	selection_color = "#720000"
 	req_admin_notify = 1
-	economic_modifier = 10
+	economic_modifier = 2
 	faction_restricted = TRUE
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory,
 			            access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
@@ -19,14 +20,22 @@
 			            access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
 			            access_research, access_engine, access_mining, access_medical, access_construction, access_mailsorting,
 			            access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway, access_external_airlocks, access_lawyer, access_change_ids)
-	minimal_player_age = 30
-	minimum_character_age = 25
+	minimal_player_age = 0
+	minimum_character_age = 30
 	outfit_type = /decl/hierarchy/outfit/job/security/hos
 
-/datum/job/hos/equip(mob/living/carbon/human/H)
+/datum/job/officer/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.implant_loyalty(H)
+		var/obj/item/implant/death_alarm/D = new()
+		D.implant_in_mob(H, BP_HEAD)
+		H.newgeneratestats(13,18,12,18,5,15,10,20)
+		H.generate_skills()
+		H.skills["melee"] = rand(70, 95)
+		H.skills["ranged"] = rand(70, 95)
+		H.skills["medical"] = rand(25, 35)
+		H.skills["surgery"] = rand(25, 35)
+		H.body_build_stats(H)
 
 /datum/job/warden
 	title = "Warden"
@@ -61,13 +70,13 @@
 
 /datum/job/officer
 	title = "Security Operative"
-	description = "Ты — инструмент, а не герой. Приказ слепо выполнен — вот и вся твоя доблесть. Хорошо подумай прежде чем рискнуть жизнь ради кого-то: твоя жизнь — расходник, а на твоё место уже стоит в очереди следующий. Отыгрыш: ты послушный и исполнительный. Кардинал приказал - ты сделал. Свободомыслие это для простых работяг. "
+	description = "Ты — инструмент, а не герой. Приказ слепо выполнен — вот и вся твоя доблесть. Хорошо подумай прежде чем рискнуть жизнь ради кого-то: твоя жизнь — расходник, а на твоё место уже стоит в очереди следующий."
 	department = "Security"
 	department_flag = SEC
 
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "кардиналом"
+	supervisors = "Капитан и Корпорация"
 	selection_color = "#552828"
 	//alt_titles = list("Junior Officer")
 	economic_modifier = 1.5
@@ -83,7 +92,7 @@
 	if(.)
 		var/obj/item/implant/death_alarm/D = new()
 		D.implant_in_mob(H, BP_HEAD)
-		H.newgeneratestats(13,18,12,18,5,15,10,20)
+		H.newgeneratestats(11,14,11,14,5,12,10,18)
 		H.generate_skills()
 		H.skills["melee"] = rand(55, 95)
 		H.skills["ranged"] = rand(55, 95)

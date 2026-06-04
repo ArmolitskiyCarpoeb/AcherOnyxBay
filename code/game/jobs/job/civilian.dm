@@ -6,7 +6,7 @@
 	department_flag = SRV
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "кардиналом и завхозом"
+	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_bar)
@@ -31,7 +31,7 @@
 	department_flag = SRV
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "кардиналом и завхозом"
+	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_kitchen)
@@ -81,7 +81,7 @@
 	department_flag = SRV
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "кардиналом и завхозом"
+	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
 	access = list(access_maint_tunnels, access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_maint_tunnels, access_hydroponics)
@@ -96,16 +96,15 @@
 		H.skills["cooking"] = rand(25, 60)
 		H.body_build_stats(H)
 
-//Cargo
-/*
+
 /datum/job/qm
 	title = "Quartermaster"
-	description = "Денежные потоки колонии в твоих руках. Работяги будут тянуться к тебе за лучшей долей. Гоняй этих оболтусов по поручениям, заставь копать руду, мыть кровь в коридоре или что-то ещё. Ну или продай на органы... Деньги это власть, пока в твою дверь настойчиво не постучат."
+	description = "В твоих руках торговый аппарат, поставка ресурсов и несколько крепких ребят. Что делать с этим - решай сам."
 	department = "Supply"
 	department_flag = SUP
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "кардиналом и корпорацией"
+	supervisors = "Капитан и Корпорация"
 	selection_color = "#5e4324"
 	economic_modifier = 2
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant)
@@ -113,11 +112,11 @@
 	minimal_player_age = 7
 	ideal_character_age = 40
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
-*/
+
 /datum/job/qm/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(5,13,7,12,9,15,5,15)
+		H.newgeneratestats(9,12,7,11,9,14,5,15)
 		H.generate_skills()
 		H.skills["melee"] = rand(15, 50)
 		H.skills["ranged"] = rand(15, 50)
@@ -125,24 +124,35 @@
 
 /datum/job/cargo_tech
 	title = "Cargo Technician"
+	description = "Таскать... ящики..."
 	department = "Supply"
 	department_flag = SUP
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the quartermaster and the head of personnel"
+	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
 	outfit_type = /decl/hierarchy/outfit/job/cargo/cargo_tech
 
+/datum/job/cargo_tech/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		H.newgeneratestats(11,14,8,11,5,11,9,13)
+		H.generate_skills()
+		H.skills["melee"] = rand(35, 75)
+		H.skills["crafting"] = rand(25, 60)
+		H.skills["ranged"] = rand(25, 60)
+		H.body_build_stats(H)
+
 /datum/job/mining
 	title = "Shaft Miner"
 	department = "Supply"
 	department_flag = SUP
-	description = "Простой человек, который был привлечён лозунгами типа 'захватывающий риск, захватывающая оплата, захватывающие приключения' и прилетел сюда копать руду."
+	description = "Ты простой человек, который был привлечён лозунгами типа 'захватывающий риск, захватывающая оплата, захватывающие приключения', и теперь копаешь руду."
 	total_positions = 6
 	spawn_positions = 4
-	supervisors = "кардиналом и завхозом"
+	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
 	economic_modifier = 0.9
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
@@ -153,7 +163,7 @@
 /datum/job/mining/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(10,16,6,14,5,12,6,14)
+		H.newgeneratestats(11,14,8,11,5,11,9,13)
 		H.generate_skills()
 		H.skills["melee"] = rand(35, 75)
 		H.skills["crafting"] = rand(25, 60)
@@ -269,11 +279,11 @@
 	department_flag = CIV
 	total_positions = 2
 	spawn_positions = 2
-	availablity_chance = 40
-	supervisors = "the invisible hand of the market"
+	availablity_chance = 99
+	supervisors = "Невидимая рука Рынка"
 	selection_color = "#515151"
 	ideal_character_age = 30
-	minimal_player_age = 7
+	minimal_player_age = 0
 	create_record = 0
 	outfit_type = /decl/hierarchy/outfit/job/merchant
 	latejoin_at_spawnpoints = 1

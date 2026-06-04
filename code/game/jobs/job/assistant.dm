@@ -1,36 +1,36 @@
 /datum/job/assistant
-	title = "Nobody"
-	description = "Ты - человек без работы, денег и будущего. Тебя здесь не очень любят! Отыгрыш: Ты буквально никто и кто угодно, придумай свою историю. Безумец давно застрявший на станции, сбежавший арестант, наркоман в поисках дозы или просто бомж нашедший тут пристанище. Удачи выжить."
+	title = "Assistant"
+	description = "Не забывай - твоя помощь ОЧЕНЬ всем нужна, почаще задавай глупые вопросы и кричи: ''СВОБОДНЫЙ АССИСТЕНТ!''"
 	department = "Civilian"
 	department_flag = CIV
 
 	account_allowed = FALSE
 	total_positions = -1
 	spawn_positions = -1
-	supervisors = "Богом"
-	selection_color = "#1f1d1d"
+	supervisors = "ЭКИПАЖ и Корпорация"
+	selection_color = "#5e5e5e"
 	economic_modifier = 0.6
 	access = list(access_maint_tunnels)
 	minimal_access = list(access_maint_tunnels)
 //	alt_titles = list("Technical Assistant","Medical Intern","Research Assistant")
 	outfit_type = /decl/hierarchy/outfit/job/assistant
 	can_be_hired = FALSE
-	no_latejoin = TRUE
+	no_latejoin = FALSE
 	loadout_allowed = TRUE
 
 /datum/job/assistant/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(5,12,5,12,5,12,5,12)
+		H.newgeneratestats(8,12,8,12,8,12,8,12)
 		H.generate_skills()
-		H.skills["ranged"] = rand(0, 100)
-		H.skills["melee"] = rand(0, 100)
-		H.skills["engineering"] = rand(0, 100)
-		H.skills["crafting"] = rand(0, 100)
-		H.skills["cooking"] = rand(0, 100)
-		H.skills["medical"] = rand(0, 100)
-		H.skills["surgery"] = rand(0, 100)
-		H.skills["gardening"] = rand(0, 100)
+		H.skills["ranged"] = rand(10, 100)
+		H.skills["melee"] = rand(10, 100)
+		H.skills["engineering"] = rand(10, 100)
+		H.skills["crafting"] = rand(10, 100)
+		H.skills["cooking"] = rand(10, 100)
+		H.skills["medical"] = rand(10, 100)
+		H.skills["surgery"] = rand(10, 100)
+		H.skills["gardening"] = rand(10, 100)
 		H.body_build_stats(H)
 /*
 /datum/job/assistant/get_access()

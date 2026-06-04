@@ -1,18 +1,19 @@
 /datum/job/captain
 	title = "Captain"
+	description = "Нет ничего хуже вечно пьяного, недовольного всеми, злющего начальника, который опять задерживает зарплату. И ты это сегодня докажешь."
 	department = "Command"
 	head_position = 1
 	department_flag = COM
 
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "company officials and Corporate Regulations"
+	supervisors = "Корпорация"
 	selection_color = "#1d1d4f"
 	req_admin_notify = 1
 	access = list() 			//See get_access()
 	minimal_access = list() 	//See get_access()
-	minimal_player_age = 30
-	minimum_character_age = 25
+	minimal_player_age = 0
+	minimum_character_age = 30
 	economic_modifier = 20
 	faction_restricted = TRUE
 
@@ -21,6 +22,24 @@
 
 /datum/job/captain/get_access()
 	return get_all_station_access()
+
+/datum/job/captain/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		var/obj/item/implant/death_alarm/D = new()
+		D.implant_in_mob(H, BP_HEAD)
+		H.newgeneratestats(9,11,9,11,10,12,9,12)
+		H.generate_skills()
+		H.skills["ranged"] = rand(45, 75)
+		H.skills["melee"] = rand(45, 75)
+		H.body_build_stats(H)
+		var/obj/machinery/nuclearbomb/nuke = locate(/obj/machinery/nuclearbomb/station) in world
+		if(nuke)
+			H.mind.store_memory("")
+			H.mind.store_memory("<B>ПРИ ЗАХВАТЕ ПРЕДАТЕЛЯМИ КОРПОРАЦИИ - ОРБИТАЛЬНАЯ СТАЦНИЯ ''ЧУЖБИНА'' ПОДЛЕЖИТ УНИЧТОЖЕНИЮ</B>")
+			H.mind.store_memory("")
+			H.mind.store_memory("<B>КОД АКТИВАЦИИ ЯДЕРНОГО ЗАРЯДА: [nuke.r_code]</B>")
+			H.mind.store_memory("")
 
 /datum/job/cardinal
 	title = "Cardinal"
