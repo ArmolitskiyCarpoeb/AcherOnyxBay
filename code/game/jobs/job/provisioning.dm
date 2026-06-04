@@ -1,4 +1,4 @@
-
+/*
 /datum/job/hop
 	title = "Head of Provisioning"
 	department = "Provisioning"
@@ -45,8 +45,8 @@
 	title = "Shaft Miner"
 	department = "Cargo"
 	department_flag = SUP
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "the head of provisioning"
 	selection_color = "#686140"
 	economic_modifier = 5
@@ -137,3 +137,4 @@
 	minimal_access = list(access_janitor, access_maint_tunnels, access_engine, access_research, access_sec_doors, access_medical)
 	alt_titles = list("Custodian","Sanitation Technician")
 	outfit_type = /decl/hierarchy/outfit/job/provisioning/janitor
+*/

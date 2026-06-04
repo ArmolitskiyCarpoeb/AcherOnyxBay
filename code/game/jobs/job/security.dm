@@ -75,7 +75,7 @@
 	department_flag = SEC
 
 	total_positions = 2
-	spawn_positions = 1
+	spawn_positions = 2
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#552828"
 	//alt_titles = list("Junior Officer")

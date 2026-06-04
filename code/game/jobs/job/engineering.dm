@@ -32,8 +32,8 @@
 
 	loadout_allowed = TRUE
 
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "кардиналом"
 	selection_color = "#8f741b"
 	economic_modifier = 1.5

@@ -19,7 +19,7 @@
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_maint_tunnels, access_external_airlocks, access_change_ids)
 
-	minimal_player_age = 30
+	minimal_player_age = 0
 	minimum_character_age = 25
 	ideal_character_age = 50
 	outfit_type = /decl/hierarchy/outfit/job/medical/cmo
@@ -43,7 +43,7 @@
 
 	minimal_player_age = 0
 	total_positions = 2
-	spawn_positions = 1
+	spawn_positions = 2
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#13817e"
 	economic_modifier = 1.5

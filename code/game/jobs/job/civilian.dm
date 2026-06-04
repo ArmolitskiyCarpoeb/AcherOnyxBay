@@ -29,7 +29,7 @@
 	description = "У тебя большой выбор специй для твоего супа - мышиный помёт, тараканы, мухи, древняя пыль и крошки со стола. Накорми работяг."
 	department = "Service"
 	department_flag = SRV
-	total_positions = 2
+	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
@@ -80,7 +80,7 @@
 	department = "Service"
 	department_flag = SRV
 	total_positions = 2
-	spawn_positions = 1
+	spawn_positions = 2
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
 	access = list(access_maint_tunnels, access_hydroponics, access_bar, access_kitchen)
