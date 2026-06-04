@@ -277,9 +277,9 @@
 	//	return
 
 	var/p_lost = round((3.5 + affecting.poise/15 - assailant.poise/30) * p_mult, 0.1)
-	p_lost = Clamp(p_lost, 1.5, 8.0)
+	p_lost = Clamp(p_lost, 0.2, 0.5)
 	assailant.damage_poise(p_lost)
-	affecting.damage_poise(2.0)
+	affecting.damage_poise(5.0)
 
 	//assailant.visible_message("Debug: [assailant] lost [p_lost] poise | now: [assailant.poise]/[assailant.poise_pool]") //Debug message
 
@@ -291,7 +291,7 @@
 		p_diff -= abs(poise_gap + 10.0) * 1.2
 
 	p_diff = Clamp(round(p_diff / breakability, 0.1), 18.0, 58.0)
-	var/control_chance = Clamp(round(88.0 + (poise_gap * 0.7), 0.1), 68.0, 98.0)
+	//var/control_chance = Clamp(round(88.0 + (poise_gap * 0.7), 0.1), 68.0, 98.0)
 
 	// Factor in the difference between assailant's and target's ST stat and melee skill
 	// Only the difference matters - bigger difference = harder to break free
@@ -317,23 +317,23 @@
 	// Modifier from ST difference - scales with the difference (very reduced impact)
 	// st_diff means: if target is stronger (positive diff), modifier is positive (easier to break)
 	// if assailant is stronger (negative diff), modifier is negative (harder to break)
-	var/st_modifier = st_diff * 0.5 // +5% per point of ST advantage for target
+	var/st_modifier = st_diff * 2.5 // +25% per point of ST advantage for target
 
 	// Calculate melee skill difference (target - assailant)
 	var/melee_diff = target_melee - assailant_melee
 
-	// Modifier from melee skill difference - scales with the difference (very reduced impact)
+	// Modifier from melee skill difference
 	var/melee_modifier = melee_diff / 40.0 // +2.5% at 100 skill advantage for target
 
 	// Apply modifiers to break chance (both can stack)
 	p_diff += st_modifier + melee_modifier
-	// Ensure break chance doesn't go below a minimum (still possible but very hard)
-	p_diff = max(p_diff, 3.0)
+	// Ensure break chance doesn't go below a minimum
+	p_diff = max(p_diff, 0.1)
 
 	// Debug message to verify it's working (uncomment to test)
 	//assailant.visible_message("Debug: ST [assailant_st] vs [target_st] (diff=[st_diff], mod=[st_modifier]) | Melee [assailant_melee] vs [target_melee] (diff=[melee_diff], mod=[melee_modifier]) | p_diff=[p_diff]")
 
-	if(prob(p_diff) && prob(control_chance))
+	if(prob(p_diff))// && prob(control_chance))
 		var/break_roll = prob(p_diff)
 		if(can_downgrade_on_resist && !break_roll)
 			affecting.visible_message(SPAN("warning", "[affecting] has loosened [assailant]'s grip!"))

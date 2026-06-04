@@ -1109,7 +1109,7 @@
 		poise_icon?.icon_state = "[round((poise/poise_pool) * 50)]"
 		return
 
-	var/base_pregen = poise_pool * 0.1
+	var/base_pregen = poise_pool * 0.05
 	var/pregen = base_pregen
 
 	for(var/obj/item/grab/G in list(get_active_hand(), get_inactive_hand()))
@@ -1142,16 +1142,16 @@
 				Stun(0.5)
 				set_m_intent(M_WALK)
 				if(src.gender == MALE)
-					playsound(src.loc, SFX_MALE_HEAVY_BREATH, rand(33, 44), 1)
+					playsound(src.loc, SFX_MALE_HEAVY_BREATH, rand(40, 44), 1)
 				if(src.gender == FEMALE)
-					playsound(src.loc, SFX_FEMALE_HEAVY_BREATH, rand(33, 44), 1)
+					playsound(src.loc, SFX_FEMALE_HEAVY_BREATH, rand(40, 44), 1)
 			else
 				to_chat(src, SPAN_WARNING("You are VERY exhausted!"))
 				Weaken(1)
 				if(src.gender == MALE)
-					playsound(src.loc, SFX_MALE_HEAVY_BREATH, rand(44, 66), 1)
+					playsound(src.loc, SFX_MALE_HEAVY_BREATH, rand(44, 50), 1)
 				if(src.gender == FEMALE)
-					playsound(src.loc, SFX_FEMALE_HEAVY_BREATH, rand(44, 66), 1)
+					playsound(src.loc, SFX_FEMALE_HEAVY_BREATH, rand(44, 50), 1)
 			last_poise_sound_time = world.time
 	else
 		last_poise_warn_level = 0

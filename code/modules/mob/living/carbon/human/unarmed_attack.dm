@@ -52,6 +52,8 @@ var/global/list/sparring_attack_cache = list()
 	attack_damage *= specmod
 	target.damage_poise(round(attack_damage*0.5 + attack_damage*0.5*((100-effective_armor)/100),0.1))
 
+	user.damage_poise(5, TRUE)
+
 	//target.visible_message("Debug \[UNARMED\]: [target] lost [round(attack_damage*0.5 + attack_damage*0.5*((100-effective_armor)/100),0.1)] poise ([target.poise]/[target.poise_pool])") // Debug Message
 
 	if(attack_damage >= 5 && armor < 100 && target != user && target.poise <= attack_damage*3 && !target.check_poise_immunity())
