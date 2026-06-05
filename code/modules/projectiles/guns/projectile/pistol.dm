@@ -75,7 +75,9 @@
 	magazine_type = /obj/item/ammo_magazine/c45m/stun
 	allowed_magazines = /obj/item/ammo_magazine/c45m
 	caliber = ".45"
-	accuracy = -0.35
+	accuracy = -0.2
+	fire_delay = 0.45 SECONDS
+	fire_sound = 'sound/effects/weapons/gun/fire_45.ogg'
 
 /obj/item/gun/projectile/pistol/vp78/on_update_icon()
 	..()
@@ -88,7 +90,7 @@
 	name = "VP78 Special"
 	desc = "The VP78 pistol is a common and reliable sidearm, used by security forces and colonial marshalls all over the world. This one has a sweet wooden grip, among other modifications. Uses .45 rounds."
 	icon_state = "VP78wood"
-	accuracy = 0.35
+	accuracy = 0.1
 	fire_delay = 0.45 SECONDS
 
 /obj/item/gun/projectile/pistol/vp78/wood/on_update_icon()
@@ -105,7 +107,7 @@
 	magazine_type = /obj/item/ammo_magazine/c45m
 	auto_eject = 1
 	auto_eject_sound = 'sound/effects/weapons/misc/smg_empty_alarm.ogg'
-	fire_delay = 0.65 SECONDS
+	fire_delay = 0.45 SECONDS
 
 /obj/item/gun/projectile/pistol/vp78/tactical/on_update_icon()
 	..()
