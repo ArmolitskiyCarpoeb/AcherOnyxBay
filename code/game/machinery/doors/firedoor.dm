@@ -18,7 +18,7 @@
 	density = 0
 	layer = BELOW_DOOR_LAYER
 	open_layer = BELOW_DOOR_LAYER
-	closed_layer = ABOVE_DOOR_LAYER
+	closed_layer = FIREDOOR_LAYER//ABOVE_DOOR_LAYER
 	atom_flags = ATOM_FLAG_ADJACENT_EXCEPTION
 
 	//These are frequenly used with windows, so make sure zones can pass.
