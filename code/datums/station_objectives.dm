@@ -203,7 +203,7 @@
 	for(var/mob/observer/ghost/O in GLOB.player_list)
 		if(O.client)
 			to_chat(O, SPAN_DEADSAY(FONT_LARGE("Введена санкция за провал директивы.")))
-			to_chat(O, SPAN_DEADSAY("Чтобы присоединится к отряду зачистки выберите БЫТЬ ЗЛОДЕЕМ в ООС."))
+			to_chat(O, SPAN_DEADSAY("Чтобы присоединиться к отряду зачистки выберите БЫТЬ ЗЛОДЕЕМ в ООС."))
 
 	SSticker.looking_for_antags = 1
 	spawn(3 MINUTES)
@@ -237,7 +237,7 @@
 		for(var/mob/observer/ghost/G in GLOB.player_list)
 			if(i)
 				if(G.mind in SSticker.antag_pool)
-					if(((G.client.inactivity/10)/300) <= 1) // The most active players are more likely to become an deathsquad operative
+					if(((G.client.inactivity/10)/300) <= 1) // The most active players are more likely to become a deathsquad operative
 						if(!(G.mind && G.mind.current && !G.mind.current.is_ooc_dead()))
 							GLOB.deathsquad.create_default(G)
 							i--
