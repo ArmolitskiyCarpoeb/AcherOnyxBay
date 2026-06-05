@@ -14,7 +14,10 @@
 /decl/hierarchy/outfit/job/security/hos
 	name = OUTFIT_JOB_NAME("Head of security")
 	l_ear = /obj/item/device/radio/headset/heads/hos
-	uniform = /obj/item/clothing/under/rank/head_of_security
+	head = /obj/item/clothing/head/cardinal
+	uniform = /obj/item/clothing/under/rank/cardinal
+	suit = /obj/item/clothing/suit/armor/cardinal
+	shoes = /obj/item/clothing/shoes/jackboots/tactical
 	id_type = /obj/item/card/id/security/head
 	pda_type = /obj/item/device/pda/heads/hos
 	backpack_contents = list(/obj/item/handcuffs = 1)
