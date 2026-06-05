@@ -2,8 +2,8 @@
 	mod_weight = 0.75
 	mod_reach = 0.6
 	mod_handy = 1.0
-	fire_delay = 0.3 SECONDS
-	burst_delay = 0.15 SECONDS
+	fire_delay = 0.1 SECONDS
+	burst_delay = 0.05 SECONDS
 	load_method = MAGAZINE
 	slot_flags = SLOT_BELT
 	w_class = ITEM_SIZE_NORMAL
