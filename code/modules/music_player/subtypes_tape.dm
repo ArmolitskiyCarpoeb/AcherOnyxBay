@@ -11,9 +11,14 @@
 	name = "Unsuspicious Music Tape"
 	track = new /datum/track("Space Asshole", 'sound/music/space_asshole.ogg')
 
+/obj/item/music_tape/confusion  //Надо треков по ~10 добавить. Рандомно от 4 до 6 выбирается
+	name = "Club Music Tape"
+	desc = "Создаёт атмосферу ночного клуба в вашем баре."
+	track = new /datum/track("New Order - Confusion", 'sound/music/jukebox/New_Order-Confusion.ogg')
+
 /obj/item/music_tape/random/aprovedmusic1  //Надо треков по ~10 добавить. Рандомно от 4 до 6 выбирается
 	name = "Одобренные треки 1"
-	desc = "Церковь одобрила эти треки. Да познает душа слушающих радость"
+	desc = "Корпорация одобрила эти треки."
 	tracklist = list(
 		"Hishmaliin"					= 'sound/music/aprovedmusic1/Dvar_-_Hishmaliin.ogg',
 		"Swallowed_Burning_Coals"		= 'sound/music/aprovedmusic1/EI_Tigr3_-_She_Swallowed_Burning_Coals.ogg',
@@ -24,7 +29,7 @@
 
 /obj/item/music_tape/random/aprovedmusic2
 	name = "Одобренные треки 2"
-	desc = "Церковь одобрила эти треки. Да познает душа слушающих счастье"
+	desc = "Корпорация одобрила эти треки."
 	tracklist = list(
 		"Army of the Night"				= 'sound/music/aprovedmusic2/Powerwolf - Army of the Night.ogg',
 		"Take Me Down Below"			= 'sound/music/aprovedmusic2/Kiss - Take Me Down Below.ogg',

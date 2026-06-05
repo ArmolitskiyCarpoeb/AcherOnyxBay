@@ -2419,10 +2419,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/open,
 /area/hallway/primary/central_one)
-"HK" = (
-/obj/effect/landmark/start/crew/miner,
-/turf/space,
-/area/space)
 "HN" = (
 /turf/simulated/floor/steel,
 /area/hallway/primary/central_one)
@@ -38278,7 +38274,7 @@ Cs
 Cs
 Cs
 Cs
-HK
+Cs
 Cs
 Cs
 Cs

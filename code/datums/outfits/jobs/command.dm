@@ -23,7 +23,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	uniform = /obj/item/clothing/under/rank/captain
 	l_ear = /obj/item/device/radio/headset/heads/captain
-	shoes = /obj/item/clothing/shoes/brown
+	shoes = /obj/item/clothing/shoes/laceup
 	id_type = /obj/item/card/id/gold
 	pda_type = /obj/item/device/pda/captain
 	backpack_contents = list(/obj/item/storage/box/ids = 1)

@@ -79,6 +79,7 @@
 #include "code\__defines\organs.dm"
 #include "code\__defines\particle_impacts.dm"
 #include "code\__defines\preferences.dm"
+#include "code\__defines\proc.dm"
 #include "code\__defines\proc_presets.dm"
 #include "code\__defines\process_scheduler.dm"
 #include "code\__defines\procpath.dm"

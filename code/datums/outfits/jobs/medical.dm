@@ -15,7 +15,7 @@
 	l_ear  =/obj/item/device/radio/headset/heads/cmo
 	uniform = /obj/item/clothing/under/rank/chief_medical_officer
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat/cmo
-	shoes = /obj/item/clothing/shoes/brown
+	shoes = /obj/item/clothing/shoes/laceup
 	l_hand = /obj/item/storage/firstaid/adv
 	r_pocket = /obj/item/device/flashlight/pen
 	id_type = /obj/item/card/id/medical/head

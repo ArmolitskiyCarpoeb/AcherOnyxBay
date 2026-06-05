@@ -804,8 +804,8 @@
 	broken_chance = 5
 	matter = list(MATERIAL_GLASS = 100)
 
-	b_max_bright = 0.9
-	b_inner_range = 0.9
+	b_max_bright = 1.0
+	b_inner_range = 0.5
 	b_outer_range = 5
 	b_curve = 4.5
 	b_color = "#dfd5c2"

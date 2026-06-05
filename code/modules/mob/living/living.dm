@@ -598,7 +598,18 @@
 	var/turf/oldloc = get_turf(src)
 
 	pull_sound = lying ? SFX_PULL_BODY : null
-
+/*
+	for(var/client/C in in_vision_cones)
+		if(src in C.hidden_mobs)
+			var/turf/T = get_turf(src)
+			var/image/I = image('icons/effects/footstepsound.dmi', loc = T, icon_state = "default", layer = 18)
+			C.images += I
+			spawn(4)
+				if(C)
+					C.images -= I
+		else
+			in_vision_cones.Remove(C)
+*/
 	. = ..()
 	if(!.)
 		return
