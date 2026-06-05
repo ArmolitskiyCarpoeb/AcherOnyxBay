@@ -270,7 +270,7 @@ var/global/list/_client_preferences_by_type
 	key = "SPECIAL_ABILITY"
 	category = PREF_CATEGORY_CONTROL
 	options = list(GLOB.PREF_MIDDLE_CLICK, GLOB.PREF_CTRL_CLICK, GLOB.PREF_ALT_CLICK, GLOB.PREF_CTRL_SHIFT_CLICK)
-
+/*
 /datum/client_preference/click_precision_assist
 	description = "Click Precision Assist Time"
 	key = "CLICK_PRECISION_ASSIST"
@@ -294,7 +294,7 @@ var/global/list/_client_preferences_by_type
 			preference_mob?.client.mouse_click_opportunity_window = 4
 		if(GLOB.PREF_CLICK_PRECISION_5DS)
 			preference_mob?.client.mouse_click_opportunity_window = 5
-
+*/
 /datum/client_preference/tgui_style
 	description = "TGUI Style"
 	key = "TGUI_FANCY"
@@ -471,7 +471,7 @@ var/global/list/_client_preferences_by_type
 	key = "FULLSCREEN"
 	category = PREF_CATEGORY_UI
 	options = list(GLOB.PREF_BASIC, GLOB.PREF_FULL, GLOB.PREF_NO)
-	default_value = GLOB.PREF_NO
+	default_value = GLOB.PREF_FULL
 
 /datum/client_preference/fullscreen_mode/changed(mob/preference_mob, new_value)
 	if(preference_mob.client)
@@ -482,6 +482,7 @@ var/global/list/_client_preferences_by_type
 	key = "STATUSBAR"
 	category = PREF_CATEGORY_UI
 	options = list(GLOB.PREF_YES, GLOB.PREF_NO)
+	default_value = GLOB.PREF_NO
 
 /datum/client_preference/statusbar/changed(mob/preference_mob, new_value)
 	winset(preference_mob, "statusbar", "is-visible=[new_value == GLOB.PREF_YES]")
