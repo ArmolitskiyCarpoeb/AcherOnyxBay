@@ -675,7 +675,7 @@
 	text.maptext_height = 100
 	text.maptext_y = -50
 	text.maptext_x = -112
-	text.maptext = MAPTEXT("<center><font size=5>Подсказка раунда</font><br><br>[config.game_tips.get_tip()]</center>")
+	text.maptext = MAPTEXT("<center><font size=5>У вас есть время прочитать ЭТО:</font><br><br>[config.game_tips.get_tip()]</center>")
 	text.plane = FULLSCREEN_PLANE
 
 	client.screen += text
