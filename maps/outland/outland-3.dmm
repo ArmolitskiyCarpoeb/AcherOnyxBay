@@ -786,7 +786,7 @@
 /area/bridge)
 "ke" = (
 /obj/machinery/light/small,
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/structure/closet/emergency_wall{
 	pixel_x = -32
 	},
@@ -1057,8 +1057,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/trim/carpet/blue,
 /area/bridge)
+"nw" = (
+/obj/machinery/atm{
+	pixel_x = 32
+	},
+/turf/simulated/floor/tiled/rough,
+/area/hallway/primary/central_one)
 "nM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/item/storage/secure/briefcase/nukedisk,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
@@ -1187,7 +1193,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/primary/central_one)
 "pG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/item/paper_bin,
 /obj/item/pen/multi,
 /obj/structure/cable/green{
@@ -1343,7 +1349,7 @@
 /turf/simulated/floor/trim/carpet/gblue,
 /area/crew_quarters/heads/cmo)
 "rs" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
@@ -1830,7 +1836,7 @@
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
 "yd" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/item/device/flashlight/lamp/green,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/item/clothing/mask/gas/captain,
@@ -1857,7 +1863,7 @@
 /turf/simulated/floor/grid/bluegrid,
 /area/hallway/primary/central_one)
 "yr" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/item/book/wiki/nt_regs,
 /turf/simulated/floor/trim/carpet/red,
 /area/crew_quarters/heads/hos)
@@ -1879,7 +1885,7 @@
 /turf/simulated/floor/trim/wood2,
 /area/bridge/meeting_room)
 "yL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/structure/extinguisher_cabinet{
 	layer = 3.1;
 	pixel_y = -32
@@ -2127,7 +2133,7 @@
 /turf/simulated/floor/trim/carpet/blue,
 /area/bridge)
 "Cf" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/trim/carpet/green,
 /area/bridge/meeting_room)
@@ -2260,9 +2266,7 @@
 /turf/simulated/shuttle/wall/corner/smoothwhite/se,
 /area/shuttle/escape_pod1/station)
 "EF" = (
-/obj/structure/table/standard{
-	name = "plastic table frame"
-	},
+/obj/structure/table/hardtable,
 /obj/machinery/microwave{
 	pixel_y = 6
 	},
@@ -2621,7 +2625,7 @@
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "Kg" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/machinery/recharger,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/trim/carpet/green,
@@ -2740,7 +2744,7 @@
 /turf/simulated/floor/plating,
 /area/hallway/primary/central_one)
 "LQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -2823,7 +2827,7 @@
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
 "Ny" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/item/paper_bin,
 /obj/item/pen/multi,
 /obj/item/stamp/cmo,
@@ -3148,7 +3152,7 @@
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
 "Rz" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /turf/simulated/floor/trim/wood2,
 /area/bridge/meeting_room)
 "Sc" = (
@@ -3331,7 +3335,7 @@
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
 "UC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/item/paper_bin,
 /obj/item/pen/multi,
 /obj/item/stamp/captain,
@@ -3517,6 +3521,12 @@
 	},
 /turf/simulated/floor/steel,
 /area/hallway/primary/central_one)
+"Xb" = (
+/obj/machinery/atm{
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/rough,
+/area/hallway/primary/central_one)
 "Xc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -3681,7 +3691,7 @@
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
 "ZI" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/item/device/radio/intercom{
 	pixel_y = 24
 	},
@@ -3705,7 +3715,7 @@
 /turf/simulated/floor/tiled/rough,
 /area/bridge)
 "ZW" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/hardtable,
 /obj/item/stamp/hos,
 /obj/item/stamp/denied,
 /obj/structure/cable/green{
@@ -35467,7 +35477,7 @@ Gz
 Yv
 Ur
 yS
-Zp
+Xb
 mv
 cV
 cV
@@ -43691,7 +43701,7 @@ Zp
 JR
 Zp
 xT
-Zp
+nw
 zj
 Zp
 Zp
