@@ -141,6 +141,8 @@
 	#define OBFUSCATION_LAYER           5.2
 	#define BASE_AREA_LAYER             999
 
+	#define FIREDOOR_LAYER				15.01
+
 #define RUNECHAT_PLANE             2
 
 #define OBSERVER_PLANE             3
