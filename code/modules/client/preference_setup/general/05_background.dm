@@ -77,12 +77,13 @@
 	. += "Религия: <a href='?src=\ref[src];religion=1'>[pref.religion]</a><br/>"
 	if(pref.religion == "Novotheism")
 		. += "Основная религия всего человечества. Именно благодаря ей мы ещё живы.<br>"
-/*
+
 	. += "<br/><b>Bank Account</b>:<br/>"
 	. += "Security Level: <a href='?src=\ref[src];bank_security=1'>[pref.bank_security ? pref.bank_security == 2 ? "Maximum" : "Moderate" : "Minimum" ]</a><br>"
 	. += "PIN: <a href='?src=\ref[src];bank_pin=1'>[pref.bank_pin ? pref.bank_pin : "Random"]</a><br>"
-*/
+/*
 	. += "<br/><b>ДОСЬЕ</b>:<br/>"
+
 	if(jobban_isbanned(user, "Records"))
 		. += "<span class='danger'>You are banned from using character records.</span><br>"
 	else
@@ -96,6 +97,7 @@
 		. += "<a href='?src=\ref[src];exploitable_record=1'>[TextPreview(pref.exploit_record,40)]</a><br><br>"
 		. += "Memory:<br>"
 		. += "<a href='?src=\ref[src];set_memory=1'>[TextPreview(pref.memory,40)]</a><br>"
+*/
 
 /datum/category_item/player_setup_item/general/background/OnTopic(href,list/href_list, mob/user)
 	if(href_list["nt_relation"])
@@ -142,7 +144,7 @@
 		return TOPIC_REFRESH
 
 	else if(href_list["bank_security"])
-		var/list/sec_levels = list("Minimum")//, "Moderate", "Maximum")
+		var/list/sec_levels = list("Minimum", "Moderate", "Maximum")
 		var/choice = input(user, "Choose your bank account's security level:", CHARACTER_PREFERENCE_INPUT_TITLE, "Minimum") as null|anything in sec_levels
 		if(!choice || !CanUseTopic(user))
 			return TOPIC_NOACTION
@@ -154,7 +156,7 @@
 			if("Maximum")
 				pref.bank_security = BANK_SECURITY_MAXIMUM
 		return TOPIC_REFRESH
-/*
+
 	else if(href_list["bank_pin"])
 		var/choice = input(user, "Set your bank account's PIN (1111-9999):\nSet to 1 to use a random PIN for each round.\nSet to 2 to generate a random PIN.", CHARACTER_PREFERENCE_INPUT_TITLE, pref.bank_pin) as num|null
 		if(!choice || !CanUseTopic(user))
@@ -167,7 +169,7 @@
 			if(2)
 				pref.bank_pin = rand(1111, 9999)
 		return TOPIC_REFRESH
-*/
+
 	else if(href_list["set_medical_records"])
 		var/new_medical = sanitize(tgui_input_pencode_editor(user,"Enter medical information here.","Character Preference", html_decode(pref.med_record)))
 		if(!isnull(new_medical) && !jobban_isbanned(user, "Records") && CanUseTopic(user))
