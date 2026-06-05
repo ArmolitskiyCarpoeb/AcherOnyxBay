@@ -212,6 +212,7 @@
 
 	else if(href_list["switch_job"])
 		if(SwitchJobPriority(user, href_list["switch_job"]))
+			//job_info_selected_rank = null
 			create_job_description(user)
 			return (pref.equip_preview_mob ? TOPIC_REFRESH_UPDATE_PREVIEW : TOPIC_REFRESH)
 
@@ -231,10 +232,12 @@
 
 /datum/category_item/player_setup_item/occupation/proc/SwitchJobPriority(mob/user, role)
 	var/datum/job/job = job_master.GetJob(role)
+	job_info_selected_rank = null
 	if(!job)
 		return 0
 
 	if(role == "Assistant")
+		job_info_selected_rank = "Assistant"
 		if(job.title in pref.job_low)
 			pref.job_low -= job.title
 		else
@@ -366,7 +369,7 @@
 	if(job.alt_titles)
 		job_desc += "<i><b>Альтернативно:</b> [english_list(job.alt_titles)].</i>"
 	job_desc += "<br>"
-	job_desc += "Ты отвечаешь перед следующими лицами:<b>[job.supervisors]</b>."
+	job_desc += "Ты отвечаешь перед следующими лицами: <b>[job.supervisors]</b>."
 	job_desc += "<br>"
 	job_desc += "Подходящий возраст: <b>[job.ideal_character_age]</b>."
 	job_desc += "<br>"
