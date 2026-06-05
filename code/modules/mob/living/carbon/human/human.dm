@@ -22,6 +22,8 @@
 	var/last_body_response_to_pain = 0
 	var/last_poise_warn_level = 0        // 0 none, 1 exhausted, 2 very exhausted
 	var/last_poise_sound_time = 0        // world.time when we last played an exhaustion sound
+	var/poise_regen_block_until = 0   // время (world.time) до которого регенерация выносливости заблокирована
+	var/poise_run_blocked = FALSE     // запрет на переключение в режим бега
 
 /mob/living/carbon/human/New(new_loc, new_species = null)
 
@@ -1871,3 +1873,9 @@
 
 	..()
 	return
+
+/mob/living/carbon/human/set_m_intent(new_intent)
+    if(new_intent == M_RUN && poise_run_blocked)
+        to_chat(src, SPAN_WARNING("You are too exhausted to run!"))
+        return
+    ..()

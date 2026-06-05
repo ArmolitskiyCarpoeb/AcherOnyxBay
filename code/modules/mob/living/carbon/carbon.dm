@@ -1,4 +1,4 @@
-#define RUN_DAMAGE_POISE 1
+#define RUN_DAMAGE_POISE 2
 
 /mob/living/carbon/New()
 	//setup reagent holders
@@ -82,8 +82,9 @@
 		return
 
 	if(poise)
-		if(m_intent == M_RUN && src.poise >= 5)
+		if(m_intent == M_RUN && src.poise >= 1)
 			damage_poise(RUN_DAMAGE_POISE)
+			//world.log << "Move: damage_poise called, poise now [poise]"
 		else
 			src.m_intent = M_WALK
 

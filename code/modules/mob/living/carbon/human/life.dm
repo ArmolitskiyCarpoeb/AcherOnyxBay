@@ -1134,6 +1134,11 @@
 		poise_warn_level = 2
 	else if(poise <= 7)
 		poise_warn_level = 1
+		if(m_intent == M_RUN)
+			set_m_intent(M_WALK)
+		poise_run_blocked = TRUE
+	else if(poise >= poise_pool * 0.5)
+		poise_run_blocked = FALSE
 
 	if(poise_warn_level)
 		if(poise_warn_level > last_poise_warn_level || world.time - last_poise_sound_time >= 30)
@@ -1141,6 +1146,7 @@
 				to_chat(src, SPAN_WARNING("You are exhausted!"))
 				Stun(0.5)
 				set_m_intent(M_WALK)
+				poise_run_blocked = TRUE
 				if(src.gender == MALE)
 					playsound(src.loc, SFX_MALE_HEAVY_BREATH, rand(40, 44), 1)
 				if(src.gender == FEMALE)
@@ -1148,6 +1154,8 @@
 			else
 				to_chat(src, SPAN_WARNING("You are VERY exhausted!"))
 				Weaken(1)
+				set_m_intent(M_WALK)
+				poise_run_blocked = TRUE
 				if(src.gender == MALE)
 					playsound(src.loc, SFX_MALE_HEAVY_BREATH, rand(44, 50), 1)
 				if(src.gender == FEMALE)
@@ -1158,7 +1166,15 @@
 
 	last_poise_warn_level = poise_warn_level
 
+// Если регенерация заблокирована (например, после недавней траты выносливости)
+	if(world.time < poise_regen_block_until)
+		pregen = 0
+
 	poise = between(0, poise + pregen, poise_pool)
+
+	// Если бег был заблокирован из-за истощения, и выносливость восстановилась до 50% от максимума, то снимаем блокировку
+	if(poise_run_blocked && poise >= poise_pool * 0.5)
+		poise_run_blocked = FALSE
 
 	poise_icon?.icon_state = "[round((poise/poise_pool) * 50)]"
 
@@ -1183,9 +1199,21 @@
 	if(lying)
 		dmg *= 0.5
 
+	// Новая логика: при беге (не force) не даём упасть ниже 7
+	if(!force && poise - dmg <= 7)
+		poise = 7
+		// Если игрок всё ещё пытается бежать — принудительно переключаем на шаг
+		if(m_intent == M_RUN)
+			set_m_intent(M_WALK)
+		poise_icon?.icon_state = "[round((poise/poise_pool) * 50)]"
+		return
+
 	poise -= dmg
+	poise = max(poise, 0)   // не уходим в минус
 	poise_icon?.icon_state = "[round((poise/poise_pool) * 50)]"
 
+// При любом расходе выносливости блокируем реген
+	poise_regen_block_until = world.time + 2
 /*
 	Called by life(), instead of having the individual hud items update icons each tick and check for status changes
 	we only set those statuses and icons upon changes.  Then those HUD items will simply add those pre-made images.
