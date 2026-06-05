@@ -338,7 +338,12 @@ GLOBAL_LIST_INIT(sfx_list, list(
 	),
 	// AMBIENT
 	SFX_AMBIENT_POWERED_GLOBAL = list(
-		'sound/ambient/global/amb2.ogg',
+		'sound/ambient_new/abandoned ship halls.mp3',
+		'sound/ambient_new/Low humming tunnel.mp3',
+		'sound/ambient_new/maintenance halls.mp3',
+		'sound/ambient_new/ship humming quiet.mp3',
+		'sound/ambient_new/space station ambience.mp3',
+		/*'sound/ambient/global/amb2.ogg',
 		'sound/ambient/global/amb4.ogg',
 		'sound/ambient/global/amb5.ogg',
 		'sound/ambient/global/amb6.ogg',
@@ -347,7 +352,7 @@ GLOBAL_LIST_INIT(sfx_list, list(
 		'sound/ambient/global/amb9.ogg',
 		'sound/ambient/global/amb10.ogg',
 		'sound/ambient/global/amb11.ogg',
-		'sound/ambient/global/amb13.ogg',
+		'sound/ambient/global/amb13.ogg',*/
 	),
 	SFX_AMBIENT_OFF_GLOBAL = list(
 		'sound/ambient/global/amb1.ogg',
@@ -560,7 +565,7 @@ GLOBAL_LIST_INIT(sfx_list, list(
 	),
 	// AMBIENT MUSIC
 	SFX_AMBIENT_MUSIC_NORMAL = list(
-		'sound/ambient_music/normal_1.ogg',
+		/*'sound/ambient_music/normal_1.ogg',
 		'sound/ambient_music/normal_2.ogg',
 		'sound/ambient_music/normal_3.ogg',
 		'sound/ambient_music/normal_4.ogg',
@@ -584,7 +589,7 @@ GLOBAL_LIST_INIT(sfx_list, list(
 		'sound/ambient_music/normal_22.ogg',
 		'sound/ambient_music/normal_23.ogg',
 		'sound/ambient_music/normal_24.ogg',
-		'sound/ambient_music/normal_25.ogg'
+		'sound/ambient_music/normal_25.ogg'*/
 	),
 	SFX_AMBIENT_MUSIC_MYSTIC = list(
 		'sound/ambient_music/mystic_1.ogg',
