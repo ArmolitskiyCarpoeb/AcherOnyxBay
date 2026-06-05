@@ -658,7 +658,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/steel,
+/turf/simulated/floor/tiled/graytile,
 /area/hallway/primary/central_one)
 "iZ" = (
 /obj/item/ammo_magazine/a357,
@@ -2886,7 +2886,7 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/steel,
+/turf/simulated/floor/tiled/graytile,
 /area/hallway/primary/central_one)
 "NX" = (
 /obj/machinery/door/airlock/external{
@@ -39573,7 +39573,7 @@ AZ
 Sn
 SU
 oa
-ap
+NS
 ie
 Ds
 Ww
@@ -39581,7 +39581,7 @@ DR
 Dn
 wi
 Lz
-HN
+rj
 WN
 mu
 yK
