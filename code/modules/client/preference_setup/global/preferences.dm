@@ -453,6 +453,7 @@ var/global/list/_client_preferences_by_type
 	key = "AUTOFIT"
 	category = PREF_CATEGORY_UI
 	options = list(GLOB.PREF_YES, GLOB.PREF_NO)
+	default_value = GLOB.PREF_YES
 
 /datum/client_preference/auto_fit/changed(mob/preference_mob, new_value)
 	preference_mob?.client.attempt_fit_viewport()
