@@ -1,6 +1,6 @@
 /datum/job/hos
 	title = "Head of Security"
-	description = "Порядок. Безопасность. Защита. Не забудешь?"
+	description = "Порядок. Безопасность. Защита. Ты отслужил годы, чтобы добраться до такой должности и будет очень жалко её потерять!"
 	head_position = 1
 	department = "Security"
 	department_flag = SEC|COM
@@ -29,7 +29,7 @@
 	if(.)
 		var/obj/item/implant/death_alarm/D = new()
 		D.implant_in_mob(H, BP_HEAD)
-		H.newgeneratestats(13,18,12,18,5,15,10,20)
+		H.newgeneratestats(13,18,12,18,7,13,10,20)
 		H.generate_skills()
 		H.skills["melee"] = rand(70, 95)
 		H.skills["ranged"] = rand(70, 95)
@@ -92,7 +92,7 @@
 	if(.)
 		var/obj/item/implant/death_alarm/D = new()
 		D.implant_in_mob(H, BP_HEAD)
-		H.newgeneratestats(11,14,11,14,5,12,10,18)
+		H.newgeneratestats(12,13,11,13,7,11,11,15)
 		H.generate_skills()
 		H.skills["melee"] = rand(55, 95)
 		H.skills["ranged"] = rand(55, 95)

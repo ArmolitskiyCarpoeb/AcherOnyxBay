@@ -53,7 +53,7 @@
 /datum/job/engineer/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(7,14,7,14,10,18,8,16)
+		H.newgeneratestats(10,12,9,11,10,12,8,12)
 		H.generate_skills()
 		H.skills["engineering"] = rand(50, 95)
 		H.skills["crafting"] = rand(50, 95)
