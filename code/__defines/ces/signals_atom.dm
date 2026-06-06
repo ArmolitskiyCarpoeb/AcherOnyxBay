@@ -44,3 +44,9 @@
 
 /// Called on `/atom/proc/examine` (mob/user, list/examine_result)
 #define SIGNAL_EXAMINED "examined"
+
+/// Called on `/atom/proc/examine` (mob/user, list/examine_result)
+#define SIGNAL_EXAMINED "examined"
+
+/// Called on `/atom/proc/examine` (mob/user, list/examine_result)
+#define SIGNAL_EXAMINED_MORE "examined_more"

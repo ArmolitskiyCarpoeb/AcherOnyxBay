@@ -323,6 +323,27 @@ its easier to just keep the beam vertical.
 
 	return
 
+/// Called when `user` examines this atom multiple times in ~1 second window.
+/atom/proc/examine_more(mob/user)
+	RETURN_TYPE(/list)
+
+	. = list()
+
+	var/info_text = get_description_info()
+	if(info_text)
+		. += "<font color='#084b8a'>[info_text]</font>"
+
+	var/fluff_text = get_description_fluff()
+	if(fluff_text)
+		. += "<font color='#298a08'>[fluff_text]</font>"
+
+	var/antag_text = get_description_antag()
+	if(antag_text && (user?.mind?.special_role || isghost(user)))
+		. += "<font color='#8a0808'>[antag_text]</font>"
+
+	SEND_SIGNAL(src, SIGNAL_EXAMINED_MORE, user, .)
+	SEND_SIGNAL(user, SIGNAL_MOB_EXAMINED_MORE, src, .)
+
 /atom/proc/baked_examine(...)
 	SHOULD_NOT_OVERRIDE(TRUE)
 

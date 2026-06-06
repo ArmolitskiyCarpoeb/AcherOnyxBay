@@ -207,16 +207,6 @@
 		mymob.jump_icon.alpha = ui_alpha
 		static_inventory += mymob.jump_icon
 
-	if(hud_data.has_fov)
-		mymob.fov = new /atom/movable/screen()
-		mymob.fov.icon = 'icons/mob/hide.dmi'
-		mymob.fov.icon_state = "combat"
-		mymob.fov.name = " "
-		mymob.fov.screen_loc = "1,1"
-		mymob.fov.mouse_opacity = 0
-		mymob.fov.layer = UNDER_HUD_LAYER
-		static_inventory |= mymob.fov
-
 	if(hud_data.has_aim_assist)
 		mymob.aim_assist_icon = new /atom/movable/screen()
 		mymob.aim_assist_icon.icon = ui_style

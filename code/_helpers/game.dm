@@ -258,7 +258,39 @@
 		if(hearturfs[get_turf(O)])
 			objs += O
 
+/* FROM ONYXBAY 2.0
+// Uses dview to quickly return mobs and objects in view,
+// then adds additional mobs or objects if they are in range 'smartly',
+// based on their presence in lists of players or registered objects
+/proc/get_mobs_and_objs_in_view_fast(turf/T, range, list/mobs, list/objs, checkghosts = null)
+	var/list/hear = dview(range, T, INVISIBILITY_MAXIMUM)
+	var/list/hearturfs = list()
 
+	for(var/thing in hear)
+		// Can't use isobj() because /atom/movable returns true in that, and so lighting overlays would be included
+		if(istype(thing, /obj))
+			objs += thing
+			hearturfs |= get_turf(thing)
+			continue
+		if(ismob(thing))
+			mobs += thing
+			hearturfs |= get_turf(thing)
+
+	// A list of every mob with a client
+	for(var/mob in GLOB.player_list)
+		if(get_turf(mob) in hearturfs)
+			mobs |= mob
+			continue
+
+		var/mob/M = mob
+		if(checkghosts && M && M.is_ooc_dead() && M.get_preference_value(checkghosts) != GLOB.PREF_NEARBY)
+			mobs |= M
+
+	// For objects below the top level who still want to hear
+	for(var/obj in GLOB.listening_objects)
+		if(get_turf(obj) in hearturfs)
+			objs |= obj
+*/
 /proc/inLineOfSight(X1, Y1, X2, Y2, Z = 1, PX1 = 16.5, PY1 = 16.5, PX2 = 16.5, PY2 = 16.5)
 	var/turf/T
 	if(X1 == X2)
