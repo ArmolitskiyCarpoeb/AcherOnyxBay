@@ -832,7 +832,7 @@ var/global/floorIsLava = 0
 /datum/admins/proc/startnow()
 	set category = "Server"
 	set desc="Start the round RIGHT NOW"
-	set name="Start Now"
+	set name="S T A R T N O W"
 	if(GAME_STATE < RUNLEVEL_LOBBY)
 		SSticker.auto_start = !SSticker.auto_start
 		message_admins(SPAN("info", "[key_name(src)] set the server start round configuration to [SSticker.auto_start ? "automatically start game as soon as possible" : "start game in normal mode (with a timer)."]"))
