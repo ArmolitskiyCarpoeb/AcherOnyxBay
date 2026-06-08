@@ -69,7 +69,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	var/evac_controller_type = /datum/evacuation_controller
 
 	var/lobby_music/lobby_music                     // The track that will play in the lobby screen. Handed in the /setup_map() proc.
-	var/welcome_sound = 'sound/signals/start1.ogg'	// Sound played on roundstart
+	var/welcome_sound = 'sound/signals/start2.wav'	// Sound played on roundstart
 
 	var/default_law_type = /datum/ai_laws/nanotrasen  // The default lawset use by synth units, if not overriden by their laws var.
 	var/security_state = /decl/security_state/default // The default security state system to use.
