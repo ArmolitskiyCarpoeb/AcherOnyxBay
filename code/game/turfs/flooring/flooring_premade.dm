@@ -6,6 +6,7 @@
 	base_icon_state = "plating"
 	layer = PLATING_LAYER
 	var/tile_type = /obj/item/stack/tile/floor
+	initial_gas = /decl/initial_gas_mix/air
 
 /turf/simulated/floor/plating/rough
 	name = "plating"
