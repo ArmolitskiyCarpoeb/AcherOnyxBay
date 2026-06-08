@@ -373,6 +373,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/grid/bluegrid,
 /area/hallway/primary/central_one)
+"dY" = (
+/obj/machinery/camera/network/exodus{
+	dir = 8;
+	c_tag = "Primary Hallway Central - East Southwest"
+	},
+/turf/simulated/floor/tiled/rough,
+/area/hallway/primary/central_one)
 "ee" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/wall/r_wall,
@@ -1333,6 +1340,9 @@
 	d2 = 8;
 	d1 = 4
 	},
+/obj/machinery/camera/network/command{
+	c_tag = "Bridge Conference Room"
+	},
 /turf/simulated/floor/trim/wood2,
 /area/bridge/meeting_room)
 "rj" = (
@@ -1820,6 +1830,13 @@
 	},
 /turf/simulated/floor/tiled/mono,
 /area/hallway/primary/central_one)
+"xD" = (
+/obj/machinery/camera/network/security{
+	dir = 1;
+	c_tag = "Security - HoS' Office"
+	},
+/turf/simulated/floor/trim/carpet/red,
+/area/crew_quarters/heads/hos)
 "xG" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/wall/r_wall,
@@ -1924,6 +1941,9 @@
 /area/hallway/primary/central_one)
 "zd" = (
 /obj/structure/filingcabinet/filingcabinet,
+/obj/machinery/camera/network/command{
+	c_tag = "Bridge North-East"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "ze" = (
@@ -2391,6 +2411,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/mono,
 /area/bridge)
+"GT" = (
+/obj/effect/floor_decal/corner/blue{
+	dir = 6
+	},
+/obj/machinery/camera/network/exodus{
+	dir = 8;
+	c_tag = "Primary Hallway Central - Southwest"
+	},
+/turf/simulated/floor/tiled/rough,
+/area/hallway/primary/central_one)
 "Hm" = (
 /obj/effect/floor_decal/stairs{
 	dir = 8
@@ -3027,6 +3057,10 @@
 /obj/effect/floor_decal/corner/blue{
 	dir = 10
 	},
+/obj/machinery/camera/network/command{
+	dir = 1;
+	c_tag = "Bridge South-West"
+	},
 /turf/simulated/floor/tiled/rough,
 /area/bridge)
 "Qc" = (
@@ -3075,6 +3109,10 @@
 "Qn" = (
 /obj/structure/bed/captain,
 /obj/item/bedsheet/ian,
+/obj/machinery/camera/network/command{
+	dir = 8;
+	c_tag = "Bridge - Captain's Office"
+	},
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "Qr" = (
@@ -3374,6 +3412,10 @@
 	d2 = 2
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/camera/network/medbay{
+	dir = 4;
+	c_tag = "CMO's Office"
+	},
 /turf/simulated/floor/trim/carpet/gblue,
 /area/crew_quarters/heads/cmo)
 "UO" = (
@@ -3446,6 +3488,12 @@
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/tiled/rough,
 /area/bridge)
+"Wh" = (
+/obj/machinery/camera/network/exodus{
+	c_tag = "Primary Hallway Central - North"
+	},
+/turf/simulated/floor/steel,
+/area/hallway/primary/central_one)
 "Wi" = (
 /obj/machinery/light/small,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -36522,7 +36570,7 @@ Gp
 Zp
 ES
 Ur
-Ov
+GT
 Ov
 Ov
 Ov
@@ -37554,7 +37602,7 @@ AU
 oc
 Tt
 QN
-Kw
+xD
 nR
 nR
 JM
@@ -40370,7 +40418,7 @@ QR
 hb
 hb
 hb
-HN
+Wh
 rj
 ie
 wi
@@ -43713,7 +43761,7 @@ Bc
 vN
 vN
 CV
-Zp
+dY
 JR
 Zp
 xT
