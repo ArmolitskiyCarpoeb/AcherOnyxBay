@@ -29,6 +29,8 @@
 		new /datum/space_level/outland_1,
 		new /datum/space_level/outland_2,
 		new /datum/space_level/outland_3,
+		new /datum/space_level/outland_outpost,
+		new /datum/space_level/outland_centcomm,
 		new /datum/space_level/null_space,
 		new /datum/space_level/telecomms
 	)
@@ -100,7 +102,8 @@
 			/datum/job/bartender,
 			/datum/job/chef,
 			/datum/job/hydro,
-			/datum/job/assistant
+			/datum/job/assistant,
+			/datum/job/merchant
 		)
 
 	background_choices = list(

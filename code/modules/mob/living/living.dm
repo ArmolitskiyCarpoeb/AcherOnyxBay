@@ -598,22 +598,20 @@
 	var/turf/oldloc = get_turf(src)
 
 	pull_sound = lying ? SFX_PULL_BODY : null
-/*
-	for(var/client/C in in_vision_cones)
-		if(src in C.hidden_mobs)
-			var/turf/T = get_turf(src)
-			var/image/I = image('icons/effects/footstepsound.dmi', loc = T, icon_state = "default", layer = 18)
-			C.images += I
-			spawn(4)
-				if(C)
-					C.images -= I
-		else
-			in_vision_cones.Remove(C)
-*/
 	. = ..()
+	/*
+	var/old_dir = dir   // сохраняем старый dir
 	if(!.)
+		// Если dir изменился внутри ..() (например, при bump или автоматическом развороте)
+		if(dir != old_dir)
+			update_vision_cone()
+		// Если нет, но мы хотим повернуться в сторону попытки движения
+		else if(direct && direct != dir)
+			set_dir(direct)
+			update_vision_cone()
 		return
-
+*/
+	handle_fov_footsteps()
 	if(pulling)
 		var/pull_dir = get_dir(pulling, src)
 		if(get_dist(src, pulling) > 1 || (moving_diagonally != /atom/movable::SECOND_DIAGONAL_STEP && ISDIAGONALDIR(pull_dir)))
@@ -633,6 +631,29 @@
 		for(var/mob/living/carbon/metroid/M in view(1, src))
 			M.UpdateFeed()
 
+	for(var/mob/living/L in oview(7, src))
+		if(ishuman(L))
+			L.update_vision_cone()
+
+	update_vision_cone()
+
+/mob/living/set_dir(newdir)
+	//var/old_dir = dir
+	..()//. = ..()
+	//if(dir != old_dir)
+	//	update_vision_cone()
+	update_vision_cone()
+
+/mob/living/carbon/human/update_canmove(prevent_update_icons = FALSE)
+	var/was_lying = lying
+	. = ..()
+	if(was_lying != lying)
+		update_vision_cone()
+/*
+/mob/living/keybind_face_direction(direction)
+	facedir(direction)
+	update_vision_cone()
+*/
 /mob/living/proc/can_pull()
 	if(!moving)
 		return FALSE

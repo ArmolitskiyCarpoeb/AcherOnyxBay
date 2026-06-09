@@ -31,7 +31,7 @@
 	var/faction_restricted = FALSE
 	var/create_record = TRUE              // Do we announce/make records for people who spawn on this job?
 
-	var/account_allowed = FALSE           // Does this job type come with a station account?
+	var/account_allowed = TRUE           // Does this job type come with a station account?
 	var/economic_modifier = 1             // With how much does this job modify the initial account amount?
 
 	var/outfit_type                       // The outfit the employee will be dressed in, if any

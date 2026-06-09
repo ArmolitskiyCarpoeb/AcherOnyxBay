@@ -172,21 +172,35 @@
 
 /turf/simulated/floor/tiled
 	name = "steel floor"
+	var/rand_state = FALSE
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "steel"
 	initial_flooring = /decl/flooring/tiling
 
+
 /turf/simulated/floor/tiled/redtile
 	name = "red tile"
+	rand_state = TRUE
 	icon = 'icons/turf/flooring/tiles.dmi'
-	icon_state = "redtile"
+	icon_state = "redtile0"
 	initial_flooring = /decl/flooring/tiling/redtile
+
+/turf/simulated/floor/tiled/redtile/New()
+	if(rand_state)
+		icon_state = "redtile[rand(0, 1)]"
+	..()
 
 /turf/simulated/floor/tiled/graytile
 	name = "gray tile"
+	rand_state = TRUE
 	icon = 'icons/turf/flooring/tiles.dmi'
-	icon_state = "graytile"
+	icon_state = "graytile0"
 	initial_flooring = /decl/flooring/tiling/graytile
+
+/turf/simulated/floor/tiled/graytile/New()
+	if(rand_state)
+		icon_state = "graytile[rand(0, 1)]"
+	..()
 
 /turf/simulated/floor/tiled/rough
 	name = "steel rough floor"

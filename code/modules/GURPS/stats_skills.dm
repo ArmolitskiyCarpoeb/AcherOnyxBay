@@ -331,13 +331,13 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 
 /mob/living/carbon/human/proc/body_build_stats(var/mob/living/carbon/human/H)
 	if(istype(H.body_build, /datum/body_build/slim) || istype(H.body_build, /datum/body_build/slim/flat) || istype(H.body_build, /datum/body_build/slim/male) || istype(H.body_build, /datum/body_build/slim/alt))
-		adjustStrength(rand(-5,-3))
+		adjustStrength(rand(-2,-4))
 		//H.stats[STAT_ST] -= rand(-5,-3)
-		adjustDexterity(rand(2,5))
+		adjustDexterity(rand(1,5))
 		//H.stats[STAT_DX] -= rand(2,5)
 	if(istype(H.body_build, /datum/body_build/fat))
-		adjustStrength(rand(-2,2))
-		adjustDexterity(rand(-5,-3))
+		adjustStrength(rand(1,2))
+		adjustDexterity(rand(-4,-2))
 
 /* LEGACY STAT CODE
 /mob/proc/statcheck(var/stat, var/requirement, var/show_message, var/message = "I have failed to do this.")//Requirement needs to be 1 through 20

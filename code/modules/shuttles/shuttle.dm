@@ -14,7 +14,7 @@
 	var/process_state = IDLE_STATE //Used with SHUTTLE_FLAGS_PROCESS, as well as to store current state.
 	var/category = /datum/shuttle
 
-	var/ceiling_type = /turf/unsimulated/floor/shuttle_ceiling
+	var/ceiling_type = /turf/simulated/floor/reinforced // /turf/unsimulated/floor/shuttle_ceiling
 
 	var/sound_takeoff = 'sound/effects/shuttle_takeoff.ogg'
 	var/sound_landing = 'sound/effects/shuttle_landing.ogg'

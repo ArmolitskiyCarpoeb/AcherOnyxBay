@@ -327,6 +327,26 @@
 		mymob.poise_icon.SetName("poise")
 		mymob.poise_icon.screen_loc = ui_health
 		infodisplay |= mymob.poise_icon
+
+	mymob.noise = new /atom/movable/screen()
+	mymob.noise.icon = 'icons/hud/screen_full.dmi'
+	mymob.noise.icon_state = "grain"
+	mymob.noise.name = " "
+	mymob.noise.screen_loc = "1,1"
+	mymob.noise.alpha = 120
+	mymob.noise.mouse_opacity = 0
+	infodisplay |= mymob.noise
+
+	if(hud_data.has_fov && istype(target))
+		var/mob/living/carbon/human/H = target
+		H.fov = new /atom/movable/screen()
+		H.fov.icon = 'icons/mob/hide.dmi'
+		H.fov.icon_state = "combat"
+		H.fov.name = " "
+		H.fov.screen_loc = "1,1"
+		H.fov.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+		H.fov.layer = UNDER_HUD_LAYER
+		LAZYADD(always_visible_inventory, H.fov)
 /*
 	if(hud_data.has_happiness)
 		mymob.happiness_icon = new /atom/movable/screen/happiness_icon()

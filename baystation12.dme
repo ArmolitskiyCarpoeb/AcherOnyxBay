@@ -2242,6 +2242,7 @@
 #include "code\modules\mob\living\carbon\human\stripping.dm"
 #include "code\modules\mob\living\carbon\human\unarmed_attack.dm"
 #include "code\modules\mob\living\carbon\human\update_icons.dm"
+#include "code\modules\mob\living\carbon\human\vision_cone.dm"
 #include "code\modules\mob\living\carbon\human\whisper.dm"
 #include "code\modules\mob\living\carbon\human\addictions\_addictions.dm"
 #include "code\modules\mob\living\carbon\human\addictions\alcohol.dm"

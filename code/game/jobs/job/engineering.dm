@@ -34,7 +34,7 @@
 
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "кардиналом"
+	supervisors = "Капитан и Корпорация"
 	selection_color = "#8f741b"
 	economic_modifier = 1.5
 	minimal_player_age = 0

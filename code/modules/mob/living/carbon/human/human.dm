@@ -1464,6 +1464,7 @@
 	..()
 	if(update_hud)
 		handle_regular_hud_updates()
+	update_vision_cone()
 
 
 /mob/living/carbon/human/can_stand_overridden()
@@ -1875,7 +1876,7 @@
 	return
 
 /mob/living/carbon/human/set_m_intent(new_intent)
-    if(new_intent == M_RUN && poise_run_blocked)
-        to_chat(src, SPAN_WARNING("You are too exhausted to run!"))
-        return
-    ..()
+	if(new_intent == M_RUN && poise_run_blocked)
+		to_chat(src, SPAN_WARNING("You are too exhausted to run!"))
+		return
+	..()

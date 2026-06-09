@@ -296,3 +296,18 @@
 	announced = FALSE
 	can_be_hired = FALSE
 	off_station = TRUE
+
+/datum/job/merchant/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		H.newgeneratestats(9,11,9,12,7,12,9,11)
+		H.generate_skills()
+		H.skills["ranged"] = rand(25, 90)
+		H.skills["melee"] = rand(10, 90)
+		H.skills["engineering"] = rand(10, 90)
+		H.skills["crafting"] = rand(10, 90)
+		H.skills["cooking"] = rand(10, 90)
+		H.skills["medical"] = rand(10, 90)
+		H.skills["surgery"] = rand(10, 90)
+		H.skills["gardening"] = rand(10, 90)
+		H.body_build_stats(H)

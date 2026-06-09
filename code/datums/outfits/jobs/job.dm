@@ -12,6 +12,8 @@
 	pda_type = /obj/item/device/pda
 	backpack_contents = list()
 	flags = OUTFIT_NO_SURVIVAL
+	back = /obj/item/storage/backpack/satchel
+
 
 /decl/hierarchy/outfit/job/equip_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/C = ..()

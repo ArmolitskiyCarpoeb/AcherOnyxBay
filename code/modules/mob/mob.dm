@@ -1086,17 +1086,17 @@
 /mob/on_update_icon()
 	return update_icons()
 
-// /mob/verb/face_direction()
-// 	set name = "Face Direction"
-// 	set category = "IC"
-// 	set src = usr
+/mob/verb/face_direction()
+	set name = "Face Direction"
+	set category = "IC"
+	set src = usr
 
-// 	set_face_dir()
+	set_face_dir()
 
-// 	if(!facing_dir)
-// 		to_chat(usr, "You are now not facing anything.")
-// 	else
-// 		to_chat(usr, "You are now facing [dir2text(facing_dir)].")
+	if(!facing_dir)
+		to_chat(usr, "You are now not facing anything.")
+	else
+		to_chat(usr, "You are now facing [dir2text(facing_dir)].")
 
 /mob/proc/set_face_dir(newdir)
 	if(!isnull(facing_dir) && newdir == facing_dir)

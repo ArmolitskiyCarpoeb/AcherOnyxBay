@@ -92,7 +92,7 @@
 
 /area/shuttle/mining/outpost
 	icon_state = "shuttle"
-	base_turf = /turf/simulated/floor/asteroid
+	//base_turf = /turf/simulated/floor/asteroid
 	area_flags = AREA_FLAG_UNIQUE_AREA
 
 /area/shuttle/mining/station

@@ -1,14 +1,14 @@
 /decl/hierarchy/outfit/job/assistant
 	name = OUTFIT_JOB_NAME("Assistant")
-	uniform = null
+	//uniform = null
 	//suit = /obj/item/clothing/suit/storage/hazardvest
 	flags = OUTFIT_NO_SURVIVAL
-	pda_type = null
-	id_type = null
+	//pda_type = null
+	//id_type = null
 
 /decl/hierarchy/outfit/job/assistant/post_equip(mob/living/carbon/human/H)
 	..()
-
+/*
 	// Списки вариантов
 	var/list/uniforms = list(
 		/obj/item/clothing/under/casual_pants,
@@ -92,7 +92,7 @@
 		var/right_item_type = right_hand_items[rand(1, left_hand_items.len)]
 		var/obj/item/R = new right_item_type
 		H.equip_to_slot_or_del(R, slot_r_hand)
-
+*/
 	return
 
 /decl/hierarchy/outfit/job/service

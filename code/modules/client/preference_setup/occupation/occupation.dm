@@ -212,14 +212,31 @@
 
 	else if(href_list["switch_job"])
 		if(SwitchJobPriority(user, href_list["switch_job"]))
-			//job_info_selected_rank = null
+			job_info_selected_rank = null
 			create_job_description(user)
 			return (pref.equip_preview_mob ? TOPIC_REFRESH_UPDATE_PREVIEW : TOPIC_REFRESH)
-
+/*
 	else if(href_list["job_info"])
 		job_info_selected_rank = href_list["job_info"]
 		create_job_description(user)
 		return (pref.equip_preview_mob ? TOPIC_REFRESH_UPDATE_PREVIEW : TOPIC_REFRESH)
+*/
+
+	else if(href_list["job_info"])
+		var/selected_rank = href_list["job_info"]
+		var/old_high = pref.job_high                           // сохраняем старый High-приоритет
+		pref.job_high = selected_rank                          // временно подменяем
+		job_info_selected_rank = selected_rank
+		create_job_description(user)                           // обновляем текстовое описание
+
+		// Принудительно обновляем иконку предпросмотра, если она существует
+		if(pref.equip_preview_mob)
+			pref.update_preview_icon()
+
+		pref.job_high = old_high                               // восстанавливаем старый High-приоритет
+
+		// Возвращаем TOPIC_REFRESH, чтобы обновить HTML (описание), а превью уже обновлено вручную
+		return TOPIC_REFRESH
 
 	return ..()
 

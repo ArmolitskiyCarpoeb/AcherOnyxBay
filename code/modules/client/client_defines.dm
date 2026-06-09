@@ -100,6 +100,10 @@
 	/// Movement dir of the most recently pressed movement key. Used in cardinal-only movement mode.
 	var/last_move_dir_pressed
 
+	/// Images used to hide mobs outside the field of view cone.
+	var/list/hidden_atoms = list()
+	var/list/hidden_mobs = list()
+
 	/// Full-auto guns broke clicking and now we have to invent workarounds. What a life.
 	var/mouse_down_last_time = 0
 	var/mouse_click_last_time = 0

@@ -44,6 +44,7 @@
 
 	client.prefs.apply_post_login_preferences(client)
 	client.playtitlemusic()
+	client.attempt_fit_viewport()
 
 	new_player_panel(TRUE)
 	handle_changelog()

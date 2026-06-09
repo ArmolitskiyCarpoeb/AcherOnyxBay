@@ -1093,7 +1093,7 @@
 	var/ht = src.stats[STAT_HT]
 	var/normalized_ht = 1 - (clamp(ht, 1, 20) - 1) / 19
 
-	poise_pool *= lerp(1.5, 0.5, normalized_ht)
+	poise_pool *= lerp(2.0, 0.5, normalized_ht)
 	/*
 	if(stats[STAT_HT] >= 18)
 		poise_pool += 10

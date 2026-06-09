@@ -76,17 +76,17 @@
 	cave_biome_table = list(
 		BIOME_COLDEST_CAVE = list(
 			BIOME_LOWEST_HUMIDITY = /datum/biome/cave/asteroid/vanilla,
-			BIOME_LOW_HUMIDITY = /datum/biome/cave/asteroid/ice,
-			BIOME_MEDIUM_HUMIDITY = /datum/biome/cave/asteroid/ice,
-			BIOME_HIGH_HUMIDITY = /datum/biome/cave/asteroid/ice,
-			BIOME_HIGHEST_HUMIDITY = /datum/biome/cave/asteroid/ice
+			BIOME_LOW_HUMIDITY = /datum/biome/cave/asteroid/vanilla,
+			BIOME_MEDIUM_HUMIDITY = /datum/biome/cave/asteroid/vanilla,
+			BIOME_HIGH_HUMIDITY = /datum/biome/cave/asteroid/vanilla,
+			BIOME_HIGHEST_HUMIDITY = /datum/biome/cave/asteroid/vanilla
 		),
 		BIOME_COLD_CAVE = list(
 			BIOME_LOWEST_HUMIDITY = /datum/biome/cave/asteroid/vanilla,
 			BIOME_LOW_HUMIDITY = /datum/biome/cave/asteroid/vanilla,
 			BIOME_MEDIUM_HUMIDITY = /datum/biome/cave/asteroid/vanilla,
 			BIOME_HIGH_HUMIDITY = /datum/biome/cave/asteroid/vanilla,
-			BIOME_HIGHEST_HUMIDITY = /datum/biome/cave/asteroid/ice
+			BIOME_HIGHEST_HUMIDITY = /datum/biome/cave/asteroid/vanilla
 		),
 		BIOME_WARM_CAVE = list(
 			BIOME_LOWEST_HUMIDITY = /datum/biome/cave/asteroid/vanilla,

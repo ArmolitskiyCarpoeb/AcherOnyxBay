@@ -786,6 +786,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/dark/rough,
 /area/maintenance/substation/command)
+"jQ" = (
+/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{
+	frequency = 1380;
+	id_tag = "escape_pod_1";
+	tag_door = "escape_pod_1_hatch";
+	pixel_y = 32
+	},
+/turf/simulated/floor/shuttle/pod,
+/area/shuttle/escape_pod1/station)
 "jZ" = (
 /obj/effect/floor_decal/corner/blue/full,
 /obj/structure/closet/crate/bin,
@@ -45561,7 +45570,7 @@ CU
 CU
 zx
 Wa
-Wj
+jQ
 Qc
 Wj
 Wa

@@ -528,9 +528,9 @@ var/global/datum/controller/occupations/job_master
 				W.add_fingerprint(H)
 
 		//to_chat(H, "<B>Вот те на, ты [job.total_positions == 1 ? "the" : "a"] [alt_title ? alt_title : rank].</B>")
-		to_chat(H, "<B>Вот те на, ты же [alt_title ? alt_title : rank].</B>")
+		to_chat(H, "<B>Ага, ты же [alt_title ? alt_title : rank].</B>")
 
-		to_chat(H, "<b>Очередная смена на этой проклятой станции</b>")
+		to_chat(H, "<b>Очередная смена на этой проклятой станции.</b>")
 /*
 		if(rank == "Cardinal")
 			to_chat(H, "<b>У тебя имеется возможность диктовать свои законы, если они не противоречат Церкви и Корпорации. Ты можешь разрешить всем владеть оружием или запретить свободу слова.</b>")
