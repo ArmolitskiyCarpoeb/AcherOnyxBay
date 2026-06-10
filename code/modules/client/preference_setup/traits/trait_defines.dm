@@ -296,24 +296,28 @@
 
 
 /datum/trait/modifier/bad/opiat_addiction
-	name = "Opiate Dependence"
-	desc = "You rely on opiates to feel normal. Without them, your body and mind quickly turn against you."
+	name = "Зависимость от опиатов"
+	desc = "Подлый отказ от героина вынудет твой организм отказаться от существования."
 	modifier_type = /datum/modifier/trait/opiat_addiction
+	trait_cost = -2
 
 /datum/trait/modifier/bad/cannabis_addiction
-	name = "Cannabis Dependence"
-	desc = "You are used to calming your thoughts with cannabis. Without it, staying relaxed becomes difficult."
+	name = "Любитель марихуаны"
+	desc = "Без марихуаны расслабиться не выйдет. Увы!"
 	modifier_type = /datum/modifier/trait/cannabis_addiction
+	trait_cost = -1
 
 /datum/trait/modifier/bad/alcohol_addiction
-	name = "Alcohol Dependence"
-	desc = "Alcohol has become a part of your routine. Going without it makes everything feel just a little worse."
+	name = "Алкоголик"
+	desc = "Между первой и второй - перерывчик небольшой."
 	modifier_type = /datum/modifier/trait/alcohol_addiction
+	trait_cost = -1
 
 /datum/trait/modifier/bad/smoker
-	name = "Smoker"
-	desc = "You are used to nicotine. Going without a cigarette makes you restless and irritable."
+	name = "Курильщик"
+	desc = "Но если есть в кармане пачка сигарет... Значит, всё не так уж плохо на сегодняшний день."
 	modifier_type = /datum/modifier/trait/smoker
+	trait_cost = -1
 
 /*
 
