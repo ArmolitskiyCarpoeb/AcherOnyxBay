@@ -805,28 +805,18 @@ proc/setup_don_database_connection()
 
 // Списки слов для названия сервера
 GLOBAL_LIST_INIT(server_name_adjectives, list(
-	"Вонючий", "Тихий", "Бурный", "Спокойный", "Мрачный", "Весёлый", "Ужасный"
+	"Вонючий", "Тихий", "Бурный", "Спокойный", "Мрачный", "Весёлый", "Ужасный", "Кровавый", "Гнилой", "Счастливый"
 ))
 
 GLOBAL_LIST_INIT(server_name_nouns, list(
-	"Фронтир", "Аванпост", "Станция", "Корабль", "Убежище", "Лаборатория",
-	"Госпиталь", "Тюрьма", "Рынок", "Шахта", "Астероид", "Спутник",
-	"Гавань", "Порт", "Док", "Руины", "Цитадель", "Крепость"
+	"Ящик", "Аванпост", "Станционный Пункт", "Корабль", "Космический Бункер", "Пункт",
+	"Астероид", "Спутник", "Проект", "Актив"
 ))
 
-// Proc для генерации названия сервера
 /proc/generate_server_name()
 	var/adj = pick(GLOB.server_name_adjectives)
 	var/noun = pick(GLOB.server_name_nouns)
-	var/round_num = get_round_number()  // своя функция получения номера раунда
-	return "[adj] [noun] [round_num]"
-
-// Вспомогательная функция получения номера раунда
-/proc/get_round_number()
-	if(SSticker)
-		return global.game_id
-	// запасной вариант: глобальная переменная или world.time
-	return rand(1, 999)  // если нет номера раунда, случайное число
+	return "[adj] [noun]"
 
 /proc/update_server_name()
 	world.name = generate_server_name()

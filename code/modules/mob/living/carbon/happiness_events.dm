@@ -9,7 +9,7 @@
 //thirst
 /datum/happiness_event/thirst/filled
 	description = "<span class='info'>I've had enough to drink for a while!</span>\n"
-	happiness = 10
+	happiness = 7
 	group = "thirst"
 
 /datum/happiness_event/thirst/watered
@@ -24,17 +24,17 @@
 
 /datum/happiness_event/thirst/thirsty
 	description = "<span class='danger'>I'm getting a bit thirsty.</span>\n"
-	happiness = -15
+	happiness = -12
 	group = "thirst"
 
 /datum/happiness_event/thirst/verythirsty
 	description = "<span class='danger'>I'm getting thirsty!</span>\n"
-	happiness = -30
+	happiness = -20
 	group = "thirst"
 
 /datum/happiness_event/thirst/dehydrated
 	description = "<span class='danger'>I NEED WATER!</span>\n"
-	happiness = -50
+	happiness = -35
 	group = "thirst"
 
 //nutrition
@@ -44,7 +44,7 @@
 
 /datum/happiness_event/nutrition/wellfed
 	description = "<span class='info'>My belly feels round and full.</span>\n"
-	happiness = 10
+	happiness = 8
 	group = "nutrition"
 
 /datum/happiness_event/nutrition/fed
@@ -59,17 +59,17 @@
 
 /datum/happiness_event/nutrition/hungry
 	description = "<span class='danger'>I'm getting hungry...</span>\n"
-	happiness = -10
+	happiness = -7
 	group = "nutrition"
 
 /datum/happiness_event/nutrition/veryhungry
 	description = "<span class='danger'>I'm getting really hungry!</span>\n"
-	happiness = -30
+	happiness = -20
 	group = "nutrition"
 
 /datum/happiness_event/nutrition/starving
 	description = "<span class='danger'>I WANT FOOD!</span>\n"
-	happiness = -50
+	happiness = -30
 	group = "nutrition"
 
 
@@ -167,13 +167,13 @@
 //When you fulfill an AI request
 /datum/happiness_event/request_fulfilled
 	description = "<span class='info'>My god is pleased with me!</span>\n"
-	happiness = 25
+	happiness = 20
 	timeout = 1800
 
 //When you fulfill an AI request
 /datum/happiness_event/request_failed
 	description = "<span class='danger'>My god is disappointed with me!</span>\n"
-	happiness = -25
+	happiness = -20
 	timeout = 1800
 
 /datum/happiness_event/disturbing
@@ -200,7 +200,7 @@
 
 /datum/happiness_event/bleedingouthard
 	description = "<span class='danger'>I REALLY NEED TO STOP THIS BLEEDING!</span>\n"
-	happiness = -25
+	happiness = -20
 	timeout = 1800
 	group = "bleed"
 
@@ -212,30 +212,30 @@
 
 /datum/happiness_event/mildpain
 	description = "<span class='danger'>It hurts...a lot.</span>\n"
-	happiness = -30
+	happiness = -20
 	timeout = 1800
 	group = "pain"
 
 /datum/happiness_event/pain
 	description = "<span class='danger'>IT HURTS SO MUCH!</span>\n"
-	happiness = -40
+	happiness = -30
 	timeout = 1800
 	group = "pain"
 
 /datum/happiness_event/cryo
 	description = "<span class='danger'>Being in a metal coffin for so long doesn't feel good.</span>\n"
-	happiness = -20
+	happiness = -15
 	timeout = 1800
 
 //For when you see someone die and you're not hardcore.
 /datum/happiness_event/dead
 	description = "<span class='danger'>OH MY GOD THEY'RE DEAD!</span>\n"
-	happiness = -20
+	happiness = -25
 	timeout = 5 MINUTES
 
 /datum/happiness_event/overdose
 	description = "<span class='danger'>I shouldn't have taken so much drugs!</span>\n"
-	happiness = -30
+	happiness = -15
 	timeout = 1800
 
 // Addiction Events
@@ -249,19 +249,19 @@
 
 /datum/happiness_event/addiction/withdrawal_medium
 	description = "<span class='danger'>I don't indulge in my addiction, that makes me unhappy!</span>\n"
-	happiness = -15
+	happiness = -10
 	timeout = FALSE
 	group = "addiction"
 
 /datum/happiness_event/addiction/withdrawal_large
 	description = "<span class='danger'>I don't indulge in my addiction, that makes me very unhappy!</span>\n"
-	happiness = -30
+	happiness = -20
 	timeout = FALSE
 	group = "addiction"
 
 /datum/happiness_event/addiction/withdrawal_extreme
 	description = "<span class='danger'>I DON'T INDULGE IN MY ADDICTION, MY DAY IS SHIT!</span>\n"
-	happiness = -50
+	happiness = -35
 	timeout = FALSE
 	group = "addiction"
 

@@ -91,14 +91,16 @@
 		if(prob(5))
 			adjustBruteLoss(3)
 			adjustToxLoss(2)
-			message = pick("Убожество, просто умри.", "Разум требует высвобождения из клетки бытия.", "Ты чувствуешь это? Оно хочет выйти из тебя!", "Ещё немного потерпеть и...", "Устал!")
+			message = pick("Убожество, просто умри.", "Разум требует высвобождения из клетки бытия.", "Ты чувствуешь это? Оно хочет выйти из тебя!", "Ещё немного потерпеть и...", "Что будет, если выйти в космос без скафандра?")
 			to_chat(src, "[message]")
+			sound_to(src, sound(pick('sound/effects/badmood2.ogg', 'sound/effects/badmood3.ogg', 'sound/effects/badmood4.ogg')))
 
 	if(sanity < 20)
 		if(prob(25) && !is_hallucinating())
 			hallucination(rand(10, 25) SECONDS, rand(20, 50))
 			message = pick("Тебя никто не любит!", "Нужно сделать отверствие в своей голове - оттуда будет литься вкусный сок.", "Твой разум хочет обратно в небытие!", "ЭТО КОНЕЦ. ЭТО КОНЕЦ. ЭТО КОНЕЦ!")
 			to_chat(src, "<span class='danger'>[message]</span>")
+			sound_to(src, sound(pick('sound/effects/badmood2.ogg', 'sound/effects/badmood3.ogg', 'sound/effects/badmood4.ogg')))
 
 	if(sanity <= 0)
 		if(!sanity_broken_warning)
@@ -106,6 +108,7 @@
 			to_chat(src, "<span class='danger'>Твой разум разрушен...</span>")
 			src.hallucination(rand(120, 360) SECONDS, 100)
 			overlay_fullscreen("schizo", /atom/movable/screen/fullscreen/schizo)
+			sound_to(src, sound('sound/effects/badmood1.ogg'))
 			if(!src.sanity_lost_control)
 				//src.sanity_lost_control = TRUE
 				// Делаем тело доступным для вселения

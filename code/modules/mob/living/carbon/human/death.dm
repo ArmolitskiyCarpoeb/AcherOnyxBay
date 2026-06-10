@@ -68,6 +68,12 @@
 
 	. = ..()
 
+	if(.)
+		for(var/mob/living/carbon/human/observer in viewers(world.view, src))
+			if(observer == src) continue  // сами себя не пугаем
+			if(observer.stat == DEAD) continue  // мёртвые не боятся
+			observer.add_happiness_event(/datum/happiness_event/dead)
+
 	if(!gibbed)
 		handle_organs()
 		if(species.death_sound)
