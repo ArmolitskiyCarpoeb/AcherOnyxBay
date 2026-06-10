@@ -95,6 +95,16 @@
 		handle_medical_side_effects()
 		handle_poise()
 		update_canmove(TRUE) // Otherwise we'll have a 1 tick latency between actual getting-up and the animation update
+		update_sanity_effects()
+		if(world.time >= last_sanity_update_time + 1 MINUTES)
+			last_sanity_update_time = world.time
+			update_sanity_from_events()
+
+		if(!stat && !is_ic_dead())
+			update_pain_event()   // обновляем событие болиии
+			update_hunger_event()
+			update_thirst_event()
+
 
 		if(!client && !mind)
 			spawn()

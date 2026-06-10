@@ -19,6 +19,7 @@
 		"Warmth spreads through you — you feel normal again.",\
 		"The edge disappears. You could drink like this forever."\
 	)]"))
+	H.add_happiness_event(/datum/happiness_event/booze)
 
 /datum/addiction/alcohol/on_cured(mob/living/carbon/human/H)
 	to_chat(H, SPAN_THOUGHT("You realize you haven't craved a drink in a while."))
@@ -48,6 +49,7 @@
 		var/next_buzz = H.addiction_next_symptom[type]
 		if(isnull(next_buzz) || world.time >= next_buzz)
 			H.addiction_next_symptom[type] = world.time + rand(50 SECONDS, 120 SECONDS)
+			H.add_happiness_event(/datum/happiness_event/booze)
 			if(prob(55))
 				if(prob(50))
 					to_chat(H, SPAN_THOUGHT("You feel [pick("relaxed", "blissful", "warm", "pleasantly loose")]."))
@@ -75,18 +77,21 @@
 				"You miss the taste of alcohol.",\
 				"You think about a cold beer."\
 			)]"))
+			H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_small)
 		if((3 MINUTES) to (10 MINUTES))
 			to_chat(H, SPAN_WARNING("[pick(
 				"You really want a drink.",\
 				"Your hands feel a little restless without alcohol.",\
 				"You keep imagining that first sip."\
 			)]"))
+			H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_medium)
 		if((10 MINUTES) to INFINITY)
 			to_chat(H, SPAN_DANGER("[pick(
 				"You need a drink — it's getting under your skin.",\
 				"Your thoughts keep circling back to alcohol.",\
 				"You feel on edge without a drink."\
 			)]"))
+			H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_extreme)
 
 	// Mild withdrawal side-effects (very rare; reduced by relief)
 	if(prob(round(2 * (1 - relief))))

@@ -18,6 +18,7 @@
 		"Your fingers stop itching. You feel centered again.",\
 		"That familiar calm returns with the nicotine."\
 	)]"))
+	H.add_happiness_event(/datum/happiness_event/relaxed)
 
 /datum/addiction/nicotine/on_cured(mob/living/carbon/human/H)
 	to_chat(H, SPAN_THOUGHT("You notice your cravings for nicotine have faded."))
@@ -41,6 +42,7 @@
 					"Your nerves calm down a little.",\
 					"You feel more focused."\
 				)))
+				H.add_happiness_event(/datum/happiness_event/relaxed)
 
 	if(satisfaction >= 0)
 		return
@@ -61,18 +63,21 @@
 					"You miss the familiar nicotine buzz.",\
 					"You feel like taking a quick smoke break."\
 				)))
+				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_small)
 			if((3 MINUTES) to (10 MINUTES))
 				to_chat(H, SPAN_WARNING(pick(
 					"You really want nicotine.",\
 					"You feel irritable without a smoke.",\
 					"Your fingers feel restless — you want a drag."\
 				)))
+				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_medium)
 			if((10 MINUTES) to INFINITY)
 				to_chat(H, SPAN_DANGER(pick(
 					"You need nicotine — your nerves are screaming.",\
 					"You can't stop thinking about smoking.",\
 					"You're on edge. You need a cigarette."\
 				)))
+				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_extreme)
 
 	// Light symptoms (not disabling), rate-limited separately
 	var/sym_key = "[type]_sym"

@@ -56,3 +56,5 @@
 	var/seeDarkness = FALSE
 	var/should_update_healths = TRUE
 	can_use_hands = TRUE // use only for short-term restrictions (climbing in ventilation, being in stasis, etc.)
+
+	var/sanity = 100
