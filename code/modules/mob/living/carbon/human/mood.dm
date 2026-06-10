@@ -1,25 +1,22 @@
 #define MAX_SANITY 100
 #define MIN_SANITY 0
 
-// Добавляем переменные в человека
 /mob/living/carbon/human
 	var/sanity_broken_warning = FALSE
-	var/list/happiness_events = list()   // список активных событий (экземпляров /datum/happiness_event)
+	var/list/happiness_events = list()
 	var/sanity_lost_control = FALSE
 	var/last_sanity_update_time = 0
 
 /mob/living/carbon/human/proc/update_sanity_from_events()
 	if(!client) return
-	// Суммируем влияние: каждое позитивное событие даёт +1, негативное -1
-	var/delta = 0
+	var/total_happiness = 0
 	for(var/datum/happiness_event/E in happiness_events)
-		if(E.happiness > 0)
-			delta++
-		else if(E.happiness < 0)
-			delta--
-	if(delta != 0)
-		sanity = clamp(sanity + delta, MIN_SANITY, MAX_SANITY)
-		update_sanity_effects()
+		total_happiness += E.happiness
+	var/delta = round(total_happiness / 10)
+	if(delta == 0)
+		return
+	sanity = clamp(sanity + delta, MIN_SANITY, MAX_SANITY)
+	update_sanity_effects()
 
 /mob/living/carbon/human/proc/add_happiness_event(event_type, duration = 0)
 	var/datum/happiness_event/event = new event_type()
@@ -52,60 +49,28 @@
 			sanity = clamp(sanity - E.happiness, MIN_SANITY, MAX_SANITY)
 			qdel(E)
 			break
-/*
-// Добавление события (с автоматическим удалением по таймауту)
-/mob/living/carbon/human/proc/add_happiness_event(event_type, duration = 0)
-	if(!event_type) return
-	var/datum/happiness_event/event = new event_type()
-	if(!event) return
 
-	// Удаляем все старые события из той же группы
-	if(event.group)
-		for(var/datum/happiness_event/E in happiness_events)
-			if(E.group == event.group)
-				sanity = clamp(sanity - E.happiness, MIN_SANITY, MAX_SANITY)
-				happiness_events -= E
-				qdel(E)
-
-	happiness_events += event
-	sanity = clamp(sanity + event.happiness, MIN_SANITY, MAX_SANITY)
-
-	var/timeout = duration > 0 ? duration : event.timeout
-	if(timeout > 0)
-		spawn(timeout)
-			if(src)
-				remove_happiness_event(event_type)
-
-// Удаление события
-/mob/living/carbon/human/proc/remove_happiness_event(event_type)
-	for(var/datum/happiness_event/E in happiness_events)
-		if(E.type == event_type)
-			sanity = clamp(sanity - E.happiness, MIN_SANITY, MAX_SANITY)
-			happiness_events -= E
-			qdel(E)
-			break
-*/
 /mob/living/carbon/human/proc/update_sanity_effects()
 	var/message = ""
-	if(sanity < 50)
+	if(sanity < 45)
 		if(prob(5))
 			adjustBruteLoss(3)
 			adjustToxLoss(2)
-			message = pick("Убожество, просто умри.", "Разум требует высвобождения из клетки бытия.", "Ты чувствуешь это? Оно хочет выйти из тебя!", "Ещё немного потерпеть и...", "Что будет, если выйти в космос без скафандра?")
-			to_chat(src, "[message]")
+			message = pick("Тебя никто не любит!", "Как всё печально-то...", "К чёрту всё!", "Работа - ОТСТОЙ!")
+			to_chat(src, "<span class='warning'>[message]</span>")
 			sound_to(src, sound(pick('sound/effects/badmood2.ogg', 'sound/effects/badmood3.ogg', 'sound/effects/badmood4.ogg')))
 
 	if(sanity < 20)
 		if(prob(25) && !is_hallucinating())
 			hallucination(rand(10, 25) SECONDS, rand(20, 50))
-			message = pick("Тебя никто не любит!", "Нужно сделать отверствие в своей голове - оттуда будет литься вкусный сок.", "Твой разум хочет обратно в небытие!", "ЭТО КОНЕЦ. ЭТО КОНЕЦ. ЭТО КОНЕЦ!")
+			message = pick("Убожество, просто умри.", "Разум требует высвобождения из клетки бытия.", "Ты чувствуешь это? Оно хочет выйти из тебя!", "Ещё немного потерпеть и...", "Что будет, если выйти в космос без скафандра?", "Нужно сделать отверствие в своей голове - оттуда будет литься вкусный сок.", "Твой разум хочет обратно в небытие!", "ЭТО КОНЕЦ. ЭТО КОНЕЦ. ЭТО КОНЕЦ!", "Раскрась станцию красным!")
 			to_chat(src, "<span class='danger'>[message]</span>")
 			sound_to(src, sound(pick('sound/effects/badmood2.ogg', 'sound/effects/badmood3.ogg', 'sound/effects/badmood4.ogg')))
 
 	if(sanity <= 0)
 		if(!sanity_broken_warning)
 			sanity_broken_warning = TRUE
-			to_chat(src, "<span class='danger'>Твой разум разрушен...</span>")
+			to_chat(src, "<span class='danger'>Твой разум гниёт!</span>")
 			src.hallucination(rand(120, 360) SECONDS, 100)
 			overlay_fullscreen("schizo", /atom/movable/screen/fullscreen/schizo)
 			sound_to(src, sound('sound/effects/badmood1.ogg'))
@@ -214,13 +179,11 @@
 	if(!client) return
 	var/count = 0
 	for(var/atom/A in view(world.view, src))
-		if(istype(A, /obj/item/trash))          // мусор (пакеты, банки, окурки через /obj/item/trash)
+		if(istype(A, /obj/item/trash))
 			count++
-		else if(istype(A, /obj/effect/decal/cleanable/blood)) // кровь, грязь
+		else if(istype(A, /obj/effect/decal/cleanable/blood))
 			count++
 		else if(istype(A, /obj/item/cigbutt))
-			count++
-		else if(istype(A, /obj/item/trash))
 			count++
 		else if(istype(A, /obj/effect/decal/cleanable/generic))
 			count++
@@ -241,68 +204,3 @@
 		for(var/datum/happiness_event/E in happiness_events)
 			if(E.group == "disgust")
 				remove_happiness_event(E.type)
-
-/*
-#define MAX_SANITY 100
-#define MIN_SANITY 0
-
-// Добавляем переменные в человека (можно вынести в отдельный файл, но для простоты здесь)
-/mob/living/carbon/human
-	var/list/mood_messages = list()   // список активных сообщений для статпанели
-
-// Процедура обновления статпанели (вызывается в Life())
-/mob/living/carbon/human/proc/update_mood_panel()
-	if(!client) return
-	// Очищаем старую запись в статпанели (если она есть)
-	// В BYOND статпанель обновляется автоматически, если мы вызываем stat() в Life()
-	// Поэтому просто будем выводить актуальный список в Life()
-	// Но для удобства добавим отдельный прок
-
-// Сами процедуры баффа/дебаффа
-/proc/buff_mood(mob/living/carbon/human/M, amount, reason)
-	if(!M) return
-	M.sanity = clamp(M.sanity + amount, MIN_SANITY, MAX_SANITY)
-	if(reason)
-		// Добавляем сообщение в список (если его ещё нет)
-		if(!(reason in M.mood_messages))
-			M.mood_messages += reason
-	update_sanity_effects(M)
-
-/proc/debuff_mood(mob/living/carbon/human/M, amount, reason)
-	if(!M) return
-	M.sanity = clamp(M.sanity - amount, MIN_SANITY, MAX_SANITY)
-	if(reason)
-		if(!(reason in M.mood_messages))
-			M.mood_messages += reason
-	update_sanity_effects(M)
-
-/proc/remove_mood_message(mob/living/carbon/human/M, reason)
-	if(M && reason)
-		M.mood_messages -= reason
-
-/proc/update_sanity_effects(mob/living/carbon/human/M)
-	if(!M) return
-
-	if(M.sanity < 50)
-		if(prob(5))
-			M.adjustBruteLoss(2)
-			M.adjustToxLoss(1)
-
-	if(M.sanity < 20)
-		if(!M.hallucinations.len)
-			M.hallucinations += "В углу кто-то стоит"
-			M.hallucinations += "Ты слышишь шёпот"
-		if(prob(10))
-			to_chat(M, "<span class='danger'>[pick(M.hallucinations)]</span>")
-
-	if(M.sanity <= 0)
-		to_chat(M, "<span class='danger'>Твой разум разрушен...</span>")
-
-/mob/living/carbon/human/Stat()
-	. = ..()
-	if(client && mood_messages.len)
-		stat("Настроение", "")
-		for(var/msg in mood_messages)
-			stat(null, msg)
-		stat("Рассудок", "[sanity]/[MAX_SANITY]")
-*/
