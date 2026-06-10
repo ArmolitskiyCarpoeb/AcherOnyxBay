@@ -133,6 +133,19 @@
 	if(!MayRespawn(TRUE, isanimal(mind?.current) || isbot(mind?.current) ? DEAD_ANIMAL_DELAY : ANIMAL_SPAWN_DELAY))
 		return
 
+	// Если у тела есть живой владелец (игрок), вытесняем его в призраки
+	if(L.client)
+		// Сохраняем ссылку на текущего игрока
+		var/mob/current_player = L
+		// Превращаем текущего игрока в призрака
+		current_player.ghostize()
+		// Устанавливаем флаг, что контроль потерян из-за вселения
+		if(ishuman(current_player))
+			var/mob/living/carbon/human/H = current_player
+			H.sanity_lost_control = TRUE
+		// Небольшая задержка для гарантии, что клиент отсоединился
+		sleep(1)
+
 	log_and_message_admins("occupied clientless mob - ([L.type]) ([L]).", src, get_turf(L), L)
 
 	L.ckey = ckey

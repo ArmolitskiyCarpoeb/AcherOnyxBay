@@ -22,21 +22,34 @@
 		update_sanity_effects()
 
 /mob/living/carbon/human/proc/add_happiness_event(event_type, duration = 0)
-	if(!event_type) return
-	for(var/datum/happiness_event/E in happiness_events)
-		if(E.type == event_type) return
 	var/datum/happiness_event/event = new event_type()
-	if(!event) return
+	if(!event_type)
+		return
+	if(event.group)
+		for(var/datum/happiness_event/E in happiness_events)
+			if(E.group == event.group)
+				happiness_events -= E
+				sanity = clamp(sanity - E.happiness, MIN_SANITY, MAX_SANITY)
+				qdel(E)
+	if(!event)
+		return
+	for(var/datum/happiness_event/E in happiness_events)
+		if(E.type == event_type)
+			qdel(event)
+			return
 	happiness_events += event
+	sanity = clamp(sanity + event.happiness, MIN_SANITY, MAX_SANITY)  // мгновенное изменение
 	var/timeout = duration > 0 ? duration : event.timeout
 	if(timeout > 0)
 		spawn(timeout)
-			if(src) remove_happiness_event(event_type)
+			if(src)
+				remove_happiness_event(event_type)
 
 /mob/living/carbon/human/proc/remove_happiness_event(event_type)
 	for(var/datum/happiness_event/E in happiness_events)
 		if(E.type == event_type)
 			happiness_events -= E
+			sanity = clamp(sanity - E.happiness, MIN_SANITY, MAX_SANITY)
 			qdel(E)
 			break
 /*
@@ -82,8 +95,8 @@
 			to_chat(src, "[message]")
 
 	if(sanity < 20)
-		if(prob(25) && !is_hallucinating())   // если не галлюцинирует уже
-			hallucination(rand(10, 25) SECONDS, rand(20, 50))   // длительность, сила
+		if(prob(25) && !is_hallucinating())
+			hallucination(rand(10, 25) SECONDS, rand(20, 50))
 			message = pick("Тебя никто не любит!", "Нужно сделать отверствие в своей голове - оттуда будет литься вкусный сок.", "Твой разум хочет обратно в небытие!", "ЭТО КОНЕЦ. ЭТО КОНЕЦ. ЭТО КОНЕЦ!")
 			to_chat(src, "<span class='danger'>[message]</span>")
 
@@ -92,16 +105,17 @@
 			sanity_broken_warning = TRUE
 			to_chat(src, "<span class='danger'>Твой разум разрушен...</span>")
 			src.hallucination(rand(120, 360) SECONDS, 100)
-			if(!src.sanity_lost_control)  // нужно объявить переменную
-				src.sanity_lost_control = TRUE
+			overlay_fullscreen("schizo", /atom/movable/screen/fullscreen/schizo)
+			if(!src.sanity_lost_control)
+				//src.sanity_lost_control = TRUE
 				// Делаем тело доступным для вселения
 				src.controllable = TRUE
 				src.possession_candidate = TRUE
 				src.can_be_possessed_by()
 				GLOB.available_mobs_for_possess["\ref[src]"] = src
 				// Игрок становится призраком
-				src.ghostize(CORPSE_CAN_REENTER)
-				to_chat(src, "<span class='danger'>Ты потерял контроль над собой.</span>")
+				//src.ghostize(CORPSE_CAN_REENTER)
+				to_chat(src, "<span class='danger'>Ты чувствуешь свой скорый конец.</span>")
 	else
 		if(sanity_broken_warning)
 			sanity_broken_warning = FALSE
@@ -114,7 +128,7 @@
 			GLOB.available_mobs_for_possess -= "\ref[src]"
 			controllable = FALSE
 			possession_candidate = FALSE
-			src.can_be_possessed_by()
+			clear_fullscreen("schizo")
 
 
 
@@ -169,10 +183,10 @@
 		if(501 to 700)     event_type = null   // норма
 		if(701 to 900)     event_type = /datum/happiness_event/nutrition/fed
 		if(901 to INFINITY) event_type = /datum/happiness_event/nutrition/wellfed
-	// Удаляем все события группы nutrition
+/*	// Удаляем все события группы nutrition
 	for(var/datum/happiness_event/E in happiness_events)
 		if(E.group == "nutrition")
-			remove_happiness_event(E.type)
+			remove_happiness_event(E.type)*/
 	if(event_type)
 		add_happiness_event(event_type)
 
@@ -187,9 +201,9 @@
 		if(551 to 700)     event_type = null
 		if(701 to 800)     event_type = /datum/happiness_event/thirst/watered
 		if(801 to INFINITY) event_type = /datum/happiness_event/thirst/filled
-	for(var/datum/happiness_event/E in happiness_events)
+	/*for(var/datum/happiness_event/E in happiness_events)
 		if(E.group == "thirst")
-			remove_happiness_event(E.type)
+			remove_happiness_event(E.type)*/
 	if(event_type)
 		add_happiness_event(event_type)
 

@@ -10,7 +10,7 @@
 	)
 
 	/// Chem doses with value lower than this will not be considered.
-	min_chem_dose_required = 0.45
+	min_chem_dose_required = 0.1
 
 /datum/addiction/nicotine/on_relapse(mob/living/carbon/human/H)
 	to_chat(H, SPAN_THOUGHT("[pick(

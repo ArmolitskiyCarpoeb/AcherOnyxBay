@@ -222,6 +222,13 @@
 
 /atom/movable/screen/fullscreen/freakout
 	icon = 'icons/hud/screen.dmi'
-	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	screen_loc = ui_entire_screen
 	icon_state = "extreme"
 	blend_mode = BLEND_MULTIPLY
+
+/atom/movable/screen/fullscreen/schizo
+	icon = 'icons/hud/screen_full.dmi'
+	icon_state = "schizo"
+	plane = TURF_PLANE
+	layer = 5
+	blend_mode = 0
