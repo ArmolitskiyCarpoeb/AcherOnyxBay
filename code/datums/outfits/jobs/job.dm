@@ -11,7 +11,7 @@
 	pda_slot = slot_belt
 	pda_type = /obj/item/device/pda
 	backpack_contents = list()
-	flags = OUTFIT_NO_SURVIVAL
+	//flags = OUTFIT_NO_SURVIVAL
 	back = /obj/item/storage/backpack/satchel
 
 

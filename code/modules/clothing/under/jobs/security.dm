@@ -155,8 +155,8 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/rank/cardinal
-	name = "cardinal's jumpsuit"
-	desc = "It's a jumpsuit worn by those few with the dedication to achieve the position of \"Cardinal\". It has additional armor to protect the wearer."
+	name = "HoS's jumpsuit"
+	desc = "It's a jumpsuit worn by those few with the dedication to achieve the position of \"Head of Security\". It has additional armor to protect the wearer."
 	icon_state = "cardinal"
 	item_state = "cardinal"
 	armor_values = list(melee = 45, bullet = 45, laser = 35, energy = 10, bomb = 5, bio = 5)

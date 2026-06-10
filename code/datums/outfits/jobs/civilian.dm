@@ -2,7 +2,7 @@
 	name = OUTFIT_JOB_NAME("Assistant")
 	//uniform = null
 	//suit = /obj/item/clothing/suit/storage/hazardvest
-	flags = OUTFIT_NO_SURVIVAL
+	//flags = OUTFIT_NO_SURVIVAL
 	//pda_type = null
 	//id_type = null
 

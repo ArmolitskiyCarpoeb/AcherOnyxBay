@@ -24,7 +24,7 @@
 	minimum_character_age = 30
 	outfit_type = /decl/hierarchy/outfit/job/security/hos
 
-/datum/job/officer/equip(mob/living/carbon/human/H)
+/datum/job/hos/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
 		var/obj/item/implant/death_alarm/D = new()
