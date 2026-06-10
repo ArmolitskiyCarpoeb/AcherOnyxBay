@@ -6,6 +6,11 @@
 
 ///For descriptions, use the span classes bold info, info, none, warning and boldwarning in order from great to horrible.
 
+/datum/happiness_event/sleeped
+	description = "<span class='info'>I've had enough to drink for a while!</span>\n"
+	happiness = 20
+	timeout = 5 MINUTES
+
 //thirst
 /datum/happiness_event/thirst/filled
 	description = "<span class='info'>I've had enough to drink for a while!</span>\n"
@@ -96,6 +101,25 @@
 	description = "<span class='danger'>Did I really have to eat without any utensils?\n"
 	happiness = -5
 	timeout = 1800
+
+//Dirty
+/datum/happiness_event/dirty/dirty_slight
+	description = "<span class='danger'>Что-то тут грязновато.</span>\n"
+	happiness = -3
+	//timeout = 1800
+	group = "dirty"
+
+/datum/happiness_event/dirty/dirty_medium
+	description = "<span class='danger'>Тут действительно нужно прибраться...</span>\n"
+	happiness = -5
+	//timeout = 1800
+	group = "dirty"
+
+/datum/happiness_event/dirty/dirty_heavy
+	description = "<span class='danger'>ВЕЗДЕ МУСОР И ГРЯЗЬ!</span>\n"
+	happiness = -10
+	//timeout = 1800
+	group = "dirty"
 
 //Disgust
 /datum/happiness_event/disgust/gross

@@ -104,6 +104,8 @@
 			update_pain_event()   // обновляем событие болиии
 			update_hunger_event()
 			update_thirst_event()
+			if(life_tick % 20 == 10)
+				update_dirty_event()
 
 
 		if(!client && !mind)
@@ -622,6 +624,7 @@
 			adjustHalLoss(-3)
 			if(sleeping)
 				handle_dreams()
+				add_happiness_event(/datum/happiness_event/sleeped)
 				if (mind)
 					//Are they SSD? If so we'll keep them asleep but work off some of that sleep var in case of stoxin or similar.
 					if(client || sleeping > 3)

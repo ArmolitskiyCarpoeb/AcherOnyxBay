@@ -210,6 +210,38 @@
 	if(event_type)
 		add_happiness_event(event_type)
 
+/mob/living/carbon/human/proc/update_dirty_event()
+	if(!client) return
+	var/count = 0
+	for(var/atom/A in view(world.view, src))
+		if(istype(A, /obj/item/trash))          // мусор (пакеты, банки, окурки через /obj/item/trash)
+			count++
+		else if(istype(A, /obj/effect/decal/cleanable/blood)) // кровь, грязь
+			count++
+		else if(istype(A, /obj/item/cigbutt))
+			count++
+		else if(istype(A, /obj/item/trash))
+			count++
+		else if(istype(A, /obj/effect/decal/cleanable/generic))
+			count++
+
+	var/event_type = null
+	if(count >= 8)
+		event_type = /datum/happiness_event/dirty/dirty_heavy
+	else if(count >= 4)
+		event_type = /datum/happiness_event/dirty/dirty_medium
+	else if(count >= 1)
+		event_type = /datum/happiness_event/dirty/dirty_slight
+	else
+		event_type = null
+
+	if(event_type)
+		add_happiness_event(event_type)
+	else
+		for(var/datum/happiness_event/E in happiness_events)
+			if(E.group == "disgust")
+				remove_happiness_event(E.type)
+
 /*
 #define MAX_SANITY 100
 #define MIN_SANITY 0

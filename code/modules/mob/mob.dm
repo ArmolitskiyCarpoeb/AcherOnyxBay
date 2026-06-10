@@ -1099,6 +1099,8 @@
 		to_chat(usr, "You are now facing [dir2text(facing_dir)].")
 
 /mob/proc/set_face_dir(newdir)
+	if(newdir == FALSE)
+		facing_dir = null
 	if(!isnull(facing_dir) && newdir == facing_dir)
 		facing_dir = null
 	else if(newdir)
