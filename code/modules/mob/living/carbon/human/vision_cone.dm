@@ -69,7 +69,7 @@
 
 /mob/living/carbon/human/update_vision_cone()
 // Удаляем всех мобов из hidden_mobs и чистим их in_vision_cones
-	world.log << "update_vision_cone at [world.time], dir=[dir], fov.dir=[fov?.dir]"
+	//world.log << "update_vision_cone at [world.time], dir=[dir], fov.dir=[fov?.dir]"
 	for(var/mob/living/M in client.hidden_mobs)
 		M.in_vision_cones -= client
 	client.hidden_mobs.Cut()
