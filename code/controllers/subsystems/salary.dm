@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(salary)
 	priority = SS_PRIORITY_TRADE
 	flags = SS_TICKER
 	var/next_payout = 0
-	var/payout_interval = 1 MINUTE   // для теста, потом 20 MINUTES
+	var/payout_interval = 20 MINUTES   // для теста, потом 20 MINUTES
 
 /datum/controller/subsystem/salary/Initialize()
 	next_payout = world.time + payout_interval
