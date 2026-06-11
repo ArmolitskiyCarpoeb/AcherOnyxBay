@@ -117,7 +117,7 @@
 //Dirty
 /datum/happiness_event/dirty/dirty_slight
 	description = "<span class='danger'>Что-то тут грязновато.</span>\n"
-	happiness = -3
+	happiness = -1
 	//timeout = 1800
 	group = "dirty"
 
