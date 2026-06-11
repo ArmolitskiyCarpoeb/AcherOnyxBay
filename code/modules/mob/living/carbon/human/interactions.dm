@@ -266,6 +266,8 @@ var/global/orgasms = 0
 
 	times_came++
 
+	H.add_happiness_event(/datum/happiness_event/cum)
+
 	H.lust = 0
 	H.multiorgasms += 1
 

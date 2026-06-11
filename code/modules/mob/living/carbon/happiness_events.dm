@@ -6,6 +6,18 @@
 
 ///For descriptions, use the span classes bold info, info, none, warning and boldwarning in order from great to horrible.
 
+//SEX
+
+/datum/happiness_event/cum
+	description = "<span class='info'>Я кончил!</span>\n"
+	happiness = 25
+	timeout = 15 MINUTES
+
+/datum/happiness_event/raped
+	description = "<span class='info'>Меня изнасиловали.</span>\n"
+	happiness = -25
+	timeout = 15 MINUTES
+
 /datum/happiness_event/sleeped
 	description = "<span class='info'>I've had enough to drink for a while!</span>\n"
 	happiness = 20
