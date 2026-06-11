@@ -23,6 +23,7 @@
 	minimal_player_age = 0
 	minimum_character_age = 30
 	outfit_type = /decl/hierarchy/outfit/job/security/hos
+	wage = WAGE_COMMAND
 
 /datum/job/hos/equip(mob/living/carbon/human/H)
 	. = ..()
@@ -85,6 +86,7 @@
 	minimal_player_age = 0
 	outfit_type = /decl/hierarchy/outfit/job/security/officer
 	sex_lock = MALE
+	wage = WAGE_VERY_HIGH
 	//body_build_lock = "Default"
 
 /datum/job/officer/equip(mob/living/carbon/human/H)

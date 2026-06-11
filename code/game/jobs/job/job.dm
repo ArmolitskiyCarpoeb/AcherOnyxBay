@@ -46,6 +46,7 @@
 	var/hud_icon						  //icon used for Sec HUD overlay
 	var/show_in_setup = TRUE
 	var/sex_lock = FALSE
+	var/wage = WAGE_MINIMUM
 	//var/body_build_lock = FALSE	//goodbye...
 
 /datum/job/New()

@@ -11,6 +11,7 @@
 	access = list(access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_bar)
 	outfit_type = /decl/hierarchy/outfit/job/service/bartender
+	wage = WAGE_MEDIUM
 
 /datum/job/bartender/equip(mob/living/carbon/human/H)
 	. = ..()
@@ -37,6 +38,7 @@
 	minimal_access = list(access_kitchen)
 	alt_titles = list("Cook")
 	outfit_type = /decl/hierarchy/outfit/job/service/chef
+	wage = WAGE_MEDIUM
 
 /datum/job/chef/equip(mob/living/carbon/human/H)
 	. = ..()
@@ -86,6 +88,7 @@
 	access = list(access_maint_tunnels, access_hydroponics, access_bar, access_kitchen)
 	minimal_access = list(access_maint_tunnels, access_hydroponics)
 	outfit_type = /decl/hierarchy/outfit/job/service/gardener
+	wage = WAGE_MEDIUM
 
 /datum/job/hydro/equip(mob/living/carbon/human/H)
 	. = ..()
@@ -116,6 +119,7 @@
 	minimal_player_age = 0
 	ideal_character_age = 40
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
+	wage = WAGE_HIGH
 
 /datum/job/qm/equip(mob/living/carbon/human/H)
 	. = ..()
@@ -138,6 +142,7 @@
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting)
 	outfit_type = /decl/hierarchy/outfit/job/cargo/cargo_tech
+	wage = WAGE_LOW
 
 /datum/job/cargo_tech/equip(mob/living/carbon/human/H)
 	. = ..()
@@ -163,6 +168,7 @@
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
 	//alt_titles = list("Drill Technician","Prospector")
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
+	wage = WAGE_MEDIUM
 
 /datum/job/mining/equip(mob/living/carbon/human/H)
 	. = ..()
@@ -296,6 +302,7 @@
 	announced = FALSE
 	can_be_hired = FALSE
 	off_station = TRUE
+	wage = WAGE_NONE
 
 /datum/job/merchant/equip(mob/living/carbon/human/H)
 	. = ..()

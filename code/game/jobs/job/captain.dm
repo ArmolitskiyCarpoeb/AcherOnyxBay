@@ -16,6 +16,7 @@
 	minimum_character_age = 30
 	economic_modifier = 20
 	faction_restricted = TRUE
+	wage = WAGE_COMMAND
 
 	ideal_character_age = 50 // Old geezer captains ftw
 	outfit_type = /decl/hierarchy/outfit/job/captain

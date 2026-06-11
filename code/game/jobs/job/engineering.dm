@@ -49,6 +49,7 @@
 	//alt_titles = list("Maintenance Technician", "Engine Technician", "Electrician", "Atmospheric Technician" = /decl/hierarchy/outfit/job/engineering/atmos)
 	outfit_type = /decl/hierarchy/outfit/job/engineering/engineer
 	hud_icon = "hudengineer"
+	wage = WAGE_VERY_HIGH
 
 /datum/job/engineer/equip(mob/living/carbon/human/H)
 	. = ..()
