@@ -216,6 +216,7 @@
 #define BP_TONGUE     "tongue"
 #define BP_BLADDER    "bladder"
 #define BP_INTESTINES "intestines"
+#define BP_PENIS 	  "penis"
 
 // Weird Organs.
 #define BP_HIVE       "hive node"

@@ -68,6 +68,9 @@
 	var/min_age = 17
 	var/max_age = 70
 
+	var/genitals = 1
+	var/anus = 1
+
 	// Language/culture vars.
 	var/default_language = LANGUAGE_GALCOM    // Default language is used when 'say' is used without modifiers.
 	var/language = LANGUAGE_GALCOM            // Default racial language, if any.

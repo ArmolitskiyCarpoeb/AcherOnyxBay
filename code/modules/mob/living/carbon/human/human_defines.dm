@@ -137,3 +137,5 @@
 	var/push_ups = FALSE
 
 	var/debug = 0
+
+	var/list/HadSex = list()

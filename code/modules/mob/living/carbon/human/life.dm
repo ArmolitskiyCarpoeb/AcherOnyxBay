@@ -77,6 +77,11 @@
 	if(life_tick % 30 == 15)
 		hud_updateflag = 1022
 
+	if(erpcooldown > 1)
+		erpcooldown -= rand(1,2)
+
+	handle_lust()
+
 	voice = GetVoice()
 
 	//No need to update all of these procs if the guy is dead.
