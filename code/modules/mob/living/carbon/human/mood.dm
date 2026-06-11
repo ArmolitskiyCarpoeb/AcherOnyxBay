@@ -1,6 +1,8 @@
 #define MAX_SANITY 100
 #define MIN_SANITY 0
 
+GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of Security", "Detective", "Mercenary"))
+
 /mob/living/carbon/human
 	var/sanity_broken_warning = FALSE
 	var/list/happiness_events = list()
@@ -189,11 +191,11 @@
 			count++
 
 	var/event_type = null
-	if(count >= 8)
+	if(count >= 13)
 		event_type = /datum/happiness_event/dirty/dirty_heavy
-	else if(count >= 4)
+	else if(count >= 7)
 		event_type = /datum/happiness_event/dirty/dirty_medium
-	else if(count >= 1)
+	else if(count >= 4)
 		event_type = /datum/happiness_event/dirty/dirty_slight
 	else
 		event_type = null
