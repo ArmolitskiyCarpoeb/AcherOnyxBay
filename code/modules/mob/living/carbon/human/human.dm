@@ -731,7 +731,7 @@
 
 
 	if(href_list["interactions_close"])
-		var/window_id = "interactions_["\ref[src]"]"
+		var/window_id = "interactions"
 		show_browser(src, null, "window=[window_id]")
 		return
 
@@ -1956,8 +1956,8 @@
 	var/mouthfree_p = !(target.wear_mask && temp)
 	var/haspenis = src.has_penis()
 	var/haspenis_p = target.has_penis()
-	var/hasvagina = (src.gender == FEMALE && src.species.genitals && !haspenis)
-	var/hasvagina_p = (target.gender == FEMALE && target.species.genitals && !haspenis_p)
+	var/hasvagina = (src.gender == FEMALE && src.species.genitals)
+	var/hasvagina_p = (target.gender == FEMALE && target.species.genitals)
 	var/hasanus_p = target.species.anus
 	var/isnude = src.is_nude()
 	var/isnude_p = target.is_nude()
@@ -1971,7 +1971,7 @@
 			available["Шлёпнуть"] = "slap"
 			if(hasanus_p)
 				available["Шлёпнуть по заднице"] = "assslap"
-			available["Показать фак"] = "fuckyou"
+			available["Показать средний палец"] = "fuckyou"
 			available["Постучать по голове"] = "knock"
 			available["Плюнуть"] = "spit"
 			available["Угрожать"] = "threaten"
@@ -1984,7 +1984,7 @@
 			}
 		}
 		if(mouthfree) {
-			available["Лизать"] = "lick"
+			//available["Лизать"] = "lick"
 			if(isnude_p && !target.mutilated_genitals) {
 				if(haspenis_p) {
 					available["Работа ртом"] = "blowjob"
@@ -2026,7 +2026,7 @@
 		var/action_key = available[action_name]
 		html += "• <a href='byond://?src=\ref[target];interaction=[action_key];user=\ref[src]'>[action_name]</a><br>"
 	html += "<hr><a href='byond://?src=\ref[src];interactions_close=1'>Close</a></body></html>"
-	var/window_id = "interactions_\ref[target]"
+	var/window_id = "interactions"
 	show_browser(src, html, "window=[window_id];size=350x500;can_resize=0")
 
 /mob/living/carbon/human/proc/do_interaction(interaction)
@@ -2115,25 +2115,25 @@
 					P.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>kisses</span> <span class='erpbold'>[P]</span>")
 			else if (mouthfree)
 				H.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>blows</span> <span class='erpbold'>[P]</span> <span class='erp'>a kiss</span>")
-
+/*
 		else if (interaction == "lick")
 			if( ((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && mouthfree && mouthfree_p)
 				if (H.lust == 0)
-					H.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>[H.gender == FEMALE ? "ëèçíóëà" : "ëèçíóë"]</span> <span class='erpbold'>[P]</span> <span class='erp'>â ùåêó.</span>")
+					H.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>[H.gender == FEMALE ? "licks" : "ëèçíóë"]</span> <span class='erpbold'>[P]</span> <span class='erp'>â ùåêó.</span>")
 					if (istype(P.loc, /obj/structure/closet))
-						P.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>[H.gender == FEMALE ? "ëèçíóëà" : "ëèçíóë"]</span> <span class='erpbold'>[P]</span> <span class='erp'>â ùåêó.</span>")
+						P.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>[H.gender == FEMALE ? "licks" : "ëèçíóë"]</span> <span class='erpbold'>[P]</span> <span class='erp'>â ùåêó.</span>")
 					if (H.lust < 5)
 						H.lust = 5
 				else
-					H.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>îñîáî òùàòåëüíî [H.gender == FEMALE ? "ëèçíóëà" : "ëèçíóë"]</span> <span class='erpbold'>[P].</span>")
+					H.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>îñîáî òùàòåëüíî [H.gender == FEMALE ? "licks" : "ëèçíóë"]</span> <span class='erpbold'>[P].</span>")
 					if (istype(P.loc, /obj/structure/closet))
-						P.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>îñîáî òùàòåëüíî [H.gender == FEMALE ? "ëèçíóëà" : "ëèçíóë"]</span> <span class='erpbold'>[P].</span>")
-
+						P.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>îñîáî òùàòåëüíî [H.gender == FEMALE ? "licks" : "ëèçíóë"]</span> <span class='erpbold'>[P].</span>")
+*/
 		else if (interaction == "hug")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && hashands)
-				H.visible_message("<span class='passivebold'>[H]</span> <span class='passive'>hugs</span> <span class='passivebold'>[P]</span><span class='passive'>.</span>")
+				H.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>hugs</span> <span class='passivebold'>[P]</span><span class='passive'>.</span>")
 				if (istype(P.loc, /obj/structure/closet))
-					P.visible_message("<span class='passivebold'>[H]</span> <span class='passive'>hugs</span> <span class='passivebold'>[P]</span><span class='passive'>.</span>")
+					P.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>hugs</span> <span class='passivebold'>[P]</span><span class='passive'>.</span>")
 				playsound(loc, 'sound/interactions/hug.ogg', 50, 1, -1)
 
 		else if (interaction == "cheer")
@@ -2248,8 +2248,14 @@
 				H.fuck(H, P, "fingering")
 
 		else if (interaction == "blowjob")
+			world.log << "DEBUG: blowjob start"
+			world.log << "DEBUG: Adjacent(P)=[Adjacent(P)], istype(P.loc)=[istype(P.loc, /obj/structure/closet)], H.loc==P.loc=[H.loc == P.loc]"
+			world.log << "DEBUG: isnude_p=[isnude_p], mouthfree=[mouthfree], haspenis_p=[haspenis_p]"
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && isnude_p && mouthfree && haspenis_p)
+				world.log << "DEBUG: conditions passed, calling fuck"
 				H.fuck(H, P, "blowjob")
+			else
+				world.log << "DEBUG: conditions failed"
 
 		else if (interaction == "handjob")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && isnude_p && haspenis_p)
@@ -2261,15 +2267,15 @@
 					if (H.potenzia > 0)
 						H.fuck(H, P, "anal")
 				else
-					var/message = pick("it's not erect...")//, "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
+					var/message = pick("it's not erect...")
 					to_chat(H, message)
 		else if (interaction == "vaginal")
-			if (get_dist(H,P) <= 1 && isnude_p && isnude && haspenis && hasanus_p)
+			if (get_dist(H,P) <= 1 && isnude_p && isnude && haspenis && hasvagina_p)
 				if (H.erpcooldown == 0)
 					if (H.potenzia > 0)
 						H.fuck(H, P, "vaginal")
 				else
-					var/message = pick("It's not erect...")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
+					var/message = pick("It's not erect...")
 					to_chat(H, message)
 
 		else if (interaction == "oral")
@@ -2278,16 +2284,16 @@
 					if (H.potenzia > 0)
 						H.fuck(H, P, "oral")
 				else
-					var/message = pick("It's not erect...")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
+					var/message = pick("It's not erect...")
 					to_chat(H, message)
 
 		else if (interaction == "mount")
 			if (get_dist(H,P) <= 1 && isnude && isnude_p && haspenis_p && hasvagina)
-/*				if (P.lust <= 0)
-					var/message = pick("It's not up...")//"Èíñòðóìåíò íå ïåðåâåäåí â ðàáî÷åå ñîñòî[ya]íèå...", "Ó íåãî åùå íå âñòàë...", "À îí ëåæèò...", "Íèêàê íå íàñàäèòüñ[ya]...")
-					H << message*/
 				if(P.erpcooldown == 0)
 					H.fuck(H, P, "mount")
 				else
-					var/message = pick("You have no lust now.")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
+					var/message = pick("You have no lust now.")
 					to_chat(H, "<span class='erp'>[message]</span>")
+
+		to_chat(world, "<span class='notice'>DEBUG: do_interaction: H=[H], P=[P], [interaction]</span>")
+		to_chat(world, "<span class='notice'>DEBUG: check: Adjacent(P)=[Adjacent(P)], P.loc=[P.loc], isnude_p=[isnude_p], mouthfree=[mouthfree], haspenis_p=[haspenis_p], hasvagine_p=[hasvagina_p]</span>")

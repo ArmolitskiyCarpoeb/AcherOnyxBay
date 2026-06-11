@@ -34,12 +34,12 @@
 		if("pockets")
 			if(stripping)
 				visible_message("<span class='danger'>\The [user] is trying to empty [src]'s pockets!</span>")
-				if(do_mob(user, src, HUMAN_STRIP_DELAY, can_multitask = TRUE))
+				if(do_mob(user, src, HUMAN_STRIP_DELAY_SHORT, can_multitask = TRUE))
 					empty_pockets(user)
 			else
 				//should it be possible to discreetly slip something into someone's pockets?
 				visible_message("<span class='danger'>\The [user] is trying to stuff \a [held] into [src]'s pocket!</span>")
-				if(do_mob(user, src, HUMAN_STRIP_DELAY, can_multitask = TRUE))
+				if(do_mob(user, src, HUMAN_STRIP_DELAY_SHORT, can_multitask = TRUE))
 					place_in_pockets(held, user)
 			return
 		if("splints")
@@ -54,7 +54,7 @@
 			return
 		if("rolldown")
 			visible_message(SPAN_DANGER("\The [user] is trying to roll down \the [src]'s uniform!"))
-			if(do_mob(user, src, HUMAN_STRIP_DELAY, can_multitask = TRUE))
+			if(do_mob(user, src, HUMAN_STRIP_DELAY_SHORT, can_multitask = TRUE))
 				var/obj/item/clothing/under/U = w_uniform
 				if(U)
 					U.rollsuit()
@@ -62,7 +62,7 @@
 			return
 		if("internals")
 			visible_message("<span class='danger'>\The [usr] is trying to set \the [src]'s internals!</span>")
-			if(do_mob(user, src, HUMAN_STRIP_DELAY, can_multitask = TRUE))
+			if(do_mob(user, src, HUMAN_STRIP_DELAY_SHORT, can_multitask = TRUE))
 				toggle_internals(user)
 			return
 		if("tie")
@@ -79,7 +79,7 @@
 
 			visible_message("<span class='danger'>\The [user] is trying to remove \the [src]'s [A.name]!</span>")
 
-			if(!do_mob(user, src, HUMAN_STRIP_DELAY, can_multitask = TRUE))
+			if(!do_mob(user, src, HUMAN_STRIP_DELAY_SHORT, can_multitask = TRUE))
 				return
 
 			if(!A || holder.loc != src || !LAZYISIN(holder.accessories, A))

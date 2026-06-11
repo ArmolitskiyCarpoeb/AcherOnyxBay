@@ -35,7 +35,7 @@ var/global/orgasms = 0
 	if(w_uniform || wear_suit) return 0
 	if(has_bottom_underwear()) return 0
 	return 1
-
+/*
 /mob/living/carbon/human/make_interaction()
 	set_machine(src)
 
@@ -140,7 +140,7 @@ var/global/orgasms = 0
 	usr << browse(dat, "window=interactions;size=350x300;can_resize=0")
 	//popup.set_content(dat)
 	//popup.open()
-
+*/
 //INTERACTIONS
 /mob/living/carbon/human
 	var/mob/living/carbon/human/partner
@@ -198,7 +198,7 @@ var/global/orgasms = 0
 			if (hole == "mouth" || H?.zone_sel?.selecting == "mouth")
 				message = pick("cums right in [P]'s mouth.")
 				P.reagents.add_reagent("semen", amt)
-				sound_path = "honk/sound/new/ACTIONS/MOUTH/SWALLOW/"
+				sound_path = "sound/interactions/new/ACTIONS/MOUTH/SWALLOW/"
 				sound = pick(flist("[sound_path]"))
 			else if (hole == "vagina")
 				message = pick("cums in [P]'s pussy")
@@ -207,7 +207,7 @@ var/global/orgasms = 0
 			else if (hole == "floor")
 				message = "cums on the floor!"
 
-			sound_path = "honk/sound/new/ACTIONS/PENIS/CUM/"
+			sound_path = "sound/interactions/new/ACTIONS/PENIS/CUM/"
 			sound = pick(flist("[sound_path]"))
 		else
 			message = pick("cums!", "orgasms!")
@@ -225,9 +225,9 @@ var/global/orgasms = 0
 		var/delta = pick(20, 30, 40, 50)
 		switch(lust)
 			if(0 to 150)
-				sound_path = "honk/sound/new/ACTIONS/VAGINA/SQUIRT/SHORT/"
+				sound_path = "sound/interactions/new/ACTIONS/VAGINA/SQUIRT/SHORT/"
 			if(150 to INFINITY)
-				sound_path = "honk/sound/new/ACTIONS/VAGINA/SQUIRT/LONG/"
+				sound_path = "sound/interactions/new/ACTIONS/VAGINA/SQUIRT/LONG/"
 		sound = pick(flist("[sound_path]"))
 		src.lust -= delta
 		orgasms += 1
@@ -318,15 +318,16 @@ var/global/orgasms = 0
 
 	times_came++
 
-/mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/carbon/human/P as mob, var/hole)
+/mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/carbon/human/P as mob, hole)
 	var/sound
 	var/sound_path // hack for blowjob. Can be used elsewhere to have dynamic sound depending on message
 	var/message = ""
-	/*var/stun = round(potenzia / 3)*/
+	/*
 	if(!H.HadSex.Find(P))
 		H.HadSex.Add(P)
 	if(!P.HadSex.Find(H))
-		P.HadSex.Add(H)
+		P.HadSex.Add(H)*/
+	to_chat(world, "FUCK STARTED")
 	switch(hole)
 
 		if("vaglick")
@@ -352,11 +353,11 @@ var/global/orgasms = 0
 				else
 					P.moan()
 			if(prob(75))
-				sound = pick(flist("honk/sound/new/ACTIONS/VAGINA/TOUCH/"))
-				playsound(loc, ("honk/sound/new/ACTIONS/VAGINA/TOUCH/[sound]"), 90, 1, -5)
+				sound = pick(flist("sound/interactions/new/ACTIONS/VAGINA/TOUCH/"))
+				playsound(loc, ("sound/interactions/new/ACTIONS/VAGINA/TOUCH/[sound]"), 90, 1, -5)
 			else
-				sound = pick(flist("honk/sound/new/ACTIONS/MOUTH/SALIVA/"))
-				playsound(loc, ("honk/sound/new/ACTIONS/MOUTH/SALIVA/[sound]"), 90, 1, -5)
+				sound = pick(flist("sound/interactions/new/ACTIONS/MOUTH/SALIVA/"))
+				playsound(loc, ("sound/interactions/new/ACTIONS/MOUTH/SALIVA/[sound]"), 90, 1, -5)
 
 			H.do_fucking_animation(P)
 
@@ -367,8 +368,8 @@ var/global/orgasms = 0
 				message = pick("fingers [P] hard.")
 			if (H.lastfucked != P || H.lfhole != hole)
 				message = (" shoves their fingers into [P]'s pussy.")
-				sound = ("honk/sound/new/ACTIONS/VAGINA/INSERTION/")
-				playsound(loc, "honk/sound/new/ACTIONS/VAGINA/INSERTION/[sound]", 90, 1, -5)
+				sound = ("sound/interactions/new/ACTIONS/VAGINA/INSERTION/")
+				playsound(loc, "sound/interactions/new/ACTIONS/VAGINA/INSERTION/[sound]", 90, 1, -5)
 				H.lastfucked = P
 				H.lfhole = hole
 
@@ -385,16 +386,16 @@ var/global/orgasms = 0
 				else
 					P.moan()
 
-			sound = pick(flist("honk/sound/new/ACTIONS/VAGINA/TOUCH/"))
-			playsound(loc, ("honk/sound/new/ACTIONS/VAGINA/TOUCH/[sound]"), 90, 1, -5)
+			sound = pick(flist("sound/interactions/new/ACTIONS/VAGINA/TOUCH/"))
+			playsound(loc, ("sound/interactions/new/ACTIONS/VAGINA/TOUCH/[sound]"), 90, 1, -5)
 			H.do_fucking_animation(P)
 
 		if("ballsuck")
 			message = pick("sucks [P]'s balls.", "licks [P]'s nuts.")
-			sound_path = ("honk/sound/new/ACTIONS/BLOWJOB/")
+			sound_path = ("sound/interactions/new/ACTIONS/BLOWJOB/")
 			if (prob(25))
 				message = pick("twirls their tongue around [P]'s sack.")
-				sound_path = "honk/sound/new/ACTIONS/MOUTH/SUCK/"
+				sound_path = "sound/interactions/new/ACTIONS/MOUTH/SUCK/"
 			sound = pick(flist("[sound_path]"))
 
 			if (H.lust < 6)
@@ -420,15 +421,16 @@ var/global/orgasms = 0
 			H.do_fucking_animation(P)
 			playsound(loc, ("[sound_path][sound]"), 90, 1, -5)
 			if(prob(35))
-				sound = pick(flist("honk/sound/new/ACTIONS/MOUTH/SALIVA/"))
-				playsound(loc, ("honk/sound/new/ACTIONS/MOUTH/SALIVA/[sound]"), 90, 1, -5)
+				sound = pick(flist("sound/interactions/new/ACTIONS/MOUTH/SALIVA/"))
+				playsound(loc, ("sound/interactions/new/ACTIONS/MOUTH/SALIVA/[sound]"), 90, 1, -5)
 
 		if("blowjob")
+			to_chat(world, "BLOWJOB CALLED")
 			message = pick("sucks [P]'s dick.", "gives [P] head.")
-			sound_path = ("honk/sound/new/ACTIONS/BLOWJOB/")
+			sound_path = ("sound/interactions/new/ACTIONS/BLOWJOB/")
 			if (prob(35))
 				message = pick("sucks [P] off.")
-				sound_path = "honk/sound/new/ACTIONS/MOUTH/SUCK/"
+				sound_path = "sound/interactions/new/ACTIONS/MOUTH/SUCK/"
 			sound = pick(flist("[sound_path]"))
 
 			if (H.lust < 6)
@@ -454,10 +456,11 @@ var/global/orgasms = 0
 			H.do_fucking_animation(P)
 			playsound(loc, ("[sound_path][sound]"), 90, 1, -5)
 			if(prob(35))
-				sound = pick(flist("honk/sound/new/ACTIONS/MOUTH/SALIVA/"))
-				playsound(loc, ("honk/sound/new/ACTIONS/MOUTH/SALIVA/[sound]"), 90, 1, -5)
+				sound = pick(flist("sound/interactions/new/ACTIONS/MOUTH/SALIVA/"))
+				playsound(loc, ("sound/interactions/new/ACTIONS/MOUTH/SALIVA/[sound]"), 90, 1, -5)
 			if (prob(P.potenzia))
 				H.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>goes in deep on</span> <span class='erpbold'>[P]</span><span class='erp'>.</span>")
+			to_chat(world, "BLOWJOB FINISHED")
 
 		if("handjob")
 			message = pick("strokes [P]'s dick.", "masturbate [P]'s penis.")
@@ -481,8 +484,8 @@ var/global/orgasms = 0
 				else
 					P.moan()
 			if(prob(50))
-				sound = pick(flist("honk/sound/new/ACTIONS/PENIS/HANDJOB/"))
-				playsound(loc, "honk/sound/new/ACTIONS/PENIS/HANDJOB/[sound]", 90, 1, -5)
+				sound = pick(flist("sound/interactions/new/ACTIONS/PENIS/HANDJOB/"))
+				playsound(loc, "sound/interactions/new/ACTIONS/PENIS/HANDJOB/[sound]", 90, 1, -5)
 			H.do_fucking_animation(P)
 			if (prob(P.potenzia))
 				H.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>strokes</span> <B>[P]'s </span><span class='erp'> [pick("cock","dick","penis")] faster.</span>")
@@ -492,8 +495,8 @@ var/global/orgasms = 0
 
 			if (H.lastfucked != P || H.lfhole != hole)
 				message = pick(" shoves their dick into [P]'s pussy.")
-				sound = pick(flist("honk/sound/new/ACTIONS/VAGINA/INSERTION/"))
-				playsound(loc, "honk/sound/new/ACTIONS/VAGINA/INSERTION/[sound]", 90, 1, -5)
+				sound = pick(flist("sound/interactions/new/ACTIONS/VAGINA/INSERTION/"))
+				playsound(loc, "sound/interactions/new/ACTIONS/VAGINA/INSERTION/[sound]", 90, 1, -5)
 				H.lastfucked = P
 				H.lfhole = hole
 
@@ -524,11 +527,11 @@ var/global/orgasms = 0
 					P.moan(H.potenzia)
 			H.do_fucking_animation(P)
 			if(prob(75))
-				sound = pick(flist("honk/sound/new/ACTIONS/PENETRATION/"))
-				playsound(loc, "honk/sound/new/ACTIONS/PENETRATION/[sound]", 90, 1, -5)
+				sound = pick(flist("sound/interactions/new/ACTIONS/PENETRATION/"))
+				playsound(loc, "sound/interactions/new/ACTIONS/PENETRATION/[sound]", 90, 1, -5)
 			else
-				sound = pick(flist("honk/sound/new/ACTIONS/BODY/COLLIDE/NAKED/"))
-				playsound(loc, "honk/sound/new/ACTIONS/BODY/COLLIDE/NAKED/[sound]", 90, 1, -5)
+				sound = pick(flist("sound/interactions/new/ACTIONS/BODY/COLLIDE/NAKED/"))
+				playsound(loc, "sound/interactions/new/ACTIONS/BODY/COLLIDE/NAKED/[sound]", 90, 1, -5)
 
 		if("mount")
 			message = pick("fucks [P]'s dick", "rides [P]'s dick", "rides [P]")
@@ -569,11 +572,11 @@ var/global/orgasms = 0
 					P.moan(P.potenzia)
 			H.do_fucking_animation(P)
 			if(prob(75))
-				sound = pick(flist("honk/sound/new/ACTIONS/PENETRATION/"))
-				playsound(loc, "honk/sound/new/ACTIONS/PENETRATION/[sound]", 90, 1, -5)
+				sound = pick(flist("sound/interactions/new/ACTIONS/PENETRATION/"))
+				playsound(loc, "sound/interactions/new/ACTIONS/PENETRATION/[sound]", 90, 1, -5)
 			else
-				sound = pick(flist("honk/sound/new/ACTIONS/BODY/COLLIDE/NAKED/"))
-				playsound(loc, "honk/sound/new/ACTIONS/BODY/COLLIDE/NAKED/[sound]", 90, 1, -5)
+				sound = pick(flist("sound/interactions/new/ACTIONS/BODY/COLLIDE/NAKED/"))
+				playsound(loc, "sound/interactions/new/ACTIONS/BODY/COLLIDE/NAKED/[sound]", 90, 1, -5)
 		if("anal")
 
 			message = pick("fucks [P]'s ass.")
@@ -596,9 +599,7 @@ var/global/orgasms = 0
 			H.lust += 12
 			if (H.lust >= H.resistenza)
 				H.cum(H, P, "anus")
-				to_chat(world, "<span class='notice'>DEBUG: H.cum - [H.lust]</span>")
 				H.erpcooldown += 300
-				to_chat(world, "<span class='notice'>DEBUG: H.erpcooldown установлен на [H.erpcooldown]</span>")
 			else
 				P.moan(H.potenzia)
 
@@ -608,14 +609,12 @@ var/global/orgasms = 0
 				P.lust += H.get_pleasure_amt("anal")
 				if (P.lust >= P.resistenza)
 					P.cum(P, H)
-					to_chat(world, "<span class='notice'>DEBUG: P.cum - [P.lust]</span>")
 					P.erpcooldown += 300
-					to_chat(world, "<span class='notice'>DEBUG: P.erpcooldown установлен на [P.erpcooldown]</span>")
 				else
 					P.moan(H.potenzia)
 			H.do_fucking_animation(P)
-			sound = pick(flist("honk/sound/new/ACTIONS/BODY/COLLIDE/NAKED/"))
-			playsound(loc, "honk/sound/new/ACTIONS/BODY/COLLIDE/NAKED/[sound]", 90, 1, -5)
+			sound = pick(flist("sound/interactions/new/ACTIONS/BODY/COLLIDE/NAKED/"))
+			playsound(loc, "sound/interactions/new/ACTIONS/BODY/COLLIDE/NAKED/[sound]", 90, 1, -5)
 
 		if("oral")
 			message = pick(" fucks [P]'s mouth.")
@@ -641,15 +640,16 @@ var/global/orgasms = 0
 
 			if (prob(H.potenzia))
 				//P.stamina_loss += 3
-				sound_path = "honk/sound/new/ACTIONS/MOUTH/SWALLOW/"
+				sound_path = "sound/interactions/new/ACTIONS/MOUTH/SWALLOW/"
 				H.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>fucks</span> <span class='erpbold'>[P]'s</span> <span class='erp'>throat.</span>")
 				if (istype(P.loc, /obj/structure/closet))
 					P.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>fucks</span> <span class='erpbold'>[P]'s</span> <span class='erp'>throat.</span>")
 			else
-				sound_path = "honk/sound/new/ACTIONS/BLOWJOB/"
+				sound_path = "sound/interactions/new/ACTIONS/BLOWJOB/"
 			sound = pick(flist("[sound_path]"))
 			playsound(loc, "[sound_path][sound]", 90, 1, -5)
 			H.do_fucking_animation(P)
+	to_chat(world, "DEBUG: fuck called")
 
 /mob/living/carbon/human/proc/moan(var/size = 0)
 
@@ -674,11 +674,11 @@ var/global/orgasms = 0
 				else
 					switch(size)
 						if(-INFINITY to 11)
-							sound_path = "honk/sound/new/Moans/mild/"
+							sound_path = "sound/interactions/new/Moans/mild/"
 						if(12 to 20)
-							sound_path = "honk/sound/new/Moans/medium/"
+							sound_path = "sound/interactions/new/Moans/medium/"
 						if(21 to INFINITY)
-							sound_path = "honk/sound/new/Moans/hot/"
+							sound_path = "sound/interactions/new/Moans/hot/"
 					sound = pick(flist("[sound_path]"))
 					playsound(loc, "[sound_path][sound]", 90, 0, -5)
 
