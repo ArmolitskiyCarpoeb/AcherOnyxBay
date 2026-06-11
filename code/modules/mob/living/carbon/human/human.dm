@@ -2248,14 +2248,9 @@
 				H.fuck(H, P, "fingering")
 
 		else if (interaction == "blowjob")
-			world.log << "DEBUG: blowjob start"
-			world.log << "DEBUG: Adjacent(P)=[Adjacent(P)], istype(P.loc)=[istype(P.loc, /obj/structure/closet)], H.loc==P.loc=[H.loc == P.loc]"
-			world.log << "DEBUG: isnude_p=[isnude_p], mouthfree=[mouthfree], haspenis_p=[haspenis_p]"
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && isnude_p && mouthfree && haspenis_p)
-				world.log << "DEBUG: conditions passed, calling fuck"
 				H.fuck(H, P, "blowjob")
 			else
-				world.log << "DEBUG: conditions failed"
 
 		else if (interaction == "handjob")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && isnude_p && haspenis_p)
@@ -2294,6 +2289,3 @@
 				else
 					var/message = pick("You have no lust now.")
 					to_chat(H, "<span class='erp'>[message]</span>")
-
-		to_chat(world, "<span class='notice'>DEBUG: do_interaction: H=[H], P=[P], [interaction]</span>")
-		to_chat(world, "<span class='notice'>DEBUG: check: Adjacent(P)=[Adjacent(P)], P.loc=[P.loc], isnude_p=[isnude_p], mouthfree=[mouthfree], haspenis_p=[haspenis_p], hasvagine_p=[hasvagina_p]</span>")

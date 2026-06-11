@@ -327,7 +327,6 @@ var/global/orgasms = 0
 		H.HadSex.Add(P)
 	if(!P.HadSex.Find(H))
 		P.HadSex.Add(H)*/
-	to_chat(world, "FUCK STARTED")
 	switch(hole)
 
 		if("vaglick")
@@ -425,7 +424,6 @@ var/global/orgasms = 0
 				playsound(loc, ("sound/interactions/new/ACTIONS/MOUTH/SALIVA/[sound]"), 90, 1, -5)
 
 		if("blowjob")
-			to_chat(world, "BLOWJOB CALLED")
 			message = pick("sucks [P]'s dick.", "gives [P] head.")
 			sound_path = ("sound/interactions/new/ACTIONS/BLOWJOB/")
 			if (prob(35))
@@ -460,7 +458,6 @@ var/global/orgasms = 0
 				playsound(loc, ("sound/interactions/new/ACTIONS/MOUTH/SALIVA/[sound]"), 90, 1, -5)
 			if (prob(P.potenzia))
 				H.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>goes in deep on</span> <span class='erpbold'>[P]</span><span class='erp'>.</span>")
-			to_chat(world, "BLOWJOB FINISHED")
 
 		if("handjob")
 			message = pick("strokes [P]'s dick.", "masturbate [P]'s penis.")
@@ -649,7 +646,6 @@ var/global/orgasms = 0
 			sound = pick(flist("[sound_path]"))
 			playsound(loc, "[sound_path][sound]", 90, 1, -5)
 			H.do_fucking_animation(P)
-	to_chat(world, "DEBUG: fuck called")
 
 /mob/living/carbon/human/proc/moan(var/size = 0)
 
