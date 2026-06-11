@@ -139,3 +139,5 @@
 	var/debug = 0
 
 	var/list/HadSex = list()
+
+	var/account_number
