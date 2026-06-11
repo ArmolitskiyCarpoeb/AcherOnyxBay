@@ -40,6 +40,7 @@
 	name = "HoS locker"
 	},
 /obj/item/clothing/mask/gas/german,
+/obj/item/gun/projectile/shotgun/pump/combat/hos,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/heads/hos)
 "as" = (
@@ -177,11 +178,6 @@
 /area/maintenance/substation/command)
 "bS" = (
 /obj/machinery/shield_diffuser,
-/obj/machinery/door/blast/regular{
-	name = "Chapel Launcher Door";
-	id = "chapelgun";
-	dir = 8
-	},
 /turf/simulated/floor/plating,
 /area/hallway/primary/central_one)
 "bT" = (
@@ -3083,6 +3079,11 @@
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
+	},
+/obj/machinery/door/blast/regular{
+	name = "Chapel Launcher Door";
+	id = "chapelgun";
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/hallway/primary/central_one)

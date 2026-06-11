@@ -236,3 +236,17 @@
 	info += "NT departments codes: XXX-XXX-XXX\[br]"
 	info += "Organizations codes: XXX-(XX or XXX)-XXX\[br]"
 	. = ..()
+
+/obj/item/paper/medbay_note
+	name = "note"
+	dynamic_icon = TRUE
+	readonly = TRUE
+
+/obj/item/paper/medbay_note/Initialize()
+	info = ""
+	info += "Примерный прайс-лист услуг в медотделе \"Чужбины\":\[br]"
+	info += "Помазать/забинтовать: 25\[br]"
+	info += "Лечение перелома: 75 (за каждый перелом)\[br]"
+	info += "Переливание крови: 200 (за литр)\[br]"
+	info += "Спасение жизни: бесценно (брать как можно больше!!!)\[br]"
+	. = ..()

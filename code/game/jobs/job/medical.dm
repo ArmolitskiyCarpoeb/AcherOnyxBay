@@ -10,7 +10,7 @@
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#026865"
 	req_admin_notify = 1
-	economic_modifier = 10
+	economic_modifier = 2
 	faction_restricted = TRUE
 	access = list(access_medical, access_medical_equip, access_morgue, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,

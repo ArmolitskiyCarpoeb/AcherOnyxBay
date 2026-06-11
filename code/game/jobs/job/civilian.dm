@@ -109,7 +109,7 @@
 	spawn_positions = 1
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#5e4324"
-	economic_modifier = 10
+	economic_modifier = 3
 	access = list(access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant,
 			access_bar, access_construction, access_kitchen, access_hydroponics, access_janitor, access_tech_storage,
 			access_heads, access_hop, access_RC_announce, access_keycard_auth, access_sec_doors, access_eva, access_maint_tunnels, access_external_airlocks, access_change_ids, access_teleporter)
@@ -163,12 +163,13 @@
 	spawn_positions = 4
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
-	economic_modifier = 0.9
+	economic_modifier = 1
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
 	//alt_titles = list("Drill Technician","Prospector")
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
 	wage = WAGE_MEDIUM
+	sex_lock = MALE
 
 /datum/job/mining/equip(mob/living/carbon/human/H)
 	. = ..()

@@ -13,6 +13,10 @@
 							)
 
 	possible_trading_items = list(
+							/obj/item/storage/tobaccopack/generic								= TRADER_THIS_TYPE,
+							/obj/item/flame/lighter/random										= TRADER_THIS_TYPE,
+							/obj/item/storage/fancy/cigarettes/menthols							= TRADER_THIS_TYPE,
+							/obj/item/storage/fancy/cigarettes									= TRADER_THIS_TYPE,
 							/mob/living/simple_animal/pig 										= TRADER_THIS_TYPE,
 							/obj/item/reagent_containers/food/soydope 							= TRADER_THIS_TYPE,
 							/datum/design/item/powercell/device/high							= TRADER_THIS_TYPE,
@@ -61,6 +65,8 @@
 	typical_duration = 8
 
 	possible_wanted_items = list(
+							/obj/item/organ/internal/											= TRADER_SUBTYPES_ONLY,
+							/obj/item/organ/external/											= TRADER_SUBTYPES_ONLY,
 							)
 
 	possible_trading_items = list(
@@ -128,12 +134,10 @@
 							/obj/item/stock_parts/micro_laser									= TRADER_THIS_TYPE,
 							/obj/item/stock_parts/micro_laser/high								= TRADER_THIS_TYPE,
 							/obj/item/stock_parts/micro_laser/ultra								= TRADER_THIS_TYPE,
-							/obj/item/stock_parts/micro_laser/quadultra							= TRADER_THIS_TYPE,
 
 							/obj/item/stock_parts/matter_bin									= TRADER_THIS_TYPE,
 							/obj/item/stock_parts/matter_bin/adv								= TRADER_THIS_TYPE,
 							/obj/item/stock_parts/matter_bin/super								= TRADER_THIS_TYPE,
-							/obj/item/stock_parts/matter_bin/bluespace							= TRADER_THIS_TYPE,
 							)
 
 	blacklisted_trade_items = null

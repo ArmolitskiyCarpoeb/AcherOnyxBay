@@ -750,7 +750,7 @@
 
 	metabolism = REM * 0.025
 	excretion = 1.0
-	overdose = 6
+	overdose = 8
 	scannable = 1
 	data = 0
 
@@ -787,7 +787,7 @@
 	scannable = 1
 
 	decompile_results = list(
-		/datum/reagent/nicotine = 0.1
+		/datum/reagent/nicotine = 0.15
 		)
 
 	var/nicotine = REM * 0.1
@@ -803,7 +803,7 @@
 	taste_mult = 5.0
 
 	decompile_results = list(
-		/datum/reagent/nicotine = 0.075
+		/datum/reagent/nicotine = 0.2
 		)
 
 	nicotine = REM * 0.075
@@ -815,7 +815,7 @@
 	taste_mult = 7.5
 
 	decompile_results = list(
-		/datum/reagent/nicotine = 0.2
+		/datum/reagent/nicotine = 0.1
 		)
 
 	nicotine = REM * 0.2
