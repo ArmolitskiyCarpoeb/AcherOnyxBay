@@ -309,7 +309,7 @@
 		var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
 		var/decl/security_level/code_blue_level = decls_repository.get_decl(/decl/security_level/default/code_blue)
 		if(!security_state.current_security_level_is_same_or_higher_than(code_blue_level))
-			to_chat(user, SPAN_WARNING("О нет! Нужен синий или красный код на станции!"))
+			to_chat(user, SPAN_WARNING("Не получится - сейчас не чрезвычайная ситуация!"))
 			return
 	return ..()
 
