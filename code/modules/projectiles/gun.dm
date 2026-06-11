@@ -555,8 +555,13 @@
 		P.dispersion += 0.5
 
 	if(isliving(user) && user.skillcheck(user.skills["ranged"], 60, null, "ranged"))
-		P.accuracy += 3
+		P.accuracy += 5
 		P.dispersion = 0
+
+	if(isliving(user) && user.skillcheck(user.skills["ranged"], 80, null, "ranged"))
+		P.accuracy += 10
+		P.dispersion = 0
+
 
 //does the actual launching of the projectile
 /obj/item/gun/proc/process_projectile(obj/projectile, atom/movable/firer, atom/target, target_zone, params=null)
