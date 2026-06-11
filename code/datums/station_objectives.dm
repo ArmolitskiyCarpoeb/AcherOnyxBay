@@ -156,10 +156,10 @@
 
 	active = FALSE
 	SSannounce.play_station_announce(/datum/announce/station_objectives_success, format_status_text("ЗАДАЧИ ВЫПОЛНЕНЫ НАПОЛОВИНУ."))
-	start_shock_pulses()
+	fine_everyone()
 	if(GLOB.station_objectives && !GLOB.station_objectives.active)
 		var/list/tasks = GLOB.station_objectives.generate_tasks()
-		var/time_limit = rand(30, 45) * 1 MINUTES
+		var/time_limit = rand(40) * 1 MINUTES
 		spawn(1500)
 		GLOB.station_objectives.start_directive(tasks, time_limit, null)
 
@@ -182,7 +182,7 @@
 	var/time_left_minutes = round(time_limit / (1 MINUTE))
 	var/list/lines = list("Новая производственная директива.",
 		"Лимит времени: [time_left_minutes] мин.",
-		"Отправьте все переработанные ресурсы через челнок снабжения. Не пользуйтесь челноком снабжения до погрузки на него всех необходимых ресурсов. В случае провала директивы будут применены санкции в виде отряда зачистки или ультрашоковой терапии.")
+		"Отправьте все переработанные ресурсы через челнок снабжения. Не пользуйтесь челноком снабжения до погрузки на него всех необходимых ресурсов. В случае частичного провала директивы - денежный штраф. В случае полного провала директивы - увольнение.")
 
 	for(var/datum/station_objective_task/task in tasks)
 		lines += "- [task.required_amount]x [task.name]"
@@ -269,3 +269,8 @@
 
 /datum/station_objective_task/proc/is_half_complete()
 	return (current_amount < required_amount) && (current_amount > 0)
+
+/datum/station_objective_manager/proc/fine_everyone()
+    for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+        if(H.account_number)
+            charge_to_account(H.account_number, H.real_name, "ЗАДАЧИ ВЫПОЛНЕНЫ НАПОЛОВИНУ.", "CentComm", -5000)
