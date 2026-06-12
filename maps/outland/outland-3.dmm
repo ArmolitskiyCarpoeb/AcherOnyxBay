@@ -41,6 +41,7 @@
 	},
 /obj/item/clothing/mask/gas/german,
 /obj/item/gun/projectile/shotgun/pump/combat/hos,
+/obj/item/clothing/accessory/storage/bandolier,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/heads/hos)
 "as" = (
@@ -532,6 +533,9 @@
 	},
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/machinery/status_display{
+	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
@@ -1214,6 +1218,7 @@
 	d1 = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_containers/vessel/mug/rainbow,
 /turf/simulated/floor/trim/carpet/red,
 /area/crew_quarters/heads/hos)
 "pJ" = (
@@ -1249,6 +1254,9 @@
 	department = "Bridge"
 	},
 /obj/structure/table/hardtable,
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "qd" = (
@@ -1580,6 +1588,9 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/status_display{
+	pixel_x = 32
+	},
 /turf/simulated/floor/trim/wood2,
 /area/bridge/meeting_room)
 "tn" = (
@@ -2166,6 +2177,7 @@
 "Cf" = (
 /obj/structure/table/hardtable,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_containers/vessel/mug/metal,
 /turf/simulated/floor/trim/carpet/green,
 /area/bridge/meeting_room)
 "Cg" = (
@@ -2875,6 +2887,9 @@
 /obj/item/stamp/denied,
 /obj/item/device/flash,
 /obj/item/clothing/glasses/hud/standard/medical,
+/obj/item/reagent_containers/vessel/mug/heart{
+	pixel_y = -4
+	},
 /turf/simulated/floor/trim/carpet/gblue,
 /area/crew_quarters/heads/cmo)
 "NA" = (
@@ -3653,7 +3668,7 @@
 /turf/simulated/floor/tiled/mono,
 /area/bridge)
 "Yg" = (
-/obj/structure/closet/secure_closet/freezer,
+/obj/structure/bookcase/prefitted/nonfiction,
 /turf/simulated/floor/trim/wood2,
 /area/bridge/meeting_room)
 "Yn" = (
