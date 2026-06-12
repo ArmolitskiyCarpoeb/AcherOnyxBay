@@ -199,8 +199,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/storage)
 "cw" = (
+/obj/structure/cable,
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Engine - Main 2";
+	RCon_tag = "Outpost - 2";
 	capacity = 2.5e+006;
 	charge = 500000;
 	cur_coils = 2;
@@ -209,7 +210,6 @@
 	output_attempt = 1;
 	output_level = 500000
 	},
-/obj/structure/cable,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/atmospherics)
 "cy" = (
@@ -327,10 +327,6 @@
 	},
 /turf/simulated/floor/tiled/dark/mono,
 /area/outpost/engineering/storage)
-"fa" = (
-/obj/machinery/recharge_station,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/outpost/engineering/hallway)
 "fu" = (
 /obj/structure/lattice,
 /turf/space,
@@ -531,7 +527,6 @@
 	d2 = 2;
 	d1 = 1
 	},
-/obj/machinery/media/jukebox,
 /turf/simulated/floor/tiled/dark/rough,
 /area/outpost/engineering/meeting)
 "jg" = (
@@ -548,8 +543,9 @@
 /turf/simulated/floor/tiled/techfloor/maint,
 /area/outpost/engineering/telecomms)
 "jJ" = (
-/obj/structure/table/standard,
-/turf/simulated/floor/tiled/techfloor/maint,
+/obj/structure/table/rack,
+/obj/item/shovel,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/hallway)
 "jR" = (
 /obj/effect/shuttle_landmark/mining/asteroid,
@@ -604,11 +600,14 @@
 "ky" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/closet/crate/hydroponics,
-/obj/item/seeds/nanotomatoseed,
-/obj/item/seeds/replicapod,
-/obj/item/seeds/replicapod,
-/obj/item/seeds/replicapod,
-/obj/item/seeds/automatoseed,
+/obj/item/seeds/blueberryseed,
+/obj/item/seeds/bunanaseed,
+/obj/item/seeds/cannabisseed,
+/obj/item/seeds/glowshroom,
+/obj/item/seeds/onionseed,
+/obj/item/seeds/walkingmushroommycelium,
+/obj/item/seeds/towermycelium,
+/obj/item/seeds/puretobaccoseed,
 /turf/simulated/floor/tiled/techfloor/maint,
 /area/outpost/prydwen)
 "kH" = (
@@ -840,6 +839,10 @@
 /turf/simulated/wall/r_wall,
 /area/outpost/engineering/power)
 "ps" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/techfloor/ridge,
 /area/outpost/engineering/telecomms)
 "pt" = (
@@ -914,6 +917,10 @@
 /turf/simulated/wall/r_wall,
 /area/space)
 "qU" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/techfloor/ridge,
 /area/outpost/engineering/power)
 "rc" = (
@@ -1341,11 +1348,6 @@
 "Bo" = (
 /obj/machinery/light/small,
 /obj/structure/table/standard,
-/obj/item/reagent_containers/vessel/bottle/small/darkbeer{
-	pixel_x = 8;
-	pixel_y = -4
-	},
-/obj/item/reagent_containers/vessel/bottle/small/ale,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/hallway)
 "Bp" = (
@@ -1429,6 +1431,10 @@
 /obj/machinery/power/port_gen/pacman,
 /obj/item/stack/material/plasma/ten,
 /obj/item/stack/material/plasma/ten,
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/atmospherics)
 "Ev" = (
@@ -1465,6 +1471,10 @@
 /turf/simulated/floor/tiled/techfloor/maint,
 /area/outpost/engineering/telecomms)
 "EP" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/white/mono,
 /area/outpost/main_outpost/dock)
 "EX" = (
@@ -1519,12 +1529,12 @@
 /turf/simulated/floor/tiled/techfloor/maint,
 /area/outpost/engineering/power)
 "FT" = (
-/obj/machinery/power/smes,
 /obj/structure/cable{
 	icon_state = "0-2";
 	pixel_y = 1;
 	d2 = 2
 	},
+/obj/machinery/power/smes/buildable,
 /turf/simulated/floor/plating,
 /area/outpost/prydwen)
 "Gk" = (
@@ -1710,11 +1720,12 @@
 /turf/simulated/floor/tiled/white/rough,
 /area/outpost/main_outpost/dock)
 "La" = (
-/obj/machinery/atm{
-	pixel_y = 32
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -24
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/outpost/engineering/meeting)
+/turf/simulated/floor/tiled/techfloor/maint,
+/area/outpost/engineering/storage)
 "Lb" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
@@ -1888,7 +1899,6 @@
 	pixel_x = -7;
 	pixel_y = 6
 	},
-/obj/item/reagent_containers/vessel/bottle/small/darkbeer,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/hallway)
 "OR" = (
@@ -1960,11 +1970,11 @@
 /turf/simulated/floor/tiled/techfloor/ridge,
 /area/outpost/engineering/power)
 "QM" = (
-/obj/machinery/power/smes,
 /obj/structure/cable{
 	icon_state = "0-1";
 	d2 = 8
 	},
+/obj/machinery/power/smes/buildable,
 /turf/simulated/floor/plating,
 /area/outpost/prydwen)
 "QT" = (
@@ -2004,8 +2014,6 @@
 /area/outpost/engineering/storage)
 "Rt" = (
 /obj/structure/table/rack,
-/obj/item/gun/energy/laser/pistol,
-/obj/item/gun/energy/laser/pistol,
 /turf/simulated/floor/tiled/dark/mono,
 /area/outpost/engineering/storage)
 "RQ" = (
@@ -2030,6 +2038,10 @@
 	d1 = 1
 	},
 /obj/structure/table/reinforced,
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -24
+	},
 /turf/simulated/floor/tiled/dark/rough,
 /area/outpost/engineering/meeting)
 "RW" = (
@@ -2066,7 +2078,6 @@
 	pixel_y = 1;
 	d2 = 2
 	},
-/obj/structure/bed/chair,
 /turf/simulated/floor/tiled/mono,
 /area/outpost/engineering/hallway)
 "Sl" = (
@@ -2131,10 +2142,6 @@
 	icon_state = "0-8"
 	},
 /obj/structure/table/rack,
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = -2;
-	pixel_y = -1
-	},
 /obj/item/storage/toolbox/mechanical{
 	pixel_x = -2;
 	pixel_y = -1
@@ -2261,8 +2268,12 @@
 /turf/simulated/floor/tiled/dark/mono,
 /area/outpost/engineering/power)
 "Wv" = (
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
 /obj/machinery/power/smes/buildable{
-	RCon_tag = "Engine - Main 2";
+	RCon_tag = "Outpost - 1";
 	capacity = 2.5e+006;
 	charge = 500000;
 	cur_coils = 2;
@@ -2270,10 +2281,6 @@
 	input_level = 500000;
 	output_attempt = 1;
 	output_level = 500000
-	},
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/atmospherics)
@@ -9882,7 +9889,7 @@ jR
 Ze
 Ze
 Ze
-aS
+La
 LU
 WG
 WG
@@ -10018,7 +10025,7 @@ WG
 WG
 WG
 LV
-JP
+jJ
 QV
 OQ
 Xz
@@ -10490,7 +10497,7 @@ aF
 aF
 aF
 aF
-eZ
+aF
 LU
 rp
 lC
@@ -10626,7 +10633,7 @@ WG
 WG
 WG
 LV
-fa
+us
 hn
 GZ
 Xz
@@ -11538,7 +11545,7 @@ WG
 lC
 lC
 LV
-jJ
+pU
 vp
 cI
 yS
@@ -11548,7 +11555,7 @@ aA
 qy
 qU
 cI
-La
+WU
 eP
 pt
 ug

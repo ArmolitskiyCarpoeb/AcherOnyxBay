@@ -1786,6 +1786,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "wZ" = (
+/obj/machinery/telecomms/relay/preset/bridge,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark/mono,
 /area/maintenance/substation/command)
 "xg" = (
