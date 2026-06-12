@@ -769,6 +769,14 @@
 				to_chat(M, SPAN("notice", "You feel invigorated and calm."))
 			else
 				to_chat(M, SPAN("warning", "You feel like you should smoke less often..."))
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	if(!(H.addictions[/datum/addiction/nicotine]))
+		consumption_counter += removed
+		if(consumption_counter >= 5)
+			H.add_addiction(/datum/addiction/nicotine, 0)
+			to_chat(H, SPAN_WARNING("You feel a craving for nicotine forming..."))
 
 /datum/reagent/nicotine/overdose(mob/living/carbon/M, alien)
 	..()
@@ -1100,6 +1108,14 @@
 	else if(affecting_dose <= 0.5 && world.time > thcdata + DRUGS_MESSAGE_DELAY)
 		thcdata = world.time
 		to_chat(M, SPAN("notice", "Weed..."))
+
+	if(!ishuman(M)) return
+	var/mob/living/carbon/human/H = M
+	if(!(H.addictions[/datum/addiction/cannabis]))
+		consumption_counter += removed
+		if(consumption_counter >= 15)
+			H.add_addiction(/datum/addiction/cannabis, 0)
+			to_chat(H, SPAN_WARNING("You feel a craving for cannabis forming..."))
 
 /datum/reagent/thc/overdose(mob/living/carbon/M, alien)
 	if(world.time > thcdata + DRUGS_MESSAGE_DELAY/2)

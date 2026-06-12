@@ -35,6 +35,13 @@
 			L.adjust_fire_stacks(ceil(amount / strength)) // Thus, pure ethanol has a half of welding fuel's flammability, further decreasing as the drink gets softer.
 
 /datum/reagent/ethanol/affect_blood(mob/living/carbon/M, alien, removed)
+	if(!ishuman(M)) return
+	var/mob/living/carbon/human/H = M
+	if(!(H.addictions[/datum/addiction/alcohol]))
+		consumption_counter += removed
+		if(consumption_counter >= 10)
+			H.add_addiction(/datum/addiction/alcohol, 0)
+			to_chat(H, SPAN_WARNING("You feel a craving for alcohol forming..."))
 	M.adjustToxLoss(removed * 2 * toxicity)
 	return
 

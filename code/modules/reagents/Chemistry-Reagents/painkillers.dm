@@ -23,6 +23,13 @@
 	var/effectiveness = removed / metabolism
 	handle_painkiller_effect(M, affecting_dose, effectiveness)
 	handle_painkiller_overdose(M, affecting_dose)
+	if(!ishuman(M)) return
+	var/mob/living/carbon/human/H = M
+	if(!(H.addictions[/datum/addiction/opioid]))
+		consumption_counter += removed
+		if(consumption_counter >= 5)
+			H.add_addiction(/datum/addiction/opioid, 0)
+			to_chat(H, SPAN_WARNING("You feel a craving for opioids forming..."))
 
 /datum/reagent/painkiller/overdose(mob/living/carbon/M, alien)
 	..()

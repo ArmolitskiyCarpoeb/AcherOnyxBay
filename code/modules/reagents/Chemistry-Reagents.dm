@@ -36,6 +36,7 @@
 	var/glass_required = null // Required glass for current cocktail
 	var/list/glass_special = null // null equivalent to list()
 	var/list/decompile_results = null
+	var/consumption_counter
 
 /datum/reagent/New(datum/reagents/holder)
 	if(!istype(holder))
