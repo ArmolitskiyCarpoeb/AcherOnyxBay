@@ -297,7 +297,7 @@ var/global/list/additional_antag_types = list()
 		for(var/mob/player in GLOB.player_list)
 			if(!player.client)
 				continue
-			if(!antag_id || (antag_id in player.client.prefs.be_special_role))
+			if(!antag_id || (player.client.prefs.want_to_be_antag))
 				log_debug("[player.key] had [antag_id] enabled, so we are drafting them.")
 				candidates += player.mind
 	else
@@ -308,7 +308,7 @@ var/global/list/additional_antag_types = list()
 
 		// Get a list of all the people who want to be the antagonist for this round
 		for(var/mob/new_player/player in players)
-			if(!antag_id || (antag_id in player.client.prefs.be_special_role))
+			if(!antag_id || (player.client.prefs.want_to_be_antag))
 				log_debug("[player.key] had [antag_id] enabled, so we are drafting them.")
 				candidates += player.mind
 				players -= player
@@ -316,7 +316,7 @@ var/global/list/additional_antag_types = list()
 		// If we don't have enough antags, draft people who voted for the round.
 		if(candidates.len < required_enemies)
 			for(var/mob/new_player/player in players)
-				if(!antag_id || ((antag_id in player.client.prefs.be_special_role) || (antag_id in player.client.prefs.may_be_special_role)))
+				if(!antag_id || ((player.client.prefs.want_to_be_antag) || (antag_id in player.client.prefs.may_be_special_role)))
 					log_debug("[player.key] has not selected never for this role, so we are drafting them.")
 					candidates += player.mind
 					players -= player

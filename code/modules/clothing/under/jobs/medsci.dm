@@ -268,3 +268,12 @@
 	desc = "A turqouise sweater and a pair of dark blue slacks."
 	icon_state = "psychturtle"
 	item_state = "psychturtle"
+
+//new
+/obj/item/clothing/under/rank/medical_new
+	name = "medical jumpsuit"
+	desc = ""
+	icon_state = "newmed"
+	item_state = "newmed"
+	permeability_coefficient = 0.5
+	armor_values = alist(melee = 5, bullet = 5, laser = 5, energy = 0, bomb = 0, bio = 45)

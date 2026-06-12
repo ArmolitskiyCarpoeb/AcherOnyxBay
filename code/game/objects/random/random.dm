@@ -1053,7 +1053,7 @@
 				/obj/item/clothing/under/casual_pants/camo = 2,
 				/obj/item/clothing/under/casual_pants/classicjeans = 2,
 				/obj/item/clothing/under/track_pants = 2,
-				/obj/item/clothing/under/rank/medical = 2,
+				/obj/item/clothing/under/rank/medical_new = 2,
 				/obj/item/clothing/under/rank/medical/paramedic = 2,
 				/obj/item/clothing/under/overalls = 2,
 				/obj/item/clothing/ears/earmuffs = 2,

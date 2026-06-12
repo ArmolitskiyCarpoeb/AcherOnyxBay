@@ -343,8 +343,8 @@
 
 /obj/structure/closet/wardrobe/medic_white/Initialize()
 	. = ..()
-	new /obj/item/clothing/under/rank/medical(src)
-	new /obj/item/clothing/under/rank/medical(src)
+	new /obj/item/clothing/under/rank/medical_new(src)
+	new /obj/item/clothing/under/rank/medical_new(src)
 	new /obj/item/clothing/under/rank/medical/scrubs/blue(src)
 	new /obj/item/clothing/under/rank/medical/scrubs/green(src)
 	new /obj/item/clothing/under/rank/medical/scrubs/purple(src)

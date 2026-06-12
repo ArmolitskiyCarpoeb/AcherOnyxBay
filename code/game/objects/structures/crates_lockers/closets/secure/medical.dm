@@ -61,7 +61,7 @@
 		new /datum/atom_creator/simple(/obj/item/storage/backpack/dufflebag/med, 50),
 		/obj/item/clothing/under/rank/nursesuit,
 		/obj/item/clothing/head/nursehat,
-		/obj/item/clothing/under/rank/medical,
+		/obj/item/clothing/under/rank/medical_new,
 		/obj/item/clothing/under/rank/nurse,
 		/obj/item/clothing/suit/storage/toggle/labcoat,
 		/obj/item/clothing/suit/storage/toggle/fr_jacket,

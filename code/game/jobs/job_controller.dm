@@ -195,7 +195,7 @@ var/global/datum/controller/occupations/job_master
 			if(job.faction_restricted && (player.client.prefs.background != GLOB.using_map.company_name || (player.client.prefs.nanotrasen_relation in COMPANY_OPPOSING)))
 				Debug("FOC character is not loyal to [GLOB.using_map.company_name]")
 				continue
-			if(flag && !(flag in player.client.prefs.be_special_role))
+			if(flag && !(player.client.prefs.want_to_be_antag))
 				Debug("FOC flag failed, Player: [player], Flag: [flag], ")
 				continue
 			if(player.client.prefs.IsJobPriority(job,level))

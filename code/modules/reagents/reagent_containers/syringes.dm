@@ -532,4 +532,13 @@
 /obj/item/reagent_containers/syringe/borg
 	stabby = FALSE
 
+/obj/item/reagent_containers/syringe/drugs/opium
+	name = "syringe (opium)"
+	desc = ""
+	mode = SYRINGE_INJECT
+	starting_label = "drugs"
+	package_state = "package_drugs"
+	startswith = list(
+		/datum/reagent/painkiller/opium = 15,)
+
 #undef STANDARD_SYRINGE_MAX_VOLUME

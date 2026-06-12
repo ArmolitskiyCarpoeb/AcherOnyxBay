@@ -375,4 +375,4 @@ var/datum/paiController/paiController			// Global handler for pAI candidates
 		if(response == "Yes")
 			recruitWindow(C.mob)
 		else if (response == "Never for this round")
-			C.prefs.be_special_role -= BE_PAI
+			C.prefs.want_to_be_antag -= BE_PAI

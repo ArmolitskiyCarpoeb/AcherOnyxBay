@@ -1,7 +1,7 @@
 /decl/hierarchy/outfit/job/medical
 	hierarchy_type = /decl/hierarchy/outfit/job/medical
 	l_ear = /obj/item/device/radio/headset/headset_med
-	shoes = /obj/item/clothing/shoes/white
+	shoes = /obj/item/clothing/shoes/laceup
 	pda_type = /obj/item/device/pda/medical
 	pda_slot = slot_l_store
 	//flags = OUTFIT_NO_SURVIVAL
@@ -13,8 +13,8 @@
 /decl/hierarchy/outfit/job/medical/cmo
 	name = OUTFIT_JOB_NAME("Chief Medical Officer")
 	l_ear  =/obj/item/device/radio/headset/heads/cmo
-	uniform = /obj/item/clothing/under/rank/chief_medical_officer
-	suit = /obj/item/clothing/suit/storage/toggle/labcoat/cmo
+	uniform = /obj/item/clothing/under/rank/medical_new
+	suit = /obj/item/clothing/suit/storage/toggle/labcoat/blue
 	shoes = /obj/item/clothing/shoes/laceup
 	l_hand = /obj/item/storage/firstaid/adv
 	r_pocket = /obj/item/device/flashlight/pen
@@ -23,11 +23,12 @@
 
 /decl/hierarchy/outfit/job/medical/doctor
 	name = OUTFIT_JOB_NAME("Medical Doctor")
-	uniform = /obj/item/clothing/under/rank/medical
+	uniform = /obj/item/clothing/under/rank/medical_new
 	suit = /obj/item/clothing/suit/storage/toggle/labcoat
 	l_hand = /obj/item/storage/firstaid/adv
 	r_pocket = /obj/item/device/flashlight/pen
 	id_type = /obj/item/card/id/medical
+	shoes = /obj/item/clothing/shoes/laceup
 
 /decl/hierarchy/outfit/job/medical/doctor/emergency_physician
 	name = OUTFIT_JOB_NAME("Emergency physician")
