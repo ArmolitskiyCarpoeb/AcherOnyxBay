@@ -1112,6 +1112,24 @@
 		set_dir(dir)
 		facing_dir = dir
 
+/mob/set_dir(newdir)
+	if(facing_dir)
+		if(!canface() || lying || buckled || restrained())
+			facing_dir = null
+		else
+			// Принудительно устанавливаем зафиксированное направление, игнорируя newdir
+			if(dir != facing_dir)
+				dir = facing_dir
+			return
+	return ..(newdir)  // если фиксации нет, передаём новое направление дальше
+
+/mob/Move(newloc, direct)
+	. = ..()
+	if(facing_dir)
+		if(dir != facing_dir)
+			set_dir(facing_dir) // вызовет ваш set_dir, но с тем же facing_dir
+
+/*
 /mob/set_dir()
 	if(facing_dir)
 		if(!canface() || lying || buckled || restrained())
@@ -1120,7 +1138,7 @@
 			return ..(facing_dir)
 	else
 		return ..()
-
+*/
 /mob/proc/set_stat(new_stat)
 	. = stat != new_stat
 	stat = new_stat
