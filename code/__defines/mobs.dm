@@ -304,15 +304,12 @@ GLOBAL_LIST_INIT(organ_tag_to_name, list(
 #define AUDIBLE_MESSAGE 2
 
 //Moods levels for humans
-#define MOOD_LEVEL_HAPPY4 20
-#define MOOD_LEVEL_HAPPY3 15
-#define MOOD_LEVEL_HAPPY2 10
-#define MOOD_LEVEL_HAPPY1 5
-#define MOOD_LEVEL_NEUTRAL 0
-#define MOOD_LEVEL_SAD1 -5
-#define MOOD_LEVEL_SAD2 -10
-#define MOOD_LEVEL_SAD3 -15
-#define MOOD_LEVEL_SAD4 -20
+#define MOOD_LEVEL_HAPPY2 80
+#define MOOD_LEVEL_HAPPY1 75
+#define MOOD_LEVEL_NEUTRAL 60
+#define MOOD_LEVEL_SAD1 50
+#define MOOD_LEVEL_SAD2 25
+#define MOOD_LEVEL_SAD3 0
 
 //Hygiene levels for humans
 #define HYGIENE_LEVEL_CLEAN 250
