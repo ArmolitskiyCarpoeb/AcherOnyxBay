@@ -105,10 +105,8 @@ GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of S
 // Отрисовка в статпанели
 /mob/living/carbon/human/Stat()
 	. = ..()
-	if(client && happiness_events.len)
-		stat("", "НАСТРОЕНИЕ")
-		for(var/datum/happiness_event/E in happiness_events)
-			stat(null, E.description)
+	if(client)
+		stat("", "")
 		stat("Рассудок", "[sanity]/[MAX_SANITY]")
 
 /mob/living/carbon/human/proc/update_pain_event()

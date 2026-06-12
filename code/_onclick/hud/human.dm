@@ -347,7 +347,7 @@
 		H.fov.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		H.fov.layer = UNDER_HUD_LAYER
 		LAZYADD(always_visible_inventory, H.fov)
-/*
+
 	if(hud_data.has_happiness)
 		mymob.happiness_icon = new /atom/movable/screen/happiness_icon()
 		mymob.happiness_icon.name = "mood"
@@ -355,7 +355,7 @@
 		mymob.happiness_icon.icon_state = "mood4"
 		mymob.happiness_icon.screen_loc = ui_happiness
 		infodisplay |= mymob.happiness_icon
-*/
+
 	mymob.pain = new /atom/movable/screen/fullscreen/pain( null )
 	infodisplay |= mymob.pain
 

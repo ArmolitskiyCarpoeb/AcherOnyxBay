@@ -2289,3 +2289,158 @@
 				else
 					var/message = pick("You have no lust now.")
 					to_chat(H, "<span class='erp'>[message]</span>")
+
+/mob/living/carbon/human/proc/print_happiness()
+	var/msg = "\n<div class='firstdiv'><div class='box'>"
+	msg += "<span class='info'>Всё ещё помню своё имя, меня зовут </span><font color='green'>[real_name]</font>\n"
+	msg += "<span class='info'>Не верю, что мой возраст равен </span><font color='red'>[age]</font><span class='info'></span>\n"
+	msg += "<span class='info'>А ещё я </span><font color='blue'>[gender]</font><span class='info'></span>\n"
+	msg += "<hr class='linexd'>"
+	msg += "<span class='info'><EM>Что со мной?</EM></span>\n"
+	for(var/datum/happiness_event/E in happiness_events)
+		msg += E.description
+	msg += "<hr class='linexd'>"
+	if(mind && islist(mind.traits))
+		msg += "<span class='info'>Мои особенности:</span>\n"
+		for(var/trait in mind.traits)
+			var/datum/trait/T = trait_datums[trait]
+			msg += "<span class='notice'>- [T.name]</span>\n"
+
+	to_chat(src, msg)
+
+/mob/living/carbon/human/proc/update_happiness()
+	var/old_happiness = happiness
+	var/old_icon = null
+	if(!happiness_icon) return
+	var/current_sanity = sanity
+
+	switch(current_sanity)//switch(happiness)
+		if(-5000000 to MOOD_LEVEL_SAD3)
+			happiness_icon.icon_state = "mood6"
+
+		if(MOOD_LEVEL_SAD3 to MOOD_LEVEL_SAD2)
+			happiness_icon.icon_state = "mood5"
+
+		if(MOOD_LEVEL_SAD2 to MOOD_LEVEL_SAD1)
+			happiness_icon.icon_state = "mood4"
+
+		if(MOOD_LEVEL_SAD1 to MOOD_LEVEL_NEUTRAL)
+			happiness_icon.icon_state = "mood3"
+
+		if(MOOD_LEVEL_NEUTRAL to MOOD_LEVEL_HAPPY1)
+			happiness_icon.icon_state = "mood3"
+
+		if(MOOD_LEVEL_HAPPY1 to MOOD_LEVEL_HAPPY2)
+			happiness_icon.icon_state = "mood2"
+
+		if(MOOD_LEVEL_HAPPY2 to INFINITY)
+			happiness_icon.icon_state = "mood1"
+
+	if(old_icon && old_icon != happiness_icon.icon_state)
+		if(old_happiness > happiness)
+			to_chat(src, "<span class='warning'>Становится хуже морально.</span>")
+		else
+			to_chat(src, "<span class='info'>Настроение повысилось.</span>")
+
+/mob/proc/flash_sadness()
+	if(prob(2))
+		flick("sadness",pain)
+		//var/spoopysound = pick('sound/effects/badmood1.ogg','sound/effects/badmood2.ogg','sound/effects/badmood3.ogg','sound/effects/badmood4.ogg')
+		//sound_to(src, spoopysound)
+
+/mob/living/carbon/proc/handle_happiness()
+	var/current_sanity = sanity
+	if(current_sanity > MOOD_LEVEL_SAD2)
+		if(horror_loop)
+			to_chat(src, "<span class='phobia'>My nerves relax some... I can think clearly again...</span>")
+			sound_to(src, sound(null, repeat = 1, wait = 0, volume = 50, channel = 6))
+			horror_loop = FALSE
+			clear_fullscreen("freakout")
+
+	switch(current_sanity)
+		if(-INFINITY to MOOD_LEVEL_SAD3)
+			do_stress_effects()
+			flash_sadness()
+			crit_mood_modifier = -10
+		if(MOOD_LEVEL_SAD3 to MOOD_LEVEL_SAD2)
+			flash_sadness()
+			crit_mood_modifier = -5
+		if(MOOD_LEVEL_SAD2 to MOOD_LEVEL_SAD1)
+			crit_mood_modifier = CRIT_SUCCESS_NORM
+		if(MOOD_LEVEL_SAD1 to MOOD_LEVEL_NEUTRAL)
+			crit_mood_modifier = CRIT_SUCCESS_NORM
+		if(MOOD_LEVEL_NEUTRAL to MOOD_LEVEL_HAPPY1)
+			crit_mood_modifier = CRIT_SUCCESS_NORM
+		if(MOOD_LEVEL_HAPPY1 to MOOD_LEVEL_HAPPY2)
+			crit_mood_modifier = 5
+		if(MOOD_LEVEL_HAPPY2 to INFINITY)
+			crit_mood_modifier = 10
+
+/mob/living/carbon/proc/do_stress_effects()
+	return
+
+/mob/living/carbon/human/do_stress_effects()
+	if(!horror_loop)
+		freakout_emote()
+		sound_to(src, sound('sound/effects/White_noise.ogg', repeat = 1, wait = 0, volume = 25, channel = 6))
+		horror_loop = TRUE
+		overlay_fullscreen("freakout", /atom/movable/screen/fullscreen/freakout)
+		to_chat(src, "<span class='phobia'<big>NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL NOT REAL</big></span>")
+	stuttering = 5
+	shake_camera(src, 5, 0.1)
+
+
+/mob/living/carbon/human/proc/add_event(category, type) //Category will override any events in the same category, should be unique unless the event is based on the same thing like hunger.
+	var/datum/happiness_event/the_event
+	if(events[category])
+		the_event = events[category]
+		if(the_event.type != type)
+			clear_event(category)
+			return .()
+		else
+			return 0 //Don't have to update the event.
+	else
+		the_event = new type()
+
+	events[category] = the_event
+	update_happiness()
+
+	if(the_event.timeout)
+		spawn(the_event.timeout)
+			clear_event(category)
+
+/mob/living/carbon/human/proc/clear_event(category)
+	var/datum/happiness_event/event = events[category]
+	if(!event)
+		return 0
+
+	events -= category
+	qdel(event)
+	update_happiness()
+
+/mob/living/carbon/human/proc/handle_hygiene()
+	adjust_hygiene(-my_hygiene_factor)
+	var/image/smell = image('icons/effects/effects.dmi', "smell")//This is a hack, there has got to be a safer way to do this but I don't know it at the moment.
+	switch(hygiene)
+		if(HYGIENE_LEVEL_NORMAL to INFINITY)
+			add_event("hygiene", /datum/happiness_event/hygiene/clean)
+			overlays -= smell
+		if(HYGIENE_LEVEL_DIRTY to HYGIENE_LEVEL_NORMAL)
+			clear_event("hygiene")
+			overlays -= smell
+		if(0 to HYGIENE_LEVEL_DIRTY)
+			overlays -= smell
+			overlays += smell
+			add_event("hygiene", /datum/happiness_event/hygiene/smelly)
+
+/mob/living/carbon/human/proc/adjust_hygiene(amount)
+	var/old_hygiene = hygiene
+	if(amount>0)
+		hygiene = min(hygiene+amount, HYGIENE_LEVEL_CLEAN)
+
+	else if(old_hygiene)
+		hygiene = max(hygiene+amount, 0)
+
+/mob/living/carbon/human/proc/set_hygiene(amount)
+	if(amount >= 0)
+		hygiene = min(HYGIENE_LEVEL_CLEAN, amount)

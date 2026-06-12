@@ -32,7 +32,7 @@
 
 		handle_happiness()
 
-		handle_hygiene()
+		//handle_hygiene()
 		. = 1
 
 		if(!client && !mind && species)

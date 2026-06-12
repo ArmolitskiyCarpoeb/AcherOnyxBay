@@ -10,17 +10,17 @@
 
 /datum/happiness_event/cum
 	description = "<span class='info'>Я кончил!</span>\n"
-	happiness = 25
+	happiness = 15
 	timeout = 15 MINUTES
 
 /datum/happiness_event/raped
 	description = "<span class='info'>Меня изнасиловали.</span>\n"
-	happiness = -25
+	happiness = -15
 	timeout = 15 MINUTES
 
 /datum/happiness_event/sleeped
-	description = "<span class='info'>I've had enough to drink for a while!</span>\n"
-	happiness = 20
+	description = "<span class='info'>Поспал!</span>\n"
+	happiness = 10
 	timeout = 5 MINUTES
 
 //thirst
@@ -36,22 +36,22 @@
 
 /datum/happiness_event/thirst/thirsting
 	description = "<span class='danger'>I'm starting to get thirsty.</span>\n"
-	happiness = -5
+	happiness = -3
 	group = "thirst"
 
 /datum/happiness_event/thirst/thirsty
 	description = "<span class='danger'>I'm getting a bit thirsty.</span>\n"
-	happiness = -10
+	happiness = -7
 	group = "thirst"
 
 /datum/happiness_event/thirst/verythirsty
 	description = "<span class='danger'>I'm getting thirsty!</span>\n"
-	happiness = -15
+	happiness = -10
 	group = "thirst"
 
 /datum/happiness_event/thirst/dehydrated
 	description = "<span class='danger'>I NEED WATER!</span>\n"
-	happiness = -25
+	happiness = -15
 	group = "thirst"
 
 //nutrition
@@ -76,17 +76,17 @@
 
 /datum/happiness_event/nutrition/hungry
 	description = "<span class='danger'>I'm getting hungry...</span>\n"
-	happiness = -5
+	happiness = -3
 	group = "nutrition"
 
 /datum/happiness_event/nutrition/veryhungry
 	description = "<span class='danger'>I'm getting really hungry!</span>\n"
-	happiness = -15
+	happiness = -7
 	group = "nutrition"
 
 /datum/happiness_event/nutrition/starving
 	description = "<span class='danger'>I WANT FOOD!</span>\n"
-	happiness = -25
+	happiness = -15
 	group = "nutrition"
 
 
@@ -123,32 +123,32 @@
 
 /datum/happiness_event/dirty/dirty_medium
 	description = "<span class='danger'>Тут действительно нужно прибраться...</span>\n"
-	happiness = -5
+	happiness = -3
 	//timeout = 1800
 	group = "dirty"
 
 /datum/happiness_event/dirty/dirty_heavy
 	description = "<span class='danger'>ВЕЗДЕ МУСОР И ГРЯЗЬ!</span>\n"
-	happiness = -10
+	happiness = -7
 	//timeout = 1800
 	group = "dirty"
 
 //Disgust
 /datum/happiness_event/disgust/gross
 	description = "<span class='danger'>That was gross.</span>\n"
-	happiness = -5
+	happiness = -2
 	timeout = 1800
 	group = "disgust"
 
 /datum/happiness_event/disgust/verygross
 	description = "<span class='danger'>I think I'm going to puke...</span>\n"
-	happiness = -10
+	happiness = -5
 	timeout = 1800
 	group = "disgust"
 
 /datum/happiness_event/disgust/disgusted
 	description = "<span class='danger'>Oh god that's disgusting...</span>\n"
-	happiness = -15
+	happiness = -10
 	timeout = 1800
 	group = "disgust"
 
@@ -180,12 +180,12 @@
 //Embarassment
 /datum/happiness_event/hygiene/shit
 	description = "<span class='danger'>I shit myself. How embarassing.\n"
-	happiness = -20
+	happiness = -10
 	timeout = 1800
 
 /datum/happiness_event/hygiene/pee
 	description = "<span class='danger'>I pissed myself. How embarassing.\n"
-	happiness = -20
+	happiness = -10
 	timeout = 1800
 
 //For when you get branded.
@@ -203,7 +203,7 @@
 //When you fulfill an AI request
 /datum/happiness_event/request_fulfilled
 	description = "<span class='info'>My god is pleased with me!</span>\n"
-	happiness = 20
+	happiness = 10
 	timeout = 1800
 
 //When you fulfill an AI request
@@ -222,39 +222,39 @@
 
 /datum/happiness_event/cloned_corpse
 	description = "<span class='danger'>I recently saw my own corpse...</span>\n"
-	happiness = -6
+	happiness = -5
 
 /datum/happiness_event/surgery
 	description = "<span class='danger'>HE'S CUTTING ME OPEN!!</span>\n"
-	happiness = -15
+	happiness = -10
 
 /datum/happiness_event/bleedingout
 	description = "<span class='danger'>I feel that I am bleeding out...</span>\n"
-	happiness = -10
+	happiness = -5
 	timeout = 1800
 	group = "bleed"
 
 /datum/happiness_event/bleedingouthard
 	description = "<span class='danger'>I REALLY NEED TO STOP THIS BLEEDING!</span>\n"
-	happiness = -20
+	happiness = -15
 	timeout = 1800
 	group = "bleed"
 
 /datum/happiness_event/verymildpain
 	description = "<span class='danger'>I feel some pain...</span>\n"
-	happiness = -5
+	happiness = -2
 	timeout = 1800
 	group = "pain"
 
 /datum/happiness_event/mildpain
 	description = "<span class='danger'>It hurts...a lot.</span>\n"
-	happiness = -15
+	happiness = -5
 	timeout = 1800
 	group = "pain"
 
 /datum/happiness_event/pain
 	description = "<span class='danger'>IT HURTS SO MUCH!</span>\n"
-	happiness = -25
+	happiness = -12
 	timeout = 1800
 	group = "pain"
 
@@ -266,54 +266,54 @@
 //For when you see someone die and you're not hardcore.
 /datum/happiness_event/dead
 	description = "<span class='danger'>OH MY GOD THEY'RE DEAD!</span>\n"
-	happiness = -20
+	happiness = -10
 	timeout = 10 MINUTES
 
 /datum/happiness_event/overdose
 	description = "<span class='danger'>I shouldn't have taken so much drugs!</span>\n"
-	happiness = -15
+	happiness = -10
 	timeout = 1800
 
 // Addiction Events
 
 /datum/happiness_event/addiction/withdrawal_small
 	description = "<span class='danger'>I don't indulge in my addiction.</span>\n"
-	happiness = -3
+	happiness = -1
 	timeout = FALSE
 	group = "addiction"
 
 
 /datum/happiness_event/addiction/withdrawal_medium
 	description = "<span class='danger'>I don't indulge in my addiction, that makes me unhappy!</span>\n"
-	happiness = -7
+	happiness = -4
 	timeout = FALSE
 	group = "addiction"
 
 /datum/happiness_event/addiction/withdrawal_large
 	description = "<span class='danger'>I don't indulge in my addiction, that makes me very unhappy!</span>\n"
-	happiness = -15
+	happiness = -7
 	timeout = FALSE
 	group = "addiction"
 
 /datum/happiness_event/addiction/withdrawal_extreme
 	description = "<span class='danger'>I DON'T INDULGE IN MY ADDICTION, MY DAY IS SHIT!</span>\n"
-	happiness = -35
+	happiness = -10
 	timeout = FALSE
 	group = "addiction"
 
 /datum/happiness_event/high
 	description = "<span class='binfo'>I'm high as fuck!</span>\n"
-	happiness = 25
+	happiness = 15
 	group = "addiction"
 
 /datum/happiness_event/relaxed
 	description = "<span class='binfo'>That cigarette was good.</span>\n"
-	happiness = 15
+	happiness = 10
 	timeout = 1800
 	group = "addiction"
 
 /datum/happiness_event/booze
 	description = "<span class='binfo'>Alcohol makes the pain go away.</span>\n"
-	happiness = 15
+	happiness = 10
 	timeout = 2400
 	group = "addiction"

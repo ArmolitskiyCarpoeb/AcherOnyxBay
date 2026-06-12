@@ -105,6 +105,8 @@
 			last_sanity_update_time = world.time
 			update_sanity_from_events()
 
+		update_happiness()
+
 		if(!stat && !is_ic_dead())
 			update_pain_event()   // обновляем событие болиии
 			update_hunger_event()

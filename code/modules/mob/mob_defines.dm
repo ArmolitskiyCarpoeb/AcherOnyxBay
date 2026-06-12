@@ -96,7 +96,7 @@
 	var/next_move = null
 	var/active_hand = ACTIVE_HAND_RIGHT
 	var/real_name = null
-	var/happiness = 0
+	var/happiness = 50
 	var/aim_assist = FALSE
 	var/twohanded_mode = FALSE
 	var/rightclicked = FALSE // Only TRUE if the last click was a "functional" RMB click, so we don't have to pass an extra argument through a massive sequence of proc calls.

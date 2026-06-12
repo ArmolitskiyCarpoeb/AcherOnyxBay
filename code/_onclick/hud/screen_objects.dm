@@ -113,8 +113,8 @@
 	return 1
 
 /atom/movable/screen/happiness_icon/Click()
-	var/mob/living/carbon/C = usr
-	C.print_happiness(C)
+	var/mob/living/carbon/human/H = usr
+	H.print_happiness()
 
 /atom/movable/screen/zone_sel
 	name = "damage zone"
