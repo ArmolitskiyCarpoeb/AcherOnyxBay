@@ -21,25 +21,25 @@ macro "borghotkeymode"
 		name = "Northwest"
 		command = ".northwest"
 	elem
-		name = "CTRL+West"
+		name = "CTRL+A"
 		command = "westface"
 	elem
 		name = "West+REP"
 		command = ".moveleft"
 	elem
-		name = "CTRL+North"
+		name = "CTRL+W"
 		command = "northface"
 	elem
 		name = "North+REP"
 		command = ".moveup"
 	elem
-		name = "CTRL+East"
+		name = "CTRL+D"
 		command = "eastface"
 	elem
 		name = "East+REP"
 		command = ".moveright"
 	elem
-		name = "CTRL+South"
+		name = "CTRL+S"
 		command = "southface"
 	elem
 		name = "South+REP"
@@ -260,25 +260,25 @@ macro "macro"
 		name = "Northwest"
 		command = ".northwest"
 	elem
-		name = "CTRL+West"
+		name = "CTRL+A"
 		command = "westface"
 	elem
 		name = "West+REP"
 		command = ".moveleft"
 	elem
-		name = "CTRL+North"
+		name = "CTRL+W"
 		command = "northface"
 	elem
 		name = "North+REP"
 		command = ".moveup"
 	elem
-		name = "CTRL+East"
+		name = "CTRL+D"
 		command = "eastface"
 	elem
 		name = "East+REP"
 		command = ".moveright"
 	elem
-		name = "CTRL+South"
+		name = "CTRL+S"
 		command = "southface"
 	elem
 		name = "South+REP"
@@ -451,25 +451,25 @@ macro "hotkeymode"
 		name = "Northwest"
 		command = ".northwest"
 	elem
-		name = "CTRL+West"
+		name = "CTRL+A"
 		command = "westface"
 	elem
 		name = "West+REP"
 		command = ".moveleft"
 	elem
-		name = "CTRL+North"
+		name = "CTRL+W"
 		command = "northface"
 	elem
 		name = "North+REP"
 		command = ".moveup"
 	elem
-		name = "CTRL+East"
+		name = "CTRL+D"
 		command = "eastface"
 	elem
 		name = "East+REP"
 		command = ".moveright"
 	elem
-		name = "CTRL+South"
+		name = "CTRL+S"
 		command = "southface"
 	elem
 		name = "South+REP"
@@ -717,25 +717,25 @@ macro "borgmacro"
 		name = "Northwest"
 		command = ".northwest"
 	elem
-		name = "CTRL+West"
+		name = "CTRL+A"
 		command = "westface"
 	elem
 		name = "West+REP"
 		command = ".moveleft"
 	elem
-		name = "CTRL+North"
+		name = "CTRL+W"
 		command = "northface"
 	elem
 		name = "North+REP"
 		command = ".moveup"
 	elem
-		name = "CTRL+East"
+		name = "CTRL+D"
 		command = "eastface"
 	elem
 		name = "East+REP"
 		command = ".moveright"
 	elem
-		name = "CTRL+South"
+		name = "CTRL+S"
 		command = "southface"
 	elem
 		name = "South+REP"

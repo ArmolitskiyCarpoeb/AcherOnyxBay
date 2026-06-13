@@ -1,8 +1,8 @@
 /datum/emote/blink
 	key = "blink"
 
-	message_1p = "You blink."
-	message_3p = "blinks."
+	message_1p = "Ты моргаешь."
+	message_3p = "моргает."
 
 	message_type = VISIBLE_MESSAGE
 
@@ -11,7 +11,7 @@
 	statpanel_proc = /mob/proc/blink_emote
 
 /mob/proc/blink_emote()
-	set name = "Blink"
+	set name = "Моргнуть"
 	set category = "Emotes"
 	emote("blink", intentional = TRUE)
 
@@ -36,8 +36,8 @@
 /datum/emote/blush
 	key = "blush"
 
-	message_1p = "You blush."
-	message_3p = "blushes."
+	message_1p = "Ты краснеешь."
+	message_3p = "краснеет."
 
 	message_type = VISIBLE_MESSAGE
 
@@ -46,7 +46,7 @@
 	statpanel_proc = /mob/proc/blush_emote
 
 /mob/proc/blush_emote()
-	set name = "Blush"
+	set name = "Краснеть"
 	set category = "Emotes"
 	emote("blush", intentional = TRUE)
 
@@ -54,8 +54,8 @@
 /datum/emote/pale
 	key = "pale"
 
-	message_1p = "You go pale for a second."
-	message_3p = "goes pale for a second."
+	message_1p = "Ты бледнеешь на секунду."
+	message_3p = "бледнеет на секунду."
 
 	message_type = VISIBLE_MESSAGE
 
@@ -64,7 +64,7 @@
 	statpanel_proc = /mob/proc/pale_emote
 
 /mob/proc/pale_emote()
-	set name = "Pale"
+	set name = "Бледнеть"
 	set category = "Emotes"
 	emote("pale", intentional = TRUE)
 
@@ -72,8 +72,8 @@
 /datum/emote/shiver
 	key = "shiver"
 
-	message_1p = "You shiver."
-	message_3p = "shivers."
+	message_1p = "Ты вздрагиваешь."
+	message_3p = "вздрагивает."
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -82,7 +82,7 @@
 	statpanel_proc = /mob/proc/shiver_emote
 
 /mob/proc/shiver_emote()
-	set name = "Shiver"
+	set name = "Дрожать"
 	set category = "Emotes"
 	emote("shiver", intentional = TRUE)
 
@@ -117,8 +117,8 @@
 /datum/emote/eyebrow
 	key = "eyebrow"
 
-	message_1p = "You raise an eyebrow."
-	message_3p = "raises an eyebrow."
+	message_1p = "Ты поднимаешь бровь."
+	message_3p = "поднимает бровь."
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -127,7 +127,7 @@
 	statpanel_proc = /mob/proc/eyebrow_emote
 
 /mob/proc/eyebrow_emote()
-	set name = "Eyebrow"
+	set name = "Поднять бровь"
 	set category = "Emotes"
 	emote("eyebrow", intentional = TRUE)
 
@@ -135,8 +135,8 @@
 /datum/emote/nod
 	key = "nod"
 
-	message_1p = "You nod."
-	message_3p = "nods."
+	message_1p = "Ты киваешь головой."
+	message_3p = "<span class='info'кивает.</span>"
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -145,7 +145,7 @@
 	statpanel_proc = /mob/proc/nod_emote
 
 /mob/proc/nod_emote()
-	set name = "Nod"
+	set name = "Кивнуть"
 	set category = "Emotes"
 	emote("nod", intentional = TRUE)
 
@@ -153,7 +153,7 @@
 /datum/emote/shake
 	key = "shake"
 
-	message_1p = "You shake your head."
+	message_1p = "Ты отрицательно мотаешь головой."
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -163,11 +163,11 @@
 
 
 /datum/emote/shake/get_emote_message_3p(mob/user)
-	return "shakes [P_THEIR(user.gender)] head."
+	return "<span class='warning'отрицательно мотает [P_THEIR(user.gender)] головой.</span>"
 
 
 /mob/proc/shake_emote()
-	set name = "Shake"
+	set name = "Мотнуть головой"
 	set category = "Emotes"
 	emote("shake", intentional = TRUE)
 
@@ -288,7 +288,7 @@
 
 /datum/emote/faint/do_emote(mob/user, emote_key, intentional)
 	. = ..()
-	if(!intentional && isliving(user))
+	if(intentional && isliving(user))
 		var/mob/living/L = user
 		L.SetSleeping(10)
 
@@ -340,8 +340,8 @@
 /datum/emote/bow
 	key = "bow"
 
-	message_1p = "You bow."
-	message_3p = "bows."
+	message_1p = "Ты кланяешься."
+	message_3p = "кланяется."
 
 	message_type = VISIBLE_MESSAGE
 
@@ -350,7 +350,7 @@
 	statpanel_proc = /mob/proc/bow_emote
 
 /mob/proc/bow_emote()
-	set name = "Bow"
+	set name = "Поклон"
 	set category = "Emotes"
 	emote("bow", intentional = TRUE)
 
@@ -401,8 +401,8 @@
 /datum/emote/grin
 	key = "grin"
 
-	message_1p = "You grin."
-	message_3p = "grins."
+	message_1p = "Ты улыбаешься."
+	message_3p = "улыбнулся."
 
 	message_type = VISIBLE_MESSAGE
 
@@ -410,7 +410,7 @@
 	statpanel_proc = /mob/proc/grin_emote
 
 /mob/proc/grin_emote()
-	set name = "Grin"
+	set name = "Улыбнуться"
 	set category = "Emotes"
 	emote("grin", intentional = TRUE)
 
@@ -418,8 +418,8 @@
 /datum/emote/shrug
 	key = "shrug"
 
-	message_1p = "You shrug."
-	message_3p = "shrugs."
+	message_1p = "Ты пожимаешь плечами."
+	message_3p = "пожимает плечами."
 
 	message_type = VISIBLE_MESSAGE
 
@@ -428,7 +428,7 @@
 	statpanel_proc = /mob/proc/shrug_emote
 
 /mob/proc/shrug_emote()
-	set name = "Shrug"
+	set name = "Пожать плечами"
 	set category = "Emotes"
 	emote("shrug", intentional = TRUE)
 
@@ -436,8 +436,8 @@
 /datum/emote/smile
 	key = "smile"
 
-	message_1p = "You smile."
-	message_3p = "smiles."
+	message_1p = "Ты улыбаешься."
+	message_3p = "улыбается."
 
 	message_type = VISIBLE_MESSAGE
 
@@ -445,7 +445,7 @@
 	statpanel_proc = /mob/proc/smile_emote
 
 /mob/proc/smile_emote()
-	set name = "Smile"
+	set name = "Улыбнуться"
 	set category = "Emotes"
 	emote("smile", intentional = TRUE)
 
@@ -453,8 +453,8 @@
 /datum/emote/wink
 	key = "wink"
 
-	message_1p = "You wink."
-	message_3p = "winks."
+	message_1p = "Ты подмигиваешь."
+	message_3p = "подмигивает."
 
 	message_type = VISIBLE_MESSAGE
 
@@ -462,7 +462,7 @@
 	statpanel_proc = /mob/proc/wink_emote
 
 /mob/proc/wink_emote()
-	set name = "Wink"
+	set name = "Подмигнуть"
 	set category = "Emotes"
 	emote("wink", intentional = TRUE)
 
@@ -478,18 +478,18 @@
 
 /datum/emote/stare/get_emote_message_1p(mob/user, target)
 	if(!isnull(target))
-		return "You stare at \the [target]."
+		return "Твой взгляд застыл на [target]."
 	else
-		return "You stare."
+		return "Ты таращишься."
 
 /datum/emote/stare/get_emote_message_3p(mob/living/user, target)
 	if(!isnull(target))
-		return "stares at \the [target]."
+		return "пялится на [target]."
 	else
-		return "stares."
+		return "таращится."
 
 /mob/proc/stare_emote()
-	set name = "Stare at"
+	set name = "Таращиться на..."
 	set category = "Emotes"
 	target_emote("stare")
 
@@ -658,7 +658,7 @@
 		H.vomit()
 
 /mob/proc/vomit_emote()
-	set name = "Vomit"
+	set name = "Блевануть"
 	set category = "Emotes"
 	emote("vomit", intentional = TRUE)
 
@@ -687,7 +687,7 @@
 	else return message_3p
 
 /mob/proc/signal_emote()
-	set name = "Signal"
+	set name = "Показать пальцы"
 	set category = "Emotes"
-	var/fingers_raised = tgui_input_number(src, "Choose how many fingers to raise.", "Signal", max_value = 5, min_value = 0)
+	var/fingers_raised = tgui_input_number(src, "Сколько покажем пальцев?.", "Signal", max_value = 5, min_value = 0)
 	emote("signal [fingers_raised]", intentional = TRUE)

@@ -250,6 +250,11 @@
 	return step(am, dir)
 
 /client/Move(n, direction)
+	if(winget(src, "mapwindow.map", "key-ctrl") == "true")
+		mob.facedir(direction)
+		return
+	if(movement_locked)
+		return FALSE
 	return mob.SelfMove(direction)
 
 /mob/is_space_movement_permitted(allow_movement = FALSE)
@@ -336,22 +341,34 @@
 /client/verb/moveup()
 	set name = ".moveup"
 	set instant = 1
-	DO_MOVE(NORTH)
+	if(movement_locked)
+		return FALSE
+	else
+		DO_MOVE(NORTH)
 
 /client/verb/movedown()
 	set name = ".movedown"
 	set instant = 1
-	DO_MOVE(SOUTH)
+	if(movement_locked)
+		return FALSE
+	else
+		DO_MOVE(SOUTH)
 
 /client/verb/moveright()
 	set name = ".moveright"
 	set instant = 1
-	DO_MOVE(EAST)
+	if(movement_locked)
+		return FALSE
+	else
+		DO_MOVE(EAST)
 
 /client/verb/moveleft()
 	set name = ".moveleft"
 	set instant = 1
-	DO_MOVE(WEST)
+	if(movement_locked)
+		return FALSE
+	else
+		DO_MOVE(WEST)
 
 #undef DO_MOVE
 

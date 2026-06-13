@@ -112,7 +112,7 @@ GLOBAL_LIST_INIT(all_emotes, list(); for(var/emotepath in subtypesof(/datum/emot
 /datum/emote/proc/can_emote(mob/user, intentional)
 	if(!check_cooldown(user.next_emote_use, intentional))
 		if(intentional)
-			to_chat(user, SPAN_NOTICE("You can't emote so much, give it a rest."))
+			//to_chat(user, SPAN_NOTICE("You can't emote so much, give it a rest."))
 		return FALSE
 
 	if((state_checks & EMOTE_CHECK_CONSCIOUS) && !emote_check_conscious(CONSCIOUS, user, intentional))

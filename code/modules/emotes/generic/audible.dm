@@ -1,14 +1,14 @@
 /datum/emote/whimper
 	key = "whimper"
 
-	message_1p = "You whimper."
-	message_3p = "whimpers."
+	message_1p = "Ты хныкаешь."
+	message_3p = "хныкает."
 
-	message_impaired_production = "makes a weak noise."
-	message_impaired_reception = "makes a sad face."
+	message_impaired_production = "издаёт грустный звук."
+	message_impaired_reception = "делает грустное лицо."
 
-	message_miming = "whimpers."
-	message_muzzled = "makes a weak noise."
+	message_miming = "хныкает."
+	message_muzzled = "издаёт слабый звук."
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -17,7 +17,7 @@
 	statpanel_proc = /mob/proc/whimper_emote
 
 /mob/proc/whimper_emote()
-	set name = "Whimper"
+	set name = "Хныкнуть"
 	set category = "Emotes"
 	emote("whimper", intentional = TRUE)
 
@@ -81,8 +81,8 @@
 /datum/emote/sneeze
 	key = "sneeze"
 
-	message_1p = "You sneeze"
-	message_3p = "sneezes."
+	message_1p = "Ты чихаешь."
+	message_3p = "чихает."
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -94,7 +94,7 @@
 	statpanel_proc = /mob/proc/sneeze_emote
 
 /mob/proc/sneeze_emote()
-	set name = "Sneeze"
+	set name = "Чихнуть"
 	set category = "Emotes"
 	emote("sneeze", intentional = TRUE)
 
@@ -166,13 +166,13 @@
 /datum/emote/moan
 	key = "moan"
 
-	message_1p = "You moan!"
-	message_3p = "moans!"
+	message_1p = "Ты стонешь!"
+	message_3p = "стонет!"
 
-	message_impaired_production = "moans silently."
+	message_impaired_production = "стонет тихонько."
 
-	message_miming = "appears to moan!"
-	message_muzzled = "moans silently!"
+	message_miming = "похоже стонет!"
+	message_muzzled = "стонет молча!"
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -187,7 +187,7 @@
 	return "opens [P_THEIR(user.gender)] mouth wide"
 
 /mob/proc/moan_emote()
-	set name = "Moan"
+	set name = "Стонать"
 	set category = "Emotes"
 	emote("moan", intentional = TRUE)
 
@@ -195,13 +195,13 @@
 /datum/emote/cough
 	key = "cough"
 
-	message_1p = "You cough."
-	message_3p = "coughs."
+	message_1p = "Ты кашляешь."
+	message_3p = "кашляет."
 
-	message_impaired_production = "spasms violently!"
+	message_impaired_production = "корчится!"
 
-	message_miming = "acts out a cough."
-	message_muzzled = "appears to cough."
+	message_miming = "похоже кашляет."
+	message_muzzled = "вроде кашляет."
 
 	state_checks = EMOTE_CHECK_CONSCIOUS
 
@@ -217,7 +217,7 @@
 	return rand(30, 50)
 
 /mob/proc/cough_emote()
-	set name = "Cough"
+	set name = "Кашлянуть"
 	set category = "Emotes"
 	emote("cough", intentional = TRUE)
 
@@ -225,13 +225,13 @@
 /datum/emote/cry
 	key = "cry"
 
-	message_1p = "You cry."
-	message_3p = "cries."
+	message_1p = "Ты плачешь."
+	message_3p = "плачет."
 
 	message_impaired_production = "twists their face into an agonised expression!"
 
-	message_miming = "acts out a cry."
-	message_muzzled = "makes a noise!"
+	message_miming = "по-актёрски плачет."
+	message_muzzled = "издаёт грустный звук!"
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -246,7 +246,7 @@
 	return rand(25, 45)
 
 /mob/proc/cry_emote()
-	set name = "Cry"
+	set name = "Плакать"
 	set category = "Emotes"
 	emote("cry", intentional = TRUE)
 
@@ -254,13 +254,13 @@
 /datum/emote/scream
 	key = "scream"
 
-	message_1p = "You scream!"
-	message_3p = "screams!"
+	message_1p = "Ты кричишь!"
+	message_3p = "кричит!"
 
 	message_impaired_production = "twists their face into an agonised expression!"
 
 	message_miming = "acts out a scream!"
-	message_muzzled = "makes a loud noise!"
+	message_muzzled = "издаёт громкий звук!"
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -278,7 +278,7 @@
 	return rand(30, 45)
 
 /mob/proc/scream_emote()
-	set name = "Scream"
+	set name = "Кричать"
 	set category = "Emotes"
 	emote("scream", intentional = TRUE)
 
@@ -340,13 +340,13 @@
 /datum/emote/laugh
 	key = "laugh"
 
-	message_1p = "You laugh."
-	message_3p = "laughs."
+	message_1p = "Ты смеёшься."
+	message_3p = "смеётся."
 
-	message_impaired_production = "laughs silently."
+	message_impaired_production = "смеётся тихо."
 
 	message_miming = "acts out a laugh."
-	message_muzzled = "giggles sligthly."
+	message_muzzled = "немного смеётся."
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -366,7 +366,7 @@
 	return rand(25, 45)
 
 /mob/proc/laugh_emote()
-	set name = "Laugh"
+	set name = "Смеяться"
 	set category = "Emotes"
 	emote("laugh", intentional = TRUE)
 
@@ -386,8 +386,8 @@
 
 	state_checks = EMOTE_CHECK_CONSCIOUS
 
-	sound_human_female = SFX_FEMALE_LAUGH
-	sound_human_male = SFX_MALE_LAUGH
+	sound_human_female = SFX_FEMALE_GIGGLE
+	sound_human_male = SFX_MALE_GIGGLE
 
 	statpanel_proc = /mob/proc/giggle_emote
 
@@ -438,13 +438,13 @@
 /datum/emote/groan
 	key = "groan"
 
-	message_1p = "You groan."
-	message_3p = "groans."
+	message_1p = "Ты кряхтишь и стонешь."
+	message_3p = "кряхтит."
 
 	message_impaired_production = "writhes and sighs slightly."
 
-	message_miming = "appears to be in pain!"
-	message_muzzled = "makes a weak noise."
+	message_miming = "похоже страдает!"
+	message_muzzled = "издаёт слабый звук."
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -462,7 +462,7 @@
 	return rand(25, 40)
 
 /mob/proc/groan_emote()
-	set name = "Groan"
+	set name = "Кряхтеть"
 	set category = "Emotes"
 	emote("groan", intentional = TRUE)
 
@@ -525,14 +525,14 @@
 /datum/emote/sniff
 	key = "sniff"
 
-	message_1p = "You sniff."
-	message_3p = "sniffs."
+	message_1p = "Ты нюхаешь."
+	message_3p = "нюхает."
 
-	message_impaired_production = "sniffs."
-	message_impaired_reception = "sniffs."
+	message_impaired_production = "нюхает."
+	message_impaired_reception = "нюхает."
 
 	message_miming = "whimpers."
-	message_muzzled = "makes a weak noise."
+	message_muzzled = "издаёт слабый звук."
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -541,7 +541,7 @@
 	statpanel_proc = /mob/proc/sniff_emote
 
 /mob/proc/sniff_emote()
-	set name = "Sniff"
+	set name = "Нюхать"
 	set category = "Emotes"
 	emote("sniff", intentional = TRUE)
 
@@ -549,13 +549,13 @@
 /datum/emote/sigh
 	key = "sigh"
 
-	message_1p = "You sigh."
-	message_3p = "sighs."
+	message_1p = "Ты вздыхаешь."
+	message_3p = "вздыхает."
 
-	message_impaired_production = "makes a weak noise."
+	message_impaired_production = "издаёт слабый звук."
 
-	message_miming = "sighs."
-	message_muzzled = "makes a weak noise."
+	message_miming = "вздыхает."
+	message_muzzled = "издаёт слабый звук."
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -573,7 +573,7 @@
 	return rand(30, 50)
 
 /mob/proc/sigh_emote()
-	set name = "Sigh"
+	set name = "Вздохнуть"
 	set category = "Emotes"
 	emote("sigh", intentional = TRUE)
 
@@ -581,10 +581,10 @@
 /datum/emote/mumble
 	key = "mumble"
 
-	message_1p = "You mumble."
-	message_3p = "mumbles."
+	message_1p = "Ты бормочешь."
+	message_3p = "бормочет."
 
-	message_impaired_production = "makes a weak noise."
+	message_impaired_production = "издаёт слабый звук."
 
 	message_miming = "sighs."
 	message_muzzled = "makes an annoyed face!"
@@ -599,7 +599,7 @@
 	return "opens and closes [P_THEIR(user.gender)] mouth."
 
 /mob/proc/mumble_emote()
-	set name = "Mumble"
+	set name = "Бормотать"
 	set category = "Emotes"
 	emote("mumble", intentional = TRUE)
 
@@ -654,10 +654,10 @@
 /datum/emote/yawn
 	key = "yawn"
 
-	message_1p = "You yawn."
-	message_3p = "yawns."
+	message_1p = "Ты зеваешь."
+	message_3p = "зевает."
 
-	message_impaired_reception = "You hear someone yawn."
+	message_impaired_reception = "Ты слышишь как кто-то зевает"
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -672,7 +672,7 @@
 	return rand(15, 30)
 
 /mob/proc/yawn_emote()
-	set name = "Yawn"
+	set name = "Зевнуть"
 	set category = "Emotes"
 	emote("yawn")
 
@@ -698,8 +698,8 @@
 /datum/emote/whistle
 	key = "whistle"
 
-	message_1p = "You whistle."
-	message_3p = "whistles!"
+	message_1p = "Ты свистишь."
+	message_3p = "свистит!"
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -713,7 +713,7 @@
 	return 40
 
 /mob/proc/whistle_emote()
-	set name = "Whistle"
+	set name = "Свистеть"
 	set category = "Emotes"
 	emote("whistle")
 

@@ -59,7 +59,7 @@
 /datum/emote/dance/do_emote(mob/user, emote_key, intentional)
 	LAZYINITLIST(user.next_emote_use)
 	set_cooldown(user.next_emote_use, cooldown, intentional)
-	log_emote("[key_name(user)] : dances")
+	log_emote("[key_name(user)] : танцует")
 	INVOKE_ASYNC(src, nameof(.proc/dance), user)
 
 /datum/emote/dance/proc/dance(mob/user)
@@ -84,7 +84,7 @@
 			break
 
 /mob/proc/dance_emote()
-	set name = "Dance"
+	set name = "Танцевать"
 	set category = "Emotes"
 	emote("dance", intentional = TRUE)
 
@@ -92,10 +92,10 @@
 /datum/emote/clap
 	key = "clap"
 
-	message_1p = "You clap."
-	message_3p = "claps."
+	message_1p = "Ты хлопаешь."
+	message_3p = "хлопает."
 
-	message_impaired_reception = "You hear someone clapping."
+	message_impaired_reception = "Ты слышишь как кто-то хлопает."
 
 	message_type = VISIBLE_MESSAGE
 
@@ -121,7 +121,7 @@
 	A.set_lightswitch(!A.lightswitch)
 
 /mob/proc/clap_emote()
-	set name = "Clap"
+	set name = "Хлопать"
 	set category = "Emotes"
 	emote("clap", intentional = TRUE)
 
@@ -147,8 +147,8 @@
 /datum/emote/salute
 	key = "salute"
 
-	message_1p = "You salute."
-	message_3p = "salutes."
+	message_1p = "Ты приветствуешь."
+	message_3p = "приветствует."
 
 	message_type = VISIBLE_MESSAGE
 
@@ -157,7 +157,7 @@
 	statpanel_proc = /mob/proc/salute_emote
 
 /mob/proc/salute_emote()
-	set name = "Salute"
+	set name = "Приветствовать"
 	set category = "Emotes"
 	emote("salute", intentional = TRUE)
 
@@ -165,7 +165,7 @@
 /datum/emote/raise
 	key = "raise"
 
-	message_1p = "You raise your hand."
+	message_1p = "Ты поднимаешь свою руку."
 
 	message_type = VISIBLE_MESSAGE
 
@@ -177,7 +177,7 @@
 	return "raises [P_THEIR(user.gender)] hand."
 
 /mob/proc/raise_emote()
-	set name = "Raise"
+	set name = "Поднять руку"
 	set category = "Emotes"
 	emote("raise")
 

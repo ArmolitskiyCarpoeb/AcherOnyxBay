@@ -184,7 +184,13 @@ GLOBAL_LIST_INIT(sfx_list, list(
 		'sound/effects/emotes/f_cry4.ogg'
 	),
 	SFX_FEMALE_LAUGH = list(
-		'sound/effects/emotes/f_laugh.ogg'
+		'sound/effects/emotes/female_laugh1.ogg',
+		'sound/effects/emotes/female_laugh2.ogg',
+		'sound/effects/emotes/female_laugh3.ogg'
+	),
+	SFX_FEMALE_GIGGLE = list(
+		'sound/effects/emotes/female_giggle1.ogg',
+		'sound/effects/emotes/female_giggle2.ogg'
 	),
 	SFX_FEMALE_YAWN = list(
 		'sound/effects/emotes/f_yawn.ogg'
@@ -315,9 +321,13 @@ GLOBAL_LIST_INIT(sfx_list, list(
 		'sound/effects/emotes/m_cry3.ogg',
 		'sound/effects/emotes/m_cry4.ogg'
 	),
-	SFX_MALE_LAUGH = list(
+	SFX_MALE_GIGGLE = list(
 		'sound/effects/emotes/m_laugh1.ogg',
 		'sound/effects/emotes/m_laugh2.ogg'
+	),
+	SFX_MALE_LAUGH = list(
+		'sound/effects/emotes/male_laugh1.ogg',
+		'sound/effects/emotes/male_laugh2.ogg'
 	),
 	SFX_MALE_YAWN = list(
 		'sound/effects/emotes/m_yawn.ogg'

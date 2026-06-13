@@ -302,18 +302,18 @@
 	group = "addiction"
 
 /datum/happiness_event/high
-	description = "<span class='binfo'>I'm high as fuck!</span>\n"
+	description = "<span class='info'>I'm high as fuck!</span>\n"
 	happiness = 15
 	group = "addiction"
 
 /datum/happiness_event/relaxed
-	description = "<span class='binfo'>That cigarette was good.</span>\n"
+	description = "<span class='info'>That cigarette was good.</span>\n"
 	happiness = 10
 	timeout = 1800
 	group = "addiction"
 
 /datum/happiness_event/booze
-	description = "<span class='binfo'>Alcohol makes the pain go away.</span>\n"
+	description = "<span class='info'>Alcohol makes the pain go away.</span>\n"
 	happiness = 10
 	timeout = 2400
 	group = "addiction"

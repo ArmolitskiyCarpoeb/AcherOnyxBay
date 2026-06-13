@@ -1053,7 +1053,7 @@
 	. = ..()
 	if(facing_dir)
 		if(dir != facing_dir)
-			set_dir(facing_dir) // вызовет ваш set_dir, но с тем же facing_dir
+			set_dir(facing_dir)
 
 /*
 /mob/set_dir()
