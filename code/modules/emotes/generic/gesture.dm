@@ -129,8 +129,8 @@
 /datum/emote/wave
 	key = "wave"
 
-	message_1p = "You wave your hand."
-	message_3p = "waves."
+	message_1p = "Ты машешь рукой."
+	message_3p = "машет рукой."
 
 	message_type = VISIBLE_MESSAGE
 
@@ -139,7 +139,7 @@
 	statpanel_proc = /mob/proc/wave_emote
 
 /mob/proc/wave_emote()
-	set name = "Wave"
+	set name = "Помохать рукой"
 	set category = "Emotes"
 	emote("wave", intentional = TRUE)
 

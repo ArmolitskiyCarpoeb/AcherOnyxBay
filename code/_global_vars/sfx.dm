@@ -263,20 +263,8 @@ GLOBAL_LIST_INIT(sfx_list, list(
 		'sound/effects/emotes/m_pain21.ogg'
 	),
 	SFX_MALE_LONG_SCREAM = list(
-		'sound/effects/emotes/m_long_scream1.ogg',
-		'sound/effects/emotes/m_long_scream2.ogg',
-		'sound/effects/emotes/m_long_scream3.ogg',
-		'sound/effects/emotes/m_long_scream4.ogg',
-		'sound/effects/emotes/m_long_scream5.ogg',
-		'sound/effects/emotes/m_long_scream6.ogg',
-		'sound/effects/emotes/m_long_scream7.ogg',
-		'sound/effects/emotes/m_long_scream8.ogg',
-		'sound/effects/emotes/m_long_scream9.ogg',
-		'sound/effects/emotes/m_long_scream10.ogg',
-		'sound/effects/emotes/m_long_scream11.ogg',
-		'sound/effects/emotes/m_long_scream12.ogg',
-		'sound/effects/emotes/m_long_scream13.ogg',
-		'sound/effects/emotes/m_long_scream14.ogg'
+		'sound/effects/emotes/male_scream1.ogg',
+		'sound/effects/emotes/male_scream2.ogg'
 	),
 	SFX_MALE_FALL_ALIVE = list(
 		'sound/effects/damage/falling/m_fall_alive1.ogg',

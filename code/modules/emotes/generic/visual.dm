@@ -99,8 +99,8 @@
 /datum/emote/drool
 	key = "drool"
 
-	message_1p = "You drool."
-	message_3p = "drools."
+	message_1p = "Ты пускаешь слюни."
+	message_3p = "пускает слюни."
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -109,7 +109,7 @@
 	statpanel_proc = /mob/proc/drool_emote
 
 /mob/proc/drool_emote()
-	set name = "Drool"
+	set name = "Пускать слюни"
 	set category = "Emotes"
 	emote("drool", intentional = TRUE)
 
@@ -293,7 +293,7 @@
 		L.SetSleeping(10)
 
 /mob/proc/faint_emote()
-	set name = "Faint"
+	set name = "Упасть в обморок"
 	set category = "Emotes"
 	emote("faint", intentional = TRUE)
 
@@ -567,8 +567,8 @@
 /datum/emote/sway
 	key = "sway"
 
-	message_1p = "You sway."
-	message_3p = "sways around dizzily.."
+	message_1p = "Ты раскачиваешься."
+	message_3p = "головокружительно раскачивается."
 
 	message_type = VISIBLE_MESSAGE
 
@@ -577,7 +577,7 @@
 	statpanel_proc = /mob/proc/sway_emote
 
 /mob/proc/sway_emote()
-	set name = "Sway"
+	set name = "Качаться"
 	set category = "Emotes"
 	emote("sway", intentional = TRUE)
 

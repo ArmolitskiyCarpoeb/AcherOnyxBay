@@ -374,13 +374,13 @@
 /datum/emote/giggle
 	key = "giggle"
 
-	message_1p = "You giggle."
-	message_3p = "giggles."
+	message_1p = "Ты хихикаешь."
+	message_3p = "хихикает."
 
-	message_impaired_production = "smiles slightly."
+	message_impaired_production = "улыбается."
 
-	message_miming = "appears to giggle."
-	message_muzzled = "giggles slightly."
+	message_miming = "вроде хихикает."
+	message_muzzled = "немного хихикает."
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -398,7 +398,7 @@
 	return rand(25, 35)
 
 /mob/proc/giggle_emote()
-	set name = "Giggle"
+	set name = "Хихикнуть"
 	set category = "Emotes"
 	emote("giggle", intentional = TRUE)
 

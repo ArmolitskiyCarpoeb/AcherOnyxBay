@@ -43,7 +43,6 @@
 		/datum/emote/blink,
 		/datum/emote/bow,
 		/datum/emote/salute,
-		/datum/emote/drool,
 		/datum/emote/eyebrow,
 		/datum/emote/faint,
 		/datum/emote/blush,
