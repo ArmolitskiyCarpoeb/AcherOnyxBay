@@ -35,7 +35,7 @@
 		/datum/announce/cascade_evacuation_canceled 	= 'sound/announcer/default/cascade_evacuation_canceled.ogg',
 		/datum/announce/level_7_biohazard 				= 'sound/announcer/default/level_7_biohazard.ogg',
 		/datum/announce/suspicious_cargo 				= 'sound/announcer/default/suspicious_cargo.ogg',
-		/datum/announce/command_report 					= 'sound/announcer/default/command_report.ogg',
+		/datum/announce/command_report 					= 'sound/effects/new/ATTENTION.wav',
 		/datum/announce/brand_intelligence_start 		= 'sound/announcer/default/brand_intelligence_start.ogg',
 		/datum/announce/brand_intelligence_end 			= 'sound/announcer/default/brand_intelligence_end.ogg',
 		/datum/announce/carp_migration_major 			= 'sound/announcer/default/carp_migration_major.ogg',

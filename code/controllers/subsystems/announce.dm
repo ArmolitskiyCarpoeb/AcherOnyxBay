@@ -148,7 +148,7 @@ SUBSYSTEM_DEF(announce)
 			continue
 
 		if(!(announce_type in list(/datum/announce/security_level_elevated, /datum/announce/security_level_down)))
-			M.playsound_local(M.loc, pick('sound/signals/anounce1.ogg', 'sound/signals/anounce2.ogg', 'sound/signals/anounce3.ogg'), 75)
+			M.playsound_local(M.loc, pick('sound/effects/new/notice2.ogg'), 75)
 
 		var/datum/announcer/A = get_announcer(M)
 		var/datum/announce/announce_def = announce_type
