@@ -12,7 +12,7 @@ GLOBAL_VAR_CONST(PREF_ANNOUNCER_TGSTATION, "\[Cargo\] /TG/station (Legacy)")
 	var/sender = "Common"
 	var/channel_name = "Announcements"
 	var/announcement_type = "Announcement"
-	var/sound = null
+	var/sound = 'sound/effects/new/ATTENTION.wav'
 
 /datum/announce/heretic_monsters
 	text = "На %STATION_NAME% был обнаружен повышенный уровень пространственно-временной деформации! Замечены агрессивные формы жизни!"
