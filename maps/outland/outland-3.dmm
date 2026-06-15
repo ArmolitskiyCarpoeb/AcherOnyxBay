@@ -391,6 +391,12 @@
 	},
 /turf/space,
 /area/space)
+"eC" = (
+/obj/structure/bed/couch/right/blue{
+	dir = 4
+	},
+/turf/simulated/floor/trim/wood2,
+/area/crew_quarters/captain)
 "eI" = (
 /obj/effect/floor_decal/corner/blue{
 	dir = 10
@@ -2008,6 +2014,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/rough,
 /area/bridge)
+"zp" = (
+/obj/structure/bed/chair/red,
+/turf/simulated/floor/plating,
+/area/maintenance/locker)
 "zt" = (
 /obj/machinery/light,
 /obj/structure/table/hardtable,
@@ -3226,6 +3236,12 @@
 /obj/structure/table/hardtable,
 /turf/simulated/floor/trim/wood2,
 /area/bridge/meeting_room)
+"RD" = (
+/obj/structure/bed/couch/left/blue{
+	dir = 4
+	},
+/turf/simulated/floor/trim/wood2,
+/area/crew_quarters/captain)
 "RT" = (
 /obj/structure/lattice,
 /turf/simulated/floor/plating,
@@ -39692,7 +39708,7 @@ Kg
 Rz
 Vh
 se
-hZ
+zp
 hZ
 cJ
 Vz
@@ -40699,8 +40715,8 @@ kY
 uK
 UH
 uK
-uK
-uK
+eC
+RD
 hb
 hb
 WY
