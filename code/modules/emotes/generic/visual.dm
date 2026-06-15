@@ -371,7 +371,7 @@
 /datum/emote/aflap
 	key = "aflap"
 
-	message_1p = "You flap your wings ANGRILY!."
+	message_1p = "You flap your wings ANGRILY!"
 
 	message_type = VISIBLE_MESSAGE
 

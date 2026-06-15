@@ -200,7 +200,7 @@ Industrial extracts:
 
 /obj/item/metroidcross/industrial/adamantine
 	colour = "adamantine"
-	effect_desc = "Produces sheet of platinum!."
+	effect_desc = "Produces sheet of platinum!"
 	plasmarequired = 500
 	itempath = /obj/item/stack/material/platinum
 

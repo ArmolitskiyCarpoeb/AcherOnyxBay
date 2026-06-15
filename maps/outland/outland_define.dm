@@ -54,7 +54,7 @@
 	dock_name     = "NAS Crescent"
 	boss_name     = "Central Command"
 	boss_short    = "Centcomm"
-	company_name  = "Mons-Laden Corporation"
+	company_name  = "Монс-Лейден"
 	company_short = "MLC"
 	system_name   = "Nyx"
 
@@ -107,20 +107,18 @@
 		)
 
 	background_choices = list(
-		"The Great Novotheist Church",
-		"Mons-Laden Corporation",
-		"Unknown"
+		"Монс-Лейден"
 		)
 
 	home_system_choices = list(
-		"Acheron",
-		"New Rome",
-		"Unknown"
+		"Ахерон",
+		"Дальние колонии"
 		//"Artemis"
 		)
 
 	religion_choices = list(
-		"Novotheism"
+		"Атеизм",
+		"Старохристианство"
 		)
 
 	allowed_spawns = list("Cryogenic Storage")

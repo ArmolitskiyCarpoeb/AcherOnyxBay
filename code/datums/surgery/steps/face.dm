@@ -101,7 +101,7 @@
 
 /datum/surgery_step/face/cut_off_tongue/success(obj/item/organ/external/parent_organ, obj/item/organ/target_organ, mob/living/carbon/human/target, obj/item/tool, mob/user)
 	announce_success(user,
-		"[user] разводит лезвия кусачек, фиксируя язык [target] для отсечения. Одно движение и ты остался без языка!.",
+		"[user] разводит лезвия кусачек, фиксируя язык [target] для отсечения. Одно движение и ты остался без языка!",
 		"Вы слышите скрип стали, фиксируя язык перед отсечением. ЧИК И ГОТОВО, [target] больше не поговорит!"
 		)
 

@@ -25,7 +25,7 @@
 			if (prob(KNOCK_DOWN_PROB))
 				jump_target_human.apply_damage(10, BRUTE)
 				jump_target_human.Weaken(2)
-				visible_message(SPAN_NOTICE("[src] was knokout [hit_atom.name] in jump!."))
+				visible_message(SPAN_NOTICE("[src] was knokout [hit_atom.name] in jump!"))
 
 			else
 				jump_target_human.apply_damage(5, BRUTE)
@@ -93,7 +93,7 @@
 
 	if (prob(SALTO_PROB))
 		throw_spin = TRUE
-		visible_message(SPAN_NOTICE("[src] did a somersault!."))
+		visible_message(SPAN_NOTICE("[src] did a somersault!"))
 	else
 		throw_spin = FALSE
 

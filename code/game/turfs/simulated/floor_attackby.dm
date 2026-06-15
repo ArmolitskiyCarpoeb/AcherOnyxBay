@@ -172,7 +172,7 @@
 
 	else if(broken || burnt)
 		if(acid_melted == 0)
-			visible_message("<span class='alium'>The acid has melted the plating's reinforcements! It's about to break through!.</span>")
+			visible_message("<span class='alium'>The acid has melted the plating's reinforcements! It's about to break through!</span>")
 			playsound(src, 'sound/items/Welder.ogg', 80, 1)
 
 			if(T)

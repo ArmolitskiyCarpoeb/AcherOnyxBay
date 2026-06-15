@@ -6,9 +6,9 @@
 	var/memory = ""
 
 	//Some faction information.
-	var/home_system = "New Rome"           //System of birth.
-	var/background = "The Great Novotheist Church"          //General associated faction.
-	var/religion = "Novotheism"               //Religious association.
+	var/home_system = "Ахерон"           //System of birth.
+	var/background = "Монс-Лейден"          //General associated faction.
+	var/religion = "Атеизм"               //Religious association.
 
 	var/bank_security = BANK_SECURITY_MINIMUM // bank account security level
 	var/bank_pin = 0 // bank account PIN, 0 gives a random PIN
@@ -45,11 +45,11 @@
 
 /datum/category_item/player_setup_item/general/background/sanitize_character()
 	if(!pref.home_system)
-		pref.home_system = "New Rome"
+		pref.home_system = "Ахерон"
 	if(!pref.background)
-		pref.background = "The Great Novotheist Church"
+		pref.background = "Монс-Лейден"
 	if(!pref.religion)
-		pref.religion =    "Novotheism"
+		pref.religion =    "Атеизм"
 
 	pref.bank_security = sanitize_integer(pref.bank_security, BANK_SECURITY_MINIMUM, BANK_SECURITY_MAXIMUM, initial(pref.bank_security))
 	pref.bank_pin = sanitize_integer(pref.bank_pin, 1111, 9999, initial(pref.bank_pin))
@@ -57,26 +57,20 @@
 
 /datum/category_item/player_setup_item/general/background/content(mob/user)
 	. += "<b>ДАННЫЕ</b><br>"
-	. += "[GLOB.using_map.company_name] Отношение: <a href='?src=\ref[src];nt_relation=1'>[pref.nanotrasen_relation]</a><br/>"
+	. += "Отношение к [GLOB.using_map.company_name]: <a href='?src=\ref[src];nt_relation=1'>[pref.nanotrasen_relation]</a><br/>"
 	. += "Место проживания: <a href='?src=\ref[src];home_system=1'>[pref.home_system]</a><br/>"
-	if(pref.home_system == "New Rome")
-		. += "Гигантский мегаполис, столица Церкви, располагающаяся на экваторе Артемиды. Имеет много индустриальных районов, бедные слои живут рядом с большими заводами, тогда как элита проживает под биокуполами, где воссозданы райские условия.<br>"
-	if(pref.home_system == "Acheron")
-		. += "Мёртвая планета Ахерон, под землёй которой мы сейчас находимся. Стала таковой из-за Корпоративной Войны 59-69 годов. Ранее её называли Эдем из-за благоприятного климата. \n Кто-то не может попрощаться с трупом, либо процесс затянулся. А может вы живёте на рабочем месте? Большинству людей будет отвратно и ужасно тоскливо здесь жить. Возможно, вам просто больше негде.<br>"
-	if(pref.home_system == "OS Outland")
-		. += "Орбитальная Станция 'Чужбина' - Там располагается Центральное Командование, управляющее производством на Ахероне. На этой станции есть достаточно места - там постоянно проживает около 600 человек.<br>"
-	if(pref.home_system == "Unknown")
-		. += "Неизвестно.<br>"
-	. += "Происхождение: <a href='?src=\ref[src];background=1'>[pref.background]</a><br/>"
-	if(pref.background == "The Great Novotheist Church")
-		. += "Великая Новотеистическая Церковь - религиозная мегакорпорация, имеющая огромное влияние на все экономические и политические процессы.<br>"
-	if(pref.background == "Mons-Laden Corporation")
-		. += "Корпорация, которая первая вернула производство на мёртвую планету. Ей принадлежит эта шахта и многие сотрудники.<br>"
-	if(pref.background == "Unknown")
-		. += "Неизвестно. Тут может быть любая другая корпорация поменьше.<br>"
+	if(pref.home_system == "Дальние колонии")
+		. += "Где-то далеко, в десятках световых годах от Зеты-8, находится твой дом - маленькая или большая колония. Однако как ты оказался здесь?<br>"
+	if(pref.home_system == "Ахерон")
+		. += "На этой планете сейчас не очень приятно жить: переизбыток населения, загрязнённость атмосферы, каждодневное повышение преступности.\n Многие ищут лучшей жизни, покупая дорогущие билеты в дальние колонии.<br>"
+	. += "Принадлежность: <a href='?src=\ref[src];background=1'>[pref.background]</a><br/>"
+	if(pref.background == "Монс-Лейден")
+		. += "Ты принадлежишь самой лучшей корпорации в этом мире!<br>"
 	. += "Религия: <a href='?src=\ref[src];religion=1'>[pref.religion]</a><br/>"
-	if(pref.religion == "Novotheism")
-		. += "Основная религия всего человечества. Именно благодаря ей мы ещё живы.<br>"
+	if(pref.religion == "Атеизм")
+		. += "Слава науке! В 26 веке все перестали верить во всякую чушь. Правда ведь?<br>"
+	if(pref.religion == "Старохристианство")
+		. += "Ты веришь, что всё создал Бог. Таких как ты - мало, на тебя косо смотрят и желают тебе скорейшего выздоровления.<br>"
 
 	. += "<br/><b>Bank Account</b>:<br/>"
 	. += "Security Level: <a href='?src=\ref[src];bank_security=1'>[pref.bank_security ? pref.bank_security == 2 ? "Maximum" : "Moderate" : "Minimum" ]</a><br>"
