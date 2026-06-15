@@ -798,3 +798,28 @@
 	description = "Artificial coffee flavoring. It's much like your regular coffee, but concentrated and pretty much soulless."
 	taste_description = "coffee flavoring"
 	color = "#482000"
+
+/datum/reagent/nutriment/semen
+	name = "Слизь"
+	description = "Скупая мужская слеза."
+
+	taste_description = "сладенько"
+	taste_mult = 7.5
+
+	color = "#faf2e3"
+
+	metabolism = 3.0
+	ingest_met = 0.9
+	digest_met = 5.0
+	ingest_absorbability = 0.1
+	digest_absorbability = 0.5
+
+	nutriment_factor = 5.0
+	injectable = 1
+
+	glass_name = "слизь"
+	glass_desc = "Держите членов экипажа от этого подальше..."
+
+/datum/reagent/nutriment/semen/touch_turf(turf/T, amount)
+	new /obj/effect/decal/cleanable/cum(T, amount)
+	return

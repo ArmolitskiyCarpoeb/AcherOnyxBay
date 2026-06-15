@@ -197,7 +197,7 @@ var/global/orgasms = 0
 			var/amt = rand(20,30)
 			if (hole == "mouth" || H?.zone_sel?.selecting == "mouth")
 				message = pick("cums right in [P]'s mouth.")
-				P.reagents.add_reagent("semen", amt)
+				P.reagents.add_reagent(/datum/reagent/nutriment/semen, amt)
 				sound_path = "sound/interactions/new/ACTIONS/MOUTH/SWALLOW/"
 				sound = pick(flist("[sound_path]"))
 			else if (hole == "vagina")
@@ -280,7 +280,7 @@ var/global/orgasms = 0
 	var/obj/item/reagent_containers/vessel/glass/G = locate() in src.loc
 
 	if(G && !G.reagents.total_volume != G.reagents.maximum_volume)
-		G.reagents.add_reagent("semen", 10)
+		G.reagents.add_reagent(/datum/reagent/nutriment/semen, 10)
 		G.update_icon()
 		src.visible_message("<span class='erpbold'>[src]</span> <span class='cumzone'>cums on the [G]!</span>")
 

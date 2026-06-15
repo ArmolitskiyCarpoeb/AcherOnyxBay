@@ -327,8 +327,8 @@
 	..()
 
 /obj/item/gun/projectile/revolver/argument
-	name = "Rosso \"Argument\" 90"
-	desc = "Идеально подходит для аргументирования вашей позиции."
+	name = "Rosco \"Argument\" 90"
+	desc = "Надпись на стволе: \"Идеально подходит для аргументирования вашей позиции!\""
 	icon_state = "argument"
 	item_state = "revolver"
 	caliber = "357"
