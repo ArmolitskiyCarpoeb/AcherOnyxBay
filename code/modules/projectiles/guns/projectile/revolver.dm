@@ -328,7 +328,7 @@
 
 /obj/item/gun/projectile/revolver/argument
 	name = "Rosco \"Argument\" 90"
-	desc = "Надпись на стволе: \"Идеально подходит для аргументирования вашей позиции!\""
+	desc = "Надпись на стволе: \"Идеально подходит для аргументирования Вашей позиции!\""
 	icon_state = "argument"
 	item_state = "revolver"
 	caliber = "357"
@@ -339,3 +339,10 @@
 	mod_reach = 0.5
 	mod_handy = 1.1
 	ammo_type = /obj/item/ammo_casing/a357
+
+/obj/item/gun/projectile/revolver/argument/on_update_icon()
+	..()
+	if(ammo_magazine && ammo_magazine.stored_ammo.len)
+		icon_state = "argument"
+	else
+		icon_state = "argument-e"
