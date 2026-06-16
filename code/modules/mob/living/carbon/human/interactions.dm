@@ -219,9 +219,9 @@ var/global/orgasms = 0
 		orgasms += 1
 	else
 		message = pick("cums!")
-		H.visible_message("<span class='erpbold'>[H]</span> <span class='cumzone'>[message].</span>")
+		H.visible_message("<span class='erpbold'>[H]</span> <span class='cumzone'>[message]</span>")
 		if (istype(P.loc, /obj/structure/closet))
-			P.visible_message("<span class='erpbold'>[H]</span> <span class='cumzone'>[message].</span>")
+			P.visible_message("<span class='erpbold'>[H]</span> <span class='cumzone'>[message]</span>")
 		var/delta = pick(20, 30, 40, 50)
 		switch(lust)
 			if(0 to 150)
@@ -368,7 +368,7 @@ var/global/orgasms = 0
 			if (prob(35))
 				message = pick("fingers [P] hard.")
 			if (H.lastfucked != P || H.lfhole != hole)
-				message = (" shoves their fingers into [P]'s pussy.")
+				message = ("shoves their fingers into [P]'s pussy.")
 				sound = ("sound/interactions/new/ACTIONS/VAGINA/INSERTION/")
 				playsound(loc, "sound/interactions/new/ACTIONS/VAGINA/INSERTION/[sound]", 90, 1, -5)
 				H.lastfucked = P
@@ -493,7 +493,7 @@ var/global/orgasms = 0
 			message = pick("fucks [P].", "pounds [P]'s pussy.")
 
 			if (H.lastfucked != P || H.lfhole != hole)
-				message = pick(" shoves their dick into [P]'s pussy.")
+				message = pick("shoves their dick into [P]'s pussy.")
 				sound = pick(flist("sound/interactions/new/ACTIONS/VAGINA/INSERTION/"))
 				playsound(loc, "sound/interactions/new/ACTIONS/VAGINA/INSERTION/[sound]", 90, 1, -5)
 				H.lastfucked = P
@@ -581,7 +581,7 @@ var/global/orgasms = 0
 			message = pick("fucks [P]'s ass.")
 
 			if (H.lastfucked != P || H.lfhole != hole)
-				message = pick(" shoves their dick into [P]'s asshole.")
+				message = pick("shoves their dick into [P]'s asshole.")
 				H.lastfucked = P
 				H.lfhole = hole
 
@@ -616,11 +616,11 @@ var/global/orgasms = 0
 			playsound(loc, "sound/interactions/new/ACTIONS/BODY/COLLIDE/NAKED/[sound]", 90, 1, -5)
 
 		if("oral")
-			message = pick(" fucks [P]'s mouth.")
+			message = pick("fucks [P]'s mouth.")
 			if (prob(35))
-				message = pick(" sucks [P]'s [P.has_penis() ? "dick" : "vag"]..", " licks [P]'s [P.has_penis() ? "dick" : "vag"]..")
+				message = pick("sucks [P]'s [P.has_penis() ? "dick" : "vag"]..", "licks [P]'s [P.has_penis() ? "dick" : "vag"]..")
 			if (H.lastfucked != P || H.lfhole != hole)
-				message = pick(" shoves their dick down [P]'s throat.")
+				message = pick("shoves their dick down [P]'s throat.")
 				H.lastfucked = P
 				H.lfhole = hole
 

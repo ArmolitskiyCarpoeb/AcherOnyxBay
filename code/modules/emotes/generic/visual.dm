@@ -691,3 +691,38 @@
 	set category = "Emotes"
 	var/fingers_raised = tgui_input_number(src, "Сколько покажем пальцев?.", "Signal", max_value = 5, min_value = 0)
 	emote("signal [fingers_raised]", intentional = TRUE)
+
+/datum/emote/masturbate
+	key = "masturbate"
+	//message_1p = "Ты балуешься."
+	//message_3p = "балуется."
+	//message_type = VISIBLE_MESSAGE
+	cooldown = 2
+	state_checks = EMOTE_CHECK_CONSCIOUS | EMOTE_CHECK_ONE_HAND_USABLE
+	statpanel_proc = /mob/proc/masturbate_emote
+
+/mob/proc/masturbate_emote()
+	set name = "Баловаться"
+	set category = "Emotes"
+	emote("masturbate", intentional = TRUE)
+
+/datum/emote/masturbate/do_emote(mob/user, emote_key, intentional, target, additional_params)
+	. = ..()
+	if(!istype(user, /mob/living/carbon/human))
+		return
+	var/mob/living/carbon/human/H = user
+
+	if(!H.is_nude())
+		to_chat(H, "<span class='warning'>Ты должен быть раздетым для этого.</span>")
+		return
+
+	if(H.has_penis())
+		if (H.erpcooldown == 0)
+			if (H.potenzia > 0)
+				H.fuck(H, H, "handjob")
+	else if(H.gender == FEMALE && H.species.genitals && !H.mutilated_genitals)
+		if (H.erpcooldown == 0)
+			if (H.potenzia > 0)
+				H.fuck(H, H, "fingering")
+	else
+		to_chat(H, "<span class='warning'>У тебя нет подходящих органов!</span>")

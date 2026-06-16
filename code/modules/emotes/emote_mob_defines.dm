@@ -58,7 +58,8 @@
 		/datum/emote/giggle,
 		/datum/emote/whistle,
 		/datum/emote/signal,
-		/datum/emote/sway
+		/datum/emote/sway,
+		/datum/emote/masturbate
 	)
 
 /mob/living/carbon/metroid/load_default_emotes()
