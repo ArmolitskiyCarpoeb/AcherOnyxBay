@@ -87,7 +87,7 @@
 				var/highjob
 				if(player.client?.prefs?.job_high)
 					highjob = " as [player.client.prefs.job_high]"
-				stat("[player.key]", (player.ready)?("(Playing[highjob])"):(null))
+				stat("Игрок", (player.ready)?("(Playing[highjob])"):(null))
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
 

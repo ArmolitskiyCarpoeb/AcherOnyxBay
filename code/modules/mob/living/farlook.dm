@@ -33,6 +33,7 @@
 		face_atom(T)
 		visible_message(SPAN_NOTICE("[src] peers into the distance."))
 		shift_view(world.icon_size*delta_x, world.icon_size*delta_y, TRUE)
+		hide_cone()
 	else
 		reset_farlook()
 

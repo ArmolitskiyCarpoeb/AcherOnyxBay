@@ -136,7 +136,7 @@
 	key = "nod"
 
 	message_1p = "Ты киваешь головой."
-	message_3p = "<span class='info'кивает.</span>"
+	message_3p = "<span class='changeling'кивает.</span>"
 
 	message_type = AUDIBLE_MESSAGE
 
@@ -163,7 +163,7 @@
 
 
 /datum/emote/shake/get_emote_message_3p(mob/user)
-	return "<span class='warning'отрицательно мотает [P_THEIR(user.gender)] головой.</span>"
+	return "<span class='warning'отрицательно мотает головой.</span>"
 
 
 /mob/proc/shake_emote()
