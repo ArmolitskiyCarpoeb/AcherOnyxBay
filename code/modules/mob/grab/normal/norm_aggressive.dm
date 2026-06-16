@@ -15,6 +15,7 @@
 	can_throw = 1
 	force_danger = 1
 	breakability = 2
+	grab_slowdown = 2
 
 	icon_state = "reinforce1"
 

@@ -2069,7 +2069,7 @@
 		var/hasanus_p = P.species.anus
 		var/isnude = H.is_nude()
 		var/isnude_p = P.is_nude()
-		var/ya = "&#1103;"
+		//var/ya = "&#1103;"
 
 		if(get_dist(H, P) > 1)
 			to_chat(H, "<span class='warning'>You are too far away to interact with [P].</span>")

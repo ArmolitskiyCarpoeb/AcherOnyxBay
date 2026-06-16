@@ -17,6 +17,7 @@
 
 	downgrade_on_action = 1
 	downgrade_on_move = 1
+	grab_slowdown = 5
 
 	icon_state = "kill1"
 

@@ -342,7 +342,7 @@
 
 /obj/item/gun/projectile/revolver/argument/on_update_icon()
 	..()
-	if(ammo_magazine && ammo_magazine.stored_ammo.len)
+	if(loaded.len)
 		icon_state = "argument"
 	else
 		icon_state = "argument-e"

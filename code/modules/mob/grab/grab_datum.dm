@@ -21,7 +21,7 @@
 	var/force_danger = 0						// If the grab is strong enough to be able to force someone to do something harmful to them.
 	var/restrains = 0							// If the grab acts like cuffs and prevents action from the victim.
 
-	var/grab_slowdown = 7
+	var/grab_slowdown = 0
 
 	var/shift = 0
 
@@ -277,14 +277,14 @@
 	//	return
 
 	var/p_lost = round((3.5 + affecting.poise/15 - assailant.poise/30) * p_mult, 0.1)
-	p_lost = Clamp(p_lost, 0.2, 0.5)
+	p_lost = Clamp(p_lost, 0.1, 0.4)
 	assailant.damage_poise(p_lost)
-	affecting.damage_poise(5.0)
+	affecting.damage_poise(7.0)
 
 	//assailant.visible_message("Debug: [assailant] lost [p_lost] poise | now: [assailant.poise]/[assailant.poise_pool]") //Debug message
 
 	var/poise_gap = affecting.poise - assailant.poise
-	var/p_diff = 50.0
+	var/p_diff = 25.0
 	if(poise_gap > 8.0)
 		p_diff += (poise_gap - 8.0) * 2.0
 	else if(poise_gap < -10.0)
@@ -317,18 +317,18 @@
 	// Modifier from ST difference - scales with the difference (very reduced impact)
 	// st_diff means: if target is stronger (positive diff), modifier is positive (easier to break)
 	// if assailant is stronger (negative diff), modifier is negative (harder to break)
-	var/st_modifier = st_diff * 2.5 // +25% per point of ST advantage for target
+	var/st_modifier = st_diff * 5 // +50% per point of ST advantage for target
 
 	// Calculate melee skill difference (target - assailant)
 	var/melee_diff = target_melee - assailant_melee
 
 	// Modifier from melee skill difference
-	var/melee_modifier = melee_diff / 40.0 // +2.5% at 100 skill advantage for target
+	var/melee_modifier = melee_diff
 
 	// Apply modifiers to break chance (both can stack)
 	p_diff += st_modifier + melee_modifier
 	// Ensure break chance doesn't go below a minimum
-	p_diff = max(p_diff, 0.1)
+	p_diff = max(p_diff, 0.05)
 
 	// Debug message to verify it's working (uncomment to test)
 	//assailant.visible_message("Debug: ST [assailant_st] vs [target_st] (diff=[st_diff], mod=[st_modifier]) | Melee [assailant_melee] vs [target_melee] (diff=[melee_diff], mod=[melee_modifier]) | p_diff=[p_diff]")

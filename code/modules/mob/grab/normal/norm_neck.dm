@@ -19,6 +19,7 @@
 	restrains = 1
 	ladder_carry = 1
 	breakability = 2.5
+	grab_slowdown = 5
 
 	icon_state = "kill"
 

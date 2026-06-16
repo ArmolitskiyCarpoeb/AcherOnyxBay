@@ -12,6 +12,7 @@
 	point_blank_mult = 1
 	same_tile = 0
 	breakability = 1
+	grab_slowdown = 1
 	upgrade_cooldown = GRAB_NORM_AGGRESSIVE_GRACE
 
 	icon_state = "reinforce"

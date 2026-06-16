@@ -13,7 +13,7 @@
 	same_tile = 0
 	breakability = 1.2
 	restrains = 1
-	grab_slowdown = 10
+	grab_slowdown = 1
 	upgrade_cooldown = GRAB_NORM_AGGRESSIVE_GRACE
 
 	icon_state = "reinforce"
