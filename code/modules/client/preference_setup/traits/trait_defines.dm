@@ -26,12 +26,13 @@
 
 /datum/trait/modifier/bad
 	category = "Отрицательные" // negative traits, usually give points
-
+/*
 /datum/trait/modifier/neutral
 	category = "Нейтральные" // neutral / flavour traits
-
+*/
 
 /// ХОРОШИЕ ТРЕЙТЫ
+/*
 /datum/trait/modifier/good/skiled_medical
 	name = "Учился врачевать"
 	desc = "Одно время ты работал в больнице и нахватался полезных знаний."
@@ -77,14 +78,14 @@
 	if(setup.is_FBP())
 		return "Full Body Prosthetics do not have a metabolism."
 	return ..()
-
+*/
 /datum/trait/modifier/good/less_stun
 	name = "Быстрое восстановление"
 	desc = "Ты часто падал. Но всё равно вставал. Это тебя кое-чему научило."
 	modifier_type = /datum/modifier/trait/less_stun
 	mutually_exclusive = list(/datum/trait/modifier/bad/more_stun)
 	trait_cost = 2 // positive: costs points
-
+/*
 /datum/trait/modifier/good/toxinlover
 	name = "Житель индустриального района"
 	modifier_type = /datum/modifier/trait/toxinlover
@@ -102,9 +103,9 @@
 	modifier_type = /datum/modifier/movespeed/fast_legs
 	mutually_exclusive = list(/datum/trait/modifier/bad/slow_legs)
 	trait_cost = 2 // positive: costs points
-
+*/
 /// ПЛОХИЕ ТРЕЙТЫ
-
+/*
 /datum/trait/modifier/bad/autism //ДОБАВИТЬ ИСКЛЮЧЕНИЕ ТРЕЙТОВ НА ЗДОРОВЬЕ И МЕТАБОЛИЗМ
 	name = "Аутизм"
 	desc = "Тебя часто роняли головой. Удачи!"
@@ -113,13 +114,13 @@
 						/datum/modifier/trait/haemophilia,
 						/datum/trait/modifier/good/high_metabolism, /datum/trait/modifier/bad/low_metabolism)
 	trait_cost = -4
-
+*/
 /datum/trait/modifier/bad/bad_eyes
 	name = "Плохое зрение"
 	desc = "У тебя плохое зрение"
 	modifier_type = /datum/modifier/trait/bad_eyes
-	trait_cost = -3
-
+	trait_cost = -2
+/*
 /datum/trait/modifier/bad/unskiled_medical
 	name = "Врач-шарлатан"
 	desc = "Пока ты работал в больнице, смертей стало больше. Интересно почему?"
@@ -161,14 +162,14 @@
 	modifier_type = /datum/modifier/movespeed/slow_legs
 	mutually_exclusive = list(/datum/trait/modifier/good/fast_legs)
 	trait_cost = -2 // positive: costs points
-
+*/
 /datum/trait/modifier/bad/more_stun
 	name = "Любитель полежать"
-	desc = "Ты часто падал. Пол так и манит, тебе нравится полежать подольше"
+	desc = "Ты часто падал. Пол так и манит, тебе нравится полежать подольше!"
 	modifier_type = /datum/modifier/trait/more_stun
 	mutually_exclusive = list(/datum/trait/modifier/good/less_stun)
 	trait_cost = -2 // positive: costs points
-
+/*
 /datum/trait/modifier/bad/haemophilia
 	name = "Haemophilia"
 	desc = "Some say that when it rains, it pours.  Unfortunately, this is also true for yourself if you get cut."
@@ -180,7 +181,7 @@
 		return "Full Body Prosthetics cannot bleed."
 	// If a species lacking blood is added, it is suggested to add a check for them here.
 	return ..()
-/*
+
 /datum/trait/modifier/bad/inaccurate
 	name = "Inaccurate"
 	desc = "You're rather inexperienced with guns, you've never used one in your life, or you're just really rusty.  \
@@ -188,7 +189,7 @@
 	modifier_type = /datum/modifier/trait/inaccurate
 	mutually_exclusive = list(/datum/trait/modifier/good/skilledmarksman)
 	trait_cost = -1
-*/
+
 /datum/trait/modifier/bad/low_metabolism
 	name = "Low Metabolism"
 	modifier_type = /datum/modifier/trait/low_metabolism
@@ -205,7 +206,7 @@
 		if(setup.get_FBP_type() == PREF_FBP_SOFTWARE)
 			return "Drone Intelligences cannot feel emotions."
 	return ..()
-/*
+
 /datum/trait/modifier/bad/nyctophobe
 	name = "Nyctophobic"
 	desc = "More commonly known as the fear of darkness.  The shadows can hide many dangers, which makes the prospect of going into the depths of Maintenance rather worrisome."
@@ -227,25 +228,25 @@
 	trait_cost = -1
 */
 /datum/trait/modifier/bad/stammering
-	name = "Stutterer"
+	name = "Заика"
 	modifier_type = /datum/modifier/trait/stammering
-	mutually_exclusive = list(/datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/lisping, /datum/trait/modifier/bad/autism)
+	mutually_exclusive = list(/datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/lisping)
 	trait_cost = -1
 
 /datum/trait/modifier/bad/burrieng
-	name = "Burry"
+	name = "Картавый"
 	modifier_type = /datum/modifier/trait/burrieng
-	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/lisping, /datum/trait/modifier/bad/autism)
+	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/lisping)
 	trait_cost = -1
 
 /datum/trait/modifier/bad/lisping
-	name = "Lisp"
+	name = "Шипилявый"
 	modifier_type = /datum/modifier/trait/lisping
-	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/autism)
+	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/burrieng)
 	trait_cost = -1
 
 /// НЕЙТРАЛЬНЫЕ ТРЕЙТЫ
-
+/*
 /datum/trait/modifier/neutral/colorblind_protanopia
 	name = "Protanopia"
 	desc = "You have a form of red-green colorblindness. You cannot see reds, and have trouble distinguishing them from yellows and greens."
@@ -293,7 +294,7 @@
 
 
 
-
+*/
 
 /datum/trait/modifier/bad/opiat_addiction
 	name = "Зависимость от опиатов"

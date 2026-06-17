@@ -44,6 +44,7 @@
 		"BG" = "character_preview_map:1,1 to 1,5"
 	)
 	var/want_to_be_antag = TRUE
+	var/traits_error = null
 
 /datum/preferences/New(client/C)
 	ASSERT(istype(C))

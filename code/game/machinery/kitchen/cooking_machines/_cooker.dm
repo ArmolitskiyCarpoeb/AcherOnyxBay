@@ -202,11 +202,11 @@
 				// Check cooking skill when food first becomes cooked
 				if(can_burn_food && cooking_user && !skillcheck_done)
 					skillcheck_done = TRUE
-					if(!cooking_user.skillcheck(cooking_user.skills["cooking"], 50, null, "cooking"))
+					if(!cooking_user.skillcheck(cooking_user.skills["cooking"], 35, null, "cooking"))
 						var/obj/item/reagent_containers/food/food_item = thing_inside
 						if(istype(food_item))
 							burn_chance = 35
-							//to_chat(cooking_user, SPAN_WARNING("Что-то пошло не так и [food_item.name] испортится! Однако это чему-то тебя научило..."))
+							to_chat(cooking_user, SPAN_WARNING("Что-то пошло не так и [food_item.name] испортился!"))
 							//cooking_user.learn_skills("cooking")
 
 				src.visible_message(SPAN_NOTICE("\The [src] pings!"))
