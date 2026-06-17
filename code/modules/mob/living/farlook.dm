@@ -1,8 +1,9 @@
+
 /atom/CtrlRightClick(mob/living/user)
 	if(!istype(user))
 		return ..()
 
-	user.do_farlook(get_turf(src))
+	//user.do_farlook(get_turf(src))
 	return ..()
 
 // Shifts client's view to selected turf. Max distance 7 tiles.
@@ -33,15 +34,12 @@
 		face_atom(T)
 		visible_message(SPAN_NOTICE("[src] peers into the distance."))
 		shift_view(world.icon_size*delta_x, world.icon_size*delta_y, TRUE)
-		hide_cone()
 	else
 		reset_farlook()
 
 /mob/living/carbon/human/do_farlook(turf/T)
 	if(machine_visual)
 		return
-
-	..(T)
 
 /mob/living/proc/reset_farlook()
 	shift_view(0, 0, TRUE)

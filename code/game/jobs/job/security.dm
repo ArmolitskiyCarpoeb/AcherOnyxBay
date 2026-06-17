@@ -34,8 +34,8 @@
 		H.generate_skills()
 		H.skills["melee"] = rand(70, 95)
 		H.skills["ranged"] = rand(70, 95)
-		H.skills["medical"] = rand(25, 35)
-		H.skills["surgery"] = rand(25, 35)
+		H.skills["medical"] = rand(15, 35)
+		H.skills["surgery"] = rand(15, 35)
 		H.body_build_stats(H)
 
 /datum/job/warden
@@ -98,6 +98,6 @@
 		H.generate_skills()
 		H.skills["melee"] = rand(55, 95)
 		H.skills["ranged"] = rand(55, 95)
-		H.skills["medical"] = rand(25, 35)
-		H.skills["surgery"] = rand(25, 35)
+		H.skills["medical"] = rand(15, 30)
+		H.skills["surgery"] = rand(15, 30)
 		H.body_build_stats(H)

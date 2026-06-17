@@ -19,10 +19,10 @@
 		H.add_mutation(MUTATION_BARTENDER)
 		H.newgeneratestats(9,11,9,11,8,11,7,12)
 		H.generate_skills()
-		H.skills["cooking"] = rand(35, 75)
-		H.skills["melee"] = rand(25, 50)
-		H.skills["ranged"] = rand(45, 70)
-		H.skills["gardening"] = rand(35, 55)
+		H.skills["cooking"] = rand(35, 66)
+		H.skills["melee"] = rand(15, 35)
+		H.skills["ranged"] = rand(35, 50)
+		H.skills["gardening"] = rand(15, 55)
 		H.body_build_stats(H)
 
 /datum/job/chef
@@ -46,8 +46,8 @@
 		H.newgeneratestats(8,10,9,12,7,12,7,12)
 		H.generate_skills()
 		H.skills["cooking"] = rand(50, 85)
-		H.skills["melee"] = rand(35, 85)
-		H.skills["gardening"] = rand(35, 65)
+		H.skills["melee"] = rand(15, 35)
+		H.skills["gardening"] = rand(35, 55)
 		H.body_build_stats(H)
 
 /datum/job/barmonkey
@@ -96,7 +96,7 @@
 		H.newgeneratestats(6,11,7,14,9,14,7,12)
 		H.generate_skills()
 		H.skills["gardening"] = rand(50, 85)
-		H.skills["cooking"] = rand(25, 60)
+		H.skills["cooking"] = rand(15, 55)
 		H.body_build_stats(H)
 
 
@@ -126,8 +126,10 @@
 	if(.)
 		H.newgeneratestats(8,11,7,12,9,14,7,12)
 		H.generate_skills()
-		H.skills["melee"] = rand(15, 50)
-		H.skills["ranged"] = rand(15, 50)
+		H.skills["melee"] = rand(15, 45)
+		H.skills["ranged"] = rand(15, 45)
+		H.skills["gardening"] = rand(15, 45)
+		H.skills["cooking"] = rand(15, 45)
 		H.body_build_stats(H)
 
 /datum/job/cargo_tech
@@ -149,9 +151,9 @@
 	if(.)
 		H.newgeneratestats(11,13,8,12,7,10,9,13)
 		H.generate_skills()
-		H.skills["melee"] = rand(35, 75)
+		H.skills["melee"] = rand(25, 35)
 		H.skills["crafting"] = rand(25, 60)
-		H.skills["ranged"] = rand(25, 60)
+		H.skills["ranged"] = rand(15, 50)
 		H.body_build_stats(H)
 
 /datum/job/mining
@@ -174,11 +176,11 @@
 /datum/job/mining/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(12,17,8,12,6,10,9,15)
+		H.newgeneratestats(12,16,8,12,6,10,9,15)
 		H.generate_skills()
-		H.skills["melee"] = rand(35, 75)
+		H.skills["melee"] = rand(35, 65)
 		H.skills["crafting"] = rand(25, 60)
-		H.skills["ranged"] = rand(25, 60)
+		H.skills["ranged"] = rand(25, 50)
 		H.body_build_stats(H)
 
 /datum/job/janitor
