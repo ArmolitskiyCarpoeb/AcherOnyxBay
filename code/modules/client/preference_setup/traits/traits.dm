@@ -10,8 +10,7 @@ var/TRAIT_POINTS_MAX = 0
 		/datum/trait,
 		/datum/trait/modifier,
 		/datum/trait/modifier/good,
-		/datum/trait/modifier/bad
-		//datum/trait/modifier/neutral
+		/datum/trait/modifier/bad,
 	))
 		var/datum/trait/T = new trait_type
 
@@ -40,17 +39,9 @@ var/TRAIT_POINTS_MAX = 0
 
 /datum/category_item/player_setup_item/traits/load_character(datum/pref_record_reader/R)
 	pref.traits = R.read("traits")
-	pref.traits_error = null
 
 /datum/category_item/player_setup_item/traits/save_character(datum/pref_record_writer/W)
 	W.write("traits", pref.traits)
-	sanitize_character()
-	if(pref.traits_error)
-		var/mob/preference_mob = preference_mob()
-		if(preference_mob)
-			to_chat(preference_mob, SPAN("warning", "[pref.traits_error]"))
-		return
-	..()
 
 /datum/category_item/player_setup_item/traits/proc/get_current_trait_points()
 	var/points = 0
@@ -119,8 +110,6 @@ var/TRAIT_POINTS_MAX = 0
 			. += " <a href='?src=\ref[src];select_category=[category]'>[category]</a> "
 	. += "</center></td></tr>"
 
-	if(pref.traits_error)
-		. += "<font color='red'><b>[pref.traits_error]</b></font><br>"
 
 	for(var/trait_name in trait_datums)
 		var/datum/trait/T = trait_datums[trait_name]
@@ -178,17 +167,6 @@ var/TRAIT_POINTS_MAX = 0
 			if(conflicts)
 				pref.traits -= trait_name
 				to_chat(preference_mob, SPAN("warning", "The [trait_name] trait is mutually exclusive with [conflicts]."))
-
-	var/has_negative = FALSE
-	for(var/trait_name in pref.traits)
-		var/datum/trait/T = trait_datums[trait_name]
-		if(T && T.trait_cost < 0)
-			has_negative = TRUE
-			break
-	if(!has_negative)
-		pref.traits_error = "Выбери как минимум один отрицательный трейт."
-	else
-		pref.traits_error = null
 
 /datum/category_item/player_setup_item/traits/OnTopic(href, href_list, user)
 	if(href_list["toggle_trait"])

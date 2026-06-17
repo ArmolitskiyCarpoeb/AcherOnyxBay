@@ -46,7 +46,6 @@
 /datum/category_item/player_setup_item/general/flavor/content(mob/user)
 	. += "<b>Flavor:</b><br>"
 	. += "<a href='?src=\ref[src];flavor_text=open'>Set Flavor Text</a><br/>"
-	. += "<a href='?src=\ref[src];flavour_text_robot=open'>Set Robot Flavor Text</a><br/>"
 
 /datum/category_item/player_setup_item/general/flavor/OnTopic(href,list/href_list, mob/user)
 	if(href_list["flavor_text"])

@@ -303,8 +303,15 @@
 				to_chat(user, SPAN("warning", "You cannot slice \the [src] here! You need a table or at least a tray to do it."))
 				return
 
+
+			if(!user.skillcheck(user.skills["cooking"], 15, null, "cooking"))
+				to_chat(user, SPAN("warning", "Похоже, ты не умеешь это делать!"))
+				return 0
 			var/slices_lost = 0
-			if (W.w_class > 3)
+			if(!user.skillcheck(user.skills["cooking"], 25, null, "cooking"))
+				to_chat(user, SPAN("warning", "Похоже, ты не умеешь это делать!"))
+				slices_lost = rand(1,2)
+			if(W.w_class > 3)
 				user.visible_message(SPAN("notice", "\The [user] crudely slices \the [src] with [W]!"), SPAN("notice", "You crudely slice \the [src] with your [W]!"))
 				slices_lost = rand(1, min(1, round(slices_num / 2)))
 			else
