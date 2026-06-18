@@ -32,101 +32,101 @@
 */
 
 /// ХОРОШИЕ ТРЕЙТЫ
-/*
-/datum/trait/modifier/good/skiled_medical
-	name = "Учился врачевать"
-	desc = "Одно время ты работал в больнице и нахватался полезных знаний."
-	modifier_type = /datum/modifier/trait/skiled_medical
-	mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_medical)
-	trait_cost = 2
+
+// /datum/trait/modifier/good/skiled_medical
+// 	name = "Учился врачевать"
+// 	desc = "Одно время ты работал в больнице и нахватался полезных знаний."
+// 	modifier_type = /datum/modifier/trait/skiled_medical
+// 	mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_medical)
+// 	trait_cost = 2
 
 /datum/trait/modifier/good/skiled_melee
 	name = "Умею махать кулаками"
-	desc = "Ты вырос среди преступников и сброда, жизнь научила тебя махать кулаками."
+	desc = "Жизнь заставила тебя научится стоять за себя"
 	modifier_type = /datum/modifier/trait/skiled_melee
 	mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_melee)
 	trait_cost = 2
 
 /datum/trait/modifier/good/skiled_ranged
 	name = "Умелый стрелок"
-	desc = "Воевал ли ты или просто стрелял из винтовки на охоте уже не важно. В любом случае ты неплохо стреляешь!"
+	desc = "Твой папка учит тебя держать оружие в руках. Пригодятся ли тебе этот навык сейчас?"
 	modifier_type = /datum/modifier/trait/skiled_ranged
-	mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_ranged)
+	//mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_ranged)
 	trait_cost = 2
 
-/datum/trait/modifier/good/skiled_engineering
-	name = "Неплохой инженер"
-	desc = "Когда-то у тебя был свой шаттл. Не важно что он не работал, зато ты умеешь его чинить!"
-	modifier_type = /datum/modifier/trait/skiled_engineering
-	mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_engineering)
-	trait_cost = 2
+// /datum/trait/modifier/good/skiled_engineering
+// 	name = "Неплохой инженер"
+// 	desc = "Когда-то у тебя был свой шаттл. Не важно что он не работал, зато ты умеешь его чинить!"
+// 	modifier_type = /datum/modifier/trait/skiled_engineering
+// 	mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_engineering)
+// 	trait_cost = 2
 
-/datum/trait/modifier/good/skiled_cooking
-	name = "Хорошо готовлю"
-	desc = "Твои навыки кулинарии на высоте!"
-	modifier_type = /datum/modifier/trait/skiled_cooking
-	mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_cooking)
-	trait_cost = 2
+// /datum/trait/modifier/good/skiled_cooking
+// 	name = "Хорошо готовлю"
+// 	desc = "Твои навыки кулинарии на высоте!"
+// 	modifier_type = /datum/modifier/trait/skiled_cooking
+// 	mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_cooking)
+// 	trait_cost = 2
 
-/datum/trait/modifier/good/high_metabolism
-	name = "Быстрый метаболизм"
-	modifier_type = /datum/modifier/trait/high_metabolism
-	mutually_exclusive = list(/datum/trait/modifier/bad/low_metabolism)
-	trait_cost = 1 // positive: costs points
+// /datum/trait/modifier/good/high_metabolism
+// 	name = "Быстрый метаболизм"
+// 	modifier_type = /datum/modifier/trait/high_metabolism
+// 	mutually_exclusive = list(/datum/trait/modifier/bad/low_metabolism)
+// 	trait_cost = 1 // positive: costs points
 
-/datum/trait/modifier/good/high_metabolism/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
-	if(setup.is_FBP())
-		return "Full Body Prosthetics do not have a metabolism."
-	return ..()
-*/
+// /datum/trait/modifier/good/high_metabolism/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
+// 	if(setup.is_FBP())
+// 		return "Full Body Prosthetics do not have a metabolism."
+// 	return ..()
+
 /datum/trait/modifier/good/less_stun
 	name = "Быстрое восстановление"
 	desc = "Ты часто падал. Но всё равно вставал. Это тебя кое-чему научило."
 	modifier_type = /datum/modifier/trait/less_stun
 	mutually_exclusive = list(/datum/trait/modifier/bad/more_stun)
 	trait_cost = 2 // positive: costs points
-/*
-/datum/trait/modifier/good/toxinlover
-	name = "Житель индустриального района"
-	modifier_type = /datum/modifier/trait/toxinlover
-	trait_cost = 2 // positive: costs points
 
-/datum/trait/modifier/good/fast_hands
-	name = "Быстрые руки"
-	desc = "Поспешишь - людей насмешишь."
-	modifier_type = /datum/modifier/actionspeed/timecookie
-	trait_cost = 2 // positive: costs points
+// /datum/trait/modifier/good/toxinlover
+// 	name = "Житель индустриального района"
+// 	modifier_type = /datum/modifier/trait/toxinlover
+// 	trait_cost = 2 // positive: costs points
 
-/datum/trait/modifier/good/fast_legs
-	name = "Быстрые ноги"
-	desc = "Ты торопишься. Нет, ты ОЧЕНЬ торопишься."
-	modifier_type = /datum/modifier/movespeed/fast_legs
-	mutually_exclusive = list(/datum/trait/modifier/bad/slow_legs)
-	trait_cost = 2 // positive: costs points
-*/
+// /datum/trait/modifier/good/fast_hands
+// 	name = "Быстрые руки"
+// 	desc = "Поспешишь - людей насмешишь."
+// 	modifier_type = /datum/modifier/actionspeed/timecookie
+// 	trait_cost = 2 // positive: costs points
+
+// /datum/trait/modifier/good/fast_legs
+// 	name = "Быстрые ноги"
+// 	desc = "Ты торопишься. Нет, ты ОЧЕНЬ торопишься."
+// 	modifier_type = /datum/modifier/movespeed/fast_legs
+// 	mutually_exclusive = list(/datum/trait/modifier/bad/slow_legs)
+// 	trait_cost = 2 // positive: costs points
+
 /// ПЛОХИЕ ТРЕЙТЫ
-/*
-/datum/trait/modifier/bad/autism //ДОБАВИТЬ ИСКЛЮЧЕНИЕ ТРЕЙТОВ НА ЗДОРОВЬЕ И МЕТАБОЛИЗМ
-	name = "Аутизм"
-	desc = "Тебя часто роняли головой. Удачи!"
-	modifier_type = /datum/modifier/trait/autism
-	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/lisping,
-						/datum/modifier/trait/haemophilia,
-						/datum/trait/modifier/good/high_metabolism, /datum/trait/modifier/bad/low_metabolism)
-	trait_cost = -4
-*/
+
+// /datum/trait/modifier/bad/autism //ДОБАВИТЬ ИСКЛЮЧЕНИЕ ТРЕЙТОВ НА ЗДОРОВЬЕ И МЕТАБОЛИЗМ
+// 	name = "Аутизм"
+// 	desc = "Тебя часто роняли головой. Удачи!"
+// 	modifier_type = /datum/modifier/trait/autism
+// 	mutually_exclusive = list(/datum/trait/modifier/bad/stammering, /datum/trait/modifier/bad/burrieng, /datum/trait/modifier/bad/lisping,
+// 						/datum/modifier/trait/haemophilia,
+// 						/datum/trait/modifier/good/high_metabolism, /datum/trait/modifier/bad/low_metabolism)
+// 	trait_cost = -4
+
 /datum/trait/modifier/bad/bad_eyes
 	name = "Плохое зрение"
 	desc = "У тебя плохое зрение"
 	modifier_type = /datum/modifier/trait/bad_eyes
 	trait_cost = -2
-/*
-/datum/trait/modifier/bad/unskiled_medical
-	name = "Врач-шарлатан"
-	desc = "Пока ты работал в больнице, смертей стало больше. Интересно почему?"
-	modifier_type = /datum/modifier/trait/unskiled_medical
-	mutually_exclusive = list(/datum/trait/modifier/good/skiled_medical)
-	trait_cost = -2
+
+// /datum/trait/modifier/bad/unskiled_medical
+// 	name = "Врач-шарлатан"
+// 	desc = "Пока ты работал в больнице, смертей стало больше. Интересно почему?"
+// 	modifier_type = /datum/modifier/trait/unskiled_medical
+// 	mutually_exclusive = list(/datum/trait/modifier/good/skiled_medical)
+// 	trait_cost = -2
 
 /datum/trait/modifier/bad/unskiled_melee
 	name = "Тюфяк"
@@ -135,34 +135,34 @@
 	mutually_exclusive = list(/datum/trait/modifier/good/skiled_melee)
 	trait_cost = -3
 
-/datum/trait/modifier/bad/unskiled_ranged
-	name = "Не разбираюсь в оружии"
-	desc = "Оружие - фу."
-	modifier_type = /datum/modifier/trait/unskiled_ranged
-	mutually_exclusive = list(/datum/trait/modifier/good/skiled_ranged)
-	trait_cost = -2
+// /datum/trait/modifier/bad/unskiled_ranged
+// 	name = "Не разбираюсь в оружии"
+// 	desc = "Оружие - фу."
+// 	modifier_type = /datum/modifier/trait/unskiled_ranged
+// 	mutually_exclusive = list(/datum/trait/modifier/good/skiled_ranged)
+// 	trait_cost = -2
 
-/datum/trait/modifier/bad/unskiled_engineering
-	name = "Бездарный инженер"
-	desc = "Ты так и не починил смеситель у себя дома..."
-	modifier_type = /datum/modifier/trait/unskiled_engineering
-	mutually_exclusive = list(/datum/trait/modifier/good/skiled_engineering)
-	trait_cost = -1
+// /datum/trait/modifier/bad/unskiled_engineering
+// 	name = "Бездарный инженер"
+// 	desc = "Ты так и не починил смеситель у себя дома..."
+// 	modifier_type = /datum/modifier/trait/unskiled_engineering
+// 	mutually_exclusive = list(/datum/trait/modifier/good/skiled_engineering)
+// 	trait_cost = -1
 
-/datum/trait/modifier/bad/unskiled_cooking
-	name = "Массовый отравитель"
-	desc = "Ты готовишь плохо. Даже очень плохо. Твоей бабушке лучше это не пробовать."
-	modifier_type = /datum/modifier/trait/unskiled_cooking
-	mutually_exclusive = list(/datum/trait/modifier/good/skiled_cooking)
-	trait_cost = -1
+// /datum/trait/modifier/bad/unskiled_cooking
+// 	name = "Массовый отравитель"
+// 	desc = "Ты готовишь плохо. Даже очень плохо. Твоей бабушке лучше это не пробовать."
+// 	modifier_type = /datum/modifier/trait/unskiled_cooking
+// 	mutually_exclusive = list(/datum/trait/modifier/good/skiled_cooking)
+// 	trait_cost = -1
 
-/datum/trait/modifier/bad/slow_legs
-	name = "Медленные ноги"
-	desc = "Ты не торопишься. Нет, ты ОЧЕНЬ не торопишься."
-	modifier_type = /datum/modifier/movespeed/slow_legs
-	mutually_exclusive = list(/datum/trait/modifier/good/fast_legs)
-	trait_cost = -2 // positive: costs points
-*/
+// /datum/trait/modifier/bad/slow_legs
+// 	name = "Медленные ноги"
+// 	desc = "Ты не торопишься. Нет, ты ОЧЕНЬ не торопишься."
+// 	modifier_type = /datum/modifier/movespeed/slow_legs
+// 	mutually_exclusive = list(/datum/trait/modifier/good/fast_legs)
+// 	trait_cost = -2 // positive: costs points
+
 /datum/trait/modifier/bad/more_stun
 	name = "Любитель полежать"
 	desc = "Ты часто падал. Пол так и манит, тебе нравится полежать подольше!"

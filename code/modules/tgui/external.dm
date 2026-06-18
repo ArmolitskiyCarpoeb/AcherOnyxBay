@@ -189,7 +189,7 @@
 /proc/tgui_WSConnect(list/content, addr, conn_id, client/client)
 	if(!islist(content))
 		return FALSE
-	
+
 	var/window_id = content["window_id"]
 
 	if(!window_id)

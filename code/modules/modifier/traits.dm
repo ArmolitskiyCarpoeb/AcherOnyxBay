@@ -115,7 +115,7 @@
 
 /datum/modifier/trait/unskiled_melee/on_applied()
 	if(holder.skills)
-		holder.skills["melee"] += -25
+		holder.skills["melee"] += -40
 
 /datum/modifier/trait/unskiled_ranged
 	name = "Умелый стрелок"
