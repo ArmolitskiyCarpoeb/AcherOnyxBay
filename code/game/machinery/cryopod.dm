@@ -557,16 +557,18 @@
 
 	icon_state = base_icon_state
 
-/obj/machinery/cryopod/proc/go_in(mob/M, mob/user)
+/obj/machinery/cryopod/proc/go_in(mob/M, mob/user, instant = FALSE)
 	if(!M)
 		return
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(occupant)
-		to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
+		if(user)
+			to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
 		return
 	if(name == "cryogenic freezer" && M.is_ic_dead())
-		to_chat(user, "<span class='warning'>\The [src]s are not designed to store bodies. Contact the medical unit.</span>")
+		if(user)
+			to_chat(user, "<span class='warning'>\The [src]s are not designed to store bodies. Contact the medical unit.</span>")
 		var/area/t = get_area(M)
 		var/location = t.name
 		for(var/channel in list("Security", "Medical"))
@@ -578,7 +580,9 @@
 		visible_message("\The [user] starts putting [M] into \the [src].")
 
 	var/turf/old_loc = get_turf(M)
-	if(do_after(user, 20, src))
+	if(!instant)
+		if(!do_after(user, 20, src))
+			return
 		if(old_loc != get_turf(M))
 			return
 		if(occupant)
@@ -587,13 +591,21 @@
 		if(M.buckled)
 			to_chat(user, "<span class='warning'>Unbuckle [M == user ? "yourself" : M] first.</span>")
 			return FALSE
+	else
+		// Мгновенный вход (без задержки и проверок, кроме базовых)
+		if(old_loc != get_turf(M))
+			return
+		if(occupant)
+			return
+		if(M.buckled)
+			return FALSE
 
-		M.stop_pulling()
-		if(M.client)
-			M.client.perspective = EYE_PERSPECTIVE
-			M.client.eye = src
-		set_occupant(M)
-		return TRUE
+	M.stop_pulling()
+	if(M.client)
+		M.client.perspective = EYE_PERSPECTIVE
+		M.client.eye = src
+	set_occupant(M)
+	return TRUE
 
 /obj/machinery/cryopod/proc/set_occupant(mob/living/carbon/occupant)
 	src.occupant = occupant
