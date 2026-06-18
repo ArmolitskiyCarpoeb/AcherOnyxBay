@@ -14,8 +14,7 @@
 		/obj/item/clothing/under/casual_pants,
 		/obj/item/clothing/under/color/orange,
 		/obj/item/clothing/under/soviet,
-		/obj/item/clothing/under/kilt,
-		/obj/item/clothing/under/bluepyjamas
+		/obj/item/clothing/under/rank/workman
 
 	)
 
@@ -28,18 +27,13 @@
 	var/list/jackets = list(
 		/obj/item/clothing/suit/storage/leather_jacket,
 		/obj/item/clothing/suit/storage/toggle/bomber,
-		/obj/item/clothing/suit/storage/toggle/track/red,
-		/obj/item/clothing/suit/cultrobes,
-		/obj/item/clothing/suit/armor/bulletproof,
-		/obj/item/clothing/suit/chickensuit
+		/obj/item/clothing/suit/storage/toggle/track/red
 	)
 
 	var/list/masks = list(
-		/obj/item/clothing/mask/balaclava,
 		/obj/item/clothing/mask/surgical,
 		/obj/item/clothing/mask/gas/old,
-		/obj/item/clothing/mask/smokable/cigarette/cigar/cohiba,
-		/obj/item/clothing/mask/muzzle
+		/obj/item/clothing/mask/smokable/cigarette
 	)
 
 	var/list/left_hand_items = list(
