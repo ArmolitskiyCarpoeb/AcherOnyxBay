@@ -36,8 +36,8 @@
  * since it calls on process rather than instantly which handles spamming.
  */
 /datum/proc/tgui_update()
-	for(var/datum/tgui/ui as() in SStgui.get_all_open_uis(src))
-		ui.needs_update = TRUE
+    for(var/datum/tgui/ui in SStgui.get_all_open_uis(src))
+        ui.needs_update = TRUE
 
 /**
  * public
@@ -189,7 +189,7 @@
 /proc/tgui_WSConnect(list/content, addr, conn_id, client/client)
 	if(!islist(content))
 		return FALSE
-	
+
 	var/window_id = content["window_id"]
 
 	if(!window_id)

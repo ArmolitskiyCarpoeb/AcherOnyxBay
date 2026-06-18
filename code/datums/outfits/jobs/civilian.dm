@@ -12,7 +12,6 @@
 	// Списки вариантов
 	var/list/uniforms = list(
 		/obj/item/clothing/under/casual_pants,
-		/obj/item/clothing/under/color/orange,
 		/obj/item/clothing/under/soviet,
 		/obj/item/clothing/under/kilt,
 		/obj/item/clothing/under/bluepyjamas
