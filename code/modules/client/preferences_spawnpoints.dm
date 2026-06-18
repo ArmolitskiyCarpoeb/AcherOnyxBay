@@ -18,6 +18,9 @@ GLOBAL_VAR(spawntypes)
 	var/list/restrict_job = null
 	var/list/disallow_job = null
 
+/datum/spawnpoint/proc/after_join(mob/victim)
+	return
+
 /datum/spawnpoint/proc/check_job_spawning(job)
 	if(restrict_job && !(job in restrict_job))
 		return 0
@@ -51,6 +54,28 @@ GLOBAL_VAR(spawntypes)
 /datum/spawnpoint/cryo/New()
 	..()
 	turfs = GLOB.latejoin_cryo
+
+/datum/spawnpoint/cryo/after_join(mob/living/carbon/human/victim, obj/machinery/computer/cryopod/control_computer)
+	if(!istype(victim))
+		return
+	var/area/A = get_area(victim)
+	var/role_alt_title = victim.mind ? victim.mind.role_alt_title : "Unknown"
+	for(var/obj/machinery/cryopod/C in A)
+		if(control_computer)
+			control_computer.frozen_crew += "[victim.real_name], [role_alt_title] - [stationtime2text()]"
+		if(!C.occupant)
+			C.set_occupant(victim)
+			victim.Sleeping(7)
+			victim.resting = 0
+			//addtimer(CALLBACK(victim, /mob/living/carbon/human/proc/give_cryo_advice), 25 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+			//addtimer(CALLBACK(victim, /mob/living/carbon/human/proc/give_cryo_effect), 30 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+			victim.add_happiness_event(/datum/happiness_event/cryo)
+			//addtimer(CALLBACK(C, /obj/machinery/cryopod/proc/go_out_forced), rand(23,32) SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+			//victim.add_cryo_filter_effect()
+			//addtimer(CALLBACK(victim, /mob/living/proc/remove_cryo_filter_effect), 40 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+			return
+	for(var/obj/machinery/light/L in A)
+		L.flicker(10)
 /*
 /datum/spawnpoint/cyborg
 	display_name = "Cyborg Storage"
