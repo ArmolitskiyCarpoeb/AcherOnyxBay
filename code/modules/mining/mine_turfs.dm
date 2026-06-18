@@ -215,6 +215,9 @@ var/list/mining_floors = list()
 				return
 			last_act = world.time
 
+		var/mob/living/carbon/human/H = user
+		H.damage_poise(3)
+
 		playsound(user, P.drill_sound, 20, 1)
 
 		var/newDepth = excavation_level + P.excavation_amount // Used commonly below

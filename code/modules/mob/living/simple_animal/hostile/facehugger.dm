@@ -1,7 +1,7 @@
 
 /mob/living/simple_animal/hostile/facehugger
 	name = "alien"
-	desc = "A viscious little creature, it looks like a connected pair of hands and has a long, muscular tail."
+	desc = "Милое создание."
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "facehugger"
 	icon_living = "facehugger"
@@ -17,7 +17,7 @@
 	health = 15
 	maxHealth = 15
 	harm_intent_damage = 7.5
-	speed = 4
+	speed = 5
 	move_to_delay = 4
 	min_gas = null
 	mob_size = MOB_MINISCULE
@@ -108,8 +108,13 @@
 /mob/living/simple_animal/hostile/facehugger/proc/try_to_strip_down_human_head(mob/living/carbon/human/H, forced = FALSE)
 	var/obj/item/helmet = H.get_equipped_item(slot_head)
 	if(helmet && (((helmet.item_flags & ITEM_FLAG_AIRTIGHT) && !forced) || !helmet.knocked_out(H, dist = 0)))
-		H.visible_message(SPAN("notice", "\The [src] [pick("smacks", "smashes", "blops", "bonks")] against [H]'s [helmet] harmlessly!"))
-		return FALSE
+		if(prob(30))
+			H.visible_message(SPAN("danger", "\The [src] sprays acid on [H]'s [helmet], melting it away!"))
+			H.drop(helmet, force = TRUE)
+			H.update_inv_head(1)
+		else
+			H.visible_message(SPAN("notice", "\The [src] [pick("smacks", "smashes", "blops", "bonks")] against [H]'s [helmet] harmlessly!"))
+			return FALSE
 
 	var/obj/item/mask = H.get_equipped_item(slot_wear_mask)
 	if(mask && !mask.knocked_out(H, dist = 0))
