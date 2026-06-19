@@ -25,7 +25,7 @@
 
 	startswith = list(
 		/obj/item/clothing/mask/gas/clear,
-		/obj/item/clothing/glasses/hud/aviators/security,
+		//obj/item/clothing/glasses/hud/aviators/security,
 		/obj/item/clothing/head/HoS,
 		/obj/item/clothing/head/helmet,
 		/obj/item/clothing/head/HoS/dermal,
@@ -46,7 +46,7 @@
 	desc = "A bag for storing multiple clothig items in a better and convenient way! This one belongs to the warden."
 
 	startswith = list(
-		/obj/item/clothing/glasses/hud/aviators/security,
+		//obj/item/clothing/glasses/hud/aviators/security,
 		/obj/item/clothing/head/warden,
 		/obj/item/clothing/head/warden/drill,
 		/obj/item/clothing/head/beret/sec/corporate/warden,

@@ -112,7 +112,7 @@
 		/obj/item/clothing/head/soft/sec,
 		/obj/item/clothing/suit/armor/pcarrier/medium/security,
 		/obj/item/clothing/under/rank/security,
-		/obj/item/clothing/glasses/hud/aviators/security,
+		///obj/item/clothing/glasses/hud/aviators/security,
 		/obj/item/storage/belt/security,
 		/obj/item/device/radio/headset/headset_sec,
 		/obj/item/device/flash,
