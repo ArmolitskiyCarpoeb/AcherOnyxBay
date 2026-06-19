@@ -10,7 +10,7 @@ var/TRAIT_POINTS_MAX = 0
 		/datum/trait,
 		/datum/trait/modifier,
 		/datum/trait/modifier/good,
-		/datum/trait/modifier/bad,
+		/datum/trait/modifier/bad
 	))
 		var/datum/trait/T = new trait_type
 

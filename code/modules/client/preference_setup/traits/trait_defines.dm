@@ -33,7 +33,7 @@
 
 /// ХОРОШИЕ ТРЕЙТЫ
 
- datum/trait/modifier/good/skiled_medical
+/datum/trait/modifier/good/skiled_medical
 	name = "Учился врачевать"
 	desc = "Одно время ты работал в госпитале и нахватался полезных знаний."
 	modifier_type = /datum/modifier/trait/skiled_medical
@@ -61,23 +61,24 @@
 	//mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_engineering)
 	trait_cost = 2
 
-// /datum/trait/modifier/good/skiled_cooking
-// 	name = "Хорошо готовлю"
-// 	desc = "Твои навыки кулинарии на высоте!"
-// 	modifier_type = /datum/modifier/trait/skiled_cooking
-// 	mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_cooking)
-// 	trait_cost = 2
+/datum/trait/modifier/good/skiled_cooking
+	name = "Хорошо готовлю"
+	desc = "Твои навыки кулинарии на высоте!"
+	modifier_type = /datum/modifier/trait/skiled_cooking
+	//mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_cooking)
+	trait_cost = 1
 
-// /datum/trait/modifier/good/high_metabolism
-// 	name = "Быстрый метаболизм"
-// 	modifier_type = /datum/modifier/trait/high_metabolism
-// 	mutually_exclusive = list(/datum/trait/modifier/bad/low_metabolism)
-// 	trait_cost = 1 // positive: costs points
+/datum/trait/modifier/good/high_metabolism
+	name = "Быстрый метаболизм"
+	desc = "Обмен веществ в твоём организме быстрее, чем в среднем. Ты быстрее восстанавливаешься после повреждений, но есть хочется больше!"
+	modifier_type = /datum/modifier/trait/high_metabolism
+	//mutually_exclusive = list(/datum/trait/modifier/bad/low_metabolism)
+	trait_cost = 1 // positive: costs points
 
-// /datum/trait/modifier/good/high_metabolism/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
-// 	if(setup.is_FBP())
-// 		return "Full Body Prosthetics do not have a metabolism."
-// 	return ..()
+/datum/trait/modifier/good/high_metabolism/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
+	if(setup.is_FBP())
+		return "Full Body Prosthetics do not have a metabolism."
+	return ..()
 
 /datum/trait/modifier/good/less_stun
 	name = "Быстрое восстановление"

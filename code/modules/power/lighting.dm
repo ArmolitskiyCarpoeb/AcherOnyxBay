@@ -752,9 +752,9 @@
 	b_color = "#f0efee"
 	lighting_modes = list(
 		LIGHTMODE_EMERGENCY  = list(l_max_bright = 0.7,  l_inner_range = 1, l_outer_range = 5, l_falloff_curve = 3.5, l_color = "#da0205"),
-		LIGHTMODE_EVACUATION = list(l_max_bright = 1.0, l_inner_range = 1, l_outer_range = 7, l_falloff_curve = 3.5, l_color = "#bf6600"),
+		LIGHTMODE_EVACUATION = list(l_max_bright = 1.0, l_inner_range = 1, l_outer_range = 7, l_falloff_curve = 3.5, l_color = "#7cc3f3"),
 		LIGHTMODE_ALARM      = list(l_max_bright = 1.0, l_inner_range = 1, l_outer_range = 7, l_falloff_curve = 3.5, l_color = "#ff3333"),
-		LIGHTMODE_RADSTORM   = list(l_max_bright = 0.85, l_inner_range = 1, l_outer_range = 7, l_falloff_curve = 3.5, l_color = "#5b9929")
+		LIGHTMODE_RADSTORM   = list(l_max_bright = 0.85, l_inner_range = 1, l_outer_range = 7, l_falloff_curve = 3.5, l_color = "#83d83d")
 		)
 
 	random_tone = TRUE
@@ -811,9 +811,9 @@
 	b_color = "#dfd5c2"
 	lighting_modes = list(
 		LIGHTMODE_EMERGENCY  = list(l_max_bright = 0.8, l_inner_range = 0.5,  l_outer_range = 4, l_falloff_curve = 4.5, l_color = "#da0205"),
-		LIGHTMODE_EVACUATION = list(l_max_bright = 0.85, l_inner_range = 0.6, l_outer_range = 5, l_falloff_curve = 4.5, l_color = "#bf6600"),
+		LIGHTMODE_EVACUATION = list(l_max_bright = 0.85, l_inner_range = 0.6, l_outer_range = 5, l_falloff_curve = 4.5, l_color = "#7cc3f3"),
 		LIGHTMODE_ALARM      = list(l_max_bright = 0.85, l_inner_range = 0.6, l_outer_range = 5, l_falloff_curve = 4.5, l_color = "#ff3333"),
-		LIGHTMODE_RADSTORM   = list(l_max_bright = 0.8, l_inner_range = 0.5,  l_outer_range = 5, l_falloff_curve = 4.5, l_color = "#5b9929")
+		LIGHTMODE_RADSTORM   = list(l_max_bright = 0.8, l_inner_range = 0.5,  l_outer_range = 5, l_falloff_curve = 4.5, l_color = "#83d83d")
 		)
 	random_tone = TRUE
 	sound_on = SFX_LIGHT_BULB_ON
