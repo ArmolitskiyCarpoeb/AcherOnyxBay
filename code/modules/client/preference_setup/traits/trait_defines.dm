@@ -37,7 +37,7 @@
 	name = "Учился врачевать"
 	desc = "Одно время ты работал в госпитале и нахватался полезных знаний."
 	modifier_type = /datum/modifier/trait/skiled_medical
-	mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_medical)
+	//mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_medical)
 	trait_cost = 2
 
 /datum/trait/modifier/good/skiled_melee
@@ -58,7 +58,7 @@
 	name = "Неплохой инженер"
 	desc = "Когда-то у тебя был свой шаттл. Важно не то, что он у тебя так и не заработал, а приобритение новых навыков!"
 	modifier_type = /datum/modifier/trait/skiled_engineering
-	mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_engineering)
+	//mutually_exclusive = list(/datum/trait/modifier/bad/unskiled_engineering)
 	trait_cost = 2
 
 // /datum/trait/modifier/good/skiled_cooking
@@ -160,7 +160,7 @@
 	name = "Медленные ноги"
 	desc = "Ты не торопишься. Нет, ты ОЧЕНЬ не торопишься."
 	modifier_type = /datum/modifier/movespeed/slow_legs
-	mutually_exclusive = list(/datum/trait/modifier/good/fast_legs)
+	//mutually_exclusive = list(/datum/trait/modifier/good/fast_legs)
 	trait_cost = -2
 
 /datum/trait/modifier/bad/more_stun
