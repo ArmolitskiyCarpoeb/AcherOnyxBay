@@ -2100,7 +2100,7 @@
 "aUr" = (/obj/item/target/alien,/turf/unsimulated/floor{name = "plating"; icon_state = "cult"},/area/wizard_station)
 "aUt" = (/obj/structure/table/rack,/obj/item/material/knife/ritual,/turf/unsimulated/floor{icon_state = "dark"},/area/wizard_station)
 "aUu" = (/obj/structure/kitchenspike,/obj/structure/table/marble,/turf/unsimulated/floor{icon_state = "dark"},/area/wizard_station)
-"aUv" = (/obj/structure/closet/secure_closet{name = "merchant's locker"; req_access = list(201)},/obj/effect/floor_decal/corner/brown{dir = 6},/turf/simulated/floor/tiled/dark,/area/shuttle/merchant/home)
+"aUv" = (/obj/structure/closet/secure_closet{name = "merchant's locker"; req_access = list(201)},/obj/effect/floor_decal/corner/brown{dir = 6},/obj/item/storage/backpack/satchel/pocketbook,/obj/item/storage/backpack/satchel/leather,/obj/item/storage/backpack/satchel/flat,/turf/simulated/floor/tiled/dark,/area/shuttle/merchant/home)
 "aUw" = (/turf/simulated/floor/tiled/dark,/area/shuttle/merchant/home)
 "aUx" = (/obj/structure/window/reinforced{dir = 8; health = 1e+06},/obj/structure/table/reinforced,/obj/structure/flora/pottedplant/shoot{pixel_y = 7},/turf/simulated/floor/tiled/dark,/area/shuttle/merchant/home)
 "aUy" = (/obj/machinery/embedded_controller/radio/airlock/docking_port{pixel_x = -32; pixel_y = 32; id_tag = "merchant_ship_dock"; tag_exterior_door = "merchant_ship_exterior"; tag_interior_door = "merchant_ship_interior"; tag_airpump = "merchant_ship_vent"; tag_chamber_sensor = "merchant_ship_sensor"},/obj/structure/bed/chair/office/dark{dir = 1},/turf/simulated/floor/tiled/dark,/area/shuttle/merchant/home)
