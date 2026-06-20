@@ -427,10 +427,6 @@
 	},
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
-"eS" = (
-/obj/machinery/turret/network/station,
-/turf/simulated/floor/trim/wood2,
-/area/crew_quarters/captain)
 "eT" = (
 /turf/simulated/floor/tiled/mono,
 /area/hallway/primary/central_one)
@@ -968,6 +964,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
+"mi" = (
+/obj/effect/landmark/start/antags/monster,
+/turf/simulated/floor/trim/carpet/blue,
+/area/bridge)
 "mj" = (
 /obj/structure/cable/green{
 	icon_state = "1-8";
@@ -1274,6 +1274,10 @@
 /obj/item/modular_computer/console/preset/command,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
+"qg" = (
+/obj/machinery/turret/network/station,
+/turf/simulated/floor/trim/wood2,
+/area/crew_quarters/captain)
 "qj" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -1411,6 +1415,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge)
+"rC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/antags/monster,
+/turf/simulated/floor/tiled/rough,
+/area/hallway/primary/central_one)
 "rE" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
@@ -2058,6 +2069,13 @@
 /obj/structure/table/hardtable,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge)
+"zZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/effect/landmark/start/antags/monster,
+/turf/simulated/floor/tiled/mono,
+/area/hallway/primary/central_one)
 "Ab" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/trim/carpet/red,
@@ -2765,13 +2783,6 @@
 	},
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/heads/hos)
-"Lk" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/landmark/start/antags/monster,
-/turf/simulated/floor/tiled/mono,
-/area/hallway/primary/central_one)
 "Lm" = (
 /obj/machinery/door/airlock/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3092,6 +3103,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light/small/red,
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
 "PT" = (
@@ -3259,10 +3271,6 @@
 	},
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
-"RQ" = (
-/obj/effect/landmark/start/antags/monster,
-/turf/simulated/floor/trim/carpet/blue,
-/area/bridge)
 "RT" = (
 /obj/structure/lattice,
 /turf/simulated/floor/plating,
@@ -3537,13 +3545,6 @@
 "Vz" = (
 /turf/simulated/floor/plating/airless,
 /area/space)
-"VH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start/antags/monster,
-/turf/simulated/floor/tiled/rough,
-/area/hallway/primary/central_one)
 "VT" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/blue,
@@ -36384,7 +36385,7 @@ Zp
 Ur
 Bf
 Si
-VH
+rC
 Zb
 Zb
 HC
@@ -38429,7 +38430,7 @@ nu
 cM
 cM
 cM
-RQ
+mi
 dz
 xl
 qv
@@ -40740,7 +40741,7 @@ hb
 mO
 ob
 kY
-eS
+qg
 UH
 uK
 eC
@@ -43063,7 +43064,7 @@ Ur
 Zp
 Zp
 eT
-Lk
+zZ
 kj
 Zp
 Zp
