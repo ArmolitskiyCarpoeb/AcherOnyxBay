@@ -237,6 +237,10 @@
 	d2 = 2;
 	d1 = 1
 	},
+/obj/machinery/door/blast/regular/open{
+	name = "Bridge Blast Doors";
+	id = "bridge blast doors"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
 "cy" = (
@@ -269,6 +273,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8";
+	d2 = 8;
+	d1 = 2
 	},
 /turf/simulated/floor/tiled/graytile,
 /area/bridge)
@@ -488,6 +497,10 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/blast/regular/open{
+	name = "Bridge Blast Doors";
+	id = "bridge blast doors"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
 "fC" = (
@@ -523,9 +536,9 @@
 /turf/simulated/floor/tiled/brown,
 /area/crew_quarters/heads/cmo)
 "gv" = (
-/obj/item/modular_computer/console/preset/command,
 /obj/effect/floor_decal/corner/blue/mono,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table/hardtable,
 /turf/simulated/floor/tiled/mono,
 /area/bridge)
 "gA" = (
@@ -687,6 +700,7 @@
 	dir = 8
 	},
 /obj/structure/table/hardtable,
+/obj/item/storage/secure/briefcase/nukedisk,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "jb" = (
@@ -707,6 +721,10 @@
 "jc" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular/open{
+	name = "Bridge Blast Doors";
+	id = "bridge blast doors"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
 "jg" = (
@@ -752,6 +770,11 @@
 	d1 = 1
 	},
 /obj/structure/table/hardtable,
+/obj/structure/cable/green{
+	icon_state = "2-8";
+	d2 = 8;
+	d1 = 2
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge)
 "jy" = (
@@ -952,6 +975,11 @@
 /area/bridge)
 "lV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2";
+	d2 = 2;
+	d1 = 1
+	},
 /turf/simulated/floor/tiled/graytile,
 /area/bridge)
 "md" = (
@@ -1092,7 +1120,12 @@
 /area/hallway/primary/central_one)
 "nM" = (
 /obj/structure/table/hardtable,
-/obj/item/storage/secure/briefcase/nukedisk,
+/obj/machinery/button/remote/blast_door{
+	name = "Bridge Blast Doors Control";
+	pixel_y = -2;
+	id = "bridge blast doors";
+	req_access = list(19)
+	},
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
 "nR" = (
@@ -1158,8 +1191,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/locker)
 "oM" = (
-/obj/structure/window_frame/rglass,
 /obj/machinery/door/firedoor,
+/obj/structure/window_frame/grille/rglass,
+/obj/structure/cable/green{
+	icon_state = "0-8";
+	d2 = 8
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
 "oN" = (
@@ -1275,9 +1312,27 @@
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "qg" = (
-/obj/machinery/turret/network/station,
-/turf/simulated/floor/trim/wood2,
-/area/crew_quarters/captain)
+/obj/machinery/door/blast/shutters/open{
+	name = "Bridge Window Shutters";
+	dir = 2;
+	id = "bridge blast"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular/open{
+	name = "Bridge Blast Doors";
+	id = "bridge blast doors"
+	},
+/obj/structure/window_frame/grille/rglass,
+/obj/structure/cable/green{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8";
+	d2 = 8
+	},
+/turf/simulated/floor/plating,
+/area/bridge)
 "qj" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -1633,11 +1688,16 @@
 	d1 = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/blast/regular/open{
+	name = "Bridge Blast Doors";
+	id = "bridge blast doors"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "tq" = (
-/obj/item/modular_computer/console/preset/security,
 /obj/effect/floor_decal/corner/blue/mono,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/modular_computer/console/preset/security,
 /turf/simulated/floor/tiled/mono,
 /area/bridge)
 "ts" = (
@@ -1861,6 +1921,10 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/machinery/door/blast/regular/open{
+	name = "Bridge Blast Doors";
+	id = "bridge blast doors"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
 "xA" = (
@@ -1902,7 +1966,6 @@
 /obj/structure/table/hardtable,
 /obj/item/device/flashlight/lamp/green,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/item/clothing/mask/gas/captain,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
 "yf" = (
@@ -2006,6 +2069,11 @@
 /area/hallway/primary/central_one)
 "zi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-4";
+	d2 = 4;
+	d1 = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/bridge)
 "zj" = (
@@ -2459,8 +2527,7 @@
 /area/maintenance/substation/command)
 "GM" = (
 /obj/effect/floor_decal/corner/blue/mono,
-/obj/structure/table/hardtable,
-/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy/captain,
 /turf/simulated/floor/tiled/mono,
 /area/bridge)
 "GT" = (
@@ -2711,6 +2778,7 @@
 "Kf" = (
 /obj/structure/closet/emcloset,
 /obj/item/clothing/suit/space/void/captain/prepared,
+/obj/item/clothing/mask/gas/captain,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "Kg" = (
@@ -2905,6 +2973,10 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/blast/regular/open{
+	name = "Bridge Blast Doors";
+	id = "bridge blast doors"
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "Nb" = (
@@ -3026,7 +3098,6 @@
 /turf/simulated/floor/tiled/freezer,
 /area/hallway/primary/central_one)
 "OT" = (
-/obj/structure/window_frame/rglass,
 /obj/machinery/door/blast/shutters/open{
 	name = "Bridge Window Shutters";
 	dir = 2;
@@ -3034,6 +3105,19 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/blast/regular/open{
+	name = "Bridge Blast Doors";
+	id = "bridge blast doors"
+	},
+/obj/structure/window_frame/grille/rglass,
+/obj/structure/cable/green{
+	icon_state = "0-8";
+	d2 = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4";
+	d2 = 4
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "OZ" = (
@@ -3360,13 +3444,22 @@
 /turf/simulated/floor/trim/wood2,
 /area/bridge/meeting_room)
 "SU" = (
-/obj/structure/window_frame/rglass,
 /obj/machinery/door/blast/shutters/open{
 	name = "Bridge Window Shutters";
 	dir = 2;
 	id = "bridge blast"
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular/open{
+	name = "Bridge Blast Doors";
+	id = "bridge blast doors"
+	},
+/obj/structure/window_frame/grille/rglass,
+/obj/structure/cable/green,
+/obj/structure/cable/green{
+	icon_state = "0-4";
+	d2 = 4
+	},
 /turf/simulated/floor/plating,
 /area/bridge)
 "SX" = (
@@ -3670,8 +3763,9 @@
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
 "Xr" = (
-/obj/structure/bed/chair/comfy/captain,
 /obj/effect/floor_decal/corner/blue/mono,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/modular_computer/console/preset/command,
 /turf/simulated/floor/tiled/mono,
 /area/bridge)
 "Xt" = (
@@ -3792,6 +3886,24 @@
 	},
 /turf/simulated/floor/tiled/dark/rough,
 /area/maintenance/substation/command)
+"Zk" = (
+/obj/machinery/door/blast/shutters/open{
+	name = "Bridge Window Shutters";
+	dir = 2;
+	id = "bridge blast"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular/open{
+	name = "Bridge Blast Doors";
+	id = "bridge blast doors"
+	},
+/obj/structure/window_frame/grille/rglass,
+/obj/structure/cable/green{
+	icon_state = "0-8";
+	d2 = 8
+	},
+/turf/simulated/floor/plating,
+/area/bridge)
 "Zp" = (
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
@@ -39455,9 +39567,9 @@ LH
 fA
 pZ
 xr
-XR
+tq
 gv
-XR
+Xr
 AZ
 Kc
 OT
@@ -39714,10 +39826,10 @@ rz
 xr
 fC
 GM
-Xr
+fC
 AZ
 Sn
-SU
+qg
 oa
 NS
 ie
@@ -39970,11 +40082,11 @@ fA
 BG
 xr
 XR
-tq
+fC
 fC
 YJ
 Rj
-SU
+qg
 yY
 HN
 rj
@@ -40231,7 +40343,7 @@ zi
 cq
 AZ
 ft
-SU
+Zk
 Xz
 HN
 Lz
@@ -40741,7 +40853,7 @@ hb
 mO
 ob
 kY
-qg
+uK
 UH
 uK
 eC
