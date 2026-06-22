@@ -489,6 +489,22 @@
 		to_chat(src, "<span class='warning'>You're out of energy!  You need food!</span>")
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
+// /mob/proc/face_atom(atom/A)
+// 	if(!A || !x || !y || !A.x || !A.y) return
+// 	var/dx = A.x - x
+// 	var/dy = A.y - y
+// 	if(!dx && !dy) return
+
+// 	var/direction
+// 	if(abs(dx) < abs(dy))
+// 		if(dy > 0)	direction = NORTH
+// 		else		direction = SOUTH
+// 	else
+// 		if(dx > 0)	direction = EAST
+// 		else		direction = WEST
+// 	if(direction != dir)
+// 		facedir(direction)
+
 /mob/proc/face_atom(atom/A)
 	if(!A || !x || !y || !A.x || !A.y) return
 	var/dx = A.x - x
@@ -503,7 +519,12 @@
 		if(dx > 0)	direction = EAST
 		else		direction = WEST
 	if(direction != dir)
-		facedir(direction)
+		if(!isnull(facing_dir)) // если фиксация активна
+			facing_dir = null   // временно убираем
+			facedir(direction)  // поворачиваем
+			facing_dir = direction // фиксируем новое направление
+		else
+			facedir(direction)   // просто поворачиваем без фиксации
 
 /*
 	Custom click handling
