@@ -401,7 +401,7 @@
 /area/bridge)
 "dG" = (
 /obj/machinery/light/small,
-/obj/random/pottedplant,
+/obj/structure/flora/pottedplant/tall,
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
 "dY" = (
@@ -1745,7 +1745,7 @@
 /obj/effect/floor_decal/corner/blue{
 	dir = 9
 	},
-/obj/random/pottedplant,
+/obj/structure/flora/pottedplant/thinbush,
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
 "uK" = (
@@ -3820,9 +3820,7 @@
 /obj/structure/closet/emergency_wall{
 	pixel_x = -32
 	},
-/obj/structure/flora/pottedplant/monkey{
-	name = "Sun Sun"
-	},
+/obj/structure/flora/pottedplant/minitree,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "Yv" = (
