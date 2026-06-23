@@ -5,7 +5,7 @@ GLOBAL_DATUM_INIT(bureaucrat, /datum/antagonist/bureaucrat, new)
 	role_text = "Bureaucrat"
 	role_text_plural = "Bureaucrats"
 	welcome_text = "Узнай причину провала директивы. Cуй свой нос куда велит сердце и накажи виновных как посчитаешь нужным. Всё в твоих руках."
-	landmark_id = "Death Commando"
+	landmark_id = "Bureaucrat"
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_OVERRIDE_MOB | ANTAG_HAS_NUKE | ANTAG_HAS_LEADER | ANTAG_RANDOM_EXCEPTED
 	default_access = list(access_cent_general, access_cent_specops, access_cent_living, access_cent_storage)
 	antaghud_indicator = "huddeathsquad"
@@ -86,14 +86,14 @@ GLOBAL_DATUM_INIT(bureaucrat, /datum/antagonist/bureaucrat, new)
 		player.skills["engineering"] = rand(75, 90)
 		player.skills["medical"] = rand(75, 90)
 
-	var/obj/item/card/id/id = create_id("Сorporate bureaucrat", player)
+	if(player.gender == FEMALE)
+		player.gender = MALE
+
+	var/obj/item/card/id/id = create_id("Сorporate Bureaucrat", player)
 	if(id)
 		id.access |= get_all_station_access()
 		id.icon_state = "card_centcom"
 	create_radio(DTH_FREQ, player)
-
-	if(player.gender == FEMALE)
-		player.gender = MALE
 
 /datum/antagonist/bureaucrat/update_antag_mob(datum/mind/player)
 
@@ -122,6 +122,6 @@ GLOBAL_DATUM_INIT(bureaucrat, /datum/antagonist/bureaucrat, new)
 
 	return
 
-/datum/antagonist/deathsquad/create_antagonist()
+/datum/antagonist/bureaucrat/create_antagonist()
 	if(..() && !deployed)
 		deployed = 1
