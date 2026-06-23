@@ -185,6 +185,10 @@
 	name = "Death Commando"
 	icon_state = "landmark_deathsquad"
 
+/obj/effect/landmark/start/antags/bureaucrat
+	name = "Bureaucrat"
+	icon_state = "landmark_deathsquad"
+
 // Magic creatures
 /obj/effect/landmark/start/antags/wizard
 	name = "Wizard"
