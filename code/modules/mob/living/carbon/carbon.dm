@@ -356,7 +356,8 @@
 		if(ismob(item))
 			var/mob/M = item
 
-			if(!src.newstatcheck(src.stats[STAT_ST], 15, null, STAT_ST))
+			if(!src.statcheck(src.stats[STAT_ST], 14, null, STAT_ST))
+				to_chat(src, "<span class='warning'>Не получается кинуть, ты слабак!</span>")
 				return
 
 			//limit throw range by relative mob size
