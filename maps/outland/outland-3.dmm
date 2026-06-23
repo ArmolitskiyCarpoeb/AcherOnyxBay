@@ -38,7 +38,6 @@
 /obj/item/clothing/mask/gas/german,
 /obj/item/gun/projectile/shotgun/pump/combat/hos,
 /obj/item/clothing/accessory/storage/bandolier,
-/obj/item/clothing/suit/poncho/dominiancape,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/heads/hos)
 "as" = (
@@ -214,7 +213,6 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "ch" = (
@@ -529,7 +527,6 @@
 	name = "Bridge Blast Doors";
 	id = "bridge blast doors"
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/crew_quarters/captain)
 "fC" = (
@@ -564,17 +561,6 @@
 	dir = 10
 	},
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
-/turf/simulated/floor/trim/carpet/blue,
-/area/crew_quarters/captain)
-"gm" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 10
-	},
-/obj/structure/bed/couch/right/blue{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
 "gn" = (
@@ -686,10 +672,6 @@
 "hZ" = (
 /turf/simulated/floor/plating,
 /area/maintenance/locker)
-"ia" = (
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/trim/wood2,
-/area/crew_quarters/captain)
 "ij" = (
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
@@ -894,10 +876,10 @@
 /area/bridge)
 "ke" = (
 /obj/machinery/light/small,
-/obj/structure/table/hardtable,
 /obj/structure/closet/emergency_wall{
 	pixel_x = -32
 	},
+/obj/structure/flora/pottedplant/flowerbushblue,
 /turf/simulated/floor/trim/carpet/red,
 /area/crew_quarters/heads/hos)
 "kj" = (
@@ -915,7 +897,6 @@
 /area/bridge)
 "kA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "kE" = (
@@ -924,13 +905,6 @@
 	},
 /turf/simulated/open,
 /area/hallway/primary/central_one)
-"kM" = (
-/obj/structure/disposalpipe/segment{
-	icon_state = "pipe-c";
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/library)
 "kO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -968,13 +942,9 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/pottedplant/eye,
+/obj/structure/flora/pottedplant/flowerbushred,
 /turf/simulated/floor/trim/carpet/gblue,
 /area/crew_quarters/heads/cmo)
-"lf" = (
-/obj/structure/disposalpipe/segment,
-/turf/simulated/wall/r_wall,
-/area/maintenance/library)
 "lh" = (
 /obj/machinery/light{
 	dir = 1
@@ -1214,10 +1184,6 @@
 	},
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
-"os" = (
-/obj/structure/flora/pottedplant/flowerbushblue,
-/turf/simulated/floor/trim/carpet/red,
-/area/crew_quarters/heads/hos)
 "oB" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -1468,7 +1434,6 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment,
 /obj/item/reagent_containers/vessel/mug/NT,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
@@ -1564,10 +1529,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/structure/disposalpipe/segment{
-	icon_state = "conpipe-c";
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "ss" = (
@@ -1605,15 +1566,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/library)
-"sC" = (
-/obj/machinery/disposal{
-	name = "Emergency Exit"
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/turf/simulated/floor/trim/wood2,
-/area/crew_quarters/captain)
 "sF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/rough,
@@ -1786,14 +1738,6 @@
 /obj/structure/table/steel,
 /turf/simulated/floor/plating,
 /area/maintenance/locker)
-"tR" = (
-/obj/structure/disposalpipe/trunk,
-/obj/machinery/disposal/deliveryChute{
-	name = "disposal inlet";
-	dir = 1
-	},
-/turf/simulated/floor/plating/airless,
-/area/space)
 "up" = (
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
@@ -2040,7 +1984,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
 "yf" = (
@@ -2921,10 +2864,6 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
-/obj/structure/bed/couch/left/blue{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
 "Lj" = (
@@ -3138,7 +3077,6 @@
 /area/hallway/primary/central_one)
 "Ou" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
 "Ov" = (
@@ -3207,18 +3145,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/locker)
-"Pq" = (
-/obj/structure/closet/secure_closet{
-	req_access = list(20);
-	icon_state = "capsecure1"
-	},
-/obj/item/clothing/head/crown,
-/obj/item/clothing/head/helmet/captain,
-/obj/item/device/radio/headset/heads/captain,
-/obj/item/storage/garment/captain,
-/obj/item/clothing/suit/armor/vest/capcarapace,
-/turf/simulated/floor/trim/wood2,
-/area/crew_quarters/captain)
 "Ps" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -3634,7 +3560,6 @@
 /obj/item/stamp/captain,
 /obj/item/stamp/denied,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
 "UH" = (
@@ -37603,7 +37528,7 @@ nR
 xo
 Kw
 Ia
-os
+Kw
 nR
 JM
 mA
@@ -41445,9 +41370,9 @@ rs
 UC
 Ou
 KS
-gm
-ia
-sC
+sU
+uK
+uK
 hb
 zx
 LN
@@ -41691,12 +41616,12 @@ Vz
 Vz
 CU
 Vz
-tR
-lf
-kM
+Vz
+nh
+cy
 hb
 hb
-Pq
+uK
 qd
 IU
 nM
