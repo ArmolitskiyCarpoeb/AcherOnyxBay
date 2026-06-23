@@ -9,13 +9,11 @@
 /decl/hierarchy/outfit/job/assistant/post_equip(mob/living/carbon/human/H)
 	..()
 
-	// Списки вариантов
-	var/list/uniforms = list(
-		/obj/item/clothing/under/casual_pants,
-		/obj/item/clothing/under/soviet,
-		/obj/item/clothing/under/rank/workman
-
-	)
+	//Списки вариантов
+	// var/list/uniforms = list(
+	// 	/obj/item/clothing/under/casual_pants,
+	// 	/obj/item/clothing/under/soviet
+	// )
 
 	var/list/head = list(
 		/obj/item/clothing/head/kitty,
@@ -26,13 +24,15 @@
 	var/list/jackets = list(
 		/obj/item/clothing/suit/storage/leather_jacket,
 		/obj/item/clothing/suit/storage/toggle/bomber,
-		/obj/item/clothing/suit/storage/toggle/track/red
+		/obj/item/clothing/suit/storage/toggle/track/red,
+		/obj/item/clothing/suit/storage/toggle/labcoat
 	)
 
 	var/list/masks = list(
 		/obj/item/clothing/mask/surgical,
 		/obj/item/clothing/mask/gas/old,
-		/obj/item/clothing/mask/smokable/cigarette
+		/obj/item/clothing/mask/smokable/cigarette,
+		/obj/item/clothing/mask/bandana/red
 	)
 
 	var/list/left_hand_items = list(
@@ -45,21 +45,24 @@
 		/obj/item/music_player/boombox,
 		/obj/item/device/camera,
 		/obj/item/material/twohanded/baseballbat,
-		/obj/item/clothing/gloves/insulated
+		/obj/item/clothing/gloves/insulated,
+		/obj/item/reagent_containers/vessel/bottle/vodka
 	)
 
 	var/list/right_hand_items = list(
 		/obj/item/material/hatchet/tacknife,
 	//	/obj/item/gun/projectile/automatic/as75,
 		/obj/item/material/twohanded/fireaxe,
-		/obj/item/storage/firstaid/surgery/syndie
+		/obj/item/storage/firstaid/surgery/syndie,
+		/obj/item/grenade/chem_grenade/cleaner,
+		/obj/item/grenade/smokebomb
 	)
 
-	// 1. Униформа
-	if(prob(20))
-		var/uniform_type = uniforms[rand(1, uniforms.len)]
-		var/obj/item/clothing/U = new uniform_type
-		H.equip_to_slot_or_del(U, slot_w_uniform)
+	//1. Униформа  (не работает как должно, когда нибудь допишу)
+	// if(prob(20))
+	// 	var/uniform_type = uniforms[rand(1, uniforms.len)]
+	// 	var/obj/item/clothing/U = new uniform_type
+	// 	H.equip_to_slot_or_del(U, slot_w_uniform)
 
 	// 2. Куртка
 	if(prob(30))
@@ -68,9 +71,9 @@
 		H.equip_to_slot_or_del(J, slot_wear_suit)
 
 	// 3. Голова
-	if(prob(25))
-		var/mask_type = head[rand(1, masks.len)]
-		var/obj/item/clothing/M = new mask_type
+	if(prob(10))
+		var/head_type = head[rand(1, masks.len)]
+		var/obj/item/clothing/M = new head_type
 		H.equip_to_slot_or_del(M, slot_head)
 
 	// 4. Маска
