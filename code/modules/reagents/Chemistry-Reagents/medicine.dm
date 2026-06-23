@@ -767,6 +767,9 @@
 			data = world.time
 			if(volume <= 4.0)
 				to_chat(M, SPAN("notice", "You feel invigorated and calm."))
+				if(ishuman(M))
+					var/mob/living/carbon/human/C = M
+					C.add_happiness_event(/datum/happiness_event/relaxed)
 			else
 				to_chat(M, SPAN("warning", "You feel like you should smoke less often..."))
 	if(!ishuman(M))

@@ -22,6 +22,7 @@
 	description = "<span class='info'>Поспал!</span>\n"
 	happiness = 10
 	timeout = 5 MINUTES
+	group = "sleep"
 
 //thirst
 /datum/happiness_event/thirst/filled
@@ -262,6 +263,7 @@
 	description = "<span class='danger'>Было не очень приятно находиться в металлическом гробу так долго.</span>\n"
 	happiness = -10
 	timeout = 1800
+	group = "sleep"
 
 //For when you see someone die and you're not hardcore.
 /datum/happiness_event/dead
@@ -307,13 +309,13 @@
 	group = "addiction"
 
 /datum/happiness_event/relaxed
-	description = "<span class='info'>Хорошая сигаретка была.</span>\n"
+	description = "<span class='info'>Хорошая сигаретка.</span>\n"
 	happiness = 10
-	timeout = 1800
+	timeout = 3000
 	group = "addiction"
 
 /datum/happiness_event/booze
 	description = "<span class='info'>Алкоголь делает этот мир капельку светлее.</span>\n"
 	happiness = 10
-	timeout = 2400
+	timeout = 3000
 	group = "addiction"
