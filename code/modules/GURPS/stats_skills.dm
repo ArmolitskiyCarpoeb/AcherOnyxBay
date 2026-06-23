@@ -40,10 +40,13 @@
 /mob/proc/statcheck(var/stat, var/requirement, var/message = null, var/type = null)//Requirement (1-20) + roll
 	var/roll = rand(0,20)// our "dice"
 	//log_debug("Roll: [roll], Mood affect: (-)[mood_affect(1)], Ability modifier [stat_to_modifier(stat)]")
-	log_debug("[src] Rolled a [roll] against a DC [requirement] [type] check")
+	//log_debug("[src] Rolled a [roll] against a DC [requirement] [type] check")
 //	roll -= mood_affect(1)// our mood
 	roll += stat_to_modifier(stat) //our stat mod
 	//learn_stats(type) We can't have nice things
+	if(stat >= requirement)
+		//log_debug("[stat] meets the [requirement]")
+		return 1
 	if(roll >= requirement)//We met the DC requirement
 		//world << "Rolled and passed."
 		return 1
