@@ -1,5 +1,5 @@
 /datum/event/psychic_rift
-	id = "psychic rift"
+	id = "psychic_rift"
 	name = "Psychic Rift"
 	description = "A psychic rift will appear somewhere at the station"
 
