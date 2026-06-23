@@ -10,8 +10,8 @@
 	supervisors = "Экипаж, Капитан и Корпорация"
 	selection_color = "#5e5e5e"
 	economic_modifier = 0.5
-	//access = list(access_maint_tunnels)
-	//minimal_access = list(access_maint_tunnels)
+	access = list(access_maint_tunnels)
+	minimal_access = list(access_maint_tunnels)
 //	alt_titles = list("Technical Assistant","Medical Intern","Research Assistant")
 	outfit_type = /decl/hierarchy/outfit/job/assistant
 	can_be_hired = FALSE
