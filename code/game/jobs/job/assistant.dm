@@ -7,7 +7,7 @@
 	account_allowed = FALSE
 	total_positions = -1
 	spawn_positions = -1
-	supervisors = "ЭКИПАЖ и Корпорация"
+	supervisors = "Экипаж, Капитан и Корпорация"
 	selection_color = "#5e5e5e"
 	economic_modifier = 0.5
 	access = list(access_maint_tunnels)
@@ -23,14 +23,14 @@
 	if(.)
 		H.newgeneratestats(8,12,8,12,6,11,8,12)
 		H.generate_skills()
-		H.skills["ranged"] = rand(10, 90)
-		H.skills["melee"] = rand(10, 90)
-		H.skills["engineering"] = rand(10, 90)
-		H.skills["crafting"] = rand(10, 90)
-		H.skills["cooking"] = rand(10, 90)
-		H.skills["medical"] = rand(10, 90)
-		H.skills["surgery"] = rand(10, 90)
-		H.skills["gardening"] = rand(10, 90)
+		H.skills["ranged"] = rand(10, 40)
+		H.skills["melee"] = rand(10, 40)
+		H.skills["engineering"] = rand(10, 40)
+		H.skills["crafting"] = rand(10, 40)
+		H.skills["cooking"] = rand(10, 40)
+		H.skills["medical"] = rand(10, 40)
+		H.skills["surgery"] = rand(10, 40)
+		H.skills["gardening"] = rand(10, 40)
 		H.body_build_stats(H)
 /*
 /datum/job/assistant/get_access()
