@@ -57,30 +57,30 @@
 
 /datum/modifier/trait/skiled_medical/on_applied()
 	if(holder.skills)
-		holder.skills["medical"] += 30
-		holder.skills["surgery"] += 25
+		holder.skills["medical"] += 25
+		holder.skills["surgery"] += 15
 
 /datum/modifier/trait/skiled_melee
 	name = "Неплохо дерусь"
 
 /datum/modifier/trait/skiled_melee/on_applied()
 	if(holder.skills)
-		holder.skills["melee"] += 25
+		holder.skills["melee"] += 15
 
 /datum/modifier/trait/skiled_ranged
 	name = "Умелый стрелок"
 
 /datum/modifier/trait/skiled_ranged/on_applied()
 	if(holder.skills)
-		holder.skills["ranged"] += 25
+		holder.skills["ranged"] += 15
 
 /datum/modifier/trait/skiled_cooking
 	name = "Умелый повар"
 
 /datum/modifier/trait/skiled_cooking/on_applied()
 	if(holder.skills)
-		holder.skills["cooking"] += 40
-		holder.skills["gardening"] += 40
+		holder.skills["cooking"] += 25
+		holder.skills["gardening"] += 25
 
 /datum/modifier/trait/skiled_engineering
 	name = "Неплохой инженер"
@@ -107,7 +107,7 @@
 
 /datum/modifier/trait/unskiled_medical/on_applied()
 	if(holder.skills)
-		holder.skills["medical"] += -30
+		holder.skills["medical"] += -25
 		holder.skills["surgery"] += -25
 
 /datum/modifier/trait/unskiled_melee
@@ -116,6 +116,9 @@
 /datum/modifier/trait/unskiled_melee/on_applied()
 	if(holder.skills)
 		holder.skills["melee"] += -40
+	if(holder.stats)
+		holder.stats[STAT_HT] += -2
+		holder.stats[STAT_ST] += -2
 
 /datum/modifier/trait/unskiled_ranged
 	name = "Умелый стрелок"
