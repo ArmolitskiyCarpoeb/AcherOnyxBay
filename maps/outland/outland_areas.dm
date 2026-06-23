@@ -89,14 +89,17 @@
 
 /area/shuttle/mining
 	name = "\improper Mining Shuttle"
+	base_turf = /turf/simulated/floor/plating
 
 /area/shuttle/mining/outpost
 	icon_state = "shuttle"
 	//base_turf = /turf/simulated/floor/asteroid
 	area_flags = AREA_FLAG_UNIQUE_AREA
+	base_turf = /turf/simulated/floor/plating
 
 /area/shuttle/mining/station
 	icon_state = "shuttle2"
+	base_turf = /turf/simulated/floor/plating
 
 /area/shuttle/mining/transit
 	name = "Mining Shuttle Transit"
