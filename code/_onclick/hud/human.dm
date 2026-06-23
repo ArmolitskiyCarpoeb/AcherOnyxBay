@@ -356,6 +356,13 @@
 		mymob.happiness_icon.screen_loc = ui_happiness
 		infodisplay |= mymob.happiness_icon
 
+	mymob.fixdir_icon = new /atom/movable/screen/fixdir_icon()
+	mymob.fixdir_icon.name = "fixdir"
+	mymob.fixdir_icon.icon = ui_style
+	mymob.fixdir_icon.icon_state = "fixdir_off"
+	mymob.fixdir_icon.screen_loc = ui_fixdir
+	infodisplay |= mymob.fixdir_icon
+
 	mymob.pain = new /atom/movable/screen/fullscreen/pain( null )
 	infodisplay |= mymob.pain
 

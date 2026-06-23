@@ -116,6 +116,10 @@
 	var/mob/living/carbon/human/H = usr
 	H.print_happiness()
 
+/atom/movable/screen/fixdir_icon/Click()
+	var/mob/living/carbon/human/H = usr
+	H.face_direction()
+
 /atom/movable/screen/zone_sel
 	name = "damage zone"
 	icon_state = "zone_sel"
@@ -390,6 +394,11 @@
 			if(istype(usr,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = usr
 				H.useblock()
+
+		if("fixdir")
+			if(istype(usr,/mob/living/carbon/human))
+				var/mob/living/carbon/human/H = usr
+				H.face_direction()
 
 		if("Click Mode")
 			if(istype(usr,/mob/living/carbon/human))

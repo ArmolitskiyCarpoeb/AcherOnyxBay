@@ -5,7 +5,7 @@
 	return ismob(user.mob) ? TRUE : FALSE
 
 /datum/keybinding/mob/cycle_intent_right
-	hotkey_keys = list("G", "Insert")
+	hotkey_keys = list("Insert")
 	name = "cycle_intent_right"
 	full_name = "Сycle Intent: Right"
 	description = ""
@@ -174,4 +174,15 @@
 	M.stop_pulling()
 	if(istype(M))
 		M.toggle_aim_assist()
+	return TRUE
+
+/datum/keybinding/human/fixdir
+	hotkey_keys = list("G")
+	name = "fixdir"
+	full_name = "Toggle Fix Dir"
+	description = ""
+
+/datum/keybinding/human/fixdir/down(client/user)
+	var/mob/living/carbon/human/C = user.mob
+	C.face_direction()
 	return TRUE

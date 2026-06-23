@@ -1018,11 +1018,16 @@
 	set src = usr
 
 	set_face_dir()
-
-	if(!facing_dir)
-		to_chat(usr, "You are now not facing anything.")
+	if(facing_dir)
+		fixdir_icon.icon_state = "fixdir_on"
 	else
-		to_chat(usr, "You are now facing [dir2text(facing_dir)].")
+		fixdir_icon.icon_state = "fixdir_off"
+	//return
+
+	// if(!facing_dir)
+	// 	to_chat(usr, "You are now not facing anything.")
+	// else
+	// 	to_chat(usr, "You are now facing [dir2text(facing_dir)].")
 
 /mob/proc/set_face_dir(newdir)
 	if(newdir == FALSE)

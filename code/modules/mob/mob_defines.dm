@@ -69,6 +69,7 @@
 	var/atom/movable/screen/gun/mode/gun_setting_icon = null
 	var/atom/movable/screen/happiness_icon = null
 	var/atom/movable/screen/noise = null
+	var/atom/movable/screen/fixdir_icon = null
 
 	var/atom/movable/screen/movable/ability_master/ability_master = null
 
