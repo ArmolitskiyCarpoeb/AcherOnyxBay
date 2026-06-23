@@ -560,7 +560,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
-/obj/structure/table/woodentable,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
 "gn" = (
@@ -1856,7 +1855,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/structure/table/woodentable,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "wU" = (
