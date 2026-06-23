@@ -10,11 +10,11 @@
 	slot_flags = SLOT_EARS | SLOT_MASK
 	attack_verb = list("burnt", "singed")
 	type_butt = /obj/item/cigbutt
-	chem_volume = 5
-	smoketime = 120
+	chem_volume = 10
+	smoketime = 150
 	brand = "\improper Trans-Stellar Duty-free"
 	hitsound = 'sound/items/pffsh.ogg'
-	var/list/filling = list(/datum/reagent/tobacco/bad = 2) // That's approx. the real volume of tobacco in a single cigarette, love it or hate it.
+	var/list/filling = list(/datum/reagent/tobacco/bad = 10) // That's approx. the real volume of tobacco in a single cigarette, love it or hate it.
 	var/ember_state = "cigember"
 	var/dynamic_icon = TRUE
 
@@ -277,7 +277,7 @@
 	brand = "\improper Temperamento Menthol"
 	color = "#ddffe8"
 	type_butt = /obj/item/cigbutt/menthol
-	filling = list(/datum/reagent/tobacco = 1, /datum/reagent/menthol = 1)
+	filling = list(/datum/reagent/tobacco = 12, /datum/reagent/menthol = 3)
 
 /obj/item/cigbutt/menthol
 	icon_state = "cigbuttmentol"
@@ -292,7 +292,7 @@
 	color = "#dcdcdc"
 	filter_trans = 0.6
 	type_butt = /obj/item/cigbutt/jerichos
-	filling = list(/datum/reagent/tobacco/bad = 3.5)
+	filling = list(/datum/reagent/tobacco/bad = 10)
 
 /obj/item/cigbutt/jerichos
 	icon_state = "cigbuttjer"
@@ -301,13 +301,14 @@
 	name = "dark cigarette"
 	brand = "\improper Carcinoma Angel"
 	color = "#869286"
+	filling = list(/datum/reagent/tobacco/bad = 25)
 
 /obj/item/clothing/mask/smokable/cigarette/professionals
 	name = "thin cigarette"
 	brand = "\improper Professional"
 	icon_state = "cigpro"
 	type_butt = /obj/item/cigbutt/professionals
-	filling = list(/datum/reagent/tobacco/bad = 3)
+	filling = list(/datum/reagent/tobacco/bad = 15)
 
 /obj/item/cigbutt/professionals
 	icon_state = "cigbuttpro"
@@ -333,7 +334,7 @@
 	chem_volume = 10
 	filter_trans = 0.25
 	type_butt = /obj/item/cigbutt/woodbutt
-	filling = list(/datum/reagent/tobacco/fine = 6)
+	filling = list(/datum/reagent/tobacco/fine = 15)
 	var/brand_overlay = ""
 
 /obj/item/clothing/mask/smokable/cigarette/trident/Initialize()
@@ -352,32 +353,32 @@
 /obj/item/clothing/mask/smokable/cigarette/trident/mint
 	icon_state = "cigarilloMi"
 	brand_overlay = "Mi"
-	filling = list(/datum/reagent/tobacco/fine = 6, /datum/reagent/menthol = 2)
+	filling = list(/datum/reagent/tobacco/fine = 10, /datum/reagent/menthol = 2)
 
 /obj/item/clothing/mask/smokable/cigarette/trident/berry
 	icon_state = "cigarilloBe"
 	brand_overlay = "Be"
-	filling = list(/datum/reagent/tobacco/fine = 6, /datum/reagent/drink/juice/berry = 2)
+	filling = list(/datum/reagent/tobacco/fine = 10, /datum/reagent/drink/juice/berry = 2)
 
 /obj/item/clothing/mask/smokable/cigarette/trident/cherry
 	icon_state = "cigarilloCh"
 	brand_overlay = "Ch"
-	filling = list(/datum/reagent/tobacco/fine = 6, /datum/reagent/nutriment/cherryjelly = 2)
+	filling = list(/datum/reagent/tobacco/fine = 10, /datum/reagent/nutriment/cherryjelly = 2)
 
 /obj/item/clothing/mask/smokable/cigarette/trident/grape
 	icon_state = "cigarilloGr"
 	brand_overlay = "Gr"
-	filling = list(/datum/reagent/tobacco/fine = 6, /datum/reagent/drink/juice/grape = 2)
+	filling = list(/datum/reagent/tobacco/fine = 10, /datum/reagent/drink/juice/grape = 2)
 
 /obj/item/clothing/mask/smokable/cigarette/trident/watermelon
 	icon_state = "cigarilloWm"
 	brand_overlay = "Wm"
-	filling = list(/datum/reagent/tobacco/fine = 6, /datum/reagent/drink/juice/watermelon = 2)
+	filling = list(/datum/reagent/tobacco/fine = 10, /datum/reagent/drink/juice/watermelon = 2)
 
 /obj/item/clothing/mask/smokable/cigarette/trident/orange
 	icon_state = "cigarilloOr"
 	brand_overlay = "Or"
-	filling = list(/datum/reagent/tobacco/fine = 6, /datum/reagent/drink/juice/orange = 2)
+	filling = list(/datum/reagent/tobacco/fine = 10, /datum/reagent/drink/juice/orange = 2)
 
 ////////////////////
 //SYNDI CIGARETTES//
@@ -397,7 +398,7 @@
 	filling = list(/datum/reagent/potassium = 5, /datum/reagent/sugar = 5, /datum/reagent/phosphorus = 5)
 
 /obj/item/clothing/mask/smokable/cigarette/syndi_cigs/tricordrazine
-	filling = list(/datum/reagent/tricordrazine = 15)
+	filling = list(/datum/reagent/tricordrazine = 20)
 
 ////////////
 // CIGARS //
@@ -414,7 +415,7 @@
 	smoketime = 900
 	chem_volume = 22.5
 	filter_trans = 0.25
-	filling = list(/datum/reagent/tobacco/fine = 15)
+	filling = list(/datum/reagent/tobacco/fine = 25)
 	dynamic_icon = FALSE
 
 /obj/item/clothing/mask/smokable/cigarette/cigar/generate_lighting_message(obj/tool, mob/holder)
@@ -450,7 +451,7 @@
 	icon_on = "cigar2on"
 	smoketime = 1500
 	chem_volume = 30
-	filling = list(/datum/reagent/tobacco/fine = 20)
+	filling = list(/datum/reagent/tobacco/fine = 30)
 
 /obj/item/cigbutt/cigarbutt
 	name = "cigar butt"

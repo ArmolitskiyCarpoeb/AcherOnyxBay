@@ -57,21 +57,21 @@
 	if(isnull(next_msg) || world.time >= next_msg)
 		H.addiction_next_msg[type] = world.time + rand(55 SECONDS, 165 SECONDS)
 		switch(effectiveP)
-			if(0 to (3 MINUTES))
+			if(0 to (5 MINUTES))
 				to_chat(H, SPAN_THOUGHT(pick(
 					"You want a cigarette.",\
 					"You miss the familiar nicotine buzz.",\
 					"You feel like taking a quick smoke break."\
 				)))
 				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_small)
-			if((3 MINUTES) to (10 MINUTES))
+			if((5 MINUTES) to (15 MINUTES))
 				to_chat(H, SPAN_WARNING(pick(
 					"You really want nicotine.",\
 					"You feel irritable without a smoke.",\
 					"Your fingers feel restless — you want a drag."\
 				)))
 				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_medium)
-			if((10 MINUTES) to INFINITY)
+			if((15 MINUTES) to INFINITY)
 				to_chat(H, SPAN_DANGER(pick(
 					"You need nicotine — your nerves are screaming.",\
 					"You can't stop thinking about smoking.",\

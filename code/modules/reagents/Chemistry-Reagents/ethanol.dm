@@ -8,10 +8,10 @@
 	reagent_state = LIQUID
 	color = "#404030"
 
-	metabolism = 1.0
+	metabolism = 0.6
 	ingest_met = 0.75
 	digest_met = 3.5
-	ingest_absorbability = 0.5
+	ingest_absorbability = 0.9
 	digest_absorbability = 0.0 // Works directly from the guts, and only poisons one if injected.
 	touch_met = 5
 
@@ -39,7 +39,7 @@
 	var/mob/living/carbon/human/H = M
 	if(!(H.addictions[/datum/addiction/alcohol]))
 		consumption_counter += removed
-		if(consumption_counter >= 10)
+		if(consumption_counter >= 75)
 			H.add_addiction(/datum/addiction/alcohol, 0)
 			to_chat(H, SPAN_WARNING("You feel a craving for alcohol forming..."))
 	M.adjustToxLoss(removed * 2 * toxicity)

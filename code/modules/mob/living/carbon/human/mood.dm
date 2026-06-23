@@ -54,15 +54,13 @@ GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of S
 
 /mob/living/carbon/human/proc/update_sanity_effects()
 	var/message = ""
-	if(sanity < 45)
+	if(sanity < 25)
 		if(prob(5))
-			adjustBruteLoss(3)
-			adjustToxLoss(2)
-			message = pick("Тебя никто не любит!", "Как всё печально-то...", "К чёрту всё!", "Работа - ОТСТОЙ!")
+			message = pick("Меня никто не любит!", "Как всё печально-то...", "К чёрту всё!", "Работа - ОТСТОЙ!")
 			to_chat(src, "<span class='warning'>[message]</span>")
 			sound_to(src, sound(pick('sound/effects/badmood2.ogg', 'sound/effects/badmood3.ogg', 'sound/effects/badmood4.ogg')))
 
-	if(sanity < 20)
+	if(sanity < 15)
 		if(prob(25) && !is_hallucinating())
 			hallucination(rand(10, 25) SECONDS, rand(20, 50))
 			message = pick("Убожество, просто умри.", "Разум требует высвобождения из клетки бытия.", "Ты чувствуешь это? Оно хочет выйти из тебя!", "Ещё немного потерпеть и...", "Что будет, если выйти в космос без скафандра?", "Нужно сделать отверствие в своей голове - оттуда будет литься вкусный сок.", "Твой разум хочет обратно в небытие!", "ЭТО КОНЕЦ. ЭТО КОНЕЦ. ЭТО КОНЕЦ!", "Раскрась станцию красным!")
@@ -189,11 +187,11 @@ GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of S
 			count++
 
 	var/event_type = null
-	if(count >= 13)
+	if(count >= 15)
 		event_type = /datum/happiness_event/dirty/dirty_heavy
-	else if(count >= 7)
+	else if(count >= 8)
 		event_type = /datum/happiness_event/dirty/dirty_medium
-	else if(count >= 4)
+	else if(count >= 5)
 		event_type = /datum/happiness_event/dirty/dirty_slight
 	else
 		event_type = null
@@ -202,5 +200,5 @@ GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of S
 		add_happiness_event(event_type)
 	else
 		for(var/datum/happiness_event/E in happiness_events)
-			if(E.group == "disgust")
+			if(E.group == "dirty")
 				remove_happiness_event(E.type)

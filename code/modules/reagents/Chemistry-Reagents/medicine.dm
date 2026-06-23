@@ -774,7 +774,7 @@
 	var/mob/living/carbon/human/H = M
 	if(!(H.addictions[/datum/addiction/nicotine]))
 		consumption_counter += removed
-		if(consumption_counter >= 5)
+		if(consumption_counter >= 10)
 			H.add_addiction(/datum/addiction/nicotine, 0)
 			to_chat(H, SPAN_WARNING("You feel a craving for nicotine forming..."))
 
@@ -795,10 +795,10 @@
 	scannable = 1
 
 	decompile_results = list(
-		/datum/reagent/nicotine = 0.15
+		/datum/reagent/nicotine = 0.25
 		)
 
-	var/nicotine = REM * 0.1
+	var/nicotine = REM * 0.08
 
 /datum/reagent/tobacco/affect_blood(mob/living/carbon/M, alien, removed)
 	..()
@@ -811,7 +811,7 @@
 	taste_mult = 5.0
 
 	decompile_results = list(
-		/datum/reagent/nicotine = 0.2
+		/datum/reagent/nicotine = 0.3
 		)
 
 	nicotine = REM * 0.075
@@ -823,10 +823,10 @@
 	taste_mult = 7.5
 
 	decompile_results = list(
-		/datum/reagent/nicotine = 0.1
+		/datum/reagent/nicotine = 0.15
 		)
 
-	nicotine = REM * 0.2
+	nicotine = REM * 0.1
 
 /datum/reagent/tobacco/liquid
 	name = "Nicotine Solution"

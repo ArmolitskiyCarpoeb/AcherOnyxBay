@@ -18,74 +18,74 @@
 	happiness = -15
 	timeout = 15 MINUTES
 
-/datum/happiness_event/sleeped
+/datum/happiness_event/sleep/sleeped
 	description = "<span class='info'>Поспал!</span>\n"
 	happiness = 10
 	timeout = 5 MINUTES
 
 //thirst
 /datum/happiness_event/thirst/filled
-	description = "<span class='info'>I've had enough to drink for a while!</span>\n"
+	description = "<span class='info'>Напился воды!</span>\n"
 	happiness = 10
 	group = "thirst"
 
 /datum/happiness_event/thirst/watered
-	description = "<span class='info'>I have recently had something to drink.</span>\n"
+	description = "<span class='info'>Недавно попил.</span>\n"
 	happiness = 5
 	group = "thirst"
 
 /datum/happiness_event/thirst/thirsting
-	description = "<span class='danger'>I'm starting to get thirsty.</span>\n"
-	happiness = -3
+	description = "<span class='danger'>Не отказался бы от воды.</span>\n"
+	happiness = -1
 	group = "thirst"
 
 /datum/happiness_event/thirst/thirsty
-	description = "<span class='danger'>I'm getting a bit thirsty.</span>\n"
-	happiness = -7
+	description = "<span class='danger'>Хочется попить...</span>\n"
+	happiness = -3
 	group = "thirst"
 
 /datum/happiness_event/thirst/verythirsty
-	description = "<span class='danger'>I'm getting thirsty!</span>\n"
-	happiness = -10
+	description = "<span class='danger'>Как же хочется пить!</span>\n"
+	happiness = -5
 	group = "thirst"
 
 /datum/happiness_event/thirst/dehydrated
-	description = "<span class='danger'>I NEED WATER!</span>\n"
+	description = "<span class='danger'>ВОДЫ!!! ВОДЫ!!!</span>\n"
 	happiness = -15
 	group = "thirst"
 
 //nutrition
 /datum/happiness_event/nutrition/fat
-	description = "<span class='danger'><B>I'm so fat..</B></span>\n" //muh fatshaming
+	description = "<span class='danger'><B>Я жирный...</B></span>\n" //muh fatshaming
 	happiness = -4
 
 /datum/happiness_event/nutrition/wellfed
-	description = "<span class='info'>My belly feels round and full.</span>\n"
+	description = "<span class='info'>Как же я наелся!</span>\n"
 	happiness = 10
 	group = "nutrition"
 
 /datum/happiness_event/nutrition/fed
-	description = "<span class='info'>I have recently had some food.</span>\n"
+	description = "<span class='info'>Недавно покушал.</span>\n"
 	happiness = 5
 	group = "nutrition"
 
 /datum/happiness_event/nutrition/lilhungry
-	description = "<span class='danger'>I'm getting a bit hungry.</span>\n"
+	description = "<span class='danger'>Перекус не повредит.</span>\n"
 	happiness = -1
 	group = "nutrition"
 
 /datum/happiness_event/nutrition/hungry
-	description = "<span class='danger'>I'm getting hungry...</span>\n"
+	description = "<span class='danger'>Покушать бы...</span>\n"
 	happiness = -3
 	group = "nutrition"
 
 /datum/happiness_event/nutrition/veryhungry
-	description = "<span class='danger'>I'm getting really hungry!</span>\n"
-	happiness = -7
+	description = "<span class='danger'>Как же хочется кушать!</span>\n"
+	happiness = -5
 	group = "nutrition"
 
 /datum/happiness_event/nutrition/starving
-	description = "<span class='danger'>I WANT FOOD!</span>\n"
+	description = "<span class='danger'>ЖРАТЬ ХОЧУ!!!</span>\n"
 	happiness = -15
 	group = "nutrition"
 
@@ -241,25 +241,25 @@
 	group = "bleed"
 
 /datum/happiness_event/verymildpain
-	description = "<span class='danger'>I feel some pain...</span>\n"
+	description = "<span class='danger'>Болит...</span>\n"
 	happiness = -2
 	timeout = 1800
 	group = "pain"
 
 /datum/happiness_event/mildpain
-	description = "<span class='danger'>It hurts...a lot.</span>\n"
+	description = "<span class='danger'>Очень... больно!</span>\n"
 	happiness = -5
 	timeout = 1800
 	group = "pain"
 
 /datum/happiness_event/pain
-	description = "<span class='danger'>IT HURTS SO MUCH!</span>\n"
+	description = "<span class='danger'>КАК ЖЕ БОЛЬНО!!!</span>\n"
 	happiness = -12
 	timeout = 1800
 	group = "pain"
 
-/datum/happiness_event/cryo
-	description = "<span class='danger'>Being in a metal coffin for so long doesn't feel good.</span>\n"
+/datum/happiness_event/sleep/cryo
+	description = "<span class='danger'>Было не очень приятно находиться в металлическом гробу так долго.</span>\n"
 	happiness = -10
 	timeout = 1800
 
@@ -277,43 +277,43 @@
 // Addiction Events
 
 /datum/happiness_event/addiction/withdrawal_small
-	description = "<span class='danger'>I don't indulge in my addiction.</span>\n"
+	description = "<span class='danger'>Я не потакаю своей зависимости.</span>\n"
 	happiness = -2
 	timeout = FALSE
 	group = "addiction"
 
 
 /datum/happiness_event/addiction/withdrawal_medium
-	description = "<span class='danger'>I don't indulge in my addiction, that makes me unhappy!</span>\n"
+	description = "<span class='danger'>Я не потакаю своей зависимости, и мне от этого грустно!</span>\n"
 	happiness = -7
 	timeout = FALSE
 	group = "addiction"
 
 /datum/happiness_event/addiction/withdrawal_large
-	description = "<span class='danger'>I don't indulge in my addiction, that makes me very unhappy!</span>\n"
+	description = "<span class='danger'>Я не потакаю своей зависимости, и мне ОЧЕНЬ грустно!</span>\n"
 	happiness = -10
 	timeout = FALSE
 	group = "addiction"
 
 /datum/happiness_event/addiction/withdrawal_extreme
-	description = "<span class='danger'>I DON'T INDULGE IN MY ADDICTION, MY DAY IS SHIT!</span>\n"
+	description = "<span class='danger'>ЛОМКАЛОМКАЛОМКАЛОМКАЛОМКА!!!</span>\n"
 	happiness = -15
 	timeout = FALSE
 	group = "addiction"
 
 /datum/happiness_event/high
-	description = "<span class='info'>I'm high as fuck!</span>\n"
+	description = "<span class='info'>Под кайфом!</span>\n"
 	happiness = 15
 	group = "addiction"
 
 /datum/happiness_event/relaxed
-	description = "<span class='info'>That cigarette was good.</span>\n"
+	description = "<span class='info'>Хорошая сигаретка была.</span>\n"
 	happiness = 10
 	timeout = 1800
 	group = "addiction"
 
 /datum/happiness_event/booze
-	description = "<span class='info'>Alcohol makes the pain go away.</span>\n"
+	description = "<span class='info'>Алкоголь делает этот мир капельку светлее.</span>\n"
 	happiness = 10
 	timeout = 2400
 	group = "addiction"

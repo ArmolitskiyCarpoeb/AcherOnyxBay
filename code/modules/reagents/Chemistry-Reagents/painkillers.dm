@@ -27,7 +27,7 @@
 	var/mob/living/carbon/human/H = M
 	if(!(H.addictions[/datum/addiction/opioid]))
 		consumption_counter += removed
-		if(consumption_counter >= 5)
+		if(consumption_counter >= 10)
 			H.add_addiction(/datum/addiction/opioid, 0)
 			to_chat(H, SPAN_WARNING("You feel a craving for opioids forming..."))
 
