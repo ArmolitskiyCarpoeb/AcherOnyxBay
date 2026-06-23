@@ -97,7 +97,7 @@ macro "borghotkeymode"
 		command = "a-intent left"
 	elem
 		name = "G"
-		command = "a-intent right"
+		command = "fixdir"
 	elem
 		name = "CTRL+G"
 		command = "a-intent right"
@@ -238,6 +238,9 @@ macro "borghotkeymode"
 		command = ".winset :map.right-click=false"
 
 macro "macro"
+	elem
+		name = "G"
+		command = "Face-Direction"
 	elem
 		name = "Tab"
 		command = ".winset \"mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
@@ -536,7 +539,7 @@ macro "hotkeymode"
 		command = "a-intent left"
 	elem
 		name = "G"
-		command = "a-intent right"
+		command = "Face-Direction"
 	elem
 		name = "CTRL+G"
 		command = "a-intent right"
