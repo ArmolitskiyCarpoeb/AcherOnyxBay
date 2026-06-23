@@ -203,16 +203,12 @@
 	for(var/mob/observer/ghost/O in GLOB.player_list)
 		if(O.client)
 			to_chat(O, SPAN_DEADSAY(FONT_LARGE("Введена санкция за провал директивы.")))
-			to_chat(O, SPAN_DEADSAY("Чтобы получить роль выберите БЫТЬ ЗЛОДЕЕМ в ООС."))
+			to_chat(O, SPAN_DEADSAY("Чтобы присоединиться к отряду зачистки выберите БЫТЬ ЗЛОДЕЕМ в ООС."))
 
 	SSticker.looking_for_antags = 1
 	spawn(3 MINUTES)
-		if(prob(10))
-			dispatch_deathsquad()
-			SSticker.looking_for_antags = 0
-		else
-			dispatch_bureaucrat()
-			SSticker.looking_for_antags = 0
+		dispatch_deathsquad()
+		SSticker.looking_for_antags = 0
 	return TRUE
 
 /datum/station_objective_manager/proc/start_shock_pulses()
@@ -250,24 +246,6 @@
 			apply_sanction()
 		else
 			GLOB.deathsquad.update_leader()
-			sanction_running = FALSE
-
-/datum/station_objective_manager/proc/dispatch_bureaucrat()
-	SSannounce.play_station_announce(/datum/announce/station_objectives_sanction, "На станцию выслан бюрократ для расследования причин провала директивы и наказанию виновных. Сопротивление расследованию противозаконно.")
-	var/i = 3 // отряд с бюрократом
-	if(GLOB.bureaucrat)
-		for(var/mob/observer/ghost/G in GLOB.player_list)
-			if(i)
-				if(G.mind in SSticker.antag_pool)
-					if(((G.client.inactivity/10)/300) <= 1) // The most active players are more likely to become a operative
-						if(!(G.mind && G.mind.current && !G.mind.current.is_ooc_dead()))
-							GLOB.bureaucrat.create_default(G)
-							i--
-		if(i == initial(i))
-			sleep(5 MINUTE)
-			apply_sanction()
-		else
-			GLOB.bureaucrat.update_leader()
 			sanction_running = FALSE
 
 /datum/station_objective_task
