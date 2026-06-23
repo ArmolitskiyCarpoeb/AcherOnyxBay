@@ -243,7 +243,7 @@
 	statpanel_proc = /mob/proc/cry_emote
 
 /datum/emote/cry/get_sfx_volume()
-	return rand(25, 45)
+	return rand(35, 55)
 
 /mob/proc/cry_emote()
 	set name = "Плакать"
@@ -266,8 +266,8 @@
 
 	state_checks = EMOTE_CHECK_CONSCIOUS
 
-	sound_human_female = SFX_FEMALE_PAIN
-	sound_human_male = SFX_MALE_PAIN
+	sound_human_female = SFX_FEMALE_LONG_SCREAM
+	sound_human_male = SFX_MALE_LONG_SCREAM
 
 	statpanel_proc = /mob/proc/scream_emote
 
@@ -275,13 +275,12 @@
 	return "opens [P_THEIR(user.gender)] mouth like a fish gasping for air!"
 
 /datum/emote/scream/get_sfx_volume()
-	return rand(30, 45)
+	return rand(90, 100)
 
 /mob/proc/scream_emote()
 	set name = "Кричать"
 	set category = "Emotes"
 	emote("scream", intentional = TRUE)
-
 
 /datum/emote/scream_long
 	key = "scream_long"

@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(all_emotes, list(); for(var/emotepath in subtypesof(/datum/emot
 	/// Cooldown for emote usage.
 	var/cooldown = 1 SECOND
 	/// Cooldown for the audio of the emote, if it has one.
-	var/audio_cooldown = 3 SECONDS
+	var/audio_cooldown = 1 SECOND
 
 	var/state_checks
 
