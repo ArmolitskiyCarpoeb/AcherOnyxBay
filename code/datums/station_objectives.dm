@@ -207,7 +207,7 @@
 
 	SSticker.looking_for_antags = 1
 	spawn(3 MINUTES)
-		if(prob(85))
+		if(prob(10))
 			dispatch_deathsquad()
 			SSticker.looking_for_antags = 0
 		else
@@ -249,6 +249,7 @@
 			sleep(5 MINUTE)
 			apply_sanction()
 		else
+			GLOB.deathsquad.update_leader()
 			sanction_running = FALSE
 
 /datum/station_objective_manager/proc/dispatch_bureaucrat()
@@ -266,6 +267,7 @@
 			sleep(5 MINUTE)
 			apply_sanction()
 		else
+			GLOB.bureaucrat.update_leader()
 			sanction_running = FALSE
 
 /datum/station_objective_task
