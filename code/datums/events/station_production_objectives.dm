@@ -20,7 +20,7 @@
 		return
 
 	var/list/tasks = GLOB.station_objectives.generate_tasks()
-	var/time_limit = rand(10, 30) * 1 MINUTES
+	var/time_limit = 60 * 1 MINUTES
 
 	if(!GLOB.station_objectives.start_directive(tasks, time_limit, src))
 		log_and_message_admins("Station production objectives could not start; manager refused to start.")
