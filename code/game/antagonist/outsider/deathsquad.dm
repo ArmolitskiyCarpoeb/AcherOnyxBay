@@ -61,7 +61,7 @@ GLOBAL_DATUM_INIT(deathsquad, /datum/antagonist/deathsquad, new)
 	//player.equip_to_slot_or_del(new /obj/item/clothing/suit/space/void/deathsquad(player), slot_wear_suit)
 	//player.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/deathsquad(player), slot_head)
 	//player.implant_loyalty(player)
-	player.newgeneratestats(12,18,12,18,10,18,12,18)
+	player.newgeneratestats(14,18,14,18,10,18,14,18)
 	player.generate_skills()
 	player.skills["melee"] = rand(75, 90)
 	player.skills["ranged"] = rand(75, 90)
@@ -83,7 +83,7 @@ GLOBAL_DATUM_INIT(deathsquad, /datum/antagonist/deathsquad, new)
 
 	var/syndicate_commando_rank
 	if(leader && player == leader)
-		syndicate_commando_rank = pick("Капитан", "Сержант")
+		syndicate_commando_rank = pick("Сержант")
 	else
 		syndicate_commando_rank = pick("Боец")
 
