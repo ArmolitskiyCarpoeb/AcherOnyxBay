@@ -668,82 +668,6 @@ h2.alert {
   animation: phobia 750ms infinite;
 }
 
-@keyframes phobia {
-  0% {
-    color: #f75a5a;
-  }
-  50% {
-    color: #dd0000;
-  }
-  100% {
-    color: #f75a5a;
-  }
-}
-
-.connectionClosed,
-.fatalError {
-  background: red;
-  color: white;
-  padding: 5px;
-}
-
-.connectionClosed.restored {
-  background: green;
-}
-
-.internal.boldnshit {
-  color: #3d5bc3;
-  font-weight: bold;
-}
-
-/* HELPER CLASSES */
-
-.text-normal {
-  font-weight: normal;
-  font-style: normal;
-}
-
-.hidden {
-  display: none;
-  visibility: hidden;
-}
-
-.ml-1 {
-  margin-left: 1em;
-}
-
-.ml-2 {
-  margin-left: 2em;
-}
-
-.ml-3 {
-  margin-left: 3em;
-}
-
-/* SPELL CHECK */
-
-.spell-error {
-  font-weight: bold;
-
-  .correct-word {
-    border-bottom: green solid 0.15rem;
-  }
-
-  .error-word {
-    border-bottom: red solid 0.15rem;
-  }
-}
-
-.Examine {
-  background-color: #1a1a1a;
-  margin-top: 6px;
-  margin-bottom: 6px;
-  padding: 6px;
-  max-width: 120ch;
-  border-bottom: 1px solid #404040;
-}
-
-
 .legendary {
     color: #3abb3d;
     font-weight: bold;
@@ -840,4 +764,79 @@ h2.alert {
 .hitsmaller {
     color: #e755db;
     font-size: 85%;
+}
+
+@keyframes phobia {
+  0% {
+    color: #f75a5a;
+  }
+  50% {
+    color: #dd0000;
+  }
+  100% {
+    color: #f75a5a;
+  }
+}
+
+.connectionClosed,
+.fatalError {
+  background: red;
+  color: white;
+  padding: 5px;
+}
+
+.connectionClosed.restored {
+  background: green;
+}
+
+.internal.boldnshit {
+  color: #3d5bc3;
+  font-weight: bold;
+}
+
+/* HELPER CLASSES */
+
+.text-normal {
+  font-weight: normal;
+  font-style: normal;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.ml-1 {
+  margin-left: 1em;
+}
+
+.ml-2 {
+  margin-left: 2em;
+}
+
+.ml-3 {
+  margin-left: 3em;
+}
+
+/* SPELL CHECK */
+
+.spell-error {
+  font-weight: bold;
+
+  .correct-word {
+    border-bottom: green solid 0.15rem;
+  }
+
+  .error-word {
+    border-bottom: red solid 0.15rem;
+  }
+}
+
+.Examine {
+  background-color: #1a1a1a;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding: 6px;
+  max-width: 120ch;
+  border-bottom: 1px solid #404040;
 }
