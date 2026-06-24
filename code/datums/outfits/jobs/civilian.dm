@@ -16,7 +16,6 @@
 	// )
 
 	var/list/head = list(
-		/obj/item/clothing/head/kitty,
 		/obj/item/clothing/head/richard,
 		/obj/item/clothing/head/chicken
 	)
