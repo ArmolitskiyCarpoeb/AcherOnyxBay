@@ -625,12 +625,12 @@ var/global/orgasms = 0
 				H.lfhole = hole
 
 			if (prob(5) && H.stat != DEAD)
-				H.visible_message("<span class='erpbold'>[H]</span><span class='erp'>[message]</span>")
+				H.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>[message]</span>")
 				H.lust += 15
 			else
-				H.visible_message("<span class='erpbold'>[H]</span><span class='erp'>[message]</span>")
+				H.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>[message]</span>")
 			if (istype(P.loc, /obj/structure/closet))
-				P.visible_message("<span class='erpbold'>[H]</span><span class='erp'>[message]</span>")
+				P.visible_message("<span class='erpbold'>[H]</span> <span class='erp'>[message]</span>")
 				playsound(P.loc.loc, 'sound/effects/clang.ogg', 50, 0, 0)
 			H.lust += 15
 			if (H.lust >= H.resistenza)
