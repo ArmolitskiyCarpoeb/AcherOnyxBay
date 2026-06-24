@@ -14,14 +14,22 @@
 	timeout = 15 MINUTES
 
 /datum/happiness_event/raped
-	description = "<span class='info'>Меня изнасиловали.</span>\n"
+	description = "<span class='danger'>Меня изнасиловали.</span>\n"
 	happiness = -15
 	timeout = 15 MINUTES
 
+//SLEEP
+
 /datum/happiness_event/sleep/sleeped
 	description = "<span class='info'>Поспал!</span>\n"
-	happiness = 10
-	timeout = 5 MINUTES
+	happiness = 5
+	timeout = 600
+	group = "sleep"
+
+/datum/happiness_event/sleep/cryo
+	description = "<span class='danger'>Было не очень приятно находиться в металлическом гробу так долго.</span>\n"
+	happiness = -5
+	timeout = 600
 	group = "sleep"
 
 //thirst
@@ -259,15 +267,9 @@
 	timeout = 1800
 	group = "pain"
 
-/datum/happiness_event/sleep/cryo
-	description = "<span class='danger'>Было не очень приятно находиться в металлическом гробу так долго.</span>\n"
-	happiness = -10
-	timeout = 1800
-	group = "sleep"
-
 //For when you see someone die and you're not hardcore.
 /datum/happiness_event/dead
-	description = "<span class='danger'>OH MY GOD THEY'RE DEAD!</span>\n"
+	description = "<span class='danger'>О НАУКА, Я ВИДЕЛ СМЕРТЬ ЧЕЛОВЕКА!</span>\n"
 	happiness = -10
 	timeout = 10 MINUTES
 
