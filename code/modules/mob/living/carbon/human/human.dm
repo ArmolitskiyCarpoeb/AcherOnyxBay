@@ -2075,9 +2075,9 @@
 			to_chat(H, "<span class='warning'>You are too far away to interact with [P].</span>")
 			return
 
-		var/static/list/actions_initiator_only = list("anal")
+		var/static/list/actions_initiator_only = list("anal", "oral")
 		var/static/list/actions_target_only   = list("handjob", "blowjob", "ballsuck", "fingering", "vaglick")
-		var/static/list/actions_both          = list("vaginal", "mount", "oral")
+		var/static/list/actions_both          = list("vaginal", "mount")
 
 		if(interaction in actions_initiator_only)
 			if(H.erpcooldown > 0)
