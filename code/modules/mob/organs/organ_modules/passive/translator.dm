@@ -7,10 +7,7 @@
 		LANGUAGE_SOL_COMMON,
 		LANGUAGE_GUTTER,
 		LANGUAGE_INDEPENDENT,
-		LANGUAGE_SPACER,
-		LANGUAGE_UNATHI,
-		LANGUAGE_SKRELLIAN,
-		LANGUAGE_SIIK_MAAS
+		LANGUAGE_SPACER
 	)
 	icon_state = "cranial_aug"
 	action_button_name = "Toggle translator"
