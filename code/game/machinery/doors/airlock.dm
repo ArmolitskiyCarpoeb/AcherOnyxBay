@@ -711,8 +711,24 @@ About the new airlock wires panel:
 				deconstruct(user)
 				return
 
+		else if(!user.statcheck(user.stats[STAT_ST], 7, "Gah, I'm not strong enough to open the door. Maybe if I try again.", STAT_ST))
+			if(density)
+				INVOKE_ASYNC(src, nameof(.proc/open), TRUE)
+			else
+				INVOKE_ASYNC(src, nameof(.proc/close), TRUE)
+
+
 		else if(arePowerSystemsOn())
 			to_chat(user, SPAN("notice", "The airlock's motors resist your efforts to force it."))
+			if(user.newstatcheck(user.stats[STAT_ST], 17, 0, STAT_ST))
+				var/mob/living/carbon/human/H = user
+				to_chat(user, SPAN_WARNING("Ты используешь ВСЮ свою силу, чтобы открыть дверь. Это больно!"))
+				H.damage_poise(10)
+				H.apply_damage(15, PAIN)
+				if(do_after(user, 35, src))
+					H.apply_damage(15, PAIN)
+					H.damage_poise(10)
+					INVOKE_ASYNC(src, nameof(.proc/open), TRUE)
 		else if(locked)
 			to_chat(user, SPAN("notice", ">The airlock's bolts prevent it from being forced."))
 		else if(brace)

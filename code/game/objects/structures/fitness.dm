@@ -64,7 +64,7 @@
 		user.set_dir(SOUTH)
 
 		var/usetime = 20 + (weight * 10)
-		if((MUTATION_HULK in user.mutations) || (MUTATION_STRONG in user.mutations) || (user.stats[STAT_ST] >= 17))
+		if((MUTATION_HULK in user.mutations) || (MUTATION_STRONG in user.mutations) || (user.stats[STAT_ST] >= 15))
 			flick("[icon_state]_[weight]s", src)
 			usetime = 14
 		else
@@ -75,7 +75,7 @@
 			user.remove_nutrition(weight * 5.0)
 			user.remove_hydration(7.5 * weight)
 			user.damage_poise(10)
-			if((MUTATION_HULK in user.mutations) || (MUTATION_STRONG in user.mutations) || (user.stats[STAT_ST] >= 17))
+			if((MUTATION_HULK in user.mutations) || (MUTATION_STRONG in user.mutations) || (user.stats[STAT_ST] >= 15))
 				to_chat(user, SPAN("notice", "You shred the weights without barely noticing it."))
 				user.adjustStrength(0.05)
 			else

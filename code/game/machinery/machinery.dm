@@ -276,6 +276,11 @@ Class Procs:
 		return TRUE
 	else
 		return FALSE
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.stats[STAT_IQ] <= 5)
+			randtext = pick("Нифига!","Офигеть!","Блин!")
+			to_chat(user, "<span class='statustext'>[randtext] ЧОТА НЕ РАБОТАИТ!!!!</span>")
 
 /obj/machinery/CanUseTopic(mob/user)
 	if(stat & BROKEN)

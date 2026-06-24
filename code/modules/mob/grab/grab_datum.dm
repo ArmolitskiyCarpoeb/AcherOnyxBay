@@ -317,7 +317,7 @@
 	// Modifier from ST difference - scales with the difference (very reduced impact)
 	// st_diff means: if target is stronger (positive diff), modifier is positive (easier to break)
 	// if assailant is stronger (negative diff), modifier is negative (harder to break)
-	var/st_modifier = st_diff * 5 // +50% per point of ST advantage for target
+	var/st_modifier = st_diff * 6 // +60% per point of ST advantage for target
 
 	// Calculate melee skill difference (target - assailant)
 	var/melee_diff = target_melee - assailant_melee

@@ -382,18 +382,33 @@ meteor_act
 
 	//visible_message("Debug: handymod [handymod]") // Debug Message
 
-	var/hit_zone = bodypart_miss_chance(target_zone, src, handymod, reach=I.mod_reach)
+	//Навык melee атакующего. Чем выше, тем точнее попадание в нужную конечность.
+	var/melee_skill = user.skills ? user.skills["melee"] : 0
+	//skill_mod уменьшает шанс промаха: при навыке 100 -> 0.5 (вдвое точнее), при 0 -> 1 (без изменений)
+	var/skill_mod = 1 - (melee_skill / 200)
+
+	//Выносливость жертвы: чем она выше, тем сложнее попасть в конкретную конечность (жертва подвижнее).
+	var/poise_mod = 1
+	if(src.poise && src.poise_pool)
+		var/poise_ratio = src.poise / src.poise_pool // 0..1
+		//При 0 poise = 0.5, при 1 poise = 1.0 (сложнее)
+		poise_mod = 0.5 + 0.5 * poise_ratio
+
+	var/final_miss_mod = handymod * skill_mod * poise_mod
+
+	//var/hit_zone = bodypart_miss_chance(target_zone, src, handymod, reach=I.mod_reach)
+	var/hit_zone = bodypart_miss_chance(target_zone, src, final_miss_mod, reach=I.mod_reach)
 
 	if(!hit_zone)
 		visible_message(SPAN("warning", "\The [user] misses [src] with \the [I]!"))
 		return null
 
-	if(user.skillcheck(user.skills["melee"], 60, null, "melee") == CRIT_FAILURE)
+	if(user.skillcheck(user.skills["melee"], 45, null, "melee") == CRIT_FAILURE)
 		user.resolve_critical_miss(I)
 		//user.learn_skills("melee")
 		return null
 
-	if(!user.skillcheck(user.skills["melee"], 30, null, "melee"))
+	if(!user.skillcheck(user.skills["melee"], 25, null, "melee"))
 		if(prob(user.skills["melee"]/3))
 			visible_message("<span class='danger'>[user] botches the attack on [src]!</span>")
 			//user.learn_skills("melee")
@@ -429,7 +444,7 @@ meteor_act
 		if(3)
 			visible_message("<span class='combat'><big>CRITICAL FAILURE! [src] botches the attack and hits themself!</big></span>")
 			I.attack(src, src, zone_sel)
-			apply_damage(rand(5,10), BRUTE)
+			apply_damage((I.mod_weight*rand(5,10)), BRUTE)
 
 //aka Regular Attack
 //Jesus Christ what a mess I've made ~Toby
@@ -465,27 +480,22 @@ meteor_act
 	var/st = user.stats[STAT_ST]
 	var/normalized_st = 1 - (clamp(st, 1, 20) - 1) / 19
 
-	effective_force *= lerp(1.5, 0.5, normalized_st)
-/*
-	if(user.stats[STAT_ST] >= 18)
-		effective_force *= 2
-	if(user.stats[STAT_ST] >= 15)
-		effective_force *= 1.5
-	if(user.stats[STAT_ST] <= 8)
-		effective_force *= 0.8
-	if(user.stats[STAT_ST] <= 5)
-		effective_force *= 0.5
-	if(user.stats[STAT_ST] <= 2)
-		effective_force *= 0.2
-*/
+	effective_force *= lerp(2, 0.5, normalized_st)
 	if(lying)
-		effective_force *= 1.5 // Well it's easier to beat a lying dude to death right?
+		effective_force *= 1.2 // Well it's easier to beat a lying dude to death right?
 
 	if(!I.sharp && ishuman(user))
 		var/mob/living/carbon/human/A = user
 		effective_force *= A.body_build.melee_modifier
 
 	effective_force *= round((100-blocked)/100, 0.1)
+
+// Проверка на удар в затылок
+	var/backstab = FALSE
+	if(istype(user, /mob/living/carbon/human))
+		var/dir_to_attacker = get_dir(src, user) // от жертвы к атакующему
+		if(dir_to_attacker == turn(src.dir, 180)) // атакующий сзади
+			backstab = TRUE
 
 	// Apply weapon damage
 	var/damage_flags = I.damage_flags()
@@ -494,9 +504,21 @@ meteor_act
 
 	//Oh you've run outta poise? I see... You're wrecked, my boy.
 	if(I.damtype == BRUTE || I.damtype == PAIN)
-		if(poise <= poise_pool*0.7 && !check_poise_immunity())
+		if(!check_poise_immunity())//if(poise <= poise_pool*0.7 && !check_poise_immunity()) Так как меньше 70 пойза херня
 			switch(hit_zone)
 				if(BP_HEAD, BP_EYES, BP_MOUTH) //Knocking your enemy out or making them dizzy
+
+					if(backstab) // удар в затылок
+						custom_pain("Your head is <B>CRUSHED</B> from behind!", 80, affecting = affecting)
+						visible_message(SPAN("danger", "[src] [species.knockout_message]"))
+						custom_pain("Your head's definitely gonna hurt tomorrow.", 50, affecting = affecting)
+						apply_effect((I.mod_weight*20), PARALYZE, (blocked/2))
+						if(backstab)
+							apply_effect(5, WEAKEN, 0) // дополнительное падение
+					else if(prob(effective_force * (backstab ? 1.5 : 1))) // увеличенный шанс дезориентации
+						visible_message(SPAN("danger", "[src] looks momentarily disoriented."), SPAN("danger", "You see stars."))
+						apply_effect(2, EYE_BLUR, blocked)
+
 					if(poise <= effective_force/2*I.mod_weight)
 						visible_message(SPAN("danger", "[src] [species.knockout_message]"))
 						custom_pain("Your head's definitely gonna hurt tomorrow.", 50, affecting = affecting)

@@ -30,7 +30,7 @@
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.stats[STAT_IQ] <= 15 || H.skills[SKILL_MED] <= 50 )
+		if(H.stats[STAT_IQ] <= 13 || H.skills[SKILL_MED] <= 40 )
 			//to_chat(user, "<span class='uppertext'>That's a pill.</span>\n<span class='statustext'>Don't know what's in it.</span>")
 			. += SPAN_WARNING("<span class='uppertext'>Похоже на пилюлю.</span>\n<span class='statustext'>Не знаю, что внутри!</span>")
 			return .

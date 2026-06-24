@@ -173,13 +173,38 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	var/chance = dx + (skills["melee"] / 2) // 95% for max melee and max dx
 	if(is_disarm)
 		chance += 5 // Slightly easier to slip a disarm than a solid hit.
-	return clamp(chance, 0, 50)
+	return clamp(chance, 0, 75)
 
 /mob/living/carbon/human/proc/try_dex_evade(var/mob/living/carbon/human/attacker, var/is_disarm = FALSE)
+	// Если цель спит или без сознания — не уворачивается
+	if(src.stat || src.sleeping)
+		return FALSE
+
 	var/chance = get_dex_evade_chance(is_disarm)
 	if(!chance)
 		return FALSE
-	if(prob(chance) && src.stat < 1)
+
+	// Штраф за лежание (лежа или отдыхая)
+	if(src.lying || src.resting)
+		chance *= 0.5
+
+	// Штраф за низкий poise (выносливость)
+	if(src.poise && src.poise_pool)
+		var/poise_ratio = src.poise / src.poise_pool
+		if(poise_ratio < 0.3)       // менее 30% выносливости
+			chance *= 0.5
+		else if(poise_ratio < 0.6)  // менее 60%
+			chance *= 0.8
+
+	// Проверка на удар в затылок (атакующий сзади)
+	if(istype(attacker))
+		var/dir_to_attacker = get_dir(src, attacker) // направление от жертвы к атакующему
+		if(dir_to_attacker == turn(src.dir, 180))    // атакующий находится строго сзади
+			chance = 0
+
+	chance = clamp(chance, 0, 100)
+
+	if(prob(chance))
 		var/msg = is_disarm ? "[src] nimbly avoids [attacker]'s swing!" : "[src] twists away from [attacker]'s hands!"
 		src.visible_message(SPAN_WARNING(msg))
 		return TRUE
@@ -336,10 +361,11 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	if(istype(H.body_build, /datum/body_build/slim) || istype(H.body_build, /datum/body_build/slim/flat) || istype(H.body_build, /datum/body_build/slim/male) || istype(H.body_build, /datum/body_build/slim/alt))
 		adjustStrength(rand(-2,-4))
 		//H.stats[STAT_ST] -= rand(-5,-3)
-		adjustDexterity(rand(1,5))
+		adjustDexterity(rand(1,3))
 		//H.stats[STAT_DX] -= rand(2,5)
 	if(istype(H.body_build, /datum/body_build/fat))
-		adjustStrength(rand(1,2))
+		adjustStrength(rand(-1,2))
+		adjustHealth(rand(-1,2))
 		adjustDexterity(rand(-4,-2))
 
 /* LEGACY STAT CODE

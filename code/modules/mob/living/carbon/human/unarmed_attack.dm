@@ -54,15 +54,30 @@ var/global/list/sparring_attack_cache = list()
 
 	user.damage_poise(5, TRUE)
 
-	//target.visible_message("Debug \[UNARMED\]: [target] lost [round(attack_damage*0.5 + attack_damage*0.5*((100-effective_armor)/100),0.1)] poise ([target.poise]/[target.poise_pool])") // Debug Message
+	var/backstab = FALSE
+	if(istype(user) && istype(target))
+		var/dir_to_attacker = get_dir(target, user) // направление от жертвы к атакующему
+		if(dir_to_attacker == turn(target.dir, 180)) // атакующий сзади
+			backstab = TRUE
+
+	if(backstab)
+		var/extra_poise_damage = attack_damage * 0.5
+		target.damage_poise(extra_poise_damage)
 
 	if(attack_damage >= 5 && armor < 100 && target != user && target.poise <= attack_damage*3 && !target.check_poise_immunity())
-		switch(zone) // strong punches can have effects depending on where they hit
+		switch(zone)
 			if(BP_HEAD, BP_EYES, BP_MOUTH)
-				// Induce blurriness
+				// Усиление эффектов при ударе в затылок
+				var/blur_duration = attack_damage*2
+				var/weaken_duration = attack_damage * 0.4
+				if(backstab)
+					blur_duration *= 2
+					weaken_duration *= 1.5
+					target.visible_message("<span class='danger'>[target] is struck hard from behind!</span>", "<span class='danger'>You are hit from behind!</span>")
+
 				target.visible_message("<span class='danger'>[target] looks momentarily disoriented.</span>", "<span class='danger'>You see stars.</span>")
-				target.apply_effect(attack_damage*2, EYE_BLUR, armor)
-				if(specmod == 2 && target.poise <= attack_damage) // INCREDIBILIS!
+				target.apply_effect(blur_duration, EYE_BLUR, armor)
+				if(specmod == 2 && target.poise <= attack_damage)
 					target.set_dir(GLOB.reverse_dir[target.dir])
 					user.break_all_grabs(target,1)
 				if(!target.lying)
@@ -70,19 +85,16 @@ var/global/list/sparring_attack_cache = list()
 					if(!T.density)
 						step(target, get_dir(get_turf(user), get_turf(target)))
 						target.visible_message("<span class='danger'>[target] was sent flying backward!</span>")
-						target.apply_effect(attack_damage * 0.4, WEAKEN, armor)
+						target.apply_effect(weaken_duration, WEAKEN, armor)
 					else
 						target.visible_message("<span class='danger'>[target] was slammed into \the [T]!</span>")
-						target.apply_effect(attack_damage * 0.8, WEAKEN, armor)
+						target.apply_effect(weaken_duration * 2, WEAKEN, armor)
 			if(BP_L_ARM, BP_L_HAND)
 				if (target.l_hand)
-					// Disarm left hand
-					//Urist McAssistant dropped the macguffin with a scream just sounds odd.
 					target.visible_message("<span class='danger'>\The [target.l_hand] was knocked right out of [target]'s grasp!</span>")
 					target.drop_l_hand()
 			if(BP_R_ARM, BP_R_HAND)
 				if (target.r_hand)
-					// Disarm right hand
 					target.visible_message("<span class='danger'>\The [target.r_hand] was knocked right out of [target]'s grasp!</span>")
 					target.drop_r_hand()
 			if(BP_CHEST)
