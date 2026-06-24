@@ -4,7 +4,7 @@ GLOBAL_DATUM_INIT(deathsquad, /datum/antagonist/deathsquad, new)
 	id = MODE_DEATHSQUAD
 	role_text = "Death Commando"
 	role_text_plural = "Death Commandos"
-	welcome_text = "УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ! УБЕЙ ИХ ВСЕХ!"
+	welcome_text = "Найти и казнить виновников невыполненной директивы."
 	landmark_id = "Death Commando"
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_OVERRIDE_MOB | ANTAG_HAS_NUKE | ANTAG_HAS_LEADER | ANTAG_RANDOM_EXCEPTED
 	default_access = list(access_cent_general, access_cent_specops, access_cent_living, access_cent_storage)
