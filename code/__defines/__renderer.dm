@@ -143,7 +143,7 @@
 
 	#define FIREDOOR_LAYER				15.01
 
-#define RUNECHAT_PLANE             2
+#define RUNECHAT_PLANE             10
 
 #define OBSERVER_PLANE             3
 
