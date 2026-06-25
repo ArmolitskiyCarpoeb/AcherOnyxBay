@@ -101,7 +101,7 @@
 	matter = list(MATERIAL_STEEL = 2000)
 	slot_flags = SLOT_BELT
 	silenced = 0
-	fire_sound = 'sound/effects/weapons/energy/taser2.ogg'
+	fire_sound = SFX_PULSAR
 	projectile_type = /obj/item/projectile/energy/stunbolt
 	max_shots = 8
 	self_recharge = 0

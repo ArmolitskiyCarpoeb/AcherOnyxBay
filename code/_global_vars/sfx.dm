@@ -82,6 +82,11 @@ GLOBAL_LIST_INIT(sfx_list, list(
 	SFX_BANG = list(
 		"sound/effects/bang.ogg"
 	),
+	SFX_PULSAR = list(
+		'sound/effects/weapons/energy/pulsar1.ogg',
+		'sound/effects/weapons/energy/pulsar2.ogg',
+		'sound/effects/weapons/energy/pulsar3.ogg'
+	),
 	// FEMALE EMOTES
 	SFX_FEMALE_INTERNAL_BREATH = list(
 		'sound/effects/emotes/f_internalb1.ogg'

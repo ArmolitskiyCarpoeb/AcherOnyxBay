@@ -81,6 +81,7 @@
 #define SFX_792_BOLT_FORWARD        "792_bolt_back"
 #define SFX_GRENADE_LAUNCHER        "glauncher"
 #define SFX_BANG				    "bang"
+#define SFX_PULSAR             		"pulsar"
 
 // FEMALE EMOTES
 #define SFX_FEMALE_INTERNAL_BREATH  "female_internal_breath"
