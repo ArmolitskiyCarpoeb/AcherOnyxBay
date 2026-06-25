@@ -218,7 +218,6 @@
 		var/desc_weight
 		var/desc_reach
 		var/desc_handy
-		var/randtext = null
 
 		if(src.mod_weight < 0.4) desc_weight = "a really light"
 		else if(src.mod_weight < 0.8) desc_weight = "quite light"
