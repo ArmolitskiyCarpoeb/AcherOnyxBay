@@ -89,6 +89,31 @@
 	projectile_type = /obj/item/projectile/energy/electrode/stunshot
 	wielded_item_state = "stunrifle-wielded"
 
+//STUNNER
+
+/obj/item/gun/energy/stunner
+	name = "stunner"
+	desc = "Ручной оглушитель."
+	icon_state = "stunner"
+	w_class = ITEM_SIZE_NORMAL
+	item_state = "taserold"
+	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 2, TECH_ILLEGAL = 5)
+	matter = list(MATERIAL_STEEL = 2000)
+	slot_flags = SLOT_BELT
+	silenced = 0
+	fire_sound = 'sound/effects/weapons/energy/taser2.ogg'
+	projectile_type = /obj/item/projectile/energy/stunbolt
+	max_shots = 8
+	self_recharge = 0
+	charge_meter = 1
+	combustion = 0
+	has_safety = FALSE
+	force = 8.5
+	mod_weight = 0.6
+	mod_reach = 0.4
+	mod_handy = 1.0
+	fire_delay = 2.7
+
 /obj/item/gun/energy/crossbow
 	name = "mini energy-crossbow"
 	desc = "A crossbow that doesn't seem to have space for bolts."

@@ -3967,7 +3967,7 @@
 	d2 = 8;
 	d1 = 4
 	},
-/obj/item/gun/energy/egun/elite,
+/obj/item/gun/energy/stunner,
 /turf/simulated/floor/trim/carpet/red,
 /area/crew_quarters/heads/hos)
 

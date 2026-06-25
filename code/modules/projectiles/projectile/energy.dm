@@ -170,6 +170,16 @@
 	damage_type = TOX
 	weaken = 5
 
+/obj/item/projectile/energy/stunbolt
+	name = "bolt"
+	icon_state = "cbbolt"
+	damage = 15
+	damage_type = PAIN
+	nodamage = 0
+	agony = 30
+	stutter = 8
+	armor_penetration = 10
+	poisedamage = 8
 
 /obj/item/projectile/energy/bolt
 	name = "bolt"
