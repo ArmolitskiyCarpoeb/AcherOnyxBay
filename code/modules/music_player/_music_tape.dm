@@ -91,7 +91,12 @@
 // Random music tapes for jukeboxes with multiple tracks
 /obj/item/music_tape/random
 	name = "Random tape"
-	var/list/tracklist
+	var/list/tracklist = list(
+		"Army of the Night"				= 'sound/music/aprovedmusic2/Powerwolf - Army of the Night.ogg',
+		"Take Me Down Below"			= 'sound/music/aprovedmusic2/Kiss - Take Me Down Below.ogg',
+		"Main Theme"					= 'sound/music/aprovedmusic2/Max Payne - Main Theme.ogg',
+		"Dragula"						= 'sound/music/aprovedmusic2/Rob Zombie - Dragula.ogg'
+	)
 
 /obj/item/music_tape/random/Initialize()
 	. = ..()
