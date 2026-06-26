@@ -1989,9 +1989,9 @@
 			//available["Лизать"] = "lick"
 			if(isnude_p && !target.mutilated_genitals) {
 				if(haspenis_p) {
-					available["Работа ртом"] = "blowjob"
-					available["Ручная работа"] = "handjob"
-					available["Поиграть с мешочком"] = "ballsuck"
+					available["Играть на дудке"] = "blowjob"
+					available["Поработать рукой"] = "handjob"
+					available["Попробовать бубенчики"] = "ballsuck"
 				}
 				if(hasvagina_p)
 					available["Ублажать даму"] = "vaglick"
@@ -2002,15 +2002,15 @@
 			if(haspenis && hashands) {
 				if(isnude_p) {
 					if(hasvagina_p && !target.mutilated_genitals)
-						available["Классика"] = "vaginal"
+						available["Стыкуемся в главном порту"] = "vaginal"
 					if(hasanus_p)
-						available["Запихнуть в чёрный ход"] = "anal"
+						available["Пройти через чёрный ход"] = "anal"
 					if(mouthfree_p)
 						available["Запихнуть в рот"] = "oral"
 				}
 			}
 			if(isnude && hasvagina && haspenis_p && !src.mutilated_genitals)
-				available["Верхом"] = "mount"
+				available["Прокатиться верхом"] = "mount"
 		}
 	return available
 
