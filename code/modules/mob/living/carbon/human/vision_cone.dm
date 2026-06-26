@@ -68,30 +68,21 @@
 			in_vision_cones.Remove(C)
 
 /mob/living/carbon/human/update_vision_cone()
-// Удаляем всех мобов из hidden_mobs и чистим их in_vision_cones
-	//world.log << "update_vision_cone at [world.time], dir=[dir], fov.dir=[fov?.dir]"
-	for(var/mob/living/M in client.hidden_mobs)
-		M.in_vision_cones -= client
-	client.hidden_mobs.Cut()
+	var/client/C = client
+	if(!C || !fov)
+		return
 
-	for(var/image/I in client.hidden_atoms)
-		client.images -= I
+	// Удаляем всех мобов из hidden_mobs и чистим их in_vision_cones
+	for(var/mob/living/M in C.hidden_mobs)
+		M.in_vision_cones -= C
+	C.hidden_mobs.Cut()
+
+	for(var/image/I in C.hidden_atoms)
+		C.images -= I
 		qdel(I)
 		clear_cone_effect(I)
-	client.hidden_atoms.Cut()
+	C.hidden_atoms.Cut()
 
-	if(!client || !fov)
-		return
-/*
-	var/delay = 1
-	for(var/image/I in client.hidden_atoms)
-		I.override = 0
-		var/local_delay = delay
-		spawn(local_delay)
-			if(src && !QDELETED(src))
-				clear_cone_effect(I)
-		delay += 1
-*/
 	check_fov()
 	fov.dir = dir
 
@@ -99,17 +90,17 @@
 		for(var/mob/living/M in cone(src, OPPOSITE_DIR(dir), view(10, src)))
 			var/image/I = image("split", M)
 			I.override = 1
-			client.images += I
-			client.hidden_atoms += I
-			client.hidden_mobs += M
+			C.images += I
+			C.hidden_atoms += I
+			C.hidden_mobs += M
 			if(pulling == M)
 				I.override = 0
 			else
-				M.in_vision_cones[client] = TRUE
+				M.in_vision_cones[C] = TRUE
 
-	if(client && fov)
-		client.images -= fov
-		client.images += fov
+	// Обновляем fov (конус) в client.images
+	C.images -= fov
+	C.images += fov
 
 /mob/living/carbon/human/proc/SetFov(show)
 	if(!show)
