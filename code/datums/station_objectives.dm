@@ -9,13 +9,13 @@
 	var/list/tasks = list()
 	/// Pool of possible tasks to pick from each round.
 	var/list/task_pool = list(
-		list("name" = "УГОЛЬ", "item_type" = /obj/item/ore/coal, "min" = 25, "max" = 35),
-		list("name" = "УРАН", "item_type" = /obj/item/stack/material/uranium, "min" = 5, "max" = 25),
-		list("name" = "СТАЛЬ", "item_type" = /obj/item/stack/material/steel, "min" = 15, "max" = 100),
-		list("name" = "СТЕКЛО", "item_type" = /obj/item/stack/material/glass, "min" = 15, "max" = 100),
+		list("name" = "УГОЛЬ", "item_type" = /obj/item/ore/coal, "min" = 30, "max" = 70),
+		list("name" = "УРАН", "item_type" = /obj/item/stack/material/uranium, "min" = 15, "max" = 30),
+		//list("name" = "СТАЛЬ", "item_type" = /obj/item/stack/material/steel, "min" = 15, "max" = 100),
+		//list("name" = "СТЕКЛО", "item_type" = /obj/item/stack/material/glass, "min" = 15, "max" = 100),
 		list("name" = "БАНАН", "item_type" = /obj/item/reagent_containers/food/grown/banana, "min" = 8, "max" = 24),
 		list("name" = "КАРТОШКА", "item_type" = /obj/item/reagent_containers/food/grown/potato, "min" = 10, "max" = 32),
-		list("name" = "ПЛАЗМА", "item_type" = /obj/item/stack/material/plasma, "min" = 20, "max" = 50)
+		list("name" = "ПЛАЗМА", "item_type" = /obj/item/stack/material/plasma, "min" = 25, "max" = 50)
 	)
 	/// If we're currently executing a punishment.
 	var/sanction_running = FALSE
@@ -231,7 +231,7 @@
 		do_shock_pulse()
 
 /datum/station_objective_manager/proc/dispatch_deathsquad()
-	SSannounce.play_station_announce(/datum/announce/station_objectives_sanction, "Отряд зачистки выслан, оставайтесь на своих местах, сопротивление бесполезно.")
+	SSannounce.play_station_announce(/datum/announce/station_objectives_sanction, "Для выяснения причины и личностей виновных в провале директивы - на станцию \"Чужбина\" отправился отряд корпгвардии.")
 	var/i = 4 // Количество оперативников отряда зачистки
 	if(GLOB.deathsquad)
 		for(var/mob/observer/ghost/G in GLOB.player_list)
