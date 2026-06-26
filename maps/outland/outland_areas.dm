@@ -127,6 +127,9 @@
 	name = "Deathsquad Shuttle Internim"
 	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_UNIQUE_AREA
 
+/area/shuttle/deathsquad/southwest
+	name = "Deathsquad Shuttle Southwest"
+
 /area/shuttle/deathsquad/station
 	name = "Deathsquad Shuttle Station"
 

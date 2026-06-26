@@ -581,6 +581,11 @@
 	docking_controller = "deathsquad_shuttle_dock_airlock"
 	autoset = 1
 
+/obj/effect/shuttle_landmark/deathsquad/southwest
+	name = "Station South West"
+	landmark_tag = "nav_deathsquad_southwest"
+	autoset = 1
+
 //Merchant
 
 /datum/shuttle/autodock/multi/antag/merchant

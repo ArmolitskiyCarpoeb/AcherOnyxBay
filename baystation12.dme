@@ -3358,6 +3358,7 @@
 #include "maps\frontier\frontier_levels.dm"
 #include "maps\genesis\genesis_define.dm"
 #include "maps\genesis\genesis_levels.dm"
+#include "maps\outland\outland_areas.dm"
 #include "maps\outland\outland_define.dm"
 #include "maps\outland\outland_levels.dm"
 #include "maps\polaris\polar_areas.dm"
