@@ -225,10 +225,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/machinery/newscaster{
-	pixel_x = 31;
-	pixel_y = 3
-	},
 /turf/simulated/floor/tiled/graytile,
 /area/bridge)
 "cr" = (
@@ -243,10 +239,6 @@
 	dir = 4
 	},
 /obj/item/modular_computer/console/preset/medical,
-/obj/machinery/newscaster{
-	pixel_x = 31;
-	pixel_y = 3
-	},
 /turf/simulated/floor/trim/carpet/gblue,
 /area/crew_quarters/heads/cmo)
 "cx" = (
@@ -900,10 +892,6 @@
 "jZ" = (
 /obj/effect/floor_decal/corner/blue/full,
 /obj/structure/closet/crate/bin,
-/obj/machinery/newscaster{
-	pixel_x = 31;
-	pixel_y = 3
-	},
 /turf/simulated/floor/tiled/rough,
 /area/bridge)
 "ke" = (
@@ -2642,10 +2630,6 @@
 	dir = 8;
 	c_tag = "Primary Hallway Central - Southwest"
 	},
-/obj/machinery/newscaster{
-	pixel_x = 31;
-	pixel_y = 3
-	},
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
 "Hm" = (
@@ -2728,10 +2712,6 @@
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = 24
-	},
-/obj/machinery/newscaster{
-	pixel_x = 31;
-	pixel_y = 3
 	},
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/heads/hos)
@@ -3452,9 +3432,6 @@
 	id = "meetsroom";
 	req_access = list(19)
 	},
-/obj/machinery/newscaster{
-	pixel_y = -32
-	},
 /obj/item/tape_roll,
 /turf/simulated/floor/trim/wood2,
 /area/bridge/meeting_room)
@@ -4081,10 +4058,6 @@
 	pixel_y = 24
 	},
 /obj/effect/landmark/event/nuke/code,
-/obj/machinery/newscaster{
-	pixel_x = 31;
-	pixel_y = 3
-	},
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "ZR" = (
