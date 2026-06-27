@@ -52,6 +52,26 @@
 		/obj/item/reagent_containers/hypospray/autoinjector/adrenaline = 2
 		)
 
+	prices = list(
+		/obj/item/reagent_containers/vessel/bottle/chemical/antitoxin = 80,
+		/obj/item/reagent_containers/vessel/bottle/chemical/inaprovaline = 80,
+		/obj/item/reagent_containers/vessel/bottle/chemical/stoxin = 80,
+		/obj/item/reagent_containers/vessel/bottle/chemical/toxin = 80,
+		/obj/item/reagent_containers/vessel/bottle/chemical/spaceacillin = 50,
+		/obj/item/reagent_containers/syringe = 10,
+		/obj/item/device/healthanalyzer = 100,
+		/obj/item/reagent_containers/vessel/beaker = 25,
+		/obj/item/reagent_containers/dropper = 10,
+		/obj/item/stack/medical/bandage = 60,
+		/obj/item/stack/medical/ointment = 60,
+		/obj/item/stack/medical/gel/brute = 30,
+		/obj/item/stack/medical/gel/burn = 30,
+		/obj/item/stack/medical/splint = 20,
+		/obj/item/reagent_containers/hypospray/autoinjector/pain = 100,
+		/obj/item/compact_shoe_covers = 25,
+		/obj/item/storage/box/compact_shoe_covers = 100
+		)
+
 /obj/item/vending_cartridge/medical
 	icon_state = "refill_medical"
 	build_path = /obj/machinery/vending/medical
