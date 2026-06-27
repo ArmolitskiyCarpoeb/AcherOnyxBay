@@ -891,6 +891,10 @@
 
 /mob/proc/set_resting(new_state)
 	resting = new_state
+	// Сбрасываем фиксацию направления, когда ложимся
+	if(new_state)
+		facing_dir = null
+		update_fixdir_icon()
 	update_canmove()
 	if(resting_icon)
 		resting_icon.icon_state = "rest[resting]"
@@ -1018,16 +1022,17 @@
 	set src = usr
 
 	set_face_dir()
-	if(facing_dir)
-		fixdir_icon.icon_state = "fixdir_on"
-	else
-		fixdir_icon.icon_state = "fixdir_off"
+	update_fixdir_icon()
 	//return
 
 	// if(!facing_dir)
 	// 	to_chat(usr, "You are now not facing anything.")
 	// else
 	// 	to_chat(usr, "You are now facing [dir2text(facing_dir)].")
+
+/mob/proc/update_fixdir_icon()
+    if(fixdir_icon)
+        fixdir_icon.icon_state = facing_dir ? "fixdir_on" : "fixdir_off"
 
 /mob/proc/set_face_dir(newdir)
 	if(newdir == FALSE)
@@ -1042,11 +1047,13 @@
 	else
 		set_dir(dir)
 		facing_dir = dir
+	update_fixdir_icon()
 
 /mob/set_dir(newdir)
 	if(facing_dir)
 		if(!canface() || lying || buckled || restrained())
 			facing_dir = null
+			update_fixdir_icon()
 		else
 			// Принудительно устанавливаем зафиксированное направление, игнорируя newdir
 			if(dir != facing_dir)
