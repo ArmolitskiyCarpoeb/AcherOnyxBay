@@ -491,7 +491,7 @@
 			to_chat(user, SPAN("notice", "\The [RG] is already full!"))
 			return
 		playsound(loc, 'sound/effects/using/sink/filling1.ogg', 75)
-		RG.reagents.add_reagent(/datum/reagent/water, min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
+		RG.reagents.add_reagent(/datum/reagent/water/shitty, min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
 		user.visible_message("<span class='notice'>[user] fills \the [RG] using \the [src].</span>","<span class='notice'>You fill \the [RG] using \the [src].</span>")
 		return TRUE
 
@@ -520,7 +520,7 @@
 
 	else if(istype(O, /obj/item/mop))
 		playsound(loc, 'sound/effects/using/sink/filling1.ogg', 75)
-		O.reagents.add_reagent(/datum/reagent/water, 300)
+		O.reagents.add_reagent(/datum/reagent/water/shitty, 300)
 		to_chat(user, "<span class='notice'>You wet \the [O] in \the [src].</span>")
 		playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		return TRUE

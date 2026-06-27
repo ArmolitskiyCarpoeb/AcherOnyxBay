@@ -113,6 +113,26 @@
 		M.visible_message("<span class='warning'>[S]'s flesh sizzles where the water touches it!</span>", "<span class='danger'>Your flesh burns in the water!</span>")
 		M.confused = max(M.confused, 2)
 
+//shitty watter
+/datum/reagent/water/shitty
+	name = "Water"
+	description = "Выглядит не очень!"
+
+	taste_description = "shit"
+
+	reagent_state = LIQUID
+	color = "#d1b18b"
+
+	decompile_results = list(
+		/datum/reagent/water = 0.8,
+		/datum/reagent/toxin = 0.2
+		)
+
+/datum/reagent/water/shitty/affect_blood(mob/living/carbon/M, alien, removed, affecting_dose)
+	M.adjustToxLoss(2.5)
+	if(affecting_dose > 75.0)
+		M.adjustBrainLoss(removed * 4.5) // THEY PUT SOMETHING IN THE WATER
+
 /// Acetone
 /datum/reagent/acetone
 	name = "Acetone"
