@@ -48,7 +48,7 @@
 		name = "[name] ([sequential_id(/mob/living/simple_animal/hostile/clop)])"
 	real_name = name
 
-	if(prob(25))
+	if(prob(10))
 		if(prob(1))
 			virus = new (VIRUS_EXOTIC)
 		else if(prob(5))
