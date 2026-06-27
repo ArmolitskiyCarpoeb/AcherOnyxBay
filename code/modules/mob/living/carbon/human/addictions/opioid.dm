@@ -122,13 +122,13 @@
 	var/pain_amt
 	var/pain_text
 
-	if(effectiveP < (2 MINUTES))
+	if(effectiveP < (1 MINUTES))
 		pain_amt = rand(20, 25)
 		pain_text = "Your body stings slightly."
-	else if(effectiveP < (5 MINUTES))
+	else if(effectiveP < (3 MINUTES))
 		pain_amt = rand(25, 40)
 		pain_text = "Your body stings."
-	else if(effectiveP < (10 MINUTES))
+	else if(effectiveP < (7 MINUTES))
 		pain_amt = rand(40, 55)
 		pain_text = "Your body aches."
 	else
@@ -143,11 +143,11 @@
 
 	// Nausea/vomit: still possible, but not constant; reduced by relief
 	var/vomit_chance
-	if(effectiveP < (2 MINUTES))
+	if(effectiveP < (1 MINUTES))
 		vomit_chance = 0
-	else if(effectiveP < (5 MINUTES))
+	else if(effectiveP < (3 MINUTES))
 		vomit_chance = 8
-	else if(effectiveP < (10 MINUTES))
+	else if(effectiveP < (7 MINUTES))
 		vomit_chance = 16
 	else
 		vomit_chance = 28

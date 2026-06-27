@@ -246,18 +246,18 @@ GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of S
 	switch(drug_type)
 		if("drug")
 			reagents_to_check = list(/datum/reagent/painkiller/tramadol, /datum/reagent/painkiller/tramadol/oxycodone, /datum/reagent/painkiller/opium, /datum/reagent/painkiller/opium/tarine, /datum/reagent/space_drugs)
-			threshold = 2.0
+			threshold = 0.1
 			event_type = /datum/happiness_event/high
 
 	if(reagents_to_check)
 		var/total = 0
 		for(var/type in reagents_to_check)
-			total += reagents.get_reagent_amount(type)
+			if(chem_doses[type])
+				total += chem_doses[type]
 		if(total >= threshold)
 			active = TRUE
 
 	if(active && !drug_effect_active)
-		// Удаляем все негативные события (happiness < 0)
 		var/list/to_remove = list()
 		for(var/datum/happiness_event/E in happiness_events)
 			if(E.happiness < 0)
