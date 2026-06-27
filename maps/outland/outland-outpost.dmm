@@ -36,7 +36,6 @@
 	d2 = 8;
 	d1 = 4
 	},
-/mob/living/simple_animal/hostile/clop,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/atmospherics)
 "au" = (
@@ -387,10 +386,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/dark/mono,
 /area/outpost/engineering/storage)
-"gc" = (
-/mob/living/simple_animal/hostile/clop,
-/turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
 "gn" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
@@ -1881,7 +1876,7 @@
 "JP" = (
 /obj/structure/table/rack,
 /obj/item/pickaxe,
-/obj/item/pickaxe/drill,
+/obj/item/pickaxe/drill/adv,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/hallway)
 "Kd" = (
@@ -2295,6 +2290,11 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/retro,
 /obj/item/gun/energy/retro,
+/obj/item/net_shell,
+/obj/item/gun/launcher/net,
+/obj/item/net_shell,
+/obj/item/net_shell,
+/obj/item/net_shell,
 /turf/simulated/floor/tiled/dark/mono,
 /area/outpost/engineering/storage)
 "RQ" = (
@@ -9894,7 +9894,7 @@ BT
 oC
 cF
 Zm
-gc
+he
 he
 an
 AK
@@ -10201,7 +10201,7 @@ jg
 Xz
 hE
 LF
-gc
+he
 Mm
 aS
 Ze
