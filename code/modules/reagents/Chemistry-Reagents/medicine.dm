@@ -748,13 +748,14 @@
 	reagent_state = LIQUID
 	color = "#efebaa"
 
-	metabolism = REM * 0.025
+	metabolism = REM * 0.04
 	excretion = 1.0
 	overdose = 8
 	scannable = 1
 	data = 0
 
 /datum/reagent/nicotine/affect_blood(mob/living/carbon/M, alien, removed)
+	var/mob/living/carbon/human/H = M
 	if(alien == IS_DIONA)
 		return
 	if(prob(volume*20))
@@ -762,19 +763,25 @@
 	if(volume <= 0.02 && M.chem_traces[type] >= 0.05 && world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY * 0.3)
 		data = world.time
 		to_chat(M, SPAN("warning", "You feel antsy, your concentration wavers..."))
+	if(ishuman(M))
+		if(volume >= 0.3)
+			H.add_happiness_event(/datum/happiness_event/relaxed)
+		else
+			for(var/datum/happiness_event/E in H.happiness_events)
+				if(E.group == "cig")
+					H.remove_happiness_event(E.type)
+					break
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY * 0.3)
 			data = world.time
 			if(volume <= 4.0)
 				to_chat(M, SPAN("notice", "You feel invigorated and calm."))
 				if(ishuman(M))
-					var/mob/living/carbon/human/C = M
-					C.add_happiness_event(/datum/happiness_event/relaxed)
+					H.add_happiness_event(/datum/happiness_event/relaxed)
 			else
 				to_chat(M, SPAN("warning", "You feel like you should smoke less often..."))
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
 	if(!(H.addictions[/datum/addiction/nicotine]))
 		consumption_counter += removed
 		if(consumption_counter >= 10)

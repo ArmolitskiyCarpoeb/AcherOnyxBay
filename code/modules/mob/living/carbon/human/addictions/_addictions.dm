@@ -91,7 +91,6 @@ GLOBAL_LIST_INIT(all_addictions, init_addictions())
 		if(type in H.addiction_detox_clean_since)
 			on_relapse(H)
 			H.addiction_detox_clean_since -= type
-
 		// On relapse we fully reset withdrawal progress (per design)
 			H.addictions[type] = 0
 

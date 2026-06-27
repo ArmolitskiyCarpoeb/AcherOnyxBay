@@ -77,21 +77,21 @@
 				"You miss the taste of alcohol.",\
 				"You think about a cold beer."\
 			)]"))
-			H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_small)
+			H.add_happiness_event(/datum/happiness_event/addiction/alco/withdrawal_small)
 		if((5 MINUTES) to (15 MINUTES))
 			to_chat(H, SPAN_WARNING("[pick(
 				"You really want a drink.",\
 				"Your hands feel a little restless without alcohol.",\
 				"You keep imagining that first sip."\
 			)]"))
-			H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_medium)
+			H.add_happiness_event(/datum/happiness_event/addiction/alco/withdrawal_medium)
 		if((15 MINUTES) to INFINITY)
 			to_chat(H, SPAN_DANGER("[pick(
 				"You need a drink — it's getting under your skin.",\
 				"Your thoughts keep circling back to alcohol.",\
 				"You feel on edge without a drink."\
 			)]"))
-			H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_extreme)
+			H.add_happiness_event(/datum/happiness_event/addiction/alco/withdrawal_extreme)
 
 	// Mild withdrawal side-effects (very rare; reduced by relief)
 	if(prob(round(2 * (1 - relief))))

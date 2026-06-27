@@ -428,6 +428,10 @@
 	if(alien == IS_SKRELL)
 		effect_mult *= 0.8
 
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		H.update_drug_happiness("drug")
+
 	M.make_drugged(15 * effect_mult)
 	if(prob(10))
 		M.SelfMove(pick(GLOB.cardinal))

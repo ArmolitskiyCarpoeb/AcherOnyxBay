@@ -42,21 +42,21 @@
 					"You find yourself thinking about smoking.",\
 					"You want to relax — weed would help."\
 				)))
-				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_small)
+				//H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_small)
 			if((3 MINUTES) to (10 MINUTES))
 				to_chat(H, SPAN_WARNING(pick(
 					"You feel irritable and restless without weed.",\
 					"Your mood is souring. A hit would calm you down.",\
 					"You can't quite relax — something feels missing."\
 				)))
-				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_medium)
+				//H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_medium)
 			if((10 MINUTES) to INFINITY)
 				to_chat(H, SPAN_DANGER(pick(
 					"You feel wound up and on edge. You need to smoke.",\
 					"You can't settle your thoughts without weed.",\
 					"Everything feels tense. You crave that haze badly."\
 				)))
-				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_extreme)
+				//H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_extreme)
 
 	if(world.time >= (H.addiction_next_symptom?[type] || 0))
 		H.addiction_next_symptom[type] = world.time + rand(80 SECONDS, 120 SECONDS)

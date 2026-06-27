@@ -8,7 +8,7 @@
 	reagent_state = LIQUID
 	color = "#404030"
 
-	metabolism = 0.6
+	metabolism = 0.3
 	ingest_met = 0.75
 	digest_met = 3.5
 	ingest_absorbability = 0.9
@@ -37,6 +37,7 @@
 /datum/reagent/ethanol/affect_blood(mob/living/carbon/M, alien, removed)
 	if(!ishuman(M)) return
 	var/mob/living/carbon/human/H = M
+	//H.update_drug_happiness("alco")
 	if(!(H.addictions[/datum/addiction/alcohol]))
 		consumption_counter += removed
 		if(consumption_counter >= 75)

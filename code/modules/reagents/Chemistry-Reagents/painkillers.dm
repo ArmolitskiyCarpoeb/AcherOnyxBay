@@ -172,6 +172,9 @@
 		else
 			msg = pick("happy", "joyful", "relaxed", "tranquility")
 		to_chat(M, SPAN("notice", "You feel [msg]."))
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		H.update_drug_happiness("drug")
 
 /datum/reagent/painkiller/opium/handle_painkiller_overdose(mob/living/carbon/M, affecting_dose)
 	var/whole_volume = (volume + M.chem_traces[type]) // side effects are more robust (dose-wise) than in the case of *legal* painkillers usage

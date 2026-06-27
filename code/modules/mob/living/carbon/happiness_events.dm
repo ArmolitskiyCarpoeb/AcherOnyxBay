@@ -60,7 +60,7 @@
 
 /datum/happiness_event/thirst/dehydrated
 	description = "<span class='danger'>ВОДЫ!!! ВОДЫ!!!</span>\n"
-	happiness = -15
+	happiness = -20
 	group = "thirst"
 
 //nutrition
@@ -95,7 +95,7 @@
 
 /datum/happiness_event/nutrition/starving
 	description = "<span class='danger'>ЖРАТЬ ХОЧУ!!!</span>\n"
-	happiness = -15
+	happiness = -20
 	group = "nutrition"
 
 
@@ -226,7 +226,7 @@
 	happiness = -10
 
 /datum/happiness_event/clown
-	description = "<span class='info'>I recently saw a funny clown!</span>\n"
+	description = "<span class='info'>Недавно видел смешного клоуна!</span>\n"
 	happiness = 5
 
 /datum/happiness_event/cloned_corpse
@@ -280,44 +280,97 @@
 
 // Addiction Events
 
-/datum/happiness_event/addiction/withdrawal_small
-	description = "<span class='danger'>Я не потакаю своей зависимости.</span>\n"
+//OPIUM LOMKA
+
+/datum/happiness_event/addiction/opium/withdrawal_small
+	description = "<span class='danger'>Вмазаться хочу.</span>\n"
 	happiness = -2
 	timeout = FALSE
-	group = "addiction"
+	group = "opium_addiction"
 
-
-/datum/happiness_event/addiction/withdrawal_medium
-	description = "<span class='danger'>Я не потакаю своей зависимости, и мне от этого грустно!</span>\n"
+/datum/happiness_event/addiction/opium/withdrawal_medium
+	description = "<span class='danger'>Грустненько без дозы!</span>\n"
 	happiness = -7
 	timeout = FALSE
-	group = "addiction"
+	group = "opium_addiction"
 
-/datum/happiness_event/addiction/withdrawal_large
-	description = "<span class='danger'>Я не потакаю своей зависимости, и мне ОЧЕНЬ грустно!</span>\n"
+/datum/happiness_event/addiction/opium/withdrawal_large
+	description = "<span class='danger'>Как же хочется ДОЗУУУ!</span>\n"
 	happiness = -10
 	timeout = FALSE
-	group = "addiction"
+	group = "opium_addiction"
 
-/datum/happiness_event/addiction/withdrawal_extreme
+/datum/happiness_event/addiction/opium/withdrawal_extreme
 	description = "<span class='danger'>ЛОМКАЛОМКАЛОМКАЛОМКАЛОМКА!!!</span>\n"
 	happiness = -15
 	timeout = FALSE
-	group = "addiction"
+	group = "opium_addiction"
+
+// КУРИТЬ ОХОТА
+
+/datum/happiness_event/addiction/cig/withdrawal_small
+	description = "<span class='danger'>Не хватает сигаретки.</span>\n"
+	happiness = -2
+	timeout = FALSE
+	group = "cig_addiction"
+
+/datum/happiness_event/addiction/cig/withdrawal_medium
+	description = "<span class='danger'>Почему я не курю!?</span>\n"
+	happiness = -7
+	timeout = FALSE
+	group = "cig_addiction"
+
+/datum/happiness_event/addiction/cig/withdrawal_large
+	description = "<span class='danger'>Курить ХОЧУ!!!</span>\n"
+	happiness = -10
+	timeout = FALSE
+	group = "cig_addiction"
+
+/datum/happiness_event/addiction/cig/withdrawal_extreme
+	description = "<span class='danger'>ОТСОСУ ЗА СИГАРЕТУ!!</span>\n"
+	happiness = -15
+	timeout = FALSE
+	group = "cig_addiction"
+
+// АЛКОЛОМКА
+
+/datum/happiness_event/addiction/alco/withdrawal_small
+	description = "<span class='danger'>Выпить бы чего покрепче.</span>\n"
+	happiness = -2
+	timeout = FALSE
+	group = "alco_addiction"
+
+/datum/happiness_event/addiction/alco/withdrawal_medium
+	description = "<span class='danger'>Как обидно без водки!</span>\n"
+	happiness = -7
+	timeout = FALSE
+	group = "alco_addiction"
+
+/datum/happiness_event/addiction/alco/withdrawal_large
+	description = "<span class='danger'>Напиться до потери сознания ХОЧУ!!!</span>\n"
+	happiness = -10
+	timeout = FALSE
+	group = "alco_addiction"
+
+/datum/happiness_event/addiction/alco/withdrawal_extreme
+	description = "<span class='danger'>ПОЧЕМУ Я НЕ ПЬЯН?!?!</span>\n"
+	happiness = -15
+	timeout = FALSE
+	group = "alco_addiction"
 
 /datum/happiness_event/high
 	description = "<span class='info'>Под кайфом!</span>\n"
-	happiness = 15
-	group = "addiction"
+	happiness = 100
+	group = "opium_addiction"
 
 /datum/happiness_event/relaxed
 	description = "<span class='info'>Хорошая сигаретка.</span>\n"
-	happiness = 10
-	timeout = 3000
-	group = "addiction"
+	happiness = 15
+	timeout = 0
+	group = "cig_addiction"
 
 /datum/happiness_event/booze
 	description = "<span class='info'>Алкоголь делает этот мир капельку светлее.</span>\n"
-	happiness = 10
-	timeout = 3000
-	group = "addiction"
+	happiness = 15
+	timeout = 0
+	group = "alco_addiction"

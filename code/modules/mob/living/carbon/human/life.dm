@@ -111,8 +111,10 @@
 			update_pain_event()   // обновляем событие болиии
 			update_hunger_event()
 			update_thirst_event()
-			if(life_tick % 20 == 10)
-				update_dirty_event()
+			update_clown_event()
+			update_dirty_event()
+			//if(life_tick % 20 == 10)
+			//	update_dirty_event()
 
 
 		if(!client && !mind)

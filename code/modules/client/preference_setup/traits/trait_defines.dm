@@ -301,42 +301,39 @@
 	name = "Зависимость от опиатов"
 	desc = "Подлый отказ от героина вынудет твой организм отказаться от существования."
 	modifier_type = /datum/modifier/trait/opiat_addiction
-	mutually_exclusive = list(
-		/datum/trait/modifier/bad/alcohol_addiction,
-		/datum/trait/modifier/bad/cannabis_addiction,
-		/datum/trait/modifier/bad/smoker
-	)
+	// mutually_exclusive = list(
+	// 	/datum/trait/modifier/bad/alcohol_addiction,
+	// 	/datum/trait/modifier/bad/smoker
+	// )
 	trait_cost = -2
 
-/datum/trait/modifier/bad/cannabis_addiction
-	name = "Любитель марихуаны"
-	desc = "Без марихуаны расслабиться не выйдет. Увы!"
-	modifier_type = /datum/modifier/trait/cannabis_addiction
-	mutually_exclusive = list(
-		/datum/trait/modifier/bad/alcohol_addiction,
-		/datum/trait/modifier/bad/smoker,
-		/datum/trait/modifier/bad/opiat_addiction
-	)
-	trait_cost = -1
+// /datum/trait/modifier/bad/cannabis_addiction
+// 	name = "Любитель марихуаны"
+// 	desc = "Без марихуаны расслабиться не выйдет. Увы!"
+// 	modifier_type = /datum/modifier/trait/cannabis_addiction
+// 	mutually_exclusive = list(
+// 		/datum/trait/modifier/bad/alcohol_addiction,
+// 		/datum/trait/modifier/bad/smoker,
+// 		/datum/trait/modifier/bad/opiat_addiction
+// 	)
+// 	trait_cost = -1
 
 /datum/trait/modifier/bad/alcohol_addiction
 	name = "Алкоголик"
 	desc = "Между первой и второй - перерывчик небольшой."
 	modifier_type = /datum/modifier/trait/alcohol_addiction
-	mutually_exclusive = list(
-		/datum/trait/modifier/bad/smoker,
-		/datum/trait/modifier/bad/cannabis_addiction,
-		/datum/trait/modifier/bad/opiat_addiction
-	)
+	// mutually_exclusive = list(
+	// 	/datum/trait/modifier/bad/smoker,
+	// 	/datum/trait/modifier/bad/opiat_addiction
+	// )
 	trait_cost = -1
 
 /datum/trait/modifier/bad/smoker
 	name = "Курильщик"
 	desc = "Но если есть в кармане пачка сигарет... Значит, всё не так уж плохо на сегодняшний день."
 	modifier_type = /datum/modifier/trait/smoker
-	mutually_exclusive = list(
-		/datum/trait/modifier/bad/alcohol_addiction,
-		/datum/trait/modifier/bad/cannabis_addiction,
-		/datum/trait/modifier/bad/opiat_addiction
-	)
+	// mutually_exclusive = list(
+	// 	/datum/trait/modifier/bad/alcohol_addiction,
+	// 	/datum/trait/modifier/bad/opiat_addiction
+	// )
 	trait_cost = -1

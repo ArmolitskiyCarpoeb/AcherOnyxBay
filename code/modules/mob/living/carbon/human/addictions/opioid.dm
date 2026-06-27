@@ -30,7 +30,7 @@
 		"Your muscles unclench and the world finally makes sense again.",\
 		"The craving goes silent. You feel safe, for a moment."\
 	)]"))
-	H.add_happiness_event(/datum/happiness_event/high)
+	//H.add_happiness_event(/datum/happiness_event/high)
 
 /datum/addiction/opioid/on_cured(mob/living/carbon/human/H)
 	to_chat(H, SPAN_THOUGHT("You feel... present again. The need for opiates no longer rules your thoughts."))
@@ -52,7 +52,7 @@
 		var/next_good = H.addiction_next_symptom[type]
 		if(isnull(next_good) || world.time >= next_good)
 			H.addiction_next_symptom[type] = world.time + rand(45 SECONDS, 75 SECONDS)
-			H.add_happiness_event(/datum/happiness_event/high)
+			//H.add_happiness_event(/datum/happiness_event/high)
 			if(prob(60))
 				if(satisfaction < -10)
 					to_chat(H, SPAN_THOUGHT("You feel [FONT_LARGE(pick(
@@ -89,21 +89,21 @@
 					"You think about opiates more than you should.",\
 					"A quiet craving curls in your chest."\
 				)]"))
-				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_small)
+				H.add_happiness_event(/datum/happiness_event/addiction/opium/withdrawal_small)
 			if((3 MINUTES) to (8 MINUTES))
 				to_chat(H, SPAN_WARNING("[pick(
 					"You really want opiates.",\
 					"Your body feels wrong without a dose.",\
 					"You keep imagining that first warm wave of relief."\
 				)]"))
-				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_medium)
+				H.add_happiness_event(/datum/happiness_event/addiction/opium/withdrawal_medium)
 			if((8 MINUTES) to INFINITY)
 				to_chat(H, SPAN_DANGER("[pick(
 					"You need opiates — withdrawal is clawing at you.",\
 					"Your nerves scream for relief.",\
 					"You feel frantic without a dose."\
 				)]"))
-				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_extreme)
+				H.add_happiness_event(/datum/happiness_event/addiction/opium/withdrawal_extreme)
 
 	// --- Pain / nausea (rate-limited and capped) ---
 	var/next_pain = H.addiction_next_pain[type]

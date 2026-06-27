@@ -98,8 +98,6 @@ GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of S
 			possession_candidate = FALSE
 			clear_fullscreen("schizo")
 
-
-
 // Отрисовка в статпанели
 /mob/living/carbon/human/Stat()
 	. = ..()
@@ -132,6 +130,10 @@ GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of S
 		if(E.type == event_type)
 			return
 
+	if(drug_effect_active)
+		remove_happiness_event(event_type)
+		return
+
 	// Удаляем все старые события боли и добавляем новое
 	for(var/datum/happiness_event/E in happiness_events)
 		if(istype(E, /datum/happiness_event/pain) || istype(E, /datum/happiness_event/mildpain) || istype(E, /datum/happiness_event/verymildpain))
@@ -156,6 +158,9 @@ GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of S
 	if(event_type)
 		add_happiness_event(event_type)
 
+	if(drug_effect_active)
+		remove_happiness_event(event_type)
+		return
 /mob/living/carbon/human/proc/update_thirst_event()
 	if(!client) return
 	var/event_type = null
@@ -172,6 +177,10 @@ GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of S
 			remove_happiness_event(E.type)*/
 	if(event_type)
 		add_happiness_event(event_type)
+
+	if(drug_effect_active)
+		remove_happiness_event(event_type)
+		return
 
 /mob/living/carbon/human/proc/update_dirty_event()
 	if(!client) return
@@ -202,3 +211,73 @@ GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of S
 		for(var/datum/happiness_event/E in happiness_events)
 			if(E.group == "dirty")
 				remove_happiness_event(E.type)
+
+	if(drug_effect_active)
+		remove_happiness_event(event_type)
+		return
+
+/mob/living/carbon/human/proc/update_clown_event()
+	if(!client) return
+	var/found_clown = FALSE
+	for(var/mob/living/carbon/human/H in view(world.view, src))
+		if(H.mind && H.mind.assigned_role == "Clown")
+			found_clown = TRUE
+			break
+	// Проверяем, есть ли уже событие клоуна
+	var/has_event = FALSE
+	for(var/datum/happiness_event/E in happiness_events)
+		if(E.type == /datum/happiness_event/clown)
+			has_event = TRUE
+			break
+	if(found_clown && !has_event)
+		add_happiness_event(/datum/happiness_event/clown)
+	else if(!found_clown && has_event)
+		remove_happiness_event(/datum/happiness_event/clown)
+
+/mob/living/carbon/human
+	var/drug_effect_active = FALSE
+
+/mob/living/carbon/human/proc/update_drug_happiness(drug_type)
+	var/active = FALSE
+	var/event_type
+	var/list/reagents_to_check
+	var/threshold
+
+	switch(drug_type)
+		if("drug")
+			reagents_to_check = list(/datum/reagent/painkiller/tramadol, /datum/reagent/painkiller/tramadol/oxycodone, /datum/reagent/painkiller/opium, /datum/reagent/painkiller/opium/tarine, /datum/reagent/space_drugs)
+			threshold = 2.0
+			event_type = /datum/happiness_event/high
+
+	if(reagents_to_check)
+		var/total = 0
+		for(var/type in reagents_to_check)
+			total += reagents.get_reagent_amount(type)
+		if(total >= threshold)
+			active = TRUE
+
+	if(active && !drug_effect_active)
+		// Удаляем все негативные события (happiness < 0)
+		var/list/to_remove = list()
+		for(var/datum/happiness_event/E in happiness_events)
+			if(E.happiness < 0)
+				to_remove += E.type
+		for(var/type in to_remove)
+			remove_happiness_event(type)
+
+		var/has_event = FALSE
+		for(var/datum/happiness_event/E in happiness_events)
+			if(E.type == event_type)
+				has_event = TRUE
+				break
+		if(!has_event)
+			add_happiness_event(event_type)
+
+		drug_effect_active = TRUE
+
+	else if(!active && drug_effect_active)
+		for(var/datum/happiness_event/E in happiness_events)
+			if(E.type == event_type)
+				remove_happiness_event(E.type)
+				break
+		drug_effect_active = FALSE

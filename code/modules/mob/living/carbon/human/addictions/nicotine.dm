@@ -63,21 +63,21 @@
 					"You miss the familiar nicotine buzz.",\
 					"You feel like taking a quick smoke break."\
 				)))
-				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_small)
+				H.add_happiness_event(/datum/happiness_event/addiction/cig/withdrawal_small)
 			if((5 MINUTES) to (15 MINUTES))
 				to_chat(H, SPAN_WARNING(pick(
 					"You really want nicotine.",\
 					"You feel irritable without a smoke.",\
 					"Your fingers feel restless — you want a drag."\
 				)))
-				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_medium)
+				H.add_happiness_event(/datum/happiness_event/addiction/cig/withdrawal_medium)
 			if((15 MINUTES) to INFINITY)
 				to_chat(H, SPAN_DANGER(pick(
 					"You need nicotine — your nerves are screaming.",\
 					"You can't stop thinking about smoking.",\
 					"You're on edge. You need a cigarette."\
 				)))
-				H.add_happiness_event(/datum/happiness_event/addiction/withdrawal_extreme)
+				H.add_happiness_event(/datum/happiness_event/addiction/cig/withdrawal_extreme)
 
 	// Light symptoms (not disabling), rate-limited separately
 	var/sym_key = "[type]_sym"
