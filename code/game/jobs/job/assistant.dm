@@ -9,7 +9,7 @@
 	spawn_positions = -1
 	supervisors = "Экипаж, Капитан и Корпорация"
 	selection_color = "#5e5e5e"
-	economic_modifier = 0.5
+	economic_modifier = 0.7
 	access = list(access_maint_tunnels)
 	minimal_access = list(access_maint_tunnels)
 //	alt_titles = list("Technical Assistant","Medical Intern","Research Assistant")

@@ -14,7 +14,7 @@
 	minimal_access = list() 	//See get_access()
 	minimal_player_age = 0
 	minimum_character_age = 30
-	economic_modifier = 5
+	economic_modifier = 8
 	faction_restricted = TRUE
 	wage = WAGE_COMMAND
 

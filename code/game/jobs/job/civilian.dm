@@ -6,6 +6,7 @@
 	department_flag = SRV
 	total_positions = 1
 	spawn_positions = 1
+	economic_modifier = 2
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
@@ -32,6 +33,7 @@
 	department_flag = SRV
 	total_positions = 1
 	spawn_positions = 1
+	economic_modifier = 1.3
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
 	access = list(access_hydroponics, access_bar, access_kitchen)
@@ -83,6 +85,7 @@
 	department_flag = SRV
 	total_positions = 2
 	spawn_positions = 2
+	economic_modifier = 1.3
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
 	access = list(access_maint_tunnels, access_hydroponics, access_bar, access_kitchen)
@@ -109,7 +112,7 @@
 	spawn_positions = 1
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#5e4324"
-	economic_modifier = 3
+	economic_modifier = 5
 	access = list(access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant,
 			access_bar, access_construction, access_kitchen, access_hydroponics, access_janitor, access_tech_storage,
 			access_heads, access_hop, access_RC_announce, access_keycard_auth, access_sec_doors, access_eva, access_maint_tunnels, access_external_airlocks, access_change_ids, access_teleporter)
@@ -165,7 +168,7 @@
 	spawn_positions = 4
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
-	economic_modifier = 1
+	economic_modifier = 1.2
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
 	//alt_titles = list("Drill Technician","Prospector")

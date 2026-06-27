@@ -10,7 +10,7 @@
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#026865"
 	req_admin_notify = 1
-	economic_modifier = 2
+	economic_modifier = 5
 	faction_restricted = TRUE
 	access = list(access_medical, access_medical_equip, access_morgue, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
@@ -49,7 +49,7 @@
 	spawn_positions = 2
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#13817e"
-	economic_modifier = 1.5
+	economic_modifier = 3
 	access = list(access_medical, access_medical_equip, access_morgue, access_heads,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_maint_tunnels, access_external_airlocks)
