@@ -253,18 +253,22 @@
 	department_flag = CIV
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "uncommon sense"
-	selection_color = "#515151"
+	supervisors = "Настроение экипажа"
+	selection_color = "#ff72d0"
 	access = list(access_maint_tunnels, access_clown)
 	minimal_access = list(access_maint_tunnels, access_clown)
-	minimal_player_age = 10
+	minimal_player_age = 1
 	outfit_type = /decl/hierarchy/outfit/job/clown
+	sex_lock = MALE
 
 /datum/job/clown/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
 		H.add_mutation(MUTATION_CLUMSY)
 		H.rename_self("clown")
+		H.newgeneratestats(7,13,7,13,7,13,7,13)
+		H.generate_skills()
+		H.body_build_stats(H)
 
 /datum/job/mime
 	title = "Mime"

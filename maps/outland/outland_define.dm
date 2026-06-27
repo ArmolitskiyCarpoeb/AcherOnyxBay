@@ -103,6 +103,7 @@
 			/datum/job/chef,
 			/datum/job/hydro,
 			/datum/job/assistant,
+			/datum/job/clown,
 			/datum/job/merchant
 		)
 
