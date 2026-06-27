@@ -32,6 +32,9 @@ GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of S
 				qdel(E)
 	if(!event)
 		return
+	if(drug_effect_active && event.happiness < 0)
+		qdel(event)
+		return
 	for(var/datum/happiness_event/E in happiness_events)
 		if(E.type == event_type)
 			qdel(event)
