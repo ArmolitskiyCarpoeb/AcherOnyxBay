@@ -48,8 +48,8 @@
 		for(var/mob/M in view())
 			sound_to(M, sound('sound/effects/mousesqueek.ogg'))
 
-	if(!stat)
-		try_chew_cable()
+	//if(!stat)
+	//	try_chew_cable()
 
 	if(!ckey && stat == CONSCIOUS && prob(0.5))
 		set_stat(UNCONSCIOUS)
