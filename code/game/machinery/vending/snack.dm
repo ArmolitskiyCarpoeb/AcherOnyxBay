@@ -40,18 +40,18 @@
 		/obj/item/reagent_containers/food/superbiteburger = 1
 		)
 	prices = list(
-		/obj/item/reagent_containers/food/packaged/tweakers = 5,
-		/obj/item/reagent_containers/food/packaged/sweetroid = 5,
-		/obj/item/reagent_containers/food/packaged/sugarmatter = 5,
-		/obj/item/reagent_containers/food/packaged/jellaws = 5,
-		/obj/item/reagent_containers/vessel/dry_ramen = 10,
-		/obj/item/reagent_containers/vessel/chickensoup = 20,
-		/obj/item/reagent_containers/food/packaged/chips = 10,
-		/obj/item/reagent_containers/food/packaged/sosjerky = 20,
-		/obj/item/reagent_containers/food/packaged/no_raisin = 15,
-		/obj/item/reagent_containers/food/spacetwinkie = 5,
-		/obj/item/reagent_containers/food/packaged/cheesiehonkers = 10,
-		/obj/item/reagent_containers/food/packaged/tastybread = 10
+		/obj/item/reagent_containers/food/packaged/tweakers = 50,
+		/obj/item/reagent_containers/food/packaged/sweetroid = 50,
+		/obj/item/reagent_containers/food/packaged/sugarmatter = 50,
+		/obj/item/reagent_containers/food/packaged/jellaws = 50,
+		/obj/item/reagent_containers/vessel/dry_ramen = 100,
+		/obj/item/reagent_containers/vessel/chickensoup = 200,
+		/obj/item/reagent_containers/food/packaged/chips = 100,
+		/obj/item/reagent_containers/food/packaged/sosjerky = 200,
+		/obj/item/reagent_containers/food/packaged/no_raisin = 150,
+		/obj/item/reagent_containers/food/spacetwinkie = 50,
+		/obj/item/reagent_containers/food/packaged/cheesiehonkers = 100,
+		/obj/item/reagent_containers/food/packaged/tastybread = 100
 		)
 
 /obj/item/vending_cartridge/snack
