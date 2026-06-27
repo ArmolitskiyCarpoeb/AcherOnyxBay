@@ -253,7 +253,7 @@
 	department_flag = CIV
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Настроение экипажа"
+	supervisors = "настроение экипажа"
 	selection_color = "#ff72d0"
 	access = list(access_maint_tunnels, access_clown)
 	minimal_access = list(access_maint_tunnels, access_clown)
