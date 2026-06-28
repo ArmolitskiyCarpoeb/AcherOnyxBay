@@ -79,7 +79,8 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/suit_storage_unit/mining/alt,
+/obj/structure/table/rack,
+/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/tiled/dark/mono,
 /area/outpost/engineering/storage)
 "aS" = (
@@ -343,7 +344,8 @@
 /turf/simulated/floor/plating,
 /area/outpost/prydwen)
 "eJ" = (
-/obj/machinery/suit_storage_unit/mining/alt,
+/obj/structure/table/rack,
+/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/tiled/dark/mono,
 /area/outpost/engineering/storage)
 "eP" = (
@@ -2461,6 +2463,11 @@
 	layer = 2.06
 	},
 /obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/outpost/engineering/atmospherics)
+"Uf" = (
+/obj/structure/table/rack,
+/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/atmospherics)
 "Us" = (
@@ -10049,7 +10056,7 @@ Xz
 Xz
 cC
 LF
-he
+Uf
 Mm
 aS
 Ze
