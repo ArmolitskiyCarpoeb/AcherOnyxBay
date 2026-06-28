@@ -1997,6 +1997,11 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/mono,
 /area/hallway/primary/central_one)
+"nK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/reagent_containers/vessel/bucket,
+/turf/simulated/floor/plating,
+/area/engineering/engine_smes)
 "nN" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/kitchen)
@@ -4792,6 +4797,10 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
+"Jr" = (
+/obj/structure/reagent_dispensers/coolanttank,
+/turf/simulated/floor/plating,
+/area/engineering/engine_smes)
 "Jz" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -37875,7 +37884,7 @@ Vd
 KP
 KP
 Hx
-AT
+Jr
 jh
 Ox
 ij
@@ -38903,7 +38912,7 @@ Vd
 KP
 KP
 Hx
-AT
+Jr
 jh
 Ox
 ij
@@ -39162,7 +39171,7 @@ KP
 Hx
 aO
 kC
-Xq
+nK
 Xq
 So
 eg
