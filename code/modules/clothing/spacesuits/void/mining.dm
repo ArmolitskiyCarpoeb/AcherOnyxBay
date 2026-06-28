@@ -56,3 +56,20 @@
 
 /obj/item/clothing/suit/space/void/mining/reinforced/prepared
 	helmet = /obj/item/clothing/head/helmet/space/void/mining/reinforced
+
+//
+/obj/item/clothing/head/helmet/space/void/mining1
+	name = "mining voidsuit helmet"
+	desc = "Прочный и устойчивый шлем, защитит тебя от страшного космоса."
+	icon_state = "mining1"
+	item_state = "miningref_helm"
+	light_overlay = "mining1_light"
+
+/obj/item/clothing/suit/space/void/mining1
+	name = "mining voidsuit"
+	desc = "Шахтёрский скафандр MLC-MSS-31."
+	icon_state = "mining1"
+	item_state = "miningref_voidsuit"
+
+/obj/item/clothing/suit/space/void/mining1/prepared
+	helmet = /obj/item/clothing/head/helmet/space/void/mining1
