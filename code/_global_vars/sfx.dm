@@ -307,11 +307,16 @@ GLOBAL_LIST_INIT(sfx_list, list(
 	),
 	SFX_MALE_GIGGLE = list(
 		'sound/effects/emotes/m_laugh1.ogg',
-		'sound/effects/emotes/m_laugh2.ogg'
+		'sound/effects/emotes/m_laugh2.ogg',
+		'sound/effects/emotes/m_laugh3.ogg',
+		'sound/effects/emotes/m_laugh4.ogg'
 	),
 	SFX_MALE_LAUGH = list(
 		'sound/effects/emotes/male_laugh1.ogg',
-		'sound/effects/emotes/male_laugh2.ogg'
+		'sound/effects/emotes/male_laugh2.ogg',
+		'sound/effects/emotes/male_laugh3.ogg',
+		'sound/effects/emotes/male_laugh4.ogg',
+		'sound/effects/emotes/male_laugh5.ogg'
 	),
 	SFX_MALE_YAWN = list(
 		'sound/effects/emotes/m_yawn.ogg'
