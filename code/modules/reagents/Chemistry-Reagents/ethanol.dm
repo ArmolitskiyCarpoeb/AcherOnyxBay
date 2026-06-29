@@ -8,8 +8,8 @@
 	reagent_state = LIQUID
 	color = "#404030"
 
-	metabolism = 0.3
-	ingest_met = 0.75
+	metabolism = 0.7
+	ingest_met = 0.9
 	digest_met = 3.5
 	ingest_absorbability = 0.9
 	digest_absorbability = 0.0 // Works directly from the guts, and only poisons one if injected.
@@ -57,6 +57,15 @@
 
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 	var/effective_dose = M.chem_traces[type] * strength_mod * (1 + volume / 500) //drinking a LOT will make you go down faster
+
+	if(effective_dose >= strength)
+		var/sway_chance = 6
+		if(effective_dose >= strength * 3)
+			sway_chance = 17
+		if(effective_dose >= strength * 5)
+			sway_chance = 39
+		if(prob(sway_chance) && !M.lying && !M.paralysis && !M.weakened)
+			M.sway_animation()
 
 	if(effective_dose >= strength) // Early warning
 		M.make_dizzy(6) // It is decreased at the speed of 3 per tick

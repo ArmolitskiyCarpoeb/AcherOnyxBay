@@ -80,7 +80,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	//Economy stuff
 	var/starting_money = 75000		//Money in station account
 	var/department_money = 5000		//Money in department accounts
-	var/salary_modifier	= 1			//Multiplier to starting character money
+	var/salary_modifier	= 1.1			//Multiplier to starting character money
 	var/station_departments = list()//Gets filled automatically depending on jobs allowed
 
 	//Factions prefs stuff

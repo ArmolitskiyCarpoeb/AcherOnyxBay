@@ -1,7 +1,7 @@
 /obj/item/organ_module/actuators
 	name = "Organ actuator"
 	icon_state = "ams"
-	desc = "A mechanic actuator, used to connect augmentations from organic limbs to CPU. Without it - nithing will work, nor hand, nor augmentation."
+	desc = "A mechanic actuator, used to connect augmentations from organic limbs to CPU. Without it - nothing will work, nor hand, nor augmentation."
 	allowed_organs = list(BP_L_ARM, BP_R_ARM, BP_L_HAND, BP_R_HAND)
 	module_type = OM_TYPE_ACTUATOR
 	module_flags = OM_FLAG_DEFAULT | OM_FLAG_BIOLOGICAL
@@ -20,7 +20,7 @@
 	name = "CPU"
 	icon_state = "cpu"
 	desc = "Standard processor for prosthetic devices."
-	allowed_organs = list(BP_HEAD)
+	allowed_organs = list(BP_HEAD, BP_BRAIN)
 	module_type = OM_TYPE_PROCESSOR
 	module_flags = OM_FLAG_DEFAULT | OM_FLAG_BIOLOGICAL
 	cpu_power = 2
@@ -73,7 +73,7 @@
 	return FALSE
 
 /obj/item/organ_module/processor/advanced
-	name = "Biotech Sigma CPU"
+	name = "BioTech S-2 CPU"
 	icon_state = "cpu_adv"
 	desc = "Advanced CPU capable of supporting a large number of prosthetic modules."
 	cpu_power = 4
@@ -89,9 +89,9 @@
 	)
 
 /obj/item/organ_module/processor/super
-	name = "Raven Microcyber MK.3"
+	name = "Mirinda Microcyber MK.3"
 	icon_state = "cpu_super"
-	desc = "Produced by Raven Biotech corporation, this CPU is considered to be one of the most advanced processors for prosthetics."
+	desc = "Produced by Mirinda corporation, this CPU is considered to be one of the most advanced processors for prosthetics."
 	cpu_power = 6
 	loadout_cost = 0
 	available_in_charsetup = TRUE

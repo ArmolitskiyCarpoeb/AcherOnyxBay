@@ -304,11 +304,11 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	var/list/rand_skills = skills.Copy()
 	//Roll a new random roll for each stat
 	for(var/skill in generate_skills)
-		skills[skill] = 45 + (rand(1,25) + rand(1,30))
+		skills[skill] = rand(0,5) + rand(1,20) - rand(10,25)
 		rand_skills -= skill
 	for(var/skill in rand_skills)
 		//skills[skill] = (rand(1,10) + rand(3,20) + rand(2,15))
-		skills[skill] = (rand(1,15) + rand(0,25) + rand(0,10))
+		skills[skill] = (rand(1,11) + rand(0,12) - rand(0,15))
 
 /mob/proc/newgenerateskills(var/list/newgenerateskills, var/skill1, var/skill2)
 	for(var/skill in newgenerateskills)

@@ -4,7 +4,7 @@
 	department = "Civilian"
 	department_flag = CIV
 
-	account_allowed = FALSE
+	account_allowed = TRUE
 	total_positions = -1
 	spawn_positions = -1
 	supervisors = "Экипаж, Капитан и Корпорация"

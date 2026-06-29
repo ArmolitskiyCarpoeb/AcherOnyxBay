@@ -102,7 +102,7 @@
 		var/datum/species/current_species = all_species[pref.species]
 		if(current_species.spawn_flags & SPECIES_NO_FBP_CHARGEN)
 			limb_selection_list -= "Full Body"
-			limb_selection_list -= "Head"
+			//limb_selection_list -= "Head"
 		else if(pref.organ_data[BP_CHEST] == "cyborg")
 			limb_selection_list |= "Head"
 

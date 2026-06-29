@@ -2,6 +2,8 @@
 	var/list/default_emotes
 	var/alist/current_emotes
 
+	var/last_sway_anim = 0
+
 	var/list/next_emote_use
 	var/list/next_audio_emote_produce
 
@@ -87,3 +89,18 @@
 		visible_message(message, checkghosts = /datum/client_preference/ghost_sight)
 	else
 		audible_message(message, checkghosts = /datum/client_preference/ghost_sight)
+
+/mob/proc/sway_animation()
+	set waitfor = 0
+	if(!client)
+		return
+	if(world.time < last_sway_anim + 1 SECONDS) // защита от слишком частых анимаций
+		return
+	last_sway_anim = world.time
+
+	// Анимация, скопированная из /datum/emote/sway/do_emote
+	animate(src, pixel_x = 2, time = 0.5 SECONDS, tag = MOB_ANIM_SWAY, flags = ANIMATION_RELATIVE)
+	for(var/i in 1 to 2)
+		animate(pixel_x = -4, time = 1.0 SECONDS, flags = ANIMATION_RELATIVE)
+		animate(pixel_x = 4, time = 1.0 SECONDS, flags = ANIMATION_RELATIVE)
+	animate(pixel_x = -2, time = 0.5 SECONDS, flags = ANIMATION_RELATIVE)

@@ -10,11 +10,13 @@
 	/// Pool of possible tasks to pick from each round.
 	var/list/task_pool = list(
 		list("name" = "УГОЛЬ", "item_type" = /obj/item/ore/coal, "min" = 30, "max" = 70),
-		list("name" = "УРАН", "item_type" = /obj/item/stack/material/uranium, "min" = 15, "max" = 30),
+		list("name" = "УРАН", "item_type" = /obj/item/stack/material/uranium, "min" = 15, "max" = 45),
+		list("name" = "СЕРЕБРО", "item_type" = /obj/item/stack/material/silver, "min" = 15, "max" = 45),
+		list("name" = "ЗОЛОТО", "item_type" = /obj/item/stack/material/gold, "min" = 15, "max" = 45),
 		//list("name" = "СТАЛЬ", "item_type" = /obj/item/stack/material/steel, "min" = 15, "max" = 100),
 		//list("name" = "СТЕКЛО", "item_type" = /obj/item/stack/material/glass, "min" = 15, "max" = 100),
-		list("name" = "БАНАН", "item_type" = /obj/item/reagent_containers/food/grown/banana, "min" = 8, "max" = 24),
-		list("name" = "КАРТОШКА", "item_type" = /obj/item/reagent_containers/food/grown/potato, "min" = 10, "max" = 32),
+		//list("name" = "БАНАН", "item_type" = /obj/item/reagent_containers/food/grown/banana, "min" = 8, "max" = 24),
+		//list("name" = "КАРТОШКА", "item_type" = /obj/item/reagent_containers/food/grown/potato, "min" = 10, "max" = 32),
 		list("name" = "ПЛАЗМА", "item_type" = /obj/item/stack/material/plasma, "min" = 25, "max" = 50)
 	)
 	/// If we're currently executing a punishment.
@@ -111,6 +113,29 @@
 	if(!active || !tasks.len)
 		return
 
+	var/obj/structure/closet/crate/C = AM.loc
+	if(!istype(C))
+		return
+
+	//Проверяем наличие бумаги с печатью квартирмейстера в этом ящике
+	var/has_valid_stamp = FALSE
+	for(var/obj/item/paper/directive/P in C.contents)
+	// 	if(P.stamped && length(P.stamped))
+	// 		to_chat(world, "YES1")
+	// 		if(is_type_in_list(/obj/item/stamp/qm, P.stamped))
+	// 			has_valid_stamp = TRUE
+	// 			to_chat(world, "YES2")
+	// 			break
+		for(var/stamp_type in P.stamped)
+			if(stamp_type == /obj/item/stamp/qm)
+				has_valid_stamp = TRUE
+				break
+		if(has_valid_stamp)
+			break
+
+	if(!has_valid_stamp)
+		return //нет печати – игнорируем
+
 	var/count = 1
 	if(istype(AM, /obj/item/stack))
 		var/obj/item/stack/S = AM
@@ -127,6 +152,27 @@
 		succ_obj += 1
 	if(progress_changed && half_tasks_completed())
 		half_complete_directive()
+
+// /datum/station_objective_manager/proc/record_shipment(atom/movable/AM)
+// 	if(!active || !tasks.len)
+// 		return
+
+// 	var/count = 1
+// 	if(istype(AM, /obj/item/stack))
+// 		var/obj/item/stack/S = AM
+// 		count = max(1, S.get_amount())
+
+// 	var/progress_changed = FALSE
+// 	for(var/datum/station_objective_task/task in tasks)
+// 		if(task.matches(AM))
+// 			task.current_amount += count
+// 			progress_changed = TRUE
+
+// 	if(progress_changed && all_tasks_completed())
+// 		complete_directive()
+// 		succ_obj += 1
+// 	if(progress_changed && half_tasks_completed())
+// 		half_complete_directive()
 
 /datum/station_objective_manager/proc/half_tasks_completed()
 	for(var/datum/station_objective_task/task in tasks)
@@ -149,13 +195,14 @@
 
 	active = FALSE
 	SSannounce.play_station_announce(/datum/announce/station_objectives_success, format_status_text("Все задачи выполнены вовремя."))
+	SSsalary.fire()
 
 /datum/station_objective_manager/proc/half_complete_directive()
 	if(!active)
 		return
 
 	active = FALSE
-	SSannounce.play_station_announce(/datum/announce/station_objectives_success, format_status_text("ЗАДАЧИ ВЫПОЛНЕНЫ НАПОЛОВИНУ."))
+	SSannounce.play_station_announce(/datum/announce/station_objectives_success, format_status_text("ЗАДАЧИ ВЫПОЛНЕНЫ НЕПОЛНОСТЬЮ. Был назначен штраф для всех членов персонала станции \"Чужбина\" в размере их зарплаты."))
 	fine_everyone()
 	if(GLOB.station_objectives && !GLOB.station_objectives.active)
 		var/list/tasks = GLOB.station_objectives.generate_tasks()
@@ -182,7 +229,7 @@
 	var/time_left_minutes = round(time_limit / (1 MINUTE))
 	var/list/lines = list("Новая производственная директива.",
 		"Лимит времени: [time_left_minutes] мин.",
-		"Отправьте все переработанные ресурсы через челнок снабжения. Не пользуйтесь челноком снабжения до погрузки на него всех необходимых ресурсов. В случае частичного провала директивы - экипаж получит денежный штраф. В случае полного провала директивы - будет выслана корпгвардия для выяснения причины.")
+		"Отправьте все переработанные ресурсы через челнок снабжения. В случае частичного провала директивы - члены персонала компенсируют потенциальный доход денежным штрафом. В случае полного провала директивы - будет выслана корпгвардия для выяснения причины и принятия соответствующих мер.")
 
 	for(var/datum/station_objective_task/task in tasks)
 		lines += "- [task.required_amount]x [task.name]"
@@ -231,7 +278,7 @@
 		do_shock_pulse()
 
 /datum/station_objective_manager/proc/dispatch_deathsquad()
-	SSannounce.play_station_announce(/datum/announce/station_objectives_sanction, "Для выяснения причины и личностей виновных в провале директивы - на станцию \"Чужбина\" отправился отряд корпгвардии.")
+	SSannounce.play_station_announce(/datum/announce/station_objectives_sanction, "Для выяснения причины и личностей виновных в провале директивы - на станцию \"Чужбина\" отправился отряд корпгвардии. Просьба не оказывать сопротивления и содействовать в расследованиии.")
 	var/i = 4 // Количество оперативников отряда зачистки
 	if(GLOB.deathsquad)
 		for(var/mob/observer/ghost/G in GLOB.player_list)
@@ -272,6 +319,28 @@
 	return (current_amount < required_amount) && (current_amount > 0)
 
 /datum/station_objective_manager/proc/fine_everyone()
-    for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-        if(H.account_number)
-            charge_to_account(H.account_number, H.real_name, "ЗАДАЧИ ВЫПОЛНЕНЫ НАПОЛОВИНУ.", "CentComm", -5000)
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+		if(!H.mind)
+			continue
+
+		// Проверка/создание банковского счёта
+		if(!H.account_number)
+			var/obj/item/card/id/id_card = H.get_id_card()
+			if(id_card && id_card.associated_account_number)
+				H.account_number = id_card.associated_account_number
+			else
+				var/datum/money_account/acc = create_account(H.real_name, 0, null, FALSE)
+				if(acc)
+					H.account_number = acc.account_number
+					log_debug("Created new account [H.account_number] for [H.real_name]")
+		if(!H.account_number)
+			continue
+
+		var/salary = get_base_salary(H.mind.assigned_role)
+		if(salary <= 0)
+			continue
+
+		// Пытаемся списать штраф
+		var/success = charge_to_account(H.account_number, H.real_name, "ЗАДАЧИ ВЫПОЛНЕНЫ НЕПОЛНОСТЬЮ.", "CentComm", (-salary))
+		if(!success)
+			log_debug("Failed to charge [H.real_name] ([H.account_number]) for penalty of [salary] credits.")

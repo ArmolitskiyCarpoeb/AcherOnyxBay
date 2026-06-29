@@ -1,20 +1,9 @@
 SUBSYSTEM_DEF(salary)
 	name = "Salary"
 	priority = SS_PRIORITY_TRADE
-	flags = SS_TICKER
-	var/next_payout = 0
-	var/payout_interval = 25 MINUTES
-
-/datum/controller/subsystem/salary/Initialize()
-	next_payout = world.time + payout_interval
-	log_debug("Salary subsystem initialised, first payout at [world.time + payout_interval]")
-	return ..()
+	flags = SS_NO_FIRE
 
 /datum/controller/subsystem/salary/fire(resumed = 0)
-	if(world.time < next_payout)
-		return
-	next_payout = world.time + payout_interval
-	log_debug("Salary payout triggered")
 	distribute_salaries()
 
 /proc/distribute_salaries()
