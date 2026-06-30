@@ -45,6 +45,7 @@ SUBSYSTEM_DEF(trade)
 	var/list/possible = list()
 	if(prob(UNIQUE_TRADER_PROB))
 		possible += subtypesof(/datum/trader/ship/contraband)
+		possible += /datum/trader/ship/prank_shop
 	else
 		possible += /datum/trader/ship/MonsLadenCargo
 
