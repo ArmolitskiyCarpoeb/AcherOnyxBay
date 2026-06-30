@@ -319,3 +319,9 @@
 	desc = "It's a gray jumpsuit for a \"workman\"."
 	icon_state = "workman"
 	item_state = "workman"
+
+/obj/item/clothing/under/rank/bartender/barwoman
+	name = "barwoman's uniform"
+	desc = ""
+	icon_state = "barwoman"
+	item_state = "barwoman"

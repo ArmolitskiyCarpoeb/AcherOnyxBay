@@ -31,8 +31,8 @@
 	description = "У тебя большой выбор специй для твоего супа - мышиный помёт, тараканы, мухи, древняя пыль и крошки со стола. Накорми бедных работяг и не забудь приготовить что-нибудь действительно вкусное для капитана."
 	department = "Service"
 	department_flag = SRV
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	economic_modifier = 1.3
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"

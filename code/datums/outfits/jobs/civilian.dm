@@ -2,7 +2,7 @@
 	name = OUTFIT_JOB_NAME("Assistant")
 	//uniform = /obj/item/clothing/under/color/grey
 	//suit = /obj/item/clothing/suit/storage/hazardvest
-	//flags = OUTFIT_NO_SURVIVAL
+	flags = OUTFIT_NO_SURVIVAL
 	//pda_type = null
 	//id_type = null
 
@@ -111,7 +111,16 @@
 	id_type = /obj/item/card/id/provisioning/bartender
 	pda_type = /obj/item/device/pda/bar
 	suit = /obj/item/clothing/suit/armor/vest
-	flags = OUTFIT_NO_SURVIVAL
+
+/decl/hierarchy/outfit/job/service/bartender/barwoman
+	uniform = /obj/item/clothing/under/rank/bartender/barwoman
+	suit = /obj/item/clothing/suit/blue_style
+
+/decl/hierarchy/outfit/job/service/bartender/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(H.gender == FEMALE)
+		uniform = /obj/item/clothing/under/rank/bartender/barwoman
+		suit = /obj/item/clothing/suit/blue_style
 
 /decl/hierarchy/outfit/job/service/chef
 	name = OUTFIT_JOB_NAME("Chef")
@@ -120,7 +129,6 @@
 	head = /obj/item/clothing/head/chefhat
 	id_type = /obj/item/card/id/provisioning/chef
 	pda_type = /obj/item/device/pda/chef
-	flags = OUTFIT_NO_SURVIVAL
 
 /decl/hierarchy/outfit/job/service/gardener
 	name = OUTFIT_JOB_NAME("Gardener")
@@ -130,7 +138,6 @@
 	r_pocket = /obj/item/device/analyzer/plant_analyzer
 	id_type = /obj/item/card/id/provisioning/botanist
 	pda_type = /obj/item/device/pda/botanist
-	flags = OUTFIT_NO_SURVIVAL
 
 /decl/hierarchy/outfit/job/service/gardener/New()
 	..()
