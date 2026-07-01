@@ -226,9 +226,17 @@
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "co" = (
-/obj/structure/table/rack,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/catwalk/catwalk_new,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/telecomms)
+/area/outpost/engineering/hallway)
 "cu" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/storage)
@@ -380,8 +388,11 @@
 /turf/simulated/floor/tiled/techfloor/maint,
 /area/outpost/engineering/hallway)
 "fP" = (
+/obj/structure/table/rack,
+/obj/item/clothing/suit/space/void/mining1/prepared,
+/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/hallway)
+/area/outpost/engineering/telecomms)
 "gn" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
@@ -575,15 +586,6 @@
 	},
 /turf/simulated/floor/tiled/dark/rough,
 /area/outpost/engineering/meeting)
-"iX" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold4w/hidden,
-/turf/simulated/floor/plating,
-/area/outpost/engineering/hallway)
 "jg" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -614,10 +616,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/structure/catwalk/catwalk_new,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "jU" = (
@@ -929,7 +928,7 @@
 "pf" = (
 /obj/machinery/access_button{
 	command = "cycle_interior";
-	frequency = 1379;
+	frequency = 1380;
 	master_tag = "mining_east_airlock";
 	name = "interior access button";
 	pixel_x = 22;
@@ -1001,6 +1000,9 @@
 /obj/random/clothing,
 /turf/simulated/floor/tiled/techfloor/maint,
 /area/outpost/prydwen)
+"qk" = (
+/turf/simulated/floor/plating,
+/area/outpost/engineering/hallway)
 "qt" = (
 /obj/effect/floor_decal/industrial/loading,
 /obj/machinery/door/firedoor,
@@ -1788,7 +1790,8 @@
 	dir = 4;
 	pixel_x = -22;
 	pixel_y = -22;
-	master_tag = "mining_east_airlock"
+	master_tag = "mining_east_airlock";
+	frequency = 1380
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -1991,7 +1994,8 @@
 /obj/machinery/airlock_sensor{
 	id_tag = "mining_east_sensor";
 	pixel_y = -25;
-	dir = 1
+	dir = 1;
+	frequency = 1380
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	dir = 1;
@@ -2488,8 +2492,6 @@
 /area/outpost/engineering/telecomms)
 "Uf" = (
 /obj/structure/table/rack,
-/obj/item/clothing/suit/space/void/mining1/prepared,
-/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
 "Us" = (
@@ -9775,7 +9777,7 @@ tr
 tr
 tr
 Cy
-co
+Uf
 sp
 aS
 cu
@@ -10079,7 +10081,7 @@ Yx
 Yx
 cC
 LF
-Uf
+fP
 Mm
 aS
 Ze
@@ -10231,7 +10233,7 @@ jg
 Yx
 hE
 LF
-Uf
+fP
 Mm
 aS
 Ze
@@ -12809,8 +12811,8 @@ Wk
 mR
 mR
 LV
-fP
-jT
+qk
+co
 pf
 LV
 mR
@@ -13114,7 +13116,7 @@ mR
 mR
 LV
 bM
-iX
+jT
 oY
 LV
 mR
