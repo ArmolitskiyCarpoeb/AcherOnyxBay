@@ -1,5 +1,5 @@
 #define MARGIN_MAX 150
-#define MARGIN_MIN 100
+#define MARGIN_MIN 70
 
 /datum/trader
 	var/name = "unsuspicious trader"                            //The name of the trader in question

@@ -105,12 +105,12 @@
 
 /datum/job/qm
 	title = "Quartermaster"
-	description = "Ты занимаешься продовольствием, ресурсами. Шахтёры, грузчики, бармен, повар, садовод, асисстенты - они все в твоём подчинении. У тебя также есть торговый аппарат."
+	description = "Только лучшие становятся начальниками этого отдела. А ты лучший из лучших. На тебе шахта, гидропонная ферма и бар. Ассистенты, шахтёры и грузчики, даже повар и садовод твои пешки, помыкай ими! Время заработать немного деньжат"
 	department = "Supply"
 	department_flag = SUP
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Капитан и Корпорация"
+	supervisors = "Капитан, корпорация и личные амбиции"
 	selection_color = "#5e4324"
 	economic_modifier = 5
 	access = list(access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant,
@@ -127,13 +127,13 @@
 /datum/job/qm/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(9,11,7,12,9,14,9,11)
+		H.newgeneratestats(10,13,9,13,10,15,9,12)
 		H.generate_skills()
-		H.skills["melee"] = rand(15, 45)
-		H.skills["ranged"] = rand(15, 45)
+		H.skills["melee"] = rand(20, 50)
+		H.skills["ranged"] = rand(20, 40)
+		H.skills["crafting"] = rand(35, 60)
 		H.skills["gardening"] = rand(25, 45)
 		H.skills["cooking"] = rand(25, 45)
-		H.skills["crafting"] = rand(25, 50)
 		H.body_build_stats(H)
 
 /datum/job/cargo_tech
@@ -156,7 +156,7 @@
 		H.newgeneratestats(10,12,8,12,7,10,10,11)
 		H.generate_skills()
 		H.skills["melee"] = rand(25, 35)
-		H.skills["crafting"] = rand(25, 50)
+		H.skills["crafting"] = rand(25, 40)
 		H.skills["ranged"] = rand(15, 50)
 		H.body_build_stats(H)
 
