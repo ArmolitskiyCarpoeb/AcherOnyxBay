@@ -34,6 +34,10 @@
 
 /datum/addiction/opioid/on_cured(mob/living/carbon/human/H)
 	to_chat(H, SPAN_THOUGHT("You feel... present again. The need for opiates no longer rules your thoughts."))
+	H.remove_happiness_event(/datum/happiness_event/high)
+	H.remove_happiness_event(/datum/happiness_event/addiction/opium/withdrawal_small)
+	H.remove_happiness_event(/datum/happiness_event/addiction/opium/withdrawal_medium)
+	H.remove_happiness_event(/datum/happiness_event/addiction/opium/withdrawal_extreme)
 
 /datum/addiction/opioid/proc/_ready(mob/living/carbon/human/H)
 	if(!H.addiction_next_msg) H.addiction_next_msg = list()
