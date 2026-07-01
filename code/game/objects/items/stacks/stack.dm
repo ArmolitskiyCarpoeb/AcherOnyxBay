@@ -176,7 +176,7 @@
 
 	to_chat(user, "<span class='notice'>Building [recipe.title] ...</span>")
 	if(craft_tool == 2 && WT?.use_tool(src, user, delay = recipe.time, amount = 50))
-		if(!user.skillcheck(user.skills["crafting"], 45, null, "crafting") || !user.newstatcheck(user.stats[STAT_IQ], 11, null, STAT_IQ))
+		if(!user.skillcheck(user.skills["crafting"], 45, null, "crafting") && !user.newstatcheck(user.stats[STAT_IQ], 11, null, STAT_IQ))
 			to_chat(user, "<span class='warning'>Не получилось!</span>")
 			//user.learn_skills("crafting")
 			return
@@ -184,7 +184,7 @@
 		return
 
 	else if(craft_tool != 2 && do_after(user, recipe.time, luck_check_type = LUCK_CHECK_ENG))
-		if(!user.skillcheck(user.skills["crafting"], 45, null, "crafting") || !user.newstatcheck(user.stats[STAT_IQ], 11, null, STAT_IQ))
+		if(!user.skillcheck(user.skills["crafting"], 45, null, "crafting") && !user.newstatcheck(user.stats[STAT_IQ], 11, null, STAT_IQ))
 			to_chat(user, "<span class='warning'>Не получилось!</span>")
 			//user.learn_skills("crafting")
 			return

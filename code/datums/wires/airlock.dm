@@ -44,7 +44,7 @@ var/const/AIRLOCK_WIRE_LIGHT = 2048
 	var/list/display_wires = wires
 	if(user && isliving(user))
 		var/mob/living/L = user
-		if(L.skills && !L.skillcheck(L.skills["engineering"], 25, null, "engineering") || !L.newstatcheck(L.stats[STAT_IQ], 9, null, STAT_IQ)) // Low engineering skill threshold
+		if(L.skills && !L.skillcheck(L.skills["engineering"], 25, null, "engineering") && !L.newstatcheck(L.stats[STAT_IQ], 9, null, STAT_IQ)) // Low engineering skill threshold
 			// Regenerate wires for low-skill users (randomizes each time they view)
 			current_user_wires = GenerateUserWires()
 			current_user = L
