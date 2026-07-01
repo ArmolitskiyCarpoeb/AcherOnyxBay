@@ -48,7 +48,7 @@
 	if(power_diff >= 0 && (is_boozed(H) > 0))
 		var/next_buzz = H.addiction_next_symptom[type]
 		if(isnull(next_buzz) || world.time >= next_buzz)
-			H.addiction_next_symptom[type] = world.time + rand(50 SECONDS, 120 SECONDS)
+			H.addiction_next_symptom[type] = world.time + rand(60 SECONDS, 180 SECONDS)
 			H.add_happiness_event(/datum/happiness_event/booze)
 			if(prob(55))
 				if(prob(50))

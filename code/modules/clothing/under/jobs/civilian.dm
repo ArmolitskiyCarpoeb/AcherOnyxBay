@@ -319,5 +319,9 @@
 	desc = "It's a gray jumpsuit for a \"workman\"."
 	icon_state = "workman"
 	item_state = "workman"
-	rolled_down = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
-	rolled_sleeves = 0 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
+
+/obj/item/clothing/under/rank/bartender/barwoman
+	name = "barwoman's uniform"
+	desc = ""
+	icon_state = "barwoman"
+	item_state = "barwoman"

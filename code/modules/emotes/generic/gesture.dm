@@ -84,7 +84,7 @@
 			break
 
 /mob/proc/dance_emote()
-	set name = "Танцевать"
+	set name = "■ Танцевать"
 	set category = "Emotes"
 	emote("dance", intentional = TRUE)
 
@@ -121,7 +121,7 @@
 	A.set_lightswitch(!A.lightswitch)
 
 /mob/proc/clap_emote()
-	set name = "Хлопать"
+	set name = "■ Хлопать"
 	set category = "Emotes"
 	emote("clap", intentional = TRUE)
 
@@ -139,7 +139,7 @@
 	statpanel_proc = /mob/proc/wave_emote
 
 /mob/proc/wave_emote()
-	set name = "Помохать рукой"
+	set name = "■ Помохать рукой"
 	set category = "Emotes"
 	emote("wave", intentional = TRUE)
 
@@ -177,7 +177,7 @@
 	return "raises [P_THEIR(user.gender)] hand."
 
 /mob/proc/raise_emote()
-	set name = "Поднять руку"
+	set name = "■ Поднять руку"
 	set category = "Emotes"
 	emote("raise")
 

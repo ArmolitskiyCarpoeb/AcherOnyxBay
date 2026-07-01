@@ -569,7 +569,6 @@
 #include "code\datums\uplink\uplink_items.dm"
 #include "code\datums\uplink\uplink_sources.dm"
 #include "code\datums\uplink\categories\ammunition.dm"
-#include "code\datums\uplink\categories\augmentations.dm"
 #include "code\datums\uplink\categories\badassery.dm"
 #include "code\datums\uplink\categories\contracts_equipment.dm"
 #include "code\datums\uplink\categories\devices and tools.dm"

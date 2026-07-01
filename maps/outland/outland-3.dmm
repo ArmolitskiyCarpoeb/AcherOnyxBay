@@ -1103,6 +1103,9 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
+/obj/item/storage/secure/safe{
+	pixel_x = -26
+	},
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "mX" = (
@@ -1882,7 +1885,7 @@
 /turf/simulated/floor/tiled/rough,
 /area/bridge)
 "vL" = (
-/obj/structure/bookcase/prefitted/fiction,
+/obj/machinery/computer/account_database,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "vN" = (
@@ -3662,6 +3665,7 @@
 /obj/item/stamp/captain,
 /obj/item/stamp/denied,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/item/stamp/ok,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
 "UH" = (

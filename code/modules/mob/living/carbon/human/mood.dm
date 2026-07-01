@@ -66,7 +66,7 @@ GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of S
 	if(sanity < 15)
 		if(prob(25) && !is_hallucinating())
 			hallucination(rand(10, 25) SECONDS, rand(20, 50))
-			message = pick("Убожество, просто умри.", "Разум требует высвобождения из клетки бытия.", "Ты чувствуешь это? Оно хочет выйти из тебя!", "Ещё немного потерпеть и...", "Что будет, если выйти в космос без скафандра?", "Нужно сделать отверствие в своей голове - оттуда будет литься вкусный сок.", "Твой разум хочет обратно в небытие!", "ЭТО КОНЕЦ. ЭТО КОНЕЦ. ЭТО КОНЕЦ!", "Раскрась станцию красным!")
+			message = pick("Убожество, просто умри, сдохни, мразь.", "Разум требует высвобождения из этой противной темницы плоти.", "Ты чувствуешь это? Оно хочет выйти из тебя!", "ТЕРПЕТЬ - НЕЛЬЗЯ! ЖДАТЬ - НЕЛЬЗЯ! СЕЙЧАС ЖЕ! СДЕЛАЙ ЭТО!!", "Что будет, если выйти в космос без скафандра?", "Нужно сделать отверствие в своей голове - оттуда будет литься вкусный сок.", "Твой разум хочет обратно в то сладкое небытие, откуда оно и появилось однажды!", "ЭТО КОНЕЦ. ЭТО КОНЕЦ. ЭТО КОНЕЦ!", "Раскрась серую станцию красным!")
 			to_chat(src, "<span class='danger'>[message]</span>")
 			sound_to(src, sound(pick('sound/effects/badmood2.ogg', 'sound/effects/badmood3.ogg', 'sound/effects/badmood4.ogg')))
 
@@ -147,13 +147,13 @@ GLOBAL_LIST_INIT(resilient_jobs, list("Security Operative", "Warden", "Head of S
 	if(!client) return
 	var/event_type = null
 	switch(nutrition)
-		if(0 to 100)       event_type = /datum/happiness_event/nutrition/starving
-		if(101 to 200)     event_type = /datum/happiness_event/nutrition/veryhungry
-		if(201 to 350)     event_type = /datum/happiness_event/nutrition/hungry
-		if(351 to 500)     event_type = /datum/happiness_event/nutrition/lilhungry
-		if(501 to 700)     event_type = null   // норма
-		if(701 to 900)     event_type = /datum/happiness_event/nutrition/fed
-		if(901 to INFINITY) event_type = /datum/happiness_event/nutrition/wellfed
+		if(0 to 50)       event_type = /datum/happiness_event/nutrition/starving
+		if(51 to 100)     event_type = /datum/happiness_event/nutrition/veryhungry
+		if(101 to 200)     event_type = /datum/happiness_event/nutrition/hungry
+		if(201 to 300)     event_type = /datum/happiness_event/nutrition/lilhungry
+		if(301 to 400)     event_type = null   // норма
+		if(401 to 500)     event_type = /datum/happiness_event/nutrition/fed
+		if(501 to INFINITY) event_type = /datum/happiness_event/nutrition/wellfed
 /*	// Удаляем все события группы nutrition
 	for(var/datum/happiness_event/E in happiness_events)
 		if(E.group == "nutrition")

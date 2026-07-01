@@ -15,8 +15,10 @@
 	pixel_y = -25;
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1379;
+	id_tag = "mining_west_pump"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/storage)
@@ -37,7 +39,7 @@
 	d1 = 4
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "au" = (
 /obj/structure/railing{
 	dir = 8
@@ -105,7 +107,7 @@
 	d2 = 2
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "bg" = (
 /obj/structure/catwalk,
 /obj/random/coin,
@@ -146,8 +148,9 @@
 /turf/simulated/floor/tiled/white/rough,
 /area/outpost/main_outpost/dock)
 "bM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	frequency = 1380;
+	id_tag = "mining_east_pump"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
@@ -211,20 +214,27 @@
 /turf/simulated/floor/tiled/mono,
 /area/outpost/engineering/hallway)
 "ck" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
 /obj/structure/catwalk/catwalk_new,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "co" = (
-/obj/structure/window_frame/reinforced/hull,
-/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/structure/catwalk/catwalk_new,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "cu" = (
@@ -243,11 +253,11 @@
 	output_level = 500000
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "cy" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "cA" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/vessel/bottle/premiumvodka,
@@ -257,8 +267,11 @@
 /obj/machinery/alarm{
 	pixel_y = 24
 	},
+/obj/structure/table/rack,
+/obj/item/clothing/suit/space/void/mining1/prepared,
+/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "cF" = (
 /obj/machinery/atmospherics/pipe/simple/visible/universal{
 	dir = 4
@@ -270,7 +283,7 @@
 	d1 = 4
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "cH" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -292,16 +305,8 @@
 "cT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/mob/living/simple_animal/hostile/clop,
 /turf/simulated/floor/tiled/techfloor/ridge,
 /area/outpost/engineering/telecomms)
-"cV" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
-/mob/living/simple_animal/hostile/clop,
-/turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
 "dr" = (
 /obj/structure/cable{
 	icon_state = "1-4";
@@ -319,9 +324,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/prydwen)
 "dT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/storage)
 "dV" = (
@@ -385,9 +388,11 @@
 /turf/simulated/floor/tiled/techfloor/maint,
 /area/outpost/engineering/hallway)
 "fP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/dark/mono,
-/area/outpost/engineering/storage)
+/obj/structure/table/rack,
+/obj/item/clothing/suit/space/void/mining1/prepared,
+/obj/item/clothing/suit/space/void/mining1/prepared,
+/turf/simulated/floor/plating,
+/area/outpost/engineering/telecomms)
 "gn" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
@@ -395,7 +400,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/window_frame/reinforced/hull,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "gu" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -500,7 +505,7 @@
 /area/outpost/engineering/hallway)
 "he" = (
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "hf" = (
 /turf/simulated/floor/asteroid,
 /area/outpost/prydwen)
@@ -520,12 +525,9 @@
 /turf/simulated/floor/tiled/mono,
 /area/outpost/engineering/hallway)
 "hq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/external{
-	frequency = 1379;
+	frequency = 1380;
 	icon_state = "door_locked";
 	id_tag = "mining_east_inner";
 	locked = 1;
@@ -537,14 +539,20 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk/catwalk_new,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "hE" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/table/rack,
+/obj/item/clothing/suit/space/void/mining1/prepared,
+/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "hK" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -560,7 +568,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "iJ" = (
 /turf/simulated/wall/r_wall,
 /area/outpost/main_outpost/dock)
@@ -594,6 +602,8 @@
 "jJ" = (
 /obj/structure/table/rack,
 /obj/item/shovel,
+/obj/item/shovel,
+/obj/item/shovel,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/hallway)
 "jR" = (
@@ -601,20 +611,19 @@
 /turf/simulated/floor/plating,
 /area/shuttle/mining/outpost)
 "jT" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/catwalk/catwalk_new,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "jU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 2;
+	frequency = 1379;
+	id_tag = "mining_west_pump"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/storage)
@@ -654,7 +663,7 @@
 	d1 = 1
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "ky" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/closet/crate/hydroponics,
@@ -674,7 +683,7 @@
 	},
 /obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "kE" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -709,7 +718,7 @@
 "kO" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/external{
-	frequency = 1379;
+	frequency = 1380;
 	icon_state = "door_locked";
 	id_tag = "mining_east_outer";
 	locked = 1;
@@ -749,6 +758,10 @@
 /area/outpost/engineering/power)
 "lO" = (
 /obj/machinery/light/small,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "lY" = (
@@ -764,7 +777,7 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "mK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -852,11 +865,11 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "oC" = (
 /obj/machinery/telecomms/relay/preset/mining,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "oD" = (
 /obj/machinery/door/firedoor,
 /obj/structure/window_frame/grille/rglass,
@@ -892,10 +905,13 @@
 	tag_interior_door = "mining_east_inner";
 	pixel_y = -25;
 	tag_chamber_sensor = "mining_east_sensor";
-	dir = 1
+	dir = 1;
+	frequency = 1380
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "mining_east_pump"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
@@ -912,7 +928,7 @@
 "pf" = (
 /obj/machinery/access_button{
 	command = "cycle_interior";
-	frequency = 1379;
+	frequency = 1380;
 	master_tag = "mining_east_airlock";
 	name = "interior access button";
 	pixel_x = 22;
@@ -984,6 +1000,9 @@
 /obj/random/clothing,
 /turf/simulated/floor/tiled/techfloor/maint,
 /area/outpost/prydwen)
+"qk" = (
+/turf/simulated/floor/plating,
+/area/outpost/engineering/hallway)
 "qt" = (
 /obj/effect/floor_decal/industrial/loading,
 /obj/machinery/door/firedoor,
@@ -999,7 +1018,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "qR" = (
 /turf/simulated/wall/r_wall,
 /area/outpost/abandoned)
@@ -1045,7 +1064,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "sv" = (
 /obj/item/clothing/mask/balaclava,
 /obj/item/clothing/head/soft/black,
@@ -1143,7 +1162,7 @@
 	d1 = 1
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "ts" = (
 /obj/structure/largecrate/animal/cat,
 /turf/simulated/floor/plating,
@@ -1165,9 +1184,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/mob/living/simple_animal/hostile/clop,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "tK" = (
 /obj/structure/cable{
 	icon_state = "0-2";
@@ -1249,7 +1267,7 @@
 	d1 = 4
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "vg" = (
 /turf/simulated/floor/plating,
 /area/outpost/abandoned)
@@ -1371,7 +1389,7 @@
 	dir = 9
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "xP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1464,14 +1482,15 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "AM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "AX" = (
 /obj/random/hostile,
 /turf/simulated/floor/plating,
@@ -1510,6 +1529,7 @@
 /obj/machinery/light/small,
 /obj/structure/table/standard,
 /obj/machinery/cell_charger,
+/obj/item/tape_roll,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/hallway)
 "Bp" = (
@@ -1517,7 +1537,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "Bs" = (
 /obj/structure/closet/crate,
 /turf/simulated/floor/plating,
@@ -1546,12 +1566,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/catwalk/catwalk_new,
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
-"BT" = (
-/turf/simulated/wall/r_wall,
-/area/outpost/engineering/atmospherics)
 "Cu" = (
 /obj/machinery/firealarm{
 	pixel_y = -24
@@ -1568,7 +1587,7 @@
 	d1 = 1
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "CB" = (
 /obj/structure/catwalk,
 /obj/random/maintenance,
@@ -1623,7 +1642,7 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "Ev" = (
 /obj/effect/floor_decal/industrial/hatch/blue,
 /obj/structure/closet/crate/medical,
@@ -1771,7 +1790,8 @@
 	dir = 4;
 	pixel_x = -22;
 	pixel_y = -22;
-	master_tag = "mining_east_airlock"
+	master_tag = "mining_east_airlock";
+	frequency = 1380
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -1810,7 +1830,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "Hy" = (
 /obj/machinery/atmospherics/binary/pump{
 	dir = 4
@@ -1826,7 +1846,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "Hz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1840,7 +1860,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/mono,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "HD" = (
 /obj/structure/computerframe,
 /turf/simulated/floor/tiled/techfloor/ridge,
@@ -1877,8 +1897,14 @@
 /area/outpost/prydwen)
 "JP" = (
 /obj/structure/table/rack,
-/obj/item/pickaxe,
 /obj/item/pickaxe/drill/adv,
+/obj/item/pickaxe/drill/adv,
+/obj/item/pickaxe/drill/adv,
+/obj/item/pickaxe/drill/adv,
+/obj/item/pickaxe/drill/adv,
+/obj/item/pickaxe/drill/adv,
+/obj/item/pickaxe/diamond,
+/obj/item/pickaxe/diamond,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/hallway)
 "Kd" = (
@@ -1968,11 +1994,12 @@
 /obj/machinery/airlock_sensor{
 	id_tag = "mining_east_sensor";
 	pixel_y = -25;
-	dir = 1
+	dir = 1;
+	frequency = 1380
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	frequency = 1379;
+	dir = 1;
+	frequency = 1380;
 	id_tag = "mining_east_pump"
 	},
 /turf/simulated/floor/plating,
@@ -2016,7 +2043,7 @@
 	d1 = 4
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "LM" = (
 /obj/structure/closet/crate,
 /obj/effect/floor_decal/industrial/loading,
@@ -2046,7 +2073,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "Mj" = (
 /obj/effect/floor_decal/industrial/hatch/gray,
 /obj/structure/closet/crate/science,
@@ -2166,6 +2193,7 @@
 	pixel_x = -7;
 	pixel_y = 6
 	},
+/obj/item/tape_roll,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/hallway)
 "OR" = (
@@ -2254,7 +2282,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "QV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2272,8 +2300,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	frequency = 1379;
+	frequency = 1380;
 	id_tag = "mining_east_pump"
 	},
 /turf/simulated/floor/plating,
@@ -2297,6 +2324,9 @@
 /obj/item/net_shell,
 /obj/item/net_shell,
 /obj/item/net_shell,
+/obj/item/gun/energy/retro,
+/obj/item/gun/energy/retro,
+/obj/item/gun/launcher/net,
 /turf/simulated/floor/tiled/dark/mono,
 /area/outpost/engineering/storage)
 "RQ" = (
@@ -2308,7 +2338,7 @@
 	icon_state = "0-10"
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "RT" = (
 /obj/structure/cable{
 	icon_state = "1-4";
@@ -2325,6 +2355,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/item/tape_roll,
 /turf/simulated/floor/tiled/dark/rough,
 /area/outpost/engineering/meeting)
 "RW" = (
@@ -2341,17 +2372,11 @@
 	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "RZ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/catwalk/catwalk_new,
-/turf/simulated/floor/plating,
-/area/outpost/engineering/hallway)
+/obj/machinery/computer/stacking_unit_console,
+/turf/simulated/floor/tiled/dark/rough,
+/area/outpost/engineering/power)
 "Sb" = (
 /obj/structure/window_frame/reinforced/hull,
 /turf/simulated/floor/plating,
@@ -2401,7 +2426,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "Tf" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -2464,12 +2489,11 @@
 	},
 /obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "Uf" = (
 /obj/structure/table/rack,
-/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "Us" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/structure/closet/crate/internals,
@@ -2494,6 +2518,10 @@
 	name = "interior access button";
 	pixel_x = -22;
 	pixel_y = -8;
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark/mono,
@@ -2528,7 +2556,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "VU" = (
 /turf/simulated/wall/r_wall,
 /area/outpost/prydwen)
@@ -2593,7 +2621,7 @@
 	output_level = 500000
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "Wx" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/machinery/light/small{
@@ -2629,10 +2657,7 @@
 "Xo" = (
 /obj/structure/railing,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
-"Xz" = (
-/turf/simulated/wall,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "XG" = (
 /obj/random/maintenance,
 /turf/simulated/floor/tiled/techfloor/maint,
@@ -2648,7 +2673,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
+	dir = 1;
 	frequency = 1379;
 	id_tag = "mining_west_pump"
 	},
@@ -2720,7 +2745,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "Zr" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -2737,7 +2762,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/outpost/engineering/atmospherics)
+/area/outpost/engineering/telecomms)
 "Zx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2756,7 +2781,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
+	dir = 2;
 	frequency = 1379;
 	id_tag = "mining_west_pump"
 	},
@@ -5124,8 +5149,8 @@ VU
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -5276,8 +5301,8 @@ VU
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -5429,10 +5454,10 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
-xY
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -5581,9 +5606,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -5733,9 +5758,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -5886,8 +5911,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -6047,7 +6072,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -6501,7 +6526,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -6653,7 +6678,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -6803,7 +6828,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -6949,10 +6974,10 @@ xY
 xY
 xY
 xY
+TK
+TK
 xY
-xY
-xY
-xY
+TK
 xY
 xY
 xY
@@ -7104,7 +7129,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -7253,12 +7278,12 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
-xY
-xY
-xY
+TK
+TK
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -7405,12 +7430,12 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
-xY
-xY
-xY
+TK
+TK
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -7559,8 +7584,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -8046,7 +8071,7 @@ xg
 xg
 xY
 xg
-xY
+TK
 xY
 xY
 xY
@@ -8199,10 +8224,10 @@ xY
 xY
 xg
 xY
-xY
-xY
-xY
-xY
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8329,8 +8354,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -8351,23 +8376,23 @@ xY
 xg
 xY
 xY
+TK
+xY
+TK
+TK
 xY
 xY
 xY
 xY
 xY
+TK
+xY
+TK
 xY
 xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-Wk
-Wk
+TK
+cP
+cP
 Wk
 Wk
 Wk
@@ -8481,9 +8506,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8505,6 +8530,8 @@ xY
 xY
 xY
 xY
+TK
+TK
 xY
 xY
 xY
@@ -8516,10 +8543,8 @@ xY
 xY
 xY
 xY
-xY
-xY
-Wk
-Wk
+cP
+cP
 Wk
 Wk
 Wk
@@ -8633,9 +8658,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8654,11 +8679,11 @@ xg
 xY
 xY
 xY
-xY
-xY
-xY
-xY
-xY
+TK
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8671,8 +8696,8 @@ xY
 xY
 xY
 Wk
-Wk
-Wk
+cP
+cP
 Wk
 Wk
 Wk
@@ -8785,9 +8810,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8806,6 +8831,11 @@ xY
 xY
 xY
 xY
+TK
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8818,15 +8848,10 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-Wk
-Wk
+TK
+TK
+cP
+cP
 Wk
 Wk
 mR
@@ -8937,9 +8962,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8958,6 +8983,11 @@ xY
 xY
 xY
 xY
+TK
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8972,14 +9002,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
-xY
-xY
-Wk
-Wk
-Wk
+cP
+cP
+cP
 Wk
 mR
 mR
@@ -9089,9 +9114,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -9109,8 +9134,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -9130,8 +9155,8 @@ xY
 xY
 xY
 Wk
-Wk
-Wk
+cP
+cP
 Wk
 mR
 mR
@@ -9241,8 +9266,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -9289,14 +9314,14 @@ mR
 mR
 mR
 mR
-BT
-BT
-BT
-BT
-BT
-BT
+NA
+NA
+NA
+NA
+NA
+NA
 gn
-BT
+NA
 LU
 LU
 LU
@@ -9441,7 +9466,7 @@ Wk
 mR
 mR
 mR
-BT
+NA
 Bp
 Tc
 qI
@@ -9593,10 +9618,10 @@ Wk
 mR
 mR
 mR
-BT
+NA
 AM
 cy
-cV
+ou
 ou
 xI
 Zt
@@ -9604,7 +9629,7 @@ he
 sp
 Ko
 Lb
-fP
+Lb
 En
 aF
 aF
@@ -9745,14 +9770,14 @@ Wk
 mR
 mR
 mR
-BT
+NA
 bb
 Hy
 tr
 tr
 tr
 Cy
-he
+Uf
 sp
 aS
 cu
@@ -9897,7 +9922,7 @@ Wk
 mR
 mR
 mR
-BT
+NA
 oC
 cF
 Zm
@@ -10049,14 +10074,14 @@ Wk
 mR
 mR
 mR
-BT
-Xz
+NA
+Yx
 Hz
-Xz
-Xz
+Yx
+Yx
 cC
 LF
-Uf
+fP
 Mm
 aS
 Ze
@@ -10205,10 +10230,10 @@ LV
 JP
 QV
 jg
-Xz
+Yx
 hE
 LF
-he
+fP
 Mm
 aS
 Ze
@@ -10357,10 +10382,10 @@ LV
 jJ
 QV
 OQ
-Xz
-Xz
+Yx
+Yx
 VR
-Xz
+Yx
 Mm
 aS
 Ze
@@ -10509,7 +10534,7 @@ LV
 xn
 tl
 Bo
-Xz
+Yx
 st
 LF
 Eu
@@ -10965,7 +10990,7 @@ LV
 us
 hn
 GZ
-Xz
+Yx
 Wv
 ku
 cw
@@ -11422,7 +11447,7 @@ Lp
 OA
 cI
 hK
-th
+RZ
 th
 dV
 th
@@ -12786,8 +12811,8 @@ Wk
 mR
 mR
 LV
-Bm
-RZ
+qk
+co
 pf
 LV
 mR
@@ -12938,7 +12963,7 @@ mR
 mR
 mR
 LV
-co
+LV
 hq
 Lj
 LV
@@ -13394,7 +13419,7 @@ mR
 mR
 mR
 LV
-co
+LV
 kO
 LV
 LV
@@ -19866,7 +19891,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 TK
 TK
@@ -20095,7 +20120,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -20246,9 +20271,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -20323,7 +20348,7 @@ VD
 De
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -20399,8 +20424,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -20550,8 +20575,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -21085,7 +21110,7 @@ De
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xg

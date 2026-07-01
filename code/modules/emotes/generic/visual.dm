@@ -11,7 +11,7 @@
 	statpanel_proc = /mob/proc/blink_emote
 
 /mob/proc/blink_emote()
-	set name = "Моргнуть"
+	set name = "ʘ Моргнуть"
 	set category = "Emotes"
 	emote("blink", intentional = TRUE)
 
@@ -46,7 +46,7 @@
 	statpanel_proc = /mob/proc/blush_emote
 
 /mob/proc/blush_emote()
-	set name = "Краснеть"
+	set name = "◦ Краснеть"
 	set category = "Emotes"
 	emote("blush", intentional = TRUE)
 
@@ -64,7 +64,7 @@
 	statpanel_proc = /mob/proc/pale_emote
 
 /mob/proc/pale_emote()
-	set name = "Бледнеть"
+	set name = "◦ Бледнеть"
 	set category = "Emotes"
 	emote("pale", intentional = TRUE)
 
@@ -82,7 +82,7 @@
 	statpanel_proc = /mob/proc/shiver_emote
 
 /mob/proc/shiver_emote()
-	set name = "Дрожать"
+	set name = "◦ Дрожать"
 	set category = "Emotes"
 	emote("shiver", intentional = TRUE)
 
@@ -109,7 +109,7 @@
 	statpanel_proc = /mob/proc/drool_emote
 
 /mob/proc/drool_emote()
-	set name = "Пускать слюни"
+	set name = "◦ Пускать слюни"
 	set category = "Emotes"
 	emote("drool", intentional = TRUE)
 
@@ -127,7 +127,7 @@
 	statpanel_proc = /mob/proc/eyebrow_emote
 
 /mob/proc/eyebrow_emote()
-	set name = "Поднять бровь"
+	set name = "◦ Поднять бровь"
 	set category = "Emotes"
 	emote("eyebrow", intentional = TRUE)
 
@@ -145,7 +145,7 @@
 	statpanel_proc = /mob/proc/nod_emote
 
 /mob/proc/nod_emote()
-	set name = "Кивнуть"
+	set name = "◦ Кивнуть"
 	set category = "Emotes"
 	emote("nod", intentional = TRUE)
 
@@ -167,7 +167,7 @@
 
 
 /mob/proc/shake_emote()
-	set name = "Мотнуть головой"
+	set name = "◦ Мотнуть головой"
 	set category = "Emotes"
 	emote("shake", intentional = TRUE)
 
@@ -293,7 +293,7 @@
 		L.SetSleeping(10)
 
 /mob/proc/faint_emote()
-	set name = "Упасть в обморок"
+	set name = "◦ Упасть в обморок"
 	set category = "Emotes"
 	emote("faint", intentional = TRUE)
 
@@ -350,7 +350,7 @@
 	statpanel_proc = /mob/proc/bow_emote
 
 /mob/proc/bow_emote()
-	set name = "Поклон"
+	set name = "◦ Поклон"
 	set category = "Emotes"
 	emote("bow", intentional = TRUE)
 
@@ -410,7 +410,7 @@
 	statpanel_proc = /mob/proc/grin_emote
 
 /mob/proc/grin_emote()
-	set name = "Улыбнуться"
+	set name = "☺ Улыбнуться"
 	set category = "Emotes"
 	emote("grin", intentional = TRUE)
 
@@ -428,7 +428,7 @@
 	statpanel_proc = /mob/proc/shrug_emote
 
 /mob/proc/shrug_emote()
-	set name = "Пожать плечами"
+	set name = "◦ Пожать плечами"
 	set category = "Emotes"
 	emote("shrug", intentional = TRUE)
 
@@ -445,7 +445,7 @@
 	statpanel_proc = /mob/proc/smile_emote
 
 /mob/proc/smile_emote()
-	set name = "Улыбнуться"
+	set name = "☺ Улыбнуться"
 	set category = "Emotes"
 	emote("smile", intentional = TRUE)
 
@@ -462,7 +462,7 @@
 	statpanel_proc = /mob/proc/wink_emote
 
 /mob/proc/wink_emote()
-	set name = "Подмигнуть"
+	set name = "◦ Подмигнуть"
 	set category = "Emotes"
 	emote("wink", intentional = TRUE)
 
@@ -489,7 +489,7 @@
 		return "таращится."
 
 /mob/proc/stare_emote()
-	set name = "Таращиться на..."
+	set name = "◦ Таращиться на..."
 	set category = "Emotes"
 	target_emote("stare")
 
@@ -577,7 +577,7 @@
 	statpanel_proc = /mob/proc/sway_emote
 
 /mob/proc/sway_emote()
-	set name = "Качаться"
+	set name = "◦ Качаться"
 	set category = "Emotes"
 	emote("sway", intentional = TRUE)
 
@@ -658,7 +658,7 @@
 		H.vomit()
 
 /mob/proc/vomit_emote()
-	set name = "Блевануть"
+	set name = "◦ Блевануть"
 	set category = "Emotes"
 	emote("vomit", intentional = TRUE)
 
@@ -687,7 +687,7 @@
 	else return message_3p
 
 /mob/proc/signal_emote()
-	set name = "Показать пальцы"
+	set name = "◦ Показать пальцы"
 	set category = "Emotes"
 	var/fingers_raised = tgui_input_number(src, "Сколько покажем пальцев?.", "Signal", max_value = 5, min_value = 0)
 	emote("signal [fingers_raised]", intentional = TRUE)
@@ -702,7 +702,7 @@
 	statpanel_proc = /mob/proc/masturbate_emote
 
 /mob/proc/masturbate_emote()
-	set name = "Баловаться"
+	set name = "♥ Баловаться"
 	set category = "Emotes"
 	emote("masturbate", intentional = TRUE)
 

@@ -13,7 +13,10 @@ SUBSYSTEM_DEF(trade)
 	. = ..()
 	//for(var/i in 1 to rand(1,3))
 	generate_trader()
-	add_trader_if_missing(/datum/trader/ship/MonsLadenCargo)
+	add_trader_if_missing(/datum/trader/ship/regular/MonsLadenCargo)
+	add_trader_if_missing(/datum/trader/ship/regular/MonsLadenMedbay)
+	add_trader_if_missing(/datum/trader/ship/regular/MonsLadenEngineer)
+	add_trader_if_missing(/datum/trader/ship/regular/MonsLadenMine)
 
 /datum/controller/subsystem/trade/fire(resumed = FALSE)
 	if (!resumed)
@@ -45,8 +48,7 @@ SUBSYSTEM_DEF(trade)
 	var/list/possible = list()
 	if(prob(UNIQUE_TRADER_PROB))
 		possible += subtypesof(/datum/trader/ship/contraband)
-	else
-		possible += /datum/trader/ship/MonsLadenCargo
+		possible += /datum/trader/ship/prank_shop
 
 	// Фильтруем базовый тип /datum/trader/, который не должен появляться
 	possible -= /datum/trader

@@ -17,7 +17,7 @@
 	statpanel_proc = /mob/proc/whimper_emote
 
 /mob/proc/whimper_emote()
-	set name = "Хныкнуть"
+	set name = "# Хныкнуть"
 	set category = "Emotes"
 	emote("whimper", intentional = TRUE)
 
@@ -94,7 +94,7 @@
 	statpanel_proc = /mob/proc/sneeze_emote
 
 /mob/proc/sneeze_emote()
-	set name = "Чихнуть"
+	set name = "# Чихнуть"
 	set category = "Emotes"
 	emote("sneeze", intentional = TRUE)
 
@@ -187,7 +187,7 @@
 	return "opens [P_THEIR(user.gender)] mouth wide"
 
 /mob/proc/moan_emote()
-	set name = "Стонать"
+	set name = "# Стонать"
 	set category = "Emotes"
 	emote("moan", intentional = TRUE)
 
@@ -217,7 +217,7 @@
 	return rand(30, 50)
 
 /mob/proc/cough_emote()
-	set name = "Кашлянуть"
+	set name = "# Кашлянуть"
 	set category = "Emotes"
 	emote("cough", intentional = TRUE)
 
@@ -246,7 +246,7 @@
 	return rand(35, 55)
 
 /mob/proc/cry_emote()
-	set name = "Плакать"
+	set name = "# Плакать"
 	set category = "Emotes"
 	emote("cry", intentional = TRUE)
 
@@ -278,7 +278,7 @@
 	return rand(90, 100)
 
 /mob/proc/scream_emote()
-	set name = "Кричать"
+	set name = "# Кричать"
 	set category = "Emotes"
 	emote("scream", intentional = TRUE)
 
@@ -365,7 +365,7 @@
 	return rand(25, 45)
 
 /mob/proc/laugh_emote()
-	set name = "Смеяться"
+	set name = "☺ Смеяться"
 	set category = "Emotes"
 	emote("laugh", intentional = TRUE)
 
@@ -397,7 +397,7 @@
 	return rand(25, 35)
 
 /mob/proc/giggle_emote()
-	set name = "Хихикнуть"
+	set name = "☺ Хихикнуть"
 	set category = "Emotes"
 	emote("giggle", intentional = TRUE)
 
@@ -461,7 +461,7 @@
 	return rand(25, 40)
 
 /mob/proc/groan_emote()
-	set name = "Кряхтеть"
+	set name = "# Кряхтеть"
 	set category = "Emotes"
 	emote("groan", intentional = TRUE)
 
@@ -540,7 +540,7 @@
 	statpanel_proc = /mob/proc/sniff_emote
 
 /mob/proc/sniff_emote()
-	set name = "Нюхать"
+	set name = "# Нюхать"
 	set category = "Emotes"
 	emote("sniff", intentional = TRUE)
 
@@ -572,7 +572,7 @@
 	return rand(30, 50)
 
 /mob/proc/sigh_emote()
-	set name = "Вздохнуть"
+	set name = "# Вздохнуть"
 	set category = "Emotes"
 	emote("sigh", intentional = TRUE)
 
@@ -671,7 +671,7 @@
 	return rand(15, 30)
 
 /mob/proc/yawn_emote()
-	set name = "Зевнуть"
+	set name = "# Зевнуть"
 	set category = "Emotes"
 	emote("yawn")
 
@@ -712,7 +712,7 @@
 	return 40
 
 /mob/proc/whistle_emote()
-	set name = "Свистеть"
+	set name = "# Свистеть"
 	set category = "Emotes"
 	emote("whistle")
 

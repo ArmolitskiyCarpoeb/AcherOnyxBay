@@ -593,7 +593,27 @@
 	QDEL_NULL(lenses)
 	return ..()
 
+// /obj/item/clothing/glasses/hud/process_hud(mob/M)
+// 	if(sec_hud)
+// 		process_sec_hud(M, 1)
+// 	if(med_hud)
+// 		process_med_hud(M, 1)
+
 /obj/item/clothing/glasses/hud/process_hud(mob/M)
+	// Определяем, кто является владельцем очков (наблюдателем)
+	var/mob/viewer = usr
+	if(!viewer)
+		viewer = loc // если очки не надеты, используем владельца (если это человек)
+
+	// Проверяем, видит ли наблюдатель цель M
+	if(ishuman(viewer) && ishuman(M))
+		var/mob/living/carbon/human/H_viewer = viewer
+		var/mob/living/carbon/human/H_target = M
+		// Если цель находится за спиной наблюдателя, не добавляем HUD-иконки
+		if(!H_target.InCone(H_viewer, H_viewer.dir))
+			return
+
+	// Если цель видна – отображаем HUD
 	if(sec_hud)
 		process_sec_hud(M, 1)
 	if(med_hud)

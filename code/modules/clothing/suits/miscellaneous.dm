@@ -738,3 +738,9 @@
 	icon_state = "witchhunter"
 	item_state = "witchhunter"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+
+/obj/item/clothing/suit/blue_style
+	name = "blue jacket"
+	desc = "A blue jacket, for the aesthetic."
+	icon_state = "blue_style"
+	item_state = "blue_style"

@@ -18,7 +18,7 @@
 	. = ..()
 	if(.)
 		H.add_mutation(MUTATION_BARTENDER)
-		H.newgeneratestats(9,11,9,11,8,11,7,12)
+		H.newgeneratestats(9,10,9,11,8,11,9,10)
 		H.generate_skills()
 		H.skills["cooking"] = rand(35, 66)
 		H.skills["melee"] = rand(15, 35)
@@ -31,8 +31,8 @@
 	description = "У тебя большой выбор специй для твоего супа - мышиный помёт, тараканы, мухи, древняя пыль и крошки со стола. Накорми бедных работяг и не забудь приготовить что-нибудь действительно вкусное для капитана."
 	department = "Service"
 	department_flag = SRV
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	economic_modifier = 1.3
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
@@ -96,7 +96,7 @@
 /datum/job/hydro/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(7,11,7,14,9,14,7,12)
+		H.newgeneratestats(8,10,7,14,9,14,9,11)
 		H.generate_skills()
 		H.skills["gardening"] = rand(50, 85)
 		H.skills["cooking"] = rand(15, 55)
@@ -105,12 +105,12 @@
 
 /datum/job/qm
 	title = "Quartermaster"
-	description = "Ты занимаешься продовольствием, ресурсами. Шахтёры, грузчики, бармен, повар, садовод, асисстенты - они все в твоём подчинении. У тебя также есть торговый аппарат."
+	description = "Только лучшие становятся начальниками этого отдела. А ты лучший из лучших. На тебе шахта, гидропонная ферма и бар. Ассистенты, шахтёры и грузчики, даже повар и садовод твои пешки, помыкай ими! Время заработать немного деньжат"
 	department = "Supply"
 	department_flag = SUP
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Капитан и Корпорация"
+	supervisors = "Капитан, корпорация и личные амбиции"
 	selection_color = "#5e4324"
 	economic_modifier = 5
 	access = list(access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_merchant,
@@ -127,12 +127,13 @@
 /datum/job/qm/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(8,11,7,12,9,14,7,12)
+		H.newgeneratestats(10,13,9,13,10,15,9,12)
 		H.generate_skills()
-		H.skills["melee"] = rand(15, 45)
-		H.skills["ranged"] = rand(15, 45)
-		H.skills["gardening"] = rand(15, 45)
-		H.skills["cooking"] = rand(15, 45)
+		H.skills["melee"] = rand(20, 50)
+		H.skills["ranged"] = rand(20, 40)
+		H.skills["crafting"] = rand(35, 60)
+		H.skills["gardening"] = rand(25, 45)
+		H.skills["cooking"] = rand(25, 45)
 		H.body_build_stats(H)
 
 /datum/job/cargo_tech
@@ -152,10 +153,10 @@
 /datum/job/cargo_tech/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(11,12,8,12,7,10,9,13)
+		H.newgeneratestats(10,12,8,12,7,10,10,11)
 		H.generate_skills()
 		H.skills["melee"] = rand(25, 35)
-		H.skills["crafting"] = rand(25, 50)
+		H.skills["crafting"] = rand(25, 40)
 		H.skills["ranged"] = rand(15, 50)
 		H.body_build_stats(H)
 
@@ -164,8 +165,8 @@
 	department = "Supply"
 	department_flag = SUP
 	description = "Ты простой человек, который был привлечён лозунгами типа 'захватывающий риск, захватывающая оплата, захватывающие приключения', и теперь копаешь руду. Ты ещё можешь всё изменить, но надо ли оно тебе?"
-	total_positions = 6
-	spawn_positions = 4
+	total_positions = 12
+	spawn_positions = 6
 	supervisors = "Капитан и Корпорация"
 	selection_color = "#515151"
 	economic_modifier = 1.2
@@ -179,11 +180,11 @@
 /datum/job/mining/equip(mob/living/carbon/human/H)
 	. = ..()
 	if(.)
-		H.newgeneratestats(11,14,8,12,6,10,9,13)
+		H.newgeneratestats(10,12,8,12,6,10,9,13)
 		H.generate_skills()
 		H.skills["melee"] = rand(35, 50)
 		H.skills["crafting"] = rand(25, 50)
-		H.skills["ranged"] = rand(25, 50)
+		H.skills["ranged"] = rand(25, 45)
 		H.body_build_stats(H)
 
 /datum/job/janitor
@@ -249,6 +250,7 @@
 
 /datum/job/clown
 	title = "Clown"
+	description = "Твоё истинное лицо будет скрыто за смешной маской, ибо никто не хочет его увидеть. Всем нужны твои шутки, приколы, розыгрыши, анекдоты. Ты просто обязан рассмешить всех, не подведи экипаж."
 	department = "Civilian"
 	department_flag = CIV
 	total_positions = 1
