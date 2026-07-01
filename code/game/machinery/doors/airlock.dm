@@ -711,7 +711,7 @@ About the new airlock wires panel:
 				deconstruct(user)
 				return
 
-		else if(!user.statcheck(user.stats[STAT_ST], 7, "Gah, I'm not strong enough to open the door. Maybe if I try again.", STAT_ST))
+		else if(!user.statcheck(user.stats[STAT_ST], 8, "Gah, I'm not strong enough to open the door. Maybe if I try again.", STAT_ST))
 			if(density)
 				INVOKE_ASYNC(src, nameof(.proc/open), TRUE)
 			else

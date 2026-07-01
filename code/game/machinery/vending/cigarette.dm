@@ -43,9 +43,6 @@
 		/obj/item/storage/fancy/cigarettes/menthols = 2,
 		/obj/item/storage/fancy/cigarettes/carcinomas = 2,
 		/obj/item/storage/fancy/cigarettes/professionals = 2,
-		/obj/item/storage/fancy/cigarettes/cigarello = 2,
-		/obj/item/storage/fancy/cigarettes/cigarello/mint = 2,
-		/obj/item/storage/fancy/cigarettes/cigarello/variety = 2,
 		/obj/item/storage/box/matches = 10,
 		/obj/item/flame/lighter/random = 5
 		)
@@ -71,9 +68,6 @@
 		/obj/item/storage/fancy/cigarettes/menthols = 256,
 		/obj/item/storage/fancy/cigarettes/carcinomas = 399,
 		/obj/item/storage/fancy/cigarettes/professionals = 425,
-		/obj/item/storage/fancy/cigarettes/cigarello = 450,
-		/obj/item/storage/fancy/cigarettes/cigarello/mint = 450,
-		/obj/item/storage/fancy/cigarettes/cigarello/variety = 450,
 		/obj/item/storage/box/matches = 10,
 		/obj/item/flame/lighter/random = 50
 		)
@@ -122,9 +116,6 @@
 		/obj/item/storage/fancy/cigarettes/menthols = 2,
 		/obj/item/storage/fancy/cigarettes/carcinomas = 2,
 		/obj/item/storage/fancy/cigarettes/professionals = 2,
-		/obj/item/storage/fancy/cigarettes/cigarello = 2,
-		/obj/item/storage/fancy/cigarettes/cigarello/mint = 2,
-		/obj/item/storage/fancy/cigarettes/cigarello/variety = 2,
 		/obj/item/storage/box/matches = 10,
 		/obj/item/flame/lighter/random = 5,
 		/obj/item/storage/fancy/rollingpapers = 5,
@@ -169,9 +160,6 @@
 		/obj/item/storage/fancy/cigarettes/menthols = 55,
 		/obj/item/storage/fancy/cigarettes/carcinomas = 65,
 		/obj/item/storage/fancy/cigarettes/professionals = 70,
-		/obj/item/storage/fancy/cigarettes/cigarello = 85,
-		/obj/item/storage/fancy/cigarettes/cigarello/mint = 85,
-		/obj/item/storage/fancy/cigarettes/cigarello/variety = 85,
 		/obj/item/storage/box/matches = 3,
 		/obj/item/flame/lighter/random = 10,
 		/obj/item/storage/fancy/rollingpapers = 20,

@@ -808,7 +808,7 @@
 		/datum/reagent/nicotine = 0.25
 		)
 
-	var/nicotine = REM * 0.08
+	var/nicotine = REM * 0.1
 
 /datum/reagent/tobacco/affect_blood(mob/living/carbon/M, alien, removed)
 	..()
@@ -821,10 +821,10 @@
 	taste_mult = 5.0
 
 	decompile_results = list(
-		/datum/reagent/nicotine = 0.3
+		/datum/reagent/nicotine = 0.35
 		)
 
-	nicotine = REM * 0.075
+	nicotine = REM * 0.1
 
 /datum/reagent/tobacco/bad
 	name = "Terrible Tobacco"

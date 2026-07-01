@@ -9,15 +9,15 @@
 	var/list/tasks = list()
 	/// Pool of possible tasks to pick from each round.
 	var/list/task_pool = list(
-		list("name" = "УГОЛЬ", "item_type" = /obj/item/ore/coal, "min" = 30, "max" = 70),
-		list("name" = "УРАН", "item_type" = /obj/item/stack/material/uranium, "min" = 15, "max" = 45),
-		list("name" = "СЕРЕБРО", "item_type" = /obj/item/stack/material/silver, "min" = 15, "max" = 45),
-		list("name" = "ЗОЛОТО", "item_type" = /obj/item/stack/material/gold, "min" = 15, "max" = 45),
+		list("name" = "УГОЛЬ", "item_type" = /obj/item/ore/coal, "min" = 10, "max" = 30),
+		list("name" = "УРАН", "item_type" = /obj/item/stack/material/uranium, "min" = 15, "max" = 30),
+		list("name" = "СЕРЕБРО", "item_type" = /obj/item/stack/material/silver, "min" = 15, "max" = 30),
+		list("name" = "ЗОЛОТО", "item_type" = /obj/item/stack/material/gold, "min" = 15, "max" = 30),
 		//list("name" = "СТАЛЬ", "item_type" = /obj/item/stack/material/steel, "min" = 15, "max" = 100),
 		//list("name" = "СТЕКЛО", "item_type" = /obj/item/stack/material/glass, "min" = 15, "max" = 100),
 		//list("name" = "БАНАН", "item_type" = /obj/item/reagent_containers/food/grown/banana, "min" = 8, "max" = 24),
 		//list("name" = "КАРТОШКА", "item_type" = /obj/item/reagent_containers/food/grown/potato, "min" = 10, "max" = 32),
-		list("name" = "ПЛАЗМА", "item_type" = /obj/item/stack/material/plasma, "min" = 25, "max" = 50)
+		list("name" = "ПЛАЗМА", "item_type" = /obj/item/stack/material/plasma, "min" = 10, "max" = 25)
 	)
 	/// If we're currently executing a punishment.
 	var/sanction_running = FALSE
@@ -29,7 +29,7 @@
 	if(!task_definitions || !task_definitions.len)
 		return FALSE
 
-	if(succ_obj == 2)
+	if(succ_obj == 3)
 		if(evacuation_controller.is_evacuating())
 			return
 		init_autotransfer()
@@ -62,7 +62,7 @@
 /datum/station_objective_manager/proc/generate_tasks()
 	var/list/selected = list()
 	var/list/pool = task_pool.Copy()
-	var/target = min(3, pool.len)
+	var/target = min(2, pool.len)
 
 	while(selected.len < target && pool.len)
 		var/list/choice = pick(pool)
@@ -206,8 +206,8 @@
 	fine_everyone()
 	if(GLOB.station_objectives && !GLOB.station_objectives.active)
 		var/list/tasks = GLOB.station_objectives.generate_tasks()
-		var/time_limit = 60 * 1 MINUTES
-		spawn(1500)
+		var/time_limit = 30 * 1 MINUTES
+		spawn(3000)
 		GLOB.station_objectives.start_directive(tasks, time_limit, null)
 
 /datum/station_objective_manager/proc/fail_directive(reason)

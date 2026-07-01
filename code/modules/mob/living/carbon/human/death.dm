@@ -72,6 +72,7 @@
 		for(var/mob/living/carbon/human/observer in viewers(world.view, src))
 			if(observer == src) continue  // сами себя не пугаем
 			if(observer.stat == DEAD) continue  // мёртвые не боятся
+			if(observer.mind && observer.mind.special_role) continue
 			var/job_title = observer.mind?.assigned_role
 			if(!(job_title in GLOB.resilient_jobs))
 				observer.add_happiness_event(/datum/happiness_event/dead)

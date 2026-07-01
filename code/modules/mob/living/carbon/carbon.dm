@@ -356,7 +356,7 @@
 		if(ismob(item))
 			var/mob/M = item
 
-			if(!src.statcheck(src.stats[STAT_ST], 14, null, STAT_ST))
+			if(!src.statcheck(src.stats[STAT_ST], 13, null, STAT_ST))
 				to_chat(src, "<span class='warning'>Не получается кинуть, ты слабак!</span>")
 				return
 

@@ -18,7 +18,7 @@
 			required_skill = 15
 			required_iq = 6
 
-	if(!user.skillcheck(user.skills["surgery"], required_skill, null, "surgery") || !user.statcheck(user.stats[STAT_IQ], required_iq, null, STAT_IQ))
+	if(!user.skillcheck(user.skills["surgery"], required_skill, null, "surgery") && !user.statcheck(user.stats[STAT_IQ], required_iq, null, STAT_IQ))
 		return FALSE
 
 	for(var/datum/surgery_step/S in GLOB.surgery_steps)
