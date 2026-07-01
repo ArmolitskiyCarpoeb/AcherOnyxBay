@@ -2026,7 +2026,7 @@
 "aUP" = (/turf/space/transit/west,/area/shuttle/escape_pod1/transit)
 "aUQ" = (/obj/structure/table/woodentable,/obj/item/device/megaphone,/turf/unsimulated/floor{icon_state = "wood"; dir = 8},/area/wizard_station)
 "aUR" = (/obj/structure/table/woodentable,/obj/item/storage/box/donut,/turf/unsimulated/floor{icon_state = "wood"; dir = 8},/area/wizard_station)
-"aUS" = (/obj/structure/table/reinforced,/obj/item/device/eftpos,/obj/effect/floor_decal/corner/brown{dir = 9},/turf/simulated/floor/tiled/dark,/area/shuttle/merchant/home)
+"aUS" = (/obj/structure/table/reinforced,/obj/item/device/eftpos,/obj/effect/floor_decal/corner/brown{dir = 9},/obj/item/device/price_scanner,/turf/simulated/floor/tiled/dark,/area/shuttle/merchant/home)
 "aUT" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled,/area/merchant_station)
 "aUU" = (/obj/effect/floor_decal/industrial/loading{dir = 8},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled,/area/merchant_station)
 "aUV" = (/obj/effect/floor_decal/industrial/hatch/yellow,/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/tiled,/area/merchant_station)
