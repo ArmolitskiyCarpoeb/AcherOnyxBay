@@ -86,7 +86,7 @@
 	minimal_player_age = 0
 	outfit_type = /decl/hierarchy/outfit/job/security/officer
 	//sex_lock = MALE
-	wage = WAGE_VERY_HIGH
+	wage = WAGE_HIGH
 	//body_build_lock = "Default"
 
 /datum/job/officer/equip(mob/living/carbon/human/H)

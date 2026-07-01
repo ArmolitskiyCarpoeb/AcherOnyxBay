@@ -122,7 +122,7 @@
 	minimal_player_age = 0
 	ideal_character_age = 40
 	outfit_type = /decl/hierarchy/outfit/job/cargo/qm
-	wage = WAGE_HIGH
+	wage = WAGE_VERY_HIGH
 
 /datum/job/qm/equip(mob/living/carbon/human/H)
 	. = ..()
@@ -174,7 +174,7 @@
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
 	//alt_titles = list("Drill Technician","Prospector")
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
-	wage = WAGE_MEDIUM
+	wage = WAGE_LOW
 	sex_lock = MALE
 
 /datum/job/mining/equip(mob/living/carbon/human/H)
@@ -262,6 +262,7 @@
 	minimal_player_age = 1
 	outfit_type = /decl/hierarchy/outfit/job/clown
 	sex_lock = MALE
+	wage = WAGE_LOW
 
 /datum/job/clown/equip(mob/living/carbon/human/H)
 	. = ..()

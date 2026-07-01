@@ -57,7 +57,7 @@
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_maint_tunnels, access_external_airlocks)
 	outfit_type = /decl/hierarchy/outfit/job/medical/doctor
-	wage = WAGE_VERY_HIGH
+	wage = WAGE_HIGH
 
 /datum/job/doctor/equip(mob/living/carbon/human/H)
 	. = ..()
