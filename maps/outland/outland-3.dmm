@@ -48,7 +48,7 @@
 	id_tag = "cmodoor"
 	},
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/crew_quarters/heads/cmo)
 "at" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -228,11 +228,13 @@
 /turf/simulated/floor/tiled/graytile,
 /area/bridge)
 "cr" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	req_access = list(58)
+	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/crew_quarters/heads/hos)
 "cv" = (
 /obj/machinery/light/small{
@@ -242,9 +244,6 @@
 /turf/simulated/floor/trim/carpet/gblue,
 /area/crew_quarters/heads/cmo)
 "cx" = (
-/obj/machinery/door/airlock/maintenance{
-	req_one_access = list(19)
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -257,7 +256,10 @@
 	name = "Bridge Blast Doors";
 	id = "bridge blast doors"
 	},
-/turf/simulated/floor/plating,
+/obj/machinery/door/airlock/maintenance{
+	req_access = list(19)
+	},
+/turf/simulated/floor/tiled/dark/mono,
 /area/maintenance/substation/command)
 "cy" = (
 /turf/simulated/floor/plating,
@@ -545,7 +547,7 @@
 	name = "Office Blast Doors";
 	id = "caps_lock"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/crew_quarters/captain)
 "fJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -633,7 +635,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/hallway/primary/central_one)
 "hb" = (
 /turf/simulated/wall/r_wall,
@@ -771,18 +773,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/crew_quarters/heads/cmo)
 "jc" = (
-/obj/machinery/door/airlock/maintenance{
-	req_one_access = list(19)
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/blast/regular/open{
 	name = "Bridge Blast Doors";
 	id = "bridge blast doors"
 	},
-/turf/simulated/floor/plating,
+/obj/machinery/door/airlock/maintenance{
+	req_access = list(19)
+	},
+/turf/simulated/floor/tiled/dark/mono,
 /area/maintenance/substation/command)
 "jg" = (
 /obj/machinery/light/small{
@@ -1066,7 +1068,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/bridge/meeting_room)
 "mv" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -1104,7 +1106,8 @@
 	d2 = 2
 	},
 /obj/item/storage/secure/safe{
-	pixel_x = -26
+	pixel_x = -26;
+	startswith = list(/obj/item/clothing/accessory/holster,/obj/item/folder/envelope/nuke_instructions)
 	},
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
@@ -1243,7 +1246,7 @@
 	id = "caps_lock";
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/crew_quarters/captain)
 "oN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1341,7 +1344,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/hallway/primary/central_one)
 "pY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1497,7 +1500,7 @@
 	id = "caps_lock";
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/crew_quarters/captain)
 "rz" = (
 /obj/machinery/photocopier,
@@ -1506,6 +1509,9 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge)
+"rA" = (
+/turf/simulated/wall,
+/area/maintenance/library)
 "rC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1757,7 +1763,7 @@
 	name = "Bridge Blast Doors";
 	id = "bridge blast doors"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/bridge)
 "tq" = (
 /obj/effect/floor_decal/corner/blue/mono,
@@ -2006,7 +2012,7 @@
 	id = "caps_lock";
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/crew_quarters/captain)
 "xA" = (
 /obj/machinery/firealarm{
@@ -2267,7 +2273,7 @@
 	req_access = list(12)
 	},
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/hallway/primary/central_one)
 "Aw" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
@@ -2309,14 +2315,14 @@
 	d2 = 2;
 	d1 = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/crew_quarters/heads/hos)
 "AW" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/bridge/meeting_room)
 "Bc" = (
 /obj/structure/railing/steel{
@@ -2488,7 +2494,7 @@
 /obj/machinery/door/airlock{
 	name = "Unisex Restrooms"
 	},
-/turf/simulated/floor/tiled/techfloor/ridge,
+/turf/simulated/floor/tiled/dark/mono,
 /area/hallway/primary/central_one)
 "El" = (
 /obj/machinery/light{
@@ -2896,7 +2902,7 @@
 	id_tag = "HoSdoor"
 	},
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/crew_quarters/heads/hos)
 "Kp" = (
 /obj/machinery/power/apc{
@@ -3056,7 +3062,7 @@
 	name = "Bridge Blast Doors";
 	id = "bridge blast doors"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/bridge)
 "Nb" = (
 /obj/machinery/light,
@@ -3138,8 +3144,11 @@
 	req_access = list(13);
 	id_tag = "escape_pod_1_berth_hatch"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/hallway/primary/central_one)
+"Ot" = (
+/turf/simulated/wall,
+/area/crew_quarters/captain)
 "Ou" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/trim/carpet/blue,
@@ -3210,6 +3219,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/locker)
+"Pj" = (
+/obj/structure/closet/body_bag/cryobag/vatgrownbody/female{
+	desc = "Captain`s special devilery bag. What inside?";
+	name = "Captain`s special delivery"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/library)
 "Po" = (
 /obj/item/storage/bouquet/shotgun,
 /turf/simulated/shuttle/wall{
@@ -3220,7 +3236,12 @@
 "Pq" = (
 /obj/structure/closet/secure_closet{
 	req_access = list(20);
-	icon_state = "capsecure1"
+	icon_state = "capsecure1";
+	icon_opened = "capsecureopen";
+	icon_off = "capsecureoff";
+	icon_locked = "capsecure1";
+	icon_closed = "capsecure";
+	name = "Captain locker"
 	},
 /obj/item/device/radio/headset/heads/captain,
 /turf/simulated/floor/trim/wood2,
@@ -3253,14 +3274,14 @@
 /turf/simulated/floor/tiled/rough,
 /area/hallway/primary/central_one)
 "PO" = (
-/obj/machinery/door/airlock/maintenance{
-	req_one_access = list(19)
-	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable/green{
 	icon_state = "4-8";
 	d2 = 8;
 	d1 = 4
+	},
+/obj/machinery/door/airlock/maintenance{
+	req_access = list(19)
 	},
 /turf/simulated/floor/plating,
 /area/bridge)
@@ -3369,7 +3390,7 @@
 	req_access = list(12)
 	},
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/hallway/primary/central_one)
 "QJ" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -3402,7 +3423,7 @@
 	id = "caps_lock";
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/crew_quarters/captain)
 "QU" = (
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -3716,7 +3737,7 @@
 	d2 = 8;
 	d1 = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/bridge/meeting_room)
 "Vd" = (
 /obj/structure/closet/emcloset,
@@ -3854,7 +3875,7 @@
 	d2 = 8;
 	d1 = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/bridge/meeting_room)
 "WY" = (
 /obj/machinery/light{
@@ -3954,7 +3975,7 @@
 	req_access = list(13);
 	id_tag = "escape_pod_1_hatch"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark/mono,
 /area/shuttle/escape_pod1/station)
 "YH" = (
 /obj/structure/window_frame/rglass,
@@ -42509,7 +42530,7 @@ cy
 cy
 hb
 hb
-hb
+Ot
 hb
 Kf
 YB
@@ -42765,8 +42786,8 @@ nh
 nh
 cy
 cy
-cy
-cy
+rA
+Pj
 hb
 hb
 hb
@@ -43022,8 +43043,8 @@ CU
 nh
 nh
 cy
-nh
-cy
+rA
+rA
 zx
 uv
 Ro
