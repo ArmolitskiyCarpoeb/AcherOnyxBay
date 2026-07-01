@@ -211,13 +211,13 @@
 /turf/simulated/floor/tiled/mono,
 /area/outpost/engineering/hallway)
 "ck" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
 	},
 /obj/structure/catwalk/catwalk_new,
 /turf/simulated/floor/plating,
@@ -257,6 +257,8 @@
 /obj/machinery/alarm{
 	pixel_y = 24
 	},
+/obj/structure/table/rack,
+/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
 "cF" = (
@@ -292,15 +294,7 @@
 "cT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/mob/living/simple_animal/hostile/clop,
 /turf/simulated/floor/tiled/techfloor/ridge,
-/area/outpost/engineering/telecomms)
-"cV" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
-/mob/living/simple_animal/hostile/clop,
-/turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
 "dr" = (
 /obj/structure/cable{
@@ -543,6 +537,8 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/table/rack,
+/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
 "hK" = (
@@ -559,6 +555,8 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/structure/table/rack,
+/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
 "iJ" = (
@@ -594,6 +592,8 @@
 "jJ" = (
 /obj/structure/table/rack,
 /obj/item/shovel,
+/obj/item/shovel,
+/obj/item/shovel,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/hallway)
 "jR" = (
@@ -601,15 +601,13 @@
 /turf/simulated/floor/plating,
 /area/shuttle/mining/outpost)
 "jT" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk/catwalk_new,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "jU" = (
@@ -749,6 +747,10 @@
 /area/outpost/engineering/power)
 "lO" = (
 /obj/machinery/light/small,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "lY" = (
@@ -919,6 +921,10 @@
 	pixel_y = -8;
 	dir = 8
 	},
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "pk" = (
@@ -1165,7 +1171,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/mob/living/simple_animal/hostile/clop,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
 "tK" = (
@@ -1464,6 +1469,8 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/structure/table/rack,
+/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
 "AM" = (
@@ -1510,6 +1517,7 @@
 /obj/machinery/light/small,
 /obj/structure/table/standard,
 /obj/machinery/cell_charger,
+/obj/item/tape_roll,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/hallway)
 "Bp" = (
@@ -1547,6 +1555,11 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk/catwalk_new,
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 8;
+	frequency = 1379;
+	id_tag = "mining_east_pump"
+	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "Cu" = (
@@ -1874,8 +1887,14 @@
 /area/outpost/prydwen)
 "JP" = (
 /obj/structure/table/rack,
-/obj/item/pickaxe,
 /obj/item/pickaxe/drill/adv,
+/obj/item/pickaxe/drill/adv,
+/obj/item/pickaxe/drill/adv,
+/obj/item/pickaxe/drill/adv,
+/obj/item/pickaxe/drill/adv,
+/obj/item/pickaxe/drill/adv,
+/obj/item/pickaxe/diamond,
+/obj/item/pickaxe/diamond,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/hallway)
 "Kd" = (
@@ -2163,6 +2182,7 @@
 	pixel_x = -7;
 	pixel_y = 6
 	},
+/obj/item/tape_roll,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/hallway)
 "OR" = (
@@ -2294,6 +2314,9 @@
 /obj/item/net_shell,
 /obj/item/net_shell,
 /obj/item/net_shell,
+/obj/item/gun/energy/retro,
+/obj/item/gun/energy/retro,
+/obj/item/gun/launcher/net,
 /turf/simulated/floor/tiled/dark/mono,
 /area/outpost/engineering/storage)
 "RQ" = (
@@ -2322,6 +2345,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/item/tape_roll,
 /turf/simulated/floor/tiled/dark/rough,
 /area/outpost/engineering/meeting)
 "RW" = (
@@ -2340,15 +2364,9 @@
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
 "RZ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/catwalk/catwalk_new,
-/turf/simulated/floor/plating,
-/area/outpost/engineering/hallway)
+/obj/machinery/computer/stacking_unit_console,
+/turf/simulated/floor/tiled/dark/rough,
+/area/outpost/engineering/power)
 "Sb" = (
 /obj/structure/window_frame/reinforced/hull,
 /turf/simulated/floor/plating,
@@ -5118,8 +5136,8 @@ VU
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -5270,8 +5288,8 @@ VU
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -5423,10 +5441,10 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
-xY
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -5575,9 +5593,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -5727,9 +5745,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -5880,8 +5898,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -6041,7 +6059,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -6495,7 +6513,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -6647,7 +6665,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -6797,7 +6815,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -6943,10 +6961,10 @@ xY
 xY
 xY
 xY
+TK
+TK
 xY
-xY
-xY
-xY
+TK
 xY
 xY
 xY
@@ -7098,7 +7116,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -7247,12 +7265,12 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
-xY
-xY
-xY
+TK
+TK
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -7399,12 +7417,12 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
-xY
-xY
-xY
+TK
+TK
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -7553,8 +7571,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -8040,7 +8058,7 @@ xg
 xg
 xY
 xg
-xY
+TK
 xY
 xY
 xY
@@ -8193,10 +8211,10 @@ xY
 xY
 xg
 xY
-xY
-xY
-xY
-xY
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8323,8 +8341,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -8345,23 +8363,23 @@ xY
 xg
 xY
 xY
+TK
+xY
+TK
+TK
 xY
 xY
 xY
 xY
 xY
+TK
+xY
+TK
 xY
 xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-Wk
-Wk
+TK
+cP
+cP
 Wk
 Wk
 Wk
@@ -8475,9 +8493,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8499,6 +8517,8 @@ xY
 xY
 xY
 xY
+TK
+TK
 xY
 xY
 xY
@@ -8510,10 +8530,8 @@ xY
 xY
 xY
 xY
-xY
-xY
-Wk
-Wk
+cP
+cP
 Wk
 Wk
 Wk
@@ -8627,9 +8645,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8648,11 +8666,11 @@ xg
 xY
 xY
 xY
-xY
-xY
-xY
-xY
-xY
+TK
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8665,8 +8683,8 @@ xY
 xY
 xY
 Wk
-Wk
-Wk
+cP
+cP
 Wk
 Wk
 Wk
@@ -8779,9 +8797,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8800,6 +8818,11 @@ xY
 xY
 xY
 xY
+TK
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8812,15 +8835,10 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
-xY
-xY
-xY
-xY
-Wk
-Wk
+TK
+TK
+cP
+cP
 Wk
 Wk
 mR
@@ -8931,9 +8949,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8952,6 +8970,11 @@ xY
 xY
 xY
 xY
+TK
+TK
+TK
+TK
+TK
 xY
 xY
 xY
@@ -8966,14 +8989,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
-xY
-xY
-Wk
-Wk
-Wk
+cP
+cP
+cP
 Wk
 mR
 mR
@@ -9083,9 +9101,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -9103,8 +9121,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -9124,8 +9142,8 @@ xY
 xY
 xY
 Wk
-Wk
-Wk
+cP
+cP
 Wk
 mR
 mR
@@ -9235,8 +9253,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -9590,11 +9608,11 @@ mR
 NA
 AM
 cy
-cV
+ou
 ou
 xI
 Zt
-he
+Uf
 sp
 Ko
 Lb
@@ -9746,7 +9764,7 @@ tr
 tr
 tr
 Cy
-he
+Uf
 sp
 aS
 cu
@@ -10202,7 +10220,7 @@ jg
 Yx
 hE
 LF
-he
+Uf
 Mm
 aS
 Ze
@@ -11416,7 +11434,7 @@ Lp
 OA
 cI
 hK
-th
+RZ
 th
 dV
 th
@@ -12781,7 +12799,7 @@ mR
 mR
 LV
 Bm
-RZ
+jT
 pf
 LV
 mR
@@ -19860,7 +19878,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 TK
 TK
@@ -20089,7 +20107,7 @@ xY
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -20240,9 +20258,9 @@ xY
 xY
 xY
 xY
-xY
-xY
-xY
+TK
+TK
+TK
 xY
 xY
 xY
@@ -20317,7 +20335,7 @@ VD
 De
 xY
 xY
-xY
+TK
 xY
 xY
 xY
@@ -20393,8 +20411,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -20544,8 +20562,8 @@ xY
 xY
 xY
 xY
-xY
-xY
+TK
+TK
 xY
 xY
 xY
@@ -21079,7 +21097,7 @@ De
 xY
 xY
 xY
-xY
+TK
 xY
 xY
 xg
