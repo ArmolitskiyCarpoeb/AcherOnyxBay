@@ -2324,8 +2324,6 @@
 /obj/item/net_shell,
 /obj/item/net_shell,
 /obj/item/net_shell,
-/obj/item/gun/energy/retro,
-/obj/item/gun/energy/retro,
 /obj/item/gun/launcher/net,
 /turf/simulated/floor/tiled/dark/mono,
 /area/outpost/engineering/storage)
@@ -2480,14 +2478,10 @@
 /turf/simulated/floor/tiled/techfloor/ridge,
 /area/outpost/prydwen)
 "Ua" = (
-/obj/machinery/atmospherics/unary/outlet_injector{
-	dir = 4;
-	use_power = 1;
-	volume_rate = 500;
-	initialize_directions = 4;
-	layer = 2.06
-	},
 /obj/structure/railing,
+/obj/machinery/atmospherics/pipe/simple/visible/universal{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
 "Uf" = (
@@ -2656,6 +2650,13 @@
 /area/outpost/prydwen)
 "Xo" = (
 /obj/structure/railing,
+/obj/machinery/atmospherics/unary/outlet_injector{
+	dir = 4;
+	use_power = 1;
+	volume_rate = 500;
+	initialize_directions = 4;
+	layer = 2.06
+	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
 "XG" = (
