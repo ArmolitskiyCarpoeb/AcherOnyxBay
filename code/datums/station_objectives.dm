@@ -62,7 +62,7 @@
 /datum/station_objective_manager/proc/generate_tasks()
 	var/list/selected = list()
 	var/list/pool = task_pool.Copy()
-	var/target = min(3, pool.len)
+	var/target = min(2, pool.len)
 
 	while(selected.len < target && pool.len)
 		var/list/choice = pick(pool)
