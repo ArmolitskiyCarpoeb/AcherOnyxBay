@@ -31,8 +31,8 @@
 		D.implant_in_mob(H, BP_HEAD)
 		H.newgeneratestats(9,11,9,11,10,12,9,11)
 		H.generate_skills()
-		H.skills["ranged"] = rand(25, 60)
-		H.skills["melee"] = rand(25, 60)
+		H.skills["ranged"] = rand(25, 50)
+		H.skills["melee"] = rand(5, 45)
 		H.body_build_stats(H)
 		var/obj/machinery/nuclearbomb/nuke = locate(/obj/machinery/nuclearbomb/station) in world
 		if(nuke)

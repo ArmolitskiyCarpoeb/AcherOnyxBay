@@ -5,8 +5,8 @@
 	department_flag = CIV
 
 	account_allowed = TRUE
-	total_positions = -1
-	spawn_positions = -1
+	total_positions = 1
+	spawn_positions = 1
 	supervisors = "Экипаж, Капитан и Корпорация"
 	selection_color = "#5e5e5e"
 	economic_modifier = 0.7
