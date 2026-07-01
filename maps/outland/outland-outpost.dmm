@@ -15,8 +15,10 @@
 	pixel_y = -25;
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1379;
+	id_tag = "mining_west_pump"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/storage)
@@ -146,8 +148,9 @@
 /turf/simulated/floor/tiled/white/rough,
 /area/outpost/main_outpost/dock)
 "bM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	frequency = 1380;
+	id_tag = "mining_east_pump"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
@@ -223,10 +226,9 @@
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "co" = (
-/obj/structure/window_frame/reinforced/hull,
-/obj/machinery/door/firedoor,
+/obj/structure/table/rack,
 /turf/simulated/floor/plating,
-/area/outpost/engineering/hallway)
+/area/outpost/engineering/telecomms)
 "cu" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/engineering/storage)
@@ -258,6 +260,7 @@
 	pixel_y = 24
 	},
 /obj/structure/table/rack,
+/obj/item/clothing/suit/space/void/mining1/prepared,
 /obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
@@ -313,9 +316,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/prydwen)
 "dT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/storage)
 "dV" = (
@@ -379,9 +380,8 @@
 /turf/simulated/floor/tiled/techfloor/maint,
 /area/outpost/engineering/hallway)
 "fP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled/dark/mono,
-/area/outpost/engineering/storage)
+/turf/simulated/floor/plating,
+/area/outpost/engineering/hallway)
 "gn" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 4
@@ -514,12 +514,9 @@
 /turf/simulated/floor/tiled/mono,
 /area/outpost/engineering/hallway)
 "hq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/external{
-	frequency = 1379;
+	frequency = 1380;
 	icon_state = "door_locked";
 	id_tag = "mining_east_inner";
 	locked = 1;
@@ -531,6 +528,9 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk/catwalk_new,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "hE" = (
@@ -538,6 +538,7 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
+/obj/item/clothing/suit/space/void/mining1/prepared,
 /obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
@@ -555,8 +556,6 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/table/rack,
-/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
 "iJ" = (
@@ -576,6 +575,15 @@
 	},
 /turf/simulated/floor/tiled/dark/rough,
 /area/outpost/engineering/meeting)
+"iX" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden,
+/turf/simulated/floor/plating,
+/area/outpost/engineering/hallway)
 "jg" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -606,13 +614,17 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /obj/structure/catwalk/catwalk_new,
-/obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "jU" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 2;
+	frequency = 1379;
+	id_tag = "mining_west_pump"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/storage)
@@ -707,7 +719,7 @@
 "kO" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/external{
-	frequency = 1379;
+	frequency = 1380;
 	icon_state = "door_locked";
 	id_tag = "mining_east_outer";
 	locked = 1;
@@ -894,10 +906,13 @@
 	tag_interior_door = "mining_east_inner";
 	pixel_y = -25;
 	tag_chamber_sensor = "mining_east_sensor";
-	dir = 1
+	dir = 1;
+	frequency = 1380
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "mining_east_pump"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
@@ -921,10 +936,6 @@
 	pixel_y = -8;
 	dir = 8
 	},
-/obj/machinery/atmospherics/portables_connector{
-	dir = 1
-	},
-/obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
 "pk" = (
@@ -1470,7 +1481,6 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
 "AM" = (
@@ -1554,11 +1564,8 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/catwalk/catwalk_new,
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	frequency = 1379;
-	id_tag = "mining_east_pump"
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/hallway)
@@ -1987,8 +1994,8 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	frequency = 1379;
+	dir = 1;
+	frequency = 1380;
 	id_tag = "mining_east_pump"
 	},
 /turf/simulated/floor/plating,
@@ -2289,8 +2296,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	frequency = 1379;
+	frequency = 1380;
 	id_tag = "mining_east_pump"
 	},
 /turf/simulated/floor/plating,
@@ -2483,6 +2489,7 @@
 "Uf" = (
 /obj/structure/table/rack,
 /obj/item/clothing/suit/space/void/mining1/prepared,
+/obj/item/clothing/suit/space/void/mining1/prepared,
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
 "Us" = (
@@ -2509,6 +2516,10 @@
 	name = "interior access button";
 	pixel_x = -22;
 	pixel_y = -8;
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark/mono,
@@ -2660,7 +2671,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
+	dir = 1;
 	frequency = 1379;
 	id_tag = "mining_west_pump"
 	},
@@ -2768,7 +2779,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
+	dir = 2;
 	frequency = 1379;
 	id_tag = "mining_west_pump"
 	},
@@ -9612,11 +9623,11 @@ ou
 ou
 xI
 Zt
-Uf
+he
 sp
 Ko
 Lb
-fP
+Lb
 En
 aF
 aF
@@ -9764,7 +9775,7 @@ tr
 tr
 tr
 Cy
-Uf
+co
 sp
 aS
 cu
@@ -12798,7 +12809,7 @@ Wk
 mR
 mR
 LV
-Bm
+fP
 jT
 pf
 LV
@@ -12950,7 +12961,7 @@ mR
 mR
 mR
 LV
-co
+LV
 hq
 Lj
 LV
@@ -13103,7 +13114,7 @@ mR
 mR
 LV
 bM
-jT
+iX
 oY
 LV
 mR
@@ -13406,7 +13417,7 @@ mR
 mR
 mR
 LV
-co
+LV
 kO
 LV
 LV
