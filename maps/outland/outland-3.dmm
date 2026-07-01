@@ -1479,7 +1479,7 @@
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
-/obj/item/reagent_containers/vessel/mug/NT,
+/obj/item/reagent_containers/vessel/glass/rocks,
 /turf/simulated/floor/trim/carpet/blue,
 /area/crew_quarters/captain)
 "rx" = (
@@ -4102,7 +4102,7 @@
 	d2 = 8;
 	d1 = 4
 	},
-/obj/item/gun/energy/egun/elite,
+/obj/item/gun/energy/stunner,
 /turf/simulated/floor/trim/carpet/red,
 /area/crew_quarters/heads/hos)
 
