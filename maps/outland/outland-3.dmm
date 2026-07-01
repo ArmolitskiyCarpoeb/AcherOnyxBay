@@ -38,7 +38,6 @@
 /obj/item/clothing/mask/gas/german,
 /obj/item/gun/projectile/shotgun/pump/combat/hos,
 /obj/item/clothing/accessory/storage/bandolier,
-/obj/item/clothing/suit/poncho/dominiancape,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/heads/hos)
 "as" = (
@@ -3219,13 +3218,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/locker)
-"Pj" = (
-/obj/structure/closet/body_bag/cryobag/vatgrownbody/female{
-	desc = "Captain`s special devilery bag. What inside?";
-	name = "Captain`s special delivery"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/library)
 "Po" = (
 /obj/item/storage/bouquet/shotgun,
 /turf/simulated/shuttle/wall{
@@ -3964,6 +3956,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/atm{
+	pixel_x = 32
+	},
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "YC" = (
@@ -4019,6 +4014,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/item/device/bluespace_beacon,
 /turf/simulated/floor/tiled/dark/rough,
 /area/maintenance/substation/command)
 "Zg" = (
@@ -42786,8 +42782,8 @@ nh
 nh
 cy
 cy
-rA
-Pj
+cy
+cy
 hb
 hb
 hb
@@ -43044,7 +43040,7 @@ nh
 nh
 cy
 rA
-rA
+cy
 zx
 uv
 Ro
