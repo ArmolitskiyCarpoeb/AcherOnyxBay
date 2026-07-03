@@ -8,6 +8,9 @@
 	var/tile_type = /obj/item/stack/tile/floor
 	initial_gas = /decl/initial_gas_mix/air
 
+/turf/simulated/floor/plating/is_outside()
+	return OUTSIDE_NO
+
 /turf/simulated/floor/plating/rough
 	name = "plating"
 	icon_state = "rough_plating"
@@ -291,10 +294,16 @@
 	initial_gas = /decl/initial_gas_mix/empty
 	temperature = TCMB
 
+/turf/simulated/floor/reinforced/airless/is_outside()
+	return OUTSIDE_YES
+
 /turf/simulated/floor/plating/airless
 	name = "airless plating"
 	initial_gas = /decl/initial_gas_mix/empty
 	temperature = TCMB
+
+/turf/simulated/floor/plating/airless/is_outside()
+	return OUTSIDE_YES
 
 /turf/simulated/floor/plating/rough/airless
 	name = "airless plating"

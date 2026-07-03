@@ -3,6 +3,9 @@
 	icon = 'icons/turf/shuttle.dmi'
 	dynamic_lighting = TRUE
 
+/turf/simulated/floor/shuttle/is_outside()
+	return OUTSIDE_NO
+
 /turf/simulated/floor/shuttle/blue
 	icon_state = "floor"
 	initial_flooring = /decl/flooring/reinforced/shuttle/blue
