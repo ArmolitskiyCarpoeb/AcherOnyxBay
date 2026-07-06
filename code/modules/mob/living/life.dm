@@ -148,8 +148,8 @@
 
 	flash_fullscreen("white_flash")
 	overlay_fullscreen("painkiller", /atom/movable/screen/fullscreen/high_purest)
-	animate(client, pixel_y = 1, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
-	animate(pixel_y = -1, time = 1, flags = ANIMATION_RELATIVE)
+	//animate(client, pixel_y = 1, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
+	//animate(pixel_y = -1, time = 1, flags = ANIMATION_RELATIVE)
 
 /mob/living/proc/remove_opioid_effects()
 	clear_fullscreen("painkiller")
