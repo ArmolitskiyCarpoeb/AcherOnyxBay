@@ -1953,8 +1953,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/library)
 "wZ" = (
-/obj/machinery/telecomms/relay/preset/bridge,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/telecomms/relay/preset/station,
 /turf/simulated/floor/tiled/dark/mono,
 /area/maintenance/substation/command)
 "xg" = (
@@ -3236,6 +3236,7 @@
 	name = "Captain locker"
 	},
 /obj/item/device/radio/headset/heads/captain,
+/obj/item/gun/energy/stunner,
 /turf/simulated/floor/trim/wood2,
 /area/crew_quarters/captain)
 "Ps" = (
