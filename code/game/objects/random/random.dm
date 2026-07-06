@@ -1070,7 +1070,7 @@
 				/obj/item/clothing/under/color/yellow = 2,
 				/obj/item/clothing/under/color/white = 2,
 				/obj/item/clothing/under/color/red = 2,
-				/obj/item/clothing/under/rank/miner = 2,
+				/obj/item/clothing/under/rank/newcargo = 2,
 				/obj/item/clothing/under/rank/vice = 1,
 				/obj/item/clothing/under/waiter = 2,
 				/obj/item/clothing/under/soviet = 1)

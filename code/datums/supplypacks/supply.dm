@@ -71,7 +71,7 @@
 	contains = list(/obj/item/storage/backpack/industrial,
 					/obj/item/storage/backpack/satchel/eng,
 					/obj/item/device/radio/headset/headset_cargo,
-					/obj/item/clothing/under/rank/miner,
+					/obj/item/clothing/under/rank/newcargo,
 					/obj/item/clothing/gloves/thick,
 					/obj/item/clothing/shoes/black,
 					/obj/item/device/analyzer,

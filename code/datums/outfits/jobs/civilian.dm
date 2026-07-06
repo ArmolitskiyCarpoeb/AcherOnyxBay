@@ -107,7 +107,7 @@
 
 /decl/hierarchy/outfit/job/service/bartender
 	name = OUTFIT_JOB_NAME("Bartender")
-	uniform = /obj/item/clothing/under/rank/bartender
+	uniform = /obj/item/clothing/under/suit_jacket/charcoal
 	id_type = /obj/item/card/id/provisioning/bartender
 	pda_type = /obj/item/device/pda/bar
 	suit = /obj/item/clothing/suit/armor/vest
@@ -124,7 +124,7 @@
 
 /decl/hierarchy/outfit/job/service/chef
 	name = OUTFIT_JOB_NAME("Chef")
-	uniform = /obj/item/clothing/under/rank/chef
+	uniform = /obj/item/clothing/under/rank/workman
 	suit = /obj/item/clothing/suit/chef
 	head = /obj/item/clothing/head/chefhat
 	id_type = /obj/item/card/id/provisioning/chef
@@ -132,7 +132,7 @@
 
 /decl/hierarchy/outfit/job/service/gardener
 	name = OUTFIT_JOB_NAME("Gardener")
-	uniform = /obj/item/clothing/under/rank/hydroponics
+	uniform = /obj/item/clothing/under/rank/workman
 	suit = /obj/item/clothing/suit/apron
 	gloves = /obj/item/clothing/gloves/thick/botany
 	r_pocket = /obj/item/device/analyzer/plant_analyzer
@@ -145,7 +145,7 @@
 
 /decl/hierarchy/outfit/job/service/janitor
 	name = OUTFIT_JOB_NAME("Janitor")
-	uniform = /obj/item/clothing/under/rank/janitor
+	uniform = /obj/item/clothing/under/rank/workman
 	id_type = /obj/item/card/id/provisioning/janitor
 	pda_type = /obj/item/device/pda/janitor
 	flags = OUTFIT_NO_SURVIVAL

@@ -325,3 +325,10 @@
 	desc = ""
 	icon_state = "barwoman"
 	item_state = "barwoman"
+
+/obj/item/clothing/under/rank/newcargo
+	name = "cargo jumpsuit"
+	desc = ""
+	icon_state = "newcargo"
+	item_state = "newcargo"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS

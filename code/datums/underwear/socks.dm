@@ -30,24 +30,6 @@
 	icon_state = "socks_knee"
 	has_color = TRUE
 
-/datum/category_item/underwear/socks/striped_knee
-	name = "Knee (striped)"
-	underwear_name = "knee highs"
-	icon_state = "striped_knee"
-	has_color = TRUE
-
-/datum/category_item/underwear/socks/striped_thigh
-	name = "Thigh (striped)"
-	underwear_name = "thigh highs"
-	icon_state = "striped_thigh"
-	has_color = TRUE
-
-/datum/category_item/underwear/socks/pantyhose
-	name = "Pantyhose"
-	underwear_name = "pantyhose"
-	icon_state = "pantyhose"
-	has_color = TRUE
-
 /datum/category_item/underwear/socks/thin_thigh
 	name = "Thigh (thin)"
 	underwear_name = "thigh highs"
@@ -59,16 +41,6 @@
 	underwear_name = "knee highs"
 	icon_state = "thin_knee"
 	has_color = TRUE
-
-/datum/category_item/underwear/socks/rainbow_thigh
-	name = "Thigh (rainbow)"
-	underwear_name = "thigh highs"
-	icon_state = "rainbow_thigh"
-
-/datum/category_item/underwear/socks/rainbow_knee
-	name = "Knee (rainbow)"
-	underwear_name = "knee highs"
-	icon_state = "rainbow_knee"
 
 /datum/category_item/underwear/socks/fishnet
 	name = "Fishnet"

@@ -15,14 +15,14 @@
 
 /decl/hierarchy/outfit/job/cargo/cargo_tech
 	name = OUTFIT_JOB_NAME("Cargo technician")
-	uniform = /obj/item/clothing/under/rank/cargotech
+	uniform = /obj/item/clothing/under/rank/newcargo
 	id_type = /obj/item/card/id/provisioning/cargo
 	pda_type = /obj/item/device/pda/cargo
 
 /decl/hierarchy/outfit/job/cargo/mining
 	name = OUTFIT_JOB_NAME("Shaft miner")
 	shoes = /obj/item/clothing/shoes/workboots
-	uniform = /obj/item/clothing/under/rank/miner
+	uniform = /obj/item/clothing/under/rank/newcargo
 	id_type = /obj/item/card/id/provisioning/cargo/mining
 	pda_type = /obj/item/device/pda/shaftminer
 	pda_slot = slot_l_store

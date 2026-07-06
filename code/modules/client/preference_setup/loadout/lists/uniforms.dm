@@ -10,6 +10,5 @@
 /datum/gear/uniform/suit/New()
 	..()
 	var/suits = list()
-	suits += /obj/item/clothing/under/sl_suit
-	suits += /obj/item/clothing/under/lawyer/blue
+	suits += /obj/item/clothing/under/suit_jacket/charcoal
 	gear_tweaks += new /datum/gear_tweak/path/specified_types_list(suits)
