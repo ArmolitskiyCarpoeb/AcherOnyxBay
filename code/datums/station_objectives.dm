@@ -9,11 +9,11 @@
 	var/list/tasks = list()
 	/// Pool of possible tasks to pick from each round.
 	var/list/task_pool = list(
-		list("name" = "УГОЛЬ", "item_type" = /obj/item/ore/coal, "min" = 15, "max" = 35),
+		//list("name" = "УГОЛЬ", "item_type" = /obj/item/ore/coal, "min" = 15, "max" = 35),
 		list("name" = "УРАН", "item_type" = /obj/item/stack/material/uranium, "min" = 5, "max" = 10),
 		list("name" = "СЕРЕБРО", "item_type" = /obj/item/stack/material/silver, "min" = 10, "max" = 25),
 		list("name" = "ЗОЛОТО", "item_type" = /obj/item/stack/material/gold, "min" = 10, "max" = 25),
-		//list("name" = "СТАЛЬ", "item_type" = /obj/item/stack/material/steel, "min" = 15, "max" = 100),
+		list("name" = "СТАЛЬ", "item_type" = /obj/item/stack/material/steel, "min" = 15, "max" = 100),
 		//list("name" = "СТЕКЛО", "item_type" = /obj/item/stack/material/glass, "min" = 15, "max" = 100),
 		//list("name" = "БАНАН", "item_type" = /obj/item/reagent_containers/food/grown/banana, "min" = 8, "max" = 24),
 		//list("name" = "КАРТОШКА", "item_type" = /obj/item/reagent_containers/food/grown/potato, "min" = 10, "max" = 32),
