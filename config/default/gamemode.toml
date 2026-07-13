@@ -1,6 +1,6 @@
 [gamemode]
 ## Set to true to scale amount of traitors based on amount of players.
-traitor_scaling = true
+traitor_scaling = false
 
 ## Uncomment and set value to disable antag objectives.
 ## "none" enable all
