@@ -14,7 +14,7 @@
 	var/smokeamount = 1
 	var/smoketime = 0
 	var/brand
-	var/filter_trans = 0.5
+	var/filter_trans = 0.7
 	var/smoke_effect = 0
 
 /obj/item/clothing/mask/smokable/Initialize()

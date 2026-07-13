@@ -332,7 +332,7 @@
 	ember_state = "cigarilloember"
 	smoketime = 480
 	chem_volume = 10
-	filter_trans = 0.25
+	filter_trans = 0.6
 	type_butt = /obj/item/cigbutt/woodbutt
 	filling = list(/datum/reagent/tobacco/fine = 15)
 	var/brand_overlay = ""
@@ -414,7 +414,7 @@
 	item_state = "cigaroff"
 	smoketime = 900
 	chem_volume = 22.5
-	filter_trans = 0.25
+	filter_trans = 0.6
 	filling = list(/datum/reagent/tobacco/fine = 25)
 	dynamic_icon = FALSE
 
