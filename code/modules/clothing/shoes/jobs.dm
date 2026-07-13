@@ -51,7 +51,7 @@
 /obj/item/clothing/shoes/workboots
 	name = "workboots"
 	desc = "A pair of steel-toed work boots designed for use in industrial settings. Safety first."
-	icon_state = "workboots"
+	icon_state = "ml_boots"
 	armor_values = alist(melee = 80, bullet = 40, laser = 50, energy = 25, bomb = 40, bio = 0)
 	siemens_coefficient = 0.4
 	can_hold_knife = 1
