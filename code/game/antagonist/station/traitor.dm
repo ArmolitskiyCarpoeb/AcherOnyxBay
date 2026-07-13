@@ -103,7 +103,7 @@ GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
 	give_intel(traitor_mob)
 	traitor_mob.skills["ranged"] = rand(50,70)
 	traitor_mob.skills["melee"] = rand(50,70)
-	traitor_mob.skills["medicine"] = rand(50,70)
+	traitor_mob.skills["medical"] = rand(50,70)
 	traitor_mob.skills["surgery"] = rand(50,70)
 
 /datum/antagonist/traitor/proc/give_intel(mob/living/traitor_mob)
