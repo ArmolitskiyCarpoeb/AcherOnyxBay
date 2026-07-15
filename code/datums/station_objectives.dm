@@ -29,7 +29,7 @@
 	if(!task_definitions || !task_definitions.len)
 		return FALSE
 
-	if(succ_obj == 2)
+	if(succ_obj == 3)
 		if(evacuation_controller.is_evacuating())
 			return
 		init_autotransfer()
