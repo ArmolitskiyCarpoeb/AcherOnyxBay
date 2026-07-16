@@ -189,6 +189,7 @@
 	DIRECT_OUTPUT(src, SPAN("warning", "If the title screen is black and chat is broken, resources are still downloading. Please be patient until the title screen appears."))
 	GLOB.clients += src
 	GLOB.ckey_directory[ckey] = src
+	preload_rsc = config.preload.state
 
 	// Instantiate tgui panel
 	tgui_panel = new(src)

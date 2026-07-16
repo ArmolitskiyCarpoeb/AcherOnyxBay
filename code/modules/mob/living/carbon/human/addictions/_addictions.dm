@@ -66,6 +66,10 @@ GLOBAL_LIST_INIT(all_addictions, init_addictions())
 	var/cause_reagent_amt = 0
 	var/antagonist_reagent_amt = 0
 
+//Реагенты которые уже метаболизировались, но все равно остались.
+//Если есть в системе, то нету спада удовлетворенности
+	var/traces_reagent = FALSE
+
 	for(var/r_type in H.chem_doses)
 		if(H.chem_doses[r_type] < min_chem_dose_required)
 			continue
@@ -75,6 +79,13 @@ GLOBAL_LIST_INIT(all_addictions, init_addictions())
 
 		if(is_path_in_list(r_type, antagonist_reagent))
 			antagonist_reagent_amt += H.chem_doses[r_type]
+
+	for(var/r_type in H.chem_traces)
+		if(H.chem_traces[r_type] < min_chem_dose_required)
+			continue
+		if(is_path_in_list(r_type, cause_reagent))
+			traces_reagent = TRUE
+			continue
 
 	// Compute relief from antagonists (does not replace the substance; only reduces symptoms)
 	var/relief = 0
@@ -117,10 +128,11 @@ GLOBAL_LIST_INIT(all_addictions, init_addictions())
 	if(cause_reagent_amt > 0)
 		H.addictions[type] += satisfaction_per_second * SSmobs.wait
 	else
-		var/effective_drain = drain_per_second
-		if(relief > 0)
-			effective_drain = drain_per_second * (1 - relief * antagonist_drain_reduction)
-		H.addictions[type] -= effective_drain * SSmobs.wait
+		if(!traces_reagent)
+			var/effective_drain = drain_per_second
+			if(relief > 0)
+				effective_drain = drain_per_second * (1 - relief * antagonist_drain_reduction)
+			H.addictions[type] -= effective_drain * SSmobs.wait
 
 	// Return absolute change for callers (kept compatible)
 	if(previous_satisfaction > H.addictions[type])

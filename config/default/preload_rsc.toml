@@ -1,0 +1,9 @@
+[preload]
+state = 2
+## 0 do not preload any resources
+
+## 1 preload compiled-in resources only
+
+## 2 preload all resources including those uploaded by players
+
+## URL preload resources from specified file
