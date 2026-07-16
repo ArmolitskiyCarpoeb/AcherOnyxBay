@@ -274,17 +274,23 @@
 
 	var/mult = 1
 	var/total = 0
+
+	var/list/items_to_delete = list()
 	for(var/offer in offers)
 		if((trade_flags & TRADER_WANTED_ONLY) && is_type_in_list(offer,wanted_items))
 			mult = want_multiplier
+			items_to_delete.Add(offer)
 		else if((trade_flags & TRADER_WANTED_ALL) && is_type_in_list(offer,possible_wanted_items))
 			mult = 1
+			items_to_delete.Add(offer)
 		else
-			return make_response(TRADER_FOUND_UNWANTED, "I don't want one of those items", 0, FALSE)
+			continue
 		total += get_value(offer) * mult
+	if(!items_to_delete.len)
+		return make_response(TRADER_FOUND_UNWANTED, "I don't want one of those items", 0, FALSE)
 
 	playsound(offers[1], 'sound/effects/teleport.ogg', 50, 1)
-	for(var/offer in offers)
+	for(var/offer in items_to_delete)
 		qdel(offer)
 	return make_response(TRADER_TRADE_COMPLETE, "Thanks for the goods!", total, TRUE)
 

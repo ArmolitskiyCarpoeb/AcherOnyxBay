@@ -34,6 +34,7 @@ GLOBAL_REAL(config, /datum/server_configuration) = new
 	var/datum/configuration_section/game_tips/game_tips = new
 	var/datum/configuration_section/mcu/mcu = new
 	var/datum/configuration_section/ws/ws = new
+	var/datum/configuration_section/preload/preload = new
 
 	/// Raw data. Stored here to avoid passing data between procs constantly
 	var/list/raw_data = list()
