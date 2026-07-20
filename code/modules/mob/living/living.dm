@@ -631,9 +631,20 @@
 		for(var/mob/living/carbon/metroid/M in view(1, src))
 			M.UpdateFeed()
 
-	for(var/mob/living/L in oview(7, src))
-		if(ishuman(L))
-			L.update_vision_cone()
+	// for(var/mob/living/L in oview(7, src))
+	// 	if(ishuman(L))
+	//  		L.update_vision_cone()
+
+	if(world.time > last_cone_update + 3 SECONDS || dir != last_dir)
+		var/list/nearby_mobs = oview(7, src)
+		for(var/mob/living/L in nearby_mobs)
+			if(!ishuman(L))
+				continue
+			// Проверка, что L смотрит в сторону src (упрощённо)
+			if(L.dir && get_dir(L, src) & L.dir) // проверяем, что направление взгляда пересекается с направлением к src
+				L.update_vision_cone()
+		last_cone_update = world.time
+		last_dir = dir
 
 	update_vision_cone()
 
