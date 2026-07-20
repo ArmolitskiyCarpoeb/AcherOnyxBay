@@ -50,8 +50,8 @@
 /obj/item/clothing/under/sl_suit
 	name = "amish suit"
 	desc = "It's a very amish looking suit."
-	icon_state = "sl_suit"
-	item_state = "sl_suit"
+	icon_state = "charcoal_suit"
+	item_state = "charcoal_suit"
 
 /obj/item/clothing/under/waiter
 	name = "waiter's outfit"
