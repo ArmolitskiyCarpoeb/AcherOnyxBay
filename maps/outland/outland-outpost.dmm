@@ -109,6 +109,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
+"bf" = (
+/obj/structure/extinguisher_cabinet{
+	layer = 3.1;
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/techfloor/maint,
+/area/outpost/engineering/hallway)
 "bg" = (
 /obj/structure/catwalk,
 /obj/random/coin,
@@ -1175,6 +1182,13 @@
 /obj/structure/largecrate/animal/cat,
 /turf/simulated/floor/plating,
 /area/outpost/abandoned)
+"tx" = (
+/obj/structure/extinguisher_cabinet{
+	layer = 3.1;
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/techfloor/maint,
+/area/outpost/engineering/storage)
 "ty" = (
 /obj/machinery/power/terminal{
 	dir = 4
@@ -1496,6 +1510,10 @@
 "AM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
+	},
+/obj/structure/extinguisher_cabinet{
+	layer = 3.1;
+	pixel_y = 32
 	},
 /turf/simulated/floor/plating,
 /area/outpost/engineering/telecomms)
@@ -10708,7 +10726,7 @@ cu
 cu
 cu
 cu
-aS
+tx
 LU
 mR
 mR
@@ -11908,7 +11926,7 @@ mR
 Wk
 Wk
 LV
-pU
+bf
 vp
 cI
 yS
