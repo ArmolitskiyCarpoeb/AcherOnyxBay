@@ -73,7 +73,7 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 		return
 	var/html = null
 	if(holder && CanUse(user))
-		html = GetInteractWindow(user)
+		html = GetInteractWindow()
 	if(html)
 		user.set_machine(holder)
 	else
@@ -87,7 +87,7 @@ var/list/wireColours = list("red", "blue", "green", "darkred", "orange", "brown"
 	popup.set_title_image(user.browse_rsc_icon(holder.icon, holder.icon_state))
 	popup.open()
 
-/datum/wires/proc/GetInteractWindow(mob/user)
+/datum/wires/proc/GetInteractWindow()
 	var/html = "<div class='block'>"
 	html += "<h3>Exposed Wires</h3>"
 	html += "<table[table_options]>"
