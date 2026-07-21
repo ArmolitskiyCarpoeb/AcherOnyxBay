@@ -1489,7 +1489,8 @@
 
 	var/drunk = FALSE
 	if(chem_effects && chem_effects[CE_ALCOHOL] > 0)
-		drunk = TRUE
+		if(slurring || dizziness || confused || eye_blurry || drowsyness)
+			drunk = TRUE
 
 	var/medbot = FALSE
 	if(mind && (mind.assigned_role == "Medical Doctor" || mind.assigned_role == "Chief Medical Officer"))
