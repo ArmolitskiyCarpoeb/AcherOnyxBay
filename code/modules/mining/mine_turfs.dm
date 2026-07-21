@@ -201,13 +201,13 @@ var/list/mining_floors = list()
 
 		if(!istype(P, /obj/item/pickaxe/drill))
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-			if(user.stats[STAT_ST] <= 5)
+			if(user.stats[STAT_ST] <= 7)
 				user.setClickCooldown(18)
-			if(user.stats[STAT_ST] <= 8)
+			if(user.stats[STAT_ST] <= 9)
 				user.setClickCooldown(12)
-			if(user.stats[STAT_ST] >= 13)
+			if(user.stats[STAT_ST] >= 11)
 				user.setClickCooldown(4)
-			if(user.stats[STAT_ST] >= 16)
+			if(user.stats[STAT_ST] >= 13)
 				user.setClickCooldown(1)
 		else
 			var/obj/item/pickaxe/drill/D = P
