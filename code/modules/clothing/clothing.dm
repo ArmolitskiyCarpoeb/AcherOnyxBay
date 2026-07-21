@@ -24,6 +24,9 @@
 	/// Value should be in range between 0 and 1.
 	rad_resist_type = /datum/rad_resist/clothing
 
+	//Для фова, маски и шлемы при выставлении TRUE начинают давать увеличенный ФОВ при надевании
+	var/has_fov = FALSE
+
 /datum/rad_resist/clothing
 	alpha_particle_resist = 17 MEGA ELECTRONVOLT
 	beta_particle_resist = 3 MEGA ELECTRONVOLT

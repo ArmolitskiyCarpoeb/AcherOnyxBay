@@ -631,24 +631,17 @@
 		for(var/mob/living/carbon/metroid/M in view(1, src))
 			M.UpdateFeed()
 
-	for(var/mob/living/L in oview(7, src))
-		if(ishuman(L))
-			L.update_vision_cone()
-
-	update_vision_cone()
-
 /mob/living/set_dir(newdir)
 	//var/old_dir = dir
 	..()//. = ..()
 	//if(dir != old_dir)
 	//	update_vision_cone()
-	update_vision_cone()
 
 /mob/living/carbon/human/update_canmove(prevent_update_icons = FALSE)
 	var/was_lying = lying
 	. = ..()
 	if(was_lying != lying)
-		update_vision_cone()
+		SEND_SIGNAL(src, SIGNAL_HUMAN_CHANGE_LYING)
 /*
 /mob/living/keybind_face_direction(direction)
 	facedir(direction)

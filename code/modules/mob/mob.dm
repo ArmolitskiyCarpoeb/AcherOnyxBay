@@ -1066,6 +1066,7 @@
 	if(facing_dir)
 		if(dir != facing_dir)
 			set_dir(facing_dir)
+	SEND_SIGNAL(src, SIGNAL_MOB_MOVED, newloc)
 
 /*
 /mob/set_dir()
