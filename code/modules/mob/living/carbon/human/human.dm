@@ -78,6 +78,8 @@
 	potenzia = roll("3d6+5")
 	resistenza = (prob(80) ? rand(150, 300) : pick(rand(10, 100), rand(350,600)))
 
+	AddComponent(/datum/component/fov_comp)
+
 /mob/living/carbon/human/Destroy()
 	GLOB.human_mob_list -= src
 
@@ -1504,7 +1506,7 @@
 	..()
 	if(update_hud)
 		handle_regular_hud_updates()
-	update_vision_cone()
+	//update_vision_cone()
 
 
 /mob/living/carbon/human/can_stand_overridden()

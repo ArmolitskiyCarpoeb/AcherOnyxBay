@@ -1058,7 +1058,6 @@
 		dir = newdir
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
-			H.update_vision_cone()
 	else if(facing_dir)
 		facing_dir = null
 	else
@@ -1082,6 +1081,7 @@
 	if(facing_dir)
 		if(dir != facing_dir)
 			set_dir(facing_dir)
+	SEND_SIGNAL(src, SIGNAL_MOB_MOVED, newloc)
 
 /*
 /mob/set_dir()

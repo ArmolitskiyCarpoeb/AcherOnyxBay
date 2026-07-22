@@ -610,7 +610,7 @@
 		var/mob/living/carbon/human/H_viewer = viewer
 		var/mob/living/carbon/human/H_target = M
 		// Если цель находится за спиной наблюдателя, не добавляем HUD-иконки
-		if(!H_target.InCone(H_viewer, H_viewer.dir))
+		if(!H_target.in_vision_cones[H_viewer.client])
 			return
 
 	// Если цель видна – отображаем HUD

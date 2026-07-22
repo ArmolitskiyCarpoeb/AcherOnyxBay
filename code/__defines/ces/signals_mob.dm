@@ -31,6 +31,12 @@
 /// Called on `/atom/proc/examine` (mob/user, list/examine_result)
 #define SIGNAL_MOB_EXAMINED_MORE "mob_examined_more"
 
+#define SIGNAL_MOB_MOVED "mob_moved"
+
+#define COMSIG_HUMAN_LOGIN "human_logged"
+
+#define SIGNAL_HUMAN_CHANGE_LYING "human_change_lying"
+
 #define COMSIG_MOB_IS_VIEWER "mob_is_viewer"					//from base of /get_actual_viewers(): (atom/center, depth, viewers_list)
 #define COMSIG_MOB_GET_VISIBLE_MESSAGE "mob_get_visible_message" //from base of atom/visible_message(): (atom/A, msg, range, ignored_mobs)
 #define COMPONENT_NO_VISIBLE_MESSAGE 1 //exactly what's said on the tin.

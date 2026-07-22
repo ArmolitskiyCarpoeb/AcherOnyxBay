@@ -338,7 +338,11 @@
 	infodisplay |= mymob.noise
 
 	if(hud_data.has_fov && istype(target))
-		var/mob/living/carbon/human/H = target
+		var/datum/component/fov_comp/comp = mymob.get_component(/datum/component/fov_comp)
+		if(comp)
+			LAZYADD(always_visible_inventory, comp.fov)
+
+		/*var/mob/living/carbon/human/H = target
 		H.fov = new /atom/movable/screen()
 		H.fov.icon = 'icons/mob/hide.dmi'
 		H.fov.icon_state = "combat"
@@ -346,7 +350,7 @@
 		H.fov.screen_loc = "1,1"
 		H.fov.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		H.fov.layer = UNDER_HUD_LAYER
-		LAZYADD(always_visible_inventory, H.fov)
+		LAZYADD(always_visible_inventory, H.fov)*/
 
 	if(hud_data.has_happiness)
 		mymob.happiness_icon = new /atom/movable/screen/happiness_icon()

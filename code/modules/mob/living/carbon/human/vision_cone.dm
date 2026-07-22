@@ -3,50 +3,61 @@
 // Allows mobs behind the player to be hidden from their field of vision.
 // Ported from Intergay-dev with hide.dmi screen overlay.
 ///////////////////////////////////////
+//Большая часть функционала перемещена в компонент fov.dm
+///////////////////////////////////////
 
-#define OPPOSITE_DIR(D) turn(D, 180)
-
-/atom/proc/InCone(atom/center = usr, dir = NORTH)
+/atom/proc/InCone(atom/center = usr, dir = NORTH, cone_angle = 90)
 	if(get_dist(center, src) == 0 || src == center)
 		return FALSE
-	var/d = get_dir(center, src)
 
-	if(!d || d == dir)
-		return TRUE
-	if(dir & (dir - 1))
-		return (d & ~dir) ? FALSE : TRUE
-	if(!(d & dir))
+	var/dx = src.x - center.x
+	var/dy = src.y - center.y
+
+	if(dx == 0 && dy == 0)
 		return FALSE
-	var/dx = abs(x - center.x)
-	var/dy = abs(y - center.y)
-	if(dx == dy)
+
+	var/vx = 0
+	var/vy = 0
+	if(dir & NORTH) vy = 1
+	if(dir & SOUTH) vy = -1
+	if(dir & EAST)  vx = 1
+	if(dir & WEST)  vx = -1
+
+	var/dot = vx * dx + vy * dy
+	if(dot > 0 && (dx * vy - dy * vx) == 0)
 		return TRUE
-	if(dy > dx)
-		return (dir & (NORTH|SOUTH)) ? TRUE : FALSE
-	return (dir & (EAST|WEST)) ? TRUE : FALSE
+
+	var/v_mag = sqrt(vx * vx + vy * vy)
+	var/t_mag = sqrt(dx * dx + dy * dy)
+
+	if(v_mag == 0 || t_mag == 0)
+		return FALSE
+
+	var/cos_theta = (vx * dx + vy * dy) / (v_mag * t_mag)
+
+	var/cos_half_cone = cos(cone_angle / 2)
+
+	if(cos_theta >= cos_half_cone)
+		return TRUE
+
+	return FALSE
+
+/proc/cone(atom/center = usr, dir = NORTH, cone_angle = 90, list/list = oview(center))
+	var/list/return_list = list()
+	for(var/mob/living/L in list)
+		if(L.InCone(center, dir, cone_angle))
+			return_list += L
+	return return_list
 
 /mob/dead/InCone(mob/center = usr, dir = NORTH)
 	return
 
-/mob/living/InCone(mob/center = usr, dir = NORTH)
-	. = ..()
-	for(var/obj/item/grab/G in center)
-		if(src == G.affecting)
-			return FALSE
-	return .
-
-/proc/cone(atom/center = usr, dir = NORTH, list/list = oview(center))
-	for(var/mob/living/A in list)
-		if(!A.InCone(center, dir))
-			list -= A
-	return list
-
 /mob/living/proc/update_vision_cone()
 	return
 
-/mob/living/proc/clear_cone_effect(image/I)
+/*/mob/living/proc/clear_cone_effect(image/I)
 	if(I)
-		qdel(I)
+		qdel(I)*/
 
 /mob/living/proc/clear_fov_footstep(client/C, image/I)
 	if(C && I)
@@ -55,7 +66,10 @@
 
 /mob/living/proc/handle_fov_footsteps()
 	for(var/client/C in in_vision_cones)
-		if(src in C.hidden_mobs)
+		var/datum/component/fov_comp/comp = get_component(/datum/component/fov_comp)
+		if(!comp)
+			return
+		if(src in comp.hidden_mobs)
 			var/turf/T = get_turf(src)
 			if(!T)
 				continue
@@ -67,6 +81,7 @@
 		else
 			in_vision_cones.Remove(C)
 
+/*
 /mob/living/carbon/human/update_vision_cone()
 	var/client/C = client
 	if(!C || !fov)
@@ -132,6 +147,7 @@
 		return
 	fov.alpha = 0
 	usefov = FALSE
+*/
 /*
 /mob/living/carbon/human/verb/toggle_fov()
 	set name = "Toggle Field of View"

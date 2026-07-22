@@ -27,6 +27,8 @@
 
 #define GLOBAL_LIST_INIT(X, InitValue) GLOBAL_RAW(/list/##X); GLOBAL_MANAGED(X, InitValue)
 
+#define GLOBAL_ALIST_INIT(X, InitValue) GLOBAL_RAW(/alist/##X); GLOBAL_MANAGED(X, InitValue)
+
 #define GLOBAL_LIST_EMPTY(X) GLOBAL_LIST_INIT(X, list())
 
 /// Create a typed list global with an initializer expression

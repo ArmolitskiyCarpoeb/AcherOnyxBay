@@ -441,7 +441,8 @@
 
 	play_handling_sound(slot)
 
-	SEND_SIGNAL(src, SIGNAL_ITEM_EQUIPPED, src, user, slot)
+	SEND_SIGNAL(src, SIGNAL_ITEM_EQUIPPED, user, slot)
+	SEND_SIGNAL(user, SIGNAL_MOB_EQUIP_ITEM, src, slot)
 
 //Defines which slots correspond to which slot flags
 var/list/global/slot_flags_enumeration = list(
