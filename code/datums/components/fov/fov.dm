@@ -187,3 +187,9 @@ GLOBAL_ALIST_INIT(fov_angles, alist(FOV_NORMAL = 90, FOV_MASK = 160, FOV_HELMET 
 	for(var/mob/living/T in hidden_mobs)
 		T.in_vision_cones -= C
 	hidden_mobs.Cut()
+#undef SHOW
+#undef HIDE
+#undef FOV_NORMAL
+#undef FOV_MASK
+#undef FOV_HELMET
+#undef IS_OTHER
