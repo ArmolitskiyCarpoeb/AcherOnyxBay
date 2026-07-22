@@ -113,6 +113,7 @@
 			update_thirst_event()
 			update_clown_event()
 			update_dirty_event()
+			handle_drunk_music()
 			//if(life_tick % 20 == 10)
 			//	update_dirty_event()
 
@@ -725,6 +726,19 @@
 			drowsyness += min(stasis_value, 3)
 			if(!stat && prob(1))
 				to_chat(src, "<span class='notice'>You feel slow and sluggish...</span>")
+
+	if(lying && facing_dir)
+		facing_dir = null
+		update_fixdir_icon()
+
+		if(client)
+			for(var/atom/movable/screen/S in client.screen)
+				if(istype(S, /atom/movable/screen/fixdir_icon))
+					S.icon_state = "fixdir_off"
+					break
+
+	if(!lying && !facing_dir)
+		update_fixdir_icon()
 
 	return 1
 
@@ -1468,3 +1482,26 @@
 	..()
 	if(MUTATION_XRAY in mutations)
 		set_sight(sight|SEE_TURFS|SEE_MOBS|SEE_OBJS)
+
+/mob/living/carbon/human/proc/handle_drunk_music()
+	if(!client)
+		return
+
+	var/drunk = FALSE
+	if(chem_effects && chem_effects[CE_ALCOHOL] > 0)
+		if(slurring || dizziness || confused || eye_blurry || drowsyness)
+			drunk = TRUE
+
+	var/medbot = FALSE
+	if(mind && (mind.assigned_role == "Medical Doctor" || mind.assigned_role == "Chief Medical Officer"))
+		medbot = TRUE
+
+	if(drunk && medbot)
+		if(!drunk_music_playing)
+			playsound_local(src, 'sound/music/serpenti.mp3', 25, 0)
+			drunk_music_playing = TRUE
+	else
+		if(drunk_music_playing)
+			//if(client)
+				//client.clear_sound()
+			drunk_music_playing = FALSE

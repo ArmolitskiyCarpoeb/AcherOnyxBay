@@ -777,6 +777,7 @@
 			lying = 0
 
 	if(lying_old != lying)
+		clear_facing()
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/lying, slowdown = (lying ? 10 + (weakened * 2) : 0))
 		if(!prevent_update_icons)
 			update_icons()
@@ -791,7 +792,10 @@
 /mob/proc/facedir(ndir)
 	if(!canface() || moving)
 		return 0
-	set_dir(ndir)
+	if(facing_dir)
+		set_face_dir(ndir)
+	else
+		set_dir(ndir)
 	if(buckled && buckled.buckle_movable)
 		buckled.set_dir(ndir)
 	setMoveCooldown(movement_delay())
@@ -891,7 +895,6 @@
 
 /mob/proc/set_resting(new_state)
 	resting = new_state
-	// Сбрасываем фиксацию направления, когда ложимся
 	if(new_state)
 		facing_dir = null
 		update_fixdir_icon()
@@ -1031,17 +1034,31 @@
 	// 	to_chat(usr, "You are now facing [dir2text(facing_dir)].")
 
 /mob/proc/update_fixdir_icon()
-    if(fixdir_icon)
-        fixdir_icon.icon_state = facing_dir ? "fixdir_on" : "fixdir_off"
+	var/new_state = facing_dir ? "fixdir_on" : "fixdir_off"
+
+	if(fixdir_icon)
+		fixdir_icon.icon_state = new_state
+
+	if(client)
+		for(var/atom/movable/screen/S in client.screen)
+			if(istype(S, /atom/movable/screen/fixdir_icon))
+				S.icon_state = new_state
+				break
+
+/mob/proc/clear_facing()
+	if(facing_dir)
+		facing_dir = null
+		update_fixdir_icon()
 
 /mob/proc/set_face_dir(newdir)
 	if(newdir == FALSE)
 		facing_dir = null
-	if(!isnull(facing_dir) && newdir == facing_dir)
-		facing_dir = null
 	else if(newdir)
-		set_dir(newdir)
 		facing_dir = newdir
+		dir = newdir
+		if(ishuman(src))
+			var/mob/living/carbon/human/H = src
+			H.update_vision_cone()
 	else if(facing_dir)
 		facing_dir = null
 	else
@@ -1055,11 +1072,10 @@
 			facing_dir = null
 			update_fixdir_icon()
 		else
-			// Принудительно устанавливаем зафиксированное направление, игнорируя newdir
 			if(dir != facing_dir)
 				dir = facing_dir
 			return
-	return ..(newdir)  // если фиксации нет, передаём новое направление дальше
+	return ..(newdir)
 
 /mob/Move(newloc, direct)
 	. = ..()
@@ -1236,7 +1252,10 @@
 	client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
 
 /mob/keybind_face_direction(direction)
-	facedir(direction)
+	if(facing_dir)
+		set_face_dir(direction)
+	else
+		facedir(direction)
 
 /mob/get_mass()
 	return mob_size

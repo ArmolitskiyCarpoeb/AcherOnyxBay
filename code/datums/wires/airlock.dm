@@ -9,7 +9,6 @@
 	holder_type = /obj/machinery/door/airlock
 	wire_count = 12
 	window_y = 570
-	// Temporary wire mapping for current low-skill user interaction
 	var/list/current_user_wires = null
 	var/mob/current_user = null
 
@@ -36,19 +35,69 @@ var/const/AIRLOCK_WIRE_LIGHT = 2048
 		return 1
 	return 0
 
+/datum/wires/airlock/proc/GetWireDescription(index)
+	switch(index)
+		if(AIRLOCK_WIRE_IDSCAN) return "ID Scanner"
+		if(AIRLOCK_WIRE_MAIN_POWER1) return "Main Power (1)"
+		if(AIRLOCK_WIRE_MAIN_POWER2) return "Main Power (2)"
+		if(AIRLOCK_WIRE_DOOR_BOLTS) return "Door Bolts"
+		if(AIRLOCK_WIRE_BACKUP_POWER1) return "Backup Power (1)"
+		if(AIRLOCK_WIRE_BACKUP_POWER2) return "Backup Power (2)"
+		if(AIRLOCK_WIRE_OPEN_DOOR) return "Door Open"
+		if(AIRLOCK_WIRE_AI_CONTROL) return "AI Control"
+		if(AIRLOCK_WIRE_ELECTRIFY) return "Electrify"
+		if(AIRLOCK_WIRE_SAFETY) return "Safety"
+		if(AIRLOCK_WIRE_SPEED) return "Speed"
+		if(AIRLOCK_WIRE_LIGHT) return "Light"
+	return null
+
+/datum/wires/airlock/proc/GenerateUserWires()
+	var/list/user_wires = list()
+	var/list/colours_to_pick = wireColours.Copy()
+	var/list/indexes_to_pick = list()
+	for(var/i = 1; i < (1 << wire_count); i += i)
+		indexes_to_pick += i
+	colours_to_pick.len = wire_count
+	while(colours_to_pick.len && indexes_to_pick.len)
+		var/colour = pick_n_take(colours_to_pick)
+		var/index = pick_n_take(indexes_to_pick)
+		user_wires[colour] = index
+	return user_wires
+
+/datum/wires/airlock/proc/GetUserWireMapping(mob/user)
+	if(!user || !isliving(user))
+		return wires
+	var/mob/living/L = user
+	if(L.skills && L.skills["engineering"] >= 25)
+		return wires
+	if(!current_user_wires || current_user != L)
+		current_user_wires = GenerateUserWires()
+		current_user = L
+	return current_user_wires
+
+/datum/wires/airlock/Interact(mob/living/user)
+	if(!user)
+		return
+	var/html = null
+	if(holder && CanUse(user))
+		html = GetInteractWindow(user)
+	if(html)
+		user.set_machine(holder)
+	else
+		user.unset_machine()
+		close_browser(user, "window=wires")
+		return
+
+	var/datum/browser/popup = new(user, "wires", holder.name, window_x, window_y)
+	popup.set_content(html)
+	popup.set_title_image(user.browse_rsc_icon(holder.icon, holder.icon_state))
+	popup.open()
+
 /datum/wires/airlock/GetInteractWindow(mob/user)
 	var/obj/machinery/door/airlock/A = holder
-	var/haspower = A.arePowerSystemsOn() //If there's no power, then no lights will be on.
+	var/haspower = A.arePowerSystemsOn()
 
-	// Get user-specific wire mapping if they have low engineering skill
-	var/list/display_wires = wires
-	if(user && isliving(user))
-		var/mob/living/L = user
-		if(L.skills && !L.skillcheck(L.skills["engineering"], 25, null, "engineering") && !L.newstatcheck(L.stats[STAT_IQ], 9, null, STAT_IQ)) // Low engineering skill threshold
-			// Regenerate wires for low-skill users (randomizes each time they view)
-			current_user_wires = GenerateUserWires()
-			current_user = L
-			display_wires = current_user_wires
+	var/list/display_wires = GetUserWireMapping(user)
 
 	var/html = "<div class='block'>"
 	html += "<h3>Exposed Wires</h3>"
@@ -66,6 +115,22 @@ var/const/AIRLOCK_WIRE_LIGHT = 2048
 	html += "</table>"
 	html += "</div>"
 
+	if(user && isliving(user))
+		var/mob/living/L = user
+		if(L.skills && L.skills["engineering"] >= 45)
+			html += "<br><b>Wire Functions:</b><br>"
+			html += "<table>"
+			for(var/colour in display_wires)
+				var/actual_index = display_wires[colour]
+				var/desc = GetWireDescription(actual_index)
+				if(desc)
+					html += "<tr><td><font color='[colour]'>&#9724;</font>[capitalize(colour)]</td><td> - </td><td>[desc]</td></tr>"
+			html += "</table>"
+
+	if (random)
+		html += "<i>\The [holder] appears to have tamper-resistant electronics installed.</i><br><br>"
+
+	// Индикаторы состояния двери
 	html += text("<br>\n[]<br>\n[]<br>\n[]<br>\n[]<br>\n[]<br>\n[]<br>\n[]<br>\n[]",
 	(A.locked ? "The door bolts have fallen!" : "The door bolts look up."),
 	((A.lights && haspower) ? "The door bolt lights are on." : "The door bolt lights are off!"),
@@ -76,106 +141,7 @@ var/const/AIRLOCK_WIRE_LIGHT = 2048
 	((A.normalspeed==0 && haspower)? "The 'Check Timing Mechanism' light is on." : "The 'Check Timing Mechanism' light is off."),
 	((A.aiDisabledIdScanner==0 && haspower)? "The IDScan light is on." : "The IDScan light is off."))
 
-	if (random)
-		html += "<i>\The [holder] appears to have tamper-resistant electronics installed.</i><br><br>"
-
 	return html
-
-/datum/wires/airlock/proc/GenerateUserWires()
-	// Generate a randomized wire mapping for this user
-	var/list/user_wires = list()
-	var/list/colours_to_pick = wireColours.Copy()
-	var/list/indexes_to_pick = list()
-
-	// Generate our indexes (same as base wires)
-	for(var/i = 1; i < (1 << wire_count); i += i)
-		indexes_to_pick += i
-
-	colours_to_pick.len = wire_count
-
-	// Shuffle the mapping
-	while(colours_to_pick.len && indexes_to_pick.len)
-		var/colour = pick_n_take(colours_to_pick)
-		var/index = pick_n_take(indexes_to_pick)
-		user_wires[colour] = index
-
-	return user_wires
-
-/datum/wires/airlock/proc/GetUserWireMapping(mob/user)
-	// Get the user's wire mapping, or return base wires if they have high skill
-	if(!user || !isliving(user))
-		return wires
-
-	var/mob/living/L = user
-	if(L.skills && L.skills["engineering"] >= 30)
-		return wires // High skill users see real wires
-
-	// Low skill users: if this is the same user and we have a current mapping, use it
-	// Otherwise generate new randomized wires (happens on each cut/pulse action)
-	if(current_user == L && current_user_wires)
-		var/list/mapping = current_user_wires
-		// Regenerate for next time
-		current_user_wires = GenerateUserWires()
-		return mapping
-
-	// Generate new randomized wires
-	current_user_wires = GenerateUserWires()
-	current_user = L
-	return current_user_wires
-
-/datum/wires/airlock/CutWireColour(colour, mob/user)
-	// Translate user's color to actual wire index
-	var/list/user_wires = GetUserWireMapping(user)
-	var/actual_index = user_wires[colour]
-	if(!actual_index)
-		// Fallback to base wires if color not found
-		actual_index = GetIndex(colour)
-	CutWireIndex(actual_index)
-
-/datum/wires/airlock/PulseColour(colour, mob/user)
-	// Translate user's color to actual wire index
-	var/list/user_wires = GetUserWireMapping(user)
-	var/actual_index = user_wires[colour]
-	if(!actual_index)
-		// Fallback to base wires if color not found
-		actual_index = GetIndex(colour)
-	PulseIndex(actual_index)
-
-/datum/wires/airlock/Topic(href, href_list)
-	..()
-	if(in_range(holder, usr) && isliving(usr))
-		var/mob/living/L = usr
-		if(CanUse(L) && href_list["action"])
-			var/obj/item/I = L.get_active_hand()
-			holder.add_hiddenprint(L)
-			if(href_list["cut"]) // Toggles the cut/mend status
-				if(isWirecutter(I))
-					var/colour = href_list["cut"]
-					CutWireColour(colour, L)
-				else
-					to_chat(L, "<span class='error'>You need wirecutters!</span>")
-			else if(href_list["pulse"])
-				if(isMultitool(I))
-					var/colour = href_list["pulse"]
-					PulseColour(colour, L)
-				else
-					to_chat(L, "<span class='error'>You need a multitool!</span>")
-			else if(href_list["attach"])
-				var/colour = href_list["attach"]
-				// Detach
-				if(IsAttached(colour))
-					var/obj/item/O = Detach(colour)
-					if(O)
-						L.pick_or_drop(O)
-				// Attach
-				else
-					if(istype(I, /obj/item/device/assembly/signaler) && L.drop(I))
-						Attach(colour, I)
-					else
-						to_chat(L, "<span class='error'>You need a remote signaller!</span>")
-
-		// Update Window
-		Interact(usr)
 
 /datum/wires/airlock/UpdateCut(index, mended)
 
@@ -213,8 +179,6 @@ var/const/AIRLOCK_WIRE_LIGHT = 2048
 		if(AIRLOCK_WIRE_AI_CONTROL)
 
 			if(!mended)
-				//one wire for AI control. Cutting this prevents the AI from controlling the door unless it has hacked the door through the power connection (which takes about a minute). If both main and backup power are cut, as well as this wire, then the AI cannot operate or hack the door at all.
-				//aiControlDisabled: If 1, AI control is disabled until the AI hacks back in and disables the lock. If 2, the AI has bypassed the lock. If -1, the control is enabled but the AI had bypassed it earlier, so if it is disabled again the AI would have no trouble getting back in.
 				if(A.aiControlDisabled == 0)
 					A.aiControlDisabled = 1
 				else if(A.aiControlDisabled == -1)
@@ -227,7 +191,6 @@ var/const/AIRLOCK_WIRE_LIGHT = 2048
 
 		if(AIRLOCK_WIRE_ELECTRIFY)
 			if(!mended)
-				//Cutting this wire electrifies the door, so that the next person to touch the door without insulated gloves gets electrocuted.
 				A.electrify(-1)
 			else
 				A.electrify(0)
@@ -252,22 +215,17 @@ var/const/AIRLOCK_WIRE_LIGHT = 2048
 	var/obj/machinery/door/airlock/A = holder
 	switch(index)
 		if(AIRLOCK_WIRE_IDSCAN)
-			//Sending a pulse through flashes the red light on the door (if the door has power).
 			if(A.arePowerSystemsOn() && A.density)
 				A.do_animate("deny")
 		if(AIRLOCK_WIRE_MAIN_POWER1, AIRLOCK_WIRE_MAIN_POWER2)
-			//Sending a pulse through either one causes a breaker to trip, disabling the door for 10 seconds if backup power is connected, or 1 minute if not (or until backup power comes back on, whichever is shorter).
 			A.loseMainPower()
 		if(AIRLOCK_WIRE_DOOR_BOLTS)
-			//one wire for door bolts. Sending a pulse through this drops door bolts if they're not down (whether power's on or not),
-			//raises them if they are down (only if power's on)
 			if(!A.locked)
 				A.lock()
 			else
 				A.unlock()
 
 		if(AIRLOCK_WIRE_BACKUP_POWER1, AIRLOCK_WIRE_BACKUP_POWER2)
-			//two wires for backup power. Sending a pulse through either one causes a breaker to trip, but this does not disable it unless main power is down too (in which case it is disabled for 1 minute or however long it takes main power to come back, whichever is shorter).
 			A.loseBackupPower()
 		if(AIRLOCK_WIRE_AI_CONTROL)
 			if(A.aiControlDisabled == 0)
@@ -283,11 +241,8 @@ var/const/AIRLOCK_WIRE_LIGHT = 2048
 						A.aiControlDisabled = -1
 
 		if(AIRLOCK_WIRE_ELECTRIFY)
-			//one wire for electrifying the door. Sending a pulse through this electrifies the door for 30 seconds.
 			A.electrify(30)
 		if(AIRLOCK_WIRE_OPEN_DOOR)
-			//tries to open the door without ID
-			//will succeed only if the ID wire is cut or the door requires no access and it's not emagged
 			if(A.emagged)	return
 			if(!A.requiresID() || A.check_access(null))
 				if(A.density)	A.open()

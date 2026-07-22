@@ -139,3 +139,5 @@
 	var/list/HadSex = list()
 
 	var/account_number
+
+	var/drunk_music_playing = FALSE

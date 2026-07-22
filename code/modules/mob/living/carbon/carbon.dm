@@ -447,6 +447,8 @@
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
 	Stun(Ceiling(stun_duration/3)) // At least 1 second of actual stun
 	Weaken(stun_duration)
+	facing_dir = null
+	update_fixdir_icon()
 	return TRUE
 
 /mob/living/carbon/slip_on_obj(obj/slipped_on, stun_duration = 8, slip_dist = 0)
