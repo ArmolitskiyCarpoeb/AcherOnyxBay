@@ -1506,7 +1506,7 @@
 	..()
 	if(update_hud)
 		handle_regular_hud_updates()
-	update_vision_cone()
+	//update_vision_cone()
 
 
 /mob/living/carbon/human/can_stand_overridden()

@@ -80,7 +80,7 @@
 
 	if(!. || initial_turf == loc)
 		return
-	SEND_GLOBAL_SIGNAL(SIGNAL_GLOBAL_MOVED_HUMAN, initial_turf, loc)
+	SEND_GLOBAL_SIGNAL(SIGNAL_GLOBAL_MOVED_HUMAN, src, initial_turf, loc)
 
 	if(poise)
 		if(m_intent == M_RUN && src.poise >= 1)

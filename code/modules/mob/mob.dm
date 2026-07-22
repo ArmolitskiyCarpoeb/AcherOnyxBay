@@ -1058,7 +1058,6 @@
 		dir = newdir
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
-			H.update_vision_cone()
 	else if(facing_dir)
 		facing_dir = null
 	else

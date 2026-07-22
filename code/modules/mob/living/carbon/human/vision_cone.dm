@@ -3,7 +3,8 @@
 // Allows mobs behind the player to be hidden from their field of vision.
 // Ported from Intergay-dev with hide.dmi screen overlay.
 ///////////////////////////////////////
-
+//Большая часть функционала перемещена в компонент fov.dm
+///////////////////////////////////////
 
 /atom/proc/InCone(atom/center = usr, dir = NORTH, cone_angle = 90)
 	if(get_dist(center, src) == 0 || src == center)
@@ -42,10 +43,11 @@
 	return FALSE
 
 /proc/cone(atom/center = usr, dir = NORTH, cone_angle = 90, list/list = oview(center))
-	for(var/atom/A in list)
-		if(!A.InCone(center, dir, cone_angle))
-			list -= A
-	return list
+	var/list/return_list = list()
+	for(var/mob/living/L in list)
+		if(L.InCone(center, dir, cone_angle))
+			return_list += L
+	return return_list
 
 /mob/dead/InCone(mob/center = usr, dir = NORTH)
 	return
@@ -53,9 +55,9 @@
 /mob/living/proc/update_vision_cone()
 	return
 
-/mob/living/proc/clear_cone_effect(image/I)
+/*/mob/living/proc/clear_cone_effect(image/I)
 	if(I)
-		qdel(I)
+		qdel(I)*/
 
 /mob/living/proc/clear_fov_footstep(client/C, image/I)
 	if(C && I)
