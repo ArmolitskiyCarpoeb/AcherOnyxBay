@@ -245,11 +245,11 @@
 	if(istype(user))
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		user.do_attack_animation(src)
-	if(!damage)
+	if(!user.get_force(damage))
 		return
-	if(damage >= 10)
+	if(user.get_force(damage) >= 10)
 		visible_message("<span class='danger'>[user] smashes into [src]!</span>")
-		take_damage(damage)
+		take_damage(user.get_force(damage))
 	else
 		visible_message("<span class='notice'>\The [user] bonks \the [src] harmlessly.</span>")
 	return 1
@@ -301,9 +301,9 @@
 	else
 		W.set_cooldown()
 		user.do_attack_animation(src)
-		if((W.damtype == BRUTE || W.damtype == BURN) && W.force >= 3)
+		if((W.damtype == BRUTE || W.damtype == BURN) && user.get_force(W.force) >= 3)
 			visible_message(SPAN("danger", "[src] has been hit by [user] with [W]."))
-			hit(W.force)
+			hit(user.get_force(W.force))
 			if(health <= 7)
 				set_anchored(FALSE)
 				step(src, get_dir(user, src))

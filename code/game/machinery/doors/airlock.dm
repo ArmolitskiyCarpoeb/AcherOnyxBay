@@ -65,7 +65,7 @@
 
 /obj/machinery/door/airlock/attack_generic(mob/user, damage)
 	if(stat & (BROKEN|NOPOWER))
-		if(damage >= 10)
+		if(user.get_force(damage) >= 10)
 			if(density)
 				visible_message("<span class='danger'>\The [user] forces \the [src] open!</span>")
 				INVOKE_ASYNC(src, nameof(.proc/open), TRUE)

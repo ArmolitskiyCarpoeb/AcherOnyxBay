@@ -41,9 +41,9 @@
 	user.do_attack_animation(src)
 	obj_attack_sound(W)
 	shake_animation(stime = 2)
-	if(W.force >= 5)
+	if(user.get_force(W.force) >= 5)
 		user.visible_message(SPAN("danger", "\The [src] has been [pick(W.attack_verb)] with [W] by [user]!"))
-		take_damage(W.force)
+		take_damage(user.get_force(W.force))
 	else
 		user.visible_message(SPAN("danger", "[user] hits \the [src] with \the [W], but it bounces off!"))
 	return

@@ -54,7 +54,7 @@
 	add_think_ctx("close_context", CALLBACK(src, nameof(.proc/close)), 0)
 
 /obj/machinery/door/attack_generic(mob/user, damage)
-	if(damage >= 10)
+	if(user.get_force(damage) >= 10)
 		visible_message("<span class='danger'>\The [user] smashes into \the [src]!</span>")
 		take_damage(damage)
 	else
@@ -307,13 +307,13 @@
 			if(I.force <= 0)
 				user.visible_message(SPAN("notice", "\The [user] smacks \the [src] with \the [I] with no visible effect."))
 				playsound(loc, hitsound, 10, 1)
-			else if(I.force < min_force)
+			else if(user.get_force(I.force) < min_force)
 				user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [I] with no visible effect.</span>")
 				playsound(loc, hitsound, 25, 1)
 			else
 				user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [I]!</span>")
 				playsound(loc, hitsound, 100, 1)
-				take_damage(I.force)
+				take_damage(user.get_force(I.force))
 				shake_animation(3, 3)
 		return
 

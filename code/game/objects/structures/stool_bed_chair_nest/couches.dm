@@ -49,9 +49,9 @@
 		user.do_attack_animation(src)
 		obj_attack_sound(W)
 		shake_animation(stime = 2)
-		if(W.force >= 5)
+		if(user.get_force(W.force) >= 5)
 			user.visible_message(SPAN("danger", "\The [src] has been [pick(W.attack_verb)] with [W] by [user]!"))
-			health -= W.force
+			health -= user.get_force(W.force)
 			update_icon()
 			if(health <= 0)
 				visible_message(SPAN("danger", "\The [src] falls apart!"))

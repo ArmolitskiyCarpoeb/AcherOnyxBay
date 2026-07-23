@@ -200,7 +200,7 @@
 
 	else
 		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
-		take_damage(W.force)
+		take_damage(user.get_force(W.force))
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
 	return ..()

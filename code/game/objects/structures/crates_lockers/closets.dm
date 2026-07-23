@@ -550,7 +550,7 @@
 			attack_animation(user)
 			user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
 			playsound(loc, hitsound, rand(50,75), 1)
-			src.take_damage(W.force / 1.25)
+			src.take_damage(user.get_force(W.force) / 1.25)
 		else
 			src.togglelock(user, W)
 	else

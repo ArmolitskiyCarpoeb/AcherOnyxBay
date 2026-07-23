@@ -109,7 +109,7 @@
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	var/rotting = (locate(/obj/effect/overlay/wallrot) in src)
-	if(!damage || !wallbreaker)
+	if(!user.get_force(damage) || !wallbreaker)
 		try_touch(user, rotting)
 		return
 
@@ -117,9 +117,9 @@
 		return success_smash(user)
 
 	if(reinf_material)
-		if(damage >= max(material.hardness,reinf_material.hardness))
+		if(user.get_force(damage) >= max(material.hardness,reinf_material.hardness))
 			return success_smash(user)
-	else if(wallbreaker == 2 || damage >= material.hardness)
+	else if(wallbreaker == 2 || user.get_force(damage) >= material.hardness)
 		return success_smash(user)
 	return fail_smash(user)
 
@@ -147,7 +147,7 @@
 			for(var/obj/effect/overlay/wallrot/WR in src)
 				qdel(WR)
 			return
-		else if(!is_sharp(W) && W.force >= 10 || W.force >= 20)
+		else if(!is_sharp(W) && user.get_force(W.force) >= 10 || user.get_force(W.force) >= 20)
 			to_chat(user, SPAN("notice","\The [src] crumbles away under the force of your [W.name]."))
 			src.dismantle_wall(1)
 			return
@@ -377,10 +377,10 @@
 		W.set_cooldown()
 		user.do_attack_animation(src)
 		var/dam_prob = min(125, material.hardness*1.4)
-		if(dam_prob < 125 && W.force > (dam_threshhold/6))
+		if(dam_prob < 125 && user.get_force(W.force) > (dam_threshhold/6))
 			visible_message(SPAN("danger","\The [user] attacks \the [src] with \the [W]!"))
 			playsound(src, 'sound/effects/metalhit2.ogg', rand(50,75), 1, -1)
-			take_damage(W.force)
+			take_damage(user.get_force(W.force))
 		else
 			visible_message(SPAN("danger","\The [user] attacks \the [src] with \the [W], but it bounces off!"))
 			playsound(src, 'sound/effects/metalhit2.ogg', 20, 1, -1)

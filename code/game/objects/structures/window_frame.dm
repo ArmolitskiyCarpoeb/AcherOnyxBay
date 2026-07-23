@@ -553,11 +553,11 @@
 	visible_message(SPAN("danger", "[user] [attack_verb] \the [src]!"))
 	attack_animation(user)
 	if(outer_pane)
-		outer_pane.take_damage(damage * pane_melee_mult)
+		outer_pane.take_damage(user.get_force(damage) * pane_melee_mult)
 	else if(inner_pane)
-		inner_pane.take_damage(damage * pane_melee_mult)
+		inner_pane.take_damage(user.get_force(damage) * pane_melee_mult)
 	else
-		health -= damage
+		health -= user.get_force(damage)
 		spawn()
 			healthcheck()
 		return TRUE
@@ -577,9 +577,9 @@
 		W.set_cooldown()
 		user.do_attack_animation(src)
 		if(affected)
-			if((W.damtype == BRUTE || W.damtype == BURN) && W.force >= 3)
+			if((W.damtype == BRUTE || W.damtype == BURN) && user.get_force(W.force) >= 3)
 				visible_message(SPAN("danger", "[src] has been hit by [user] with [W]."))
-				affected.take_damage(W.force * (affected.reinforced ? 0.5 : 1) * pane_melee_mult)
+				affected.take_damage(user.get_force(W.force) * (affected.reinforced ? 0.5 : 1) * pane_melee_mult)
 			else
 				visible_message(SPAN("danger", "[user] hits [src] with [W], but it bounces off!"))
 				playsound(loc, GET_SFX(SFX_GLASS_HIT), 75, 1)
@@ -594,7 +594,7 @@
 				if("fire")
 					health -= W.force
 				if("brute")
-					health -= W.force * 0.1
+					health -= user.get_force(W.force) * 0.1
 			healthcheck()
 			return
 

@@ -1337,3 +1337,8 @@
 /mob/proc/has_magnetised_footing()
 	var/obj/item/shoes = get_equipped_item(slot_shoes)
 	return istype(shoes) && (shoes.item_flags & ITEM_FLAG_MAGNETISED)
+
+/mob/proc/get_force(force)
+	if(!force)
+		return 1
+	return force
