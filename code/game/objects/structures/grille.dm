@@ -156,7 +156,7 @@
 			if("fire")
 				health -= W.force
 			if("brute")
-				health -= W.force * 0.1
+				health -= user.get_force(W.force) * 0.1
 		healthcheck()
 		return
 
@@ -218,7 +218,7 @@
 /obj/structure/grille/attack_generic(mob/user, damage, attack_verb)
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
 	attack_animation(user)
-	health -= damage
+	health -= user.get_force(damage)
 	spawn(1) healthcheck()
 	return 1
 

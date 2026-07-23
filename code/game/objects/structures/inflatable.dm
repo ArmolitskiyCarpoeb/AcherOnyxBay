@@ -181,9 +181,9 @@
 			to_chat(user, SPAN("notice", "You patch some damage in \the [src] with \the [W]!"))
 			take_damage(-3)
 			return TRUE
-	else if((W.damtype == BRUTE || W.damtype == BURN) && (W.can_puncture() || W.force > 10))
+	else if((W.damtype == BRUTE || W.damtype == BURN) && (W.can_puncture() || user.get_force(W.force) > 10))
 		..()
-		if(hit(W.force))
+		if(hit(user.get_force(W.force)))
 			visible_message(SPAN("danger", "[user] pierces [src] with [W]!"))
 	return
 
@@ -236,7 +236,7 @@
 	return TRUE
 
 /obj/structure/inflatable/attack_generic(mob/user, damage, attack_verb)
-	health -= damage
+	health -= user.get_force(damage)
 	attack_animation(user)
 	if(health <= 0)
 		user.visible_message(SPAN("danger", "[user] [attack_verb] open the [src]!"))

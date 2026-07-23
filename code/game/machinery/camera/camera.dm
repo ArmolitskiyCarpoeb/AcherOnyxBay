@@ -252,12 +252,12 @@
 
 	else if(W.damtype == BRUTE || W.damtype == BURN) //bashing cameras
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-		if (W.force >= src.toughness)
+		if (user.get_force(W.force) >= src.toughness)
 			user.do_attack_animation(src)
 			visible_message("<span class='warning'><b>[src] has been [pick(W.attack_verb)] with [W] by [user]!</b></span>")
 			shake_animation(stime = 3)
 			obj_attack_sound(W)
-		take_damage(W.force)
+		take_damage(user.get_force(W.force))
 
 	else
 		..()

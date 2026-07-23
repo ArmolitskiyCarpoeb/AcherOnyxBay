@@ -92,7 +92,7 @@
 				shove_everything(shove_objects = FALSE, shove_items = FALSE)
 			return
 
-	else if((istype(W, /obj/item/gun/energy/plasmacutter) || (istype(W, /obj/item/melee/energy) && W.force > 20)) && user.a_intent == I_HELP)
+	else if((istype(W, /obj/item/gun/energy/plasmacutter) || (istype(W, /obj/item/melee/energy) && user.get_force(W.force) > 20)) && user.a_intent == I_HELP)
 		user.visible_message(SPAN("notice", "[user] is slicing apart \the [src]..."), \
 				             SPAN("notice", "Now slicing apart \the [src]..."))
 		if(do_after(user,30, src, luck_check_type = LUCK_CHECK_ENG))
@@ -187,9 +187,9 @@
 		user.do_attack_animation(src)
 		obj_attack_sound(W)
 		shake_animation(stime = 2)
-		if(W.force >= 15)
+		if(user.get_force(W.force) >= 15)
 			user.visible_message(SPAN("danger", "\The [src] has been [pick(W.attack_verb)] with [W] by [user]!"))
-			health -= W.force
+			health -= user.get_force(W.force)
 			if(health <= 0)
 				visible_message(SPAN("danger", "\The [src] falls apart!"))
 				dismantle()
@@ -324,7 +324,7 @@
 				        	     SPAN("notice", "You dissasembled \the [src]!"))
 			dismantle()
 
-	else if((istype(W, /obj/item/gun/energy/plasmacutter) || (istype(W, /obj/item/melee/energy) && W.force > 20)) && user.a_intent == I_HELP)
+	else if((istype(W, /obj/item/gun/energy/plasmacutter) || (istype(W, /obj/item/melee/energy) && user.get_force(W.force) > 20)) && user.a_intent == I_HELP)
 		user.visible_message(SPAN("notice", "[user] is slicing apart \the [src]..."), \
 				             SPAN("notice", "Now slicing apart \the [src]..."))
 		if(do_after(user,30, src, luck_check_type = LUCK_CHECK_ENG))

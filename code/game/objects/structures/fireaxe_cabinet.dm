@@ -15,7 +15,7 @@
 	attack_animation(user)
 	playsound(user, GET_SFX(SFX_GLASS_HIT), 50, 1)
 	visible_message("<span class='danger'>[user] [attack_verb] \the [src]!</span>")
-	if(damage_threshold > damage)
+	if(damage_threshold > user.get_force(damage))
 		to_chat(user, "<span class='danger'>Your strike is deflected by the reinforced glass!</span>")
 		return
 	if(shattered)
@@ -90,9 +90,9 @@
 				update_icon()
 			return
 
-	if(O.force)
+	if(user.get_force(O.force))
 		user.setClickCooldown(10)
-		attack_generic(user, O.force, "bashes")
+		attack_generic(user, user.get_force(O.force), "bashes")
 		return
 
 	return ..()

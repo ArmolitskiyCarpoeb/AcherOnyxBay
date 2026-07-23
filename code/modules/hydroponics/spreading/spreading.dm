@@ -222,7 +222,7 @@
 		health -= rand(3, 5) * 5
 	else
 		..()
-		var/damage = W.edge ? W.force : W.force / 2
+		var/damage = W.edge ? user.get_force(W.force) : user.get_force(W.force) / 2
 		adjust_health(-damage)
 		playsound(src, W.hitsound, 100, 1)
 

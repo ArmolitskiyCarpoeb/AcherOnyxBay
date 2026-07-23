@@ -242,8 +242,8 @@
 		return
 	else if(attempt_to_stock(W, user))
 		return
-	else if(W.force >= 10)
-		take_damage(W.force)
+	else if(user.get_force(W.force) >= 10)
+		take_damage(user.get_force(W.force))
 		user.visible_message(SPAN("danger", "\The [src] has been [pick(W.attack_verb)] with [W] by [user]!"))
 		W.set_cooldown()
 		user.do_attack_animation(src)

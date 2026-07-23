@@ -36,7 +36,7 @@
 
 /obj/structure/barricade/attackby(obj/item/W, mob/user)
 	if(W.force && user.a_intent == I_HURT)
-		attack_generic(user, W.force, "")
+		attack_generic(user, user.get_force(W.force), "")
 		W.set_cooldown()
 
 		attack_animation(user)
@@ -48,7 +48,7 @@
 
 /obj/structure/barricade/attack_generic(mob/user, damage, attack_verb, wallbreaker)
 	visible_message(SPAN("danger", "[user] [attack_verb] \the [src]!"))
-	take_damage(damage)
+	take_damage(user.get_force(damage))
 
 
 /obj/structure/barricade/ex_act(severity)

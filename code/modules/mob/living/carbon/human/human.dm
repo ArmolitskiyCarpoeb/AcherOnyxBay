@@ -2437,3 +2437,11 @@
 /mob/living/carbon/human/proc/set_hygiene(amount)
 	if(amount >= 0)
 		hygiene = min(HYGIENE_LEVEL_CLEAN, amount)
+
+/mob/living/carbon/human/get_force(force)
+	if(!force)
+		return 1
+	if(force < 0)
+		return force
+	var/strength = stats[STAT_ST]
+	return force * strength/10

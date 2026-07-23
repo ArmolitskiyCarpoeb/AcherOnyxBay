@@ -300,7 +300,7 @@
 					bone_stage++
 				return
 		if(1)
-			if(istype(W) && W.force >= 5.0)
+			if(istype(W) && user.get_force(W.force) >= 5.0)
 				if(!do_mob(user, src, DEFAULT_ATTACK_COOLDOWN))
 					return
 				user.visible_message(SPAN("danger", "<b>[user]</b> cracks [src] open like an egg with [W]!"))
